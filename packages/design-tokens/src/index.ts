@@ -20,12 +20,23 @@ export const motion = raw.motion;
 export const hazard = raw.hazard;
 
 /** Font metadata per language; the loaded font family name comes from `weights`. */
-export const fonts = raw.font as Record<Lang, { family: string; weights: Record<FontWeight, string>; lineHeight: number; bodyDelta: number }>;
+export const fonts = raw.font as Record<
+  Lang,
+  {
+    family: string;
+    weights: Record<FontWeight, string>;
+    lineHeight: number;
+    /** Added to every role's size (Urdu runs 1 px larger). */
+    bodyDelta: number;
+    /** Floor for any role — Nastaliq below 12 px is unreadable. */
+    minSize: number;
+  }
+>;
 
 /** Resolve the font family, size and line-height for a language + weight + text role. */
 export function typography(lang: Lang, role: TextName, weight: FontWeight = '400') {
   const f = fonts[lang];
-  const base = raw.text[role] + (role === 'kicker' ? 0 : f.bodyDelta);
+  const base = Math.max(raw.text[role] + f.bodyDelta, f.minSize);
   return {
     fontFamily: f.weights[weight],
     fontSize: base,
