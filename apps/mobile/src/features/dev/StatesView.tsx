@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 import { useLangStore } from '@/data/lang';
+import { LoginView } from '@/features/auth/LoginView';
 import { AttemptStates } from '@/features/dev/sections/AttemptStates';
 import {
   Banner,
@@ -49,6 +50,8 @@ const DEV = {
   palette: 'PaletteCell',
   rail: 'HazardRail',
   railCritical: 'critical (marquee)',
+  auth: 'Auth & onboarding',
+  login: 'LoginView — filled + error toast',
   disabled: 'disabled',
   selected: 'selected',
   active: 'active',
@@ -86,6 +89,23 @@ function Section({
         {title}
       </Kicker>
       {children}
+    </Stack>
+  );
+}
+
+/** Dev frame: every screen is `flex-1`, so a preview inside this scroll needs a bounded height. */
+const PREVIEW_H = 560;
+
+function Preview({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <Stack gap={2}>
+      <Label>{label}</Label>
+      <View
+        className="overflow-hidden rounded-md border border-line"
+        style={{ height: PREVIEW_H }}
+      >
+        {children}
+      </View>
     </Stack>
   );
 }
@@ -297,6 +317,16 @@ export function StatesView() {
       </Section>
 
       <AttemptStates />
+
+      <Section index="12" title={DEV.auth}>
+        <Preview label={DEV.login}>
+          <LoginView
+            initialPhone="9000012345"
+            error={t('common.networkError')}
+            onSubmit={() => {}}
+          />
+        </Preview>
+      </Section>
     </Screen>
   );
 }

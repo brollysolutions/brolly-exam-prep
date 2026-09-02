@@ -1,6 +1,11 @@
 import { Redirect } from 'expo-router';
 
-/** Placeholder until the onboarding/auth features land: open the design-system gallery. */
+import { useSessionStore } from '@/data/session';
+
+/** Boot router: signed-out users land in the auth stack, everyone else in the app shell. */
 export default function Index() {
+  const token = useSessionStore((s) => s.token);
+  if (!token) return <Redirect href="/(auth)/login" />;
+  // TODO(F-07): replace with `/(tabs)` once the tab shell exists.
   return <Redirect href="/dev/states" />;
 }

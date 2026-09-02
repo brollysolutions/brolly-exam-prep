@@ -16,7 +16,8 @@
     "seconds": "{{count}} سیکنڈ",
     "marks": "+{{plus}} / −{{minus}}",
     "noNegative": "منفی نمبر نہیں",
-    "close": "بند کریں"
+    "close": "بند کریں",
+    "networkError": "کنکشن نہیں۔ دوبارہ کوشش کریں۔"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "زبان" },
   "auth": {

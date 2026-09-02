@@ -16,7 +16,8 @@
     "seconds": "{{count}} సె",
     "marks": "+{{plus}} / −{{minus}}",
     "noNegative": "నెగటివ్ మార్కులు లేవు",
-    "close": "మూసివేయి"
+    "close": "మూసివేయి",
+    "networkError": "కనెక్షన్ లేదు. మళ్లీ ప్రయత్నించండి."
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "భాష" },
   "auth": {

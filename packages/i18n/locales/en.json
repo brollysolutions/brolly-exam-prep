@@ -16,7 +16,8 @@
     "seconds": "{{count}}s",
     "marks": "+{{plus}} / −{{minus}}",
     "noNegative": "No negative marking",
-    "close": "Close"
+    "close": "Close",
+    "networkError": "No connection. Try again."
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "Language" },
   "auth": {
