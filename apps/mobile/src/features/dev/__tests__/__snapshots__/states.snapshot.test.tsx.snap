@@ -29537,7 +29537,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           testID="solution-your-answer"
                         >
                           <Text
-                            className="text-flag"
+                            className="text-chalk"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -29670,7 +29670,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -29688,7 +29688,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_600SemiBold",
@@ -29707,7 +29707,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ⁦1m 47s⁩
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_400Regular",
@@ -29724,7 +29724,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ·
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -29742,7 +29742,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_600SemiBold",
@@ -29887,7 +29887,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           testID="solution-your-answer"
                         >
                           <Text
-                            className="text-flag"
+                            className="text-chalk"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -30020,7 +30020,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -30038,7 +30038,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_600SemiBold",
@@ -30057,7 +30057,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ⁦2m 04s⁩
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_400Regular",
@@ -30074,7 +30074,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ·
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -30092,7 +30092,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_600SemiBold",
@@ -30237,7 +30237,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           testID="solution-your-answer"
                         >
                           <Text
-                            className="text-flag"
+                            className="text-chalk"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -30370,7 +30370,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -30388,7 +30388,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_600SemiBold",
@@ -30407,7 +30407,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ⁦19s⁩
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_400Regular",
@@ -30424,7 +30424,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ·
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -30442,7 +30442,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_600SemiBold",
@@ -31886,7 +31886,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           testID="solution-your-answer"
                         >
                           <Text
-                            className="text-flag"
+                            className="text-chalk"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -32019,7 +32019,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -32037,7 +32037,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_600SemiBold",
@@ -32056,7 +32056,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ⁦1m 47s⁩
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_400Regular",
@@ -32073,7 +32073,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ·
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -32091,7 +32091,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_600SemiBold",
@@ -32322,7 +32322,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -32340,7 +32340,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_600SemiBold",
@@ -32359,7 +32359,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ⁦1m 22s⁩
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_400Regular",
@@ -32376,7 +32376,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ·
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -32394,7 +32394,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_600SemiBold",
@@ -32539,7 +32539,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           testID="solution-your-answer"
                         >
                           <Text
-                            className="text-flag"
+                            className="text-chalk"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -32672,7 +32672,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -32690,7 +32690,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_600SemiBold",
@@ -32709,7 +32709,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ⁦2m 04s⁩
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_400Regular",
@@ -32726,7 +32726,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ·
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -32744,7 +32744,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_600SemiBold",
@@ -32889,7 +32889,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           testID="solution-your-answer"
                         >
                           <Text
-                            className="text-flag"
+                            className="text-chalk"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -33022,7 +33022,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -33040,7 +33040,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_600SemiBold",
@@ -33059,7 +33059,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ⁦19s⁩
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_400Regular",
@@ -33076,7 +33076,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ·
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -33094,7 +33094,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_600SemiBold",

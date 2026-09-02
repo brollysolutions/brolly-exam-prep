@@ -1340,7 +1340,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
               testID="solution-your-answer"
             >
               <Text
-                className="text-flag"
+                className="text-chalk"
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -1473,7 +1473,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
               }
             >
               <Text
-                className="text-mute"
+                className="text-dim"
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -1491,7 +1491,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
               </Text>
               <Text
                 accessibilityLanguage="en"
-                className="text-mute"
+                className="text-dim"
                 style={
                   {
                     "fontFamily": "Archivo_600SemiBold",
@@ -1510,7 +1510,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
                 ⁦1m 47s⁩
               </Text>
               <Text
-                className="text-mute"
+                className="text-dim"
                 style={
                   {
                     "fontFamily": "Archivo_400Regular",
@@ -1527,7 +1527,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
                 ·
               </Text>
               <Text
-                className="text-mute"
+                className="text-dim"
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -1545,7 +1545,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
               </Text>
               <Text
                 accessibilityLanguage="en"
-                className="text-mute"
+                className="text-dim"
                 style={
                   {
                     "fontFamily": "Archivo_600SemiBold",
@@ -1690,7 +1690,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
               testID="solution-your-answer"
             >
               <Text
-                className="text-flag"
+                className="text-chalk"
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -1823,7 +1823,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
               }
             >
               <Text
-                className="text-mute"
+                className="text-dim"
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -1841,7 +1841,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
               </Text>
               <Text
                 accessibilityLanguage="en"
-                className="text-mute"
+                className="text-dim"
                 style={
                   {
                     "fontFamily": "Archivo_600SemiBold",
@@ -1860,7 +1860,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
                 ⁦2m 04s⁩
               </Text>
               <Text
-                className="text-mute"
+                className="text-dim"
                 style={
                   {
                     "fontFamily": "Archivo_400Regular",
@@ -1877,7 +1877,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
                 ·
               </Text>
               <Text
-                className="text-mute"
+                className="text-dim"
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -1895,7 +1895,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
               </Text>
               <Text
                 accessibilityLanguage="en"
-                className="text-mute"
+                className="text-dim"
                 style={
                   {
                     "fontFamily": "Archivo_600SemiBold",
@@ -2040,7 +2040,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
               testID="solution-your-answer"
             >
               <Text
-                className="text-flag"
+                className="text-chalk"
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -2173,7 +2173,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
               }
             >
               <Text
-                className="text-mute"
+                className="text-dim"
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -2191,7 +2191,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
               </Text>
               <Text
                 accessibilityLanguage="en"
-                className="text-mute"
+                className="text-dim"
                 style={
                   {
                     "fontFamily": "Archivo_600SemiBold",
@@ -2210,7 +2210,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
                 ⁦19s⁩
               </Text>
               <Text
-                className="text-mute"
+                className="text-dim"
                 style={
                   {
                     "fontFamily": "Archivo_400Regular",
@@ -2227,7 +2227,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
                 ·
               </Text>
               <Text
-                className="text-mute"
+                className="text-dim"
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -2245,7 +2245,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
               </Text>
               <Text
                 accessibilityLanguage="en"
-                className="text-mute"
+                className="text-dim"
                 style={
                   {
                     "fontFamily": "Archivo_600SemiBold",

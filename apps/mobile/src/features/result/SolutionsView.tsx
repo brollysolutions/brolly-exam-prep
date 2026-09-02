@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, View } from 'react-native';
 
-import { Chip, Kicker, Num, Row, Screen, Stack, Text } from '@/ui';
+import { Chip, Glyph, Kicker, Num, Row, Screen, Stack, Text } from '@/ui';
 
 import { startEdge } from './edge';
 import { formatDuration } from './format';
@@ -49,7 +49,13 @@ function Badge({ correct }: { correct: boolean }) {
   );
 }
 
-/** The tinted answer blocks: a 3 px start bar over a matching tint. */
+/**
+ * The tinted answer blocks: a 3 px start bar over a matching tint.
+ *
+ * The "your answer" kicker is `chalk`, not `flag`: flag on `flagTint` over tar is 4.29:1,
+ * under AA for 11 px text. The 3 px bar and the tint already say "this one was wrong", so
+ * the label does not have to. Hi-vis on `hivisTint2` is 13.9:1 and stays.
+ */
 function AnswerBlock({
   tone,
   label,
@@ -73,7 +79,7 @@ function AnswerBlock({
         ...startEdge(d.isRTL, tone),
       }}
     >
-      <Kicker color={tone} tracking="kickerTight">
+      <Kicker color={tone === 'flag' ? 'chalk' : 'hivis'} tracking="kickerTight">
         {label}
       </Kicker>
       <Text variant="body" className="mt-1" testID={`${testID}-text`}>
@@ -134,19 +140,19 @@ function SolutionCard({ row }: { row: SolutionRow }) {
       </View>
 
       <Row gap={1} wrap align="baseline" className="mt-3">
-        <Text variant="caption" color="mute">
+        <Text variant="caption" color="dim">
           {t('solutions.yourTime')}
         </Text>
-        <Num variant="caption" weight="600" color="mute">
+        <Num variant="caption" weight="600" color="dim">
           {formatDuration(row.seconds)}
         </Num>
-        <Text variant="caption" color="mute" lang="en">
+        <Glyph variant="caption" color="dim">
           ·
-        </Text>
-        <Text variant="caption" color="mute">
+        </Glyph>
+        <Text variant="caption" color="dim">
           {t('solutions.avgTime')}
         </Text>
-        <Num variant="caption" weight="600" color="mute">
+        <Num variant="caption" weight="600" color="dim">
           {formatDuration(row.question.avgSeconds)}
         </Num>
       </Row>
