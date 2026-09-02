@@ -1736,7 +1736,7 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
           }
         }
         accessible={true}
-        className="items-center justify-center rounded-sm px-4 h-touchLg bg-hivis mt-3"
+        className="items-center justify-center rounded-sm px-4 bg-hivis mt-3"
         collapsable={false}
         focusable={true}
         onBlur={[Function]}
@@ -1749,10 +1749,9 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            null,
-            undefined,
-          ]
+          {
+            "height": 56,
+          }
         }
         testID="login-continue"
       >

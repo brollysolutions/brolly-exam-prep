@@ -957,12 +957,7 @@ exports[`PostView (ur) mirrors the copy and matches the snapshot 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              [
-                null,
-                undefined,
-              ]
-            }
+            style={{}}
             testID="post-card-pc"
           >
             <Text
@@ -1032,12 +1027,7 @@ exports[`PostView (ur) mirrors the copy and matches the snapshot 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              [
-                null,
-                undefined,
-              ]
-            }
+            style={{}}
             testID="post-card-si"
           >
             <Text
@@ -1101,7 +1091,7 @@ exports[`PostView (ur) mirrors the copy and matches the snapshot 1`] = `
           }
         }
         accessible={true}
-        className="items-center justify-center rounded-sm px-4 h-touchLg bg-hivis"
+        className="items-center justify-center rounded-sm px-4 bg-hivis"
         collapsable={false}
         focusable={true}
         onBlur={[Function]}
@@ -1114,10 +1104,9 @@ exports[`PostView (ur) mirrors the copy and matches the snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            null,
-            undefined,
-          ]
+          {
+            "height": 56,
+          }
         }
         testID="post-continue"
       >

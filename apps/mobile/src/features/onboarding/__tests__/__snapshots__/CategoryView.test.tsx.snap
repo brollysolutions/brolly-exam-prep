@@ -1055,12 +1055,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  null,
-                  undefined,
-                ]
-              }
+              style={{}}
               testID="category-card-oc"
             >
               <Text
@@ -1163,12 +1158,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  null,
-                  undefined,
-                ]
-              }
+              style={{}}
               testID="category-card-ews"
             >
               <Text
@@ -1284,12 +1274,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  null,
-                  undefined,
-                ]
-              }
+              style={{}}
               testID="category-card-bc"
             >
               <Text
@@ -1392,12 +1377,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  null,
-                  undefined,
-                ]
-              }
+              style={{}}
               testID="category-card-sc"
             >
               <Text
@@ -1513,12 +1493,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  null,
-                  undefined,
-                ]
-              }
+              style={{}}
               testID="category-card-st"
             >
               <Text
@@ -1621,12 +1596,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  null,
-                  undefined,
-                ]
-              }
+              style={{}}
               testID="category-card-exs"
             >
               <Text
@@ -1724,7 +1694,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
           }
         }
         accessible={true}
-        className="items-center justify-center rounded-sm px-4 h-touchLg bg-hivis"
+        className="items-center justify-center rounded-sm px-4 bg-hivis"
         collapsable={false}
         focusable={true}
         onBlur={[Function]}
@@ -1737,10 +1707,9 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            null,
-            undefined,
-          ]
+          {
+            "height": 56,
+          }
         }
         testID="category-start"
       >

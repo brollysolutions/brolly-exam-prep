@@ -2020,7 +2020,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
           }
         }
         accessible={true}
-        className="items-center justify-center rounded-sm px-4 h-touchLg bg-panel3 mt-3"
+        className="items-center justify-center rounded-sm px-4 bg-panel3 mt-3"
         collapsable={false}
         focusable={true}
         onBlur={[Function]}
@@ -2033,10 +2033,9 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            null,
-            undefined,
-          ]
+          {
+            "height": 56,
+          }
         }
         testID="otp-verify"
       >

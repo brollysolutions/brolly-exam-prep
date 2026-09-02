@@ -1466,14 +1466,14 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
         importantForAccessibility="no"
         style={
           {
-            "fontFamily": "NotoNastaliqUrdu_400Regular",
-            "fontSize": 14.5,
+            "fontFamily": "Archivo_400Regular",
+            "fontSize": 13.5,
             "fontVariant": undefined,
             "letterSpacing": 0,
-            "lineHeight": 29.7,
+            "lineHeight": 19.6,
             "textAlign": "right",
             "textTransform": undefined,
-            "writingDirection": "rtl",
+            "writingDirection": "ltr",
           }
         }
       >
