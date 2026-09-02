@@ -156,16 +156,19 @@ export function OtpView({
           </Num>
         </Row>
 
-        {/* Animated.View is not styled by NativeWind; it only carries the shake transform. */}
-        <Animated.View style={shakeStyle} className="mt-6">
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={t('auth.otpTitle')}
-            onLongPress={() => hidden.current?.focus()}
-          >
-            <OtpCells value={code} length={OTP_LENGTH} testID="otp-cells" />
-          </Pressable>
-        </Animated.View>
+        {/* NativeWind does not style Animated.View, so spacing lives on the wrapper and the
+            animated layer carries nothing but the shake transform. */}
+        <View className="mt-6">
+          <Animated.View style={shakeStyle}>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={t('auth.otpTitle')}
+              onLongPress={() => hidden.current?.focus()}
+            >
+              <OtpCells value={code} length={OTP_LENGTH} testID="otp-cells" />
+            </Pressable>
+          </Animated.View>
+        </View>
 
         <Row gap={2} align="center" className="mt-4">
           <View className="border-1.5 h-dot w-dot rounded-full border-mute" />

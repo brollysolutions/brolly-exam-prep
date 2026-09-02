@@ -1012,216 +1012,219 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
         </View>
         <View
           className="mt-6"
-          style={
-            {
-              "transform": [
-                {
-                  "translateX": 0,
-                },
-              ],
-            }
-          }
         >
           <View
-            accessibilityLabel="کوڈ درج کریں"
-            accessibilityRole="button"
-            accessibilityState={
+            style={
               {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
+                "transform": [
+                  {
+                    "translateX": 0,
+                  },
+                ],
               }
             }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
           >
             <View
+              accessibilityLabel="کوڈ درج کریں"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
               accessibilityValue={
                 {
-                  "text": "123",
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
-              style={
-                {
-                  "alignItems": undefined,
-                  "flexDirection": "row",
-                  "flexWrap": undefined,
-                  "gap": 8,
-                  "justifyContent": undefined,
-                }
-              }
-              testID="otp-cells"
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
             >
               <View
-                className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
-                testID="otp-cells-0"
-              >
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-chalk"
-                  style={
-                    {
-                      "fontFamily": "Archivo_700Bold",
-                      "fontSize": 20,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 29,
-                      "textAlign": "center",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
+                accessibilityValue={
+                  {
+                    "text": "123",
                   }
-                >
-                  ⁦1⁩
-                </Text>
-              </View>
-              <View
-                className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
-                testID="otp-cells-1"
-              >
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-chalk"
-                  style={
-                    {
-                      "fontFamily": "Archivo_700Bold",
-                      "fontSize": 20,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 29,
-                      "textAlign": "center",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
+                }
+                accessible={true}
+                style={
+                  {
+                    "alignItems": undefined,
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 8,
+                    "justifyContent": undefined,
                   }
-                >
-                  ⁦2⁩
-                </Text>
-              </View>
-              <View
-                className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
-                testID="otp-cells-2"
+                }
+                testID="otp-cells"
               >
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-chalk"
-                  style={
-                    {
-                      "fontFamily": "Archivo_700Bold",
-                      "fontSize": 20,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 29,
-                      "textAlign": "center",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
+                <View
+                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
+                  testID="otp-cells-0"
                 >
-                  ⁦3⁩
-                </Text>
-              </View>
-              <View
-                className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-hivis"
-                testID="otp-cells-3"
-              >
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-chalk"
-                  style={
-                    {
-                      "fontFamily": "Archivo_700Bold",
-                      "fontSize": 20,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 29,
-                      "textAlign": "center",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-chalk"
+                    style={
+                      {
+                        "fontFamily": "Archivo_700Bold",
+                        "fontSize": 20,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 29,
+                        "textAlign": "center",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
                     }
-                  }
+                  >
+                    ⁦1⁩
+                  </Text>
+                </View>
+                <View
+                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
+                  testID="otp-cells-1"
                 >
-                  ⁦⁩
-                </Text>
-              </View>
-              <View
-                className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
-                testID="otp-cells-4"
-              >
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-chalk"
-                  style={
-                    {
-                      "fontFamily": "Archivo_700Bold",
-                      "fontSize": 20,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 29,
-                      "textAlign": "center",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-chalk"
+                    style={
+                      {
+                        "fontFamily": "Archivo_700Bold",
+                        "fontSize": 20,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 29,
+                        "textAlign": "center",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
                     }
-                  }
+                  >
+                    ⁦2⁩
+                  </Text>
+                </View>
+                <View
+                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
+                  testID="otp-cells-2"
                 >
-                  ⁦⁩
-                </Text>
-              </View>
-              <View
-                className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
-                testID="otp-cells-5"
-              >
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-chalk"
-                  style={
-                    {
-                      "fontFamily": "Archivo_700Bold",
-                      "fontSize": 20,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 29,
-                      "textAlign": "center",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-chalk"
+                    style={
+                      {
+                        "fontFamily": "Archivo_700Bold",
+                        "fontSize": 20,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 29,
+                        "textAlign": "center",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
                     }
-                  }
+                  >
+                    ⁦3⁩
+                  </Text>
+                </View>
+                <View
+                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-hivis"
+                  testID="otp-cells-3"
                 >
-                  ⁦⁩
-                </Text>
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-chalk"
+                    style={
+                      {
+                        "fontFamily": "Archivo_700Bold",
+                        "fontSize": 20,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 29,
+                        "textAlign": "center",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ⁦⁩
+                  </Text>
+                </View>
+                <View
+                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
+                  testID="otp-cells-4"
+                >
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-chalk"
+                    style={
+                      {
+                        "fontFamily": "Archivo_700Bold",
+                        "fontSize": 20,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 29,
+                        "textAlign": "center",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ⁦⁩
+                  </Text>
+                </View>
+                <View
+                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
+                  testID="otp-cells-5"
+                >
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-chalk"
+                    style={
+                      {
+                        "fontFamily": "Archivo_700Bold",
+                        "fontSize": 20,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 29,
+                        "textAlign": "center",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ⁦⁩
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
