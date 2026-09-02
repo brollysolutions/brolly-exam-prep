@@ -14,3 +14,4 @@ paths:
 - Letter-spacing/tracking only for `en`; Telugu and Urdu get `0`.
 - Every screen has a snapshot test rendered with `lang: 'ur'` and one assertion that the primary `Row` is `row-reverse`.
 - Before PR: run `@i18n-rtl-reviewer`.
+- Glyph characters (chevrons `‹ ›`, `✕ ✓ ⌫ ■ ⛌`, rings) must render in the Latin face: use the shared `Glyph`/`Chevron` helper or `lang="en"` on the `Text`. Noto Nastaliq Urdu has no U+2039/U+203A and falls back to parentheses.
