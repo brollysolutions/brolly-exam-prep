@@ -1,9 +1,11 @@
-import { SAMPLE_RESULT } from '@tslprb/fixtures';
+import { buildPaper, FREE_MOCK_SHORT, SAMPLE_RESULT } from '@tslprb/fixtures';
 import type { ReactNode } from 'react';
 import { View } from 'react-native';
 
 import type { ResultDetail } from '@/data/api';
 import { ResultView } from '@/features/result/ResultView';
+import { SolutionsView } from '@/features/result/SolutionsView';
+import { buildSolutionRows } from '@/features/result/solutions';
 import { Kicker, Stack, Text } from '@/ui';
 
 /**
@@ -17,6 +19,8 @@ const DEV = {
   below: 'F-12 result — below cut-off',
   loading: 'F-12 result — loading skeleton',
   error: 'F-12 result — failed load',
+  wrong: 'F-13 solutions — wrong filter',
+  all: 'F-13 solutions — all filter',
 } as const;
 
 const FRAME_HEIGHT = 520;
@@ -39,6 +43,8 @@ const BELOW_CUTOFF: ResultDetail = {
   accuracyPct: 44,
   avgSecondsPerQuestion: 82,
 };
+
+const ROWS = buildSolutionRows(QUALIFIED.review, buildPaper(FREE_MOCK_SHORT.sections));
 
 function Frame({ label, children }: { label: string; children: ReactNode }) {
   return (
@@ -73,6 +79,12 @@ export function ResultStates() {
       </Frame>
       <Frame label={DEV.error}>
         <ResultView failed />
+      </Frame>
+      <Frame label={DEV.wrong}>
+        <SolutionsView rows={ROWS} initialFilter="wrong" />
+      </Frame>
+      <Frame label={DEV.all}>
+        <SolutionsView rows={ROWS} initialFilter="all" />
       </Frame>
     </Stack>
   );

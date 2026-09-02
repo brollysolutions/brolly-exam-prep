@@ -133,7 +133,8 @@
     "correctAnswer": "Correct answer",
     "why": "Why",
     "yourTime": "Your time",
-    "avgTime": "Average"
+    "avgTime": "Average",
+    "allCorrect": "No wrong answers in this test."
   },
   "home": {
     "greeting": "Ready, {{name}}?",

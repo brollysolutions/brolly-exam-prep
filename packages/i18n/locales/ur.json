@@ -133,7 +133,8 @@
     "correctAnswer": "درست جواب",
     "why": "کیوں",
     "yourTime": "آپ کا وقت",
-    "avgTime": "اوسط"
+    "avgTime": "اوسط",
+    "allCorrect": "اس ٹیسٹ میں کوئی غلط جواب نہیں۔"
   },
   "home": {
     "greeting": "تیار ہیں، {{name}}؟",

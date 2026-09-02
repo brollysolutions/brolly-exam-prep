@@ -133,7 +133,8 @@
     "correctAnswer": "సరైన జవాబు",
     "why": "ఎందుకు",
     "yourTime": "మీ సమయం",
-    "avgTime": "సగటు"
+    "avgTime": "సగటు",
+    "allCorrect": "ఈ టెస్ట్‌లో తప్పు జవాబులు లేవు."
   },
   "home": {
     "greeting": "సిద్ధమా, {{name}}?",
