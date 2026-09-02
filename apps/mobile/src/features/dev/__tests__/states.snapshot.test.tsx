@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react-native';
+import { render, screen, userEvent } from '@testing-library/react-native';
 import { initI18n } from '@tslprb/i18n';
 
 import { useLangStore } from '@/data/lang';
@@ -18,6 +18,10 @@ describe('dev states screen (ur)', () => {
     expect(screen.getByTestId('phone-live')).toHaveStyle({ flexDirection: 'row' });
     // Urdu copy from the locale file is on screen (login title).
     expect(screen.getAllByText('آپ کا فون نمبر', { exact: false }).length).toBeGreaterThan(0);
+    // The Dialog lives in Screen's overlay slot (sibling of the ScrollView), not in the body.
+    expect(screen.queryByTestId('dialog')).toBeNull();
+    await userEvent.press(screen.getByTestId('dialog-toggle'));
+    expect(screen.getByTestId('dialog')).toBeOnTheScreen();
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });

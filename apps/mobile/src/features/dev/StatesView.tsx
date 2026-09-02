@@ -41,6 +41,7 @@ const DEV = {
   toasts: 'Toast + Banner',
   sheet: 'Sheet',
   sheetOpen: 'Open sheet',
+  dialogOpen: 'Open dialog',
   sheetBody: 'Sheet body — panel2, 3 px hi-vis edge, scrim backdrop.',
   entry: 'Keypad + PhoneField + OTP',
   progress: 'ProgressRail 40 %',
@@ -101,13 +102,31 @@ export function StatesView() {
   const lang = useLangStore((s) => s.lang);
   const setLang = useLangStore((s) => s.setLang);
   const [phone, setPhone] = useState('');
-  const [dialogOpen, setDialogOpen] = useState(true);
+  const [dialogOpen, setDialogOpen] = useState(false);
   const sheet = useRef<SheetHandle>(null);
 
   const langOptions = LANGS.map((l: Lang) => ({ value: l, label: t(`lang.${l}Short`), lang: l }));
 
+  const dialog = (
+    <Dialog
+      visible={dialogOpen}
+      tone="hivis"
+      kicker={t('test.submitKicker')}
+      title={t('test.submitTitle')}
+      body={t('test.submitBody')}
+      stats={[
+        { num: 31, label: t('test.answered') },
+        { num: 6, label: t('test.notAnswered') },
+        { num: 3, label: t('test.marked') },
+      ]}
+      primary={{ label: t('test.submitYes'), onPress: () => setDialogOpen(false) }}
+      secondary={{ label: t('test.submitNo'), onPress: () => setDialogOpen(false) }}
+      testID="dialog"
+    />
+  );
+
   return (
-    <Screen scroll padded testID="states-screen">
+    <Screen scroll padded overlay={dialog} testID="states-screen">
       <Row testID="states-header" align="center" justify="between" className="mt-4">
         <Kicker color="hivis" tracking="brand">
           {t('common.brand')}
@@ -210,29 +229,11 @@ export function StatesView() {
         <Row gap={2}>
           <Button
             variant="secondary"
-            label={DEV.selected}
-            active={dialogOpen}
-            onPress={() => setDialogOpen((v) => !v)}
+            label={DEV.dialogOpen}
+            onPress={() => setDialogOpen(true)}
+            testID="dialog-toggle"
           />
         </Row>
-        {/* Fixed-height frame so the absolute-fill overlay has something to fill inside a scroll gallery. */}
-        <View className="h-[400px] overflow-hidden rounded-md border border-line bg-tar">
-          <Dialog
-            visible={dialogOpen}
-            tone="hivis"
-            kicker={t('test.submitKicker')}
-            title={t('test.submitTitle')}
-            body={t('test.submitBody')}
-            stats={[
-              { num: 31, label: t('test.answered') },
-              { num: 6, label: t('test.notAnswered') },
-              { num: 3, label: t('test.marked') },
-            ]}
-            primary={{ label: t('test.submitYes'), onPress: () => setDialogOpen(false) }}
-            secondary={{ label: t('test.submitNo'), onPress: () => setDialogOpen(false) }}
-            testID="dialog"
-          />
-        </View>
       </Section>
 
       <Section index="06" title={DEV.toasts}>

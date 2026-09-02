@@ -3973,41 +3973,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
           <View
             accessibilityState={
               {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
                 "selected": false,
               }
             }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
             className="items-center justify-center border rounded-xs h-chip px-3 border-line opacity-40"
-            collapsable={false}
-            focusable={true}
-            hitSlop={7}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                null,
-                undefined,
-              ]
-            }
           >
             <Text
               className="text-dim"
@@ -4051,41 +4020,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
           <View
             accessibilityState={
               {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
                 "selected": true,
               }
             }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
             className="items-center justify-center border rounded-xs h-chip px-3 bg-hivis border-hivis"
-            collapsable={false}
-            focusable={true}
-            hitSlop={7}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                null,
-                undefined,
-              ]
-            }
           >
             <Text
               className="text-tar"
@@ -4114,41 +4052,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
           <View
             accessibilityState={
               {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
                 "selected": true,
               }
             }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
             className="items-center justify-center border rounded-xs h-chipMd px-4 bg-hivis border-hivis"
-            collapsable={false}
-            focusable={true}
-            hitSlop={4}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                null,
-                undefined,
-              ]
-            }
           >
             <Text
               className="text-tar"
@@ -4177,41 +4084,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
           <View
             accessibilityState={
               {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
                 "selected": true,
               }
             }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
             className="items-center justify-center border rounded-xs h-touch px-4 bg-hivis border-hivis"
-            collapsable={false}
-            focusable={true}
-            hitSlop={0}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                null,
-                undefined,
-              ]
-            }
           >
             <Text
               className="text-tar"
@@ -4240,41 +4116,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
           <View
             accessibilityState={
               {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
                 "selected": true,
               }
             }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
             className="items-center justify-center border rounded-full h-chipMd px-4 bg-hivis border-hivis"
-            collapsable={false}
-            focusable={true}
-            hitSlop={4}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                null,
-                undefined,
-              ]
-            }
           >
             <Text
               className="text-tar"
@@ -4432,6 +4277,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 undefined,
               ]
             }
+            testID="dialog-toggle"
           >
             <View
               style={
@@ -4468,439 +4314,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                   ]
                 }
               >
-                selected
+                Open dialog
               </Text>
-            </View>
-          </View>
-        </View>
-        <View
-          className="h-[400px] overflow-hidden rounded-md border border-line bg-tar"
-        >
-          <View
-            accessibilityViewIsModal={true}
-            className="absolute inset-0 justify-end bg-scrimHeavy p-4"
-            entering={BaseAnimationMock {}}
-            exiting={BaseAnimationMock {}}
-            testID="dialog"
-          >
-            <View
-              className="border border-line border-t-4 bg-panel2 px-4 pb-4 pt-4 border-t-hivis"
-            >
-              <Text
-                className="text-hivis"
-                style={
-                  [
-                    {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 10.5,
-                      "letterSpacing": 0,
-                      "lineHeight": 21.5,
-                    },
-                    {
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "textAlign": "right",
-                      "textTransform": undefined,
-                      "writingDirection": "rtl",
-                    },
-                    undefined,
-                  ]
-                }
-              >
-                آخری مرحلہ
-              </Text>
-              <Text
-                className="text-chalk mt-2"
-                style={
-                  [
-                    {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 20,
-                      "letterSpacing": 0,
-                      "lineHeight": 41,
-                    },
-                    {
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "textAlign": "right",
-                      "textTransform": undefined,
-                      "writingDirection": "rtl",
-                    },
-                    undefined,
-                  ]
-                }
-              >
-                ٹیسٹ جمع کریں؟
-              </Text>
-              <Text
-                className="text-chalk2 mt-2"
-                style={
-                  [
-                    {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 14.5,
-                      "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                    },
-                    {
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "textAlign": "right",
-                      "textTransform": undefined,
-                      "writingDirection": "rtl",
-                    },
-                    undefined,
-                  ]
-                }
-              >
-                جمع کرنے کے بعد جوابات تبدیل نہیں ہو سکتے۔ انٹرنیٹ کے بغیر بھی جمع ہو جائے گا — نتیجہ آن لائن آنے پر ملے گا۔
-              </Text>
-              <View
-                className="mt-3"
-                style={
-                  [
-                    {
-                      "alignItems": undefined,
-                      "flexDirection": "row-reverse",
-                      "flexWrap": undefined,
-                      "gap": 8,
-                      "justifyContent": undefined,
-                    },
-                    undefined,
-                  ]
-                }
-              >
-                <View
-                  className="flex-1 items-center border border-line px-1 py-2"
-                >
-                  <Text
-                    accessibilityLanguage="en"
-                    className="text-chalk"
-                    style={
-                      [
-                        {
-                          "fontFamily": "Archivo_700Bold",
-                          "fontSize": 22,
-                          "letterSpacing": 0,
-                          "lineHeight": 31.9,
-                        },
-                        {
-                          "fontVariant": [
-                            "tabular-nums",
-                          ],
-                          "letterSpacing": 0,
-                          "textAlign": "center",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        },
-                        undefined,
-                      ]
-                    }
-                  >
-                    ⁦31⁩
-                  </Text>
-                  <Text
-                    className="text-steel mt-1"
-                    style={
-                      [
-                        {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 10.5,
-                          "letterSpacing": 0,
-                          "lineHeight": 21.5,
-                        },
-                        {
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "textAlign": "center",
-                          "textTransform": undefined,
-                          "writingDirection": "rtl",
-                        },
-                        undefined,
-                      ]
-                    }
-                  >
-                    جواب دیے
-                  </Text>
-                </View>
-                <View
-                  className="flex-1 items-center border border-line px-1 py-2"
-                >
-                  <Text
-                    accessibilityLanguage="en"
-                    className="text-chalk"
-                    style={
-                      [
-                        {
-                          "fontFamily": "Archivo_700Bold",
-                          "fontSize": 22,
-                          "letterSpacing": 0,
-                          "lineHeight": 31.9,
-                        },
-                        {
-                          "fontVariant": [
-                            "tabular-nums",
-                          ],
-                          "letterSpacing": 0,
-                          "textAlign": "center",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        },
-                        undefined,
-                      ]
-                    }
-                  >
-                    ⁦6⁩
-                  </Text>
-                  <Text
-                    className="text-steel mt-1"
-                    style={
-                      [
-                        {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 10.5,
-                          "letterSpacing": 0,
-                          "lineHeight": 21.5,
-                        },
-                        {
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "textAlign": "center",
-                          "textTransform": undefined,
-                          "writingDirection": "rtl",
-                        },
-                        undefined,
-                      ]
-                    }
-                  >
-                    جواب نہیں دیا
-                  </Text>
-                </View>
-                <View
-                  className="flex-1 items-center border border-line px-1 py-2"
-                >
-                  <Text
-                    accessibilityLanguage="en"
-                    className="text-chalk"
-                    style={
-                      [
-                        {
-                          "fontFamily": "Archivo_700Bold",
-                          "fontSize": 22,
-                          "letterSpacing": 0,
-                          "lineHeight": 31.9,
-                        },
-                        {
-                          "fontVariant": [
-                            "tabular-nums",
-                          ],
-                          "letterSpacing": 0,
-                          "textAlign": "center",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        },
-                        undefined,
-                      ]
-                    }
-                  >
-                    ⁦3⁩
-                  </Text>
-                  <Text
-                    className="text-steel mt-1"
-                    style={
-                      [
-                        {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 10.5,
-                          "letterSpacing": 0,
-                          "lineHeight": 21.5,
-                        },
-                        {
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "textAlign": "center",
-                          "textTransform": undefined,
-                          "writingDirection": "rtl",
-                        },
-                        undefined,
-                      ]
-                    }
-                  >
-                    نشان زد
-                  </Text>
-                </View>
-              </View>
-              <View
-                className="mt-4"
-                style={
-                  [
-                    {
-                      "alignItems": undefined,
-                      "flexDirection": "column",
-                      "gap": 8,
-                      "justifyContent": undefined,
-                    },
-                    undefined,
-                  ]
-                }
-              >
-                <View
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": false,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  className="items-center justify-center rounded-sm px-4 h-touchLg bg-hivis"
-                  collapsable={false}
-                  focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      null,
-                      undefined,
-                    ]
-                  }
-                >
-                  <View
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row-reverse",
-                          "flexWrap": undefined,
-                          "gap": 8,
-                          "justifyContent": undefined,
-                        },
-                        undefined,
-                      ]
-                    }
-                  >
-                    <Text
-                      className="text-tar"
-                      style={
-                        [
-                          {
-                            "fontFamily": "NotoNastaliqUrdu_700Bold",
-                            "fontSize": 15.5,
-                            "letterSpacing": 0,
-                            "lineHeight": 31.8,
-                          },
-                          {
-                            "fontVariant": undefined,
-                            "letterSpacing": 0,
-                            "textAlign": "center",
-                            "textTransform": undefined,
-                            "writingDirection": "rtl",
-                          },
-                          undefined,
-                        ]
-                      }
-                    >
-                      ہاں، جمع کریں
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": false,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  className="items-center justify-center rounded-sm px-4 h-touch border border-line3"
-                  collapsable={false}
-                  focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      null,
-                      undefined,
-                    ]
-                  }
-                >
-                  <View
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row-reverse",
-                          "flexWrap": undefined,
-                          "gap": 8,
-                          "justifyContent": undefined,
-                        },
-                        undefined,
-                      ]
-                    }
-                  >
-                    <Text
-                      className="text-chalk"
-                      style={
-                        [
-                          {
-                            "fontFamily": "NotoNastaliqUrdu_700Bold",
-                            "fontSize": 14.5,
-                            "letterSpacing": 0,
-                            "lineHeight": 29.7,
-                          },
-                          {
-                            "fontVariant": undefined,
-                            "letterSpacing": 0,
-                            "textAlign": "center",
-                            "textTransform": undefined,
-                            "writingDirection": "rtl",
-                          },
-                          undefined,
-                        ]
-                      }
-                    >
-                      واپس جائیں
-                    </Text>
-                  </View>
-                </View>
-              </View>
             </View>
           </View>
         </View>
@@ -7513,7 +6928,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               ⁦6⁩
             </Text>
             <View
-              className="absolute -inset-1 rounded-md border-2 border-chalk"
+              className="absolute -inset-[2px] rounded-md border-2 border-chalk"
               pointerEvents="none"
               testID="palette-current"
             />
@@ -7591,7 +7006,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               ⁦7⁩
             </Text>
             <View
-              className="absolute -inset-1 rounded-md border-2 border-chalk"
+              className="absolute -inset-[2px] rounded-md border-2 border-chalk"
               pointerEvents="none"
               testID="palette-current"
             />
@@ -9435,5 +8850,437 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
       </View>
     </View>
   </RCTScrollView>
+  <View
+    className="absolute inset-0"
+    pointerEvents="box-none"
+  >
+    <View
+      accessibilityViewIsModal={true}
+      className="absolute inset-0 justify-end bg-scrimHeavy p-4"
+      entering={BaseAnimationMock {}}
+      exiting={BaseAnimationMock {}}
+      testID="dialog"
+    >
+      <View
+        className="border border-line border-t-4 bg-panel2 px-4 pb-4 pt-4 border-t-hivis"
+      >
+        <Text
+          className="text-hivis"
+          style={
+            [
+              {
+                "fontFamily": "NotoNastaliqUrdu_700Bold",
+                "fontSize": 10.5,
+                "letterSpacing": 0,
+                "lineHeight": 21.5,
+              },
+              {
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              },
+              undefined,
+            ]
+          }
+        >
+          آخری مرحلہ
+        </Text>
+        <Text
+          className="text-chalk mt-2"
+          style={
+            [
+              {
+                "fontFamily": "NotoNastaliqUrdu_700Bold",
+                "fontSize": 20,
+                "letterSpacing": 0,
+                "lineHeight": 41,
+              },
+              {
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              },
+              undefined,
+            ]
+          }
+        >
+          ٹیسٹ جمع کریں؟
+        </Text>
+        <Text
+          className="text-chalk2 mt-2"
+          style={
+            [
+              {
+                "fontFamily": "NotoNastaliqUrdu_400Regular",
+                "fontSize": 14.5,
+                "letterSpacing": 0,
+                "lineHeight": 29.7,
+              },
+              {
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              },
+              undefined,
+            ]
+          }
+        >
+          جمع کرنے کے بعد جوابات تبدیل نہیں ہو سکتے۔ انٹرنیٹ کے بغیر بھی جمع ہو جائے گا — نتیجہ آن لائن آنے پر ملے گا۔
+        </Text>
+        <View
+          className="mt-3"
+          style={
+            [
+              {
+                "alignItems": undefined,
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            className="flex-1 items-center border border-line px-1 py-2"
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-chalk"
+              style={
+                [
+                  {
+                    "fontFamily": "Archivo_700Bold",
+                    "fontSize": 22,
+                    "letterSpacing": 0,
+                    "lineHeight": 31.9,
+                  },
+                  {
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              ⁦31⁩
+            </Text>
+            <Text
+              className="text-steel mt-1"
+              style={
+                [
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 10.5,
+                    "letterSpacing": 0,
+                    "lineHeight": 21.5,
+                  },
+                  {
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              جواب دیے
+            </Text>
+          </View>
+          <View
+            className="flex-1 items-center border border-line px-1 py-2"
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-chalk"
+              style={
+                [
+                  {
+                    "fontFamily": "Archivo_700Bold",
+                    "fontSize": 22,
+                    "letterSpacing": 0,
+                    "lineHeight": 31.9,
+                  },
+                  {
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              ⁦6⁩
+            </Text>
+            <Text
+              className="text-steel mt-1"
+              style={
+                [
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 10.5,
+                    "letterSpacing": 0,
+                    "lineHeight": 21.5,
+                  },
+                  {
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              جواب نہیں دیا
+            </Text>
+          </View>
+          <View
+            className="flex-1 items-center border border-line px-1 py-2"
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-chalk"
+              style={
+                [
+                  {
+                    "fontFamily": "Archivo_700Bold",
+                    "fontSize": 22,
+                    "letterSpacing": 0,
+                    "lineHeight": 31.9,
+                  },
+                  {
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              ⁦3⁩
+            </Text>
+            <Text
+              className="text-steel mt-1"
+              style={
+                [
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 10.5,
+                    "letterSpacing": 0,
+                    "lineHeight": 21.5,
+                  },
+                  {
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              نشان زد
+            </Text>
+          </View>
+        </View>
+        <View
+          className="mt-4"
+          style={
+            [
+              {
+                "alignItems": undefined,
+                "flexDirection": "column",
+                "gap": 8,
+                "justifyContent": undefined,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center rounded-sm px-4 h-touchLg bg-hivis"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                null,
+                undefined,
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row-reverse",
+                    "flexWrap": undefined,
+                    "gap": 8,
+                    "justifyContent": undefined,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                className="text-tar"
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 15.5,
+                      "letterSpacing": 0,
+                      "lineHeight": 31.8,
+                    },
+                    {
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                ہاں، جمع کریں
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center rounded-sm px-4 h-touch border border-line3"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                null,
+                undefined,
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row-reverse",
+                    "flexWrap": undefined,
+                    "gap": 8,
+                    "justifyContent": undefined,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                className="text-chalk"
+                style={
+                  [
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                    },
+                    {
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                واپس جائیں
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
 </View>
 `;
