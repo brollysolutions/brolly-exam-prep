@@ -21,8 +21,10 @@ describe('SolutionsView', () => {
   it('opens on the wrong answers only', async () => {
     await render(<SolutionsView rows={ROWS} />);
     expect(screen.getAllByTestId('solution-card')).toHaveLength(3);
-    expect(screen.getByText('Wrong (3)')).toBeOnTheScreen();
-    expect(screen.getByText('All (4)')).toBeOnTheScreen();
+    // Label and tally are separate elements now; the tally is a `<Num>`.
+    expect(screen.getByTestId('solutions-filter-wrong')).toHaveTextContent(/Wrong/);
+    expect(screen.getByTestId('solutions-filter-wrong')).toHaveTextContent(/\(3\)/);
+    expect(screen.getByTestId('solutions-filter-all')).toHaveTextContent(/\(4\)/);
   });
 
   it('shows every question once the all chip is pressed', async () => {

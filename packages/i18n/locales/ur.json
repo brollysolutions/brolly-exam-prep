@@ -127,8 +127,8 @@
   },
   "solutions": {
     "title": "جوابات اور وضاحت",
-    "filterWrong": "غلط ({{count}})",
-    "filterAll": "سب ({{count}})",
+    "filterWrong": "غلط",
+    "filterAll": "سب",
     "yourAnswer": "آپ کا جواب",
     "correctAnswer": "درست جواب",
     "why": "کیوں",

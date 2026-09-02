@@ -127,8 +127,8 @@
   },
   "solutions": {
     "title": "Answers & explanation",
-    "filterWrong": "Wrong ({{count}})",
-    "filterAll": "All ({{count}})",
+    "filterWrong": "Wrong",
+    "filterAll": "All",
     "yourAnswer": "Your answer",
     "correctAnswer": "Correct answer",
     "why": "Why",

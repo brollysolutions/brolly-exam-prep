@@ -127,8 +127,8 @@
   },
   "solutions": {
     "title": "జవాబులు & వివరణ",
-    "filterWrong": "తప్పు ({{count}})",
-    "filterAll": "అన్నీ ({{count}})",
+    "filterWrong": "తప్పు",
+    "filterAll": "అన్నీ",
     "yourAnswer": "మీ జవాబు",
     "correctAnswer": "సరైన జవాబు",
     "why": "ఎందుకు",

@@ -989,23 +989,55 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
           style={{}}
           testID="solutions-filter-wrong"
         >
-          <Text
-            className="text-tar"
+          <View
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 13.5,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 27.7,
-                "textAlign": "center",
-                "textTransform": undefined,
-                "writingDirection": "rtl",
+                "alignItems": "baseline",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 4,
+                "justifyContent": undefined,
               }
             }
           >
-            غلط (3)
-          </Text>
+            <Text
+              className="text-tar"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 27.7,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              غلط
+            </Text>
+            <Text
+              accessibilityLanguage="en"
+              className="text-tar"
+              style={
+                {
+                  "fontFamily": "Archivo_700Bold",
+                  "fontSize": 12.5,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 18.1,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦(3)⁩
+            </Text>
+          </View>
         </View>
         <View
           accessibilityRole="button"
@@ -1043,23 +1075,55 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
           style={{}}
           testID="solutions-filter-all"
         >
-          <Text
-            className="text-dim"
+          <View
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 13.5,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 27.7,
-                "textAlign": "center",
-                "textTransform": undefined,
-                "writingDirection": "rtl",
+                "alignItems": "baseline",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 4,
+                "justifyContent": undefined,
               }
             }
           >
-            سب (4)
-          </Text>
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 27.7,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              سب
+            </Text>
+            <Text
+              accessibilityLanguage="en"
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "Archivo_600SemiBold",
+                  "fontSize": 12.5,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 18.1,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦(4)⁩
+            </Text>
+          </View>
         </View>
       </View>
     </View>

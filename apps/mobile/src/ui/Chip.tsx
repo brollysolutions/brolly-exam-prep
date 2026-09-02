@@ -1,4 +1,4 @@
-import { colors } from '@tslprb/design-tokens';
+import { colors, type ColorName } from '@tslprb/design-tokens';
 import {
   Pressable,
   StyleSheet,
@@ -11,7 +11,9 @@ import {
 
 import { cx } from './cx';
 import * as haptics from './haptics';
+import { Num } from './Num';
 import { usePressed } from './pressable';
+import { Row } from './Row';
 import { Text } from './Text';
 
 export type ChipTone = 'hivis' | 'hazard' | 'flag' | 'sand';
@@ -19,6 +21,11 @@ export type ChipSize = 'sm' | 'md' | 'lg';
 
 export type ChipProps = Omit<PressableProps, 'style' | 'children'> & {
   label: string;
+  /**
+   * A tally after the label ("Wrong (3)"). Rendered as `<Num>` so the digits stay tabular
+   * and LTR-isolated instead of being interpolated into the translated string.
+   */
+  count?: number;
   active?: boolean;
   tone?: ChipTone;
   /** sm = 34, md = 40, lg = 48 px. */
@@ -49,6 +56,7 @@ const height: Record<ChipSize, string> = {
 /** Filter / status chip. Static when no `onPress` (e.g. the "Marked" badge). */
 export function Chip({
   label,
+  count,
   active = false,
   tone = 'hivis',
   size = 'sm',
@@ -71,16 +79,24 @@ export function Chip({
     disabled && 'opacity-40',
     className,
   );
-  const text = (
-    <Text
-      variant="small"
-      weight={active ? '700' : '600'}
-      color={active ? 'tar' : muted ? 'mute' : 'dim'}
-      align="center"
-    >
+  const weight = active ? '700' : '600';
+  const color: ColorName = active ? 'tar' : muted ? 'mute' : 'dim';
+  const label_ = (
+    <Text variant="small" weight={weight} color={color} align="center">
       {label}
     </Text>
   );
+  const text =
+    count === undefined ? (
+      label_
+    ) : (
+      <Row gap={1} align="baseline">
+        {label_}
+        <Num variant="small" weight={weight} color={color}>
+          {`(${count})`}
+        </Num>
+      </Row>
+    );
   // Static badge (e.g. "Marked"): a plain View, so it never reports a button/disabled state.
   if (!onPress) {
     return (

@@ -199,14 +199,16 @@ export function SolutionsView({
     <Row gap={2} className="px-3 pb-2" testID="solutions-filters">
       <Chip
         size="md"
-        label={t('solutions.filterWrong', { count: wrongCount })}
+        label={t('solutions.filterWrong')}
+        count={wrongCount}
         active={filter === 'wrong'}
         onPress={() => setFilter('wrong')}
         testID="solutions-filter-wrong"
       />
       <Chip
         size="md"
-        label={t('solutions.filterAll', { count: rows.length })}
+        label={t('solutions.filterAll')}
+        count={rows.length}
         active={filter === 'all'}
         onPress={() => setFilter('all')}
         testID="solutions-filter-all"

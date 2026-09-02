@@ -23,6 +23,14 @@ describe('Chip', () => {
     expect(onPress).toHaveBeenCalledTimes(1);
   });
 
+  it('renders a count as an isolated, tabular <Num> beside the label', async () => {
+    await render(<Chip label="Wrong" count={3} testID="chip" />);
+    const el = screen.getByTestId('chip');
+    // The tally is wrapped in LRI ... PDI, so it never re-orders inside an RTL line.
+    const [LRI, PDI] = [String.fromCharCode(0x2066), String.fromCharCode(0x2069)];
+    expect(el).toHaveTextContent(`Wrong${LRI}(3)${PDI}`);
+  });
+
   it('only reports disabled when actually disabled', async () => {
     await render(<Chip label="Locked" onPress={() => {}} disabled />);
     expect(screen.getByRole('button')).toBeDisabled();
