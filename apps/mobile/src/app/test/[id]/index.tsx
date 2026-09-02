@@ -106,26 +106,41 @@ export default function TestAttemptRoute() {
   const { remainingSec } = useCountdown({
     endsAt: attempt.endsAt,
     enabled: running,
-    onWarn5: () => showToast({ key: 'warn5', text: t('test.warn5'), tone: 'hazard' }),
-    onWarn1: () => showToast({ key: 'warn1', text: t('test.warn1'), tone: 'flag' }),
+    onWarn5: () => {
+      haptics.warning();
+      showToast({ key: 'warn5', text: t('test.warn5'), tone: 'hazard' });
+    },
+    onWarn1: () => {
+      haptics.warning();
+      showToast({ key: 'warn1', text: t('test.warn1'), tone: 'flag' });
+    },
     onExpire: () => {
       useAttemptStore.getState().autoSubmit();
       clearToast();
       openDialog('auto');
     },
-    // Never demote the auto-submit card to a "welcome back".
-    onResume: () => setDialog((current) => current ?? 'resume'),
+    onResume: () => {
+      // The resume card owns the screen, so the palette closes underneath it like any dialog.
+      sheet.current?.dismiss();
+      // Never demote the auto-submit card to a "welcome back".
+      setDialog((current) => current ?? 'resume');
+    },
   });
 
   // --------------------------------------------------------- hardware back
 
   useEffect(() => {
     const sub = BackHandler.addEventListener('hardwareBackPress', () => {
+      // Back dismisses whatever is on top first; only a bare paper raises the exit card.
+      if (dialog !== null) {
+        setDialog(null);
+        return true;
+      }
       openDialog('exit');
       return true;
     });
     return () => sub.remove();
-  }, [openDialog]);
+  }, [dialog, openDialog]);
 
   // ---------------------------------------------------------------- actions
 
@@ -274,6 +289,7 @@ export default function TestAttemptRoute() {
       question={question}
       remainingSec={remainingSec}
       elapsedSec={elapsedSec}
+      armed={attempt.endsAt !== undefined}
       lang={lang}
       onLangChange={setLang}
       onExit={() => openDialog('exit')}

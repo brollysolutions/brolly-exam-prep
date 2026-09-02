@@ -1,12 +1,12 @@
-import { size } from '@tslprb/design-tokens';
+import { radius, size } from '@tslprb/design-tokens';
 import { dir, useDir } from '@tslprb/i18n';
 import type { ExamPattern } from '@tslprb/fixtures';
 import type { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
-import { Pressable, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import type { PaletteCounts } from '@/data/attempt.selectors';
-import { Banner, cx, Dialog, Kicker, Num, Row, Stack, Text, Toast } from '@/ui';
+import { Banner, cx, Dialog, Kicker, Num, Row, Stack, Text, Toast, usePressed } from '@/ui';
 
 /** The four confirmation cards of the attempt screen (prototype `D` map). */
 export type AttemptDialogKind = 'exit' | 'submit' | 'resume' | 'auto';
@@ -127,6 +127,42 @@ export function AttemptDialogs({
 /** Placeholder caller for the simulated interruption; never a real number. */
 const CALL_NUMBER = '+91 90000 12345';
 
+/** One of the two 64 px round call actions. */
+function CallButton({
+  tone,
+  glyph,
+  label,
+  testID,
+  onPress,
+}: {
+  tone: 'flag' | 'success';
+  glyph: string;
+  label: string;
+  testID: string;
+  onPress: () => void;
+}) {
+  const { pressed, handlers } = usePressed();
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      onPress={onPress}
+      testID={testID}
+      {...handlers}
+      className={cx('items-center justify-center', tone === 'flag' ? 'bg-flag' : 'bg-success')}
+      // Flattened object, never a callback: a `style` function loses its statics on web.
+      style={StyleSheet.flatten([
+        { width: size.call, height: size.call, borderRadius: radius.full },
+        pressed ? { opacity: 0.85 } : null,
+      ])}
+    >
+      <Text variant="glyph" color="white" lang="en">
+        {glyph}
+      </Text>
+    </Pressable>
+  );
+}
+
 export type CallOverlayProps = {
   visible: boolean;
   /** Both buttons end the simulation; the screen then raises the resume dialog. */
@@ -171,36 +207,20 @@ export function CallOverlay({ visible, onEnd }: CallOverlayProps) {
       </View>
 
       <Row gap={6}>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={t('test.callDecline')}
-          onPress={onEnd}
+        <CallButton
+          tone="flag"
+          glyph="✕"
+          label={t('test.callDecline')}
           testID="call-decline"
-          className="items-center justify-center rounded-full bg-flag"
-          style={({ pressed }) => [
-            { width: size.call, height: size.call },
-            pressed ? { opacity: 0.85 } : null,
-          ]}
-        >
-          <Text variant="glyph" color="white">
-            ✕
-          </Text>
-        </Pressable>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={t('test.callAccept')}
           onPress={onEnd}
+        />
+        <CallButton
+          tone="success"
+          glyph="✓"
+          label={t('test.callAccept')}
           testID="call-accept"
-          className="items-center justify-center rounded-full bg-success"
-          style={({ pressed }) => [
-            { width: size.call, height: size.call },
-            pressed ? { opacity: 0.85 } : null,
-          ]}
-        >
-          <Text variant="glyph" color="white">
-            ✓
-          </Text>
-        </Pressable>
+          onPress={onEnd}
+        />
       </Row>
     </View>
   );

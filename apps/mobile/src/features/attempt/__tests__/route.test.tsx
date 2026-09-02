@@ -1,0 +1,142 @@
+import { BottomSheetModal } from '@gorhom/bottom-sheet';
+import { act, render, screen, userEvent } from '@testing-library/react-native';
+import { initI18n } from '@tslprb/i18n';
+import { AppState, BackHandler, type AppStateStatus } from 'react-native';
+
+import TestAttemptRoute from '@/app/test/[id]/index';
+import { resetApi } from '@/data/api';
+import { useAttemptStore } from '@/data/attempt';
+
+const mockReplace = jest.fn();
+const mockBack = jest.fn();
+jest.mock('expo-router', () => ({
+  useLocalSearchParams: () => ({ id: 'mock-07' }),
+  useRouter: () => ({ replace: mockReplace, back: mockBack }),
+}));
+jest.mock('expo-network', () => ({ useNetworkState: () => ({ isConnected: true }) }));
+jest.mock('expo-keep-awake', () => ({
+  activateKeepAwakeAsync: jest.fn(() => Promise.resolve()),
+  deactivateKeepAwake: jest.fn(() => Promise.resolve()),
+}));
+jest.mock('expo-screen-capture', () => ({
+  preventScreenCaptureAsync: jest.fn(() => Promise.resolve()),
+  allowScreenCaptureAsync: jest.fn(() => Promise.resolve()),
+}));
+
+const T0 = Date.parse('2026-09-02T10:00:00.000Z');
+/** `Num` wraps its digits in LRI…PDI isolation. */
+const num = (s: string) => `⁦${s}⁩`;
+
+let appStateHandler: ((status: AppStateStatus) => void) | undefined;
+let backHandler: (() => boolean) | undefined;
+
+/** Let the route's two API awaits and the store write settle. */
+const flush = async () => {
+  await act(async () => {
+    await Promise.resolve();
+    await Promise.resolve();
+    await Promise.resolve();
+  });
+};
+
+beforeAll(() => {
+  initI18n('en');
+});
+
+beforeEach(() => {
+  jest.useFakeTimers();
+  jest.setSystemTime(T0);
+  mockReplace.mockClear();
+  mockBack.mockClear();
+  appStateHandler = undefined;
+  backHandler = undefined;
+  resetApi();
+  useAttemptStore.getState().reset();
+  jest.spyOn(AppState, 'addEventListener').mockImplementation((_event, listener) => {
+    appStateHandler = listener as (status: AppStateStatus) => void;
+    return { remove: jest.fn() } as ReturnType<typeof AppState.addEventListener>;
+  });
+  jest.spyOn(BackHandler, 'addEventListener').mockImplementation((_event, listener) => {
+    backHandler = listener as () => boolean;
+    return { remove: jest.fn() } as ReturnType<typeof BackHandler.addEventListener>;
+  });
+});
+
+afterEach(() => {
+  jest.useRealTimers();
+  jest.restoreAllMocks();
+});
+
+/** Mount the route and wait until the store holds a running attempt. */
+async function mountRoute() {
+  await render(<TestAttemptRoute />);
+  await flush();
+  return useAttemptStore.getState();
+}
+
+describe('test attempt route', () => {
+  it('starts the attempt from the mock API and arms the clock', async () => {
+    const state = await mountRoute();
+    expect(state.status).toBe('running');
+    expect(state.testId).toBe('mock-07');
+    expect(state.endsAt).toBeDefined();
+    // 60 minutes on the free mock, so the header shows 60:00, never a critical 00:00.
+    expect(screen.getByTestId('timer-value')).toHaveTextContent(num('60:00'));
+    expect(screen.getByTestId('question-text')).not.toHaveTextContent('');
+  });
+
+  it('closes the palette when the resume dialog arrives after a spell in the background', async () => {
+    await mountRoute();
+
+    const present = jest.spyOn(BottomSheetModal.prototype, 'present');
+    const dismiss = jest.spyOn(BottomSheetModal.prototype, 'dismiss');
+
+    await userEvent.press(screen.getByTestId('btn-palette'));
+    expect(present).toHaveBeenCalled();
+    dismiss.mockClear();
+
+    // Away for more than the 2 s that earns a resume dialog.
+    await act(async () => {
+      appStateHandler?.('background');
+    });
+    jest.setSystemTime(T0 + 30_000);
+    await act(async () => {
+      appStateHandler?.('active');
+    });
+
+    expect(screen.getByTestId('dialog-resume')).toBeOnTheScreen();
+    expect(dismiss).toHaveBeenCalled();
+  });
+
+  it('raises the exit dialog on hardware back, then closes it on a second back', async () => {
+    await mountRoute();
+
+    await act(async () => {
+      backHandler?.();
+    });
+    expect(screen.getByTestId('dialog-exit')).toBeOnTheScreen();
+
+    // A dialog is on top: back dismisses it instead of re-opening exit.
+    await act(async () => {
+      backHandler?.();
+    });
+    expect(screen.queryByTestId('dialog-exit')).toBeNull();
+    expect(mockBack).not.toHaveBeenCalled();
+  });
+
+  it('leaves the attempt from the exit dialog', async () => {
+    await mountRoute();
+    await act(async () => {
+      backHandler?.();
+    });
+    await userEvent.press(screen.getByText('Leave'));
+    expect(mockBack).toHaveBeenCalledTimes(1);
+  });
+
+  it('records an answer in the store and advances the progress tally', async () => {
+    await mountRoute();
+    await userEvent.press(screen.getByTestId('option-2'));
+    expect(useAttemptStore.getState().answers[1]).toBe(2);
+    expect(screen.getByTestId('btn-palette')).toHaveTextContent(`Questions${num('1 / 40')}`);
+  });
+});

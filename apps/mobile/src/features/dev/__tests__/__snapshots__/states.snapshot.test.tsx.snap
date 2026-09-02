@@ -1464,7 +1464,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touch bg-hivis flex-1"
+              className="items-center justify-center rounded-sm px-4 bg-hivis flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -1477,10 +1477,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 48,
+                }
               }
             >
               <View
@@ -1533,7 +1532,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touchLg bg-hivis flex-1"
+              className="items-center justify-center rounded-sm px-4 bg-hivis flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -1546,10 +1545,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 56,
+                }
               }
             >
               <View
@@ -1614,7 +1612,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touch bg-panel3 flex-1"
+              className="items-center justify-center rounded-sm px-4 bg-panel3 flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -1627,10 +1625,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 48,
+                }
               }
             >
               <View
@@ -1723,7 +1720,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touch border border-line3 flex-1"
+              className="items-center justify-center rounded-sm px-4 border border-line3 flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -1736,10 +1733,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 48,
+                }
               }
             >
               <View
@@ -1792,7 +1788,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touchLg border border-line3 flex-1"
+              className="items-center justify-center rounded-sm px-4 border border-line3 flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -1805,10 +1801,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 56,
+                }
               }
             >
               <View
@@ -1873,7 +1868,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touch border border-line3 opacity-40 flex-1"
+              className="items-center justify-center rounded-sm px-4 border border-line3 opacity-40 flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -1886,10 +1881,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 48,
+                }
               }
             >
               <View
@@ -1982,7 +1976,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touch flex-1"
+              className="items-center justify-center rounded-sm px-4 flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -1995,10 +1989,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 48,
+                }
               }
             >
               <View
@@ -2051,7 +2044,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touchLg flex-1"
+              className="items-center justify-center rounded-sm px-4 flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -2064,10 +2057,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 56,
+                }
               }
             >
               <View
@@ -2132,7 +2124,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touch opacity-40 flex-1"
+              className="items-center justify-center rounded-sm px-4 opacity-40 flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -2145,10 +2137,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 48,
+                }
               }
             >
               <View
@@ -2241,7 +2232,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touch bg-flag flex-1"
+              className="items-center justify-center rounded-sm px-4 bg-flag flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -2254,10 +2245,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 48,
+                }
               }
             >
               <View
@@ -2310,7 +2300,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touchLg bg-flag flex-1"
+              className="items-center justify-center rounded-sm px-4 bg-flag flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -2323,10 +2313,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 56,
+                }
               }
             >
               <View
@@ -2391,7 +2380,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touch bg-flag opacity-40 flex-1"
+              className="items-center justify-center rounded-sm px-4 bg-flag opacity-40 flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -2404,10 +2393,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 48,
+                }
               }
             >
               <View
@@ -2500,7 +2488,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touch border border-hazard flex-1"
+              className="items-center justify-center rounded-sm px-4 border border-hazard flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -2513,10 +2501,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 48,
+                }
               }
             >
               <View
@@ -2569,7 +2556,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touchLg border border-hazard flex-1"
+              className="items-center justify-center rounded-sm px-4 border border-hazard flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -2582,10 +2569,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 56,
+                }
               }
             >
               <View
@@ -2650,7 +2636,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touch border border-hazard opacity-40 flex-1"
+              className="items-center justify-center rounded-sm px-4 border border-hazard opacity-40 flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -2663,10 +2649,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 48,
+                }
               }
             >
               <View
@@ -2719,7 +2704,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touch bg-hazard border border-hazard flex-1"
+              className="items-center justify-center rounded-sm px-4 bg-hazard border border-hazard flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -2732,10 +2717,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 48,
+                }
               }
             >
               <View
@@ -2863,12 +2847,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-          style={
-            [
-              null,
-              undefined,
-            ]
-          }
+          style={{}}
         >
           <Text
             className="text-chalk"
@@ -2937,12 +2916,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-          style={
-            [
-              null,
-              undefined,
-            ]
-          }
+          style={{}}
         >
           <Text
             className="text-hivis"
@@ -3022,12 +2996,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              [
-                null,
-                undefined,
-              ]
-            }
+            style={{}}
           >
             <Text
               className="text-chalk"
@@ -3096,12 +3065,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              [
-                null,
-                undefined,
-              ]
-            }
+            style={{}}
           >
             <Text
               className="text-hivis"
@@ -3244,12 +3208,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              [
-                null,
-                undefined,
-              ]
-            }
+            style={{}}
           >
             <Text
               className="text-tar"
@@ -3302,12 +3261,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              [
-                null,
-                undefined,
-              ]
-            }
+            style={{}}
           >
             <Text
               className="text-tar"
@@ -3360,12 +3314,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              [
-                null,
-                undefined,
-              ]
-            }
+            style={{}}
           >
             <Text
               className="text-tar"
@@ -3418,12 +3367,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              [
-                null,
-                undefined,
-              ]
-            }
+            style={{}}
           >
             <Text
               className="text-tar"
@@ -3476,12 +3420,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              [
-                null,
-                undefined,
-              ]
-            }
+            style={{}}
           >
             <Text
               className="text-dim"
@@ -3736,7 +3675,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               }
             }
             accessible={true}
-            className="items-center justify-center rounded-sm px-4 h-touch border border-line3"
+            className="items-center justify-center rounded-sm px-4 border border-line3"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -3749,10 +3688,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              [
-                null,
-                undefined,
-              ]
+              {
+                "height": 48,
+              }
             }
             testID="dialog-toggle"
           >
@@ -4035,7 +3973,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             }
           }
           accessible={true}
-          className="items-center justify-center rounded-sm px-4 h-touch border border-line3"
+          className="items-center justify-center rounded-sm px-4 border border-line3"
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -4048,10 +3986,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            [
-              null,
-              undefined,
-            ]
+            {
+              "height": 48,
+            }
           }
         >
           <View
@@ -5174,7 +5111,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             }
           }
           accessible={true}
-          className="items-center justify-center rounded-sm px-4 h-touchLg bg-panel3"
+          className="items-center justify-center rounded-sm px-4 bg-panel3"
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -5187,10 +5124,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            [
-              null,
-              undefined,
-            ]
+            {
+              "height": 56,
+            }
           }
         >
           <View
@@ -5646,7 +5582,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               }
             }
             accessible={true}
-            className="h-touch w-touch items-center justify-center rounded-sm"
+            className="items-center justify-center"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -5659,14 +5595,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              [
-                {
-                  "backgroundColor": "#1E2023",
-                  "borderColor": "#2C2E31",
-                  "borderWidth": 1,
-                },
-                null,
-              ]
+              {
+                "backgroundColor": "#1E2023",
+                "borderColor": "#2C2E31",
+                "borderRadius": 3,
+                "borderWidth": 1,
+                "height": 48,
+                "width": 48,
+              }
             }
           >
             <Text
@@ -5712,7 +5648,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               }
             }
             accessible={true}
-            className="h-touch w-touch items-center justify-center rounded-sm"
+            className="items-center justify-center"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -5725,14 +5661,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              [
-                {
-                  "backgroundColor": "transparent",
-                  "borderColor": "#E4483B",
-                  "borderWidth": 2,
-                },
-                null,
-              ]
+              {
+                "backgroundColor": "transparent",
+                "borderColor": "#E4483B",
+                "borderRadius": 3,
+                "borderWidth": 2,
+                "height": 48,
+                "width": 48,
+              }
             }
           >
             <Text
@@ -5778,7 +5714,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               }
             }
             accessible={true}
-            className="h-touch w-touch items-center justify-center rounded-sm"
+            className="items-center justify-center"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -5791,14 +5727,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              [
-                {
-                  "backgroundColor": "#FFE01B",
-                  "borderColor": "#FFE01B",
-                  "borderWidth": 2,
-                },
-                null,
-              ]
+              {
+                "backgroundColor": "#FFE01B",
+                "borderColor": "#FFE01B",
+                "borderRadius": 3,
+                "borderWidth": 2,
+                "height": 48,
+                "width": 48,
+              }
             }
           >
             <Text
@@ -5844,7 +5780,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               }
             }
             accessible={true}
-            className="h-touch w-touch items-center justify-center rounded-sm"
+            className="items-center justify-center"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -5857,14 +5793,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              [
-                {
-                  "backgroundColor": "#FF8A00",
-                  "borderColor": "#FF8A00",
-                  "borderWidth": 2,
-                },
-                null,
-              ]
+              {
+                "backgroundColor": "#FF8A00",
+                "borderColor": "#FF8A00",
+                "borderRadius": 3,
+                "borderWidth": 2,
+                "height": 48,
+                "width": 48,
+              }
             }
           >
             <Text
@@ -5910,7 +5846,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               }
             }
             accessible={true}
-            className="h-touch w-touch items-center justify-center rounded-sm"
+            className="items-center justify-center"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -5923,14 +5859,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              [
-                {
-                  "backgroundColor": "#FF8A00",
-                  "borderColor": "#FF8A00",
-                  "borderWidth": 2,
-                },
-                null,
-              ]
+              {
+                "backgroundColor": "#FF8A00",
+                "borderColor": "#FF8A00",
+                "borderRadius": 3,
+                "borderWidth": 2,
+                "height": 48,
+                "width": 48,
+              }
             }
           >
             <Text
@@ -5986,7 +5922,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               }
             }
             accessible={true}
-            className="h-touch w-touch items-center justify-center rounded-sm"
+            className="items-center justify-center"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -5999,14 +5935,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              [
-                {
-                  "backgroundColor": "#FFE01B",
-                  "borderColor": "#FFE01B",
-                  "borderWidth": 2,
-                },
-                null,
-              ]
+              {
+                "backgroundColor": "#FFE01B",
+                "borderColor": "#FFE01B",
+                "borderRadius": 3,
+                "borderWidth": 2,
+                "height": 48,
+                "width": 48,
+              }
             }
           >
             <Text
@@ -6057,7 +5993,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               }
             }
             accessible={true}
-            className="h-touch w-touch items-center justify-center rounded-sm"
+            className="items-center justify-center"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -6070,14 +6006,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              [
-                {
-                  "backgroundColor": "#FF8A00",
-                  "borderColor": "#FF8A00",
-                  "borderWidth": 2,
-                },
-                null,
-              ]
+              {
+                "backgroundColor": "#FF8A00",
+                "borderColor": "#FF8A00",
+                "borderRadius": 3,
+                "borderWidth": 2,
+                "height": 48,
+                "width": 48,
+              }
             }
           >
             <Text
@@ -6138,7 +6074,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               }
             }
             accessible={true}
-            className="h-touch w-touch items-center justify-center rounded-sm"
+            className="items-center justify-center"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -6151,14 +6087,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              [
-                {
-                  "backgroundColor": "#1E2023",
-                  "borderColor": "#2C2E31",
-                  "borderWidth": 1,
-                },
-                null,
-              ]
+              {
+                "backgroundColor": "#1E2023",
+                "borderColor": "#2C2E31",
+                "borderRadius": 3,
+                "borderWidth": 1,
+                "height": 48,
+                "width": 48,
+              }
             }
           >
             <Text
@@ -9860,10 +9796,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     className="flex-1"
                   />
                   <View
-                    className="rounded-sm border px-2 py-1 border-line"
+                    className="px-2 py-1"
                     style={
                       {
                         "alignItems": "flex-end",
+                        "backgroundColor": "transparent",
+                        "borderColor": "#2C2E31",
+                        "borderRadius": 3,
+                        "borderWidth": 1,
                         "flexDirection": "column",
                         "gap": 4,
                         "justifyContent": undefined,
@@ -9899,7 +9839,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 33.4,
+                          "lineHeight": 23,
                           "textAlign": "right",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -9958,12 +9898,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       onResponderTerminate={[Function]}
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          null,
-                          undefined,
-                        ]
-                      }
+                      style={{}}
                       testID="section-chip-0"
                     >
                       <Text
@@ -10017,12 +9952,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       onResponderTerminate={[Function]}
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          null,
-                          undefined,
-                        ]
-                      }
+                      style={{}}
                       testID="section-chip-1"
                     >
                       <Text
@@ -10076,12 +10006,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       onResponderTerminate={[Function]}
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          null,
-                          undefined,
-                        ]
-                      }
+                      style={{}}
                       testID="section-chip-2"
                     >
                       <Text
@@ -10135,16 +10060,11 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       onResponderTerminate={[Function]}
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          null,
-                          undefined,
-                        ]
-                      }
+                      style={{}}
                       testID="section-chip-3"
                     >
                       <Text
-                        className="text-ghost"
+                        className="text-mute"
                         style={
                           {
                             "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -10161,6 +10081,13 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         تلنگانہ  ⛌
                       </Text>
                     </View>
+                    <View
+                      style={
+                        {
+                          "width": 16,
+                        }
+                      }
+                    />
                   </View>
                 </RCTScrollView>
                 <View
@@ -10213,57 +10140,6 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     testID="progress-tick"
                   />
                 </View>
-              </View>
-              <View
-                accessibilityLiveRegion="polite"
-                className="border-b border-offlineLine bg-offlineBg px-3 py-2"
-                style={
-                  {
-                    "alignItems": "flex-start",
-                    "flexDirection": "row-reverse",
-                    "flexWrap": undefined,
-                    "gap": 8,
-                    "justifyContent": undefined,
-                  }
-                }
-                testID="attempt-offline"
-              >
-                <Text
-                  accessibilityElementsHidden={true}
-                  className="text-sand"
-                  importantForAccessibility="no"
-                  style={
-                    {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 14.5,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
-                      "textTransform": undefined,
-                      "writingDirection": "rtl",
-                    }
-                  }
-                >
-                  ■
-                </Text>
-                <Text
-                  className="text-offlineText flex-1"
-                  style={
-                    {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 12.5,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 25.6,
-                      "textAlign": "right",
-                      "textTransform": undefined,
-                      "writingDirection": "rtl",
-                    }
-                  }
-                >
-                  آف لائن — اس ٹیسٹ کے لیے انٹرنیٹ کی ضرورت نہیں۔ آپ کے جوابات اسی فون میں محفوظ ہو رہے ہیں۔
-                </Text>
               </View>
               <RCTScrollView
                 className="flex-1"
@@ -10328,7 +10204,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             "fontVariant": [
                               "tabular-nums",
                             ],
-                            "letterSpacing": 1.4,
+                            "letterSpacing": 1.2,
                             "lineHeight": 18.1,
                             "textAlign": "right",
                             "textTransform": undefined,
@@ -10413,7 +10289,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         }
                       }
                       accessible={true}
-                      className="justify-center rounded-md py-3 border border-line bg-panel2 px-4"
+                      className="min-h-key justify-center rounded-md py-3 border border-line bg-panel2 px-4"
                       collapsable={false}
                       focusable={true}
                       onBlur={[Function]}
@@ -10426,12 +10302,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        [
-                          {
-                            "minHeight": 58,
-                          },
-                          null,
-                        ]
+                        {
+                          "minHeight": 58,
+                        }
                       }
                       testID="option-0"
                     >
@@ -10513,7 +10386,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         }
                       }
                       accessible={true}
-                      className="justify-center rounded-md py-3 border border-line bg-panel2 px-4"
+                      className="min-h-key justify-center rounded-md py-3 border border-line bg-panel2 px-4"
                       collapsable={false}
                       focusable={true}
                       onBlur={[Function]}
@@ -10526,12 +10399,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        [
-                          {
-                            "minHeight": 58,
-                          },
-                          null,
-                        ]
+                        {
+                          "minHeight": 58,
+                        }
                       }
                       testID="option-1"
                     >
@@ -10613,7 +10483,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         }
                       }
                       accessible={true}
-                      className="justify-center rounded-md py-3 border border-line bg-panel2 px-4"
+                      className="min-h-key justify-center rounded-md py-3 border border-line bg-panel2 px-4"
                       collapsable={false}
                       focusable={true}
                       onBlur={[Function]}
@@ -10626,12 +10496,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        [
-                          {
-                            "minHeight": 58,
-                          },
-                          null,
-                        ]
+                        {
+                          "minHeight": 58,
+                        }
                       }
                       testID="option-2"
                     >
@@ -10713,7 +10580,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         }
                       }
                       accessible={true}
-                      className="justify-center rounded-md py-3 border border-line bg-panel2 px-4"
+                      className="min-h-key justify-center rounded-md py-3 border border-line bg-panel2 px-4"
                       collapsable={false}
                       focusable={true}
                       onBlur={[Function]}
@@ -10726,12 +10593,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        [
-                          {
-                            "minHeight": 58,
-                          },
-                          null,
-                        ]
+                        {
+                          "minHeight": 58,
+                        }
                       }
                       testID="option-3"
                     >
@@ -10896,7 +10760,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         }
                       }
                       accessible={true}
-                      className="items-center justify-center rounded-sm px-4 h-touch border border-line3"
+                      className="items-center justify-center rounded-sm px-4 border border-line3"
                       collapsable={false}
                       focusable={true}
                       onBlur={[Function]}
@@ -10909,12 +10773,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        [
-                          null,
-                          {
-                            "width": 92,
-                          },
-                        ]
+                        {
+                          "height": 48,
+                          "width": 92,
+                        }
                       }
                       testID="btn-clear"
                     >
@@ -10968,7 +10830,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         }
                       }
                       accessible={true}
-                      className="items-center justify-center rounded-sm px-4 h-touch border border-hazard flex-1"
+                      className="items-center justify-center rounded-sm px-4 border border-hazard flex-1"
                       collapsable={false}
                       focusable={true}
                       onBlur={[Function]}
@@ -10981,10 +10843,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        [
-                          null,
-                          undefined,
-                        ]
+                        {
+                          "height": 48,
+                        }
                       }
                       testID="btn-mark"
                     >
@@ -11070,16 +10931,17 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         className="text-chalk"
                         style={
                           {
-                            "fontFamily": "NotoNastaliqUrdu_400Regular",
-                            "fontSize": 21,
+                            "fontFamily": "Archivo_400Regular",
+                            "fontSize": 20,
                             "fontVariant": undefined,
                             "letterSpacing": 0,
-                            "lineHeight": 43.1,
+                            "lineHeight": 29,
                             "textAlign": "right",
                             "textTransform": undefined,
-                            "writingDirection": "rtl",
+                            "writingDirection": "ltr",
                           }
                         }
+                        testID="chevron-prev"
                       >
                         ›
                       </Text>
@@ -11178,7 +11040,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         }
                       }
                       accessible={true}
-                      className="items-center justify-center rounded-sm px-4 h-touchLg bg-hivis"
+                      className="items-center justify-center rounded-sm px-4 bg-hivis"
                       collapsable={false}
                       focusable={true}
                       onBlur={[Function]}
@@ -11191,12 +11053,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        [
-                          null,
-                          {
-                            "width": 112,
-                          },
-                        ]
+                        {
+                          "height": 56,
+                          "width": 112,
+                        }
                       }
                       testID="btn-next"
                     >
@@ -11232,16 +11092,17 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           className="text-tar"
                           style={
                             {
-                              "fontFamily": "NotoNastaliqUrdu_400Regular",
-                              "fontSize": 21,
+                              "fontFamily": "Archivo_400Regular",
+                              "fontSize": 20,
                               "fontVariant": undefined,
                               "letterSpacing": 0,
-                              "lineHeight": 43.1,
+                              "lineHeight": 29,
                               "textAlign": "right",
                               "textTransform": undefined,
-                              "writingDirection": "rtl",
+                              "writingDirection": "ltr",
                             }
                           }
+                          testID="chevron-next"
                         >
                           ‹
                         </Text>
@@ -11753,6 +11614,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         </Text>
                       </View>
                       <View
+                        onLayout={[Function]}
                         style={
                           {
                             "alignItems": undefined,
@@ -11784,7 +11646,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -11797,14 +11659,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#FFE01B",
-                                "borderColor": "#FFE01B",
-                                "borderWidth": 2,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#FFE01B",
+                              "borderColor": "#FFE01B",
+                              "borderRadius": 3,
+                              "borderWidth": 2,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-1"
                         >
@@ -11851,7 +11713,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -11864,14 +11726,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#FFE01B",
-                                "borderColor": "#FFE01B",
-                                "borderWidth": 2,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#FFE01B",
+                              "borderColor": "#FFE01B",
+                              "borderRadius": 3,
+                              "borderWidth": 2,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-2"
                         >
@@ -11918,7 +11780,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -11931,14 +11793,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#FFE01B",
-                                "borderColor": "#FFE01B",
-                                "borderWidth": 2,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#FFE01B",
+                              "borderColor": "#FFE01B",
+                              "borderRadius": 3,
+                              "borderWidth": 2,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-3"
                         >
@@ -11985,7 +11847,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -11998,14 +11860,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#FF8A00",
-                                "borderColor": "#FF8A00",
-                                "borderWidth": 2,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#FF8A00",
+                              "borderColor": "#FF8A00",
+                              "borderRadius": 3,
+                              "borderWidth": 2,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-4"
                         >
@@ -12052,7 +11914,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -12065,14 +11927,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#FFE01B",
-                                "borderColor": "#FFE01B",
-                                "borderWidth": 2,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#FFE01B",
+                              "borderColor": "#FFE01B",
+                              "borderRadius": 3,
+                              "borderWidth": 2,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-5"
                         >
@@ -12119,7 +11981,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -12132,14 +11994,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#FFE01B",
-                                "borderColor": "#FFE01B",
-                                "borderWidth": 2,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#FFE01B",
+                              "borderColor": "#FFE01B",
+                              "borderRadius": 3,
+                              "borderWidth": 2,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-6"
                         >
@@ -12186,7 +12048,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -12199,14 +12061,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "transparent",
-                                "borderColor": "#E4483B",
-                                "borderWidth": 2,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "transparent",
+                              "borderColor": "#E4483B",
+                              "borderRadius": 3,
+                              "borderWidth": 2,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-7"
                         >
@@ -12253,7 +12115,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -12266,14 +12128,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#FF8A00",
-                                "borderColor": "#FF8A00",
-                                "borderWidth": 2,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#FF8A00",
+                              "borderColor": "#FF8A00",
+                              "borderRadius": 3,
+                              "borderWidth": 2,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-8"
                         >
@@ -12330,7 +12192,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -12343,14 +12205,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#FFE01B",
-                                "borderColor": "#FFE01B",
-                                "borderWidth": 2,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#FFE01B",
+                              "borderColor": "#FFE01B",
+                              "borderRadius": 3,
+                              "borderWidth": 2,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-9"
                         >
@@ -12397,7 +12259,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -12410,14 +12272,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#FF8A00",
-                                "borderColor": "#FF8A00",
-                                "borderWidth": 2,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#FF8A00",
+                              "borderColor": "#FF8A00",
+                              "borderRadius": 3,
+                              "borderWidth": 2,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-10"
                         >
@@ -12503,6 +12365,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         </Text>
                       </View>
                       <View
+                        onLayout={[Function]}
                         style={
                           {
                             "alignItems": undefined,
@@ -12534,7 +12397,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -12547,14 +12410,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#FFE01B",
-                                "borderColor": "#FFE01B",
-                                "borderWidth": 2,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#FFE01B",
+                              "borderColor": "#FFE01B",
+                              "borderRadius": 3,
+                              "borderWidth": 2,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-11"
                         >
@@ -12601,7 +12464,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -12614,14 +12477,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "transparent",
-                                "borderColor": "#E4483B",
-                                "borderWidth": 2,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "transparent",
+                              "borderColor": "#E4483B",
+                              "borderRadius": 3,
+                              "borderWidth": 2,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-12"
                         >
@@ -12673,7 +12536,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -12686,14 +12549,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-13"
                         >
@@ -12740,7 +12603,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -12753,14 +12616,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-14"
                         >
@@ -12807,7 +12670,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -12820,14 +12683,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-15"
                         >
@@ -12874,7 +12737,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -12887,14 +12750,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-16"
                         >
@@ -12941,7 +12804,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -12954,14 +12817,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-17"
                         >
@@ -13008,7 +12871,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -13021,14 +12884,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-18"
                         >
@@ -13075,7 +12938,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -13088,14 +12951,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-19"
                         >
@@ -13142,7 +13005,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -13155,14 +13018,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-20"
                         >
@@ -13248,6 +13111,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         </Text>
                       </View>
                       <View
+                        onLayout={[Function]}
                         style={
                           {
                             "alignItems": undefined,
@@ -13279,7 +13143,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -13292,14 +13156,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-21"
                         >
@@ -13346,7 +13210,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -13359,14 +13223,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-22"
                         >
@@ -13413,7 +13277,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -13426,14 +13290,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-23"
                         >
@@ -13480,7 +13344,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -13493,14 +13357,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-24"
                         >
@@ -13547,7 +13411,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -13560,14 +13424,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-25"
                         >
@@ -13614,7 +13478,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -13627,14 +13491,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-26"
                         >
@@ -13681,7 +13545,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -13694,14 +13558,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-27"
                         >
@@ -13748,7 +13612,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -13761,14 +13625,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-28"
                         >
@@ -13815,7 +13679,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -13828,14 +13692,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-29"
                         >
@@ -13882,7 +13746,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -13895,14 +13759,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-30"
                         >
@@ -13993,6 +13857,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         </Text>
                       </View>
                       <View
+                        onLayout={[Function]}
                         style={
                           {
                             "alignItems": undefined,
@@ -14024,7 +13889,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -14037,14 +13902,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-31"
                         >
@@ -14091,7 +13956,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -14104,14 +13969,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-32"
                         >
@@ -14158,7 +14023,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -14171,14 +14036,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-33"
                         >
@@ -14225,7 +14090,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -14238,14 +14103,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-34"
                         >
@@ -14292,7 +14157,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -14305,14 +14170,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-35"
                         >
@@ -14359,7 +14224,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -14372,14 +14237,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-36"
                         >
@@ -14426,7 +14291,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -14439,14 +14304,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-37"
                         >
@@ -14493,7 +14358,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -14506,14 +14371,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-38"
                         >
@@ -14560,7 +14425,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -14573,14 +14438,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-39"
                         >
@@ -14627,7 +14492,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="h-touch w-touch items-center justify-center rounded-sm"
+                          className="items-center justify-center"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -14640,14 +14505,14 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#1E2023",
-                                "borderColor": "#2C2E31",
-                                "borderWidth": 1,
-                              },
-                              null,
-                            ]
+                            {
+                              "backgroundColor": "#1E2023",
+                              "borderColor": "#2C2E31",
+                              "borderRadius": 3,
+                              "borderWidth": 1,
+                              "height": 48,
+                              "width": 48,
+                            }
                           }
                           testID="palette-cell-40"
                         >
@@ -14701,7 +14566,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     }
                   }
                   accessible={true}
-                  className="items-center justify-center rounded-sm px-4 h-touchLg bg-hivis"
+                  className="items-center justify-center rounded-sm px-4 bg-hivis"
                   collapsable={false}
                   focusable={true}
                   onBlur={[Function]}
@@ -14714,10 +14579,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    [
-                      null,
-                      undefined,
-                    ]
+                    {
+                      "height": 56,
+                    }
                   }
                   testID="palette-submit"
                 >
@@ -14781,7 +14645,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
         className="flex-1 justify-end bg-scrimHeavy p-4"
       >
         <View
-          className="border border-line border-t-4 bg-panel2 px-4 pb-4 pt-4 border-t-hivis"
+          className="border border-line border-t-4 border-t-hivis bg-panel2 p-4"
         >
           <Text
             className="text-hivis"
@@ -14874,10 +14738,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 12,
+                    "fontSize": 12.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 24.6,
+                    "lineHeight": 25.6,
                     "textAlign": "center",
                     "textTransform": undefined,
                     "writingDirection": "rtl",
@@ -14915,10 +14779,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 12,
+                    "fontSize": 12.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 24.6,
+                    "lineHeight": 25.6,
                     "textAlign": "center",
                     "textTransform": undefined,
                     "writingDirection": "rtl",
@@ -14956,10 +14820,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 12,
+                    "fontSize": 12.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 24.6,
+                    "lineHeight": 25.6,
                     "textAlign": "center",
                     "textTransform": undefined,
                     "writingDirection": "rtl",
@@ -15001,7 +14865,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touchLg bg-hivis"
+              className="items-center justify-center rounded-sm px-4 bg-hivis"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -15014,10 +14878,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 56,
+                }
               }
             >
               <View
@@ -15070,7 +14933,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touch border border-line3"
+              className="items-center justify-center rounded-sm px-4 border border-line3"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -15083,10 +14946,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 48,
+                }
               }
             >
               <View

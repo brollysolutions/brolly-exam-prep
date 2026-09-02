@@ -72,7 +72,7 @@ function configFor(id: StateId, lockedText: string, warn5: string, warn1: string
     attempt: DEMO_ATTEMPT,
     remainingSec: DEMO_REMAINING_SEC,
     elapsedSec: DEMO_ELAPSED_SEC,
-    offline: true,
+    offline: false,
     toast: null,
     dialog: null,
     palette: false,
@@ -87,8 +87,10 @@ function configFor(id: StateId, lockedText: string, warn5: string, warn1: string
       return { ...base, attempt: demoAttempt({ current: 4 }) };
     case 'locked':
       return { ...base, toast: { key: 'locked', text: lockedText, tone: 'hazard' } };
+    case 'offline':
+      return { ...base, offline: true };
     case 'warn5':
-      return { ...base, remainingSec: 301, toast: { key: 'warn5', text: warn5, tone: 'hazard' } };
+      return { ...base, remainingSec: 300, toast: { key: 'warn5', text: warn5, tone: 'hazard' } };
     case 'warn1':
       return { ...base, remainingSec: 47, toast: { key: 'warn1', text: warn1, tone: 'flag' } };
     case 'online':
@@ -103,7 +105,6 @@ function configFor(id: StateId, lockedText: string, warn5: string, warn1: string
       return { ...base, dialog: 'submit' };
     case 'auto':
       return { ...base, remainingSec: 0, dialog: 'auto' };
-    case 'offline':
     case 'progress':
     default:
       return base;
