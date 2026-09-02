@@ -42,10 +42,15 @@ export function Card({
   ...rest
 }: CardProps) {
   const { pressed, handlers } = usePressed(onPressIn, onPressOut);
+  const md = size === 'md';
   const classes = cx(
-    'min-h-16 justify-center rounded-md',
+    'justify-center rounded-md',
+    // The grid card is shorter and tighter than the post card, so the box follows `size` too.
+    md ? 'min-h-[72px]' : 'min-h-16',
     // Border grows 1 → 2 px when selected; padding gives the pixel back so content never shifts.
-    selected ? 'border-2 border-hivis bg-hivisTint p-[15px]' : 'border border-line bg-panel2 p-4',
+    selected
+      ? cx('border-2 border-hivis bg-hivisTint', md ? 'p-[11px]' : 'p-[15px]')
+      : cx('border border-line bg-panel2', md ? 'p-3' : 'p-4'),
     disabled && 'opacity-40',
     className,
   );
@@ -53,7 +58,7 @@ export function Card({
     <>
       {title !== undefined && (
         <Text
-          variant={size === 'lg' ? 'subtitle' : 'bodyLg'}
+          variant={md ? 'bodyLg' : 'subtitle'}
           weight="700"
           color={selected ? 'hivis' : 'chalk'}
         >
@@ -62,7 +67,7 @@ export function Card({
       )}
       {subtitle !== undefined && (
         <Text
-          variant={size === 'lg' ? 'small' : 'caption'}
+          variant={md ? 'caption' : 'small'}
           color="dim"
           className={title !== undefined ? 'mt-1' : undefined}
         >

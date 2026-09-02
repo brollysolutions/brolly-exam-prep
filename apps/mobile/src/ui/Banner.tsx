@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
+import { Glyph } from './Glyph';
 import { Row } from './Row';
 import { Text } from './Text';
 
@@ -20,9 +21,9 @@ export function Banner({ text, testID }: BannerProps) {
       accessibilityLiveRegion="polite"
       className="border-b border-offlineLine bg-offlineBg px-3 py-2"
     >
-      <Text variant="body" color="sand" accessibilityElementsHidden importantForAccessibility="no">
+      <Glyph variant="body" color="sand" accessibilityElementsHidden importantForAccessibility="no">
         ■
-      </Text>
+      </Glyph>
       <Text variant="caption" color="offlineText" className="flex-1">
         {text ?? t('test.offline')}
       </Text>

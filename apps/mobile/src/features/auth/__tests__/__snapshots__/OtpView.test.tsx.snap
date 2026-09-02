@@ -1994,14 +1994,14 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 21,
+                  "fontFamily": "Archivo_600SemiBold",
+                  "fontSize": 20,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 43.1,
+                  "lineHeight": 29,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >

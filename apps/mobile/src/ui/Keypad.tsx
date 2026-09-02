@@ -2,11 +2,11 @@ import { colors } from '@tslprb/design-tokens';
 import { useTranslation } from 'react-i18next';
 import { Pressable, View } from 'react-native';
 
+import { Glyph } from './Glyph';
 import * as haptics from './haptics';
 import { Num } from './Num';
 import { Row } from './Row';
 import { Stack } from './Stack';
-import { Text } from './Text';
 
 export type KeypadProps = {
   onKey: (key: string) => void;
@@ -50,9 +50,9 @@ export function Keypad({ onKey, onDelete, disabled = false, testID }: KeypadProp
                 style={({ pressed }) => (pressed ? { opacity: 0.8 } : null)}
               >
                 {k === DEL ? (
-                  <Text variant="glyph" weight="600" align="center">
+                  <Glyph weight="600" align="center">
                     ⌫
-                  </Text>
+                  </Glyph>
                 ) : (
                   <Num variant="keypad" weight="600" align="center">
                     {k}

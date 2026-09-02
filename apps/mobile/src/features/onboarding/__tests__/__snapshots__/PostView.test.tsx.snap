@@ -945,7 +945,7 @@ exports[`PostView (ur) mirrors the copy and matches the snapshot 1`] = `
               }
             }
             accessible={true}
-            className="min-h-16 justify-center rounded-md border-2 border-hivis bg-hivisTint p-[15px]"
+            className="justify-center rounded-md min-h-16 border-2 border-hivis bg-hivisTint p-[15px]"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1020,7 +1020,7 @@ exports[`PostView (ur) mirrors the copy and matches the snapshot 1`] = `
               }
             }
             accessible={true}
-            className="min-h-16 justify-center rounded-md border border-line bg-panel2 p-4"
+            className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}

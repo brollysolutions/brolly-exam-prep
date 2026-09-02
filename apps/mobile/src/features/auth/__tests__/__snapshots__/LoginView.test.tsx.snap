@@ -947,6 +947,13 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
           onStartShouldSetResponder={[Function]}
         >
           <View
+            accessibilityLabel="آپ کا فون نمبر"
+            accessibilityValue={
+              {
+                "text": "9000012345",
+              }
+            }
+            accessible={true}
             style={
               {
                 "alignItems": undefined,
@@ -983,13 +990,6 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
               </Text>
             </View>
             <View
-              accessibilityLabel="آپ کا فون نمبر"
-              accessibilityValue={
-                {
-                  "text": "9000012345",
-                }
-              }
-              accessible={true}
               className="h-field flex-1 justify-center rounded-sm border px-3 border-hivis"
             >
               <Text
@@ -1004,7 +1004,7 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
                     ],
                     "letterSpacing": 2,
                     "lineHeight": 31.9,
-                    "textAlign": "right",
+                    "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
                   }
@@ -1696,14 +1696,14 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 21,
+                  "fontFamily": "Archivo_600SemiBold",
+                  "fontSize": 20,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 43.1,
+                  "lineHeight": 29,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
