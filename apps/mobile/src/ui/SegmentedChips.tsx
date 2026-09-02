@@ -20,7 +20,7 @@ export type SegmentedChipsProps<V extends string> = Omit<ViewProps, 'children'> 
   options: SegmentedOption<V>[];
 };
 
-/** The bordered language switcher from the prototype header: 48 px tall, cells ≥ 44 px wide. */
+/** The bordered language switcher from the prototype header: 48 px tall, cells ≥ 48 px wide. */
 export function SegmentedChips<V extends string>({
   value,
   onChange,
@@ -51,7 +51,7 @@ export function SegmentedChips<V extends string>({
               onChange(o.value);
             }}
             className={cx(
-              'h-full min-w-touchMin items-center justify-center px-2',
+              'h-full min-w-touch items-center justify-center px-2',
               active && 'bg-hivis',
               i < last && cx('border-line', dir(d, 'border-r', 'border-l')),
             )}
