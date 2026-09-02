@@ -21,6 +21,11 @@ export type SheetProps = {
   snapPoints?: (string | number)[];
   /** Body scrolls inside the sheet (palette grid). */
   scroll?: boolean;
+  /**
+   * Pinned below the body, outside the scroll area (the palette's Submit button).
+   * Only meaningful with `snapPoints`: a content-sized sheet has no leftover height to pin to.
+   */
+  footer?: ReactNode;
   onClose?: () => void;
   children: ReactNode;
 };
@@ -30,7 +35,7 @@ export type SheetProps = {
  * Grabber: iOS only (HIG), tinted `line3`; none on Android (ruling 2026-09-02).
  */
 export const Sheet = forwardRef<SheetHandle, SheetProps>(function Sheet(
-  { title, snapPoints, scroll = false, onClose, children },
+  { title, snapPoints, scroll = false, footer, onClose, children },
   ref,
 ) {
   const { t } = useTranslation();
@@ -90,7 +95,9 @@ export const Sheet = forwardRef<SheetHandle, SheetProps>(function Sheet(
           </Pressable>
         </Row>
       )}
-      <Body>{children}</Body>
+      {/* A fixed-height sheet gives the scrollable body the leftover space, so `footer` stays pinned. */}
+      <Body style={scroll && snapPoints ? { flex: 1 } : undefined}>{children}</Body>
+      {footer}
     </BottomSheetModal>
   );
 });
