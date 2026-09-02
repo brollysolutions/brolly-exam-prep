@@ -1,4 +1,5 @@
 import type { ColorName } from '@tslprb/design-tokens';
+import { useDir } from '@tslprb/i18n';
 
 import { Num } from './Num';
 import { Row } from './Row';
@@ -10,8 +11,14 @@ export type KickerProps = Omit<TextProps, 'variant' | 'weight' | 'color'> & {
   index?: string;
 };
 
-/** The 10.5 px bold, letter-spaced label that introduces every block. */
-export function Kicker({ color = 'mute', index, className, ...rest }: KickerProps) {
+/**
+ * The bold, letter-spaced label that introduces every block. Default `dim` (7.06:1 on tar);
+ * `mute` is 3.97:1 and reserved for non-text use.
+ */
+export function Kicker({ color = 'dim', index, className, ...rest }: KickerProps) {
+  const d = useDir();
+  // Digits are always Latin-faced; their tracking must still follow the UI language like the label.
+  const tracking = d.lang === 'en' ? 'kicker' : 'none';
   const label = (
     <Text
       variant="kicker"
@@ -25,7 +32,7 @@ export function Kicker({ color = 'mute', index, className, ...rest }: KickerProp
   if (!index) return label;
   return (
     <Row gap={2} align="baseline" className={className}>
-      <Num variant="kicker" color="hazard">
+      <Num variant="kicker" color="hazard" tracking={tracking}>
         {index}
       </Num>
       {label}

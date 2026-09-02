@@ -91,7 +91,7 @@ function Section({
 
 function Label({ children }: { children: string }) {
   return (
-    <Text variant="caption" color="mute">
+    <Text variant="caption" color="dim">
       {children}
     </Text>
   );
@@ -128,7 +128,7 @@ export function StatesView() {
   return (
     <Screen scroll padded overlay={dialog} testID="states-screen">
       <Row testID="states-header" align="center" justify="between" className="mt-4">
-        <Kicker color="hivis" tracking="brand">
+        <Kicker lang="en" color="hivis" tracking="brand">
           {t('common.brand')}
         </Kicker>
         <SegmentedChips
@@ -151,7 +151,7 @@ export function StatesView() {
             key={v}
             variant={v}
             weight={v === 'kicker' ? '700' : '400'}
-            color={v === 'kicker' ? 'mute' : 'chalk'}
+            color={v === 'kicker' ? 'dim' : 'chalk'}
             tracking={v === 'kicker' ? 'kicker' : undefined}
           >
             {v} · {t('auth.loginTitle')}

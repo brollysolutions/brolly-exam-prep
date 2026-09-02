@@ -19,7 +19,7 @@ Industrial, high-contrast, no decoration that does not carry information. Hazard
 | `chalk` | #EDEBE3 | primary text |
 | `chalk2` | #B9BBBF | body on dark cards |
 | `dim` | #9A9CA0 | secondary text |
-| `mute` | #6E7176 | tertiary text, kickers |
+| `mute` | #6E7176 | decorative / non-text only (3.97:1) |
 | `ghost` | #5A5D62 | disabled text |
 | `hivis` | #FFE01B | primary action, answered, progress |
 | `hivisHover` | #FFF06B | link hover |
@@ -32,7 +32,7 @@ Industrial, high-contrast, no decoration that does not carry information. Hazard
 | `hivisTint2` | rgba(255,224,27,.07) | correct-answer block |
 | `offlineBg` / `offlineLine` / `offlineText` | #1B1808 / #4A421A / #D8D3BE | offline banner |
 
-Contrast: chalk on tar 16.5:1, dim on tar 7.2:1, mute on tar 4.6:1 (kickers only), tar on hivis 14.8:1.
+Contrast: chalk on tar 16.5:1, dim on tar 7.06:1 (kickers, captions), mute on tar 3.97:1 — below AA, reserved for non-text/decorative use (dividers, glyphs, disabled outlines), never for kickers or captions; tar on hivis 14.8:1.
 
 ## Type
 | Language | Family | Body | Line-height | Tracking |
