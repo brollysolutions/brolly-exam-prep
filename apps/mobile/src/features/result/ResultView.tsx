@@ -68,22 +68,33 @@ function StandRow({ label, value }: { label: string; value: string }) {
  * One "what cost you marks" row. The fixture's Telugu and Urdu values carry their unit in
  * their own script ("92 sec"), which Archivo cannot draw - only a Latin value may go into
  * `<Num>`; the rest stays in the language face and is merely tabular.
+ *
+ * `align="baseline"` sits the value on the label's first line rather than the top of the
+ * box: an Urdu value is a whole word tall and floated above the label without it. It never
+ * shrinks or wraps, so the two-line label keeps the width it needs.
  */
 function CostRow({ label, note, value }: { label: string; note: string; value: string }) {
   return (
-    <Row gap={3} align="start" className="border-b border-panel3 py-3" testID="result-cost-row">
+    <Row gap={3} align="baseline" className="border-b border-panel3 py-3" testID="result-cost-row">
       <Stack gap={1} className="flex-1">
         <Text variant="body">{label}</Text>
-        <Text variant="caption" color="mute">
+        <Text variant="caption" color="dim">
           {note}
         </Text>
       </Stack>
       {isLatinValue(value) ? (
-        <Num variant="question" color="hazard">
+        <Num variant="question" color="hazard" className="shrink-0" numberOfLines={1}>
           {value}
         </Num>
       ) : (
-        <Text variant="question" weight="700" color="hazard" numeric>
+        <Text
+          variant="question"
+          weight="700"
+          color="hazard"
+          numeric
+          className="shrink-0"
+          numberOfLines={1}
+        >
           {value}
         </Text>
       )}

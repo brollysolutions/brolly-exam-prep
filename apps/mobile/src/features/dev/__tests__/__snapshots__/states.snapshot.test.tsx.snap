@@ -23106,7 +23106,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           className="border-b border-panel3 py-3"
                           style={
                             {
-                              "alignItems": "flex-start",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -23144,7 +23144,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               ریزننگ درستگی
                             </Text>
                             <Text
-                              className="text-mute"
+                              className="text-dim"
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -23163,7 +23163,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </View>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-hazard"
+                            className="text-hazard shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "Archivo_700Bold",
@@ -23186,7 +23187,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           className="border-b border-panel3 py-3"
                           style={
                             {
-                              "alignItems": "flex-start",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -23224,7 +23225,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               فی پزل سیٹ وقت
                             </Text>
                             <Text
-                              className="text-mute"
+                              className="text-dim"
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -23242,7 +23243,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             </Text>
                           </View>
                           <Text
-                            className="text-hazard"
+                            className="text-hazard shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -23265,7 +23267,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           className="border-b border-panel3 py-3"
                           style={
                             {
-                              "alignItems": "flex-start",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -23303,7 +23305,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               منفی نمبر
                             </Text>
                             <Text
-                              className="text-mute"
+                              className="text-dim"
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -23322,7 +23324,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </View>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-hazard"
+                            className="text-hazard shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "Archivo_700Bold",
@@ -25298,7 +25301,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           className="border-b border-panel3 py-3"
                           style={
                             {
-                              "alignItems": "flex-start",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -25336,7 +25339,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               ریزننگ درستگی
                             </Text>
                             <Text
-                              className="text-mute"
+                              className="text-dim"
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -25355,7 +25358,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </View>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-hazard"
+                            className="text-hazard shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "Archivo_700Bold",
@@ -25378,7 +25382,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           className="border-b border-panel3 py-3"
                           style={
                             {
-                              "alignItems": "flex-start",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -25416,7 +25420,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               فی پزل سیٹ وقت
                             </Text>
                             <Text
-                              className="text-mute"
+                              className="text-dim"
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -25434,7 +25438,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             </Text>
                           </View>
                           <Text
-                            className="text-hazard"
+                            className="text-hazard shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -25457,7 +25462,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           className="border-b border-panel3 py-3"
                           style={
                             {
-                              "alignItems": "flex-start",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -25495,7 +25500,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               منفی نمبر
                             </Text>
                             <Text
-                              className="text-mute"
+                              className="text-dim"
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -25514,7 +25519,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </View>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-hazard"
+                            className="text-hazard shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "Archivo_700Bold",
