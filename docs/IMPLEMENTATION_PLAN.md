@@ -42,10 +42,10 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 ## Phase 4 — Screens (one PR each; order below)
 - [x] F-15 exam pattern config + fixtures
 - [x] F-16 persistence + mock API adapter (reviewed)
-- [ ] F-03 login · [ ] F-04 OTP · [ ] F-05 post · [ ] F-06 category
+- [x] F-03 login · [x] F-04 OTP · [x] F-05 post · [x] F-06 category (reviewed; branch feat/F-03-06-auth-onboarding)
 - [x] F-09 attempt core · [x] F-10 palette · [x] F-11 dialogs/toasts/banners/call overlay (reviewed; branch feat/F-09-11-test-attempt)
-- [ ] F-12 result · [ ] F-13 solutions
-- [ ] F-02 splash/onboarding · [ ] F-07 home · [ ] F-08 test library · [ ] F-14 profile/settings
+- [x] F-12 result · [x] F-13 solutions (reviewed; branch feat/F-12-13-result-solutions)
+- [x] F-02 splash/onboarding · [x] F-07 home · [x] F-08 test library · [x] F-14 profile/settings (reviewed; branch feat/F-02-07-08-14-shell)
 
 ## Phase 5 — Backend scaffold (F-17)
 - [x] FastAPI app, routers, models, Alembic initial migration, arq worker with 3 cron jobs
@@ -53,10 +53,10 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - [x] `packages/api-contracts` zod schemas + `ApiClient` interface · [ ] `pnpm contracts:gen` (needs live API)
 
 ## Phase 6 — Verification
-- [ ] `pnpm typecheck && pnpm lint && pnpm test` green at root
-- [ ] `npx expo-doctor` clean; app opens in Expo Go on Android
-- [ ] Web export screenshots (en/te/ur) for every screen reviewed by `@design-critic`
-- [ ] Urdu snapshot tests for every screen
+- [x] `pnpm typecheck && pnpm lint && pnpm test` green on the stack tip (347 mobile tests, 51 suites; i18n 6/6; package typechecks)
+- [ ] `npx expo-doctor` clean; app opens in Expo Go on Android (needs your phone: `pnpm dev:mobile`)
+- [x] Web export screenshots (en/te/ur) for every screen reviewed by `@design-critic` (`docs/screenshots/*`)
+- [x] Urdu snapshot tests for every screen
 - [x] Timer deadline tests (background/foreground, auto-submit) — countdown + route tests
 - [x] `docker compose --profile dev up` → `/health` 200; worker registers cron jobs (verified by F-17 implementer on ports 5434/8010)
 - [ ] FEATURES/PR_TRACKING complete and consistent with `gh pr list`

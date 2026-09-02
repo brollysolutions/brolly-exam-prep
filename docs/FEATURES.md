@@ -2,24 +2,26 @@
 
 Status ∈ `todo` · `in-progress` · `review` · `done` · `parked`. One row per feature ID; one feature ID per PR. Rows are updated by `@pr-tracker` and the `track-pr` hook.
 
+Branch stack (each PR's base is the branch below it; GitHub retargets to `main` as they merge): `main` ← `feat/F-17-api-scaffold` ← `feat/F-01-design-system` ← `feat/F-16-data-layer` ← `feat/F-09-11-test-attempt` ← `feat/F-03-06-auth-onboarding` ← `feat/F-12-13-result-solutions` ← `feat/F-02-07-08-14-shell`. `review` = implemented and reviewed in-session, PR not yet opened (GitHub repo pending).
+
 | ID | Feature | Screens / route | Status | PR | Agent | Notes |
 |---|---|---|---|---|---|---|
 | F-00 | Workflow, tooling, monorepo scaffold | repo root, `.claude/`, `docs/` | done | c823868, b5c0fff, d7bf982 (main) | controller | plugins, skills, MCPs, hooks, agents, CI |
-| F-01 | Design system: tokens, fonts, primitives, RTL layer, dev states screen | `packages/design-tokens`, `packages/i18n`, `apps/mobile/src/ui`, `src/app/dev/states` | review | branch `feat/F-01-design-system` (stacked on F-17; PR after repo creation) | ui-builder | 20 primitives, 51 tests, ur snapshot; code review + 2 fix rounds, i18n-rtl review, design critic all clean; screenshots in `docs/screenshots/F-01` |
-| F-02 | Splash + onboarding intro (3 slides) | `src/app/(onboarding)/welcome` | in-progress | branch `feat/F-02-07-08-14-shell` | ui-builder | not in prototype |
-| F-03 | Phone login | `src/app/(auth)/login` | in-progress | branch `feat/F-03-06-auth-onboarding` (stacked on F-16) | ui-builder | custom keypad, +91 |
-| F-04 | OTP verification | `src/app/(auth)/otp` | in-progress | branch `feat/F-03-06-auth-onboarding` | ui-builder | 6 cells, 24 s resend |
-| F-05 | Post selection (Constable / SI-ASI) | `src/app/(onboarding)/post` | in-progress | branch `feat/F-03-06-auth-onboarding` | ui-builder | step 1/2 |
-| F-06 | Category selection | `src/app/(onboarding)/category` | in-progress | branch `feat/F-03-06-auth-onboarding` | ui-builder | step 2/2, PWT qualifying % |
-| F-07 | Home dashboard | `src/app/(tabs)/index` | in-progress | branch `feat/F-02-07-08-14-shell` | ui-builder | not in prototype |
-| F-08 | Test library | `src/app/(tabs)/tests` | in-progress | branch `feat/F-02-07-08-14-shell` | ui-builder | not in prototype |
-| F-09 | Test attempt core | `src/app/test/[id]/index` | review | branch `feat/F-09-11-test-attempt` (stacked on F-16) | ui-builder | reviewed (code, i18n, design) + fix round clean; 192 tests; screenshots `docs/screenshots/F-09-11` |
-| F-10 | Question palette sheet | `src/app/test/[id]/index` | review | branch `feat/F-09-11-test-attempt` | ui-builder | six-column grid, 5 states, locked group, submit |
-| F-11 | Test dialogs, toasts, banners, call overlay | `src/app/test/[id]/index` | review | branch `feat/F-09-11-test-attempt` | ui-builder | 14 states in dev gallery; route-level test |
-| F-12 | Result & analysis | `src/app/test/[id]/result` | in-progress | branch `feat/F-12-13-result-solutions` | ui-builder | score, cut-off, 3 sections |
-| F-13 | Answers & explanation | `src/app/test/[id]/solutions` | in-progress | branch `feat/F-12-13-result-solutions` | ui-builder | wrong/all filter |
-| F-14 | Profile & settings | `src/app/(tabs)/profile` | in-progress | branch `feat/F-02-07-08-14-shell` | ui-builder | not in prototype |
+| F-01 | Design system: tokens, fonts, primitives, RTL layer, dev states screen | `packages/design-tokens`, `packages/i18n`, `apps/mobile/src/ui`, `src/app/dev/states` | review | branch `feat/F-01-design-system` | ui-builder | 20+ primitives, 51 tests, ur snapshot; code review + 2 fix rounds, i18n-rtl review, design critic clean; screenshots `docs/screenshots/F-01` |
+| F-02 | Splash + onboarding intro (3 slides) | `src/app/(onboarding)/welcome` | review | branch `feat/F-02-07-08-14-shell` (stack tip) | ui-builder | 3-slide intro + brand plate; reviewed (code, i18n, design) + fix round clean |
+| F-03 | Phone login | `src/app/(auth)/login` | review | branch `feat/F-03-06-auth-onboarding` | ui-builder | custom keypad, +91, autofill hidden input; reviewed + fix round clean; screenshots `docs/screenshots/F-03-06` |
+| F-04 | OTP verification | `src/app/(auth)/otp` | review | branch `feat/F-03-06-auth-onboarding` | ui-builder | 6 cells, 24 s resend, expired/invalid/unknown branches, `<Trans>` grammar; reviewed + fix round clean |
+| F-05 | Post selection (Constable / SI-ASI) | `src/app/(onboarding)/post` | review | branch `feat/F-03-06-auth-onboarding` | ui-builder | step 1/2, `returnTo` from Profile; reviewed + fix round clean |
+| F-06 | Category selection | `src/app/(onboarding)/category` | review | branch `feat/F-03-06-auth-onboarding` | ui-builder | step 2/2, qualifying %, odd-row padding; reviewed + fix round clean |
+| F-07 | Home dashboard | `src/app/(tabs)/index` | review | branch `feat/F-02-07-08-14-shell` | ui-builder | tabs (Ionicons, inset/language-aware bar), home dashboard; reviewed + fix round clean; screenshots `docs/screenshots/F-02-07-08-14` |
+| F-08 | Test library | `src/app/(tabs)/tests` | review | branch `feat/F-02-07-08-14-shell` | ui-builder | library with kinds, free/locked rows, best score; reviewed + fix round clean |
+| F-09 | Test attempt core | `src/app/test/[id]/index` | review | branch `feat/F-09-11-test-attempt` | ui-builder | attempt core, armed timer, usePressed primitives; reviewed (code, i18n, design) + fix round clean; screenshots `docs/screenshots/F-09-11` |
+| F-10 | Question palette sheet | `src/app/test/[id]/index` | review | branch `feat/F-09-11-test-attempt` | ui-builder | six-column palette, 5 states, locked group |
+| F-11 | Test dialogs, toasts, banners, call overlay | `src/app/test/[id]/index` | review | branch `feat/F-09-11-test-attempt` | ui-builder | 14 states in gallery, route-level test, haptics, back handling |
+| F-12 | Result & analysis | `src/app/test/[id]/result` | review | branch `feat/F-12-13-result-solutions` | ui-builder | score/cut-off/01-02-03 sections; localised durations; reviewed + fix round clean; screenshots `docs/screenshots/F-12-13` |
+| F-13 | Answers & explanation | `src/app/test/[id]/solutions` | review | branch `feat/F-12-13-result-solutions` | ui-builder | paper owns the answer key; `<Num>` filter counts; reviewed + fix round clean |
+| F-14 | Profile & settings | `src/app/(tabs)/profile` | review | branch `feat/F-02-07-08-14-shell` | ui-builder | profile with token Toggle, signOut, outlined delete; reviewed + fix round clean |
 | F-15 | Exam pattern config + fixtures | `packages/fixtures` | done | c823868 (main) | controller | official PWT pattern (SI split unverified); 6-question seed bank |
-| F-16 | Persistence + mock API adapter | `apps/mobile/src/data` | review | branch `feat/F-16-data-layer` (stacked on F-01) | ui-builder | stores, selectors, countdown, network, MockApi/HttpApi; 97 tests; review + fix round clean |
+| F-16 | Persistence + mock API adapter | `apps/mobile/src/data` | review | branch `feat/F-16-data-layer` | ui-builder | stores, selectors, countdown, network, MockApi/HttpApi; 97 tests; review + fix round clean |
 | F-17 | API scaffold: FastAPI, Postgres 17, Redis, arq scheduler, Docker Compose | `services/api`, `docker-compose.yml` | review | branch `feat/F-17-api-scaffold` (PR after repo creation) | backend-scaffolder | stubs return fixtures; 12/12 pytest; docker stack verified; `.env.example` needs manual CORS_ORIGINS edit |
 | F-18 | Next.js placeholder site | `apps/web` | done | c823868 (main) | controller | landing only |
