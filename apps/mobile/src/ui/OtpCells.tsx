@@ -14,7 +14,7 @@ export type OtpCellsProps = {
 export function OtpCells({ value, length = 6, testID }: OtpCellsProps) {
   const current = value.length;
   return (
-    <Row reverse gap={2} testID={testID} accessible accessibilityValue={{ text: value }}>
+    <Row physical gap={2} testID={testID} accessible accessibilityValue={{ text: value }}>
       {Array.from({ length }, (_, i) => (
         <View
           key={i}

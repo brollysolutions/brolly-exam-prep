@@ -9,6 +9,13 @@ describe('Row', () => {
     initI18n('ur');
   });
 
+  // Every case starts from Urdu regardless of order.
+  afterEach(async () => {
+    await act(async () => {
+      await setLanguage('ur');
+    });
+  });
+
   it('mirrors to row-reverse when the language is Urdu', async () => {
     await render(
       <Row testID="row">
@@ -18,8 +25,8 @@ describe('Row', () => {
     expect(screen.getByTestId('row')).toHaveStyle({ flexDirection: 'row-reverse' });
   });
 
-  it('opts out of mirroring with reverse', async () => {
-    await render(<Row testID="row" reverse />);
+  it('keeps physical LTR order with physical', async () => {
+    await render(<Row testID="row" physical />);
     expect(screen.getByTestId('row')).toHaveStyle({ flexDirection: 'row' });
   });
 

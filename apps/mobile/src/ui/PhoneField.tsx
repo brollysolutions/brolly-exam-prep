@@ -18,7 +18,7 @@ export function PhoneField({ value, placeholder, prefix, testID }: PhoneFieldPro
   const { t } = useTranslation();
   const filled = value.length > 0;
   return (
-    <Row reverse gap={2} testID={testID}>
+    <Row physical gap={2} testID={testID}>
       <View className="h-field w-prefix items-center justify-center rounded-sm border border-line">
         <Num variant="prefix" weight="600" color="dim">
           {prefix ?? t('auth.countryCode')}
