@@ -7,15 +7,23 @@ import { Text, type TextProps } from './Text';
 
 export type KickerProps = Omit<TextProps, 'variant' | 'weight' | 'color'> & {
   color?: ColorName;
-  /** Section counter rendered in hazard orange before the label, e.g. "01". */
+  /** Section counter rendered before the label, e.g. "01". */
   index?: string;
+  /** Counter colour; hazard orange unless the section itself is the primary one. */
+  indexColor?: ColorName;
 };
 
 /**
  * The bold, letter-spaced label that introduces every block. Default `dim` (7.06:1 on tar);
  * `mute` is 3.97:1 and reserved for non-text use.
  */
-export function Kicker({ color = 'dim', index, className, ...rest }: KickerProps) {
+export function Kicker({
+  color = 'dim',
+  index,
+  indexColor = 'hazard',
+  className,
+  ...rest
+}: KickerProps) {
   const d = useDir();
   // Digits are always Latin-faced; their tracking must still follow the UI language like the label.
   const tracking = d.lang === 'en' ? 'kicker' : 'none';
@@ -32,7 +40,7 @@ export function Kicker({ color = 'dim', index, className, ...rest }: KickerProps
   if (!index) return label;
   return (
     <Row gap={2} align="baseline" className={className}>
-      <Num variant="kicker" color="hazard" tracking={tracking}>
+      <Num variant="kicker" color={indexColor} tracking={tracking}>
         {index}
       </Num>
       {label}

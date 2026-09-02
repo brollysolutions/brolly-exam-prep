@@ -8,8 +8,16 @@ describe('useLoad', () => {
     const load = jest.fn(() => Promise.resolve('ok'));
     const { result } = await renderHook(() => useLoad('a', load));
     await waitFor(() => expect(result.current.data).toBe('ok'));
-    expect(result.current.failed).toBe(false);
+    expect(result.current).toEqual({ done: true, data: 'ok', failed: false });
     expect(load).toHaveBeenCalledTimes(1);
+  });
+
+  it('is done even when the loader resolves undefined', async () => {
+    const load = jest.fn(() => Promise.resolve(undefined));
+    const { result } = await renderHook(() => useLoad('a', load));
+    await waitFor(() => expect(result.current.done).toBe(true));
+    expect(result.current.data).toBeUndefined();
+    expect(result.current.failed).toBe(false);
   });
 
   it('reports a rejection instead of throwing', async () => {
@@ -42,6 +50,7 @@ describe('useLoad', () => {
       rerender({ loadKey: 'b', value: 'second' });
     });
     expect(result.current.data).toBeUndefined();
+    expect(result.current.done).toBe(false);
     expect(result.current.failed).toBe(false);
 
     await act(async () => {

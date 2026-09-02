@@ -17,11 +17,11 @@ export default function SolutionsRoute() {
     const [detail, paper] = await Promise.all([api.getResultDetail(id), api.getPaper(id)]);
     return buildSolutionRows(detail.review, paper);
   }, [id]);
-  const { data, failed } = useLoad(`${id}:${attempt}`, load);
+  const { done, data, failed } = useLoad(`${id}:${attempt}`, load);
 
   return (
     <SolutionsView
-      rows={data}
+      rows={done ? data : undefined}
       failed={failed}
       onBack={() => router.back()}
       onRetry={() => setAttempt((n) => n + 1)}

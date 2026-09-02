@@ -22617,6 +22617,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       <Text
                         accessibilityElementsHidden={true}
                         className="text-dim"
+                        importantForAccessibility="no"
                         style={
                           {
                             "fontFamily": "Archivo_400Regular",
@@ -22635,6 +22636,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     </View>
                     <Text
                       className="text-chalk flex-1"
+                      numberOfLines={1}
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -22655,7 +22657,6 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 <RCTScrollView
                   className="flex-1"
                   contentContainerClassName="px-4 pb-6 pt-5"
-                  showsVerticalScrollIndicator={false}
                 >
                   <View>
                     <Text
@@ -22994,7 +22995,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         <View
                           accessibilityLabel="فی سوال اوسط وقت 54 سیکنڈ"
                           accessible={true}
-                          className="border-b border-panel3 py-3"
+                          className="py-3"
                           style={
                             {
                               "alignItems": "baseline",
@@ -23313,7 +23314,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                         </View>
                         <View
-                          className="border-b border-panel3 py-3"
+                          className="py-3"
                           style={
                             {
                               "alignItems": "baseline",
@@ -23572,6 +23573,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               <Text
                                 accessibilityElementsHidden={true}
                                 className="text-hivis"
+                                importantForAccessibility="no"
                                 style={
                                   {
                                     "fontFamily": "Archivo_400Regular",
@@ -23697,6 +23699,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               <Text
                                 accessibilityElementsHidden={true}
                                 className="text-hivis"
+                                importantForAccessibility="no"
                                 style={
                                   {
                                     "fontFamily": "Archivo_400Regular",
@@ -23822,6 +23825,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               <Text
                                 accessibilityElementsHidden={true}
                                 className="text-hivis"
+                                importantForAccessibility="no"
                                 style={
                                   {
                                     "fontFamily": "Archivo_400Regular",
@@ -24861,6 +24865,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       <Text
                         accessibilityElementsHidden={true}
                         className="text-dim"
+                        importantForAccessibility="no"
                         style={
                           {
                             "fontFamily": "Archivo_400Regular",
@@ -24879,6 +24884,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     </View>
                     <Text
                       className="text-chalk flex-1"
+                      numberOfLines={1}
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -24899,7 +24905,6 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 <RCTScrollView
                   className="flex-1"
                   contentContainerClassName="px-4 pb-6 pt-5"
-                  showsVerticalScrollIndicator={false}
                 >
                   <View>
                     <Text
@@ -25238,7 +25243,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         <View
                           accessibilityLabel="فی سوال اوسط وقت 1 منٹ 22 سیکنڈ"
                           accessible={true}
-                          className="border-b border-panel3 py-3"
+                          className="py-3"
                           style={
                             {
                               "alignItems": "baseline",
@@ -25606,7 +25611,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                         </View>
                         <View
-                          className="border-b border-panel3 py-3"
+                          className="py-3"
                           style={
                             {
                               "alignItems": "baseline",
@@ -25865,6 +25870,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               <Text
                                 accessibilityElementsHidden={true}
                                 className="text-hivis"
+                                importantForAccessibility="no"
                                 style={
                                   {
                                     "fontFamily": "Archivo_400Regular",
@@ -25990,6 +25996,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               <Text
                                 accessibilityElementsHidden={true}
                                 className="text-hivis"
+                                importantForAccessibility="no"
                                 style={
                                   {
                                     "fontFamily": "Archivo_400Regular",
@@ -26115,6 +26122,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               <Text
                                 accessibilityElementsHidden={true}
                                 className="text-hivis"
+                                importantForAccessibility="no"
                                 style={
                                   {
                                     "fontFamily": "Archivo_400Regular",
@@ -27154,6 +27162,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       <Text
                         accessibilityElementsHidden={true}
                         className="text-dim"
+                        importantForAccessibility="no"
                         style={
                           {
                             "fontFamily": "Archivo_400Regular",
@@ -27172,6 +27181,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     </View>
                     <Text
                       className="text-chalk flex-1"
+                      numberOfLines={1}
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -27207,7 +27217,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     className="h-3 w-16 rounded-xs bg-panel3"
                   />
                   <View
-                    className="h-16 w-1/2 rounded-xs bg-panel3"
+                    className="h-14 w-1/2 rounded-xs bg-panel3"
                   />
                   <View
                     className="h-8 w-1/3 rounded-xs bg-panel3"
@@ -27220,6 +27230,18 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                   />
                   <View
                     className="h-8 w-full rounded-xs bg-panel3"
+                  />
+                  <View
+                    className="h-8 w-full rounded-xs bg-panel3"
+                  />
+                  <View
+                    className="h-8 w-full rounded-xs bg-panel3"
+                  />
+                  <View
+                    className="h-8 w-full rounded-xs bg-panel3"
+                  />
+                  <View
+                    className="h-16 w-full rounded-xs bg-panel3"
                   />
                   <View
                     className="h-16 w-full rounded-xs bg-panel3"
@@ -28172,6 +28194,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       <Text
                         accessibilityElementsHidden={true}
                         className="text-dim"
+                        importantForAccessibility="no"
                         style={
                           {
                             "fontFamily": "Archivo_400Regular",
@@ -28190,6 +28213,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     </View>
                     <Text
                       className="text-chalk flex-1"
+                      numberOfLines={1}
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -28219,23 +28243,51 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                   }
                   testID="result-error"
                 >
-                  <Text
-                    className="text-dim"
+                  <View
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 14.5,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 29.7,
-                        "textAlign": "right",
-                        "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "alignItems": undefined,
+                        "flexDirection": "column",
+                        "gap": 8,
+                        "justifyContent": undefined,
                       }
                     }
                   >
-                    نتیجہ لوڈ نہیں ہوا۔
-                  </Text>
+                    <Text
+                      className="text-flag"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_700Bold",
+                          "fontSize": 12,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 24.6,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      مسئلہ
+                    </Text>
+                    <Text
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 14.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 29.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      نتیجہ لوڈ نہیں ہوا۔
+                    </Text>
+                  </View>
                   <View
                     accessibilityRole="button"
                     accessibilityState={
@@ -29250,6 +29302,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       <Text
                         accessibilityElementsHidden={true}
                         className="text-dim"
+                        importantForAccessibility="no"
                         style={
                           {
                             "fontFamily": "Archivo_400Regular",
@@ -29268,6 +29321,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     </View>
                     <Text
                       className="text-chalk flex-1"
+                      numberOfLines={1}
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -29621,7 +29675,6 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                   removeClippedSubviews={false}
                   renderItem={[Function]}
                   scrollEventThrottle={0.0001}
-                  showsVerticalScrollIndicator={false}
                   stickyHeaderIndices={[]}
                   testID="solutions-list"
                   viewabilityConfigCallbackPairs={[]}
@@ -29648,11 +29701,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <View
-                            className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
+                            className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
                           >
                             <Text
                               accessibilityElementsHidden={true}
                               className="text-white"
+                              importantForAccessibility="no"
                               style={
                                 {
                                   "fontFamily": "Archivo_700Bold",
@@ -30135,11 +30189,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <View
-                            className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
+                            className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
                           >
                             <Text
                               accessibilityElementsHidden={true}
                               className="text-white"
+                              importantForAccessibility="no"
                               style={
                                 {
                                   "fontFamily": "Archivo_700Bold",
@@ -30622,11 +30677,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <View
-                            className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
+                            className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
                           >
                             <Text
                               accessibilityElementsHidden={true}
                               className="text-white"
+                              importantForAccessibility="no"
                               style={
                                 {
                                   "fontFamily": "Archivo_700Bold",
@@ -31982,6 +32038,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       <Text
                         accessibilityElementsHidden={true}
                         className="text-dim"
+                        importantForAccessibility="no"
                         style={
                           {
                             "fontFamily": "Archivo_400Regular",
@@ -32000,6 +32057,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     </View>
                     <Text
                       className="text-chalk flex-1"
+                      numberOfLines={1}
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -32396,7 +32454,6 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                   removeClippedSubviews={false}
                   renderItem={[Function]}
                   scrollEventThrottle={0.0001}
-                  showsVerticalScrollIndicator={false}
                   stickyHeaderIndices={[]}
                   testID="solutions-list"
                   viewabilityConfigCallbackPairs={[]}
@@ -32423,11 +32480,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <View
-                            className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
+                            className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
                           >
                             <Text
                               accessibilityElementsHidden={true}
                               className="text-white"
+                              importantForAccessibility="no"
                               style={
                                 {
                                   "fontFamily": "Archivo_700Bold",
@@ -32910,11 +32968,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <View
-                            className="h-7 w-7 items-center justify-center rounded-xs bg-hivis"
+                            className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-hivis"
                           >
                             <Text
                               accessibilityElementsHidden={true}
                               className="text-tar"
+                              importantForAccessibility="no"
                               style={
                                 {
                                   "fontFamily": "Archivo_700Bold",
@@ -33350,11 +33409,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <View
-                            className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
+                            className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
                           >
                             <Text
                               accessibilityElementsHidden={true}
                               className="text-white"
+                              importantForAccessibility="no"
                               style={
                                 {
                                   "fontFamily": "Archivo_700Bold",
@@ -33837,11 +33897,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <View
-                            className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
+                            className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
                           >
                             <Text
                               accessibilityElementsHidden={true}
                               className="text-white"
+                              importantForAccessibility="no"
                               style={
                                 {
                                   "fontFamily": "Archivo_700Bold",

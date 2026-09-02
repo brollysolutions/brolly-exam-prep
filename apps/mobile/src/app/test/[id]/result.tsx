@@ -12,7 +12,7 @@ export default function ResultRoute() {
   const [attempt, setAttempt] = useState(0);
 
   const load = useCallback(() => getApi().getResultDetail(id), [id]);
-  const { data, failed } = useLoad(`${id}:${attempt}`, load);
+  const { done, data, failed } = useLoad(`${id}:${attempt}`, load);
 
   const openSolutions = useCallback(() => {
     router.push({ pathname: '/test/[id]/solutions', params: { id } });
@@ -20,7 +20,7 @@ export default function ResultRoute() {
 
   return (
     <ResultView
-      result={data}
+      result={done ? data : undefined}
       failed={failed}
       onBack={() => router.back()}
       onRetry={() => setAttempt((n) => n + 1)}

@@ -1,4 +1,4 @@
-import { colors, radius, text as textSizes, type ColorName } from '@tslprb/design-tokens';
+import { colors, radius, text as textSizes } from '@tslprb/design-tokens';
 import { COST_ROWS } from '@tslprb/fixtures';
 import { useDir } from '@tslprb/i18n';
 import type { ReactNode } from 'react';
@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, View } from 'react-native';
 
 import type { ResultAction, ResultDetail } from '@/data/api';
-import { Button, Chip, Kicker, Num, Row, Screen, Stack, Text, usePressed } from '@/ui';
+import { Button, Chip, Glyph, Kicker, Num, Row, Screen, Stack, Text, usePressed } from '@/ui';
 
 import { Duration, useDurationUnits } from './Duration';
 import { startEdge } from './edge';
@@ -25,7 +25,27 @@ export type ResultViewProps = {
   onAction?: (action: ResultAction) => void;
 };
 
-const SKELETON = ['kicker', 'score', 'chip', 'row', 'row', 'row', 'card', 'card'] as const;
+/** The shape of the loaded screen: kicker, score, chip row, six stat rows, three cards. */
+const SKELETON = [
+  'kicker',
+  'score',
+  'chip',
+  'row',
+  'row',
+  'row',
+  'row',
+  'row',
+  'row',
+  'card',
+  'card',
+  'card',
+] as const;
+
+/**
+ * Rows are separated, not boxed: the last row of a list drops its rule so the block ends on
+ * the section gap instead of a line that divides nothing.
+ */
+const rowDivider = (last: boolean) => (last ? 'py-3' : 'border-b border-panel3 py-3');
 
 /** The tabular figure at the end of a "where you stand" row. */
 const StandValue = ({ children }: { children: string }) => (
@@ -33,27 +53,6 @@ const StandValue = ({ children }: { children: string }) => (
     {children}
   </Num>
 );
-
-/** `01` / `02` / `03` with the block label, the way every section on this screen opens. */
-function SectionHead({
-  index,
-  label,
-  accent = 'hazard',
-}: {
-  index: string;
-  label: string;
-  accent?: Extract<ColorName, 'hazard' | 'hivis'>;
-}) {
-  const d = useDir();
-  return (
-    <Row gap={2} align="baseline">
-      <Num variant="kicker" color={accent} tracking={d.lang === 'en' ? 'kicker' : 'none'}>
-        {index}
-      </Num>
-      <Kicker color={accent === 'hivis' ? 'hivis' : 'dim'}>{label}</Kicker>
-    </Row>
-  );
-}
 
 /**
  * One "where you stand" row: label on the start side, tabular value on the end side. The
@@ -64,16 +63,18 @@ function StandRow({
   label,
   value,
   valueText,
+  last = false,
 }: {
   label: string;
   value: ReactNode;
   valueText: string;
+  last?: boolean;
 }) {
   return (
     <Row
       gap={3}
       align="baseline"
-      className="border-b border-panel3 py-3"
+      className={rowDivider(last)}
       testID="result-stand-row"
       accessible
       accessibilityLabel={`${label} ${valueText}`}
@@ -95,9 +96,19 @@ function StandRow({
  * box: an Urdu value is a whole word tall and floated above the label without it. It never
  * shrinks or wraps, so the two-line label keeps the width it needs.
  */
-function CostRow({ label, note, value }: { label: string; note: string; value: string }) {
+function CostRow({
+  label,
+  note,
+  value,
+  last = false,
+}: {
+  label: string;
+  note: string;
+  value: string;
+  last?: boolean;
+}) {
   return (
-    <Row gap={3} align="baseline" className="border-b border-panel3 py-3" testID="result-cost-row">
+    <Row gap={3} align="baseline" className={rowDivider(last)} testID="result-cost-row">
       <Stack gap={1} className="flex-1">
         <Text variant="body">{label}</Text>
         <Text variant="caption" color="dim">
@@ -162,9 +173,9 @@ function ActionCard({ action, onPress }: { action: ResultAction; onPress?: () =>
               {action.sub[d.lang]}
             </Text>
           </Stack>
-          <Text variant="glyph" color="hivis" lang="en" accessibilityElementsHidden>
+          <Glyph color="hivis" accessibilityElementsHidden importantForAccessibility="no">
             {d.chevronNext}
-          </Text>
+          </Glyph>
         </Row>
       </Pressable>
     </View>
@@ -204,11 +215,8 @@ export function ResultView({
         <Skeleton blocks={[...SKELETON]} testID="result-skeleton" />
       ) : (
         <>
-          <ScrollView
-            className="flex-1"
-            contentContainerClassName="px-4 pb-6 pt-5"
-            showsVerticalScrollIndicator={false}
-          >
+          {/* The indicator stays: this screen runs several viewports long. */}
+          <ScrollView className="flex-1" contentContainerClassName="px-4 pb-6 pt-5">
             <Kicker>{t('result.yourScore')}</Kicker>
             {/* Physical: a score always reads "62.25 / 100", never mirrored. */}
             <Row physical align="baseline" gap={2} className="mt-1" testID="result-score-row">
@@ -246,7 +254,7 @@ export function ResultView({
             <View className="mt-6 h-px bg-line2" />
 
             <Stack gap={2} className="mt-4">
-              <SectionHead index="01" label={t('result.r1')} />
+              <Kicker index="01">{t('result.r1')}</Kicker>
               <View>
                 <StandRow
                   label={t('result.rank')}
@@ -270,21 +278,30 @@ export function ResultView({
                     />
                   }
                   valueText={formatDuration(result.avgSecondsPerQuestion, units)}
+                  last
                 />
               </View>
             </Stack>
 
             <Stack gap={2} className="mt-6">
-              <SectionHead index="02" label={t('result.r2')} />
+              <Kicker index="02">{t('result.r2')}</Kicker>
               <View>
-                {costRows.map(([label, value, note]) => (
-                  <CostRow key={label} label={label} value={value} note={note} />
+                {costRows.map(([label, value, note], i) => (
+                  <CostRow
+                    key={label}
+                    label={label}
+                    value={value}
+                    note={note}
+                    last={i === costRows.length - 1}
+                  />
                 ))}
               </View>
             </Stack>
 
             <Stack gap={2} className="mt-6">
-              <SectionHead index="03" label={t('result.r3')} accent="hivis" />
+              <Kicker index="03" indexColor="hivis" color="hivis">
+                {t('result.r3')}
+              </Kicker>
               <Stack gap={2}>
                 {result.actions.map((action) => (
                   <ActionCard key={action.id} action={action} onPress={() => onAction?.(action)} />

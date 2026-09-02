@@ -906,6 +906,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
           <Text
             accessibilityElementsHidden={true}
             className="text-dim"
+            importantForAccessibility="no"
             style={
               {
                 "fontFamily": "Archivo_400Regular",
@@ -924,6 +925,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
         </View>
         <Text
           className="text-chalk flex-1"
+          numberOfLines={1}
           style={
             {
               "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -944,7 +946,6 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
     <RCTScrollView
       className="flex-1"
       contentContainerClassName="px-4 pb-6 pt-5"
-      showsVerticalScrollIndicator={false}
     >
       <View>
         <Text
@@ -1283,7 +1284,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
             <View
               accessibilityLabel="فی سوال اوسط وقت 54 سیکنڈ"
               accessible={true}
-              className="border-b border-panel3 py-3"
+              className="py-3"
               style={
                 {
                   "alignItems": "baseline",
@@ -1602,7 +1603,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               </Text>
             </View>
             <View
-              className="border-b border-panel3 py-3"
+              className="py-3"
               style={
                 {
                   "alignItems": "baseline",
@@ -1861,6 +1862,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                   <Text
                     accessibilityElementsHidden={true}
                     className="text-hivis"
+                    importantForAccessibility="no"
                     style={
                       {
                         "fontFamily": "Archivo_400Regular",
@@ -1986,6 +1988,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                   <Text
                     accessibilityElementsHidden={true}
                     className="text-hivis"
+                    importantForAccessibility="no"
                     style={
                       {
                         "fontFamily": "Archivo_400Regular",
@@ -2111,6 +2114,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                   <Text
                     accessibilityElementsHidden={true}
                     className="text-hivis"
+                    importantForAccessibility="no"
                     style={
                       {
                         "fontFamily": "Archivo_400Regular",

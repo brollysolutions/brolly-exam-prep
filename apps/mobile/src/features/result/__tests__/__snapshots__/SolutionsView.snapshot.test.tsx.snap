@@ -906,6 +906,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
           <Text
             accessibilityElementsHidden={true}
             className="text-dim"
+            importantForAccessibility="no"
             style={
               {
                 "fontFamily": "Archivo_400Regular",
@@ -924,6 +925,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
         </View>
         <Text
           className="text-chalk flex-1"
+          numberOfLines={1}
           style={
             {
               "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -1277,7 +1279,6 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
       removeClippedSubviews={false}
       renderItem={[Function]}
       scrollEventThrottle={0.0001}
-      showsVerticalScrollIndicator={false}
       stickyHeaderIndices={[]}
       testID="solutions-list"
       viewabilityConfigCallbackPairs={[]}
@@ -1304,11 +1305,12 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
               }
             >
               <View
-                className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
+                className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
               >
                 <Text
                   accessibilityElementsHidden={true}
                   className="text-white"
+                  importantForAccessibility="no"
                   style={
                     {
                       "fontFamily": "Archivo_700Bold",
@@ -1791,11 +1793,12 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
               }
             >
               <View
-                className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
+                className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
               >
                 <Text
                   accessibilityElementsHidden={true}
                   className="text-white"
+                  importantForAccessibility="no"
                   style={
                     {
                       "fontFamily": "Archivo_700Bold",
@@ -2278,11 +2281,12 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
               }
             >
               <View
-                className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
+                className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
               >
                 <Text
                   accessibilityElementsHidden={true}
                   className="text-white"
+                  importantForAccessibility="no"
                   style={
                     {
                       "fontFamily": "Archivo_700Bold",

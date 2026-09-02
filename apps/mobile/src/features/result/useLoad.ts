@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 
 export type Load<T> = {
-  /** Present once the request for the current key resolved. */
+  /** The request for the current key has settled, one way or the other. */
+  done: boolean;
+  /** The value, when the request resolved. `undefined` is a legitimate result. */
   data?: T;
   /** The request for the current key rejected. */
   failed: boolean;
 };
 
-type Settled<T> = { key: string; data?: T; failed?: boolean };
+type Settled<T> = { key: string; data?: T; failed: boolean };
 
 /**
  * One-shot read with a retry key. `key` is the identity of the request (`testId:attempt`),
@@ -19,13 +21,13 @@ type Settled<T> = { key: string; data?: T; failed?: boolean };
  * `load` must be stable (`useCallback`), otherwise every render refetches.
  */
 export function useLoad<T>(key: string, load: () => Promise<T>): Load<T> {
-  const [settled, setSettled] = useState<Settled<T>>({ key: '' });
+  const [settled, setSettled] = useState<Settled<T>>({ key: '', failed: false });
 
   useEffect(() => {
     let live = true;
     load()
       .then((data) => {
-        if (live) setSettled({ key, data });
+        if (live) setSettled({ key, data, failed: false });
       })
       .catch(() => {
         if (live) setSettled({ key, failed: true });
@@ -35,6 +37,8 @@ export function useLoad<T>(key: string, load: () => Promise<T>): Load<T> {
     };
   }, [key, load]);
 
-  if (settled.key !== key) return { failed: false };
-  return { data: settled.data, failed: !!settled.failed };
+  // `done` rather than `data !== undefined`: a loader that legitimately resolves undefined
+  // would otherwise pin the caller on its loading state forever.
+  if (settled.key !== key) return { done: false, failed: false };
+  return { done: true, data: settled.data, failed: settled.failed };
 }

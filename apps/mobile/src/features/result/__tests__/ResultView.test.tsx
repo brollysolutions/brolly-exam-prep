@@ -73,6 +73,7 @@ describe('ResultView', () => {
   it('offers a retry when the load failed', async () => {
     const onRetry = jest.fn();
     await render(<ResultView failed onRetry={onRetry} />);
+    expect(screen.getByText('Problem')).toBeOnTheScreen();
     expect(screen.getByText('The result did not load.')).toBeOnTheScreen();
     await userEvent.press(screen.getByTestId('result-error-retry'));
     expect(onRetry).toHaveBeenCalledTimes(1);

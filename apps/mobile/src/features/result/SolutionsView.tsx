@@ -31,20 +31,20 @@ function Badge({ correct }: { correct: boolean }) {
     <View
       className={
         correct
-          ? 'h-7 w-7 items-center justify-center rounded-xs bg-hivis'
-          : 'h-7 w-7 items-center justify-center rounded-xs bg-flag'
+          ? 'h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-hivis'
+          : 'h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag'
       }
     >
-      <Text
+      <Glyph
         variant="small"
         weight="700"
         color={correct ? 'tar' : 'white'}
-        lang="en"
         align="center"
         accessibilityElementsHidden
+        importantForAccessibility="no"
       >
         {correct ? '✓' : '✕'}
-      </Text>
+      </Glyph>
     </View>
   );
 }
@@ -229,7 +229,6 @@ export function SolutionsView({
           renderItem={({ item }) => <SolutionCard row={item} />}
           ItemSeparatorComponent={Separator}
           contentContainerClassName="px-4 pb-6 pt-3"
-          showsVerticalScrollIndicator={false}
           ListEmptyComponent={AllCorrect}
           testID="solutions-list"
         />

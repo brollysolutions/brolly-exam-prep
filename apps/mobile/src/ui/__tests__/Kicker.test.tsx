@@ -20,6 +20,18 @@ describe('Kicker', () => {
     expect(el.props.className).toContain('text-dim');
   });
 
+  it('counts are hazard by default and take a colour when the section is the primary one', async () => {
+    const digits = String.fromCharCode(0x2066) + '03' + String.fromCharCode(0x2069);
+    await render(<Kicker index="03">Do these three next</Kicker>);
+    expect(screen.getByText(digits).props.className).toContain('text-hazard');
+    await render(
+      <Kicker index="03" indexColor="hivis" color="hivis">
+        Do these three next
+      </Kicker>,
+    );
+    expect(screen.getByText(digits).props.className).toContain('text-hivis');
+  });
+
   it('puts className on the wrapping row when an index is given', async () => {
     await render(
       <Kicker index="01" className="mt-3" testID="kicker">

@@ -34,11 +34,11 @@ export function BackHeader({ title, onBack, children, testID }: BackHeaderProps)
           style={pressed ? { opacity: 0.85 } : undefined}
           testID={testID ? `${testID}-back` : undefined}
         >
-          <Glyph color="dim" accessibilityElementsHidden>
+          <Glyph color="dim" accessibilityElementsHidden importantForAccessibility="no">
             {d.chevronPrev}
           </Glyph>
         </Pressable>
-        <Text variant="bodyLg" weight="600" className="flex-1">
+        <Text variant="bodyLg" weight="600" className="flex-1" numberOfLines={1}>
           {title}
         </Text>
       </Row>

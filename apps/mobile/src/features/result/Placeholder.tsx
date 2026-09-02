@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
-import { Button, Stack, Text } from '@/ui';
+import { Button, Kicker, Stack, Text } from '@/ui';
 
 /** Literal class names so Tailwind's scanner sees every one of them. */
 const BLOCK = {
   kicker: 'h-3 w-16',
-  score: 'h-16 w-1/2',
+  score: 'h-14 w-1/2',
   chip: 'h-8 w-1/3',
   row: 'h-8 w-full',
   card: 'h-16 w-full',
@@ -35,14 +35,17 @@ export function Skeleton({ blocks, testID }: { blocks: SkeletonBlock[]; testID: 
   );
 }
 
-/** Failed load: the message plus a secondary retry button (48 px). */
+/** Failed load: a flag kicker, the message, and a secondary retry button (48 px). */
 export function LoadError({ onRetry, testID }: { onRetry?: () => void; testID: string }) {
   const { t } = useTranslation();
   return (
     <Stack gap={4} className="px-4 pt-6" testID={testID}>
-      <Text variant="body" color="dim">
-        {t('result.loadError')}
-      </Text>
+      <Stack gap={2}>
+        <Kicker color="flag">{t('result.errorKicker')}</Kicker>
+        <Text variant="body" color="dim">
+          {t('result.loadError')}
+        </Text>
+      </Stack>
       <Button
         variant="secondary"
         label={t('result.retry')}
