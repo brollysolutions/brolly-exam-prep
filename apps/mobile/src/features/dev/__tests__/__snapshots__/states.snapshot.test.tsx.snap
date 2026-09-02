@@ -22873,6 +22873,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       <Text
                         accessibilityElementsHidden={true}
                         className="text-dim"
+                        importantForAccessibility="no"
                         style={
                           {
                             "fontFamily": "Archivo_400Regular",
@@ -22891,6 +22892,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     </View>
                     <Text
                       className="text-chalk flex-1"
+                      numberOfLines={1}
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -22911,7 +22913,6 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 <RCTScrollView
                   className="flex-1"
                   contentContainerClassName="px-4 pb-6 pt-5"
-                  showsVerticalScrollIndicator={false}
                 >
                   <View>
                     <Text
@@ -23141,10 +23142,11 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       <View>
                         <View
                           accessibilityLabel="درجہ 1,284 / 9,033"
+                          accessible={true}
                           className="border-b border-panel3 py-3"
                           style={
                             {
-                              "alignItems": "center",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -23172,7 +23174,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-chalk"
+                            className="text-chalk shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "Archivo_700Bold",
@@ -23193,10 +23196,11 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         </View>
                         <View
                           accessibilityLabel="درستگی 71%"
+                          accessible={true}
                           className="border-b border-panel3 py-3"
                           style={
                             {
-                              "alignItems": "center",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -23224,7 +23228,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-chalk"
+                            className="text-chalk shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "Archivo_700Bold",
@@ -23244,11 +23249,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                         </View>
                         <View
-                          accessibilityLabel="فی سوال اوسط وقت 54s"
-                          className="border-b border-panel3 py-3"
+                          accessibilityLabel="فی سوال اوسط وقت 54 سیکنڈ"
+                          accessible={true}
+                          className="py-3"
                           style={
                             {
-                              "alignItems": "center",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -23274,26 +23280,70 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           >
                             فی سوال اوسط وقت
                           </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-chalk"
+                          <View
+                            accessibilityLabel="54 سیکنڈ"
+                            accessible={true}
+                            className="shrink-0"
                             style={
                               {
-                                "fontFamily": "Archivo_700Bold",
-                                "fontSize": 14.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
-                                "letterSpacing": 0,
-                                "lineHeight": 21,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
                               }
                             }
                           >
-                            ⁦54s⁩
-                          </Text>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-chalk"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_700Bold",
+                                    "fontSize": 14.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 21,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦54⁩
+                              </Text>
+                              <Text
+                                className="text-chalk"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 15.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 31.8,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
+                          </View>
                         </View>
                       </View>
                     </View>
@@ -23362,7 +23412,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           className="border-b border-panel3 py-3"
                           style={
                             {
-                              "alignItems": "flex-start",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -23400,7 +23450,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               ریزننگ درستگی
                             </Text>
                             <Text
-                              className="text-mute"
+                              className="text-dim"
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -23419,7 +23469,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </View>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-hazard"
+                            className="text-hazard shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "Archivo_700Bold",
@@ -23442,7 +23493,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           className="border-b border-panel3 py-3"
                           style={
                             {
-                              "alignItems": "flex-start",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -23480,7 +23531,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               فی پزل سیٹ وقت
                             </Text>
                             <Text
-                              className="text-mute"
+                              className="text-dim"
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -23498,7 +23549,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             </Text>
                           </View>
                           <Text
-                            className="text-hazard"
+                            className="text-hazard shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -23518,10 +23570,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                         </View>
                         <View
-                          className="border-b border-panel3 py-3"
+                          className="py-3"
                           style={
                             {
-                              "alignItems": "flex-start",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -23559,7 +23611,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               منفی نمبر
                             </Text>
                             <Text
-                              className="text-mute"
+                              className="text-dim"
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -23578,7 +23630,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </View>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-hazard"
+                            className="text-hazard shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "Archivo_700Bold",
@@ -23776,6 +23829,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               <Text
                                 accessibilityElementsHidden={true}
                                 className="text-hivis"
+                                importantForAccessibility="no"
                                 style={
                                   {
                                     "fontFamily": "Archivo_400Regular",
@@ -23901,6 +23955,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               <Text
                                 accessibilityElementsHidden={true}
                                 className="text-hivis"
+                                importantForAccessibility="no"
                                 style={
                                   {
                                     "fontFamily": "Archivo_400Regular",
@@ -24026,6 +24081,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               <Text
                                 accessibilityElementsHidden={true}
                                 className="text-hivis"
+                                importantForAccessibility="no"
                                 style={
                                   {
                                     "fontFamily": "Archivo_400Regular",
@@ -25065,6 +25121,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       <Text
                         accessibilityElementsHidden={true}
                         className="text-dim"
+                        importantForAccessibility="no"
                         style={
                           {
                             "fontFamily": "Archivo_400Regular",
@@ -25083,6 +25140,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     </View>
                     <Text
                       className="text-chalk flex-1"
+                      numberOfLines={1}
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -25103,7 +25161,6 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 <RCTScrollView
                   className="flex-1"
                   contentContainerClassName="px-4 pb-6 pt-5"
-                  showsVerticalScrollIndicator={false}
                 >
                   <View>
                     <Text
@@ -25333,10 +25390,11 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       <View>
                         <View
                           accessibilityLabel="درجہ 7,411 / 9,033"
+                          accessible={true}
                           className="border-b border-panel3 py-3"
                           style={
                             {
-                              "alignItems": "center",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -25364,7 +25422,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-chalk"
+                            className="text-chalk shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "Archivo_700Bold",
@@ -25385,10 +25444,11 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         </View>
                         <View
                           accessibilityLabel="درستگی 44%"
+                          accessible={true}
                           className="border-b border-panel3 py-3"
                           style={
                             {
-                              "alignItems": "center",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -25416,7 +25476,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-chalk"
+                            className="text-chalk shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "Archivo_700Bold",
@@ -25436,11 +25497,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                         </View>
                         <View
-                          accessibilityLabel="فی سوال اوسط وقت 1m 22s"
-                          className="border-b border-panel3 py-3"
+                          accessibilityLabel="فی سوال اوسط وقت 1 منٹ 22 سیکنڈ"
+                          accessible={true}
+                          className="py-3"
                           style={
                             {
-                              "alignItems": "center",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -25466,26 +25528,119 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           >
                             فی سوال اوسط وقت
                           </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-chalk"
+                          <View
+                            accessibilityLabel="1 منٹ 22 سیکنڈ"
+                            accessible={true}
+                            className="shrink-0"
                             style={
                               {
-                                "fontFamily": "Archivo_700Bold",
-                                "fontSize": 14.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
-                                "letterSpacing": 0,
-                                "lineHeight": 21,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
                               }
                             }
                           >
-                            ⁦1m 22s⁩
-                          </Text>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-chalk"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_700Bold",
+                                    "fontSize": 14.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 21,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦1⁩
+                              </Text>
+                              <Text
+                                className="text-chalk"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 15.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 31.8,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 منٹ
+                              </Text>
+                            </View>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-chalk"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_700Bold",
+                                    "fontSize": 14.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 21,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦22⁩
+                              </Text>
+                              <Text
+                                className="text-chalk"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 15.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 31.8,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
+                          </View>
                         </View>
                       </View>
                     </View>
@@ -25554,7 +25709,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           className="border-b border-panel3 py-3"
                           style={
                             {
-                              "alignItems": "flex-start",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -25592,7 +25747,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               ریزننگ درستگی
                             </Text>
                             <Text
-                              className="text-mute"
+                              className="text-dim"
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -25611,7 +25766,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </View>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-hazard"
+                            className="text-hazard shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "Archivo_700Bold",
@@ -25634,7 +25790,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           className="border-b border-panel3 py-3"
                           style={
                             {
-                              "alignItems": "flex-start",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -25672,7 +25828,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               فی پزل سیٹ وقت
                             </Text>
                             <Text
-                              className="text-mute"
+                              className="text-dim"
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -25690,7 +25846,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             </Text>
                           </View>
                           <Text
-                            className="text-hazard"
+                            className="text-hazard shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -25710,10 +25867,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </Text>
                         </View>
                         <View
-                          className="border-b border-panel3 py-3"
+                          className="py-3"
                           style={
                             {
-                              "alignItems": "flex-start",
+                              "alignItems": "baseline",
                               "flexDirection": "row-reverse",
                               "flexWrap": undefined,
                               "gap": 12,
@@ -25751,7 +25908,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               منفی نمبر
                             </Text>
                             <Text
-                              className="text-mute"
+                              className="text-dim"
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -25770,7 +25927,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           </View>
                           <Text
                             accessibilityLanguage="en"
-                            className="text-hazard"
+                            className="text-hazard shrink-0"
+                            numberOfLines={1}
                             style={
                               {
                                 "fontFamily": "Archivo_700Bold",
@@ -25968,6 +26126,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               <Text
                                 accessibilityElementsHidden={true}
                                 className="text-hivis"
+                                importantForAccessibility="no"
                                 style={
                                   {
                                     "fontFamily": "Archivo_400Regular",
@@ -26093,6 +26252,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               <Text
                                 accessibilityElementsHidden={true}
                                 className="text-hivis"
+                                importantForAccessibility="no"
                                 style={
                                   {
                                     "fontFamily": "Archivo_400Regular",
@@ -26218,6 +26378,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               <Text
                                 accessibilityElementsHidden={true}
                                 className="text-hivis"
+                                importantForAccessibility="no"
                                 style={
                                   {
                                     "fontFamily": "Archivo_400Regular",
@@ -27257,6 +27418,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       <Text
                         accessibilityElementsHidden={true}
                         className="text-dim"
+                        importantForAccessibility="no"
                         style={
                           {
                             "fontFamily": "Archivo_400Regular",
@@ -27275,6 +27437,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     </View>
                     <Text
                       className="text-chalk flex-1"
+                      numberOfLines={1}
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -27310,7 +27473,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     className="h-3 w-16 rounded-xs bg-panel3"
                   />
                   <View
-                    className="h-16 w-1/2 rounded-xs bg-panel3"
+                    className="h-14 w-1/2 rounded-xs bg-panel3"
                   />
                   <View
                     className="h-8 w-1/3 rounded-xs bg-panel3"
@@ -27323,6 +27486,18 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                   />
                   <View
                     className="h-8 w-full rounded-xs bg-panel3"
+                  />
+                  <View
+                    className="h-8 w-full rounded-xs bg-panel3"
+                  />
+                  <View
+                    className="h-8 w-full rounded-xs bg-panel3"
+                  />
+                  <View
+                    className="h-8 w-full rounded-xs bg-panel3"
+                  />
+                  <View
+                    className="h-16 w-full rounded-xs bg-panel3"
                   />
                   <View
                     className="h-16 w-full rounded-xs bg-panel3"
@@ -28275,6 +28450,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       <Text
                         accessibilityElementsHidden={true}
                         className="text-dim"
+                        importantForAccessibility="no"
                         style={
                           {
                             "fontFamily": "Archivo_400Regular",
@@ -28293,6 +28469,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     </View>
                     <Text
                       className="text-chalk flex-1"
+                      numberOfLines={1}
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -28322,23 +28499,51 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                   }
                   testID="result-error"
                 >
-                  <Text
-                    className="text-dim"
+                  <View
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 14.5,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 29.7,
-                        "textAlign": "right",
-                        "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "alignItems": undefined,
+                        "flexDirection": "column",
+                        "gap": 8,
+                        "justifyContent": undefined,
                       }
                     }
                   >
-                    نتیجہ لوڈ نہیں ہوا۔
-                  </Text>
+                    <Text
+                      className="text-flag"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_700Bold",
+                          "fontSize": 13,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 26.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      مسئلہ
+                    </Text>
+                    <Text
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 14.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 29.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      نتیجہ لوڈ نہیں ہوا۔
+                    </Text>
+                  </View>
                   <View
                     accessibilityRole="button"
                     accessibilityState={
@@ -29353,6 +29558,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       <Text
                         accessibilityElementsHidden={true}
                         className="text-dim"
+                        importantForAccessibility="no"
                         style={
                           {
                             "fontFamily": "Archivo_400Regular",
@@ -29371,6 +29577,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     </View>
                     <Text
                       className="text-chalk flex-1"
+                      numberOfLines={1}
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -29436,23 +29643,55 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       style={{}}
                       testID="solutions-filter-wrong"
                     >
-                      <Text
-                        className="text-tar"
+                      <View
                         style={
                           {
-                            "fontFamily": "NotoNastaliqUrdu_700Bold",
-                            "fontSize": 13.5,
-                            "fontVariant": undefined,
-                            "letterSpacing": 0,
-                            "lineHeight": 27.7,
-                            "textAlign": "center",
-                            "textTransform": undefined,
-                            "writingDirection": "rtl",
+                            "alignItems": "baseline",
+                            "flexDirection": "row-reverse",
+                            "flexWrap": undefined,
+                            "gap": 4,
+                            "justifyContent": undefined,
                           }
                         }
                       >
-                        غلط (3)
-                      </Text>
+                        <Text
+                          className="text-tar"
+                          style={
+                            {
+                              "fontFamily": "NotoNastaliqUrdu_700Bold",
+                              "fontSize": 13.5,
+                              "fontVariant": undefined,
+                              "letterSpacing": 0,
+                              "lineHeight": 27.7,
+                              "textAlign": "center",
+                              "textTransform": undefined,
+                              "writingDirection": "rtl",
+                            }
+                          }
+                        >
+                          غلط
+                        </Text>
+                        <Text
+                          accessibilityLanguage="en"
+                          className="text-tar"
+                          style={
+                            {
+                              "fontFamily": "Archivo_700Bold",
+                              "fontSize": 12.5,
+                              "fontVariant": [
+                                "tabular-nums",
+                              ],
+                              "letterSpacing": 0,
+                              "lineHeight": 18.1,
+                              "textAlign": "right",
+                              "textTransform": undefined,
+                              "writingDirection": "ltr",
+                            }
+                          }
+                        >
+                          ⁦(3)⁩
+                        </Text>
+                      </View>
                     </View>
                     <View
                       accessibilityRole="button"
@@ -29490,23 +29729,55 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       style={{}}
                       testID="solutions-filter-all"
                     >
-                      <Text
-                        className="text-dim"
+                      <View
                         style={
                           {
-                            "fontFamily": "NotoNastaliqUrdu_700Bold",
-                            "fontSize": 13.5,
-                            "fontVariant": undefined,
-                            "letterSpacing": 0,
-                            "lineHeight": 27.7,
-                            "textAlign": "center",
-                            "textTransform": undefined,
-                            "writingDirection": "rtl",
+                            "alignItems": "baseline",
+                            "flexDirection": "row-reverse",
+                            "flexWrap": undefined,
+                            "gap": 4,
+                            "justifyContent": undefined,
                           }
                         }
                       >
-                        سب (4)
-                      </Text>
+                        <Text
+                          className="text-dim"
+                          style={
+                            {
+                              "fontFamily": "NotoNastaliqUrdu_700Bold",
+                              "fontSize": 13.5,
+                              "fontVariant": undefined,
+                              "letterSpacing": 0,
+                              "lineHeight": 27.7,
+                              "textAlign": "center",
+                              "textTransform": undefined,
+                              "writingDirection": "rtl",
+                            }
+                          }
+                        >
+                          سب
+                        </Text>
+                        <Text
+                          accessibilityLanguage="en"
+                          className="text-dim"
+                          style={
+                            {
+                              "fontFamily": "Archivo_600SemiBold",
+                              "fontSize": 12.5,
+                              "fontVariant": [
+                                "tabular-nums",
+                              ],
+                              "letterSpacing": 0,
+                              "lineHeight": 18.1,
+                              "textAlign": "right",
+                              "textTransform": undefined,
+                              "writingDirection": "ltr",
+                            }
+                          }
+                        >
+                          ⁦(4)⁩
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -29560,49 +29831,6 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         "your": 1,
                       },
                       {
-                        "correct": 2,
-                        "isCorrect": false,
-                        "question": {
-                          "avgSeconds": 44,
-                          "correct": 1,
-                          "explanation": {
-                            "en": "Selling price = 115% of cost. Cost = 460 ÷ 1.15 = ₹400.",
-                            "te": "అమ్మకపు ధర = కొన్న ధరలో 115%. కొన్న ధర = 460 ÷ 1.15 = ₹400.",
-                            "ur": "فروخت قیمت = لاگت کا 115%۔ لاگت = 460 ÷ 1.15 = ₹400۔",
-                          },
-                          "id": "q-ar-002#6",
-                          "options": {
-                            "en": [
-                              "₹380",
-                              "₹400",
-                              "₹410",
-                              "₹425",
-                            ],
-                            "te": [
-                              "₹380",
-                              "₹400",
-                              "₹410",
-                              "₹425",
-                            ],
-                            "ur": [
-                              "₹380",
-                              "₹400",
-                              "₹410",
-                              "₹425",
-                            ],
-                          },
-                          "section": "arithmetic",
-                          "text": {
-                            "en": "An article sold at a 15% profit fetches ₹460. What was its cost price?",
-                            "te": "ఒక వస్తువును 15% లాభంతో అమ్మితే ₹460 వస్తుంది. ఆ వస్తువు కొన్న ధర ఎంత?",
-                            "ur": "ایک چیز 15 فیصد نفع پر ₹460 میں فروخت ہوتی ہے۔ اس کی لاگت کیا تھی؟",
-                          },
-                        },
-                        "questionNo": 6,
-                        "seconds": 82,
-                        "your": 1,
-                      },
-                      {
                         "correct": 0,
                         "isCorrect": false,
                         "question": {
@@ -29645,6 +29873,49 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         "seconds": 124,
                         "your": 2,
                       },
+                      {
+                        "correct": 2,
+                        "isCorrect": false,
+                        "question": {
+                          "avgSeconds": 48,
+                          "correct": 2,
+                          "explanation": {
+                            "en": "Of the numbers given, 8, 27, 64 and 125 are all perfect cubes (2³, 3³, 4³, 5³). 100 is a perfect square (10²), not a cube — so 100 is the odd one.",
+                            "te": "ఇచ్చిన వాటిలో 8, 27, 64, 125 అన్నీ ఘనాలు (2³, 3³, 4³, 5³). 100 మాత్రం ఒక వర్గం (10²) — ఘనం కాదు. కాబట్టి 100 సరిపోదు.",
+                            "ur": "دیے گئے اعداد میں 8، 27، 64 اور 125 سب مکعب ہیں (2³، 3³، 4³، 5³)۔ 100 ایک مربع ہے (10²)، مکعب نہیں — اس لیے 100 غیر متعلق ہے۔",
+                          },
+                          "id": "q-re-001#15",
+                          "options": {
+                            "en": [
+                              "27",
+                              "64",
+                              "100",
+                              "125",
+                            ],
+                            "te": [
+                              "27",
+                              "64",
+                              "100",
+                              "125",
+                            ],
+                            "ur": [
+                              "27",
+                              "64",
+                              "100",
+                              "125",
+                            ],
+                          },
+                          "section": "reasoning",
+                          "text": {
+                            "en": "Find the odd one out: 8, 27, 64, 100, 125",
+                            "te": "క్రింది వాటిలో సరిపోని దానిని గుర్తించండి: 8, 27, 64, 100, 125",
+                            "ur": "درج ذیل میں سے غیر متعلق عدد کی نشاندہی کریں: 8، 27، 64، 100، 125",
+                          },
+                        },
+                        "questionNo": 15,
+                        "seconds": 19,
+                        "your": 1,
+                      },
                     ]
                   }
                   getItem={[Function]}
@@ -29660,7 +29931,6 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                   removeClippedSubviews={false}
                   renderItem={[Function]}
                   scrollEventThrottle={0.0001}
-                  showsVerticalScrollIndicator={false}
                   stickyHeaderIndices={[]}
                   testID="solutions-list"
                   viewabilityConfigCallbackPairs={[]}
@@ -29687,11 +29957,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <View
-                            className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
+                            className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
                           >
                             <Text
                               accessibilityElementsHidden={true}
                               className="text-white"
+                              importantForAccessibility="no"
                               style={
                                 {
                                   "fontFamily": "Archivo_700Bold",
@@ -29787,7 +30058,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           testID="solution-your-answer"
                         >
                           <Text
-                            className="text-flag"
+                            className="text-chalk"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -29817,6 +30088,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                                 "writingDirection": "rtl",
                               }
                             }
+                            testID="solution-your-answer-text"
                           >
                             ب · 64 کلومیٹر/گھنٹہ
                           </Text>
@@ -29863,6 +30135,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                                 "writingDirection": "rtl",
                               }
                             }
+                            testID="solution-correct-answer-text"
                           >
                             ج · 72 کلومیٹر/گھنٹہ
                           </Text>
@@ -29918,7 +30191,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -29934,129 +30207,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           >
                             آپ کا وقت
                           </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-mute"
-                            style={
-                              {
-                                "fontFamily": "Archivo_600SemiBold",
-                                "fontSize": 11.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
-                                "letterSpacing": 0,
-                                "lineHeight": 16.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
-                              }
-                            }
-                          >
-                            ⁦1m 47s⁩
-                          </Text>
-                          <Text
-                            className="text-mute"
-                            style={
-                              {
-                                "fontFamily": "Archivo_400Regular",
-                                "fontSize": 11.5,
-                                "fontVariant": undefined,
-                                "letterSpacing": 0,
-                                "lineHeight": 16.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
-                              }
-                            }
-                          >
-                            ·
-                          </Text>
-                          <Text
-                            className="text-mute"
-                            style={
-                              {
-                                "fontFamily": "NotoNastaliqUrdu_400Regular",
-                                "fontSize": 12.5,
-                                "fontVariant": undefined,
-                                "letterSpacing": 0,
-                                "lineHeight": 25.6,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "rtl",
-                              }
-                            }
-                          >
-                            اوسط
-                          </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-mute"
-                            style={
-                              {
-                                "fontFamily": "Archivo_600SemiBold",
-                                "fontSize": 11.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
-                                "letterSpacing": 0,
-                                "lineHeight": 16.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
-                              }
-                            }
-                          >
-                            ⁦52s⁩
-                          </Text>
-                        </View>
-                      </View>
-                      <View
-                        className="h-3"
-                      />
-                    </View>
-                    <View
-                      onFocusCapture={[Function]}
-                      onLayout={[Function]}
-                      style={null}
-                    >
-                      <View
-                        className="rounded-md border border-line bg-panel2 p-4"
-                        testID="solution-card"
-                      >
-                        <View
-                          style={
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row-reverse",
-                              "flexWrap": undefined,
-                              "gap": 8,
-                              "justifyContent": undefined,
-                            }
-                          }
-                        >
                           <View
-                            className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
-                          >
-                            <Text
-                              accessibilityElementsHidden={true}
-                              className="text-white"
-                              style={
-                                {
-                                  "fontFamily": "Archivo_700Bold",
-                                  "fontSize": 12.5,
-                                  "fontVariant": undefined,
-                                  "letterSpacing": 0,
-                                  "lineHeight": 18.1,
-                                  "textAlign": "center",
-                                  "textTransform": undefined,
-                                  "writingDirection": "ltr",
-                                }
-                              }
-                            >
-                              ✕
-                            </Text>
-                          </View>
-                          <View
+                            accessibilityLabel="1 منٹ 47 سیکنڈ"
+                            accessible={true}
                             style={
                               {
                                 "alignItems": "baseline",
@@ -30066,244 +30219,109 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                                 "justifyContent": undefined,
                               }
                             }
+                            testID="solution-your-time"
                           >
-                            <Text
-                              className="text-dim"
+                            <View
                               style={
                                 {
-                                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                  "fontSize": 13,
-                                  "fontVariant": undefined,
-                                  "letterSpacing": 0,
-                                  "lineHeight": 26.7,
-                                  "textAlign": "right",
-                                  "textTransform": undefined,
-                                  "writingDirection": "rtl",
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
                                 }
                               }
                             >
-                              س
-                            </Text>
-                            <Text
-                              accessibilityLanguage="en"
-                              className="text-dim"
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦1⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 منٹ
+                              </Text>
+                            </View>
+                            <View
                               style={
                                 {
-                                  "fontFamily": "Archivo_700Bold",
-                                  "fontSize": 10.5,
-                                  "fontVariant": [
-                                    "tabular-nums",
-                                  ],
-                                  "letterSpacing": 0,
-                                  "lineHeight": 15.2,
-                                  "textAlign": "right",
-                                  "textTransform": undefined,
-                                  "writingDirection": "ltr",
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
                                 }
                               }
                             >
-                              ⁦6⁩
-                            </Text>
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦47⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
                           </View>
-                        </View>
-                        <Text
-                          className="text-chalk mt-3"
-                          style={
-                            {
-                              "fontFamily": "NotoNastaliqUrdu_400Regular",
-                              "fontSize": 15.5,
-                              "fontVariant": undefined,
-                              "letterSpacing": 0,
-                              "lineHeight": 31.8,
-                              "textAlign": "right",
-                              "textTransform": undefined,
-                              "writingDirection": "rtl",
-                            }
-                          }
-                        >
-                          ایک چیز 15 فیصد نفع پر ₹460 میں فروخت ہوتی ہے۔ اس کی لاگت کیا تھی؟
-                        </Text>
-                        <View
-                          className="mt-3 px-3 py-2"
-                          style={
-                            {
-                              "backgroundColor": "rgba(228,72,59,0.08)",
-                              "borderRightColor": "#E4483B",
-                              "borderRightWidth": 3,
-                            }
-                          }
-                          testID="solution-your-answer"
-                        >
                           <Text
-                            className="text-flag"
-                            style={
-                              {
-                                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 13,
-                                "fontVariant": undefined,
-                                "letterSpacing": 0,
-                                "lineHeight": 26.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "rtl",
-                              }
-                            }
-                          >
-                            آپ کا جواب
-                          </Text>
-                          <Text
-                            className="text-chalk mt-1"
-                            style={
-                              {
-                                "fontFamily": "NotoNastaliqUrdu_400Regular",
-                                "fontSize": 14.5,
-                                "fontVariant": undefined,
-                                "letterSpacing": 0,
-                                "lineHeight": 29.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "rtl",
-                              }
-                            }
-                          >
-                            ب · ₹400
-                          </Text>
-                        </View>
-                        <View
-                          className="mt-2 px-3 py-2"
-                          style={
-                            {
-                              "backgroundColor": "rgba(255,224,27,0.07)",
-                              "borderRightColor": "#FFE01B",
-                              "borderRightWidth": 3,
-                            }
-                          }
-                          testID="solution-correct-answer"
-                        >
-                          <Text
-                            className="text-hivis"
-                            style={
-                              {
-                                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 13,
-                                "fontVariant": undefined,
-                                "letterSpacing": 0,
-                                "lineHeight": 26.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "rtl",
-                              }
-                            }
-                          >
-                            درست جواب
-                          </Text>
-                          <Text
-                            className="text-chalk mt-1"
-                            style={
-                              {
-                                "fontFamily": "NotoNastaliqUrdu_400Regular",
-                                "fontSize": 14.5,
-                                "fontVariant": undefined,
-                                "letterSpacing": 0,
-                                "lineHeight": 29.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "rtl",
-                              }
-                            }
-                          >
-                            ج · ₹410
-                          </Text>
-                        </View>
-                        <View
-                          className="mt-3 border-t border-panel3 pt-3"
-                        >
-                          <Text
-                            className="text-sand"
-                            style={
-                              {
-                                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 13,
-                                "fontVariant": undefined,
-                                "letterSpacing": 0,
-                                "lineHeight": 26.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "rtl",
-                              }
-                            }
-                          >
-                            کیوں
-                          </Text>
-                          <Text
-                            className="text-chalk2 mt-2"
-                            style={
-                              {
-                                "fontFamily": "NotoNastaliqUrdu_400Regular",
-                                "fontSize": 14.5,
-                                "fontVariant": undefined,
-                                "letterSpacing": 0,
-                                "lineHeight": 29.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "rtl",
-                              }
-                            }
-                          >
-                            فروخت قیمت = لاگت کا 115%۔ لاگت = 460 ÷ 1.15 = ₹400۔
-                          </Text>
-                        </View>
-                        <View
-                          className="mt-3"
-                          style={
-                            {
-                              "alignItems": "baseline",
-                              "flexDirection": "row-reverse",
-                              "flexWrap": "wrap",
-                              "gap": 4,
-                              "justifyContent": undefined,
-                            }
-                          }
-                        >
-                          <Text
-                            className="text-mute"
-                            style={
-                              {
-                                "fontFamily": "NotoNastaliqUrdu_400Regular",
-                                "fontSize": 12.5,
-                                "fontVariant": undefined,
-                                "letterSpacing": 0,
-                                "lineHeight": 25.6,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "rtl",
-                              }
-                            }
-                          >
-                            آپ کا وقت
-                          </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-mute"
-                            style={
-                              {
-                                "fontFamily": "Archivo_600SemiBold",
-                                "fontSize": 11.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
-                                "letterSpacing": 0,
-                                "lineHeight": 16.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
-                              }
-                            }
-                          >
-                            ⁦1m 22s⁩
-                          </Text>
-                          <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_400Regular",
@@ -30320,7 +30338,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ·
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -30336,26 +30354,70 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           >
                             اوسط
                           </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-mute"
+                          <View
+                            accessibilityLabel="52 سیکنڈ"
+                            accessible={true}
                             style={
                               {
-                                "fontFamily": "Archivo_600SemiBold",
-                                "fontSize": 11.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
-                                "letterSpacing": 0,
-                                "lineHeight": 16.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
                               }
                             }
+                            testID="solution-avg-time"
                           >
-                            ⁦44s⁩
-                          </Text>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦52⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
+                          </View>
                         </View>
                       </View>
                       <View
@@ -30383,11 +30445,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <View
-                            className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
+                            className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
                           >
                             <Text
                               accessibilityElementsHidden={true}
                               className="text-white"
+                              importantForAccessibility="no"
                               style={
                                 {
                                   "fontFamily": "Archivo_700Bold",
@@ -30483,7 +30546,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           testID="solution-your-answer"
                         >
                           <Text
-                            className="text-flag"
+                            className="text-chalk"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -30513,6 +30576,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                                 "writingDirection": "rtl",
                               }
                             }
+                            testID="solution-your-answer-text"
                           >
                             ج · HUBSE
                           </Text>
@@ -30559,6 +30623,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                                 "writingDirection": "rtl",
                               }
                             }
+                            testID="solution-correct-answer-text"
                           >
                             ا · HVBSE
                           </Text>
@@ -30614,7 +30679,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -30630,28 +30695,121 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           >
                             آپ کا وقت
                           </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-mute"
+                          <View
+                            accessibilityLabel="2 منٹ 04 سیکنڈ"
+                            accessible={true}
                             style={
                               {
-                                "fontFamily": "Archivo_600SemiBold",
-                                "fontSize": 11.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
-                                "letterSpacing": 0,
-                                "lineHeight": 16.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
                               }
                             }
+                            testID="solution-your-time"
                           >
-                            ⁦2m 04s⁩
-                          </Text>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦2⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 منٹ
+                              </Text>
+                            </View>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦04⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
+                          </View>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_400Regular",
@@ -30668,7 +30826,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ·
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -30684,16 +30842,418 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           >
                             اوسط
                           </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-mute"
+                          <View
+                            accessibilityLabel="55 سیکنڈ"
+                            accessible={true}
                             style={
                               {
-                                "fontFamily": "Archivo_600SemiBold",
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
+                              }
+                            }
+                            testID="solution-avg-time"
+                          >
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦55⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        className="h-3"
+                      />
+                    </View>
+                    <View
+                      onFocusCapture={[Function]}
+                      onLayout={[Function]}
+                      style={null}
+                    >
+                      <View
+                        className="rounded-md border border-line bg-panel2 p-4"
+                        testID="solution-card"
+                      >
+                        <View
+                          style={
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row-reverse",
+                              "flexWrap": undefined,
+                              "gap": 8,
+                              "justifyContent": undefined,
+                            }
+                          }
+                        >
+                          <View
+                            className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
+                          >
+                            <Text
+                              accessibilityElementsHidden={true}
+                              className="text-white"
+                              importantForAccessibility="no"
+                              style={
+                                {
+                                  "fontFamily": "Archivo_700Bold",
+                                  "fontSize": 12.5,
+                                  "fontVariant": undefined,
+                                  "letterSpacing": 0,
+                                  "lineHeight": 18.1,
+                                  "textAlign": "center",
+                                  "textTransform": undefined,
+                                  "writingDirection": "ltr",
+                                }
+                              }
+                            >
+                              ✕
+                            </Text>
+                          </View>
+                          <View
+                            style={
+                              {
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
+                              }
+                            }
+                          >
+                            <Text
+                              className="text-dim"
+                              style={
+                                {
+                                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                  "fontSize": 13,
+                                  "fontVariant": undefined,
+                                  "letterSpacing": 0,
+                                  "lineHeight": 26.7,
+                                  "textAlign": "right",
+                                  "textTransform": undefined,
+                                  "writingDirection": "rtl",
+                                }
+                              }
+                            >
+                              س
+                            </Text>
+                            <Text
+                              accessibilityLanguage="en"
+                              className="text-dim"
+                              style={
+                                {
+                                  "fontFamily": "Archivo_700Bold",
+                                  "fontSize": 10.5,
+                                  "fontVariant": [
+                                    "tabular-nums",
+                                  ],
+                                  "letterSpacing": 0,
+                                  "lineHeight": 15.2,
+                                  "textAlign": "right",
+                                  "textTransform": undefined,
+                                  "writingDirection": "ltr",
+                                }
+                              }
+                            >
+                              ⁦15⁩
+                            </Text>
+                          </View>
+                        </View>
+                        <Text
+                          className="text-chalk mt-3"
+                          style={
+                            {
+                              "fontFamily": "NotoNastaliqUrdu_400Regular",
+                              "fontSize": 15.5,
+                              "fontVariant": undefined,
+                              "letterSpacing": 0,
+                              "lineHeight": 31.8,
+                              "textAlign": "right",
+                              "textTransform": undefined,
+                              "writingDirection": "rtl",
+                            }
+                          }
+                        >
+                          درج ذیل میں سے غیر متعلق عدد کی نشاندہی کریں: 8، 27، 64، 100، 125
+                        </Text>
+                        <View
+                          className="mt-3 px-3 py-2"
+                          style={
+                            {
+                              "backgroundColor": "rgba(228,72,59,0.08)",
+                              "borderRightColor": "#E4483B",
+                              "borderRightWidth": 3,
+                            }
+                          }
+                          testID="solution-your-answer"
+                        >
+                          <Text
+                            className="text-chalk"
+                            style={
+                              {
+                                "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                "fontSize": 13,
+                                "fontVariant": undefined,
+                                "letterSpacing": 0,
+                                "lineHeight": 26.7,
+                                "textAlign": "right",
+                                "textTransform": undefined,
+                                "writingDirection": "rtl",
+                              }
+                            }
+                          >
+                            آپ کا جواب
+                          </Text>
+                          <Text
+                            className="text-chalk mt-1"
+                            style={
+                              {
+                                "fontFamily": "NotoNastaliqUrdu_400Regular",
+                                "fontSize": 14.5,
+                                "fontVariant": undefined,
+                                "letterSpacing": 0,
+                                "lineHeight": 29.7,
+                                "textAlign": "right",
+                                "textTransform": undefined,
+                                "writingDirection": "rtl",
+                              }
+                            }
+                            testID="solution-your-answer-text"
+                          >
+                            ب · 64
+                          </Text>
+                        </View>
+                        <View
+                          className="mt-2 px-3 py-2"
+                          style={
+                            {
+                              "backgroundColor": "rgba(255,224,27,0.07)",
+                              "borderRightColor": "#FFE01B",
+                              "borderRightWidth": 3,
+                            }
+                          }
+                          testID="solution-correct-answer"
+                        >
+                          <Text
+                            className="text-hivis"
+                            style={
+                              {
+                                "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                "fontSize": 13,
+                                "fontVariant": undefined,
+                                "letterSpacing": 0,
+                                "lineHeight": 26.7,
+                                "textAlign": "right",
+                                "textTransform": undefined,
+                                "writingDirection": "rtl",
+                              }
+                            }
+                          >
+                            درست جواب
+                          </Text>
+                          <Text
+                            className="text-chalk mt-1"
+                            style={
+                              {
+                                "fontFamily": "NotoNastaliqUrdu_400Regular",
+                                "fontSize": 14.5,
+                                "fontVariant": undefined,
+                                "letterSpacing": 0,
+                                "lineHeight": 29.7,
+                                "textAlign": "right",
+                                "textTransform": undefined,
+                                "writingDirection": "rtl",
+                              }
+                            }
+                            testID="solution-correct-answer-text"
+                          >
+                            ج · 100
+                          </Text>
+                        </View>
+                        <View
+                          className="mt-3 border-t border-panel3 pt-3"
+                        >
+                          <Text
+                            className="text-sand"
+                            style={
+                              {
+                                "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                "fontSize": 13,
+                                "fontVariant": undefined,
+                                "letterSpacing": 0,
+                                "lineHeight": 26.7,
+                                "textAlign": "right",
+                                "textTransform": undefined,
+                                "writingDirection": "rtl",
+                              }
+                            }
+                          >
+                            کیوں
+                          </Text>
+                          <Text
+                            className="text-chalk2 mt-2"
+                            style={
+                              {
+                                "fontFamily": "NotoNastaliqUrdu_400Regular",
+                                "fontSize": 14.5,
+                                "fontVariant": undefined,
+                                "letterSpacing": 0,
+                                "lineHeight": 29.7,
+                                "textAlign": "right",
+                                "textTransform": undefined,
+                                "writingDirection": "rtl",
+                              }
+                            }
+                          >
+                            دیے گئے اعداد میں 8، 27، 64 اور 125 سب مکعب ہیں (2³، 3³، 4³، 5³)۔ 100 ایک مربع ہے (10²)، مکعب نہیں — اس لیے 100 غیر متعلق ہے۔
+                          </Text>
+                        </View>
+                        <View
+                          className="mt-3"
+                          style={
+                            {
+                              "alignItems": "baseline",
+                              "flexDirection": "row-reverse",
+                              "flexWrap": "wrap",
+                              "gap": 4,
+                              "justifyContent": undefined,
+                            }
+                          }
+                        >
+                          <Text
+                            className="text-dim"
+                            style={
+                              {
+                                "fontFamily": "NotoNastaliqUrdu_400Regular",
+                                "fontSize": 12.5,
+                                "fontVariant": undefined,
+                                "letterSpacing": 0,
+                                "lineHeight": 25.6,
+                                "textAlign": "right",
+                                "textTransform": undefined,
+                                "writingDirection": "rtl",
+                              }
+                            }
+                          >
+                            آپ کا وقت
+                          </Text>
+                          <View
+                            accessibilityLabel="19 سیکنڈ"
+                            accessible={true}
+                            style={
+                              {
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
+                              }
+                            }
+                            testID="solution-your-time"
+                          >
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦19⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
+                          </View>
+                          <Text
+                            className="text-dim"
+                            style={
+                              {
+                                "fontFamily": "Archivo_400Regular",
                                 "fontSize": 11.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
+                                "fontVariant": undefined,
                                 "letterSpacing": 0,
                                 "lineHeight": 16.7,
                                 "textAlign": "right",
@@ -30702,8 +31262,89 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               }
                             }
                           >
-                            ⁦55s⁩
+                            ·
                           </Text>
+                          <Text
+                            className="text-dim"
+                            style={
+                              {
+                                "fontFamily": "NotoNastaliqUrdu_400Regular",
+                                "fontSize": 12.5,
+                                "fontVariant": undefined,
+                                "letterSpacing": 0,
+                                "lineHeight": 25.6,
+                                "textAlign": "right",
+                                "textTransform": undefined,
+                                "writingDirection": "rtl",
+                              }
+                            }
+                          >
+                            اوسط
+                          </Text>
+                          <View
+                            accessibilityLabel="48 سیکنڈ"
+                            accessible={true}
+                            style={
+                              {
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
+                              }
+                            }
+                            testID="solution-avg-time"
+                          >
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦48⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
+                          </View>
                         </View>
                       </View>
                     </View>
@@ -31653,6 +32294,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       <Text
                         accessibilityElementsHidden={true}
                         className="text-dim"
+                        importantForAccessibility="no"
                         style={
                           {
                             "fontFamily": "Archivo_400Regular",
@@ -31671,6 +32313,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     </View>
                     <Text
                       className="text-chalk flex-1"
+                      numberOfLines={1}
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -31736,23 +32379,55 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       style={{}}
                       testID="solutions-filter-wrong"
                     >
-                      <Text
-                        className="text-dim"
+                      <View
                         style={
                           {
-                            "fontFamily": "NotoNastaliqUrdu_700Bold",
-                            "fontSize": 13.5,
-                            "fontVariant": undefined,
-                            "letterSpacing": 0,
-                            "lineHeight": 27.7,
-                            "textAlign": "center",
-                            "textTransform": undefined,
-                            "writingDirection": "rtl",
+                            "alignItems": "baseline",
+                            "flexDirection": "row-reverse",
+                            "flexWrap": undefined,
+                            "gap": 4,
+                            "justifyContent": undefined,
                           }
                         }
                       >
-                        غلط (3)
-                      </Text>
+                        <Text
+                          className="text-dim"
+                          style={
+                            {
+                              "fontFamily": "NotoNastaliqUrdu_700Bold",
+                              "fontSize": 13.5,
+                              "fontVariant": undefined,
+                              "letterSpacing": 0,
+                              "lineHeight": 27.7,
+                              "textAlign": "center",
+                              "textTransform": undefined,
+                              "writingDirection": "rtl",
+                            }
+                          }
+                        >
+                          غلط
+                        </Text>
+                        <Text
+                          accessibilityLanguage="en"
+                          className="text-dim"
+                          style={
+                            {
+                              "fontFamily": "Archivo_600SemiBold",
+                              "fontSize": 12.5,
+                              "fontVariant": [
+                                "tabular-nums",
+                              ],
+                              "letterSpacing": 0,
+                              "lineHeight": 18.1,
+                              "textAlign": "right",
+                              "textTransform": undefined,
+                              "writingDirection": "ltr",
+                            }
+                          }
+                        >
+                          ⁦(3)⁩
+                        </Text>
+                      </View>
                     </View>
                     <View
                       accessibilityRole="button"
@@ -31790,23 +32465,55 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       style={{}}
                       testID="solutions-filter-all"
                     >
-                      <Text
-                        className="text-tar"
+                      <View
                         style={
                           {
-                            "fontFamily": "NotoNastaliqUrdu_700Bold",
-                            "fontSize": 13.5,
-                            "fontVariant": undefined,
-                            "letterSpacing": 0,
-                            "lineHeight": 27.7,
-                            "textAlign": "center",
-                            "textTransform": undefined,
-                            "writingDirection": "rtl",
+                            "alignItems": "baseline",
+                            "flexDirection": "row-reverse",
+                            "flexWrap": undefined,
+                            "gap": 4,
+                            "justifyContent": undefined,
                           }
                         }
                       >
-                        سب (4)
-                      </Text>
+                        <Text
+                          className="text-tar"
+                          style={
+                            {
+                              "fontFamily": "NotoNastaliqUrdu_700Bold",
+                              "fontSize": 13.5,
+                              "fontVariant": undefined,
+                              "letterSpacing": 0,
+                              "lineHeight": 27.7,
+                              "textAlign": "center",
+                              "textTransform": undefined,
+                              "writingDirection": "rtl",
+                            }
+                          }
+                        >
+                          سب
+                        </Text>
+                        <Text
+                          accessibilityLanguage="en"
+                          className="text-tar"
+                          style={
+                            {
+                              "fontFamily": "Archivo_700Bold",
+                              "fontSize": 12.5,
+                              "fontVariant": [
+                                "tabular-nums",
+                              ],
+                              "letterSpacing": 0,
+                              "lineHeight": 18.1,
+                              "textAlign": "right",
+                              "textTransform": undefined,
+                              "writingDirection": "ltr",
+                            }
+                          }
+                        >
+                          ⁦(4)⁩
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -31860,8 +32567,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         "your": 1,
                       },
                       {
-                        "correct": 2,
-                        "isCorrect": false,
+                        "correct": 1,
+                        "isCorrect": true,
                         "question": {
                           "avgSeconds": 44,
                           "correct": 1,
@@ -31946,8 +32653,8 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         "your": 2,
                       },
                       {
-                        "correct": 1,
-                        "isCorrect": true,
+                        "correct": 2,
+                        "isCorrect": false,
                         "question": {
                           "avgSeconds": 48,
                           "correct": 2,
@@ -32003,7 +32710,6 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                   removeClippedSubviews={false}
                   renderItem={[Function]}
                   scrollEventThrottle={0.0001}
-                  showsVerticalScrollIndicator={false}
                   stickyHeaderIndices={[]}
                   testID="solutions-list"
                   viewabilityConfigCallbackPairs={[]}
@@ -32030,11 +32736,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <View
-                            className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
+                            className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
                           >
                             <Text
                               accessibilityElementsHidden={true}
                               className="text-white"
+                              importantForAccessibility="no"
                               style={
                                 {
                                   "fontFamily": "Archivo_700Bold",
@@ -32130,7 +32837,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           testID="solution-your-answer"
                         >
                           <Text
-                            className="text-flag"
+                            className="text-chalk"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -32160,6 +32867,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                                 "writingDirection": "rtl",
                               }
                             }
+                            testID="solution-your-answer-text"
                           >
                             ب · 64 کلومیٹر/گھنٹہ
                           </Text>
@@ -32206,6 +32914,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                                 "writingDirection": "rtl",
                               }
                             }
+                            testID="solution-correct-answer-text"
                           >
                             ج · 72 کلومیٹر/گھنٹہ
                           </Text>
@@ -32261,7 +32970,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -32277,28 +32986,121 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           >
                             آپ کا وقت
                           </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-mute"
+                          <View
+                            accessibilityLabel="1 منٹ 47 سیکنڈ"
+                            accessible={true}
                             style={
                               {
-                                "fontFamily": "Archivo_600SemiBold",
-                                "fontSize": 11.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
-                                "letterSpacing": 0,
-                                "lineHeight": 16.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
                               }
                             }
+                            testID="solution-your-time"
                           >
-                            ⁦1m 47s⁩
-                          </Text>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦1⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 منٹ
+                              </Text>
+                            </View>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦47⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
+                          </View>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_400Regular",
@@ -32315,7 +33117,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ·
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -32331,26 +33133,70 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           >
                             اوسط
                           </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-mute"
+                          <View
+                            accessibilityLabel="52 سیکنڈ"
+                            accessible={true}
                             style={
                               {
-                                "fontFamily": "Archivo_600SemiBold",
-                                "fontSize": 11.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
-                                "letterSpacing": 0,
-                                "lineHeight": 16.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
                               }
                             }
+                            testID="solution-avg-time"
                           >
-                            ⁦52s⁩
-                          </Text>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦52⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
+                          </View>
                         </View>
                       </View>
                       <View
@@ -32378,11 +33224,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <View
-                            className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
+                            className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-hivis"
                           >
                             <Text
                               accessibilityElementsHidden={true}
-                              className="text-white"
+                              className="text-tar"
+                              importantForAccessibility="no"
                               style={
                                 {
                                   "fontFamily": "Archivo_700Bold",
@@ -32396,7 +33243,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                                 }
                               }
                             >
-                              ✕
+                              ✓
                             </Text>
                           </View>
                           <View
@@ -32467,52 +33314,6 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           ایک چیز 15 فیصد نفع پر ₹460 میں فروخت ہوتی ہے۔ اس کی لاگت کیا تھی؟
                         </Text>
                         <View
-                          className="mt-3 px-3 py-2"
-                          style={
-                            {
-                              "backgroundColor": "rgba(228,72,59,0.08)",
-                              "borderRightColor": "#E4483B",
-                              "borderRightWidth": 3,
-                            }
-                          }
-                          testID="solution-your-answer"
-                        >
-                          <Text
-                            className="text-flag"
-                            style={
-                              {
-                                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 13,
-                                "fontVariant": undefined,
-                                "letterSpacing": 0,
-                                "lineHeight": 26.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "rtl",
-                              }
-                            }
-                          >
-                            آپ کا جواب
-                          </Text>
-                          <Text
-                            className="text-chalk mt-1"
-                            style={
-                              {
-                                "fontFamily": "NotoNastaliqUrdu_400Regular",
-                                "fontSize": 14.5,
-                                "fontVariant": undefined,
-                                "letterSpacing": 0,
-                                "lineHeight": 29.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "rtl",
-                              }
-                            }
-                          >
-                            ب · ₹400
-                          </Text>
-                        </View>
-                        <View
                           className="mt-2 px-3 py-2"
                           style={
                             {
@@ -32554,8 +33355,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                                 "writingDirection": "rtl",
                               }
                             }
+                            testID="solution-correct-answer-text"
                           >
-                            ج · ₹410
+                            ب · ₹400
                           </Text>
                         </View>
                         <View
@@ -32609,7 +33411,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -32625,28 +33427,121 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           >
                             آپ کا وقت
                           </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-mute"
+                          <View
+                            accessibilityLabel="1 منٹ 22 سیکنڈ"
+                            accessible={true}
                             style={
                               {
-                                "fontFamily": "Archivo_600SemiBold",
-                                "fontSize": 11.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
-                                "letterSpacing": 0,
-                                "lineHeight": 16.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
                               }
                             }
+                            testID="solution-your-time"
                           >
-                            ⁦1m 22s⁩
-                          </Text>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦1⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 منٹ
+                              </Text>
+                            </View>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦22⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
+                          </View>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_400Regular",
@@ -32663,7 +33558,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ·
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -32679,26 +33574,70 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           >
                             اوسط
                           </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-mute"
+                          <View
+                            accessibilityLabel="44 سیکنڈ"
+                            accessible={true}
                             style={
                               {
-                                "fontFamily": "Archivo_600SemiBold",
-                                "fontSize": 11.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
-                                "letterSpacing": 0,
-                                "lineHeight": 16.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
                               }
                             }
+                            testID="solution-avg-time"
                           >
-                            ⁦44s⁩
-                          </Text>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦44⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
+                          </View>
                         </View>
                       </View>
                       <View
@@ -32726,11 +33665,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <View
-                            className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
+                            className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
                           >
                             <Text
                               accessibilityElementsHidden={true}
                               className="text-white"
+                              importantForAccessibility="no"
                               style={
                                 {
                                   "fontFamily": "Archivo_700Bold",
@@ -32826,7 +33766,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           testID="solution-your-answer"
                         >
                           <Text
-                            className="text-flag"
+                            className="text-chalk"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -32856,6 +33796,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                                 "writingDirection": "rtl",
                               }
                             }
+                            testID="solution-your-answer-text"
                           >
                             ج · HUBSE
                           </Text>
@@ -32902,6 +33843,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                                 "writingDirection": "rtl",
                               }
                             }
+                            testID="solution-correct-answer-text"
                           >
                             ا · HVBSE
                           </Text>
@@ -32957,7 +33899,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -32973,28 +33915,121 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           >
                             آپ کا وقت
                           </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-mute"
+                          <View
+                            accessibilityLabel="2 منٹ 04 سیکنڈ"
+                            accessible={true}
                             style={
                               {
-                                "fontFamily": "Archivo_600SemiBold",
-                                "fontSize": 11.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
-                                "letterSpacing": 0,
-                                "lineHeight": 16.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
                               }
                             }
+                            testID="solution-your-time"
                           >
-                            ⁦2m 04s⁩
-                          </Text>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦2⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 منٹ
+                              </Text>
+                            </View>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦04⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
+                          </View>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_400Regular",
@@ -33011,7 +34046,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ·
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -33027,26 +34062,70 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           >
                             اوسط
                           </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-mute"
+                          <View
+                            accessibilityLabel="55 سیکنڈ"
+                            accessible={true}
                             style={
                               {
-                                "fontFamily": "Archivo_600SemiBold",
-                                "fontSize": 11.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
-                                "letterSpacing": 0,
-                                "lineHeight": 16.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
                               }
                             }
+                            testID="solution-avg-time"
                           >
-                            ⁦55s⁩
-                          </Text>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦55⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
+                          </View>
                         </View>
                       </View>
                       <View
@@ -33074,11 +34153,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <View
-                            className="h-7 w-7 items-center justify-center rounded-xs bg-hivis"
+                            className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
                           >
                             <Text
                               accessibilityElementsHidden={true}
-                              className="text-tar"
+                              className="text-white"
+                              importantForAccessibility="no"
                               style={
                                 {
                                   "fontFamily": "Archivo_700Bold",
@@ -33092,7 +34172,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                                 }
                               }
                             >
-                              ✓
+                              ✕
                             </Text>
                           </View>
                           <View
@@ -33163,6 +34243,53 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           درج ذیل میں سے غیر متعلق عدد کی نشاندہی کریں: 8، 27، 64، 100، 125
                         </Text>
                         <View
+                          className="mt-3 px-3 py-2"
+                          style={
+                            {
+                              "backgroundColor": "rgba(228,72,59,0.08)",
+                              "borderRightColor": "#E4483B",
+                              "borderRightWidth": 3,
+                            }
+                          }
+                          testID="solution-your-answer"
+                        >
+                          <Text
+                            className="text-chalk"
+                            style={
+                              {
+                                "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                "fontSize": 13,
+                                "fontVariant": undefined,
+                                "letterSpacing": 0,
+                                "lineHeight": 26.7,
+                                "textAlign": "right",
+                                "textTransform": undefined,
+                                "writingDirection": "rtl",
+                              }
+                            }
+                          >
+                            آپ کا جواب
+                          </Text>
+                          <Text
+                            className="text-chalk mt-1"
+                            style={
+                              {
+                                "fontFamily": "NotoNastaliqUrdu_400Regular",
+                                "fontSize": 14.5,
+                                "fontVariant": undefined,
+                                "letterSpacing": 0,
+                                "lineHeight": 29.7,
+                                "textAlign": "right",
+                                "textTransform": undefined,
+                                "writingDirection": "rtl",
+                              }
+                            }
+                            testID="solution-your-answer-text"
+                          >
+                            ب · 64
+                          </Text>
+                        </View>
+                        <View
                           className="mt-2 px-3 py-2"
                           style={
                             {
@@ -33204,8 +34331,9 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                                 "writingDirection": "rtl",
                               }
                             }
+                            testID="solution-correct-answer-text"
                           >
-                            ب · 64
+                            ج · 100
                           </Text>
                         </View>
                         <View
@@ -33259,7 +34387,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           }
                         >
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -33275,28 +34403,72 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           >
                             آپ کا وقت
                           </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-mute"
+                          <View
+                            accessibilityLabel="19 سیکنڈ"
+                            accessible={true}
                             style={
                               {
-                                "fontFamily": "Archivo_600SemiBold",
-                                "fontSize": 11.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
-                                "letterSpacing": 0,
-                                "lineHeight": 16.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
                               }
                             }
+                            testID="solution-your-time"
                           >
-                            ⁦19s⁩
-                          </Text>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦19⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
+                          </View>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "Archivo_400Regular",
@@ -33313,7 +34485,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             ·
                           </Text>
                           <Text
-                            className="text-mute"
+                            className="text-dim"
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -33329,26 +34501,70 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           >
                             اوسط
                           </Text>
-                          <Text
-                            accessibilityLanguage="en"
-                            className="text-mute"
+                          <View
+                            accessibilityLabel="48 سیکنڈ"
+                            accessible={true}
                             style={
                               {
-                                "fontFamily": "Archivo_600SemiBold",
-                                "fontSize": 11.5,
-                                "fontVariant": [
-                                  "tabular-nums",
-                                ],
-                                "letterSpacing": 0,
-                                "lineHeight": 16.7,
-                                "textAlign": "right",
-                                "textTransform": undefined,
-                                "writingDirection": "ltr",
+                                "alignItems": "baseline",
+                                "flexDirection": "row-reverse",
+                                "flexWrap": undefined,
+                                "gap": 4,
+                                "justifyContent": undefined,
                               }
                             }
+                            testID="solution-avg-time"
                           >
-                            ⁦48s⁩
-                          </Text>
+                            <View
+                              style={
+                                {
+                                  "alignItems": "baseline",
+                                  "flexDirection": "row-reverse",
+                                  "flexWrap": undefined,
+                                  "gap": undefined,
+                                  "justifyContent": undefined,
+                                }
+                              }
+                            >
+                              <Text
+                                accessibilityLanguage="en"
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "Archivo_600SemiBold",
+                                    "fontSize": 11.5,
+                                    "fontVariant": [
+                                      "tabular-nums",
+                                    ],
+                                    "letterSpacing": 0,
+                                    "lineHeight": 16.7,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "ltr",
+                                  }
+                                }
+                              >
+                                ⁦48⁩
+                              </Text>
+                              <Text
+                                className="text-dim"
+                                style={
+                                  {
+                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                    "fontSize": 12.5,
+                                    "fontVariant": undefined,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 25.6,
+                                    "textAlign": "right",
+                                    "textTransform": undefined,
+                                    "writingDirection": "rtl",
+                                  }
+                                }
+                              >
+                                 سیکنڈ
+                              </Text>
+                            </View>
+                          </View>
                         </View>
                       </View>
                     </View>
