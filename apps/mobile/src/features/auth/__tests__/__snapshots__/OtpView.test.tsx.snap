@@ -1,0 +1,2083 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
+<View
+  className="flex-1 bg-tar"
+  style={
+    {
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 0,
+    }
+  }
+  testID="otp-screen"
+>
+  <View
+    accessibilityElementsHidden={true}
+    className="h-rail overflow-hidden bg-tar"
+    importantForAccessibility="no-hide-descendants"
+    style={
+      {
+        "height": 5,
+      }
+    }
+    testID="hazard-rail"
+  >
+    <View
+      style={
+        [
+          {
+            "flexDirection": "row",
+          },
+          {
+            "transform": [
+              {
+                "translateX": -56,
+              },
+            ],
+          },
+        ]
+      }
+      testID="hazard-rail-track"
+    >
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    className="flex-1"
+  >
+    <RCTScrollView
+      className="flex-1"
+      contentContainerClassName="px-4 pb-2 pt-5"
+      keyboardShouldPersistTaps="handled"
+      showsVerticalScrollIndicator={false}
+    >
+      <View>
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="h-touch justify-center"
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          testID="otp-change-number"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+            testID="otp-back-row"
+          >
+            <Text
+              accessibilityElementsHidden={true}
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_400Regular",
+                  "fontSize": 21,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 43.1,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              ›
+            </Text>
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              نمبر بدلیں
+            </Text>
+          </View>
+        </View>
+        <Text
+          className="text-chalk mt-2"
+          style={
+            {
+              "fontFamily": "NotoNastaliqUrdu_700Bold",
+              "fontSize": 26,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 53.3,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "rtl",
+            }
+          }
+        >
+          کوڈ درج کریں
+        </Text>
+        <View
+          className="mt-2"
+          style={
+            {
+              "alignItems": "baseline",
+              "flexDirection": "row-reverse",
+              "flexWrap": "wrap",
+              "gap": 4,
+              "justifyContent": undefined,
+            }
+          }
+          testID="otp-phone"
+        >
+          <Text
+            className="text-dim"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_400Regular",
+                "fontSize": 14.5,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 29.7,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            پر بھیجا گیا 6 ہندسوں کا کوڈ
+          </Text>
+          <Text
+            accessibilityLanguage="en"
+            className="text-chalk"
+            style={
+              {
+                "fontFamily": "Archivo_600SemiBold",
+                "fontSize": 13.5,
+                "fontVariant": [
+                  "tabular-nums",
+                ],
+                "letterSpacing": 0,
+                "lineHeight": 19.6,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+          >
+            ⁦+91 90000 12345⁩
+          </Text>
+        </View>
+        <View
+          className="mt-6"
+          style={
+            {
+              "transform": [
+                {
+                  "translateX": 0,
+                },
+              ],
+            }
+          }
+        >
+          <View
+            accessibilityLabel="کوڈ درج کریں"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+          >
+            <View
+              accessibilityValue={
+                {
+                  "text": "123",
+                }
+              }
+              accessible={true}
+              style={
+                {
+                  "alignItems": undefined,
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+              testID="otp-cells"
+            >
+              <View
+                className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
+                testID="otp-cells-0"
+              >
+                <Text
+                  accessibilityLanguage="en"
+                  className="text-chalk"
+                  style={
+                    {
+                      "fontFamily": "Archivo_700Bold",
+                      "fontSize": 20,
+                      "fontVariant": [
+                        "tabular-nums",
+                      ],
+                      "letterSpacing": 0,
+                      "lineHeight": 29,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ⁦1⁩
+                </Text>
+              </View>
+              <View
+                className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
+                testID="otp-cells-1"
+              >
+                <Text
+                  accessibilityLanguage="en"
+                  className="text-chalk"
+                  style={
+                    {
+                      "fontFamily": "Archivo_700Bold",
+                      "fontSize": 20,
+                      "fontVariant": [
+                        "tabular-nums",
+                      ],
+                      "letterSpacing": 0,
+                      "lineHeight": 29,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ⁦2⁩
+                </Text>
+              </View>
+              <View
+                className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
+                testID="otp-cells-2"
+              >
+                <Text
+                  accessibilityLanguage="en"
+                  className="text-chalk"
+                  style={
+                    {
+                      "fontFamily": "Archivo_700Bold",
+                      "fontSize": 20,
+                      "fontVariant": [
+                        "tabular-nums",
+                      ],
+                      "letterSpacing": 0,
+                      "lineHeight": 29,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ⁦3⁩
+                </Text>
+              </View>
+              <View
+                className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-hivis"
+                testID="otp-cells-3"
+              >
+                <Text
+                  accessibilityLanguage="en"
+                  className="text-chalk"
+                  style={
+                    {
+                      "fontFamily": "Archivo_700Bold",
+                      "fontSize": 20,
+                      "fontVariant": [
+                        "tabular-nums",
+                      ],
+                      "letterSpacing": 0,
+                      "lineHeight": 29,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ⁦⁩
+                </Text>
+              </View>
+              <View
+                className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
+                testID="otp-cells-4"
+              >
+                <Text
+                  accessibilityLanguage="en"
+                  className="text-chalk"
+                  style={
+                    {
+                      "fontFamily": "Archivo_700Bold",
+                      "fontSize": 20,
+                      "fontVariant": [
+                        "tabular-nums",
+                      ],
+                      "letterSpacing": 0,
+                      "lineHeight": 29,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ⁦⁩
+                </Text>
+              </View>
+              <View
+                className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
+                testID="otp-cells-5"
+              >
+                <Text
+                  accessibilityLanguage="en"
+                  className="text-chalk"
+                  style={
+                    {
+                      "fontFamily": "Archivo_700Bold",
+                      "fontSize": 20,
+                      "fontVariant": [
+                        "tabular-nums",
+                      ],
+                      "letterSpacing": 0,
+                      "lineHeight": 29,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ⁦⁩
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          className="mt-4"
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row-reverse",
+              "flexWrap": undefined,
+              "gap": 8,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <View
+            className="border-1.5 h-dot w-dot rounded-full border-mute"
+          />
+          <Text
+            className="text-mute flex-1"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_400Regular",
+                "fontSize": 12.5,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 25.6,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            ایس ایم ایس آتے ہی خود بھر جائے گا
+          </Text>
+        </View>
+        <View
+          className="mt-3"
+          style={
+            {
+              "alignItems": "baseline",
+              "flexDirection": "row-reverse",
+              "flexWrap": undefined,
+              "gap": 4,
+              "justifyContent": undefined,
+            }
+          }
+          testID="otp-resend-line"
+        >
+          <Text
+            accessibilityLanguage="en"
+            className="text-sand"
+            style={
+              {
+                "fontFamily": "Archivo_400Regular",
+                "fontSize": 12.5,
+                "fontVariant": [
+                  "tabular-nums",
+                ],
+                "letterSpacing": 0,
+                "lineHeight": 18.1,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+          >
+            ⁦24⁩
+          </Text>
+          <Text
+            className="text-sand"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_400Regular",
+                "fontSize": 13.5,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 27.7,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            سیکنڈ بعد دوبارہ بھیجیں
+          </Text>
+        </View>
+        <View
+          className="h-px overflow-hidden"
+        >
+          <TextInput
+            accessibilityElementsHidden={true}
+            autoComplete="sms-otp"
+            className="h-px w-px opacity-0"
+            importantForAccessibility="no-hide-descendants"
+            keyboardType="number-pad"
+            maxLength={6}
+            onChangeText={[Function]}
+            testID="otp-autofill"
+            textContentType="oneTimeCode"
+            value="123"
+          />
+        </View>
+      </View>
+    </RCTScrollView>
+    <View
+      className="px-3 pb-4 pt-2"
+    >
+      <View
+        style={
+          {
+            "alignItems": undefined,
+            "flexDirection": "column",
+            "gap": 8,
+            "justifyContent": undefined,
+          }
+        }
+        testID="otp-keypad"
+      >
+        <View
+          style={
+            {
+              "alignItems": undefined,
+              "flexDirection": "row",
+              "flexWrap": undefined,
+              "gap": 8,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="1"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-chalk"
+              style={
+                {
+                  "fontFamily": "Archivo_600SemiBold",
+                  "fontSize": 24,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 34.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦1⁩
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="2"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-chalk"
+              style={
+                {
+                  "fontFamily": "Archivo_600SemiBold",
+                  "fontSize": 24,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 34.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦2⁩
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="3"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-chalk"
+              style={
+                {
+                  "fontFamily": "Archivo_600SemiBold",
+                  "fontSize": 24,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 34.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦3⁩
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": undefined,
+              "flexDirection": "row",
+              "flexWrap": undefined,
+              "gap": 8,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="4"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-chalk"
+              style={
+                {
+                  "fontFamily": "Archivo_600SemiBold",
+                  "fontSize": 24,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 34.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦4⁩
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="5"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-chalk"
+              style={
+                {
+                  "fontFamily": "Archivo_600SemiBold",
+                  "fontSize": 24,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 34.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦5⁩
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="6"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-chalk"
+              style={
+                {
+                  "fontFamily": "Archivo_600SemiBold",
+                  "fontSize": 24,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 34.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦6⁩
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": undefined,
+              "flexDirection": "row",
+              "flexWrap": undefined,
+              "gap": 8,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="7"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-chalk"
+              style={
+                {
+                  "fontFamily": "Archivo_600SemiBold",
+                  "fontSize": 24,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 34.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦7⁩
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="8"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-chalk"
+              style={
+                {
+                  "fontFamily": "Archivo_600SemiBold",
+                  "fontSize": 24,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 34.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦8⁩
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="9"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-chalk"
+              style={
+                {
+                  "fontFamily": "Archivo_600SemiBold",
+                  "fontSize": 24,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 34.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦9⁩
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": undefined,
+              "flexDirection": "row",
+              "flexWrap": undefined,
+              "gap": 8,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <View
+            className="h-key flex-1"
+          />
+          <View
+            accessibilityLabel="0"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-chalk"
+              style={
+                {
+                  "fontFamily": "Archivo_600SemiBold",
+                  "fontSize": 24,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 34.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦0⁩
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="ہندسہ مٹائیں"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              className="text-chalk"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 21,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 43.1,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              ⌫
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": true,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        className="items-center justify-center rounded-sm px-4 h-touchLg bg-panel3 mt-3"
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            null,
+            undefined,
+          ]
+        }
+        testID="otp-verify"
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row-reverse",
+              "flexWrap": undefined,
+              "gap": 8,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <Text
+            className="text-ghost"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_700Bold",
+                "fontSize": 15.5,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 31.8,
+                "textAlign": "center",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            تصدیق کریں
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

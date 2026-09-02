@@ -5,6 +5,7 @@ import { View } from 'react-native';
 
 import { useLangStore } from '@/data/lang';
 import { LoginView } from '@/features/auth/LoginView';
+import { OtpView } from '@/features/auth/OtpView';
 import { AttemptStates } from '@/features/dev/sections/AttemptStates';
 import {
   Banner,
@@ -52,6 +53,7 @@ const DEV = {
   railCritical: 'critical (marquee)',
   auth: 'Auth & onboarding',
   login: 'LoginView — filled + error toast',
+  otp: 'OtpView — partial code, resend ready',
   disabled: 'disabled',
   selected: 'selected',
   active: 'active',
@@ -324,6 +326,16 @@ export function StatesView() {
             initialPhone="9000012345"
             error={t('common.networkError')}
             onSubmit={() => {}}
+          />
+        </Preview>
+        <Preview label={DEV.otp}>
+          <OtpView
+            phone="9000012345"
+            initialCode="1234"
+            resendSeconds={0}
+            onVerify={() => false}
+            onResend={() => {}}
+            onChangeNumber={() => {}}
           />
         </Preview>
       </Section>

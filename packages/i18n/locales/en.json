@@ -28,7 +28,7 @@
     "otpTitle": "Enter the code",
     "otpSub": "6-digit code sent to",
     "otpAuto": "We fill it in automatically when the SMS arrives",
-    "resendIn": "{{count}}s until resend",
+    "resendIn": "s until resend",
     "resend": "Resend code",
     "verify": "Verify",
     "changeNumber": "Change number",
