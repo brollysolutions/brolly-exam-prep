@@ -41,7 +41,7 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 
 ## Phase 4 — Screens (one PR each; order below)
 - [x] F-15 exam pattern config + fixtures
-- [ ] F-16 persistence + mock API adapter
+- [x] F-16 persistence + mock API adapter (review + fix round; re-review pending)
 - [ ] F-03 login · [ ] F-04 OTP · [ ] F-05 post · [ ] F-06 category
 - [ ] F-09 attempt core · [ ] F-10 palette · [ ] F-11 dialogs/toasts/banners/call overlay
 - [ ] F-12 result · [ ] F-13 solutions
