@@ -21,6 +21,8 @@
     "close": "بند کریں",
     "networkError": "کنکشن نہیں۔ دوبارہ کوشش کریں۔",
     "questionsUnit": "سوالات",
+    "minutesUnit": "منٹ",
+    "questionsUnit": "سوالات",
     "minutesUnit": "منٹ"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "زبان" },
@@ -150,6 +152,8 @@
     "startNow": "ابھی شروع کریں",
     "examCountdown": "پی ڈبلیو ٹی میں {{days}} دن",
     "greetingPlain": "تیار ہیں؟",
+    "outOf": "{{max}} میں سے",
+    "greetingPlain": "تیار ہیں؟",
     "outOf": "{{max}} میں سے"
   },
   "library": {
@@ -158,7 +162,8 @@
     "sectional": "سیکشنل",
     "previousYear": "گزشتہ سال",
     "attempted": "دیے گئے",
-    "bestScore": "بہترین {{score}}"
+    "bestScore": "بہترین {{score}}",
+    "lockedToast": "یہ ٹیسٹ مقفل ہے۔ مفت والا کوئی ٹیسٹ آزمائیں۔"
   },
   "profile": {
     "title": "پروفائل",

@@ -21,6 +21,8 @@
     "close": "మూసివేయి",
     "networkError": "కనెక్షన్ లేదు. మళ్లీ ప్రయత్నించండి.",
     "questionsUnit": "ప్రశ్నలు",
+    "minutesUnit": "నిమి",
+    "questionsUnit": "ప్రశ్నలు",
     "minutesUnit": "నిమి"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "భాష" },
@@ -150,6 +152,8 @@
     "startNow": "ఇప్పుడే మొదలుపెట్టు",
     "examCountdown": "PWTకి {{days}} రోజులు",
     "greetingPlain": "సిద్ధమా?",
+    "outOf": "{{max}}కి",
+    "greetingPlain": "సిద్ధమా?",
     "outOf": "{{max}}కి"
   },
   "library": {
@@ -158,7 +162,8 @@
     "sectional": "సెక్షనల్",
     "previousYear": "గత సంవత్సరం",
     "attempted": "రాసినవి",
-    "bestScore": "ఉత్తమం {{score}}"
+    "bestScore": "ఉత్తమం {{score}}",
+    "lockedToast": "ఈ టెస్ట్ లాక్ అయింది. ఉచితం అని ఉన్నది ప్రయత్నించండి."
   },
   "profile": {
     "title": "ప్రొఫైల్",

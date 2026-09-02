@@ -21,6 +21,8 @@
     "close": "Close",
     "networkError": "No connection. Try again.",
     "questionsUnit": "questions",
+    "minutesUnit": "min",
+    "questionsUnit": "questions",
     "minutesUnit": "min"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "Language" },
@@ -150,6 +152,8 @@
     "startNow": "Start now",
     "examCountdown": "{{days}} days to PWT",
     "greetingPlain": "Ready?",
+    "outOf": "out of {{max}}",
+    "greetingPlain": "Ready?",
     "outOf": "out of {{max}}"
   },
   "library": {
@@ -158,7 +162,8 @@
     "sectional": "Sectional",
     "previousYear": "Previous year",
     "attempted": "Attempted",
-    "bestScore": "Best {{score}}"
+    "bestScore": "Best {{score}}",
+    "lockedToast": "That test is locked. Try one marked Free."
   },
   "profile": {
     "title": "Profile",
