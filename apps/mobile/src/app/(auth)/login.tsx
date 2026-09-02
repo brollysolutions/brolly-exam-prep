@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { getApi } from '@/data/api';
 import { useSessionStore } from '@/data/session';
 import { LoginView } from '@/features/auth/LoginView';
+import { setOtpRequestId } from '@/features/auth/otpRequest';
 import { useAutoDismiss } from '@/ui';
 
 /** F-03 — asks for the phone number and requests the OTP for it. */
@@ -22,10 +23,12 @@ export default function LoginRoute() {
     setBusy(true);
     setError(null);
     try {
-      // The request id is the OTP screen's handle on this attempt; it never outlives the flow.
+      // The request id is the OTP screen's handle on this attempt. It lives in memory only, so
+      // it never reaches the web URL, the history stack or a shared link.
       const { request_id } = await getApi().requestOtp({ phone: next });
+      setOtpRequestId(request_id);
       setPhone(next);
-      router.push({ pathname: '/(auth)/otp', params: { requestId: request_id } });
+      router.push('/(auth)/otp');
     } catch {
       setError(t('common.networkError'));
     } finally {

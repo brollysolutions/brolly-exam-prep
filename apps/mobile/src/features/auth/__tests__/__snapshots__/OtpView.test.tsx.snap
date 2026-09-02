@@ -891,6 +891,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
+          style={null}
           testID="otp-change-number"
         >
           <View
@@ -903,23 +904,25 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
                 "justifyContent": undefined,
               }
             }
-            testID="otp-back-row"
+            testID="otp-change-number-row"
           >
             <Text
               accessibilityElementsHidden={true}
               className="text-dim"
+              importantForAccessibility="no"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_400Regular",
-                  "fontSize": 21,
+                  "fontFamily": "Archivo_400Regular",
+                  "fontSize": 20,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 43.1,
+                  "lineHeight": 29,
                   "textAlign": "right",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
+              testID="otp-change-number-chevron"
             >
               ›
             </Text>
@@ -959,36 +962,22 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
         >
           کوڈ درج کریں
         </Text>
-        <View
-          className="mt-2"
+        <Text
+          className="text-dim mt-2"
           style={
             {
-              "alignItems": "baseline",
-              "flexDirection": "row-reverse",
-              "flexWrap": "wrap",
-              "gap": 4,
-              "justifyContent": undefined,
+              "fontFamily": "NotoNastaliqUrdu_400Regular",
+              "fontSize": 14.5,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 29.7,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "rtl",
             }
           }
           testID="otp-phone"
         >
-          <Text
-            className="text-dim"
-            style={
-              {
-                "fontFamily": "NotoNastaliqUrdu_400Regular",
-                "fontSize": 14.5,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 29.7,
-                "textAlign": "right",
-                "textTransform": undefined,
-                "writingDirection": "rtl",
-              }
-            }
-          >
-            پر بھیجا گیا 6 ہندسوں کا کوڈ
-          </Text>
           <Text
             accessibilityLanguage="en"
             className="text-chalk"
@@ -1007,9 +996,12 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
               }
             }
           >
-            ⁦+91 90000 12345⁩
+            ⁦
+            +91 90000 12345
+            ⁩
           </Text>
-        </View>
+           پر بھیجا گیا 6 ہندسوں کا کوڈ
+        </Text>
         <View
           className="mt-6"
         >
@@ -1025,6 +1017,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             }
           >
             <View
+              accessibilityHint="آٹو فل کے لیے دبا کر رکھیں"
               accessibilityLabel="کوڈ درج کریں"
               accessibilityRole="button"
               accessibilityState={
@@ -1041,7 +1034,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
                   "max": undefined,
                   "min": undefined,
                   "now": undefined,
-                  "text": undefined,
+                  "text": "123",
                 }
               }
               accessible={true}
@@ -1242,10 +1235,10 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
           }
         >
           <View
-            className="border-1.5 h-dot w-dot rounded-full border-mute"
+            className="border-1.5 h-dot w-dot rounded-full border-dim"
           />
           <Text
-            className="text-mute flex-1"
+            className="text-dim flex-1"
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -1263,38 +1256,9 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
           </Text>
         </View>
         <View
-          className="mt-3"
-          style={
-            {
-              "alignItems": "baseline",
-              "flexDirection": "row-reverse",
-              "flexWrap": undefined,
-              "gap": 4,
-              "justifyContent": undefined,
-            }
-          }
+          className="mt-2 min-h-touch justify-center"
           testID="otp-resend-line"
         >
-          <Text
-            accessibilityLanguage="en"
-            className="text-sand"
-            style={
-              {
-                "fontFamily": "Archivo_400Regular",
-                "fontSize": 12.5,
-                "fontVariant": [
-                  "tabular-nums",
-                ],
-                "letterSpacing": 0,
-                "lineHeight": 18.1,
-                "textAlign": "right",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
-              }
-            }
-          >
-            ⁦24⁩
-          </Text>
           <Text
             className="text-sand"
             style={
@@ -1310,7 +1274,29 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
               }
             }
           >
-            سیکنڈ بعد دوبارہ بھیجیں
+            <Text
+              accessibilityLanguage="en"
+              className="text-sand"
+              style={
+                {
+                  "fontFamily": "Archivo_400Regular",
+                  "fontSize": 12.5,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 18.1,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦
+              24
+              ⁩
+            </Text>
+             سیکنڈ بعد دوبارہ بھیجیں
           </Text>
         </View>
         <View
