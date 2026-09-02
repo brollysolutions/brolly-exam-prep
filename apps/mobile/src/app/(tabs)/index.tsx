@@ -28,7 +28,8 @@ export default function HomeRoute() {
       streakDays={STREAK_DAYS}
       // F-09 owns `test/[id]`; until it lands this is the one link out of the shell.
       onStartMock={() => router.push(`/test/${NEXT_MOCK_ID}`)}
-      onWeakTopic={() => router.push('/(tabs)/tests')}
+      // `navigate`, not `push`: a tab is a place you go back to, not a card you stack.
+      onWeakTopic={() => router.navigate('/(tabs)/tests')}
     />
   );
 }

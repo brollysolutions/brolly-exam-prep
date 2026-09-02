@@ -1,10 +1,11 @@
+import { Ionicons } from '@expo/vector-icons';
 import { colors, size } from '@tslprb/design-tokens';
-import { useTypography } from '@tslprb/i18n';
+import { useLang, useTypography } from '@tslprb/i18n';
 import { Tabs } from 'expo-router/js-tabs';
 import { useTranslation } from 'react-i18next';
-import { Platform, Pressable } from 'react-native';
+import { Pressable } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { TabIcon, type TabIconName } from '@/features/shell/TabIcon';
 import { haptics } from '@/ui';
 
 /**
@@ -14,14 +15,24 @@ import { haptics } from '@/ui';
  * on iOS 26, Material You on Android) and cannot be made hi-vis-on-tar, which is the one thing
  * this app's chrome has to be. The bar below is identical on both platforms by design.
  */
-const TABS: { name: 'index' | 'tests' | 'profile'; icon: TabIconName; labelKey: string }[] = [
+const TABS = [
   { name: 'index', icon: 'home', labelKey: 'tabs.home' },
-  { name: 'tests', icon: 'tests', labelKey: 'tabs.tests' },
-  { name: 'profile', icon: 'profile', labelKey: 'tabs.profile' },
-];
+  { name: 'tests', icon: 'list', labelKey: 'tabs.tests' },
+  { name: 'profile', icon: 'person', labelKey: 'tabs.profile' },
+] as const;
+
+/**
+ * Bar height by language, before the safe-area inset is added.
+ *
+ * Telugu sits taller than Latin at the same point size and Nastaliq taller again — its
+ * line-height is 2.05 — so a bar sized for English clips their labels (design review round 1).
+ */
+const BAR_HEIGHT = { en: size.touchLg, te: 68, ur: 76 } as const;
 
 export default function TabsLayout() {
   const { t } = useTranslation();
+  const lang = useLang();
+  const insets = useSafeAreaInsets();
   // The label font has to follow the in-app language like every other string on screen.
   const label = useTypography('caption', '600');
 
@@ -38,9 +49,11 @@ export default function TabsLayout() {
           borderTopWidth: 1,
           // Elevation by a 1 px line, never a shadow.
           elevation: 0,
-          height: size.touchLg + (Platform.OS === 'ios' ? 0 : 4),
+          // The bar owns the bottom inset; `Screen bottomInset={false}` keeps the scenes from
+          // padding for it a second time.
+          height: BAR_HEIGHT[lang] + insets.bottom,
         },
-        tabBarItemStyle: { paddingVertical: 4 },
+        tabBarItemStyle: { paddingVertical: 6, paddingBottom: 6 + insets.bottom },
         // Tracking is Latin-only; the tab label follows the UI language's face.
         tabBarLabelStyle: { ...label, letterSpacing: 0 },
         // The stock button ripples plain white; this one carries the hi-vis tint and a
@@ -67,10 +80,10 @@ export default function TabsLayout() {
           options={{
             title: t(tab.labelKey),
             tabBarIcon: ({ color, focused }) => (
-              <TabIcon
-                name={tab.icon}
+              <Ionicons
+                name={focused ? tab.icon : `${tab.icon}-outline`}
+                size={22}
                 color={color}
-                focused={focused}
                 testID={`tab-icon-${tab.name}`}
               />
             ),

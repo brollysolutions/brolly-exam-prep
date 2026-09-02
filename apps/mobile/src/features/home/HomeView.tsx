@@ -1,28 +1,30 @@
-import { colors } from '@tslprb/design-tokens';
+import { colors, radius } from '@tslprb/design-tokens';
 import { SAMPLE_RESULT, TESTS } from '@tslprb/fixtures';
 import { LANGS, useDir, type Lang } from '@tslprb/i18n';
 import { useTranslation } from 'react-i18next';
-import { Pressable } from 'react-native';
+import { Pressable, View } from 'react-native';
 
+import { startEdge } from '@/features/result/edge';
 import {
   Button,
   Card,
   Chip,
-  cx,
   Glyph,
   Kicker,
   Num,
   Row,
   Screen,
   SegmentedChips,
+  Stack,
   Text,
   usePressed,
 } from '@/ui';
 
-type WeakTopicAction = (typeof SAMPLE_RESULT.actions)[number];
-
-/** The full mock the home card pitches (`mock-08`). */
-const NEXT_MOCK = TESTS[1];
+/**
+ * What the home card pitches: the first full mock a candidate can actually sit. Pointing at
+ * a locked paper would make the screen's one hi-vis action a dead end (design review round 1).
+ */
+const NEXT_MOCK = TESTS.find((test) => test.kind === 'full' && test.free) ?? TESTS[0];
 
 /**
  * A number inside an interpolated sentence cannot be wrapped in `<Num>`, so it gets the same
@@ -46,42 +48,55 @@ function Meta({ n, unit }: { n: number; unit: string }) {
 }
 
 /**
- * One row of `home-weak-topics`. A `Pressable` `style` FUNCTION would drop its static
- * `className` entries on web (see `usePressed`), so press feedback is state-driven instead —
- * one `usePressed` call per row, via its own component rather than inside the list `.map`.
+ * The prototype's action row: a 3 px hi-vis bar on the reading-start side, a title, the reason
+ * underneath, and a hi-vis chevron. The edge is a flattened style object because the mirrored
+ * half cannot be a class name (see `startEdge`), and the press delta comes from state because
+ * a `style` callback next to `className` loses its static values on web (see `usePressed`).
  */
-function WeakTopicRow({
+function TopicRow({
   action,
-  lang,
-  first,
   onPress,
 }: {
-  action: WeakTopicAction;
-  lang: Lang;
-  first: boolean;
+  action: (typeof SAMPLE_RESULT.actions)[number];
   onPress: () => void;
 }) {
   const d = useDir();
   const { pressed, handlers } = usePressed();
   return (
-    <Pressable
-      testID={`home-topic-${action.id}`}
-      accessibilityRole="button"
-      android_ripple={{ color: colors.hivisTint3 }}
-      onPress={onPress}
-      {...handlers}
-      className={cx('min-h-touch justify-center', first ? 'mt-1' : 'border-t border-line2')}
-      style={pressed ? { opacity: 0.85 } : undefined}
+    <View
+      style={{
+        borderRadius: radius.md,
+        borderWidth: 1,
+        borderColor: colors.line,
+        backgroundColor: colors.panel2,
+        overflow: 'hidden',
+        ...startEdge(d.isRTL, 'hivis'),
+      }}
     >
-      <Row gap={3} align="center" justify="between">
-        <Text variant="body" weight="600" className="flex-1">
-          {action.title[lang]}
-        </Text>
-        <Glyph color="dim" accessibilityElementsHidden importantForAccessibility="no">
-          {d.chevronNext}
-        </Glyph>
-      </Row>
-    </Pressable>
+      <Pressable
+        testID={`home-topic-${action.id}`}
+        accessibilityRole="button"
+        android_ripple={{ color: colors.hivisTint3 }}
+        onPress={onPress}
+        {...handlers}
+        className="min-h-16 justify-center p-4"
+        style={pressed ? { opacity: 0.85 } : undefined}
+      >
+        <Row gap={3} align="center">
+          <Stack gap={1} className="flex-1">
+            <Text variant="body" weight="600">
+              {action.title[d.lang]}
+            </Text>
+            <Text variant="caption" color="dim">
+              {action.sub[d.lang]}
+            </Text>
+          </Stack>
+          <Glyph color="hivis" accessibilityElementsHidden importantForAccessibility="no">
+            {d.chevronNext}
+          </Glyph>
+        </Row>
+      </Pressable>
+    </View>
   );
 }
 
@@ -115,7 +130,7 @@ export function HomeView({
   const pattern = NEXT_MOCK.pattern;
 
   return (
-    <Screen scroll padded testID="home-screen">
+    <Screen scroll padded bottomInset={false} testID="home-screen">
       <Row testID="home-header" align="center" justify="between" className="mt-4">
         <Kicker lang="en" color="hivis" tracking="brand">
           {t('common.brand')}
@@ -124,10 +139,15 @@ export function HomeView({
       </Row>
 
       <Text variant="title" weight="600" testID="home-greeting" className="mt-4">
-        {name ? t('home.greeting', { name }) : t('home.greetingPlain')}
+        {name ? t('home.greeting', { name: iso(name) }) : t('home.greetingPlain')}
+      </Text>
+      {/* Not a control: a run of practice is a fact about the reader, so it reads as caption
+          text beside the greeting rather than a tappable-looking chip. */}
+      <Text variant="caption" color="dim" testID="home-streak" className="mt-1">
+        {t('home.streak', { count: streakDays })}
       </Text>
 
-      <Row className="mt-3">
+      <Row className="mt-4">
         <Chip
           testID="home-countdown"
           label={t('home.examCountdown', { days: iso(daysToExam) })}
@@ -169,26 +189,16 @@ export function HomeView({
               {t('home.outOf', { max: iso(SAMPLE_RESULT.maxScore) })}
             </Text>
           </Row>
-          <Chip label={t('result.qualified')} tone="hivis" active shape="pill" />
+          <Chip label={t('result.qualified')} tone="hivis" active />
         </Row>
       </Card>
 
-      <Card testID="home-weak-topics" className="mt-3">
-        <Kicker>{t('home.weakTopics')}</Kicker>
-        {SAMPLE_RESULT.actions.map((action, i) => (
-          <WeakTopicRow
-            key={action.id}
-            action={action}
-            lang={lang}
-            first={i === 0}
-            onPress={() => onWeakTopic(action.id)}
-          />
+      <Kicker className="mt-6">{t('home.weakTopics')}</Kicker>
+      <Stack gap={2} testID="home-weak-topics" className="mt-2">
+        {SAMPLE_RESULT.actions.map((action) => (
+          <TopicRow key={action.id} action={action} onPress={() => onWeakTopic(action.id)} />
         ))}
-      </Card>
-
-      <Row className="mt-4">
-        <Chip testID="home-streak" label={t('home.streak', { count: streakDays })} />
-      </Row>
+      </Stack>
     </Screen>
   );
 }
