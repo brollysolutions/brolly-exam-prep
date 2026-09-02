@@ -6,8 +6,8 @@ import { FlatList, View } from 'react-native';
 
 import { Chip, Glyph, Kicker, Num, Row, Screen, Stack, Text } from '@/ui';
 
+import { Duration } from './Duration';
 import { startEdge } from './edge';
-import { formatDuration } from './format';
 import { BackHeader } from './Header';
 import { LoadError, Skeleton } from './Placeholder';
 import { filterSolutionRows, type SolutionFilter, type SolutionRow } from './solutions';
@@ -143,18 +143,14 @@ function SolutionCard({ row }: { row: SolutionRow }) {
         <Text variant="caption" color="dim">
           {t('solutions.yourTime')}
         </Text>
-        <Num variant="caption" weight="600" color="dim">
-          {formatDuration(row.seconds)}
-        </Num>
+        <Duration seconds={row.seconds} testID="solution-your-time" />
         <Glyph variant="caption" color="dim">
           ·
         </Glyph>
         <Text variant="caption" color="dim">
           {t('solutions.avgTime')}
         </Text>
-        <Num variant="caption" weight="600" color="dim">
-          {formatDuration(row.question.avgSeconds)}
-        </Num>
+        <Duration seconds={row.question.avgSeconds} testID="solution-avg-time" />
       </Row>
     </View>
   );

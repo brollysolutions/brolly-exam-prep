@@ -14,6 +14,8 @@
     "minutes": "{{count}} నిమి",
     "questions": "{{count}} ప్రశ్నలు",
     "seconds": "{{count}} సె",
+    "unitM": "ని",
+    "unitS": "సె",
     "marks": "+{{plus}} / −{{minus}}",
     "noNegative": "నెగటివ్ మార్కులు లేవు",
     "close": "మూసివేయి",

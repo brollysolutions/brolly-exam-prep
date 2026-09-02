@@ -2,7 +2,7 @@ import { COST_ROWS } from '@tslprb/fixtures';
 import { en, te, ur } from '@tslprb/i18n';
 
 import { startEdge } from '../edge';
-import { formatCount, formatDuration, formatRank, isLatinValue } from '../format';
+import { durationParts, formatCount, formatDuration, formatRank, isLatinValue } from '../format';
 
 describe('formatDuration', () => {
   it('spells a minute and a remainder', () => {
@@ -16,6 +16,20 @@ describe('formatDuration', () => {
   it('pads the seconds so the column stays tabular', () => {
     expect(formatDuration(124)).toBe('2m 04s');
     expect(formatDuration(60)).toBe('1m 00s');
+  });
+
+  it('takes localised units and their separator', () => {
+    const te = { minute: 'ని', second: 'సె', separator: ' ' };
+    expect(formatDuration(54, te)).toBe(`54 ${te.second}`);
+    expect(formatDuration(82, te)).toBe(`1 ${te.minute} 22 ${te.second}`);
+  });
+
+  it('splits into parts so the digits and the unit can render apart', () => {
+    expect(durationParts(48)).toEqual([{ value: '48', unit: 's' }]);
+    expect(durationParts(82)).toEqual([
+      { value: '1', unit: 'm' },
+      { value: '22', unit: 's' },
+    ]);
   });
 
   it('floors nonsense at zero', () => {

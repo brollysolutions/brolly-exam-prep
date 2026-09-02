@@ -55,8 +55,10 @@ describe('SolutionsView', () => {
   it('renders your time and the crowd average per card', async () => {
     await render(<SolutionsView rows={ROWS} initialFilter="wrong" />);
     expect(screen.getAllByText(/Your time/)).toHaveLength(3);
-    // Question 3 of the paper took 1m 47s in the fixture.
-    expect(screen.getByText(/1m 47s/)).toBeOnTheScreen();
+    expect(screen.getAllByTestId('solution-your-time')).toHaveLength(3);
+    // Question 3 of the paper took 1m 47s in the fixture; the digits and the unit render
+    // in different faces, so the flat form lives on the accessibility label.
+    expect(screen.getByLabelText('1m 47s')).toBeOnTheScreen();
   });
 
   it('says so when the wrong filter has nothing to show', async () => {

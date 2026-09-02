@@ -14,6 +14,8 @@
     "minutes": "{{count}} منٹ",
     "questions": "{{count}} سوالات",
     "seconds": "{{count}} سیکنڈ",
+    "unitM": "منٹ",
+    "unitS": "سیکنڈ",
     "marks": "+{{plus}} / −{{minus}}",
     "noNegative": "منفی نمبر نہیں",
     "close": "بند کریں",

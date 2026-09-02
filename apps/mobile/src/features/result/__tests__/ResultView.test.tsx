@@ -45,9 +45,10 @@ describe('ResultView', () => {
     expect(screen.getAllByTestId('result-stand-row')).toHaveLength(3);
     expect(screen.getAllByTestId('result-cost-row')).toHaveLength(3);
     expect(screen.getAllByTestId('result-action')).toHaveLength(RESULT.actions.length);
-    // `<Num>` isolates its content in LRI/PDI, so these match on a pattern, not equality.
+    // `<Num>` isolates its content in LRI/PDI, so this matches on a pattern, not equality.
     expect(screen.getByText(/1,284 \/ 9,033/)).toBeOnTheScreen();
-    expect(screen.getByText(/54s/)).toBeOnTheScreen();
+    // The duration renders as digits + unit in different faces; the row speaks it flat.
+    expect(screen.getByLabelText('Avg time per question 54s')).toBeOnTheScreen();
   });
 
   it('calls back for the CTA and for a drill card', async () => {

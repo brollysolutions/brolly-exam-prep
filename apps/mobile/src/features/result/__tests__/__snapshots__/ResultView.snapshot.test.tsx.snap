@@ -1174,10 +1174,11 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
           <View>
             <View
               accessibilityLabel="درجہ 1,284 / 9,033"
+              accessible={true}
               className="border-b border-panel3 py-3"
               style={
                 {
-                  "alignItems": "center",
+                  "alignItems": "baseline",
                   "flexDirection": "row-reverse",
                   "flexWrap": undefined,
                   "gap": 12,
@@ -1205,7 +1206,8 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               </Text>
               <Text
                 accessibilityLanguage="en"
-                className="text-chalk"
+                className="text-chalk shrink-0"
+                numberOfLines={1}
                 style={
                   {
                     "fontFamily": "Archivo_700Bold",
@@ -1226,10 +1228,11 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
             </View>
             <View
               accessibilityLabel="درستگی 71%"
+              accessible={true}
               className="border-b border-panel3 py-3"
               style={
                 {
-                  "alignItems": "center",
+                  "alignItems": "baseline",
                   "flexDirection": "row-reverse",
                   "flexWrap": undefined,
                   "gap": 12,
@@ -1257,7 +1260,8 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               </Text>
               <Text
                 accessibilityLanguage="en"
-                className="text-chalk"
+                className="text-chalk shrink-0"
+                numberOfLines={1}
                 style={
                   {
                     "fontFamily": "Archivo_700Bold",
@@ -1277,11 +1281,12 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               </Text>
             </View>
             <View
-              accessibilityLabel="فی سوال اوسط وقت 54s"
+              accessibilityLabel="فی سوال اوسط وقت 54 سیکنڈ"
+              accessible={true}
               className="border-b border-panel3 py-3"
               style={
                 {
-                  "alignItems": "center",
+                  "alignItems": "baseline",
                   "flexDirection": "row-reverse",
                   "flexWrap": undefined,
                   "gap": 12,
@@ -1307,26 +1312,70 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               >
                 فی سوال اوسط وقت
               </Text>
-              <Text
-                accessibilityLanguage="en"
-                className="text-chalk"
+              <View
+                accessibilityLabel="54 سیکنڈ"
+                accessible={true}
+                className="shrink-0"
                 style={
                   {
-                    "fontFamily": "Archivo_700Bold",
-                    "fontSize": 14.5,
-                    "fontVariant": [
-                      "tabular-nums",
-                    ],
-                    "letterSpacing": 0,
-                    "lineHeight": 21,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
+                    "alignItems": "baseline",
+                    "flexDirection": "row-reverse",
+                    "flexWrap": undefined,
+                    "gap": 4,
+                    "justifyContent": undefined,
                   }
                 }
               >
-                ⁦54s⁩
-              </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "baseline",
+                      "flexDirection": "row-reverse",
+                      "flexWrap": undefined,
+                      "gap": undefined,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-chalk"
+                    style={
+                      {
+                        "fontFamily": "Archivo_700Bold",
+                        "fontSize": 14.5,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 21,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ⁦54⁩
+                  </Text>
+                  <Text
+                    className="text-chalk"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_700Bold",
+                        "fontSize": 15.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 31.8,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                     سیکنڈ
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>

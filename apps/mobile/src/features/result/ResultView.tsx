@@ -1,12 +1,14 @@
 import { colors, radius, text as textSizes, type ColorName } from '@tslprb/design-tokens';
 import { COST_ROWS } from '@tslprb/fixtures';
 import { useDir } from '@tslprb/i18n';
+import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, View } from 'react-native';
 
 import type { ResultAction, ResultDetail } from '@/data/api';
 import { Button, Chip, Kicker, Num, Row, Screen, Stack, Text, usePressed } from '@/ui';
 
+import { Duration, useDurationUnits } from './Duration';
 import { startEdge } from './edge';
 import { formatDuration, formatRank, isLatinValue } from './format';
 import { BackHeader } from './Header';
@@ -24,6 +26,13 @@ export type ResultViewProps = {
 };
 
 const SKELETON = ['kicker', 'score', 'chip', 'row', 'row', 'row', 'card', 'card'] as const;
+
+/** The tabular figure at the end of a "where you stand" row. */
+const StandValue = ({ children }: { children: string }) => (
+  <Num variant="bodyLg" className="shrink-0" numberOfLines={1}>
+    {children}
+  </Num>
+);
 
 /** `01` / `02` / `03` with the block label, the way every section on this screen opens. */
 function SectionHead({
@@ -46,20 +55,33 @@ function SectionHead({
   );
 }
 
-/** One "where you stand" row: label on the start side, tabular value on the end side. */
-function StandRow({ label, value }: { label: string; value: string }) {
+/**
+ * One "where you stand" row: label on the start side, tabular value on the end side. The
+ * value is a node because a duration is not one string - its digits and its localised unit
+ * render in different faces - so `valueText` carries the spoken form.
+ */
+function StandRow({
+  label,
+  value,
+  valueText,
+}: {
+  label: string;
+  value: ReactNode;
+  valueText: string;
+}) {
   return (
     <Row
       gap={3}
-      align="center"
+      align="baseline"
       className="border-b border-panel3 py-3"
       testID="result-stand-row"
-      accessibilityLabel={`${label} ${value}`}
+      accessible
+      accessibilityLabel={`${label} ${valueText}`}
     >
       <Text variant="body" color="chalk2" className="flex-1">
         {label}
       </Text>
-      <Num variant="bodyLg">{value}</Num>
+      {value}
     </Row>
   );
 }
@@ -163,7 +185,10 @@ export function ResultView({
 }: ResultViewProps) {
   const { t } = useTranslation();
   const d = useDir();
+  const units = useDurationUnits();
   const costRows = COST_ROWS[d.lang];
+  const rankText = result ? formatRank(result.rank, result.totalCandidates) : '';
+  const accuracyText = result ? `${result.accuracyPct}%` : '';
 
   return (
     <Screen testID="result-screen">
@@ -225,12 +250,26 @@ export function ResultView({
               <View>
                 <StandRow
                   label={t('result.rank')}
-                  value={formatRank(result.rank, result.totalCandidates)}
+                  value={<StandValue>{rankText}</StandValue>}
+                  valueText={rankText}
                 />
-                <StandRow label={t('result.accuracy')} value={`${result.accuracyPct}%`} />
+                <StandRow
+                  label={t('result.accuracy')}
+                  value={<StandValue>{accuracyText}</StandValue>}
+                  valueText={accuracyText}
+                />
                 <StandRow
                   label={t('result.perQ')}
-                  value={formatDuration(result.avgSecondsPerQuestion)}
+                  value={
+                    <Duration
+                      seconds={result.avgSecondsPerQuestion}
+                      variant="bodyLg"
+                      weight="700"
+                      color="chalk"
+                      className="shrink-0"
+                    />
+                  }
+                  valueText={formatDuration(result.avgSecondsPerQuestion, units)}
                 />
               </View>
             </Stack>

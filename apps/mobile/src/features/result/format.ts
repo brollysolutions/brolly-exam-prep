@@ -4,13 +4,42 @@
  * string the phone does.
  */
 
-/** `82` -> `'1m 22s'`, `48` -> `'48s'`. Always Latin, always rendered inside `<Num>`. */
-export function formatDuration(totalSeconds: number): string {
+/**
+ * How a duration spells its units. English abuts them to the digits ("54s"); Telugu and
+ * Urdu units are separate words ("54 sec"), the way `COST_ROWS` already writes them.
+ */
+export type DurationUnits = { minute: string; second: string; separator: string };
+
+/** The default: what the prototype prints, and what a value inside `<Num>` can render. */
+export const LATIN_UNITS: DurationUnits = { minute: 'm', second: 's', separator: '' };
+
+/** A number and the unit that follows it, kept apart so the digits can stay in `<Num>`. */
+export type DurationPart = { value: string; unit: string };
+
+/** `82` -> `[1 minute, 22 second]`, `48` -> `[48 second]`. Seconds are padded when minutes lead. */
+export function durationParts(
+  totalSeconds: number,
+  units: DurationUnits = LATIN_UNITS,
+): DurationPart[] {
   const safe = Number.isFinite(totalSeconds) ? Math.max(0, Math.round(totalSeconds)) : 0;
   const minutes = Math.floor(safe / 60);
   const seconds = safe % 60;
-  return minutes === 0 ? `${seconds}s` : `${minutes}m ${String(seconds).padStart(2, '0')}s`;
+  if (minutes === 0) return [{ value: String(seconds), unit: units.second }];
+  return [
+    { value: String(minutes), unit: units.minute },
+    { value: String(seconds).padStart(2, '0'), unit: units.second },
+  ];
 }
+
+/**
+ * `82` -> `'1m 22s'`, `48` -> `'48s'`; with localised units, `'1 min 22 sec'`. The flat
+ * string is what a screen reader announces - on screen the parts render separately so the
+ * digits keep the Latin face and the unit keeps the language's own.
+ */
+export const formatDuration = (totalSeconds: number, units: DurationUnits = LATIN_UNITS): string =>
+  durationParts(totalSeconds, units)
+    .map((part) => `${part.value}${units.separator}${part.unit}`)
+    .join(' ');
 
 /** `9033` -> `'9,033'`. Thousands grouping only; the digits stay Latin for `<Num>`. */
 export function formatCount(value: number): string {
