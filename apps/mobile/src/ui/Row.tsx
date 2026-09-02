@@ -1,5 +1,5 @@
 import { useDir } from '@tslprb/i18n';
-import { View, type ViewProps } from 'react-native';
+import { StyleSheet, View, type ViewProps } from 'react-native';
 
 import {
   alignItems,
@@ -25,7 +25,8 @@ export function Row({ physical = false, gap, align, justify, wrap, style, ...res
   return (
     <View
       {...rest}
-      style={[
+      // Flattened on purpose: css-interop mutates array styles on web (see Text).
+      style={StyleSheet.flatten([
         {
           flexDirection: physical ? 'row' : d.row,
           gap: gapOf(gap),
@@ -34,7 +35,7 @@ export function Row({ physical = false, gap, align, justify, wrap, style, ...res
           flexWrap: wrap ? 'wrap' : undefined,
         },
         style,
-      ]}
+      ])}
     />
   );
 }

@@ -1,4 +1,4 @@
-import { View, type ViewProps } from 'react-native';
+import { StyleSheet, View, type ViewProps } from 'react-native';
 
 import {
   alignItems,
@@ -20,7 +20,8 @@ export function Stack({ gap, align, justify, style, ...rest }: StackProps) {
   return (
     <View
       {...rest}
-      style={[
+      // Flattened on purpose: css-interop mutates array styles on web (see Text).
+      style={StyleSheet.flatten([
         {
           flexDirection: 'column',
           gap: gapOf(gap),
@@ -28,7 +29,7 @@ export function Stack({ gap, align, justify, style, ...rest }: StackProps) {
           justifyContent: justify && justifyContent[justify],
         },
         style,
-      ]}
+      ])}
     />
   );
 }

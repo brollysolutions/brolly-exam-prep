@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ScrollView, View, type ViewProps } from 'react-native';
+import { ScrollView, StyleSheet, View, type ViewProps } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { cx } from './cx';
@@ -43,7 +43,8 @@ export function Screen({
     <View
       {...rest}
       className={cx('flex-1 bg-tar', className)}
-      style={[
+      // Flattened on purpose: css-interop mutates array styles on web (see Text).
+      style={StyleSheet.flatten([
         {
           paddingTop: insets.top,
           paddingBottom: insets.bottom,
@@ -51,7 +52,7 @@ export function Screen({
           paddingRight: insets.right,
         },
         style,
-      ]}
+      ])}
     >
       {rail && <HazardRail critical={critical} />}
       {scroll ? (

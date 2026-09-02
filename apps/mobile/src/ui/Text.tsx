@@ -9,6 +9,7 @@ import {
 import { useDir } from '@tslprb/i18n';
 import {
   Text as RNText,
+  StyleSheet,
   type StyleProp,
   type TextProps as RNTextProps,
   type TextStyle,
@@ -26,8 +27,8 @@ export type TextProps = Omit<RNTextProps, 'style'> & {
   color?: ColorName;
   /** Reading-order alignment resolved through `useDir()`. Defaults to `start`. */
   align?: TextAlign;
-  /** Letter-spacing token. Applied for English only — Telugu and Urdu always get 0. */
-  tracking?: keyof typeof trackingTokens;
+  /** Letter-spacing token, applied when the *face* is Latin (Telugu/Urdu faces get 0); `none` forces 0. */
+  tracking?: keyof typeof trackingTokens | 'none';
   /** Tabular figures. */
   numeric?: boolean;
   /** Render in another language's face (e.g. a Telugu label inside an English UI). */
@@ -54,18 +55,24 @@ export function Text({
   const d = useDir();
   const face = lang ?? d.lang;
   const type = typography(face, variant, weight);
-  const letterSpacing = tracking
-    ? face === 'en'
-      ? trackingTokens[tracking]
-      : 0
-    : type.letterSpacing;
+  const letterSpacing =
+    tracking === 'none'
+      ? 0
+      : tracking
+        ? face === 'en'
+          ? trackingTokens[tracking]
+          : 0
+        : type.letterSpacing;
   const textAlign =
     align === 'center' ? 'center' : align === 'end' ? d.pick('right', 'left') : d.textAlign;
   return (
     <RNText
       {...rest}
       className={cx(`text-${color}`, className)}
-      style={[
+      // Always a fresh plain object, never an array: on web, css-interop pushes the className's
+      // `$css` entry INTO an array style in place, and React Compiler memoises array literals, so
+      // an array here accumulates stale colour classes across re-renders (EN cell bug, F-01 r2).
+      style={StyleSheet.flatten([
         type,
         {
           letterSpacing,
@@ -75,7 +82,7 @@ export function Text({
           textTransform: uppercase ? 'uppercase' : undefined,
         },
         style,
-      ]}
+      ])}
     />
   );
 }
