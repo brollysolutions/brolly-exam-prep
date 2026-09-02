@@ -1077,10 +1077,28 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
         }
         testID="home-greeting"
       >
-        تیار ہیں، …1234؟
+        تیار ہیں، ⁦…1234⁩؟
+      </Text>
+      <Text
+        className="text-dim mt-1"
+        style={
+          {
+            "fontFamily": "NotoNastaliqUrdu_400Regular",
+            "fontSize": 12.5,
+            "fontVariant": undefined,
+            "letterSpacing": 0,
+            "lineHeight": 25.6,
+            "textAlign": "right",
+            "textTransform": undefined,
+            "writingDirection": "rtl",
+          }
+        }
+        testID="home-streak"
+      >
+        4 دن کا سلسلہ
       </Text>
       <View
-        className="mt-3"
+        className="mt-4"
         style={
           {
             "alignItems": undefined,
@@ -1133,10 +1151,10 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
           style={
             {
               "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 12,
+              "fontSize": 13,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 24.6,
+              "lineHeight": 26.7,
               "textAlign": "right",
               "textTransform": undefined,
               "writingDirection": "rtl",
@@ -1160,7 +1178,7 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
             }
           }
         >
-          پی ڈبلیو ٹی فل ماک 08
+          پی ڈبلیو ٹی فل ماک 07
         </Text>
         <View
           className="mt-2"
@@ -1203,7 +1221,7 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
                 }
               }
             >
-              ⁦200⁩
+              ⁦40⁩
             </Text>
             <Text
               className="text-dim"
@@ -1269,7 +1287,7 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
                 }
               }
             >
-              ⁦180⁩
+              ⁦60⁩
             </Text>
             <Text
               className="text-dim"
@@ -1374,10 +1392,10 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
           style={
             {
               "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 12,
+              "fontSize": 13,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 24.6,
+              "lineHeight": 26.7,
               "textAlign": "right",
               "textTransform": undefined,
               "writingDirection": "rtl",
@@ -1454,7 +1472,7 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
                 "selected": true,
               }
             }
-            className="items-center justify-center border rounded-full h-chip px-3 bg-hivis border-hivis"
+            className="items-center justify-center border rounded-xs h-chip px-3 bg-hivis border-hivis"
           >
             <Text
               className="text-tar"
@@ -1476,320 +1494,412 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
           </View>
         </View>
       </View>
-      <View
-        accessibilityState={
+      <Text
+        className="text-dim mt-6"
+        style={
           {
-            "selected": false,
+            "fontFamily": "NotoNastaliqUrdu_700Bold",
+            "fontSize": 13,
+            "fontVariant": undefined,
+            "letterSpacing": 0,
+            "lineHeight": 26.7,
+            "textAlign": "right",
+            "textTransform": undefined,
+            "writingDirection": "rtl",
           }
         }
-        className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4 mt-3"
-        testID="home-weak-topics"
       >
-        <Text
-          className="text-dim"
-          style={
-            {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 12,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 24.6,
-              "textAlign": "right",
-              "textTransform": undefined,
-              "writingDirection": "rtl",
-            }
-          }
-        >
-          کمزور موضوعات
-        </Text>
-        <View
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          className="min-h-touch justify-center mt-1"
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          testID="home-topic-drill-seating"
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row-reverse",
-                "flexWrap": undefined,
-                "gap": 12,
-                "justifyContent": "space-between",
-              }
-            }
-          >
-            <Text
-              className="text-chalk flex-1"
-              style={
-                {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 14.5,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 29.7,
-                  "textAlign": "right",
-                  "textTransform": undefined,
-                  "writingDirection": "rtl",
-                }
-              }
-            >
-              سیٹنگ آرینجمنٹ — 20 سوالات کا سیکشنل
-            </Text>
-            <Text
-              accessibilityElementsHidden={true}
-              className="text-dim"
-              importantForAccessibility="no"
-              style={
-                {
-                  "fontFamily": "Archivo_400Regular",
-                  "fontSize": 20,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 29,
-                  "textAlign": "right",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              ‹
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          className="min-h-touch justify-center border-t border-line2"
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          testID="home-topic-drill-blood"
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row-reverse",
-                "flexWrap": undefined,
-                "gap": 12,
-                "justifyContent": "space-between",
-              }
-            }
-          >
-            <Text
-              className="text-chalk flex-1"
-              style={
-                {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 14.5,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 29.7,
-                  "textAlign": "right",
-                  "textTransform": undefined,
-                  "writingDirection": "rtl",
-                }
-              }
-            >
-              بلڈ ریلیشنز — 15 سوالات
-            </Text>
-            <Text
-              accessibilityElementsHidden={true}
-              className="text-dim"
-              importantForAccessibility="no"
-              style={
-                {
-                  "fontFamily": "Archivo_400Regular",
-                  "fontSize": 20,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 29,
-                  "textAlign": "right",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              ‹
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          className="min-h-touch justify-center border-t border-line2"
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          testID="home-topic-drill-timed"
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row-reverse",
-                "flexWrap": undefined,
-                "gap": 12,
-                "justifyContent": "space-between",
-              }
-            }
-          >
-            <Text
-              className="text-chalk flex-1"
-              style={
-                {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 14.5,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 29.7,
-                  "textAlign": "right",
-                  "textTransform": undefined,
-                  "writingDirection": "rtl",
-                }
-              }
-            >
-              ٹائمڈ ریزننگ — 18 منٹ میں 20 سوالات
-            </Text>
-            <Text
-              accessibilityElementsHidden={true}
-              className="text-dim"
-              importantForAccessibility="no"
-              style={
-                {
-                  "fontFamily": "Archivo_400Regular",
-                  "fontSize": 20,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 29,
-                  "textAlign": "right",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              ‹
-            </Text>
-          </View>
-        </View>
-      </View>
+        کمزور موضوعات
+      </Text>
       <View
-        className="mt-4"
+        className="mt-2"
         style={
           {
             "alignItems": undefined,
-            "flexDirection": "row-reverse",
-            "flexWrap": undefined,
-            "gap": undefined,
+            "flexDirection": "column",
+            "gap": 8,
             "justifyContent": undefined,
           }
         }
+        testID="home-weak-topics"
       >
         <View
-          accessibilityState={
+          style={
             {
-              "selected": false,
+              "backgroundColor": "#141517",
+              "borderColor": "#2C2E31",
+              "borderRadius": 4,
+              "borderRightColor": "#FFE01B",
+              "borderRightWidth": 3,
+              "borderWidth": 1,
+              "overflow": "hidden",
             }
           }
-          className="items-center justify-center border rounded-xs h-chip px-3 border-line"
-          testID="home-streak"
         >
-          <Text
-            className="text-dim"
-            style={
+          <View
+            accessibilityRole="button"
+            accessibilityState={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 13.5,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 27.7,
-                "textAlign": "center",
-                "textTransform": undefined,
-                "writingDirection": "rtl",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="min-h-16 justify-center p-4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            testID="home-topic-drill-seating"
           >
-            4 دن کا سلسلہ
-          </Text>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 12,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <View
+                className="flex-1"
+                style={
+                  {
+                    "alignItems": undefined,
+                    "flexDirection": "column",
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-chalk"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  سیٹنگ آرینجمنٹ — 20 سوالات کا سیکشنل
+                </Text>
+                <Text
+                  className="text-dim"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_400Regular",
+                      "fontSize": 12.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 25.6,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  آپ کا کمزور موضوع · 18 منٹ
+                </Text>
+              </View>
+              <Text
+                accessibilityElementsHidden={true}
+                className="text-hivis"
+                importantForAccessibility="no"
+                style={
+                  {
+                    "fontFamily": "Archivo_400Regular",
+                    "fontSize": 20,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 29,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ‹
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "backgroundColor": "#141517",
+              "borderColor": "#2C2E31",
+              "borderRadius": 4,
+              "borderRightColor": "#FFE01B",
+              "borderRightWidth": 3,
+              "borderWidth": 1,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="min-h-16 justify-center p-4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            testID="home-topic-drill-blood"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 12,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <View
+                className="flex-1"
+                style={
+                  {
+                    "alignItems": undefined,
+                    "flexDirection": "column",
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-chalk"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  بلڈ ریلیشنز — 15 سوالات
+                </Text>
+                <Text
+                  className="text-dim"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_400Regular",
+                      "fontSize": 12.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 25.6,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  12 منٹ · کل 3 غلط
+                </Text>
+              </View>
+              <Text
+                accessibilityElementsHidden={true}
+                className="text-hivis"
+                importantForAccessibility="no"
+                style={
+                  {
+                    "fontFamily": "Archivo_400Regular",
+                    "fontSize": 20,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 29,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ‹
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "backgroundColor": "#141517",
+              "borderColor": "#2C2E31",
+              "borderRadius": 4,
+              "borderRightColor": "#FFE01B",
+              "borderRightWidth": 3,
+              "borderWidth": 1,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="min-h-16 justify-center p-4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            testID="home-topic-drill-timed"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 12,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <View
+                className="flex-1"
+                style={
+                  {
+                    "alignItems": undefined,
+                    "flexDirection": "column",
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-chalk"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  ٹائمڈ ریزننگ — 18 منٹ میں 20 سوالات
+                </Text>
+                <Text
+                  className="text-dim"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_400Regular",
+                      "fontSize": 12.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 25.6,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  رفتار بڑھانے کے لیے
+                </Text>
+              </View>
+              <Text
+                accessibilityElementsHidden={true}
+                className="text-hivis"
+                importantForAccessibility="no"
+                style={
+                  {
+                    "fontFamily": "Archivo_400Regular",
+                    "fontSize": 20,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 29,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ‹
+              </Text>
+            </View>
+          </View>
         </View>
       </View>
     </View>

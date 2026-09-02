@@ -953,10 +953,10 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
           style={
             {
               "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 12,
+              "fontSize": 13,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 24.6,
+              "lineHeight": 26.7,
               "textAlign": "right",
               "textTransform": undefined,
               "writingDirection": "rtl",
@@ -1159,10 +1159,10 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               style={
                 {
                   "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 12,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 24.6,
+                  "lineHeight": 26.7,
                   "textAlign": "right",
                   "textTransform": undefined,
                   "writingDirection": "rtl",
@@ -1427,10 +1427,10 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               style={
                 {
                   "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 12,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 24.6,
+                  "lineHeight": 26.7,
                   "textAlign": "right",
                   "textTransform": undefined,
                   "writingDirection": "rtl",
@@ -1732,10 +1732,10 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               style={
                 {
                   "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 12,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 24.6,
+                  "lineHeight": 26.7,
                   "textAlign": "right",
                   "textTransform": undefined,
                   "writingDirection": "rtl",

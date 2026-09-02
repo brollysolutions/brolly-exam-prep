@@ -1142,10 +1142,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": "uppercase",
                 "writingDirection": "rtl",
@@ -1160,10 +1160,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
           style={
             {
               "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 12,
+              "fontSize": 13,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 24.6,
+              "lineHeight": 26.7,
               "textAlign": "right",
               "textTransform": undefined,
               "writingDirection": "rtl",
@@ -1393,10 +1393,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": "uppercase",
                 "writingDirection": "rtl",
@@ -2455,6 +2455,262 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
               }
             }
           >
+            dangerOutline
+          </Text>
+          <View
+            style={
+              {
+                "alignItems": undefined,
+                "flexDirection": "row-reverse",
+                "flexWrap": "wrap",
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <View
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              className="items-center justify-center rounded-sm px-4 border border-flag flex-1"
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "height": 48,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row-reverse",
+                    "flexWrap": undefined,
+                    "gap": 8,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-flag"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  جاری رکھیں
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              className="items-center justify-center rounded-sm px-4 border border-flag flex-1"
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "height": 56,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row-reverse",
+                    "flexWrap": undefined,
+                    "gap": 8,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-flag"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 15.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 31.8,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  جاری رکھیں
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": undefined,
+                "flexDirection": "row-reverse",
+                "flexWrap": "wrap",
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <View
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": true,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              className="items-center justify-center rounded-sm px-4 border border-flag opacity-40 flex-1"
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "height": 48,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row-reverse",
+                    "flexWrap": undefined,
+                    "gap": 8,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-flag"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  جاری رکھیں · disabled
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": undefined,
+              "flexDirection": "column",
+              "gap": 8,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <Text
+            className="text-dim"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_400Regular",
+                "fontSize": 12.5,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 25.6,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
             hazard
           </Text>
           <View
@@ -2802,10 +3058,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": "uppercase",
                 "writingDirection": "rtl",
@@ -3151,10 +3407,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": "uppercase",
                 "writingDirection": "rtl",
@@ -3631,10 +3887,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": "uppercase",
                 "writingDirection": "rtl",
@@ -3773,10 +4029,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": "uppercase",
                 "writingDirection": "rtl",
@@ -3940,10 +4196,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": "uppercase",
                 "writingDirection": "rtl",
@@ -4173,10 +4429,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": "uppercase",
                 "writingDirection": "rtl",
@@ -5369,10 +5625,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": "uppercase",
                 "writingDirection": "rtl",
@@ -5537,10 +5793,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": "uppercase",
                 "writingDirection": "rtl",
@@ -6168,10 +6424,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": "uppercase",
                 "writingDirection": "rtl",
@@ -7918,10 +8174,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": "uppercase",
                 "writingDirection": "rtl",
@@ -11577,10 +11833,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           style={
                             {
                               "fontFamily": "NotoNastaliqUrdu_700Bold",
-                              "fontSize": 12,
+                              "fontSize": 13,
                               "fontVariant": undefined,
                               "letterSpacing": 0,
-                              "lineHeight": 24.6,
+                              "lineHeight": 26.7,
                               "textAlign": "right",
                               "textTransform": "uppercase",
                               "writingDirection": "rtl",
@@ -12328,10 +12584,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           style={
                             {
                               "fontFamily": "NotoNastaliqUrdu_700Bold",
-                              "fontSize": 12,
+                              "fontSize": 13,
                               "fontVariant": undefined,
                               "letterSpacing": 0,
-                              "lineHeight": 24.6,
+                              "lineHeight": 26.7,
                               "textAlign": "right",
                               "textTransform": "uppercase",
                               "writingDirection": "rtl",
@@ -13074,10 +13330,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           style={
                             {
                               "fontFamily": "NotoNastaliqUrdu_700Bold",
-                              "fontSize": 12,
+                              "fontSize": 13,
                               "fontVariant": undefined,
                               "letterSpacing": 0,
-                              "lineHeight": 24.6,
+                              "lineHeight": 26.7,
                               "textAlign": "right",
                               "textTransform": "uppercase",
                               "writingDirection": "rtl",
@@ -13820,10 +14076,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           style={
                             {
                               "fontFamily": "NotoNastaliqUrdu_700Bold",
-                              "fontSize": 12,
+                              "fontSize": 13,
                               "fontVariant": undefined,
                               "letterSpacing": 0,
-                              "lineHeight": 24.6,
+                              "lineHeight": 26.7,
                               "textAlign": "right",
                               "textTransform": "uppercase",
                               "writingDirection": "rtl",
@@ -14667,10 +14923,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": "uppercase",
                 "writingDirection": "rtl",
@@ -21664,10 +21920,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": "uppercase",
                 "writingDirection": "rtl",
@@ -22663,10 +22919,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 12,
+                          "fontSize": 13,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 24.6,
+                          "lineHeight": 26.7,
                           "textAlign": "right",
                           "textTransform": undefined,
                           "writingDirection": "rtl",
@@ -22869,10 +23125,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           style={
                             {
                               "fontFamily": "NotoNastaliqUrdu_700Bold",
-                              "fontSize": 12,
+                              "fontSize": 13,
                               "fontVariant": undefined,
                               "letterSpacing": 0,
-                              "lineHeight": 24.6,
+                              "lineHeight": 26.7,
                               "textAlign": "right",
                               "textTransform": undefined,
                               "writingDirection": "rtl",
@@ -23088,10 +23344,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           style={
                             {
                               "fontFamily": "NotoNastaliqUrdu_700Bold",
-                              "fontSize": 12,
+                              "fontSize": 13,
                               "fontVariant": undefined,
                               "letterSpacing": 0,
-                              "lineHeight": 24.6,
+                              "lineHeight": 26.7,
                               "textAlign": "right",
                               "textTransform": undefined,
                               "writingDirection": "rtl",
@@ -23390,10 +23646,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           style={
                             {
                               "fontFamily": "NotoNastaliqUrdu_700Bold",
-                              "fontSize": 12,
+                              "fontSize": 13,
                               "fontVariant": undefined,
                               "letterSpacing": 0,
-                              "lineHeight": 24.6,
+                              "lineHeight": 26.7,
                               "textAlign": "right",
                               "textTransform": undefined,
                               "writingDirection": "rtl",
@@ -24855,10 +25111,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 12,
+                          "fontSize": 13,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 24.6,
+                          "lineHeight": 26.7,
                           "textAlign": "right",
                           "textTransform": undefined,
                           "writingDirection": "rtl",
@@ -25061,10 +25317,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           style={
                             {
                               "fontFamily": "NotoNastaliqUrdu_700Bold",
-                              "fontSize": 12,
+                              "fontSize": 13,
                               "fontVariant": undefined,
                               "letterSpacing": 0,
-                              "lineHeight": 24.6,
+                              "lineHeight": 26.7,
                               "textAlign": "right",
                               "textTransform": undefined,
                               "writingDirection": "rtl",
@@ -25280,10 +25536,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           style={
                             {
                               "fontFamily": "NotoNastaliqUrdu_700Bold",
-                              "fontSize": 12,
+                              "fontSize": 13,
                               "fontVariant": undefined,
                               "letterSpacing": 0,
-                              "lineHeight": 24.6,
+                              "lineHeight": 26.7,
                               "textAlign": "right",
                               "textTransform": undefined,
                               "writingDirection": "rtl",
@@ -25582,10 +25838,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           style={
                             {
                               "fontFamily": "NotoNastaliqUrdu_700Bold",
-                              "fontSize": 12,
+                              "fontSize": 13,
                               "fontVariant": undefined,
                               "letterSpacing": 0,
-                              "lineHeight": 24.6,
+                              "lineHeight": 26.7,
                               "textAlign": "right",
                               "textTransform": undefined,
                               "writingDirection": "rtl",
@@ -29468,10 +29724,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                  "fontSize": 12,
+                                  "fontSize": 13,
                                   "fontVariant": undefined,
                                   "letterSpacing": 0,
-                                  "lineHeight": 24.6,
+                                  "lineHeight": 26.7,
                                   "textAlign": "right",
                                   "textTransform": undefined,
                                   "writingDirection": "rtl",
@@ -29535,10 +29791,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -29581,10 +29837,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -29619,10 +29875,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -29816,10 +30072,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                  "fontSize": 12,
+                                  "fontSize": 13,
                                   "fontVariant": undefined,
                                   "letterSpacing": 0,
-                                  "lineHeight": 24.6,
+                                  "lineHeight": 26.7,
                                   "textAlign": "right",
                                   "textTransform": undefined,
                                   "writingDirection": "rtl",
@@ -29883,10 +30139,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -29929,10 +30185,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -29967,10 +30223,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -30164,10 +30420,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                  "fontSize": 12,
+                                  "fontSize": 13,
                                   "fontVariant": undefined,
                                   "letterSpacing": 0,
-                                  "lineHeight": 24.6,
+                                  "lineHeight": 26.7,
                                   "textAlign": "right",
                                   "textTransform": undefined,
                                   "writingDirection": "rtl",
@@ -30231,10 +30487,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -30277,10 +30533,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -30315,10 +30571,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -31811,10 +32067,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                  "fontSize": 12,
+                                  "fontSize": 13,
                                   "fontVariant": undefined,
                                   "letterSpacing": 0,
-                                  "lineHeight": 24.6,
+                                  "lineHeight": 26.7,
                                   "textAlign": "right",
                                   "textTransform": undefined,
                                   "writingDirection": "rtl",
@@ -31878,10 +32134,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -31924,10 +32180,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -31962,10 +32218,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -32159,10 +32415,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                  "fontSize": 12,
+                                  "fontSize": 13,
                                   "fontVariant": undefined,
                                   "letterSpacing": 0,
-                                  "lineHeight": 24.6,
+                                  "lineHeight": 26.7,
                                   "textAlign": "right",
                                   "textTransform": undefined,
                                   "writingDirection": "rtl",
@@ -32226,10 +32482,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -32272,10 +32528,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -32310,10 +32566,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -32507,10 +32763,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                  "fontSize": 12,
+                                  "fontSize": 13,
                                   "fontVariant": undefined,
                                   "letterSpacing": 0,
-                                  "lineHeight": 24.6,
+                                  "lineHeight": 26.7,
                                   "textAlign": "right",
                                   "textTransform": undefined,
                                   "writingDirection": "rtl",
@@ -32574,10 +32830,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -32620,10 +32876,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -32658,10 +32914,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -32855,10 +33111,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                  "fontSize": 12,
+                                  "fontSize": 13,
                                   "fontVariant": undefined,
                                   "letterSpacing": 0,
-                                  "lineHeight": 24.6,
+                                  "lineHeight": 26.7,
                                   "textAlign": "right",
                                   "textTransform": undefined,
                                   "writingDirection": "rtl",
@@ -32922,10 +33178,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -32960,10 +33216,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             style={
                               {
                                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                "fontSize": 12,
+                                "fontSize": 13,
                                 "fontVariant": undefined,
                                 "letterSpacing": 0,
-                                "lineHeight": 24.6,
+                                "lineHeight": 26.7,
                                 "textAlign": "right",
                                 "textTransform": undefined,
                                 "writingDirection": "rtl",
@@ -33150,10 +33406,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": "uppercase",
                 "writingDirection": "rtl",
@@ -33162,442 +33418,6 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
           >
             App shell (F-02 / F-07 / F-08 / F-14)
           </Text>
-        </View>
-        <Text
-          className="text-dim"
-          style={
-            {
-              "fontFamily": "NotoNastaliqUrdu_400Regular",
-              "fontSize": 12.5,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 25.6,
-              "textAlign": "right",
-              "textTransform": undefined,
-              "writingDirection": "rtl",
-            }
-          }
-        >
-          Tab icons — inactive (dim) / active (hi-vis)
-        </Text>
-        <View
-          className="border border-line bg-panel p-3"
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row-reverse",
-              "flexWrap": undefined,
-              "gap": 16,
-              "justifyContent": undefined,
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row-reverse",
-                "flexWrap": undefined,
-                "gap": 8,
-                "justifyContent": undefined,
-              }
-            }
-          >
-            <View
-              accessibilityElementsHidden={true}
-              importantForAccessibility="no-hide-descendants"
-              style={
-                {
-                  "alignItems": "center",
-                  "height": 22,
-                  "justifyContent": "center",
-                  "width": 22,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "borderBottomColor": "#9A9CA0",
-                    "borderBottomWidth": 7,
-                    "borderLeftColor": "transparent",
-                    "borderLeftWidth": 9,
-                    "borderRightColor": "transparent",
-                    "borderRightWidth": 9,
-                    "height": 0,
-                    "width": 0,
-                  }
-                }
-              />
-              <View
-                style={
-                  {
-                    "backgroundColor": "transparent",
-                    "borderColor": "#9A9CA0",
-                    "borderTopWidth": 0,
-                    "borderWidth": 2,
-                    "height": 11,
-                    "width": 14,
-                  }
-                }
-              />
-            </View>
-            <View
-              accessibilityElementsHidden={true}
-              importantForAccessibility="no-hide-descendants"
-              style={
-                {
-                  "alignItems": "center",
-                  "height": 22,
-                  "justifyContent": "center",
-                  "width": 22,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "borderBottomColor": "#FFE01B",
-                    "borderBottomWidth": 7,
-                    "borderLeftColor": "transparent",
-                    "borderLeftWidth": 9,
-                    "borderRightColor": "transparent",
-                    "borderRightWidth": 9,
-                    "height": 0,
-                    "width": 0,
-                  }
-                }
-              />
-              <View
-                style={
-                  {
-                    "backgroundColor": "#FFE01B",
-                    "borderColor": "#FFE01B",
-                    "borderTopWidth": 0,
-                    "borderWidth": 2,
-                    "height": 11,
-                    "width": 14,
-                  }
-                }
-              />
-            </View>
-          </View>
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row-reverse",
-                "flexWrap": undefined,
-                "gap": 8,
-                "justifyContent": undefined,
-              }
-            }
-          >
-            <View
-              accessibilityElementsHidden={true}
-              importantForAccessibility="no-hide-descendants"
-              style={
-                {
-                  "alignItems": "center",
-                  "height": 22,
-                  "justifyContent": "center",
-                  "width": 22,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "marginTop": 0,
-                  }
-                }
-              >
-                <View
-                  style={
-                    {
-                      "backgroundColor": "transparent",
-                      "borderColor": "#9A9CA0",
-                      "borderWidth": 2,
-                      "height": 4,
-                      "width": 4,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#9A9CA0",
-                      "height": 2,
-                      "marginLeft": 4,
-                      "width": 12,
-                    }
-                  }
-                />
-              </View>
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "marginTop": 4,
-                  }
-                }
-              >
-                <View
-                  style={
-                    {
-                      "backgroundColor": "transparent",
-                      "borderColor": "#9A9CA0",
-                      "borderWidth": 2,
-                      "height": 4,
-                      "width": 4,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#9A9CA0",
-                      "height": 2,
-                      "marginLeft": 4,
-                      "width": 12,
-                    }
-                  }
-                />
-              </View>
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "marginTop": 4,
-                  }
-                }
-              >
-                <View
-                  style={
-                    {
-                      "backgroundColor": "transparent",
-                      "borderColor": "#9A9CA0",
-                      "borderWidth": 2,
-                      "height": 4,
-                      "width": 4,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#9A9CA0",
-                      "height": 2,
-                      "marginLeft": 4,
-                      "width": 12,
-                    }
-                  }
-                />
-              </View>
-            </View>
-            <View
-              accessibilityElementsHidden={true}
-              importantForAccessibility="no-hide-descendants"
-              style={
-                {
-                  "alignItems": "center",
-                  "height": 22,
-                  "justifyContent": "center",
-                  "width": 22,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "marginTop": 0,
-                  }
-                }
-              >
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#FFE01B",
-                      "borderColor": "#FFE01B",
-                      "borderWidth": 2,
-                      "height": 4,
-                      "width": 4,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#FFE01B",
-                      "height": 2,
-                      "marginLeft": 4,
-                      "width": 12,
-                    }
-                  }
-                />
-              </View>
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "marginTop": 4,
-                  }
-                }
-              >
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#FFE01B",
-                      "borderColor": "#FFE01B",
-                      "borderWidth": 2,
-                      "height": 4,
-                      "width": 4,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#FFE01B",
-                      "height": 2,
-                      "marginLeft": 4,
-                      "width": 12,
-                    }
-                  }
-                />
-              </View>
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "marginTop": 4,
-                  }
-                }
-              >
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#FFE01B",
-                      "borderColor": "#FFE01B",
-                      "borderWidth": 2,
-                      "height": 4,
-                      "width": 4,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#FFE01B",
-                      "height": 2,
-                      "marginLeft": 4,
-                      "width": 12,
-                    }
-                  }
-                />
-              </View>
-            </View>
-          </View>
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row-reverse",
-                "flexWrap": undefined,
-                "gap": 8,
-                "justifyContent": undefined,
-              }
-            }
-          >
-            <View
-              accessibilityElementsHidden={true}
-              importantForAccessibility="no-hide-descendants"
-              style={
-                {
-                  "alignItems": "center",
-                  "height": 22,
-                  "justifyContent": "center",
-                  "width": 22,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "backgroundColor": "transparent",
-                    "borderColor": "#9A9CA0",
-                    "borderRadius": 999,
-                    "borderWidth": 2,
-                    "height": 9,
-                    "width": 9,
-                  }
-                }
-              />
-              <View
-                style={
-                  {
-                    "backgroundColor": "transparent",
-                    "borderBottomWidth": 0,
-                    "borderColor": "#9A9CA0",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 2,
-                    "height": 8,
-                    "marginTop": 2,
-                    "width": 16,
-                  }
-                }
-              />
-            </View>
-            <View
-              accessibilityElementsHidden={true}
-              importantForAccessibility="no-hide-descendants"
-              style={
-                {
-                  "alignItems": "center",
-                  "height": 22,
-                  "justifyContent": "center",
-                  "width": 22,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "backgroundColor": "#FFE01B",
-                    "borderColor": "#FFE01B",
-                    "borderRadius": 999,
-                    "borderWidth": 2,
-                    "height": 9,
-                    "width": 9,
-                  }
-                }
-              />
-              <View
-                style={
-                  {
-                    "backgroundColor": "#FFE01B",
-                    "borderBottomWidth": 0,
-                    "borderColor": "#FFE01B",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 2,
-                    "height": 8,
-                    "marginTop": 2,
-                    "width": 16,
-                  }
-                }
-              />
-            </View>
-          </View>
         </View>
         <View
           style={
@@ -34544,6 +34364,11 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                 </View>
                 <RCTScrollView
                   className="flex-1"
+                  contentContainerStyle={
+                    {
+                      "flexGrow": 1,
+                    }
+                  }
                   data={
                     [
                       3,
@@ -34593,9 +34418,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       }
                     >
                       <View
-                        className="justify-center px-6"
+                        className="justify-center px-4"
                         style={
                           {
+                            "flex": 1,
                             "width": 750,
                           }
                         }
@@ -34622,7 +34448,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           ⁦1 / 3⁩
                         </Text>
                         <Text
-                          className="text-chalk mt-3"
+                          className="text-chalk mt-6"
                           style={
                             {
                               "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -34635,11 +34461,12 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               "writingDirection": "rtl",
                             }
                           }
+                          testID="welcome-title-1"
                         >
                           اصل پی ڈبلیو ٹی کی مشق
                         </Text>
                         <Text
-                          className="text-dim mt-3"
+                          className="text-dim mt-6"
                           style={
                             {
                               "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -35954,10 +35781,28 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     }
                     testID="home-greeting"
                   >
-                    تیار ہیں، …1234؟
+                    تیار ہیں، ⁦…1234⁩؟
+                  </Text>
+                  <Text
+                    className="text-dim mt-1"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_400Regular",
+                        "fontSize": 12.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 25.6,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                    testID="home-streak"
+                  >
+                    4 دن کا سلسلہ
                   </Text>
                   <View
-                    className="mt-3"
+                    className="mt-4"
                     style={
                       {
                         "alignItems": undefined,
@@ -36010,10 +35855,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 12,
+                          "fontSize": 13,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 24.6,
+                          "lineHeight": 26.7,
                           "textAlign": "right",
                           "textTransform": undefined,
                           "writingDirection": "rtl",
@@ -36037,7 +35882,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         }
                       }
                     >
-                      پی ڈبلیو ٹی فل ماک 08
+                      پی ڈبلیو ٹی فل ماک 07
                     </Text>
                     <View
                       className="mt-2"
@@ -36080,7 +35925,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                         >
-                          ⁦200⁩
+                          ⁦40⁩
                         </Text>
                         <Text
                           className="text-dim"
@@ -36146,7 +35991,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                         >
-                          ⁦180⁩
+                          ⁦60⁩
                         </Text>
                         <Text
                           className="text-dim"
@@ -36251,10 +36096,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 12,
+                          "fontSize": 13,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 24.6,
+                          "lineHeight": 26.7,
                           "textAlign": "right",
                           "textTransform": undefined,
                           "writingDirection": "rtl",
@@ -36331,7 +36176,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             "selected": true,
                           }
                         }
-                        className="items-center justify-center border rounded-full h-chip px-3 bg-hivis border-hivis"
+                        className="items-center justify-center border rounded-xs h-chip px-3 bg-hivis border-hivis"
                       >
                         <Text
                           className="text-tar"
@@ -36353,320 +36198,412 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       </View>
                     </View>
                   </View>
-                  <View
-                    accessibilityState={
+                  <Text
+                    className="text-dim mt-6"
+                    style={
                       {
-                        "selected": false,
+                        "fontFamily": "NotoNastaliqUrdu_700Bold",
+                        "fontSize": 13,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 26.7,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
                       }
                     }
-                    className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4 mt-3"
-                    testID="home-weak-topics"
                   >
-                    <Text
-                      className="text-dim"
-                      style={
-                        {
-                          "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 12,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 24.6,
-                          "textAlign": "right",
-                          "textTransform": undefined,
-                          "writingDirection": "rtl",
-                        }
-                      }
-                    >
-                      کمزور موضوعات
-                    </Text>
-                    <View
-                      accessibilityRole="button"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      className="min-h-touch justify-center mt-1"
-                      collapsable={false}
-                      focusable={true}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      testID="home-topic-drill-seating"
-                    >
-                      <View
-                        style={
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row-reverse",
-                            "flexWrap": undefined,
-                            "gap": 12,
-                            "justifyContent": "space-between",
-                          }
-                        }
-                      >
-                        <Text
-                          className="text-chalk flex-1"
-                          style={
-                            {
-                              "fontFamily": "NotoNastaliqUrdu_700Bold",
-                              "fontSize": 14.5,
-                              "fontVariant": undefined,
-                              "letterSpacing": 0,
-                              "lineHeight": 29.7,
-                              "textAlign": "right",
-                              "textTransform": undefined,
-                              "writingDirection": "rtl",
-                            }
-                          }
-                        >
-                          سیٹنگ آرینجمنٹ — 20 سوالات کا سیکشنل
-                        </Text>
-                        <Text
-                          accessibilityElementsHidden={true}
-                          className="text-dim"
-                          importantForAccessibility="no"
-                          style={
-                            {
-                              "fontFamily": "Archivo_400Regular",
-                              "fontSize": 20,
-                              "fontVariant": undefined,
-                              "letterSpacing": 0,
-                              "lineHeight": 29,
-                              "textAlign": "right",
-                              "textTransform": undefined,
-                              "writingDirection": "ltr",
-                            }
-                          }
-                        >
-                          ‹
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      accessibilityRole="button"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      className="min-h-touch justify-center border-t border-line2"
-                      collapsable={false}
-                      focusable={true}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      testID="home-topic-drill-blood"
-                    >
-                      <View
-                        style={
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row-reverse",
-                            "flexWrap": undefined,
-                            "gap": 12,
-                            "justifyContent": "space-between",
-                          }
-                        }
-                      >
-                        <Text
-                          className="text-chalk flex-1"
-                          style={
-                            {
-                              "fontFamily": "NotoNastaliqUrdu_700Bold",
-                              "fontSize": 14.5,
-                              "fontVariant": undefined,
-                              "letterSpacing": 0,
-                              "lineHeight": 29.7,
-                              "textAlign": "right",
-                              "textTransform": undefined,
-                              "writingDirection": "rtl",
-                            }
-                          }
-                        >
-                          بلڈ ریلیشنز — 15 سوالات
-                        </Text>
-                        <Text
-                          accessibilityElementsHidden={true}
-                          className="text-dim"
-                          importantForAccessibility="no"
-                          style={
-                            {
-                              "fontFamily": "Archivo_400Regular",
-                              "fontSize": 20,
-                              "fontVariant": undefined,
-                              "letterSpacing": 0,
-                              "lineHeight": 29,
-                              "textAlign": "right",
-                              "textTransform": undefined,
-                              "writingDirection": "ltr",
-                            }
-                          }
-                        >
-                          ‹
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      accessibilityRole="button"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      className="min-h-touch justify-center border-t border-line2"
-                      collapsable={false}
-                      focusable={true}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      testID="home-topic-drill-timed"
-                    >
-                      <View
-                        style={
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row-reverse",
-                            "flexWrap": undefined,
-                            "gap": 12,
-                            "justifyContent": "space-between",
-                          }
-                        }
-                      >
-                        <Text
-                          className="text-chalk flex-1"
-                          style={
-                            {
-                              "fontFamily": "NotoNastaliqUrdu_700Bold",
-                              "fontSize": 14.5,
-                              "fontVariant": undefined,
-                              "letterSpacing": 0,
-                              "lineHeight": 29.7,
-                              "textAlign": "right",
-                              "textTransform": undefined,
-                              "writingDirection": "rtl",
-                            }
-                          }
-                        >
-                          ٹائمڈ ریزننگ — 18 منٹ میں 20 سوالات
-                        </Text>
-                        <Text
-                          accessibilityElementsHidden={true}
-                          className="text-dim"
-                          importantForAccessibility="no"
-                          style={
-                            {
-                              "fontFamily": "Archivo_400Regular",
-                              "fontSize": 20,
-                              "fontVariant": undefined,
-                              "letterSpacing": 0,
-                              "lineHeight": 29,
-                              "textAlign": "right",
-                              "textTransform": undefined,
-                              "writingDirection": "ltr",
-                            }
-                          }
-                        >
-                          ‹
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
+                    کمزور موضوعات
+                  </Text>
                   <View
-                    className="mt-4"
+                    className="mt-2"
                     style={
                       {
                         "alignItems": undefined,
-                        "flexDirection": "row-reverse",
-                        "flexWrap": undefined,
-                        "gap": undefined,
+                        "flexDirection": "column",
+                        "gap": 8,
                         "justifyContent": undefined,
                       }
                     }
+                    testID="home-weak-topics"
                   >
                     <View
-                      accessibilityState={
+                      style={
                         {
-                          "selected": false,
+                          "backgroundColor": "#141517",
+                          "borderColor": "#2C2E31",
+                          "borderRadius": 4,
+                          "borderRightColor": "#FFE01B",
+                          "borderRightWidth": 3,
+                          "borderWidth": 1,
+                          "overflow": "hidden",
                         }
                       }
-                      className="items-center justify-center border rounded-xs h-chip px-3 border-line"
-                      testID="home-streak"
                     >
-                      <Text
-                        className="text-dim"
-                        style={
+                      <View
+                        accessibilityRole="button"
+                        accessibilityState={
                           {
-                            "fontFamily": "NotoNastaliqUrdu_700Bold",
-                            "fontSize": 13.5,
-                            "fontVariant": undefined,
-                            "letterSpacing": 0,
-                            "lineHeight": 27.7,
-                            "textAlign": "center",
-                            "textTransform": undefined,
-                            "writingDirection": "rtl",
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
                           }
                         }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        className="min-h-16 justify-center p-4"
+                        collapsable={false}
+                        focusable={true}
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onFocus={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        testID="home-topic-drill-seating"
                       >
-                        4 دن کا سلسلہ
-                      </Text>
+                        <View
+                          style={
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row-reverse",
+                              "flexWrap": undefined,
+                              "gap": 12,
+                              "justifyContent": undefined,
+                            }
+                          }
+                        >
+                          <View
+                            className="flex-1"
+                            style={
+                              {
+                                "alignItems": undefined,
+                                "flexDirection": "column",
+                                "gap": 4,
+                                "justifyContent": undefined,
+                              }
+                            }
+                          >
+                            <Text
+                              className="text-chalk"
+                              style={
+                                {
+                                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                  "fontSize": 14.5,
+                                  "fontVariant": undefined,
+                                  "letterSpacing": 0,
+                                  "lineHeight": 29.7,
+                                  "textAlign": "right",
+                                  "textTransform": undefined,
+                                  "writingDirection": "rtl",
+                                }
+                              }
+                            >
+                              سیٹنگ آرینجمنٹ — 20 سوالات کا سیکشنل
+                            </Text>
+                            <Text
+                              className="text-dim"
+                              style={
+                                {
+                                  "fontFamily": "NotoNastaliqUrdu_400Regular",
+                                  "fontSize": 12.5,
+                                  "fontVariant": undefined,
+                                  "letterSpacing": 0,
+                                  "lineHeight": 25.6,
+                                  "textAlign": "right",
+                                  "textTransform": undefined,
+                                  "writingDirection": "rtl",
+                                }
+                              }
+                            >
+                              آپ کا کمزور موضوع · 18 منٹ
+                            </Text>
+                          </View>
+                          <Text
+                            accessibilityElementsHidden={true}
+                            className="text-hivis"
+                            importantForAccessibility="no"
+                            style={
+                              {
+                                "fontFamily": "Archivo_400Regular",
+                                "fontSize": 20,
+                                "fontVariant": undefined,
+                                "letterSpacing": 0,
+                                "lineHeight": 29,
+                                "textAlign": "right",
+                                "textTransform": undefined,
+                                "writingDirection": "ltr",
+                              }
+                            }
+                          >
+                            ‹
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      style={
+                        {
+                          "backgroundColor": "#141517",
+                          "borderColor": "#2C2E31",
+                          "borderRadius": 4,
+                          "borderRightColor": "#FFE01B",
+                          "borderRightWidth": 3,
+                          "borderWidth": 1,
+                          "overflow": "hidden",
+                        }
+                      }
+                    >
+                      <View
+                        accessibilityRole="button"
+                        accessibilityState={
+                          {
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        className="min-h-16 justify-center p-4"
+                        collapsable={false}
+                        focusable={true}
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onFocus={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        testID="home-topic-drill-blood"
+                      >
+                        <View
+                          style={
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row-reverse",
+                              "flexWrap": undefined,
+                              "gap": 12,
+                              "justifyContent": undefined,
+                            }
+                          }
+                        >
+                          <View
+                            className="flex-1"
+                            style={
+                              {
+                                "alignItems": undefined,
+                                "flexDirection": "column",
+                                "gap": 4,
+                                "justifyContent": undefined,
+                              }
+                            }
+                          >
+                            <Text
+                              className="text-chalk"
+                              style={
+                                {
+                                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                  "fontSize": 14.5,
+                                  "fontVariant": undefined,
+                                  "letterSpacing": 0,
+                                  "lineHeight": 29.7,
+                                  "textAlign": "right",
+                                  "textTransform": undefined,
+                                  "writingDirection": "rtl",
+                                }
+                              }
+                            >
+                              بلڈ ریلیشنز — 15 سوالات
+                            </Text>
+                            <Text
+                              className="text-dim"
+                              style={
+                                {
+                                  "fontFamily": "NotoNastaliqUrdu_400Regular",
+                                  "fontSize": 12.5,
+                                  "fontVariant": undefined,
+                                  "letterSpacing": 0,
+                                  "lineHeight": 25.6,
+                                  "textAlign": "right",
+                                  "textTransform": undefined,
+                                  "writingDirection": "rtl",
+                                }
+                              }
+                            >
+                              12 منٹ · کل 3 غلط
+                            </Text>
+                          </View>
+                          <Text
+                            accessibilityElementsHidden={true}
+                            className="text-hivis"
+                            importantForAccessibility="no"
+                            style={
+                              {
+                                "fontFamily": "Archivo_400Regular",
+                                "fontSize": 20,
+                                "fontVariant": undefined,
+                                "letterSpacing": 0,
+                                "lineHeight": 29,
+                                "textAlign": "right",
+                                "textTransform": undefined,
+                                "writingDirection": "ltr",
+                              }
+                            }
+                          >
+                            ‹
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      style={
+                        {
+                          "backgroundColor": "#141517",
+                          "borderColor": "#2C2E31",
+                          "borderRadius": 4,
+                          "borderRightColor": "#FFE01B",
+                          "borderRightWidth": 3,
+                          "borderWidth": 1,
+                          "overflow": "hidden",
+                        }
+                      }
+                    >
+                      <View
+                        accessibilityRole="button"
+                        accessibilityState={
+                          {
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        className="min-h-16 justify-center p-4"
+                        collapsable={false}
+                        focusable={true}
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onFocus={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        testID="home-topic-drill-timed"
+                      >
+                        <View
+                          style={
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row-reverse",
+                              "flexWrap": undefined,
+                              "gap": 12,
+                              "justifyContent": undefined,
+                            }
+                          }
+                        >
+                          <View
+                            className="flex-1"
+                            style={
+                              {
+                                "alignItems": undefined,
+                                "flexDirection": "column",
+                                "gap": 4,
+                                "justifyContent": undefined,
+                              }
+                            }
+                          >
+                            <Text
+                              className="text-chalk"
+                              style={
+                                {
+                                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                  "fontSize": 14.5,
+                                  "fontVariant": undefined,
+                                  "letterSpacing": 0,
+                                  "lineHeight": 29.7,
+                                  "textAlign": "right",
+                                  "textTransform": undefined,
+                                  "writingDirection": "rtl",
+                                }
+                              }
+                            >
+                              ٹائمڈ ریزننگ — 18 منٹ میں 20 سوالات
+                            </Text>
+                            <Text
+                              className="text-dim"
+                              style={
+                                {
+                                  "fontFamily": "NotoNastaliqUrdu_400Regular",
+                                  "fontSize": 12.5,
+                                  "fontVariant": undefined,
+                                  "letterSpacing": 0,
+                                  "lineHeight": 25.6,
+                                  "textAlign": "right",
+                                  "textTransform": undefined,
+                                  "writingDirection": "rtl",
+                                }
+                              }
+                            >
+                              رفتار بڑھانے کے لیے
+                            </Text>
+                          </View>
+                          <Text
+                            accessibilityElementsHidden={true}
+                            className="text-hivis"
+                            importantForAccessibility="no"
+                            style={
+                              {
+                                "fontFamily": "Archivo_400Regular",
+                                "fontSize": 20,
+                                "fontVariant": undefined,
+                                "letterSpacing": 0,
+                                "lineHeight": 29,
+                                "textAlign": "right",
+                                "textTransform": undefined,
+                                "writingDirection": "ltr",
+                              }
+                            }
+                          >
+                            ‹
+                          </Text>
+                        </View>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -37611,10 +37548,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       }
                     }
                     accessible={true}
-                    className="items-center justify-center border rounded-xs h-chipMd px-4 bg-hivis border-hivis"
+                    className="items-center justify-center border rounded-xs h-touch px-4 bg-hivis border-hivis"
                     collapsable={false}
                     focusable={true}
-                    hitSlop={4}
+                    hitSlop={0}
                     onBlur={[Function]}
                     onClick={[Function]}
                     onFocus={[Function]}
@@ -37665,10 +37602,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       }
                     }
                     accessible={true}
-                    className="items-center justify-center border rounded-xs h-chipMd px-4 border-line"
+                    className="items-center justify-center border rounded-xs h-touch px-4 border-line"
                     collapsable={false}
                     focusable={true}
-                    hitSlop={4}
+                    hitSlop={0}
                     onBlur={[Function]}
                     onClick={[Function]}
                     onFocus={[Function]}
@@ -37719,10 +37656,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       }
                     }
                     accessible={true}
-                    className="items-center justify-center border rounded-xs h-chipMd px-4 border-line"
+                    className="items-center justify-center border rounded-xs h-touch px-4 border-line"
                     collapsable={false}
                     focusable={true}
-                    hitSlop={4}
+                    hitSlop={0}
                     onBlur={[Function]}
                     onClick={[Function]}
                     onFocus={[Function]}
@@ -37755,7 +37692,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                   </View>
                 </View>
                 <RCTScrollView
-                  className="mt-2 flex-1"
+                  className="mt-4 flex-1"
                   contentContainerClassName="pb-6"
                   data={
                     [
@@ -37883,7 +37820,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           {
                             "busy": undefined,
                             "checked": undefined,
-                            "disabled": false,
+                            "disabled": undefined,
                             "expanded": undefined,
                             "selected": undefined,
                           }
@@ -37909,6 +37846,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         onResponderTerminate={[Function]}
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
+                        style={{}}
                         testID="library-row-mock-07"
                       >
                         <View
@@ -38068,41 +38006,73 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             <View
                               accessibilityState={
                                 {
-                                  "selected": true,
+                                  "selected": false,
                                 }
                               }
-                              className="items-center justify-center border rounded-xs h-chip px-3 bg-sand border-sand"
+                              className="items-center justify-center border rounded-xs h-chip px-3 border-line"
                               testID="library-best-mock-07"
                             >
-                              <Text
-                                className="text-tar"
+                              <View
                                 style={
                                   {
-                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                    "fontSize": 13.5,
-                                    "fontVariant": undefined,
-                                    "letterSpacing": 0,
-                                    "lineHeight": 27.7,
-                                    "textAlign": "center",
-                                    "textTransform": undefined,
-                                    "writingDirection": "rtl",
+                                    "alignItems": "center",
+                                    "flexDirection": "row-reverse",
+                                    "flexWrap": undefined,
+                                    "gap": 4,
+                                    "justifyContent": undefined,
                                   }
                                 }
                               >
-                                بہترین ⁦62.25⁩
-                              </Text>
+                                <Text
+                                  accessibilityLanguage="en"
+                                  className="text-dim"
+                                  style={
+                                    {
+                                      "fontFamily": "Archivo_700Bold",
+                                      "fontSize": 12.5,
+                                      "fontVariant": [
+                                        "tabular-nums",
+                                      ],
+                                      "letterSpacing": 0,
+                                      "lineHeight": 18.1,
+                                      "textAlign": "right",
+                                      "textTransform": undefined,
+                                      "writingDirection": "ltr",
+                                    }
+                                  }
+                                >
+                                  ⁦62.25⁩
+                                </Text>
+                                <Text
+                                  className="text-dim"
+                                  style={
+                                    {
+                                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                      "fontSize": 13.5,
+                                      "fontVariant": undefined,
+                                      "letterSpacing": 0,
+                                      "lineHeight": 27.7,
+                                      "textAlign": "center",
+                                      "textTransform": undefined,
+                                      "writingDirection": "rtl",
+                                    }
+                                  }
+                                >
+                                  بہترین
+                                </Text>
+                              </View>
                             </View>
                             <View
                               accessibilityState={
                                 {
-                                  "selected": true,
+                                  "selected": false,
                                 }
                               }
-                              className="items-center justify-center border rounded-xs h-chip px-3 bg-hivis border-hivis"
+                              className="items-center justify-center border rounded-xs h-chip px-3 border-line"
                               testID="library-badge-mock-07"
                             >
                               <Text
-                                className="text-tar"
+                                className="text-dim"
                                 style={
                                   {
                                     "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -38134,7 +38104,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                           {
                             "busy": undefined,
                             "checked": undefined,
-                            "disabled": false,
+                            "disabled": undefined,
                             "expanded": undefined,
                             "selected": undefined,
                           }
@@ -38160,6 +38130,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         onResponderTerminate={[Function]}
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
+                        style={{}}
                         testID="library-row-mock-08"
                       >
                         <View
@@ -38185,7 +38156,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           >
                             <Text
-                              className="text-chalk"
+                              className="text-dim"
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -38325,23 +38296,52 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               className="items-center justify-center border rounded-xs h-chip px-3 border-line"
                               testID="library-badge-mock-08"
                             >
-                              <Text
-                                className="text-dim"
+                              <View
                                 style={
                                   {
-                                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                                    "fontSize": 13.5,
-                                    "fontVariant": undefined,
-                                    "letterSpacing": 0,
-                                    "lineHeight": 27.7,
-                                    "textAlign": "center",
-                                    "textTransform": undefined,
-                                    "writingDirection": "rtl",
+                                    "alignItems": "center",
+                                    "flexDirection": "row-reverse",
+                                    "flexWrap": undefined,
+                                    "gap": 4,
+                                    "justifyContent": undefined,
                                   }
                                 }
                               >
-                                مقفل
-                              </Text>
+                                <Text
+                                  className="text-mute"
+                                  style={
+                                    {
+                                      "fontFamily": "Archivo_400Regular",
+                                      "fontSize": 12.5,
+                                      "fontVariant": undefined,
+                                      "letterSpacing": 0,
+                                      "lineHeight": 18.1,
+                                      "textAlign": "right",
+                                      "textTransform": undefined,
+                                      "writingDirection": "ltr",
+                                    }
+                                  }
+                                >
+                                  ⛌
+                                </Text>
+                                <Text
+                                  className="text-mute"
+                                  style={
+                                    {
+                                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                                      "fontSize": 13.5,
+                                      "fontVariant": undefined,
+                                      "letterSpacing": 0,
+                                      "lineHeight": 27.7,
+                                      "textAlign": "center",
+                                      "textTransform": undefined,
+                                      "writingDirection": "rtl",
+                                    }
+                                  }
+                                >
+                                  مقفل
+                                </Text>
+                              </View>
                             </View>
                           </View>
                         </View>
@@ -39276,10 +39276,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 12,
+                          "fontSize": 13,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 24.6,
+                          "lineHeight": 26.7,
                           "textAlign": "right",
                           "textTransform": undefined,
                           "writingDirection": "rtl",
@@ -39341,6 +39341,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               "justifyContent": "space-between",
                             }
                           }
+                          testID="profile-post-row"
                         >
                           <Text
                             className="text-chalk flex-1"
@@ -39455,6 +39456,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               "justifyContent": "space-between",
                             }
                           }
+                          testID="profile-category-row"
                         >
                           <Text
                             className="text-chalk flex-1"
@@ -39541,10 +39543,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 12,
+                          "fontSize": 13,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 24.6,
+                          "lineHeight": 26.7,
                           "textAlign": "right",
                           "textTransform": undefined,
                           "writingDirection": "rtl",
@@ -39575,6 +39577,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                               "justifyContent": "space-between",
                             }
                           }
+                          testID="profile-language-row"
                         >
                           <Text
                             className="text-chalk flex-1"
@@ -39770,39 +39773,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                         </View>
                       </View>
                       <View
-                        accessibilityLabel="روزانہ یاد دہانی"
-                        accessibilityRole="switch"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": true,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
                         className="border-t border-line2"
-                        collapsable={false}
-                        focusable={true}
-                        onBlur={[Function]}
-                        onClick={[Function]}
-                        onFocus={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        testID="profile-notifications"
                       >
                         <View
                           className="h-touchLg"
@@ -39834,29 +39805,71 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             روزانہ یاد دہانی
                           </Text>
                           <View
-                            importantForAccessibility="no-hide-descendants"
-                            pointerEvents="none"
-                          >
-                            <RCTSwitch
-                              accessibilityRole="switch"
-                              onChange={[Function]}
-                              onResponderTerminationRequest={[Function]}
-                              onStartShouldSetResponder={[Function]}
-                              onTintColor="#FFE01B"
-                              style={
-                                [
-                                  {
-                                    "alignSelf": "flex-start",
-                                  },
-                                  {
-                                    "backgroundColor": "#1E2023",
-                                    "borderRadius": 16,
-                                  },
-                                ]
+                            accessibilityLabel="روزانہ یاد دہانی"
+                            accessibilityRole="switch"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": true,
+                                "disabled": false,
+                                "expanded": undefined,
+                                "selected": undefined,
                               }
-                              thumbTintColor="#0D0D0E"
-                              tintColor="#1E2023"
-                              value={true}
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            collapsable={false}
+                            focusable={true}
+                            hitSlop={
+                              {
+                                "bottom": 8,
+                                "left": 0,
+                                "right": 0,
+                                "top": 8,
+                              }
+                            }
+                            onBlur={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              {
+                                "backgroundColor": "#FFE01B",
+                                "borderColor": "#FFE01B",
+                                "borderRadius": 3,
+                                "borderWidth": 1,
+                                "height": 32,
+                                "justifyContent": "center",
+                                "opacity": 1,
+                                "width": 52,
+                              }
+                            }
+                            testID="profile-notifications"
+                          >
+                            <View
+                              style={
+                                {
+                                  "backgroundColor": "#0D0D0E",
+                                  "borderRadius": 2,
+                                  "height": 26,
+                                  "position": "absolute",
+                                  "right": 23,
+                                  "width": 26,
+                                }
+                              }
+                              testID="profile-notifications-thumb"
                             />
                           </View>
                         </View>
@@ -39879,10 +39892,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 12,
+                          "fontSize": 13,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 24.6,
+                          "lineHeight": 26.7,
                           "textAlign": "right",
                           "textTransform": undefined,
                           "writingDirection": "rtl",
@@ -39998,7 +40011,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           }
                           accessible={true}
-                          className="items-center justify-center rounded-sm px-4 bg-flag"
+                          className="items-center justify-center rounded-sm px-4 border border-flag"
                           collapsable={false}
                           focusable={true}
                           onBlur={[Function]}
@@ -40029,7 +40042,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                             }
                           >
                             <Text
-                              className="text-white"
+                              className="text-flag"
                               style={
                                 {
                                   "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -40051,7 +40064,7 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
                     </View>
                   </View>
                   <Text
-                    className="text-mute mt-6"
+                    className="text-dim mt-6"
                     style={
                       {
                         "fontFamily": "NotoNastaliqUrdu_400Regular",
@@ -40110,10 +40123,10 @@ exports[`dev states screen (ur) renders every primitive mirrored and matches the
             style={
               {
                 "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12,
+                "fontSize": 13,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 24.6,
+                "lineHeight": 26.7,
                 "textAlign": "right",
                 "textTransform": undefined,
                 "writingDirection": "rtl",
