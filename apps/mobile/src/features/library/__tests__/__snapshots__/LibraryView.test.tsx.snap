@@ -916,12 +916,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
         onResponderTerminate={[Function]}
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
-        style={
-          [
-            null,
-            undefined,
-          ]
-        }
+        style={{}}
         testID="library-filter-full"
       >
         <Text
@@ -975,12 +970,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
         onResponderTerminate={[Function]}
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
-        style={
-          [
-            null,
-            undefined,
-          ]
-        }
+        style={{}}
         testID="library-filter-sectional"
       >
         <Text
@@ -1034,12 +1024,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
         onResponderTerminate={[Function]}
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
-        style={
-          [
-            null,
-            undefined,
-          ]
-        }
+        style={{}}
         testID="library-filter-previous"
       >
         <Text
@@ -1216,7 +1201,6 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
             testID="library-row-mock-07"
           >
             <View
@@ -1468,7 +1452,6 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
             testID="library-row-mock-08"
           >
             <View

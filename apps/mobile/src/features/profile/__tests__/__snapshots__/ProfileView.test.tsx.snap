@@ -941,7 +941,6 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
             testID="profile-post"
           >
             <View
@@ -1056,7 +1055,6 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
             testID="profile-category"
           >
             <View
@@ -1417,7 +1415,6 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
             testID="profile-notifications"
           >
             <View
@@ -1545,7 +1542,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touch border border-line3"
+              className="items-center justify-center rounded-sm px-4 border border-line3"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -1558,10 +1555,9 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 48,
+                }
               }
               testID="profile-logout"
             >
@@ -1615,7 +1611,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 h-touch bg-flag"
+              className="items-center justify-center rounded-sm px-4 bg-flag"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -1628,10 +1624,9 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  null,
-                  undefined,
-                ]
+                {
+                  "height": 48,
+                }
               }
               testID="profile-delete"
             >

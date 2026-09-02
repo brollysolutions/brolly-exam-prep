@@ -1087,7 +1087,7 @@ exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snaps
           }
         }
         accessible={true}
-        className="items-center justify-center rounded-sm px-4 h-touch"
+        className="items-center justify-center rounded-sm px-4"
         collapsable={false}
         focusable={true}
         onBlur={[Function]}
@@ -1100,10 +1100,9 @@ exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snaps
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            null,
-            undefined,
-          ]
+          {
+            "height": 48,
+          }
         }
         testID="welcome-skip"
       >
@@ -1157,7 +1156,7 @@ exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snaps
           }
         }
         accessible={true}
-        className="items-center justify-center rounded-sm px-4 h-touchLg bg-hivis flex-1"
+        className="items-center justify-center rounded-sm px-4 bg-hivis flex-1"
         collapsable={false}
         focusable={true}
         onBlur={[Function]}
@@ -1170,10 +1169,9 @@ exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snaps
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            null,
-            undefined,
-          ]
+          {
+            "height": 56,
+          }
         }
         testID="welcome-primary"
       >

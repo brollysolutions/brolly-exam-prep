@@ -1310,7 +1310,7 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
             }
           }
           accessible={true}
-          className="items-center justify-center rounded-sm px-4 h-touchLg bg-hivis mt-4"
+          className="items-center justify-center rounded-sm px-4 bg-hivis mt-4"
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -1323,10 +1323,9 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            [
-              null,
-              undefined,
-            ]
+            {
+              "height": 56,
+            }
           }
           testID="home-start"
         >
@@ -1535,7 +1534,6 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-          style={null}
           testID="home-topic-drill-seating"
         >
           <View
@@ -1619,7 +1617,6 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-          style={null}
           testID="home-topic-drill-blood"
         >
           <View
@@ -1703,7 +1700,6 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-          style={null}
           testID="home-topic-drill-timed"
         >
           <View
