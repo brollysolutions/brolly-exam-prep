@@ -66,6 +66,10 @@ Allowed without prompting: pnpm/expo/jest/eslint/tsc, docker compose, non-destru
 ## Parallel implementers
 One implementer at a time per checkout. To run a second one in parallel, give it its own git worktree (`git worktree add ../Tsplrb-<id> <branch>`), let it `pnpm install` there, and rebase the stacked branches afterwards. Reviewers are read-only and may overlap freely.
 
+## Testing notes
+- Update snapshots with `pnpm --filter mobile exec jest -u` (or `--runInBand -u`). `pnpm --filter mobile test -- -u` silently runs nothing on pnpm 11 (double `--`).
+- Jest runs with `testTimeout: 15000` and `maxWorkers: 50%`; digit-entry tests time out under full worker contention on this laptop.
+
 ## Rulings / deviations log
 - 2026-09-02 — `corepack enable` cannot write to `C:\Program Files\nodejs`; pnpm installed with `npm i -g pnpm` instead.
 - 2026-09-02 — Expo Go only in this phase: MMKV, Unistyles, SMS auto-read, call detection are stubbed. The incoming-call overlay is a dev-only simulated state.
