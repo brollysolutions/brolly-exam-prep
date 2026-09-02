@@ -1,0 +1,18 @@
+{
+  "name": "@tslprb/api-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "gen": "openapi-typescript http://localhost:8000/openapi.json -o src/generated/openapi.d.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^3.25"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^7.4.0",
+    "typescript": "~6.0.3"
+  }
+}

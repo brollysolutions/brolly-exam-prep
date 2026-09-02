@@ -1,0 +1,76 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    profiles: [dev]
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-tslprb}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-tslprb}
+      POSTGRES_DB: ${POSTGRES_DB:-tslprb}
+    ports:
+      - "${POSTGRES_HOST_PORT:-5432}:5432"
+    volumes:
+      - tslprb_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-tslprb} -d ${POSTGRES_DB:-tslprb}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    profiles: [dev]
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: services/api
+    profiles: [dev]
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    env_file:
+      - path: services/api/.env
+        required: false
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://tslprb:tslprb@postgres:5432/tslprb}
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      OTP_DEV_MODE: ${OTP_DEV_MODE:-true}
+    ports:
+      - "${API_HOST_PORT:-8000}:8000"
+    volumes:
+      - ./services/api/app:/app/app
+      - ./services/api/alembic:/app/alembic
+      - ./services/api/tests:/app/tests
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  worker:
+    build:
+      context: services/api
+    profiles: [dev]
+    command: arq app.worker.WorkerSettings
+    env_file:
+      - path: services/api/.env
+        required: false
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://tslprb:tslprb@postgres:5432/tslprb}
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      OTP_DEV_MODE: ${OTP_DEV_MODE:-true}
+    volumes:
+      - ./services/api/app:/app/app
+      - ./services/api/alembic:/app/alembic
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+volumes:
+  tslprb_pgdata:

@@ -1,0 +1,47 @@
+[project]
+name = "tslprb-api"
+version = "0.1.0"
+description = "TSLPRB API service (F-17 scaffold)"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.32",
+  "sqlalchemy[asyncio]>=2.0",
+  "asyncpg>=0.29",
+  "alembic>=1.13",
+  "pydantic>=2.7",
+  "pydantic-settings>=2.4",
+  "arq>=0.26",
+  "redis>=5.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "httpx>=0.27",
+  "pytest>=8.0",
+  "pytest-asyncio>=0.24",
+  "ruff>=0.6",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+# Sample question/explanation text in 3 languages -- long lines are content,
+# not code, and wrapping them would corrupt the strings.
+"app/fixtures.py" = ["E501"]
