@@ -28,11 +28,17 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { useLangStore } from '@/data/lang';
+import { webLangOverride } from '@/data/langOverride';
 
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
-// The language store hydrates synchronously from kv-store, so i18n boots in the stored language.
-initI18n(useLangStore.getState().lang);
+// The language store hydrates synchronously from kv-store, so i18n boots in the stored language —
+// unless the web screenshot tooling asked for one with `?lang=`, which wins for this load.
+const override = webLangOverride();
+initI18n(override ?? useLangStore.getState().lang);
+// After init, so `changeLanguage` has services to work with. Keeps the store in step with i18n,
+// so a language-aware screen shows the override as the selected chip.
+if (override) useLangStore.getState().setLang(override);
 
 /** Keys must equal `tokens.json → font.<lang>.weights` — `useTypography()` resolves families by these names. */
 const FONTS = {
