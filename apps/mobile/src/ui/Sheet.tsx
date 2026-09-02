@@ -8,7 +8,7 @@ import {
 import { colors } from '@tslprb/design-tokens';
 import { forwardRef, useCallback, useImperativeHandle, useRef, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable } from 'react-native';
+import { Platform, Pressable } from 'react-native';
 
 import { Row } from './Row';
 import { Text } from './Text';
@@ -25,7 +25,10 @@ export type SheetProps = {
   children: ReactNode;
 };
 
-/** `@gorhom/bottom-sheet` modal in house style: `panel2`, 3 px hi-vis top edge, no grabber, scrim backdrop. */
+/**
+ * `@gorhom/bottom-sheet` modal in house style: `panel2`, 3 px hi-vis top edge, scrim backdrop.
+ * Grabber: iOS only (HIG), tinted `line3`; none on Android (ruling 2026-09-02).
+ */
 export const Sheet = forwardRef<SheetHandle, SheetProps>(function Sheet(
   { title, snapPoints, scroll = false, onClose, children },
   ref,
@@ -58,7 +61,9 @@ export const Sheet = forwardRef<SheetHandle, SheetProps>(function Sheet(
       snapPoints={snapPoints}
       enableDynamicSizing={!snapPoints}
       onDismiss={onClose}
-      handleComponent={null}
+      handleComponent={Platform.OS === 'ios' ? undefined : null}
+      handleIndicatorStyle={{ backgroundColor: colors.line3 }}
+      handleStyle={{ backgroundColor: colors.panel2 }}
       backdropComponent={renderBackdrop}
       backgroundStyle={{
         backgroundColor: colors.panel2,
