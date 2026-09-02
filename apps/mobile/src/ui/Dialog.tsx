@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { Button } from './Button';
@@ -53,36 +53,39 @@ export function Dialog({
       entering={m.fadeIn()}
       exiting={m.fadeOut()}
       accessibilityViewIsModal
-      className="absolute inset-0 justify-end bg-scrimHeavy p-4"
+      // NativeWind does not style Animated.View; it only carries the fill + animation.
+      style={StyleSheet.absoluteFill}
     >
-      <View className={cx('border border-line border-t-4 bg-panel2 px-4 pb-4 pt-4', edge[tone])}>
-        <Kicker color={tone}>{kicker}</Kicker>
-        <Text variant="subtitle" weight="600" className="mt-2">
-          {title}
-        </Text>
-        <Text variant="body" color="chalk2" className="mt-2">
-          {body}
-        </Text>
-        {stats && stats.length > 0 && (
-          <Row gap={2} className="mt-3">
-            {stats.map((s) => (
-              <View key={s.label} className="flex-1 items-center border border-line px-1 py-2">
-                <Num variant="stat" align="center">
-                  {s.num}
-                </Num>
-                <Text variant="statLabel" color="steel" align="center" className="mt-1">
-                  {s.label}
-                </Text>
-              </View>
-            ))}
-          </Row>
-        )}
-        <Stack gap={2} className="mt-4">
-          <Button size="lg" label={primary.label} onPress={primary.onPress} />
-          {secondary && (
-            <Button variant="secondary" label={secondary.label} onPress={secondary.onPress} />
+      <View className="flex-1 justify-end bg-scrimHeavy p-4">
+        <View className={cx('border border-line border-t-4 bg-panel2 px-4 pb-4 pt-4', edge[tone])}>
+          <Kicker color={tone}>{kicker}</Kicker>
+          <Text variant="subtitle" weight="600" className="mt-2">
+            {title}
+          </Text>
+          <Text variant="body" color="chalk2" className="mt-2">
+            {body}
+          </Text>
+          {stats && stats.length > 0 && (
+            <Row gap={2} className="mt-3">
+              {stats.map((s) => (
+                <View key={s.label} className="flex-1 items-center border border-line px-1 py-2">
+                  <Num variant="stat" align="center">
+                    {s.num}
+                  </Num>
+                  <Text variant="statLabel" color="steel" align="center" className="mt-1">
+                    {s.label}
+                  </Text>
+                </View>
+              ))}
+            </Row>
           )}
-        </Stack>
+          <Stack gap={2} className="mt-4">
+            <Button size="lg" label={primary.label} onPress={primary.onPress} />
+            {secondary && (
+              <Button variant="secondary" label={secondary.label} onPress={secondary.onPress} />
+            )}
+          </Stack>
+        </View>
       </View>
     </Animated.View>
   );

@@ -1,3 +1,4 @@
+import { View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { cx } from './cx';
@@ -21,11 +22,13 @@ export function Toast({ text, tone = 'hazard', testID }: ToastProps) {
       exiting={m.fadeOut()}
       accessibilityRole="alert"
       accessibilityLiveRegion="polite"
-      className={cx('px-3 py-2', tone === 'flag' ? 'bg-flag' : 'bg-hazard')}
     >
-      <Text variant="small" weight="600" color="tar">
-        {text}
-      </Text>
+      {/* NativeWind does not style Animated.View; the surface is a plain View. */}
+      <View className={cx('px-3 py-2', tone === 'flag' ? 'bg-flag' : 'bg-hazard')}>
+        <Text variant="small" weight="600" color="tar">
+          {text}
+        </Text>
+      </View>
     </Animated.View>
   );
 }

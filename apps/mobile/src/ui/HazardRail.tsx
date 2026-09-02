@@ -1,4 +1,4 @@
-import { hazard, motion } from '@tslprb/design-tokens';
+import { hazard, motion, size } from '@tslprb/design-tokens';
 import { useEffect } from 'react';
 import { View, useWindowDimensions } from 'react-native';
 import Animated, {
@@ -56,11 +56,14 @@ export function HazardRail({ critical = false }: HazardRailProps) {
 
   return (
     <View
+      testID="hazard-rail"
       className="h-rail overflow-hidden bg-tar"
+      style={{ height: size.rail }}
       accessibilityElementsHidden
       importantForAccessibility="no-hide-descendants"
     >
-      <Animated.View className="flex-row" style={marquee}>
+      {/* Animated.View is not wrapped by NativeWind, so layout must be inline style. */}
+      <Animated.View testID="hazard-rail-track" style={[{ flexDirection: 'row' }, marquee]}>
         {Array.from({ length: slices }, (_, i) => (
           <View
             key={i}
