@@ -25,6 +25,12 @@ export type AttemptState = {
   endsAt?: number;
   /** 1-based question number on screen. */
   current: number;
+  /**
+   * Keyed by 1-based question number. These three survive a cold start as JSON, so after
+   * rehydration the *runtime* keys are strings ("7"), not numbers — harmless for
+   * `answers[n]` lookups (JS coerces the index) but never `Object.keys(...).map(Number)`
+   * and compare identity, and never assume insertion order.
+   */
   answers: Record<number, Choice>;
   marked: Record<number, true>;
   visited: Record<number, true>;
@@ -113,6 +119,9 @@ export const useAttemptStore = create<AttemptStore>()(
       goto: (n) => {
         const state = get();
         if (!state.pattern || n < 1 || n > state.pattern.totalQuestions) return 'invalid';
+        // Already here: a re-tap of the current cell must not restart the per-question
+        // clock, or "time on this question" resets every time the palette is reopened.
+        if (n === state.current) return 'ok';
         if (isSectionLocked(state, sectionOf(state, n))) return 'locked';
         set({
           current: n,

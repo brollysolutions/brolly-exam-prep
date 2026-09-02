@@ -63,11 +63,12 @@ export function counts(state: AttemptState): PaletteCounts {
 export const sectionOf = (state: AttemptState, n: number): number =>
   state.pattern ? sectionIndexOf(state.pattern, n) : -1;
 
+/** Vacuously true for a zero-question section, so an empty gate never locks what follows. */
 function isSectionFullyAnswered(state: AttemptState, sectionIndex: number): boolean {
   if (!state.pattern) return false;
   const { first, last } = sectionRange(state.pattern, sectionIndex);
   for (let n = first; n <= last; n += 1) if (state.answers[n] === undefined) return false;
-  return last >= first;
+  return true;
 }
 
 /**

@@ -96,6 +96,16 @@ describe('goto and section locking', () => {
     expect(snapshot().currentEnteredAt).toBe(T0 + 12_000);
   });
 
+  it('is a no-op when asked for the question already on screen', () => {
+    store().goto(7);
+    const enteredAt = snapshot().currentEnteredAt;
+    jest.spyOn(Date, 'now').mockReturnValue(T0 + 30_000);
+    expect(store().goto(7)).toBe('ok');
+    expect(snapshot().current).toBe(7);
+    // re-tapping the current cell must not restart "time on this question"
+    expect(snapshot().currentEnteredAt).toBe(enteredAt);
+  });
+
   it('rejects a question number outside the paper', () => {
     expect(store().goto(0)).toBe('invalid');
     expect(store().goto(41)).toBe('invalid');
@@ -270,6 +280,23 @@ describe('selectors', () => {
   it('elapsedOnCurrentSec measures time on the question in whole seconds', () => {
     expect(elapsedOnCurrentSec(snapshot(), T0 + 41_400)).toBe(41);
     expect(elapsedOnCurrentSec(snapshot(), T0 - 5_000)).toBe(0);
+  });
+
+  it('treats an empty gate section as satisfied rather than locking what follows', () => {
+    const empty: AttemptState = {
+      ...snapshot(),
+      pattern: {
+        ...FREE_MOCK_SHORT,
+        totalQuestions: 10,
+        sections: [
+          { id: 'gs', labelKey: 'test.sections.gs', questions: 0 },
+          { id: 'telangana', labelKey: 'test.sections.telangana', questions: 10, unlockAfter: 'gs' },
+        ],
+      },
+      answers: {},
+      sectionUnlocked: [true, false],
+    };
+    expect(isSectionLocked(empty, 1)).toBe(false);
   });
 
   it('isSectionLocked is false for sections without a gate', () => {
