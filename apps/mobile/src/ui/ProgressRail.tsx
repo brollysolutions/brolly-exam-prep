@@ -29,8 +29,9 @@ export function ProgressRail({ fraction, ticks = 4, className, ...rest }: Progre
       {Array.from({ length: Math.max(0, ticks - 1) }, (_, i) => (
         <View
           key={i}
+          testID="progress-tick"
           className="absolute bottom-0 top-0 w-px bg-tar"
-          style={{ left: `${((i + 1) / ticks) * 100}%` }}
+          style={{ [d.start]: `${((i + 1) / ticks) * 100}%` }}
         />
       ))}
     </View>
