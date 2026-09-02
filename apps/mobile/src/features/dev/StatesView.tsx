@@ -7,6 +7,7 @@ import { useLangStore } from '@/data/lang';
 import { LoginView } from '@/features/auth/LoginView';
 import { OtpView } from '@/features/auth/OtpView';
 import { AttemptStates } from '@/features/dev/sections/AttemptStates';
+import { ResultStates } from '@/features/dev/sections/ResultStates';
 import { CategoryView } from '@/features/onboarding/CategoryView';
 import { PostView } from '@/features/onboarding/PostView';
 import {
@@ -349,6 +350,8 @@ export function StatesView() {
           <CategoryView initialCategory="bc" onSubmit={() => {}} onBack={() => {}} />
         </Preview>
       </Section>
+
+      <ResultStates />
     </Screen>
   );
 }

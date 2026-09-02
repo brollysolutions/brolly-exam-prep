@@ -1,0 +1,48 @@
+import { useDir } from '@tslprb/i18n';
+import type { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Pressable, View } from 'react-native';
+
+import { Glyph, Row, Text, usePressed } from '@/ui';
+
+export type BackHeaderProps = {
+  title: string;
+  onBack?: () => void;
+  /** Second row inside the header panel (the solutions filter chips). */
+  children?: ReactNode;
+  testID?: string;
+};
+
+/**
+ * The result/solutions header: a 48 px chevron-back target and the screen title on the
+ * `panel` bar. The chevron is drawn `lang="en"` because Noto Nastaliq Urdu has no
+ * U+2039/U+203A and silently falls back to parentheses.
+ */
+export function BackHeader({ title, onBack, children, testID }: BackHeaderProps) {
+  const d = useDir();
+  const { t } = useTranslation();
+  const { pressed, handlers } = usePressed();
+  return (
+    <View className="border-b border-line bg-panel">
+      <Row align="center" gap={1} className="px-2 py-1" testID={testID}>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={t('common.back')}
+          onPress={onBack}
+          {...handlers}
+          className="h-touch w-touch items-center justify-center"
+          style={pressed ? { opacity: 0.85 } : undefined}
+          testID={testID ? `${testID}-back` : undefined}
+        >
+          <Glyph color="dim" accessibilityElementsHidden>
+            {d.chevronPrev}
+          </Glyph>
+        </Pressable>
+        <Text variant="bodyLg" weight="600" className="flex-1">
+          {title}
+        </Text>
+      </Row>
+      {children}
+    </View>
+  );
+}

@@ -121,7 +121,9 @@
     "wrong": "Wrong",
     "skipped": "Skipped",
     "perQ": "Avg time per question",
-    "seeWrong": "Wrong answers + explanation"
+    "seeWrong": "Wrong answers + explanation",
+    "loadError": "The result did not load.",
+    "retry": "Try again"
   },
   "solutions": {
     "title": "Answers & explanation",

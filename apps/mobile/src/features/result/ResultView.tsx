@@ -1,0 +1,258 @@
+import { colors, radius, text as textSizes, type ColorName } from '@tslprb/design-tokens';
+import { COST_ROWS } from '@tslprb/fixtures';
+import { useDir } from '@tslprb/i18n';
+import { useTranslation } from 'react-i18next';
+import { Pressable, ScrollView, View } from 'react-native';
+
+import type { ResultAction, ResultDetail } from '@/data/api';
+import { Button, Chip, Kicker, Num, Row, Screen, Stack, Text, usePressed } from '@/ui';
+
+import { startEdge } from './edge';
+import { formatDuration, formatRank, isLatinValue } from './format';
+import { BackHeader } from './Header';
+import { LoadError, Skeleton } from './Placeholder';
+
+export type ResultViewProps = {
+  /** Omit while the analysis is loading; the skeleton shows instead. */
+  result?: ResultDetail;
+  /** The load failed: the retry state replaces the body. */
+  failed?: boolean;
+  onBack?: () => void;
+  onRetry?: () => void;
+  onSeeWrong?: () => void;
+  onAction?: (action: ResultAction) => void;
+};
+
+const SKELETON = ['kicker', 'score', 'chip', 'row', 'row', 'row', 'card', 'card'] as const;
+
+/** `01` / `02` / `03` with the block label, the way every section on this screen opens. */
+function SectionHead({
+  index,
+  label,
+  accent = 'hazard',
+}: {
+  index: string;
+  label: string;
+  accent?: Extract<ColorName, 'hazard' | 'hivis'>;
+}) {
+  const d = useDir();
+  return (
+    <Row gap={2} align="baseline">
+      <Num variant="kicker" color={accent} tracking={d.lang === 'en' ? 'kicker' : 'none'}>
+        {index}
+      </Num>
+      <Kicker color={accent === 'hivis' ? 'hivis' : 'dim'}>{label}</Kicker>
+    </Row>
+  );
+}
+
+/** One "where you stand" row: label on the start side, tabular value on the end side. */
+function StandRow({ label, value }: { label: string; value: string }) {
+  return (
+    <Row
+      gap={3}
+      align="center"
+      className="border-b border-panel3 py-3"
+      testID="result-stand-row"
+      accessibilityLabel={`${label} ${value}`}
+    >
+      <Text variant="body" color="chalk2" className="flex-1">
+        {label}
+      </Text>
+      <Num variant="bodyLg">{value}</Num>
+    </Row>
+  );
+}
+
+/**
+ * One "what cost you marks" row. The fixture's Telugu and Urdu values carry their unit in
+ * their own script ("92 sec"), which Archivo cannot draw - only a Latin value may go into
+ * `<Num>`; the rest stays in the language face and is merely tabular.
+ */
+function CostRow({ label, note, value }: { label: string; note: string; value: string }) {
+  return (
+    <Row gap={3} align="start" className="border-b border-panel3 py-3" testID="result-cost-row">
+      <Stack gap={1} className="flex-1">
+        <Text variant="body">{label}</Text>
+        <Text variant="caption" color="mute">
+          {note}
+        </Text>
+      </Stack>
+      {isLatinValue(value) ? (
+        <Num variant="question" color="hazard">
+          {value}
+        </Num>
+      ) : (
+        <Text variant="question" weight="700" color="hazard" numeric>
+          {value}
+        </Text>
+      )}
+    </Row>
+  );
+}
+
+/**
+ * A "do this next" drill card. Built from a `Pressable` rather than `Card` so the mirrored
+ * 3 px edge can live in a flattened style object: a `className` that changes with the
+ * language would accumulate on web, and a `Pressable` style *function* would drop those
+ * static values on web (see `usePressed`) — press feedback is driven from state instead.
+ */
+function ActionCard({ action, onPress }: { action: ResultAction; onPress?: () => void }) {
+  const d = useDir();
+  const { pressed, handlers } = usePressed();
+  return (
+    <View
+      style={{
+        borderRadius: radius.md,
+        borderWidth: 1,
+        borderColor: colors.line,
+        backgroundColor: colors.panel2,
+        overflow: 'hidden',
+        ...startEdge(d.isRTL, 'hivis'),
+      }}
+    >
+      <Pressable
+        accessibilityRole="button"
+        android_ripple={{ color: colors.hivisTint3 }}
+        onPress={onPress}
+        {...handlers}
+        className="min-h-16 justify-center p-4"
+        style={pressed ? { opacity: 0.85 } : undefined}
+        testID="result-action"
+      >
+        <Row gap={3} align="center">
+          <Stack gap={1} className="flex-1">
+            <Text variant="body" weight="600">
+              {action.title[d.lang]}
+            </Text>
+            <Text variant="caption" color="dim">
+              {action.sub[d.lang]}
+            </Text>
+          </Stack>
+          <Text variant="glyph" color="hivis" lang="en" accessibilityElementsHidden>
+            {d.chevronNext}
+          </Text>
+        </Row>
+      </Pressable>
+    </View>
+  );
+}
+
+/**
+ * Result & analysis (F-12), pure: every state is a prop, so the dev gallery and the tests
+ * render the same component the route does.
+ */
+export function ResultView({
+  result,
+  failed = false,
+  onBack,
+  onRetry,
+  onSeeWrong,
+  onAction,
+}: ResultViewProps) {
+  const { t } = useTranslation();
+  const d = useDir();
+  const costRows = COST_ROWS[d.lang];
+
+  return (
+    <Screen testID="result-screen">
+      <BackHeader
+        title={t('result.title', { n: result?.testTitleN ?? '' }).trim()}
+        onBack={onBack}
+        testID="result-header"
+      />
+
+      {failed ? (
+        <LoadError onRetry={onRetry} testID="result-error" />
+      ) : !result ? (
+        <Skeleton blocks={[...SKELETON]} testID="result-skeleton" />
+      ) : (
+        <>
+          <ScrollView
+            className="flex-1"
+            contentContainerClassName="px-4 pb-6 pt-5"
+            showsVerticalScrollIndicator={false}
+          >
+            <Kicker>{t('result.yourScore')}</Kicker>
+            {/* Physical: a score always reads "62.25 / 100", never mirrored. */}
+            <Row physical align="baseline" gap={2} className="mt-1" testID="result-score-row">
+              <Num
+                variant="score"
+                color="hivis"
+                tracking="scoreTight"
+                style={{ lineHeight: textSizes.score }}
+                testID="result-score"
+              >
+                {result.score}
+              </Num>
+              <Num variant="glyph" weight="600" color="ghost">
+                {`/ ${result.maxScore}`}
+              </Num>
+            </Row>
+
+            <Row gap={2} wrap align="center" className="mt-3">
+              <Chip
+                label={result.qualified ? t('result.qualified') : t('result.notQualified')}
+                tone={result.qualified ? 'hivis' : 'flag'}
+                active
+                testID="result-qualified"
+              />
+              <Row gap={1} align="baseline">
+                <Text variant="small" color="dim">
+                  {t('result.cutoff')}
+                </Text>
+                <Num variant="small" weight="600" color="dim">
+                  {`${result.cutoffPct}%`}
+                </Num>
+              </Row>
+            </Row>
+
+            <View className="mt-6 h-px bg-line2" />
+
+            <Stack gap={2} className="mt-4">
+              <SectionHead index="01" label={t('result.r1')} />
+              <View>
+                <StandRow
+                  label={t('result.rank')}
+                  value={formatRank(result.rank, result.totalCandidates)}
+                />
+                <StandRow label={t('result.accuracy')} value={`${result.accuracyPct}%`} />
+                <StandRow
+                  label={t('result.perQ')}
+                  value={formatDuration(result.avgSecondsPerQuestion)}
+                />
+              </View>
+            </Stack>
+
+            <Stack gap={2} className="mt-6">
+              <SectionHead index="02" label={t('result.r2')} />
+              <View>
+                {costRows.map(([label, value, note]) => (
+                  <CostRow key={label} label={label} value={value} note={note} />
+                ))}
+              </View>
+            </Stack>
+
+            <Stack gap={2} className="mt-6">
+              <SectionHead index="03" label={t('result.r3')} accent="hivis" />
+              <Stack gap={2}>
+                {result.actions.map((action) => (
+                  <ActionCard key={action.id} action={action} onPress={() => onAction?.(action)} />
+                ))}
+              </Stack>
+            </Stack>
+          </ScrollView>
+
+          <View className="border-t border-line bg-panel px-3 pb-3 pt-2">
+            <Button
+              size="lg"
+              label={t('result.seeWrong')}
+              onPress={onSeeWrong}
+              testID="result-cta"
+            />
+          </View>
+        </>
+      )}
+    </Screen>
+  );
+}
