@@ -20,3 +20,6 @@ minimumReleaseAgeExclude:
   - expo-router@57.0.18
   - expo@57.0.19
   - expo-secure-store@57.0.3
+nodeLinker: hoisted
+autoInstallPeers: true
+strictPeerDependencies: false

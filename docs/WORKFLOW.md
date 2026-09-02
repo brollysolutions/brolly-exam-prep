@@ -32,8 +32,7 @@ Everything here is wired so you do not have to name a skill. `CLAUDE.md` holds t
 | `apple-hig-designer` | tristan-mcinnis/apple-hig-designer-skill-2026 | Apple HIG (foundations, components, Liquid Glass) |
 | `material-3` | hamen/material-3-skill | Material 3 tokens/components for Android |
 | `ui-ux-pro-max` | nextlevelbuilder/ui-ux-pro-max-skill | palettes, font pairings, UX rules |
-
-Not installed: `react-native-testing` (Callstack) — install did not resolve a skill by that name; `@test-writer` carries the RNTL guidance instead. Re-try with `npx skills find "react native testing"`.
+| `react-native-testing` | callstack/react-native-testing-library | RNTL v13/v14 testing patterns |
 
 ### MCP servers (`.mcp.json`, project scope)
 | Server | Purpose | Notes |
@@ -42,7 +41,7 @@ Not installed: `react-native-testing` (Callstack) — install did not resolve a 
 | `context7` (https://mcp.context7.com/mcp) | version-accurate library docs | add `CONTEXT7_API_KEY` header for higher limits |
 | `github` (plugin) | issues/PRs | needs `gh auth login` or PAT |
 | `maestro` | drive the USB Android phone, run `.maestro/*.yml` | only after installing Maestro CLI + adb: `claude mcp add --scope project maestro -- maestro mcp` |
-| Chrome (claude-in-chrome) | screenshots of `expo start --web` for design review | already available in this Claude Code install |
+| Chrome (claude-in-chrome) | screenshots of `expo start --web` for design review | needs the Claude Chrome extension connected; fallback: `pnpm --filter mobile export:web && pnpm screenshots` (headless Playwright, `scripts/screenshots.mjs`) |
 
 ### Subagents (`.claude/agents/`)
 `ui-builder`, `design-critic`, `i18n-rtl-reviewer`, `test-writer`, `pr-tracker`, `backend-scaffolder`, `research`. Invoke with `@name` or let the routing table do it.
@@ -54,7 +53,7 @@ Not installed: `react-native-testing` (Callstack) — install did not resolve a 
 | UserPromptSubmit | `skill-hint.mjs` | injects matching skill names for the prompt |
 | PostToolUse Edit/Write | `post-edit.mjs` | eslint --fix + tsc on the touched package; blocks with the errors |
 | PostToolUse Bash | `track-pr.mjs` | on `gh pr create/merge`, updates `docs/PR_TRACKING.md` + `docs/FEATURES.md` |
-| Stop | `stop-verify.mjs` | runs mobile tests if sources changed; blocks stop on red |
+| Stop | `stop-verify.mjs` | runs mobile tests if sources changed; blocks stop on red. Skipped while `.superpowers/sdd/.busy` exists (set by the controller while an implementer subagent owns the working tree) |
 
 ### Permissions (`.claude/settings.json`)
 Allowed without prompting: pnpm/expo/jest/eslint/tsc, docker compose, non-destructive git, `gh pr create/view/list`, `gh issue`. Asks: `git push`, `gh pr merge`, `gh repo create`, `docker compose down -v`. Denied: force-push, `git reset --hard`, recursive deletes of roots, reading `.env`.

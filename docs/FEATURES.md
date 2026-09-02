@@ -4,7 +4,7 @@ Status ∈ `todo` · `in-progress` · `review` · `done` · `parked`. One row pe
 
 | ID | Feature | Screens / route | Status | PR | Agent | Notes |
 |---|---|---|---|---|---|---|
-| F-00 | Workflow, tooling, monorepo scaffold | repo root, `.claude/`, `docs/` | in-progress | - | controller | plugins, skills, MCPs, hooks, agents, CI |
+| F-00 | Workflow, tooling, monorepo scaffold | repo root, `.claude/`, `docs/` | done | c823868, b5c0fff, d7bf982 (main) | controller | plugins, skills, MCPs, hooks, agents, CI |
 | F-01 | Design system: tokens, fonts, primitives, RTL layer, dev states screen | `packages/design-tokens`, `packages/i18n`, `apps/mobile/src/ui`, `src/app/dev/states` | todo | - | ui-builder | NativeWind + tokens |
 | F-02 | Splash + onboarding intro (3 slides) | `src/app/(onboarding)/welcome` | todo | - | ui-builder | not in prototype |
 | F-03 | Phone login | `src/app/(auth)/login` | todo | - | ui-builder | custom keypad, +91 |
@@ -19,7 +19,7 @@ Status ∈ `todo` · `in-progress` · `review` · `done` · `parked`. One row pe
 | F-12 | Result & analysis | `src/app/test/[id]/result` | todo | - | ui-builder | score, cut-off, 3 sections |
 | F-13 | Answers & explanation | `src/app/test/[id]/solutions` | todo | - | ui-builder | wrong/all filter |
 | F-14 | Profile & settings | `src/app/(tabs)/profile` | todo | - | ui-builder | not in prototype |
-| F-15 | Exam pattern config + fixtures | `packages/fixtures` | todo | - | ui-builder | official PWT pattern; 3-language bank |
+| F-15 | Exam pattern config + fixtures | `packages/fixtures` | done | c823868 (main) | controller | official PWT pattern (SI split unverified); 6-question seed bank |
 | F-16 | Persistence + mock API adapter | `apps/mobile/src/data` | todo | - | ui-builder | zustand + expo-sqlite kv; `EXPO_PUBLIC_API=mock` |
-| F-17 | API scaffold: FastAPI, Postgres 17, Redis, arq scheduler, Docker Compose | `services/api`, `docker-compose.yml` | todo | - | backend-scaffolder | stubs return fixtures |
-| F-18 | Next.js placeholder site | `apps/web` | todo | - | controller | landing only |
+| F-17 | API scaffold: FastAPI, Postgres 17, Redis, arq scheduler, Docker Compose | `services/api`, `docker-compose.yml` | review | branch `feat/F-17-api-scaffold` (PR after repo creation) | backend-scaffolder | stubs return fixtures; 12/12 pytest; docker stack verified; `.env.example` needs manual CORS_ORIGINS edit |
+| F-18 | Next.js placeholder site | `apps/web` | done | c823868 (main) | controller | landing only |

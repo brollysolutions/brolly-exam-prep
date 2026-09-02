@@ -43,6 +43,12 @@
       "skillPath": "skills/react-native-best-practices/SKILL.md",
       "computedHash": "5b9722518860a462a9308759b7046725e4a1ab59642ad6a6e520afc45bc8373b"
     },
+    "react-native-testing": {
+      "source": "callstack/react-native-testing-library",
+      "sourceType": "github",
+      "skillPath": "skills/react-native-testing/SKILL.md",
+      "computedHash": "9e2645ee07632dc3b929c23a4545030c4208969c5b57703d66df05264741d4ae"
+    },
     "to-spec": {
       "source": "mattpocock/skills",
       "sourceType": "github",
