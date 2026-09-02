@@ -25,6 +25,40 @@ export type Post = z.infer<typeof PostSchema>;
 export const CategorySchema = z.enum(["OC", "EWS", "BC", "SC", "ST", "ExS"]);
 export type Category = z.infer<typeof CategorySchema>;
 
+/**
+ * The app and @tslprb/fixtures address categories by lower-case id ("oc", "exs", ...)
+ * because that is what the onboarding grid and the i18n label keys use; the API spells
+ * them "OC" / "ExS". These two are the only sanctioned crossing point -- convert at the
+ * HTTP boundary, never inside a store or a screen.
+ */
+export const CATEGORY_IDS = ["oc", "ews", "bc", "sc", "st", "exs"] as const;
+export type CategoryIdLower = (typeof CATEGORY_IDS)[number];
+
+const CATEGORY_TO_API: Record<CategoryIdLower, Category> = {
+  oc: "OC",
+  ews: "EWS",
+  bc: "BC",
+  sc: "SC",
+  st: "ST",
+  exs: "ExS",
+};
+
+const CATEGORY_FROM_API: Record<Category, CategoryIdLower> = {
+  OC: "oc",
+  EWS: "ews",
+  BC: "bc",
+  SC: "sc",
+  ST: "st",
+  ExS: "exs",
+};
+
+/** Fixture / app id -> the wire spelling. */
+export const toApiCategory = (id: CategoryIdLower): Category => CATEGORY_TO_API[id];
+
+/** Wire spelling -> the fixture / app id. */
+export const fromApiCategory = (category: Category): CategoryIdLower =>
+  CATEGORY_FROM_API[category];
+
 export const LocalizedTextSchema = z.object({
   en: z.string(),
   te: z.string(),
@@ -128,6 +162,12 @@ export const AnswerPatchSchema = z.object({
   marked: z.boolean().optional().default(false),
 });
 export type AnswerPatch = z.infer<typeof AnswerPatchSchema>;
+/**
+ * Request-body type. `marked` has a zod `.default(false)`, so the *output* type
+ * (`AnswerPatch`) makes it required -- which defeats the default for callers. Use this
+ * input type wherever a body is being *sent*; use `AnswerPatch` for a parsed body.
+ */
+export type AnswerPatchInput = z.input<typeof AnswerPatchSchema>;
 
 export const OkSchema = z.object({
   ok: z.boolean(),
@@ -193,7 +233,7 @@ export interface ApiClient {
   getTest(id: string): Promise<Test>;
 
   createAttempt(body: AttemptCreate): Promise<Attempt>;
-  patchAttemptAnswer(attemptId: string, body: AnswerPatch): Promise<Ok>;
+  patchAttemptAnswer(attemptId: string, body: AnswerPatchInput): Promise<Ok>;
   submitAttempt(attemptId: string): Promise<SubmitResponse>;
 
   getResult(id: string): Promise<Result>;
