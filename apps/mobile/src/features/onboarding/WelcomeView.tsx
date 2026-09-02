@@ -56,6 +56,10 @@ export function WelcomeView({ initialSlide = 1, onDone }: WelcomeViewProps) {
 
   const slide = pages[page] ?? 1;
   const last = slide === SLIDES.length;
+  // Nastaliq's 2.05 line-height puts descenders where the next block's ascenders start, so
+  // Urdu needs the wider step between the counter, the title and the subtitle (design review
+  // round 1). One class, never two competing ones: NativeWind has no last-wins merge.
+  const gap = d.lang === 'ur' ? 'mt-6' : 'mt-3';
 
   const goTo = (nextPage: number) => {
     if (nextPage < 0 || nextPage >= pages.length) return;
@@ -80,14 +84,17 @@ export function WelcomeView({ initialSlide = 1, onDone }: WelcomeViewProps) {
         showsHorizontalScrollIndicator={false}
         initialScrollIndex={toPhysical(initialSlide)}
         getItemLayout={(_, index) => ({ length: width, offset: width * index, index })}
+        // Without `flexGrow` the row of pages collapses to its tallest child, and a slide
+        // that is `flex: 1` inside it has nothing to fill.
+        contentContainerStyle={{ flexGrow: 1 }}
         onMomentumScrollEnd={(e) =>
           setPage(Math.round(e.nativeEvent.contentOffset.x / Math.max(width, 1)))
         }
         renderItem={({ item }) => (
           <View
             testID={`welcome-slide-${item}`}
-            className="justify-center px-6"
-            style={{ width }}
+            className="justify-center px-4"
+            style={{ width, flex: 1 }}
           >
             <Num
               variant="kicker"
@@ -98,10 +105,16 @@ export function WelcomeView({ initialSlide = 1, onDone }: WelcomeViewProps) {
             >
               {t('onboarding.step', { n: item, total: SLIDES.length })}
             </Num>
-            <Text variant="title" weight="600" align="center" className="mt-3">
+            <Text
+              testID={`welcome-title-${item}`}
+              variant="title"
+              weight="600"
+              align="center"
+              className={gap}
+            >
               {t(`onboarding.welcome${item}Title`)}
             </Text>
-            <Text variant="body" color="dim" align="center" className="mt-3">
+            <Text variant="body" color="dim" align="center" className={gap}>
               {t(`onboarding.welcome${item}Sub`)}
             </Text>
           </View>

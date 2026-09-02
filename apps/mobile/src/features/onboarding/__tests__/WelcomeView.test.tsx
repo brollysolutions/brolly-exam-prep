@@ -77,6 +77,11 @@ describe('WelcomeView (ur)', () => {
     ).toEqual(['welcome-dot-3', 'welcome-dot-2', 'welcome-dot-1']);
     // The brand acronym never falls back to Nastaliq.
     expect(screen.getByText('PWT')).toHaveStyle({ fontFamily: 'Archivo_700Bold' });
+    // Nastaliq is set on a 2.05 line-height, and the title needs the room: 24 px type on a
+    // 49 px line, with the wider step to the subtitle underneath it.
+    const title = screen.getByTestId('welcome-title-1');
+    expect(title).toHaveStyle({ fontSize: 24, lineHeight: 49.2 });
+    expect(title.props.className).toContain('mt-6');
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });
