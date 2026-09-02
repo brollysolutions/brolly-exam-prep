@@ -8,6 +8,8 @@ import path from 'node:path';
 const root = process.env.CLAUDE_PROJECT_DIR ?? process.cwd();
 const input = JSON.parse(await readStdin());
 if (input?.stop_hook_active) process.exit(0); // avoid loops
+// Skip while a subagent implementer owns the working tree (controller sets/clears this marker).
+if (existsSync(path.join(root, '.superpowers/sdd/.busy'))) process.exit(0);
 
 let changed = '';
 try {
