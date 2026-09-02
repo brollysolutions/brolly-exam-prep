@@ -44,8 +44,9 @@ try {
     const { execSync } = await import('node:child_process');
     const globalRoot = execSync('npm root -g').toString().trim();
     ({ chromium } = createRequire(path.join(globalRoot, 'x.js'))('playwright'));
-  } catch {
+  } catch (e) {
     console.error('Playwright missing. Run: pnpm add -Dw playwright && npx playwright install chromium (or npm i -g playwright)');
+    console.error(String(e?.message ?? e));
     process.exit(1);
   }
 }
@@ -77,7 +78,8 @@ try {
     // (native kv-store falls back to memory on web). --lang-labels en=EN,te=తె,ur=اُر
     const langLabels = Object.fromEntries((args['lang-labels'] ?? '').split(',').filter(Boolean).map((p) => p.split('=')));
     for (const route of routes) {
-      await page.goto(`http://localhost:${port}${route}`, { waitUntil: 'networkidle' });
+      // `?lang=` is honoured by the app's web-only override (apps/mobile/src/data/langOverride.ts).
+      await page.goto(`http://localhost:${port}${route}?lang=${lang}`, { waitUntil: 'networkidle' });
       await page.waitForTimeout(600);
       if (langLabels[lang]) {
         const chip = page.getByText(langLabels[lang], { exact: true }).first();
