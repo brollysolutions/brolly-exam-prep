@@ -1,8 +1,8 @@
-import { size, spacing, type ColorName } from '@tslprb/design-tokens';
+import { colors, radius, size, spacing, text, type ColorName } from '@tslprb/design-tokens';
 import { LANGS, useDir, type Lang } from '@tslprb/i18n';
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable, ScrollView, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import type { PaperQuestion } from '@/data/api';
 import type { AttemptState, Choice } from '@/data/attempt';
@@ -25,6 +25,7 @@ import {
   SegmentedChips,
   Stack,
   Text,
+  usePressed,
 } from '@/ui';
 
 /** Rail, timer box and toast turn flag-red from here down (spec section 5). */
@@ -43,6 +44,11 @@ export type AttemptViewProps = {
   remainingSec: number;
   /** Whole seconds spent on the question on screen. */
   elapsedSec: number;
+  /**
+   * False until the attempt has a deadline. An unarmed screen reads `remainingSec: 0`, which
+   * must not flash the flag-red timer and marquee the rail before the paper has even started.
+   */
+  armed?: boolean;
   lang: Lang;
   onLangChange: (lang: Lang) => void;
   onExit: () => void;
@@ -69,11 +75,14 @@ export function formatClock(totalSec: number): string {
   return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
 }
 
-/** The header clock: transparent, then hazard under 5 minutes, then flag under 1. */
-function TimerBox({ remainingSec }: { remainingSec: number }) {
+/**
+ * The header clock: transparent, then hazard under 5 minutes, then flag under 1 — but only once
+ * the attempt is armed, so a not-yet-started paper never shows a red 00:00.
+ */
+function TimerBox({ remainingSec, armed }: { remainingSec: number; armed: boolean }) {
   const { t } = useTranslation();
-  const critical = remainingSec <= CRITICAL_SEC;
-  const warning = remainingSec <= WARNING_SEC;
+  const critical = armed && remainingSec <= CRITICAL_SEC;
+  const warning = armed && remainingSec <= WARNING_SEC;
   const filled = warning || critical;
   const fg: ColorName = filled ? 'tar' : 'chalk';
   return (
@@ -81,15 +90,20 @@ function TimerBox({ remainingSec }: { remainingSec: number }) {
       align="end"
       gap={1}
       testID="timer-box"
-      className={cx(
-        'rounded-sm border px-2 py-1',
-        critical ? 'border-flag bg-flag' : warning ? 'border-hazard bg-hazard' : 'border-line',
-      )}
+      className="px-2 py-1"
+      // Fill and border are an object style so they survive css-interop on web and stay assertable.
+      style={{
+        borderRadius: radius.sm,
+        borderWidth: 1,
+        backgroundColor: critical ? colors.flag : warning ? colors.hazard : 'transparent',
+        borderColor: critical ? colors.flag : warning ? colors.hazard : colors.line,
+      }}
     >
       <Text variant="caption" weight="700" color={filled ? 'tar' : 'dim'} tracking="timer">
         {t('test.timeLeft')}
       </Text>
-      <Num variant="timer" color={fg} testID="timer-value">
+      {/* The prototype pins the numeral's line-height to 1.0 so the box stays 48 px tall. */}
+      <Num variant="timer" color={fg} testID="timer-value" style={{ lineHeight: text.timer }}>
         {formatClock(remainingSec)}
       </Num>
     </Stack>
@@ -126,6 +140,63 @@ function MarksChip({ attempt }: { attempt: AttemptState }) {
   );
 }
 
+/** One answer row: 58 px minimum, key glyph box, 2 px hi-vis border and tint when selected. */
+function OptionRow({
+  index,
+  glyph,
+  label,
+  selected,
+  onPress,
+}: {
+  index: number;
+  glyph: string;
+  label: string;
+  selected: boolean;
+  onPress: () => void;
+}) {
+  const { pressed, handlers } = usePressed();
+  return (
+    <Pressable
+      accessibilityRole="radio"
+      accessibilityState={{ checked: selected }}
+      accessibilityLabel={`${glyph} ${label}`}
+      testID={`option-${index}`}
+      {...handlers}
+      onPress={() => {
+        haptics.select();
+        onPress();
+      }}
+      className={cx(
+        'min-h-key justify-center rounded-md py-3',
+        // Border grows 1 → 2 px when selected; padding gives the pixel back.
+        selected ? 'border-2 border-hivis bg-hivisTint px-3' : 'border border-line bg-panel2 px-4',
+      )}
+      // Flattened object, never a callback: a `style` function loses its statics on web.
+      style={StyleSheet.flatten([
+        { minHeight: size.key },
+        pressed ? { opacity: 0.85 } : null,
+      ])}
+    >
+      <Row gap={3} align="center">
+        <View
+          className={cx(
+            'items-center justify-center rounded-sm border',
+            selected ? 'border-hivis bg-hivis' : 'border-line3',
+          )}
+          style={{ width: size.optionKey, height: size.optionKey }}
+        >
+          <Text variant="small" weight="700" color={selected ? 'tar' : 'dim'} align="center">
+            {glyph}
+          </Text>
+        </View>
+        <Text variant="bodyLg" className="flex-1">
+          {label}
+        </Text>
+      </Row>
+    </Pressable>
+  );
+}
+
 /**
  * The test-attempt screen, pure: every value is a prop and every action is a callback, so the
  * route, the tests and the dev states gallery all render the same component.
@@ -135,6 +206,7 @@ export function AttemptView({
   question,
   remainingSec,
   elapsedSec,
+  armed = true,
   lang,
   onLangChange,
   onExit,
@@ -168,7 +240,7 @@ export function AttemptView({
   const options = question?.options[lang] ?? [];
 
   return (
-    <Screen rail critical={remainingSec <= CRITICAL_SEC} overlay={overlay} testID={testID}>
+    <Screen rail critical={armed && remainingSec <= CRITICAL_SEC} overlay={overlay} testID={testID}>
       <View className="border-b border-line bg-panel" testID="attempt-header">
         <Row align="center" gap={2} className="px-2 py-1" testID="attempt-header-row">
           <Pressable
@@ -190,7 +262,7 @@ export function AttemptView({
             testID="attempt-lang"
           />
           <View className="flex-1" />
-          <TimerBox remainingSec={remainingSec} />
+          <TimerBox remainingSec={remainingSec} armed={armed} />
         </Row>
 
         <ScrollView
@@ -218,6 +290,8 @@ export function AttemptView({
               />
             );
           })}
+          {/* Trailing gutter so a clipped last chip reads as "there is more to scroll". */}
+          <View style={{ width: spacing['4'] }} />
         </ScrollView>
 
         <ProgressRail
@@ -243,10 +317,10 @@ export function AttemptView({
             className="rounded-xs border-2 border-hivis px-2 py-1"
             testID="q-badge"
           >
-            <Text variant="small" weight="700" color="hivis" tracking="kickerTight">
+            <Text variant="small" weight="700" color="hivis" tracking="qBadge">
               {t('test.qLabel')}
             </Text>
-            <Num variant="small" color="hivis" tracking="kickerTight">
+            <Num variant="small" color="hivis" tracking="qBadge">
               {current}
             </Num>
           </Row>
@@ -261,55 +335,16 @@ export function AttemptView({
         </Text>
 
         <Stack gap={3} className="mt-4" accessibilityRole="radiogroup">
-          {options.map((label, i) => {
-            const selected = answer === i;
-            return (
-              <Pressable
-                key={`${i}-${label}`}
-                accessibilityRole="radio"
-                accessibilityState={{ checked: selected }}
-                accessibilityLabel={`${optionKeys[i] ?? ''} ${label}`}
-                testID={`option-${i}`}
-                onPress={() => {
-                  haptics.select();
-                  onAnswer(i as Choice);
-                }}
-                className={cx(
-                  'justify-center rounded-md py-3',
-                  // Border grows 1 → 2 px when selected; padding gives the pixel back.
-                  selected
-                    ? 'border-2 border-hivis bg-hivisTint px-3'
-                    : 'border border-line bg-panel2 px-4',
-                )}
-                style={({ pressed }) => [
-                  { minHeight: size.key },
-                  pressed ? { opacity: 0.85 } : null,
-                ]}
-              >
-                <Row gap={3} align="center">
-                  <View
-                    className={cx(
-                      'items-center justify-center rounded-sm border',
-                      selected ? 'border-hivis bg-hivis' : 'border-line3',
-                    )}
-                    style={{ width: size.optionKey, height: size.optionKey }}
-                  >
-                    <Text
-                      variant="small"
-                      weight="700"
-                      color={selected ? 'tar' : 'dim'}
-                      align="center"
-                    >
-                      {optionKeys[i] ?? ''}
-                    </Text>
-                  </View>
-                  <Text variant="bodyLg" className="flex-1">
-                    {label}
-                  </Text>
-                </Row>
-              </Pressable>
-            );
-          })}
+          {options.map((label, i) => (
+            <OptionRow
+              key={`${i}-${label}`}
+              index={i}
+              glyph={optionKeys[i] ?? ''}
+              label={label}
+              selected={answer === i}
+              onPress={() => onAnswer(i as Choice)}
+            />
+          ))}
         </Stack>
 
         <Row gap={2} align="center" className="mt-4" testID="time-on-question">
@@ -356,7 +391,8 @@ export function AttemptView({
               className="h-touchLg w-touchLg items-center justify-center rounded-sm border border-line3"
               style={({ pressed }) => (pressed ? { opacity: 0.85 } : null)}
             >
-              <Text variant="glyph" color="chalk">
+              {/* Latin face: Nastaliq has no chevron glyph, so Urdu fell back to a tofu box. */}
+              <Text variant="glyph" color="chalk" lang="en" testID="chevron-prev">
                 {d.chevronPrev}
               </Text>
             </Pressable>
@@ -379,7 +415,7 @@ export function AttemptView({
               size="lg"
               label={t('test.next')}
               icon={
-                <Text variant="glyph" color="tar">
+                <Text variant="glyph" color="tar" lang="en" testID="chevron-next">
                   {d.chevronNext}
                 </Text>
               }

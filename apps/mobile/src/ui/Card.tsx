@@ -2,6 +2,7 @@ import { colors } from '@tslprb/design-tokens';
 import type { ReactNode } from 'react';
 import {
   Pressable,
+  StyleSheet,
   View,
   type PressableProps,
   type StyleProp,
@@ -11,6 +12,7 @@ import {
 
 import { cx } from './cx';
 import * as haptics from './haptics';
+import { usePressed } from './pressable';
 import { Text } from './Text';
 
 export type CardProps = Omit<PressableProps, 'style' | 'children'> & {
@@ -32,11 +34,14 @@ export function Card({
   size = 'lg',
   children,
   onPress,
+  onPressIn,
+  onPressOut,
   disabled,
   className,
   style,
   ...rest
 }: CardProps) {
+  const { pressed, handlers } = usePressed(onPressIn, onPressOut);
   const classes = cx(
     'min-h-16 justify-center rounded-md',
     // Border grows 1 → 2 px when selected; padding gives the pixel back so content never shifts.
@@ -86,13 +91,15 @@ export function Card({
       accessibilityState={{ selected, disabled: !!disabled }}
       android_ripple={{ color: colors.hivisTint3 }}
       {...rest}
+      {...handlers}
       disabled={disabled}
       onPress={(e) => {
         haptics.select();
         onPress(e);
       }}
       className={classes}
-      style={({ pressed }) => [pressed && !disabled ? { opacity: 0.85 } : null, style]}
+      // One flattened object, never a callback: see `usePressed`.
+      style={StyleSheet.flatten([style, pressed && !disabled ? { opacity: 0.85 } : null])}
     >
       {content}
     </Pressable>

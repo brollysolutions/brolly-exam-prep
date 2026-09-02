@@ -53,6 +53,9 @@ describe('AttemptView (ur)', () => {
     // Chevrons flip: "next" points left in Urdu.
     expect(screen.getByTestId('btn-prev')).toHaveTextContent('›');
     expect(screen.getByTestId('btn-next')).toHaveTextContent('اگلا‹');
+    // …and are drawn with the Latin face: Nastaliq has no chevron glyph.
+    expect(screen.getByTestId('chevron-prev')).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
+    expect(screen.getByTestId('chevron-next')).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
 
     expect(screen.toJSON()).toMatchSnapshot();
   });

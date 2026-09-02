@@ -1,6 +1,7 @@
 import { colors } from '@tslprb/design-tokens';
 import {
   Pressable,
+  StyleSheet,
   View,
   type PressableProps,
   type StyleProp,
@@ -10,6 +11,7 @@ import {
 
 import { cx } from './cx';
 import * as haptics from './haptics';
+import { usePressed } from './pressable';
 import { Text } from './Text';
 
 export type ChipTone = 'hivis' | 'hazard' | 'flag' | 'sand';
@@ -22,7 +24,7 @@ export type ChipProps = Omit<PressableProps, 'style' | 'children'> & {
   /** sm = 34, md = 40, lg = 48 px. */
   size?: ChipSize;
   /**
-   * Present but not yet available (a locked section tab): `ghost` label instead of `dim`.
+   * Present but not yet available (a locked section tab): `mute` label instead of `dim`.
    * Unlike `disabled` it stays pressable, because the tap is what raises the locked toast.
    */
   muted?: boolean;
@@ -53,11 +55,14 @@ export function Chip({
   muted = false,
   shape = 'rect',
   onPress,
+  onPressIn,
+  onPressOut,
   disabled,
   className,
   style,
   ...rest
 }: ChipProps) {
+  const { pressed, handlers } = usePressed(onPressIn, onPressOut);
   const classes = cx(
     'items-center justify-center border',
     shape === 'pill' ? 'rounded-full' : 'rounded-xs',
@@ -70,7 +75,7 @@ export function Chip({
     <Text
       variant="small"
       weight={active ? '700' : '600'}
-      color={active ? 'tar' : muted ? 'ghost' : 'dim'}
+      color={active ? 'tar' : muted ? 'mute' : 'dim'}
       align="center"
     >
       {label}
@@ -96,13 +101,15 @@ export function Chip({
       android_ripple={{ color: active ? colors.pressTint : colors.hivisTint3 }}
       hitSlop={size === 'sm' ? 7 : size === 'md' ? 4 : 0}
       {...rest}
+      {...handlers}
       disabled={disabled}
       onPress={(e) => {
         haptics.tapLight();
         onPress(e);
       }}
       className={classes}
-      style={({ pressed }) => [pressed && !disabled ? { opacity: 0.85 } : null, style]}
+      // One flattened object, never a callback: see `usePressed`.
+      style={StyleSheet.flatten([style, pressed && !disabled ? { opacity: 0.85 } : null])}
     >
       {text}
     </Pressable>

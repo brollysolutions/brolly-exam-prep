@@ -27,6 +27,7 @@ export {
 export { Num } from './Num';
 export { OtpCells, type OtpCellsProps } from './OtpCells';
 export { PaletteCell, type PaletteCellProps } from './PaletteCell';
+export { usePressed, type PressHandlers } from './pressable';
 export { PhoneField, type PhoneFieldProps } from './PhoneField';
 export { ProgressRail, type ProgressRailProps } from './ProgressRail';
 export { Row, type RowProps } from './Row';

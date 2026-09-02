@@ -1,4 +1,5 @@
 import { render, screen, userEvent } from '@testing-library/react-native';
+import { colors, size } from '@tslprb/design-tokens';
 import { initI18n } from '@tslprb/i18n';
 
 import {
@@ -82,6 +83,59 @@ describe('AttemptView', () => {
   it('shows 58:24 for the demo deadline', async () => {
     await renderView();
     expect(screen.getByTestId('timer-value')).toHaveTextContent(num('58:24'));
+  });
+
+  describe('timer colour state machine', () => {
+    it('stays transparent before the attempt is armed, even at zero', async () => {
+      await renderView({ remainingSec: 0, armed: false });
+      expect(screen.getByTestId('timer-box')).toHaveStyle({
+        backgroundColor: 'transparent',
+        borderColor: colors.line,
+      });
+    });
+
+    it('is transparent at 301 s', async () => {
+      await renderView({ remainingSec: 301 });
+      expect(screen.getByTestId('timer-box')).toHaveStyle({
+        backgroundColor: 'transparent',
+        borderColor: colors.line,
+      });
+    });
+
+    it('fills hazard at 250 s', async () => {
+      await renderView({ remainingSec: 250 });
+      expect(screen.getByTestId('timer-box')).toHaveStyle({
+        backgroundColor: colors.hazard,
+        borderColor: colors.hazard,
+      });
+    });
+
+    it('fills flag at 47 s', async () => {
+      await renderView({ remainingSec: 47 });
+      expect(screen.getByTestId('timer-box')).toHaveStyle({
+        backgroundColor: colors.flag,
+        borderColor: colors.flag,
+      });
+    });
+
+    it('fills hazard exactly at the 300 s threshold', async () => {
+      await renderView({ remainingSec: 300 });
+      expect(screen.getByTestId('timer-box')).toHaveStyle({ backgroundColor: colors.hazard });
+    });
+  });
+
+  it('gives every option row the 58 px minimum as an object style', async () => {
+    await renderView();
+    const option = screen.getByTestId('option-0');
+    expect(option).toHaveStyle({ minHeight: size.key });
+    // Not a `style` CALLBACK: statics inside one never reach the DOM on web.
+    expect(typeof option.props.style).not.toBe('function');
+  });
+
+  it('sizes the fixed footer buttons from the tokens', async () => {
+    await renderView();
+    expect(screen.getByTestId('btn-clear')).toHaveStyle({ width: size.clearBtn });
+    expect(screen.getByTestId('btn-next')).toHaveStyle({ width: size.nextBtn });
   });
 
   it('shows "No negative marking" for the free mock', async () => {

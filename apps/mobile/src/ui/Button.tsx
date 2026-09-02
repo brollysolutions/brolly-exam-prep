@@ -1,9 +1,16 @@
-import { colors, type ColorName } from '@tslprb/design-tokens';
+import { colors, size as sizes, type ColorName } from '@tslprb/design-tokens';
 import type { ReactNode } from 'react';
-import { Pressable, type PressableProps, type StyleProp, type ViewStyle } from 'react-native';
+import {
+  Pressable,
+  StyleSheet,
+  type PressableProps,
+  type StyleProp,
+  type ViewStyle,
+} from 'react-native';
 
 import { cx } from './cx';
 import * as haptics from './haptics';
+import { usePressed } from './pressable';
 import { Row } from './Row';
 import { Text } from './Text';
 
@@ -51,10 +58,13 @@ export function Button({
   icon,
   disabled,
   onPress,
+  onPressIn,
+  onPressOut,
   className,
   style,
   ...rest
 }: ButtonProps) {
+  const { pressed, handlers } = usePressed(onPressIn, onPressOut);
   const filledHazard = variant === 'hazard' && active;
   const primaryDisabled = disabled && variant === 'primary';
   const color: ColorName = primaryDisabled ? 'ghost' : filledHazard ? 'tar' : fg[variant];
@@ -64,6 +74,7 @@ export function Button({
       accessibilityState={{ disabled: !!disabled }}
       android_ripple={{ color: ripple(variant, active) }}
       {...rest}
+      {...handlers}
       disabled={disabled}
       onPress={(e) => {
         haptics.select();
@@ -71,7 +82,6 @@ export function Button({
       }}
       className={cx(
         'items-center justify-center rounded-sm px-4',
-        size === 'lg' ? 'h-touchLg' : 'h-touch',
         primaryDisabled
           ? 'bg-panel3'
           : filledHazard
@@ -80,7 +90,13 @@ export function Button({
         disabled && !primaryDisabled && 'opacity-40',
         className,
       )}
-      style={({ pressed }) => [pressed && !disabled ? { opacity: 0.85 } : null, style]}
+      // One flattened object, never a callback: see `usePressed`. The height lives here rather
+      // than in a class so it survives css-interop on web and is assertable in tests.
+      style={StyleSheet.flatten([
+        { height: size === 'lg' ? sizes.touchLg : sizes.touch },
+        style,
+        pressed && !disabled ? { opacity: 0.85 } : null,
+      ])}
     >
       <Row gap={2} align="center">
         <Text
