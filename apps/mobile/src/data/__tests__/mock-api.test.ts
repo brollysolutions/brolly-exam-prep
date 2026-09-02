@@ -1,12 +1,16 @@
 import {
   AttemptSchema,
+  CATEGORY_IDS,
+  CategorySchema,
+  fromApiCategory,
+  toApiCategory,
   OtpRequestResponseSchema,
   OtpVerifyResponseSchema,
   ResultSchema,
   TestSchema,
   TestSummarySchema,
 } from '@tslprb/api-contracts';
-import { FREE_MOCK_SHORT, PWT_CONSTABLE, SAMPLE_RESULT, TESTS } from '@tslprb/fixtures';
+import { CATEGORIES, FREE_MOCK_SHORT, PWT_CONSTABLE, SAMPLE_RESULT, TESTS } from '@tslprb/fixtures';
 
 import { ApiError, getApi } from '../api';
 import { HttpApi } from '../api/http';
@@ -224,6 +228,24 @@ describe('HttpApi', () => {
   it('still serves the fixture analysis so the result screen renders', async () => {
     const http = new HttpApi({ baseUrl: 'http://localhost:8000' });
     await expect(http.getResultDetail('res-1')).resolves.toEqual(SAMPLE_RESULT);
+  });
+});
+
+describe('category spelling', () => {
+  it('round-trips every fixture id through the wire spelling', () => {
+    for (const id of CATEGORY_IDS) {
+      const wire = toApiCategory(id);
+      expect(CategorySchema.parse(wire)).toBe(wire);
+      expect(fromApiCategory(wire)).toBe(id);
+    }
+  });
+
+  it('covers every category the contract knows about', () => {
+    expect(CATEGORY_IDS.map(toApiCategory).sort()).toEqual([...CategorySchema.options].sort());
+  });
+
+  it('agrees with the fixture category list the onboarding grid renders', () => {
+    expect([...CATEGORY_IDS]).toEqual(CATEGORIES.map((c) => c.id));
   });
 });
 

@@ -45,6 +45,12 @@ export type HttpApiOptions = {
  * which would have shipped silently wrong section locks). `getResultDetail` is the one
  * exception: it serves the fixture analysis so the result screen still renders against a
  * real backend, and says so.
+ *
+ * Category spelling: the app and @tslprb/fixtures use lower-case ids ("oc", "exs"); the
+ * wire uses "OC" / "ExS". No /v1 request or response carries a category yet, so there is
+ * nothing to convert today — when one appears, call `toApiCategory` / `fromApiCategory`
+ * from @tslprb/api-contracts *here*, in this class, and nowhere else. Neither spelling
+ * belongs in a store or a screen.
  */
 export class HttpApi implements AppApi {
   private readonly baseUrl: string;
