@@ -15,7 +15,8 @@
     "questions": "{{count}} ప్రశ్నలు",
     "seconds": "{{count}} సె",
     "marks": "+{{plus}} / −{{minus}}",
-    "noNegative": "నెగటివ్ మార్కులు లేవు"
+    "noNegative": "నెగటివ్ మార్కులు లేవు",
+    "close": "మూసివేయి"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "భాష" },
   "auth": {

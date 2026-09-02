@@ -15,7 +15,8 @@
     "questions": "{{count}} سوالات",
     "seconds": "{{count}} سیکنڈ",
     "marks": "+{{plus}} / −{{minus}}",
-    "noNegative": "منفی نمبر نہیں"
+    "noNegative": "منفی نمبر نہیں",
+    "close": "بند کریں"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "زبان" },
   "auth": {
