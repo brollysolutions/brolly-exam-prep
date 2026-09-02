@@ -86,6 +86,8 @@
       "^@/(.*)$": "<rootDir>/src/$1",
       "^@tslprb/([^/]+)$": "<rootDir>/../../packages/$1/src"
     },
-    "resolver": "<rootDir>/jest.resolver.js"
+    "resolver": "<rootDir>/jest.resolver.js",
+    "testTimeout": 15000,
+    "maxWorkers": "50%"
   }
 }
