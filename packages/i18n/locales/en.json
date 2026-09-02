@@ -96,6 +96,8 @@
     "callNote": "A call does not close the test. The timer runs, your answers stay saved.",
     "incomingCall": "INCOMING CALL",
     "simulatedCall": "Simulated OS-level interruption",
+    "callDecline": "Decline call",
+    "callAccept": "Accept call",
     "qLabel": "Q",
     "section": "Section",
     "sections": { "arithmetic": "Arithmetic", "reasoning": "Reasoning", "gs": "General Studies", "telangana": "Telangana", "english": "English" },

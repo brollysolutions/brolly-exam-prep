@@ -1,0 +1,2496 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, and matches the snapshot 1`] = `
+<View
+  className="flex-1 bg-tar"
+  style={
+    {
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 0,
+    }
+  }
+  testID="attempt-screen"
+>
+  <View
+    accessibilityElementsHidden={true}
+    className="h-rail overflow-hidden bg-tar"
+    importantForAccessibility="no-hide-descendants"
+    style={
+      {
+        "height": 5,
+      }
+    }
+    testID="hazard-rail"
+  >
+    <View
+      style={
+        [
+          {
+            "flexDirection": "row",
+          },
+          {
+            "transform": [
+              {
+                "translateX": -56,
+              },
+            ],
+          },
+        ]
+      }
+      testID="hazard-rail-track"
+    >
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    className="flex-1"
+  >
+    <View
+      className="border-b border-line bg-panel"
+      testID="attempt-header"
+    >
+      <View
+        className="px-2 py-1"
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row-reverse",
+            "flexWrap": undefined,
+            "gap": 8,
+            "justifyContent": undefined,
+          }
+        }
+        testID="attempt-header-row"
+      >
+        <View
+          accessibilityLabel="ٹیسٹ سے باہر"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="h-touch w-touch items-center justify-center"
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={null}
+          testID="btn-exit"
+        >
+          <Text
+            className="text-dim"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_400Regular",
+                "fontSize": 21,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 43.1,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            ✕
+          </Text>
+        </View>
+        <View
+          accessibilityRole="radiogroup"
+          className="h-touch self-start overflow-hidden rounded-sm border border-line"
+          style={
+            {
+              "alignItems": undefined,
+              "flexDirection": "row-reverse",
+              "flexWrap": undefined,
+              "gap": undefined,
+              "justifyContent": undefined,
+            }
+          }
+          testID="attempt-lang"
+        >
+          <View
+            accessibilityLabel="EN"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "Archivo_700Bold",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 19.6,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              EN
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="తె"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 22.3,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              తె
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="اُر"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": true,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-full min-w-touch items-center justify-center px-2 bg-hivis"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              className="text-tar"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              اُر
+            </Text>
+          </View>
+        </View>
+        <View
+          className="flex-1"
+        />
+        <View
+          className="rounded-sm border px-2 py-1 border-line"
+          style={
+            {
+              "alignItems": "flex-end",
+              "flexDirection": "column",
+              "gap": 4,
+              "justifyContent": undefined,
+            }
+          }
+          testID="timer-box"
+        >
+          <Text
+            className="text-dim"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_700Bold",
+                "fontSize": 12.5,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 25.6,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            باقی وقت
+          </Text>
+          <Text
+            accessibilityLanguage="en"
+            className="text-chalk"
+            style={
+              {
+                "fontFamily": "Archivo_700Bold",
+                "fontSize": 23,
+                "fontVariant": [
+                  "tabular-nums",
+                ],
+                "letterSpacing": 0,
+                "lineHeight": 33.4,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+            testID="timer-value"
+          >
+            ⁦58:24⁩
+          </Text>
+        </View>
+      </View>
+      <RCTScrollView
+        contentContainerStyle={
+          {
+            "flexDirection": "row-reverse",
+            "gap": 8,
+            "paddingBottom": 8,
+            "paddingHorizontal": 12,
+          }
+        }
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        testID="section-tabs"
+      >
+        <View>
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": false,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center border rounded-xs h-touch px-4 border-line"
+            collapsable={false}
+            focusable={true}
+            hitSlop={0}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                null,
+                undefined,
+              ]
+            }
+            testID="section-chip-0"
+          >
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 27.7,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              حساب
+            </Text>
+          </View>
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": true,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center border rounded-xs h-touch px-4 bg-hivis border-hivis"
+            collapsable={false}
+            focusable={true}
+            hitSlop={0}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                null,
+                undefined,
+              ]
+            }
+            testID="section-chip-1"
+          >
+            <Text
+              className="text-tar"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 27.7,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              ریزننگ
+            </Text>
+          </View>
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": false,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center border rounded-xs h-touch px-4 border-line"
+            collapsable={false}
+            focusable={true}
+            hitSlop={0}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                null,
+                undefined,
+              ]
+            }
+            testID="section-chip-2"
+          >
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 27.7,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              جنرل اسٹڈیز
+            </Text>
+          </View>
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": false,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center border rounded-xs h-touch px-4 border-line"
+            collapsable={false}
+            focusable={true}
+            hitSlop={0}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                null,
+                undefined,
+              ]
+            }
+            testID="section-chip-3"
+          >
+            <Text
+              className="text-ghost"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 27.7,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              تلنگانہ  ⛌
+            </Text>
+          </View>
+        </View>
+      </RCTScrollView>
+      <View
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 20,
+          }
+        }
+        className="h-progress overflow-hidden bg-panel3"
+        testID="attempt-progress"
+      >
+        <View
+          className="absolute bottom-0 top-0 bg-hivis"
+          style={
+            {
+              "right": 0,
+              "width": "20%",
+            }
+          }
+          testID="progress-fill"
+        />
+        <View
+          className="absolute bottom-0 top-0 w-px bg-tar"
+          style={
+            {
+              "right": "25%",
+            }
+          }
+          testID="progress-tick"
+        />
+        <View
+          className="absolute bottom-0 top-0 w-px bg-tar"
+          style={
+            {
+              "right": "50%",
+            }
+          }
+          testID="progress-tick"
+        />
+        <View
+          className="absolute bottom-0 top-0 w-px bg-tar"
+          style={
+            {
+              "right": "75%",
+            }
+          }
+          testID="progress-tick"
+        />
+      </View>
+    </View>
+    <View
+      accessibilityLiveRegion="polite"
+      className="border-b border-offlineLine bg-offlineBg px-3 py-2"
+      style={
+        {
+          "alignItems": "flex-start",
+          "flexDirection": "row-reverse",
+          "flexWrap": undefined,
+          "gap": 8,
+          "justifyContent": undefined,
+        }
+      }
+      testID="attempt-offline"
+    >
+      <Text
+        accessibilityElementsHidden={true}
+        className="text-sand"
+        importantForAccessibility="no"
+        style={
+          {
+            "fontFamily": "NotoNastaliqUrdu_400Regular",
+            "fontSize": 14.5,
+            "fontVariant": undefined,
+            "letterSpacing": 0,
+            "lineHeight": 29.7,
+            "textAlign": "right",
+            "textTransform": undefined,
+            "writingDirection": "rtl",
+          }
+        }
+      >
+        ■
+      </Text>
+      <Text
+        className="text-offlineText flex-1"
+        style={
+          {
+            "fontFamily": "NotoNastaliqUrdu_400Regular",
+            "fontSize": 12.5,
+            "fontVariant": undefined,
+            "letterSpacing": 0,
+            "lineHeight": 25.6,
+            "textAlign": "right",
+            "textTransform": undefined,
+            "writingDirection": "rtl",
+          }
+        }
+      >
+        آف لائن — اس ٹیسٹ کے لیے انٹرنیٹ کی ضرورت نہیں۔ آپ کے جوابات اسی فون میں محفوظ ہو رہے ہیں۔
+      </Text>
+    </View>
+    <RCTScrollView
+      className="flex-1"
+      contentContainerStyle={
+        {
+          "padding": 16,
+          "paddingBottom": 20,
+        }
+      }
+      showsVerticalScrollIndicator={false}
+      testID="attempt-body"
+    >
+      <View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row-reverse",
+              "flexWrap": "wrap",
+              "gap": 8,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <View
+            className="rounded-xs border-2 border-hivis px-2 py-1"
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "flexWrap": undefined,
+                "gap": 4,
+                "justifyContent": undefined,
+              }
+            }
+            testID="q-badge"
+          >
+            <Text
+              className="text-hivis"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 27.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              س
+            </Text>
+            <Text
+              accessibilityLanguage="en"
+              className="text-hivis"
+              style={
+                {
+                  "fontFamily": "Archivo_700Bold",
+                  "fontSize": 12.5,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 1.4,
+                  "lineHeight": 18.1,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦12⁩
+            </Text>
+          </View>
+          <View
+            className="rounded-xs border border-line px-2 py-1"
+            testID="marks-chip"
+          >
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 12.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 25.6,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              منفی نمبر نہیں
+            </Text>
+          </View>
+        </View>
+        <Text
+          className="text-chalk mt-3"
+          style={
+            {
+              "fontFamily": "NotoNastaliqUrdu_400Regular",
+              "fontSize": 17.5,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 35.9,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "rtl",
+            }
+          }
+          testID="question-text"
+        >
+          ایک کوڈ زبان میں POLICE کو QPMJDF لکھا جاتا ہے۔ اسی زبان میں GUARD کیسے لکھا جائے گا؟
+        </Text>
+        <View
+          accessibilityRole="radiogroup"
+          className="mt-4"
+          style={
+            {
+              "alignItems": undefined,
+              "flexDirection": "column",
+              "gap": 12,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="ا HVBSE"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="justify-center rounded-md py-3 border border-line bg-panel2 px-4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "minHeight": 58,
+                },
+                null,
+              ]
+            }
+            testID="option-0"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 12,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <View
+                className="items-center justify-center rounded-sm border border-line3"
+                style={
+                  {
+                    "height": 30,
+                    "width": 30,
+                  }
+                }
+              >
+                <Text
+                  className="text-dim"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 13.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 27.7,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  ا
+                </Text>
+              </View>
+              <Text
+                className="text-chalk flex-1"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 15.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 31.8,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                HVBSE
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="ب HVBRE"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="justify-center rounded-md py-3 border border-line bg-panel2 px-4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "minHeight": 58,
+                },
+                null,
+              ]
+            }
+            testID="option-1"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 12,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <View
+                className="items-center justify-center rounded-sm border border-line3"
+                style={
+                  {
+                    "height": 30,
+                    "width": 30,
+                  }
+                }
+              >
+                <Text
+                  className="text-dim"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 13.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 27.7,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  ب
+                </Text>
+              </View>
+              <Text
+                className="text-chalk flex-1"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 15.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 31.8,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                HVBRE
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="ج HUBSE"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="justify-center rounded-md py-3 border border-line bg-panel2 px-4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "minHeight": 58,
+                },
+                null,
+              ]
+            }
+            testID="option-2"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 12,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <View
+                className="items-center justify-center rounded-sm border border-line3"
+                style={
+                  {
+                    "height": 30,
+                    "width": 30,
+                  }
+                }
+              >
+                <Text
+                  className="text-dim"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 13.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 27.7,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  ج
+                </Text>
+              </View>
+              <Text
+                className="text-chalk flex-1"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 15.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 31.8,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                HUBSE
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="د GVBSE"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="justify-center rounded-md py-3 border border-line bg-panel2 px-4"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                {
+                  "minHeight": 58,
+                },
+                null,
+              ]
+            }
+            testID="option-3"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 12,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <View
+                className="items-center justify-center rounded-sm border border-line3"
+                style={
+                  {
+                    "height": 30,
+                    "width": 30,
+                  }
+                }
+              >
+                <Text
+                  className="text-dim"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 13.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 27.7,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  د
+                </Text>
+              </View>
+              <Text
+                className="text-chalk flex-1"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 15.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 31.8,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                GVBSE
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          className="mt-4"
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row-reverse",
+              "flexWrap": undefined,
+              "gap": 8,
+              "justifyContent": undefined,
+            }
+          }
+          testID="time-on-question"
+        >
+          <View
+            accessibilityElementsHidden={true}
+            className="h-dot w-dot rounded-full border-1.5 border-mute"
+            importantForAccessibility="no"
+          />
+          <Text
+            className="text-dim"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_400Regular",
+                "fontSize": 12.5,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 25.6,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            اس سوال پر وقت ·
+          </Text>
+          <Text
+            accessibilityLanguage="en"
+            className="text-dim"
+            style={
+              {
+                "fontFamily": "Archivo_400Regular",
+                "fontSize": 11.5,
+                "fontVariant": [
+                  "tabular-nums",
+                ],
+                "letterSpacing": 0,
+                "lineHeight": 16.7,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+          >
+            ⁦41 سیکنڈ⁩
+          </Text>
+        </View>
+      </View>
+    </RCTScrollView>
+    <View
+      className="border-t border-line bg-panel px-3 pb-3 pt-2"
+      testID="attempt-footer"
+    >
+      <View
+        style={
+          {
+            "alignItems": undefined,
+            "flexDirection": "column",
+            "gap": 8,
+            "justifyContent": undefined,
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "alignItems": undefined,
+              "flexDirection": "row-reverse",
+              "flexWrap": undefined,
+              "gap": 8,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center rounded-sm px-4 h-touch border border-line3"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                null,
+                {
+                  "width": 92,
+                },
+              ]
+            }
+            testID="btn-clear"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-chalk"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 14.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 29.7,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                صاف کریں
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center rounded-sm px-4 h-touch border border-hazard flex-1"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                null,
+                undefined,
+              ]
+            }
+            testID="btn-mark"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-hazard"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 14.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 29.7,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                نظرثانی کے لیے نشان
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": undefined,
+              "flexDirection": "row-reverse",
+              "flexWrap": undefined,
+              "gap": 8,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="پچھلا"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-touchLg w-touchLg items-center justify-center rounded-sm border border-line3"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+            testID="btn-prev"
+          >
+            <Text
+              className="text-chalk"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_400Regular",
+                  "fontSize": 21,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 43.1,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              ›
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="سوالات 8/40"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-touchLg flex-1 items-center justify-center rounded-sm border border-line3"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+            testID="btn-palette"
+          >
+            <Text
+              className="text-chalk"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              سوالات
+            </Text>
+            <Text
+              accessibilityLanguage="en"
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "Archivo_400Regular",
+                  "fontSize": 11.5,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 16.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦8 / 40⁩
+            </Text>
+          </View>
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center rounded-sm px-4 h-touchLg bg-hivis"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                null,
+                {
+                  "width": 112,
+                },
+              ]
+            }
+            testID="btn-next"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-tar"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 15.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 31.8,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                اگلا
+              </Text>
+              <Text
+                className="text-tar"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 21,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 43.1,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                ‹
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

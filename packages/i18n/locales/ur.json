@@ -96,6 +96,8 @@
     "callNote": "کال آنے سے ٹیسٹ بند نہیں ہوتا۔ وقت چلتا رہتا ہے، جوابات محفوظ رہتے ہیں۔",
     "incomingCall": "آنے والی کال",
     "simulatedCall": "او ایس سطح کی مصنوعی رکاوٹ",
+    "callDecline": "کال مسترد کریں",
+    "callAccept": "کال قبول کریں",
     "qLabel": "س",
     "section": "سیکشن",
     "sections": { "arithmetic": "حساب", "reasoning": "ریزننگ", "gs": "جنرل اسٹڈیز", "telangana": "تلنگانہ", "english": "انگریزی" },

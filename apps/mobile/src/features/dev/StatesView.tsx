@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 import { useLangStore } from '@/data/lang';
+import { AttemptStates } from '@/features/dev/sections/AttemptStates';
 import {
   Banner,
   Button,
@@ -294,6 +295,8 @@ export function StatesView() {
         <Label>{DEV.railCritical}</Label>
         <HazardRail critical />
       </Section>
+
+      <AttemptStates />
     </Screen>
   );
 }

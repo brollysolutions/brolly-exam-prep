@@ -1,0 +1,295 @@
+import { firstQuestionOf } from '@tslprb/fixtures';
+import { useRouter, useLocalSearchParams } from 'expo-router';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { BackHandler } from 'react-native';
+
+import { getApi, type PaperQuestion } from '@/data/api';
+import { useAttemptStore, type Choice, type GotoResult } from '@/data/attempt';
+import { counts, elapsedOnCurrentSec, sectionOf } from '@/data/attempt.selectors';
+import { useLangStore } from '@/data/lang';
+import { useCountdown } from '@/data/useCountdown';
+import { useNetwork } from '@/data/useNetwork';
+import {
+  AttemptDialogs,
+  AttemptNotices,
+  lockedMessage,
+  type AttemptDialogKind,
+  type AttemptToast,
+} from '@/features/attempt/AttemptOverlays';
+import { AttemptView } from '@/features/attempt/AttemptView';
+import { PaletteSheet } from '@/features/attempt/PaletteSheet';
+import { useAttemptGuards } from '@/features/attempt/useAttemptGuards';
+import { haptics, type SheetHandle } from '@/ui';
+
+/** A locked-section notice clears itself; the timer warnings stay until the next one lands. */
+const LOCKED_TOAST_MS = 4000;
+
+/** Test attempt (F-09/10/11): wires the attempt store, the mock API, the clock and the router. */
+export default function TestAttemptRoute() {
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const { t } = useTranslation();
+  const router = useRouter();
+  const attempt = useAttemptStore();
+  const lang = useLangStore((s) => s.lang);
+  const setLang = useLangStore((s) => s.setLang);
+  const { offline } = useNetwork();
+
+  const [paper, setPaper] = useState<PaperQuestion[]>([]);
+  const [dialog, setDialog] = useState<AttemptDialogKind | null>(null);
+  const [toast, setToast] = useState<AttemptToast | null>(null);
+  const sheet = useRef<SheetHandle>(null);
+  const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  const running = attempt.status === 'running';
+  useAttemptGuards(running);
+
+  // ------------------------------------------------------------------ notices
+
+  const showToast = useCallback((next: AttemptToast, autoDismissMs?: number) => {
+    clearTimeout(toastTimer.current);
+    setToast(next);
+    if (autoDismissMs !== undefined)
+      toastTimer.current = setTimeout(() => setToast(null), autoDismissMs);
+  }, []);
+
+  const clearToast = useCallback(() => {
+    clearTimeout(toastTimer.current);
+    setToast(null);
+  }, []);
+
+  useEffect(() => () => clearTimeout(toastTimer.current), []);
+
+  /** Any dialog owns the screen: the palette closes underneath it. */
+  const openDialog = useCallback((kind: AttemptDialogKind) => {
+    sheet.current?.dismiss();
+    setDialog(kind);
+  }, []);
+
+  // --------------------------------------------------------------- paper + start
+
+  useEffect(() => {
+    if (!id) return;
+    let cancelled = false;
+    void (async () => {
+      const api = getApi();
+      let meta;
+      try {
+        const [loadedMeta, questions] = await Promise.all([api.getTestMeta(id), api.getPaper(id)]);
+        if (cancelled) return;
+        meta = loadedMeta;
+        setPaper(questions);
+      } catch {
+        return;
+      }
+      const state = useAttemptStore.getState();
+      // A running attempt on this same test is resumed, never restarted.
+      if (state.testId === id && state.status === 'running') return;
+      try {
+        const created = await api.createAttempt({ test_id: id });
+        if (cancelled) return;
+        useAttemptStore
+          .getState()
+          .start(meta, { attemptId: created.id, endsAt: Date.parse(created.ends_at) });
+      } catch {
+        // Offline start: a local attempt id and a deadline computed from the pattern.
+        if (!cancelled) useAttemptStore.getState().start(meta);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [id]);
+
+  // ------------------------------------------------------------------- clock
+
+  const { remainingSec } = useCountdown({
+    endsAt: attempt.endsAt,
+    enabled: running,
+    onWarn5: () => showToast({ key: 'warn5', text: t('test.warn5'), tone: 'hazard' }),
+    onWarn1: () => showToast({ key: 'warn1', text: t('test.warn1'), tone: 'flag' }),
+    onExpire: () => {
+      useAttemptStore.getState().autoSubmit();
+      clearToast();
+      openDialog('auto');
+    },
+    // Never demote the auto-submit card to a "welcome back".
+    onResume: () => setDialog((current) => current ?? 'resume'),
+  });
+
+  // --------------------------------------------------------- hardware back
+
+  useEffect(() => {
+    const sub = BackHandler.addEventListener('hardwareBackPress', () => {
+      openDialog('exit');
+      return true;
+    });
+    return () => sub.remove();
+  }, [openDialog]);
+
+  // ---------------------------------------------------------------- actions
+
+  /** Best-effort sync of one answer row; the attempt is fully playable offline. */
+  const patchAnswer = useCallback(
+    (n: number, choice: number | null, marked: boolean) => {
+      const state = useAttemptStore.getState();
+      const question = paper[n - 1];
+      if (!state.attemptId || !question) return;
+      void getApi()
+        .patchAttemptAnswer(state.attemptId, { question_id: question.id, choice, marked })
+        .catch(() => undefined);
+    },
+    [paper],
+  );
+
+  const handleGoto = useCallback(
+    (result: GotoResult, sectionIndex: number) => {
+      if (result === 'locked') {
+        showToast(
+          {
+            key: `locked-${sectionIndex}`,
+            text: lockedMessage(t, useAttemptStore.getState().pattern, sectionIndex),
+            tone: 'hazard',
+          },
+          LOCKED_TOAST_MS,
+        );
+        return;
+      }
+      if (result === 'ok') clearToast();
+    },
+    [clearToast, showToast, t],
+  );
+
+  const onLockedTap = useCallback(
+    (sectionIndex: number) => handleGoto('locked', sectionIndex),
+    [handleGoto],
+  );
+
+  const onSectionPress = useCallback(
+    (sectionIndex: number) => {
+      const state = useAttemptStore.getState();
+      if (!state.pattern) return;
+      const target = firstQuestionOf(state.pattern, sectionIndex);
+      handleGoto(state.goto(target), sectionIndex);
+    },
+    [handleGoto],
+  );
+
+  const onAnswer = useCallback(
+    (choice: Choice) => {
+      const state = useAttemptStore.getState();
+      const n = state.current;
+      state.answer(n, choice);
+      patchAnswer(n, choice, state.marked[n] === true);
+    },
+    [patchAnswer],
+  );
+
+  const onClear = useCallback(() => {
+    const state = useAttemptStore.getState();
+    const n = state.current;
+    state.clear(n);
+    patchAnswer(n, null, state.marked[n] === true);
+  }, [patchAnswer]);
+
+  const onToggleMark = useCallback(() => {
+    const state = useAttemptStore.getState();
+    const n = state.current;
+    state.toggleMark(n);
+    patchAnswer(n, state.answers[n] ?? null, useAttemptStore.getState().marked[n] === true);
+  }, [patchAnswer]);
+
+  const onNext = useCallback(() => {
+    const state = useAttemptStore.getState();
+    handleGoto(state.next(), sectionOf(state, state.current + 1));
+  }, [handleGoto]);
+
+  const onPrev = useCallback(() => {
+    const state = useAttemptStore.getState();
+    handleGoto(state.prev(), sectionOf(state, state.current - 1));
+  }, [handleGoto]);
+
+  const onPaletteGoto = useCallback(
+    (n: number) => {
+      const state = useAttemptStore.getState();
+      handleGoto(state.goto(n), sectionOf(state, n));
+      sheet.current?.dismiss();
+    },
+    [handleGoto],
+  );
+
+  const openResult = useCallback(() => {
+    router.replace(`/test/${id}/result`);
+  }, [id, router]);
+
+  const onSubmit = useCallback(() => {
+    const state = useAttemptStore.getState();
+    haptics.success();
+    state.submit();
+    setDialog(null);
+    if (state.attemptId)
+      void getApi()
+        .submitAttempt(state.attemptId)
+        .catch(() => undefined);
+    openResult();
+  }, [openResult]);
+
+  // ----------------------------------------------------------------- render
+
+  const question = paper[attempt.current - 1];
+  // `Date.now()` may not be read during render, so wall-clock is reconstructed from the deadline
+  // and the countdown's own reading: `now = endsAt - remainingSec * 1000`, refreshed every tick.
+  const elapsedSec =
+    attempt.endsAt === undefined
+      ? 0
+      : elapsedOnCurrentSec(attempt, attempt.endsAt - remainingSec * 1000);
+  const overlay = (
+    <>
+      <PaletteSheet
+        ref={sheet}
+        attempt={attempt}
+        onGoto={onPaletteGoto}
+        onSubmit={() => openDialog('submit')}
+      />
+      <AttemptDialogs
+        kind={dialog}
+        counts={counts(attempt)}
+        onDismiss={() => setDialog(null)}
+        onLeave={() => {
+          setDialog(null);
+          router.back();
+        }}
+        onSubmit={onSubmit}
+        onSeeResult={() => {
+          setDialog(null);
+          openResult();
+        }}
+      />
+    </>
+  );
+
+  return (
+    <AttemptView
+      attempt={attempt}
+      question={question}
+      remainingSec={remainingSec}
+      elapsedSec={elapsedSec}
+      lang={lang}
+      onLangChange={setLang}
+      onExit={() => openDialog('exit')}
+      onSectionPress={onSectionPress}
+      onLockedTap={onLockedTap}
+      onAnswer={onAnswer}
+      onClear={onClear}
+      onToggleMark={onToggleMark}
+      onPrev={onPrev}
+      onNext={onNext}
+      onOpenPalette={() => {
+        clearToast();
+        sheet.current?.present();
+      }}
+      notices={<AttemptNotices offline={offline} toast={toast} />}
+      overlay={overlay}
+    />
+  );
+}
