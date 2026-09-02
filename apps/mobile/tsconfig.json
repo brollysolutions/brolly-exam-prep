@@ -12,7 +12,10 @@
       "@tslprb/*": [
         "../../packages/*/src"
       ]
-    }
+    },
+    "types": [
+      "jest"
+    ]
   },
   "include": [
     "**/*.ts",
