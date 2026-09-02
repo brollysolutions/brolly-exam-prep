@@ -903,10 +903,10 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
           }
         }
         accessible={true}
-        className="items-center justify-center border rounded-xs h-chipMd px-4 bg-hivis border-hivis"
+        className="items-center justify-center border rounded-xs h-touch px-4 bg-hivis border-hivis"
         collapsable={false}
         focusable={true}
-        hitSlop={4}
+        hitSlop={0}
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -957,10 +957,10 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
           }
         }
         accessible={true}
-        className="items-center justify-center border rounded-xs h-chipMd px-4 border-line"
+        className="items-center justify-center border rounded-xs h-touch px-4 border-line"
         collapsable={false}
         focusable={true}
-        hitSlop={4}
+        hitSlop={0}
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -1011,10 +1011,10 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
           }
         }
         accessible={true}
-        className="items-center justify-center border rounded-xs h-chipMd px-4 border-line"
+        className="items-center justify-center border rounded-xs h-touch px-4 border-line"
         collapsable={false}
         focusable={true}
-        hitSlop={4}
+        hitSlop={0}
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -1047,7 +1047,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
       </View>
     </View>
     <RCTScrollView
-      className="mt-2 flex-1"
+      className="mt-4 flex-1"
       contentContainerClassName="pb-6"
       data={
         [
@@ -1175,7 +1175,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": false,
+                "disabled": undefined,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1201,6 +1201,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
+            style={{}}
             testID="library-row-mock-07"
           >
             <View
@@ -1360,41 +1361,73 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                 <View
                   accessibilityState={
                     {
-                      "selected": true,
+                      "selected": false,
                     }
                   }
-                  className="items-center justify-center border rounded-xs h-chip px-3 bg-sand border-sand"
+                  className="items-center justify-center border rounded-xs h-chip px-3 border-line"
                   testID="library-best-mock-07"
                 >
-                  <Text
-                    className="text-tar"
+                  <View
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_700Bold",
-                        "fontSize": 13.5,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 27.7,
-                        "textAlign": "center",
-                        "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "alignItems": "center",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
                       }
                     }
                   >
-                    بہترین ⁦62.25⁩
-                  </Text>
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "Archivo_700Bold",
+                          "fontSize": 12.5,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 18.1,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⁦62.25⁩
+                    </Text>
+                    <Text
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_700Bold",
+                          "fontSize": 13.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 27.7,
+                          "textAlign": "center",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      بہترین
+                    </Text>
+                  </View>
                 </View>
                 <View
                   accessibilityState={
                     {
-                      "selected": true,
+                      "selected": false,
                     }
                   }
-                  className="items-center justify-center border rounded-xs h-chip px-3 bg-hivis border-hivis"
+                  className="items-center justify-center border rounded-xs h-chip px-3 border-line"
                   testID="library-badge-mock-07"
                 >
                   <Text
-                    className="text-tar"
+                    className="text-dim"
                     style={
                       {
                         "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -1426,7 +1459,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": false,
+                "disabled": undefined,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1452,6 +1485,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
+            style={{}}
             testID="library-row-mock-08"
           >
             <View
@@ -1477,7 +1511,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                 }
               >
                 <Text
-                  className="text-chalk"
+                  className="text-dim"
                   style={
                     {
                       "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -1617,23 +1651,52 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                   className="items-center justify-center border rounded-xs h-chip px-3 border-line"
                   testID="library-badge-mock-08"
                 >
-                  <Text
-                    className="text-dim"
+                  <View
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_700Bold",
-                        "fontSize": 13.5,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 27.7,
-                        "textAlign": "center",
-                        "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "alignItems": "center",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
                       }
                     }
                   >
-                    مقفل
-                  </Text>
+                    <Text
+                      className="text-mute"
+                      style={
+                        {
+                          "fontFamily": "Archivo_400Regular",
+                          "fontSize": 12.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 18.1,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⛌
+                    </Text>
+                    <Text
+                      className="text-mute"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_700Bold",
+                          "fontSize": 13.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 27.7,
+                          "textAlign": "center",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      مقفل
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>

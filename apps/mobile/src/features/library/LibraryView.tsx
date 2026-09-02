@@ -1,11 +1,11 @@
 import { colors } from '@tslprb/design-tokens';
 import { TESTS, type TestKind, type TestMeta } from '@tslprb/fixtures';
-import { useDir, type Lang } from '@tslprb/i18n';
+import type { Lang } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FlatList, Pressable } from 'react-native';
+import { FlatList, Pressable, StyleSheet } from 'react-native';
 
-import { Chip, cx, Num, Row, Screen, Stack, Text, Toast, useAutoDismiss, usePressed } from '@/ui';
+import { Chip, cx, Glyph, Num, Row, Screen, Stack, Text, Toast, useAutoDismiss, usePressed } from '@/ui';
 
 /** Reading order of the three shelves; also the chip order. */
 const KINDS: { kind: TestKind; labelKey: string }[] = [
@@ -14,14 +14,24 @@ const KINDS: { kind: TestKind; labelKey: string }[] = [
   { kind: 'previous', labelKey: 'library.previousYear' },
 ];
 
-const iso = (value: number | string) => `⁦${value}⁩`;
-
 /**
- * One shelf row. A `Pressable` `style` FUNCTION would drop its static `className` entries on
- * web (see `usePressed`), so press feedback is state-driven instead — one `usePressed` call
- * per row, via its own component rather than inside `FlatList`'s `renderItem`.
+ * The same locked mark the attempt screen puts on a locked section tab — monochrome, and
+ * rendered through `Glyph` so Nastaliq never falls back to tofu.
  */
-function LibraryRow({
+const LOCK_GLYPH = '⛌';
+
+export type LibraryViewProps = {
+  lang: Lang;
+  /** Shelf the screen opens on. */
+  initialKind?: TestKind;
+  /** A test the candidate may sit. */
+  onOpen: (id: string) => void;
+  /** A locked test was pressed — no paywall in this phase, just an explanation. */
+  onLocked?: (id: string) => void;
+};
+
+/** One shelf row. Its own component so the press delta can live in state, not a callback. */
+function TestRow({
   test,
   lang,
   first,
@@ -34,20 +44,23 @@ function LibraryRow({
 }) {
   const { t } = useTranslation();
   const { pressed, handlers } = usePressed();
+  const locked = !test.free;
   return (
     <Pressable
       testID={`library-row-${test.id}`}
       accessibilityRole="button"
-      accessibilityState={{ disabled: false }}
       android_ripple={{ color: colors.hivisTint3 }}
       onPress={onPress}
       {...handlers}
       className={cx('min-h-[72px] justify-center border-b border-line', first && 'border-t')}
-      style={pressed ? { opacity: 0.85 } : undefined}
+      // One flattened object, never a callback: see `usePressed`.
+      style={StyleSheet.flatten([pressed ? { opacity: 0.85 } : null])}
     >
       <Row gap={3} align="center" justify="between">
         <Stack gap={1} className="flex-1">
-          <Text variant="bodyLg" weight="600">
+          {/* A locked paper is present but not available, so its title recedes rather than
+              shouting the same as one you can sit. */}
+          <Text variant="bodyLg" weight="600" color={locked ? 'dim' : 'chalk'}>
             {test.title[lang]}
           </Text>
           <Row gap={1} align="baseline" wrap>
@@ -57,9 +70,9 @@ function LibraryRow({
             <Text variant="caption" color="dim">
               {t('common.questionsUnit')}
             </Text>
-            <Text variant="caption" color="mute" lang="en">
+            <Glyph variant="caption" color="mute">
               ·
-            </Text>
+            </Glyph>
             <Num variant="caption" weight="600" color="dim">
               {test.pattern.durationMinutes}
             </Num>
@@ -72,15 +85,27 @@ function LibraryRow({
           {test.attempted && (
             <Chip
               testID={`library-best-${test.id}`}
-              label={t('library.bestScore', { score: iso(test.attempted.bestScore) })}
-              tone="sand"
-              active
+              label={t('library.bestScore')}
+              leading={
+                <Num variant="small" weight="700" color="dim">
+                  {test.attempted.bestScore}
+                </Num>
+              }
             />
           )}
+          {/* Only the active filter wears hi-vis; a shelf of solid-yellow Free badges would
+              have three primary actions per row (design review round 1). */}
           <Chip
             testID={`library-badge-${test.id}`}
-            label={test.free ? t('common.free') : t('common.locked')}
-            active={test.free}
+            label={locked ? t('common.locked') : t('common.free')}
+            muted={locked}
+            leading={
+              locked ? (
+                <Glyph variant="small" color="mute">
+                  {LOCK_GLYPH}
+                </Glyph>
+              ) : undefined
+            }
           />
         </Row>
       </Row>
@@ -88,24 +113,13 @@ function LibraryRow({
   );
 }
 
-export type LibraryViewProps = {
-  /** Shelf the screen opens on. */
-  initialKind?: TestKind;
-  /** A test the candidate may sit. */
-  onOpen: (id: string) => void;
-  /** A locked test was pressed — no paywall in this phase, just an explanation. */
-  onLocked?: (id: string) => void;
-};
-
 /**
  * F-08 — the test library. A row says three things and no more: what the paper is, how big
- * it is, and whether it will open. The best score replaces the Free badge once you have one,
- * because after an attempt that is the number you came back for.
+ * it is, and whether it will open. The best score replaces nothing and adds itself once you
+ * have one, because after an attempt that is the number you came back for.
  */
-export function LibraryView({ initialKind = 'full', onOpen, onLocked }: LibraryViewProps) {
+export function LibraryView({ lang, initialKind = 'full', onOpen, onLocked }: LibraryViewProps) {
   const { t } = useTranslation();
-  const d = useDir();
-  const lang = d.lang as Lang;
   const [kind, setKind] = useState<TestKind>(initialKind);
   // A tick, not a timestamp: `Date.now()` in a handler trips the React Compiler purity rule,
   // and `useAutoDismiss` only needs the value to *change* to restart its clock.
@@ -126,6 +140,7 @@ export function LibraryView({ initialKind = 'full', onOpen, onLocked }: LibraryV
   return (
     <Screen
       padded
+      bottomInset={false}
       testID="library-screen"
       overlay={
         locked === undefined ? undefined : (
@@ -143,7 +158,7 @@ export function LibraryView({ initialKind = 'full', onOpen, onLocked }: LibraryV
             key={k.kind}
             testID={`library-filter-${k.kind}`}
             label={t(k.labelKey)}
-            size="md"
+            size="lg"
             active={k.kind === kind}
             accessibilityRole="radio"
             accessibilityState={{ checked: k.kind === kind }}
@@ -154,13 +169,13 @@ export function LibraryView({ initialKind = 'full', onOpen, onLocked }: LibraryV
 
       <FlatList
         testID="library-list"
-        className="mt-2 flex-1"
+        className="mt-4 flex-1"
         contentContainerClassName="pb-6"
         data={rows}
         keyExtractor={(test) => test.id}
         showsVerticalScrollIndicator={false}
         renderItem={({ item, index }) => (
-          <LibraryRow test={item} lang={lang} first={index === 0} onPress={() => press(item)} />
+          <TestRow test={item} lang={lang} first={index === 0} onPress={() => press(item)} />
         )}
       />
     </Screen>
