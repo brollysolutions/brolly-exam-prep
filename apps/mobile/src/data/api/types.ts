@@ -1,15 +1,57 @@
-import type { ApiClient } from '@tslprb/api-contracts';
-import type { Question as PaperQuestion, SAMPLE_RESULT, TestMeta } from '@tslprb/fixtures';
+import type { AnswerPatchInput, ApiClient } from '@tslprb/api-contracts';
+import type { Question as PaperQuestion, TestMeta } from '@tslprb/fixtures';
 
 export type { PaperQuestion };
 
+/** The three-language string every fixture carries. */
+export type LocalizedCopy = { en: string; te: string; ur: string };
+
+/** One "do these three next" drill card on the result screen. */
+export type ResultAction = {
+  id: string;
+  title: LocalizedCopy;
+  sub: LocalizedCopy;
+};
+
+/** One row of the per-question review table. `your` is null when the question was skipped. */
+export type ResultReviewRow = {
+  /** 1-based question number in the paper. */
+  questionNo: number;
+  your: number | null;
+  correct: number;
+  seconds: number;
+};
+
 /**
- * The rich, prototype-shaped result the analysis screen renders (rank, accuracy, negative
- * marks, drill suggestions, per-question review). `ResultSchema` in @tslprb/api-contracts
- * mirrors the FastAPI endpoint and deliberately carries less; rather than widen the shared
- * contract for a screen the API does not serve yet, the app asks for this alongside it.
+ * The rich, prototype-shaped result the analysis screen renders. `ResultSchema` in
+ * @tslprb/api-contracts mirrors the FastAPI endpoint and deliberately carries less
+ * (no rank pool, no average time, no drill suggestions), so the app asks for this
+ * alongside it rather than widening the shared contract for a screen the API does not
+ * serve yet.
+ *
+ * Written out by hand — deriving it as `typeof SAMPLE_RESULT` would bake that fixture's
+ * `as const` literal types (`score: 62.25`, `qualified: true`, `rank: 1284`, readonly
+ * arrays) into every consumer, so no screen could render a different result.
  */
-export type ResultDetail = typeof SAMPLE_RESULT;
+export type ResultDetail = {
+  id: string;
+  /** The "Full Mock 07" number, for the `result.title` interpolation. */
+  testTitleN: number;
+  score: number;
+  maxScore: number;
+  cutoffPct: number;
+  qualified: boolean;
+  rank: number;
+  totalCandidates: number;
+  accuracyPct: number;
+  avgSecondsPerQuestion: number;
+  /** Negative, or 0 when the pattern carries no negative marking. */
+  negativeMarks: number;
+  wrong: number;
+  skipped: number;
+  actions: ResultAction[];
+  review: ResultReviewRow[];
+};
 
 /**
  * `ApiClient` (one method per /v1 endpoint) plus the app-only reads the contract cannot
@@ -22,6 +64,8 @@ export interface AppApi extends ApiClient {
   getPaper(testId: string): Promise<PaperQuestion[]>;
   getResultDetail(id: string): Promise<ResultDetail>;
 }
+
+export type { AnswerPatchInput };
 
 /** Every adapter rejects with this, so screens can branch on `status` without sniffing text. */
 export class ApiError extends Error {

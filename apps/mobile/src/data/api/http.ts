@@ -7,7 +7,7 @@ import {
   SubmitResponseSchema,
   TestSchema,
   TestSummarySchema,
-  type AnswerPatch,
+  type AnswerPatchInput,
   type Attempt,
   type AttemptCreate,
   type Ok,
@@ -20,7 +20,7 @@ import {
   type Test,
   type TestSummary,
 } from '@tslprb/api-contracts';
-import { patternFor, type Question as PaperQuestion, type TestMeta } from '@tslprb/fixtures';
+import type { Question as PaperQuestion, TestMeta } from '@tslprb/fixtures';
 import { z } from 'zod';
 
 import { MockApi } from './mock';
@@ -29,24 +29,38 @@ import { ApiError, type AppApi, type ResultDetail } from './types';
 const HealthSchema = z.object({ status: z.string() });
 const TestSummaryListSchema = z.array(TestSummarySchema);
 
+export type HttpApiOptions = {
+  baseUrl?: string;
+  /** Read at request time so a sign-in mid-session is picked up without rebuilding the client. */
+  getToken?: () => string | undefined;
+};
+
 /**
  * Thin fetch client against services/api. Responses are validated with the shared zod
  * schemas so a drifting backend fails loudly here rather than deep inside a screen.
  *
- * The three AppApi extras (exam pattern, answer key, rich analysis) have no /v1 endpoint
- * yet, so they fall back to fixtures; replace each as services/api grows the endpoint.
+ * The AppApi extras have no /v1 endpoint yet. `listTestMetas`, `getTestMeta` and
+ * `getPaper` reject with 501 rather than fabricate data (the earlier version invented
+ * Telugu and Urdu titles by copying the English one and guessed a pattern from the post,
+ * which would have shipped silently wrong section locks). `getResultDetail` is the one
+ * exception: it serves the fixture analysis so the result screen still renders against a
+ * real backend, and says so.
  */
 export class HttpApi implements AppApi {
   private readonly baseUrl: string;
-  private readonly fallback = new MockApi();
-  private token?: string;
+  private readonly getToken: () => string | undefined;
+  private fallbackApi?: MockApi;
 
-  constructor(baseUrl = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8000') {
-    this.baseUrl = baseUrl.replace(/\/+$/, '');
+  constructor(options: HttpApiOptions = {}) {
+    const base = options.baseUrl ?? process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8000';
+    this.baseUrl = base.replace(/\/+$/, '');
+    this.getToken = options.getToken ?? (() => undefined);
   }
 
-  setToken(token: string | undefined) {
-    this.token = token;
+  /** Built on first use only, so an http-only app never pays for the fixture bundle. */
+  private get fallback(): MockApi {
+    this.fallbackApi ??= new MockApi();
+    return this.fallbackApi;
   }
 
   private async request<T>(
@@ -56,7 +70,8 @@ export class HttpApi implements AppApi {
   ): Promise<T> {
     const headers: Record<string, string> = { Accept: 'application/json' };
     if (init?.body !== undefined) headers['Content-Type'] = 'application/json';
-    if (this.token) headers.Authorization = `Bearer ${this.token}`;
+    const token = this.getToken();
+    if (token) headers.Authorization = `Bearer ${token}`;
 
     let res: Response;
     try {
@@ -100,7 +115,7 @@ export class HttpApi implements AppApi {
     return this.request('/v1/attempts', AttemptSchema, { method: 'POST', body });
   }
 
-  patchAttemptAnswer(attemptId: string, body: AnswerPatch): Promise<Ok> {
+  patchAttemptAnswer(attemptId: string, body: AnswerPatchInput): Promise<Ok> {
     return this.request(`/v1/attempts/${encodeURIComponent(attemptId)}/answers`, OkSchema, {
       method: 'PATCH',
       body,
@@ -121,28 +136,26 @@ export class HttpApi implements AppApi {
 
   // --- AppApi extras: not served by /v1 yet ---------------------------------
 
-  async listTestMetas(): Promise<TestMeta[]> {
-    const list = await this.listTests();
-    return list.map((t) => ({
-      id: t.id,
-      kind: 'full',
-      title: { en: t.title, te: t.title, ur: t.title },
-      pattern: patternFor(t.post),
-      free: false,
-    }));
+  /** Rejects (never throws synchronously) so every AppApi method fails the same way. */
+  private notYet(what: string): Promise<never> {
+    return Promise.reject(
+      new ApiError(501, 'not_implemented', `${what} is not available over http yet`),
+    );
   }
 
-  async getTestMeta(id: string): Promise<TestMeta> {
-    const metas = await this.listTestMetas();
-    const meta = metas.find((m) => m.id === id);
-    if (!meta) throw new ApiError(404, 'test_not_found', `No test with id ${id}`);
-    return meta;
+  listTestMetas(): Promise<TestMeta[]> {
+    return this.notYet('listTestMetas');
   }
 
-  getPaper(testId: string): Promise<PaperQuestion[]> {
-    return this.fallback.getPaper(testId);
+  getTestMeta(): Promise<TestMeta> {
+    return this.notYet('getTestMeta');
   }
 
+  getPaper(): Promise<PaperQuestion[]> {
+    return this.notYet('getPaper');
+  }
+
+  /** Fixture analysis: the endpoint does not exist, but the result screen must still render. */
   getResultDetail(id: string): Promise<ResultDetail> {
     return this.fallback.getResultDetail(id);
   }

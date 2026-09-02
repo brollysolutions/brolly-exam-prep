@@ -1,5 +1,5 @@
 import type {
-  AnswerPatch,
+  AnswerPatchInput,
   Attempt,
   AttemptCreate,
   LocalizedText,
@@ -82,6 +82,45 @@ function findMeta(id: string): TestMeta {
 
 const paperOf = (meta: TestMeta): PaperQuestion[] => buildPaper(meta.pattern.sections);
 
+/**
+ * SAMPLE_RESULT widened onto ResultDetail. The return annotation is the compile-time check
+ * that the fixture still satisfies the shape screens are written against, and building a
+ * fresh object per call means a caller that sorts or filters `review` in place cannot
+ * corrupt the next caller's copy (the fixture itself is `as const`, so it must be copied
+ * anyway).
+ */
+const sampleDetail = (): ResultDetail => ({
+  ...SAMPLE_RESULT,
+  actions: SAMPLE_RESULT.actions.map((a) => ({
+    id: a.id,
+    title: { ...a.title },
+    sub: { ...a.sub },
+  })),
+  review: SAMPLE_RESULT.review.map((r) => ({ ...r })),
+});
+
+/**
+ * Largest-remainder apportionment: splits `total` across `weights` so the parts are as
+ * proportional as integers allow and sum to exactly `total` (no rounding drift, which is
+ * what made the per-section splits disagree with the headline score).
+ */
+export function apportion(total: number, weights: number[]): number[] {
+  const weightSum = weights.reduce((a, b) => a + b, 0);
+  if (total <= 0 || weightSum <= 0) return weights.map(() => 0);
+  const exact = weights.map((w) => (total * w) / weightSum);
+  const shares = exact.map((v) => Math.floor(v));
+  let left = total - shares.reduce((a, b) => a + b, 0);
+  const byRemainder = exact
+    .map((v, i) => ({ i, frac: v - Math.floor(v) }))
+    .sort((a, b) => b.frac - a.frac || a.i - b.i);
+  for (const { i } of byRemainder) {
+    if (left <= 0) break;
+    shares[i] += 1;
+    left -= 1;
+  }
+  return shares;
+}
+
 function toTest(meta: TestMeta): Test {
   const paper = paperOf(meta);
   let offset = 0;
@@ -104,7 +143,7 @@ function toTest(meta: TestMeta): Test {
   return { ...toSummary(meta), sections };
 }
 
-type MockAttempt = { attempt: Attempt; testId: string; answers: Map<string, AnswerPatch> };
+type MockAttempt = { attempt: Attempt; testId: string; answers: Map<string, AnswerPatchInput> };
 
 /**
  * In-memory ApiClient backed by @tslprb/fixtures. Attempts and results live for the life of
@@ -177,7 +216,7 @@ export class MockApi implements AppApi {
     return attempt;
   }
 
-  async patchAttemptAnswer(attemptId: string, body: AnswerPatch): Promise<Ok> {
+  async patchAttemptAnswer(attemptId: string, body: AnswerPatchInput): Promise<Ok> {
     await latency();
     const row = this.attempts.get(attemptId);
     if (!row) throw new ApiError(404, 'attempt_not_found', `No attempt ${attemptId}`);
@@ -198,32 +237,61 @@ export class MockApi implements AppApi {
   async getResult(id: string): Promise<Result> {
     await latency();
     const row = this.results.get(id);
-    return this.buildResult(id, row?.testId ?? 'mock-07', row?.attemptId ?? null);
+    if (!row) throw new ApiError(404, 'result_not_found', `No result ${id}`);
+    return this.buildResult(id, row.testId, row.attemptId);
   }
 
-  /** The demo has a single analysis payload; every result id resolves to it. */
+  /**
+   * The demo has a single analysis payload, so every id resolves to it — unlike
+   * `getResult`, which is the contract endpoint and 404s on an unknown id.
+   */
   async getResultDetail(_id: string): Promise<ResultDetail> {
     await latency();
-    return SAMPLE_RESULT;
+    return sampleDetail();
   }
 
-  /** SAMPLE_RESULT projected onto the contract's ResultSchema. */
+  /**
+   * SAMPLE_RESULT projected onto the contract's ResultSchema, made internally coherent:
+   * the fixture's wrong/skipped *rates* (out of its 100-mark paper) are scaled onto this
+   * pattern, apportioned across sections by largest remainder, and the headline score is
+   * the sum of the section marks rather than a number copied from the fixture. Rank and
+   * the cut-off percentage stay fixture values; everything else is derived.
+   */
   private buildResult(id: string, testId: string, attemptId: string | null): Result {
     const meta = findMeta(testId);
-    const total = meta.pattern.totalQuestions;
-    const per_section: SectionScore[] = meta.pattern.sections.map((spec) => {
-      const wrong = Math.round((SAMPLE_RESULT.wrong * spec.questions) / total);
-      const skipped = Math.round((SAMPLE_RESULT.skipped * spec.questions) / total);
+    const pattern = meta.pattern;
+    const total = pattern.totalQuestions;
+    const sizes = pattern.sections.map((s) => s.questions);
+
+    const rate = (n: number) => Math.round((n / SAMPLE_RESULT.maxScore) * total);
+    const wrongTotal = Math.max(0, Math.min(total, rate(SAMPLE_RESULT.wrong)));
+    const skippedTotal = Math.max(0, Math.min(total - wrongTotal, rate(SAMPLE_RESULT.skipped)));
+    const wrongBy = apportion(wrongTotal, sizes);
+    const skippedBy = apportion(skippedTotal, sizes);
+
+    let correctAll = 0;
+    let wrongAll = 0;
+    const per_section: SectionScore[] = pattern.sections.map((spec, i) => {
+      const wrong = Math.min(wrongBy[i], spec.questions);
+      const skipped = Math.min(skippedBy[i], spec.questions - wrong);
       const correct = spec.questions - wrong - skipped;
+      correctAll += correct;
+      wrongAll += wrong;
       return {
         section_id: spec.id,
         name: localize(spec.labelKey),
         correct,
         wrong,
         skipped,
-        marks: correct * meta.pattern.marksPerCorrect - wrong * meta.pattern.negativePerWrong,
+        marks: correct * pattern.marksPerCorrect - wrong * pattern.negativePerWrong,
       };
     });
+
+    const score = per_section.reduce((sum, s) => sum + s.marks, 0);
+    const max_score = total * pattern.marksPerCorrect;
+    const cutoff = (SAMPLE_RESULT.cutoffPct / 100) * max_score;
+    const attempted = correctAll + wrongAll;
+
     const wrong: WrongAnswer[] = SAMPLE_RESULT.review
       .filter((r) => r.your !== r.correct)
       .map((r, i) => {
@@ -237,16 +305,17 @@ export class MockApi implements AppApi {
           explanation: q.explanation,
         };
       });
+
     return {
       id,
       test_id: testId,
       attempt_id: attemptId,
-      score: SAMPLE_RESULT.score,
-      max_score: SAMPLE_RESULT.maxScore,
-      cutoff: (SAMPLE_RESULT.cutoffPct / 100) * SAMPLE_RESULT.maxScore,
-      qualified: SAMPLE_RESULT.qualified,
+      score,
+      max_score,
+      cutoff,
+      qualified: score >= cutoff,
       rank: SAMPLE_RESULT.rank,
-      accuracy: SAMPLE_RESULT.accuracyPct / 100,
+      accuracy: attempted === 0 ? 0 : correctAll / attempted,
       per_section,
       wrong,
     };
