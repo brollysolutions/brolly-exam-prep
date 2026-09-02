@@ -6,10 +6,16 @@ from app.routers import attempts, health, otp, results, tests
 
 app = FastAPI(title="TSLPRB API", version="0.1.0")
 
+_cors_origins = settings.cors_origin_list
+# Never combine a wildcard origin with allow_credentials=True: Starlette's
+# CORSMiddleware reflects any request Origin back verbatim with "*", so
+# pairing it with credentials would let any site read credentialed
+# responses. Only enable credentials when the origin list is an explicit
+# allowlist.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origin_list,
-    allow_credentials=True,
+    allow_origins=_cors_origins,
+    allow_credentials="*" not in _cors_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )

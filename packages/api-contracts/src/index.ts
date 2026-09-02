@@ -124,8 +124,8 @@ export type Attempt = z.infer<typeof AttemptSchema>;
 
 export const AnswerPatchSchema = z.object({
   question_id: z.string(),
-  choice: z.number().int().nullable(),
-  marked: z.boolean(),
+  choice: z.number().int().nullable().optional(),
+  marked: z.boolean().optional().default(false),
 });
 export type AnswerPatch = z.infer<typeof AnswerPatchSchema>;
 

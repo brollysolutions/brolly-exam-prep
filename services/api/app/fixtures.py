@@ -320,15 +320,25 @@ def submit_attempt(attempt_id: str) -> dict[str, Any] | None:
     accuracy = round((total_correct / attempted) * 100, 2) if attempted else 0.0
     test = TESTS_BY_ID[attempt["test_id"]]
 
+    # The fixture set only has len(QUESTIONS) sample questions (raw marks
+    # therefore top out at len(QUESTIONS)), but the test's advertised
+    # total_marks is the full-mock value (100). Scale the raw marking-scheme
+    # score up to that so `max_score` in the response always equals
+    # test["total_marks"] and `score`/`cutoff` are in the same units.
+    scale = (test["total_marks"] / len(QUESTIONS)) if QUESTIONS else 1.0
+    scaled_score = round(total_marks * scale, 2)
+    for sec_score in per_section:
+        sec_score["marks"] = round(sec_score["marks"] * scale, 2)
+
     result_id = str(uuid.uuid4())
     result = {
         "id": result_id,
         "test_id": attempt["test_id"],
         "attempt_id": attempt_id,
-        "score": round(total_marks, 2),
-        "max_score": float(len(QUESTIONS)),
+        "score": scaled_score,
+        "max_score": test["total_marks"],
         "cutoff": test["cutoff"],
-        "qualified": total_marks >= test["cutoff"],
+        "qualified": scaled_score >= test["cutoff"],
         "rank": None,
         "accuracy": accuracy,
         "per_section": per_section,

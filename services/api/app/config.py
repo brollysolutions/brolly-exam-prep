@@ -26,9 +26,11 @@ class Settings(BaseSettings):
     otp_dev_code: str = "123456"
     otp_ttl_seconds: int = 300
 
-    cors_origins: str = "*"
-
-    jwt_secret: str = "dev-secret-change-me"
+    # Explicit dev origins by default -- never "*" together with credentials
+    # (see app/main.py: allow_credentials is only enabled when this list
+    # does not contain "*", since Starlette would otherwise reflect any
+    # Origin header back with credentials allowed).
+    cors_origins: str = "http://localhost:8081,http://localhost:19006,http://localhost:3000"
 
     env: str = "dev"
 

@@ -10,6 +10,15 @@ and its test suite run without Postgres or Redis. `/v1/otp/*` also uses an
 in-memory store. The real schema (`app/models.py` + the Alembic migration)
 exists and is ready for the next phase to wire up.
 
+## Phase 1 limitations
+
+`app/worker.py`'s cron jobs (`auto_submit_expired_attempts`, `purge_expired_otps`,
+`recompute_leaderboard`) are registered and run on schedule, but they read the
+`attempts`/`otp_codes`/`results` **database tables**, which the in-memory
+fixture routers above never populate in this phase -- so today they always
+find nothing to do (by design, not a bug), and `recompute_leaderboard` is
+still a logging-only stub even once those tables have rows.
+
 ## Run everything via Docker Compose (recommended)
 
 From the repo root:
