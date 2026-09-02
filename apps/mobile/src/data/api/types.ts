@@ -13,12 +13,16 @@ export type ResultAction = {
   sub: LocalizedCopy;
 };
 
-/** One row of the per-question review table. `your` is null when the question was skipped. */
+/**
+ * One row of the per-question review table: what the candidate did, not what was right.
+ * `your` is null when the question was skipped. The answer key is deliberately absent -
+ * it lives on the paper question this row's `questionNo` points at, so the two can never
+ * disagree.
+ */
 export type ResultReviewRow = {
   /** 1-based question number in the paper. */
   questionNo: number;
   your: number | null;
-  correct: number;
   seconds: number;
 };
 

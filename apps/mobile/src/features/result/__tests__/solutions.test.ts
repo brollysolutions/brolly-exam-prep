@@ -16,6 +16,13 @@ describe('buildSolutionRows', () => {
     expect(rows.map((r) => r.questionNo)).toEqual([3, 6, 12, 15]);
   });
 
+  it('takes the answer key from the paper question, not the review row', () => {
+    for (const row of rows) {
+      expect(row.correct).toBe(paper[row.questionNo - 1].correct);
+      expect(row.isCorrect).toBe(row.your === paper[row.questionNo - 1].correct);
+    }
+  });
+
   it('marks a row correct only when the pick matches the key', () => {
     expect(rows.filter((r) => r.isCorrect)).toHaveLength(1);
     expect(filterSolutionRows(rows, 'wrong')).toHaveLength(3);
@@ -23,16 +30,12 @@ describe('buildSolutionRows', () => {
   });
 
   it('treats a skipped question as wrong', () => {
-    const skipped = buildSolutionRows(
-      [{ questionNo: 1, your: null, correct: 0, seconds: 9 }],
-      paper,
-    );
+    const skipped = buildSolutionRows([{ questionNo: 1, your: null, seconds: 9 }], paper);
     expect(skipped[0].isCorrect).toBe(false);
+    expect(skipped[0].correct).toBe(paper[0].correct);
   });
 
   it('drops review rows the paper does not contain', () => {
-    expect(
-      buildSolutionRows([{ questionNo: 9999, your: 0, correct: 0, seconds: 1 }], paper),
-    ).toEqual([]);
+    expect(buildSolutionRows([{ questionNo: 9999, your: 0, seconds: 1 }], paper)).toEqual([]);
   });
 });

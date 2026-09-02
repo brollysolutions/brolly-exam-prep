@@ -10,6 +10,9 @@ const ROWS = buildSolutionRows(
   buildPaper(FREE_MOCK_SHORT.sections),
 );
 
+/** `test.optionKeys` in English - the glyph each option is labelled with. */
+const KEYS = ['A', 'B', 'C', 'D'];
+
 describe('SolutionsView', () => {
   beforeAll(() => {
     initI18n('en');
@@ -26,6 +29,18 @@ describe('SolutionsView', () => {
     await render(<SolutionsView rows={ROWS} />);
     await userEvent.press(screen.getByTestId('solutions-filter-all'));
     expect(screen.getAllByTestId('solution-card')).toHaveLength(4);
+  });
+
+  it('shows the option the paper marks correct on every card', async () => {
+    await render(<SolutionsView rows={ROWS} initialFilter="all" />);
+    const blocks = screen.getAllByTestId('solution-correct-answer-text');
+    expect(blocks).toHaveLength(ROWS.length);
+    ROWS.forEach((row, i) => {
+      const key = KEYS[row.question.correct];
+      expect(blocks[i]).toHaveTextContent(
+        `${key} · ${row.question.options.en[row.question.correct]}`,
+      );
+    });
   });
 
   it('gives the correct card no "your answer" block', async () => {

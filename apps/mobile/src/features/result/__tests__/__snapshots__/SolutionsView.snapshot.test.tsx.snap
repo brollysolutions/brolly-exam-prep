@@ -1113,49 +1113,6 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
             "your": 1,
           },
           {
-            "correct": 2,
-            "isCorrect": false,
-            "question": {
-              "avgSeconds": 44,
-              "correct": 1,
-              "explanation": {
-                "en": "Selling price = 115% of cost. Cost = 460 ÷ 1.15 = ₹400.",
-                "te": "అమ్మకపు ధర = కొన్న ధరలో 115%. కొన్న ధర = 460 ÷ 1.15 = ₹400.",
-                "ur": "فروخت قیمت = لاگت کا 115%۔ لاگت = 460 ÷ 1.15 = ₹400۔",
-              },
-              "id": "q-ar-002#6",
-              "options": {
-                "en": [
-                  "₹380",
-                  "₹400",
-                  "₹410",
-                  "₹425",
-                ],
-                "te": [
-                  "₹380",
-                  "₹400",
-                  "₹410",
-                  "₹425",
-                ],
-                "ur": [
-                  "₹380",
-                  "₹400",
-                  "₹410",
-                  "₹425",
-                ],
-              },
-              "section": "arithmetic",
-              "text": {
-                "en": "An article sold at a 15% profit fetches ₹460. What was its cost price?",
-                "te": "ఒక వస్తువును 15% లాభంతో అమ్మితే ₹460 వస్తుంది. ఆ వస్తువు కొన్న ధర ఎంత?",
-                "ur": "ایک چیز 15 فیصد نفع پر ₹460 میں فروخت ہوتی ہے۔ اس کی لاگت کیا تھی؟",
-              },
-            },
-            "questionNo": 6,
-            "seconds": 82,
-            "your": 1,
-          },
-          {
             "correct": 0,
             "isCorrect": false,
             "question": {
@@ -1197,6 +1154,49 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
             "questionNo": 12,
             "seconds": 124,
             "your": 2,
+          },
+          {
+            "correct": 2,
+            "isCorrect": false,
+            "question": {
+              "avgSeconds": 48,
+              "correct": 2,
+              "explanation": {
+                "en": "Of the numbers given, 8, 27, 64 and 125 are all perfect cubes (2³, 3³, 4³, 5³). 100 is a perfect square (10²), not a cube — so 100 is the odd one.",
+                "te": "ఇచ్చిన వాటిలో 8, 27, 64, 125 అన్నీ ఘనాలు (2³, 3³, 4³, 5³). 100 మాత్రం ఒక వర్గం (10²) — ఘనం కాదు. కాబట్టి 100 సరిపోదు.",
+                "ur": "دیے گئے اعداد میں 8، 27، 64 اور 125 سب مکعب ہیں (2³، 3³، 4³، 5³)۔ 100 ایک مربع ہے (10²)، مکعب نہیں — اس لیے 100 غیر متعلق ہے۔",
+              },
+              "id": "q-re-001#15",
+              "options": {
+                "en": [
+                  "27",
+                  "64",
+                  "100",
+                  "125",
+                ],
+                "te": [
+                  "27",
+                  "64",
+                  "100",
+                  "125",
+                ],
+                "ur": [
+                  "27",
+                  "64",
+                  "100",
+                  "125",
+                ],
+              },
+              "section": "reasoning",
+              "text": {
+                "en": "Find the odd one out: 8, 27, 64, 100, 125",
+                "te": "క్రింది వాటిలో సరిపోని దానిని గుర్తించండి: 8, 27, 64, 100, 125",
+                "ur": "درج ذیل میں سے غیر متعلق عدد کی نشاندہی کریں: 8، 27، 64، 100، 125",
+              },
+            },
+            "questionNo": 15,
+            "seconds": 19,
+            "your": 1,
           },
         ]
       }
@@ -1370,6 +1370,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
                     "writingDirection": "rtl",
                   }
                 }
+                testID="solution-your-answer-text"
               >
                 ب · 64 کلومیٹر/گھنٹہ
               </Text>
@@ -1416,6 +1417,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
                     "writingDirection": "rtl",
                   }
                 }
+                testID="solution-correct-answer-text"
               >
                 ج · 72 کلومیٹر/گھنٹہ
               </Text>
@@ -1655,354 +1657,6 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
                     }
                   }
                 >
-                  ⁦6⁩
-                </Text>
-              </View>
-            </View>
-            <Text
-              className="text-chalk mt-3"
-              style={
-                {
-                  "fontFamily": "NotoNastaliqUrdu_400Regular",
-                  "fontSize": 15.5,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 31.8,
-                  "textAlign": "right",
-                  "textTransform": undefined,
-                  "writingDirection": "rtl",
-                }
-              }
-            >
-              ایک چیز 15 فیصد نفع پر ₹460 میں فروخت ہوتی ہے۔ اس کی لاگت کیا تھی؟
-            </Text>
-            <View
-              className="mt-3 px-3 py-2"
-              style={
-                {
-                  "backgroundColor": "rgba(228,72,59,0.08)",
-                  "borderRightColor": "#E4483B",
-                  "borderRightWidth": 3,
-                }
-              }
-              testID="solution-your-answer"
-            >
-              <Text
-                className="text-flag"
-                style={
-                  {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 12,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 24.6,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "rtl",
-                  }
-                }
-              >
-                آپ کا جواب
-              </Text>
-              <Text
-                className="text-chalk mt-1"
-                style={
-                  {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 14.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "rtl",
-                  }
-                }
-              >
-                ب · ₹400
-              </Text>
-            </View>
-            <View
-              className="mt-2 px-3 py-2"
-              style={
-                {
-                  "backgroundColor": "rgba(255,224,27,0.07)",
-                  "borderRightColor": "#FFE01B",
-                  "borderRightWidth": 3,
-                }
-              }
-              testID="solution-correct-answer"
-            >
-              <Text
-                className="text-hivis"
-                style={
-                  {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 12,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 24.6,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "rtl",
-                  }
-                }
-              >
-                درست جواب
-              </Text>
-              <Text
-                className="text-chalk mt-1"
-                style={
-                  {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 14.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "rtl",
-                  }
-                }
-              >
-                ج · ₹410
-              </Text>
-            </View>
-            <View
-              className="mt-3 border-t border-panel3 pt-3"
-            >
-              <Text
-                className="text-sand"
-                style={
-                  {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 12,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 24.6,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "rtl",
-                  }
-                }
-              >
-                کیوں
-              </Text>
-              <Text
-                className="text-chalk2 mt-2"
-                style={
-                  {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 14.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "rtl",
-                  }
-                }
-              >
-                فروخت قیمت = لاگت کا 115%۔ لاگت = 460 ÷ 1.15 = ₹400۔
-              </Text>
-            </View>
-            <View
-              className="mt-3"
-              style={
-                {
-                  "alignItems": "baseline",
-                  "flexDirection": "row-reverse",
-                  "flexWrap": "wrap",
-                  "gap": 4,
-                  "justifyContent": undefined,
-                }
-              }
-            >
-              <Text
-                className="text-mute"
-                style={
-                  {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 12.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 25.6,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "rtl",
-                  }
-                }
-              >
-                آپ کا وقت
-              </Text>
-              <Text
-                accessibilityLanguage="en"
-                className="text-mute"
-                style={
-                  {
-                    "fontFamily": "Archivo_600SemiBold",
-                    "fontSize": 11.5,
-                    "fontVariant": [
-                      "tabular-nums",
-                    ],
-                    "letterSpacing": 0,
-                    "lineHeight": 16.7,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                ⁦1m 22s⁩
-              </Text>
-              <Text
-                className="text-mute"
-                style={
-                  {
-                    "fontFamily": "Archivo_400Regular",
-                    "fontSize": 11.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 16.7,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                ·
-              </Text>
-              <Text
-                className="text-mute"
-                style={
-                  {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 12.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 25.6,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "rtl",
-                  }
-                }
-              >
-                اوسط
-              </Text>
-              <Text
-                accessibilityLanguage="en"
-                className="text-mute"
-                style={
-                  {
-                    "fontFamily": "Archivo_600SemiBold",
-                    "fontSize": 11.5,
-                    "fontVariant": [
-                      "tabular-nums",
-                    ],
-                    "letterSpacing": 0,
-                    "lineHeight": 16.7,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                ⁦44s⁩
-              </Text>
-            </View>
-          </View>
-          <View
-            className="h-3"
-          />
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            className="rounded-md border border-line bg-panel2 p-4"
-            testID="solution-card"
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row-reverse",
-                  "flexWrap": undefined,
-                  "gap": 8,
-                  "justifyContent": undefined,
-                }
-              }
-            >
-              <View
-                className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
-              >
-                <Text
-                  accessibilityElementsHidden={true}
-                  className="text-white"
-                  style={
-                    {
-                      "fontFamily": "Archivo_700Bold",
-                      "fontSize": 12.5,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 18.1,
-                      "textAlign": "center",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  ✕
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "alignItems": "baseline",
-                    "flexDirection": "row-reverse",
-                    "flexWrap": undefined,
-                    "gap": 4,
-                    "justifyContent": undefined,
-                  }
-                }
-              >
-                <Text
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 24.6,
-                      "textAlign": "right",
-                      "textTransform": undefined,
-                      "writingDirection": "rtl",
-                    }
-                  }
-                >
-                  س
-                </Text>
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "Archivo_700Bold",
-                      "fontSize": 10.5,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 15.2,
-                      "textAlign": "right",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
                   ⁦12⁩
                 </Text>
               </View>
@@ -2066,6 +1720,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
                     "writingDirection": "rtl",
                   }
                 }
+                testID="solution-your-answer-text"
               >
                 ج · HUBSE
               </Text>
@@ -2112,6 +1767,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
                     "writingDirection": "rtl",
                   }
                 }
+                testID="solution-correct-answer-text"
               >
                 ا · HVBSE
               </Text>
@@ -2256,6 +1912,356 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
                 }
               >
                 ⁦55s⁩
+              </Text>
+            </View>
+          </View>
+          <View
+            className="h-3"
+          />
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            className="rounded-md border border-line bg-panel2 p-4"
+            testID="solution-card"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <View
+                className="h-7 w-7 items-center justify-center rounded-xs bg-flag"
+              >
+                <Text
+                  accessibilityElementsHidden={true}
+                  className="text-white"
+                  style={
+                    {
+                      "fontFamily": "Archivo_700Bold",
+                      "fontSize": 12.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 18.1,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ✕
+                </Text>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "baseline",
+                    "flexDirection": "row-reverse",
+                    "flexWrap": undefined,
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-dim"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 12,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 24.6,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  س
+                </Text>
+                <Text
+                  accessibilityLanguage="en"
+                  className="text-dim"
+                  style={
+                    {
+                      "fontFamily": "Archivo_700Bold",
+                      "fontSize": 10.5,
+                      "fontVariant": [
+                        "tabular-nums",
+                      ],
+                      "letterSpacing": 0,
+                      "lineHeight": 15.2,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ⁦15⁩
+                </Text>
+              </View>
+            </View>
+            <Text
+              className="text-chalk mt-3"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_400Regular",
+                  "fontSize": 15.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 31.8,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              درج ذیل میں سے غیر متعلق عدد کی نشاندہی کریں: 8، 27، 64، 100، 125
+            </Text>
+            <View
+              className="mt-3 px-3 py-2"
+              style={
+                {
+                  "backgroundColor": "rgba(228,72,59,0.08)",
+                  "borderRightColor": "#E4483B",
+                  "borderRightWidth": 3,
+                }
+              }
+              testID="solution-your-answer"
+            >
+              <Text
+                className="text-flag"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                آپ کا جواب
+              </Text>
+              <Text
+                className="text-chalk mt-1"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 14.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 29.7,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+                testID="solution-your-answer-text"
+              >
+                ب · 64
+              </Text>
+            </View>
+            <View
+              className="mt-2 px-3 py-2"
+              style={
+                {
+                  "backgroundColor": "rgba(255,224,27,0.07)",
+                  "borderRightColor": "#FFE01B",
+                  "borderRightWidth": 3,
+                }
+              }
+              testID="solution-correct-answer"
+            >
+              <Text
+                className="text-hivis"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                درست جواب
+              </Text>
+              <Text
+                className="text-chalk mt-1"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 14.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 29.7,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+                testID="solution-correct-answer-text"
+              >
+                ج · 100
+              </Text>
+            </View>
+            <View
+              className="mt-3 border-t border-panel3 pt-3"
+            >
+              <Text
+                className="text-sand"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                کیوں
+              </Text>
+              <Text
+                className="text-chalk2 mt-2"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 14.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 29.7,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                دیے گئے اعداد میں 8، 27، 64 اور 125 سب مکعب ہیں (2³، 3³، 4³، 5³)۔ 100 ایک مربع ہے (10²)، مکعب نہیں — اس لیے 100 غیر متعلق ہے۔
+              </Text>
+            </View>
+            <View
+              className="mt-3"
+              style={
+                {
+                  "alignItems": "baseline",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": "wrap",
+                  "gap": 4,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-mute"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 12.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 25.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                آپ کا وقت
+              </Text>
+              <Text
+                accessibilityLanguage="en"
+                className="text-mute"
+                style={
+                  {
+                    "fontFamily": "Archivo_600SemiBold",
+                    "fontSize": 11.5,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 16.7,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ⁦19s⁩
+              </Text>
+              <Text
+                className="text-mute"
+                style={
+                  {
+                    "fontFamily": "Archivo_400Regular",
+                    "fontSize": 11.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 16.7,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ·
+              </Text>
+              <Text
+                className="text-mute"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 12.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 25.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                اوسط
+              </Text>
+              <Text
+                accessibilityLanguage="en"
+                className="text-mute"
+                style={
+                  {
+                    "fontFamily": "Archivo_600SemiBold",
+                    "fontSize": 11.5,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 16.7,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ⁦48s⁩
               </Text>
             </View>
           </View>

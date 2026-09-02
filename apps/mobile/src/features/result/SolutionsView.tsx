@@ -76,7 +76,7 @@ function AnswerBlock({
       <Kicker color={tone} tracking="kickerTight">
         {label}
       </Kicker>
-      <Text variant="body" className="mt-1">
+      <Text variant="body" className="mt-1" testID={`${testID}-text`}>
         {text}
       </Text>
     </View>

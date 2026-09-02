@@ -204,7 +204,7 @@ describe('MockApi — results', () => {
     expect(detail).toEqual(SAMPLE_RESULT);
     expect(detail.actions).toHaveLength(SAMPLE_RESULT.actions.length);
     // widened, not the fixture's frozen literal: a screen can build its own
-    detail.review.push({ questionNo: 99, your: null, correct: 1, seconds: 4 });
+    detail.review.push({ questionNo: 99, your: null, seconds: 4 });
     expect(detail.review).toHaveLength(SAMPLE_RESULT.review.length + 1);
   });
 });

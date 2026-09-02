@@ -7,6 +7,7 @@ export type SolutionRow = {
   question: PaperQuestion;
   /** The option the candidate picked, or `null` when the question was skipped. */
   your: number | null;
+  /** The key, straight off `question.correct`. */
   correct: number;
   seconds: number;
   isCorrect: boolean;
@@ -17,8 +18,11 @@ export type SolutionFilter = 'wrong' | 'all';
 /**
  * Joins `ResultDetail.review` to the paper by 1-based question number, dropping rows the
  * paper does not contain (a result from a different pattern), and ordering by question
- * number so the list reads the way the test did. The answer key comes from the review row,
- * not the question: the review is what the attempt was marked against.
+ * number so the list reads the way the test did.
+ *
+ * The answer key comes from the paper question, never from the review row: the row is a
+ * record of what the candidate did, and a second copy of the key travelling beside it could
+ * contradict the options the card actually renders.
  */
 export function buildSolutionRows(
   review: readonly ResultReviewRow[],
@@ -33,9 +37,9 @@ export function buildSolutionRows(
           questionNo: row.questionNo,
           question,
           your: row.your,
-          correct: row.correct,
+          correct: question.correct,
           seconds: row.seconds,
-          isCorrect: row.your !== null && row.your === row.correct,
+          isCorrect: row.your === question.correct,
         },
       ];
     })

@@ -17,7 +17,6 @@ import type {
 } from '@tslprb/api-contracts';
 import {
   buildPaper,
-  QUESTIONS,
   SAMPLE_RESULT,
   TESTS,
   type ExamPattern,
@@ -260,6 +259,7 @@ export class MockApi implements AppApi {
   private buildResult(id: string, testId: string, attemptId: string | null): Result {
     const meta = findMeta(testId);
     const pattern = meta.pattern;
+    const paper = paperOf(meta);
     const total = pattern.totalQuestions;
     const sizes = pattern.sections.map((s) => s.questions);
 
@@ -292,19 +292,21 @@ export class MockApi implements AppApi {
     const cutoff = (SAMPLE_RESULT.cutoffPct / 100) * max_score;
     const attempted = correctAll + wrongAll;
 
+    // The answer key comes from the paper question the review row points at, never from
+    // the review row itself: one copy of the truth, so the two cannot drift apart.
     const wrong: WrongAnswer[] = SAMPLE_RESULT.review
-      .filter((r) => r.your !== r.correct)
-      .map((r, i) => {
-        const q = QUESTIONS[i % QUESTIONS.length];
-        return {
-          question_id: q.id,
-          text: q.text,
-          options: { en: [...q.options.en], te: [...q.options.te], ur: [...q.options.ur] },
-          your_choice: r.your,
-          correct_choice: r.correct,
-          explanation: q.explanation,
-        };
-      });
+      .flatMap((r) => {
+        const q = paper[r.questionNo - 1];
+        return q && r.your !== q.correct ? [{ row: r, q }] : [];
+      })
+      .map(({ row, q }) => ({
+        question_id: q.id,
+        text: q.text,
+        options: { en: [...q.options.en], te: [...q.options.te], ur: [...q.options.ur] },
+        your_choice: row.your,
+        correct_choice: q.correct,
+        explanation: q.explanation,
+      }));
 
     return {
       id,
