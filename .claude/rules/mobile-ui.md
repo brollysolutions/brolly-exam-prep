@@ -17,3 +17,5 @@ paths:
 - Add every new state to `src/app/dev/states.tsx`.
 - Web gotcha (react-native-css-interop + React Compiler): never combine an array `style` with a `className` that changes between renders — classes accumulate and the stale one wins. Pass a flattened style object (`StyleSheet.flatten`) or put the dynamic part in `className` only. Reanimated `Animated.View` ignores `className` entirely: give it inline styles and wrap a styled `View` inside.
 - Web gotcha 2: a `style` FUNCTION on a `Pressable` that also has `className` loses its static values under css-interop. Keep static sizes/colours in `className` or a flattened object `style`; the function returns only the `pressed` delta (e.g. `({pressed}) => pressed ? { opacity: 0.85 } : undefined`).
+- `FlatList` slots (`ListEmptyComponent`, `ListHeaderComponent`, …) take a COMPONENT, not an element: passing `<Empty />` drags the owner fiber into serialised props and RNTL snapshots blow up with `RangeError: Invalid string length`.
+- Text colour `mute` is decorative only (3.97:1). Notes, captions, timing lines and kickers use `dim`.
