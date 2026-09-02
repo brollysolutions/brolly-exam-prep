@@ -912,7 +912,7 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
           او ٹی پی ایس ایم ایس سے آئے گا۔ انٹرنیٹ کی ضرورت نہیں۔
         </Text>
         <View
-          accessibilityHint="10 ہندسوں کا نمبر"
+          accessibilityHint="آٹو فل کے لیے دبا کر رکھیں"
           accessibilityLabel="آپ کا فون نمبر"
           accessibilityRole="button"
           accessibilityState={
@@ -929,7 +929,7 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
               "max": undefined,
               "min": undefined,
               "now": undefined,
-              "text": undefined,
+              "text": "9000012345",
             }
           }
           accessible={true}
@@ -1057,6 +1057,7 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
               "justifyContent": undefined,
             }
           }
+          testID="login-keypad-row-0"
         >
           <View
             accessibilityLabel="1"
@@ -1237,6 +1238,7 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
               "justifyContent": undefined,
             }
           }
+          testID="login-keypad-row-1"
         >
           <View
             accessibilityLabel="4"
@@ -1417,6 +1419,7 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
               "justifyContent": undefined,
             }
           }
+          testID="login-keypad-row-2"
         >
           <View
             accessibilityLabel="7"
@@ -1597,6 +1600,7 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
               "justifyContent": undefined,
             }
           }
+          testID="login-keypad-row-3"
         >
           <View
             className="h-key flex-1"

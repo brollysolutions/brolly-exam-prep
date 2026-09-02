@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { getApi } from '@/data/api';
 import { useSessionStore } from '@/data/session';
 import { LoginView } from '@/features/auth/LoginView';
+import { useAutoDismiss } from '@/ui';
 
 /** F-03 — asks for the phone number and requests the OTP for it. */
 export default function LoginRoute() {
@@ -14,6 +15,8 @@ export default function LoginRoute() {
   const setPhone = useSessionStore((s) => s.setPhone);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // The banner is not a state the user has to dismiss; it goes on its own.
+  const shownError = useAutoDismiss(error);
 
   const submit = async (next: string) => {
     setBusy(true);
@@ -34,7 +37,7 @@ export default function LoginRoute() {
     <LoginView
       initialPhone={phone}
       busy={busy}
-      error={error}
+      error={shownError}
       onSubmit={(next) => {
         void submit(next);
       }}

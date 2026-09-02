@@ -32,7 +32,8 @@
     "resend": "Resend code",
     "verify": "Verify",
     "changeNumber": "Change number",
-    "deleteDigit": "Delete digit"
+    "deleteDigit": "Delete digit",
+    "autofillHint": "Long-press to use autofill"
   },
   "onboarding": {
     "step": "{{n}} / {{total}}",

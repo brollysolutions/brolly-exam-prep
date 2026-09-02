@@ -32,7 +32,8 @@
     "resend": "کوڈ دوبارہ بھیجیں",
     "verify": "تصدیق کریں",
     "changeNumber": "نمبر بدلیں",
-    "deleteDigit": "ہندسہ مٹائیں"
+    "deleteDigit": "ہندسہ مٹائیں",
+    "autofillHint": "آٹو فل کے لیے دبا کر رکھیں"
   },
   "onboarding": {
     "step": "{{n}} / {{total}}",

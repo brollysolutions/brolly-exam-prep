@@ -5,7 +5,7 @@ import { Pressable, ScrollView, TextInput, View } from 'react-native';
 import { Button, Keypad, Kicker, PhoneField, Screen, Text, Toast } from '@/ui';
 
 /** Indian mobile numbers are 10 digits; the keypad refuses the eleventh. */
-export const PHONE_LENGTH = 10;
+const PHONE_LENGTH = 10;
 
 const digitsOnly = (value: string) => value.replace(/\D/g, '').slice(0, PHONE_LENGTH);
 
@@ -60,7 +60,8 @@ export function LoginView({ initialPhone = '', busy = false, error, onSubmit }: 
         <Pressable
           accessibilityRole="button"
           accessibilityLabel={t('auth.loginTitle')}
-          accessibilityHint={t('auth.phoneHint')}
+          accessibilityValue={{ text: phone || t('auth.phoneHint') }}
+          accessibilityHint={t('auth.autofillHint')}
           onLongPress={() => hidden.current?.focus()}
           className="mt-6"
         >

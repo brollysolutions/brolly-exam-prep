@@ -77,8 +77,10 @@ describe('LoginView (ur)', () => {
 
   it('mirrors the copy and keeps the phone row physical', async () => {
     await render(<LoginView initialPhone="9000012345" onSubmit={jest.fn()} />);
-    expect(screen.getByText('آپ کا فون نمبر')).toBeOnTheScreen();
+    expect(screen.getByText('آپ کا فون نمبر')).toHaveStyle({ textAlign: 'right' });
+    // The screen's own rows are all numeric, so they stay physically LTR while the copy mirrors.
     expect(screen.getByTestId('login-phone')).toHaveStyle({ flexDirection: 'row' });
+    expect(screen.getByTestId('login-keypad-row-0')).toHaveStyle({ flexDirection: 'row' });
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });

@@ -29,7 +29,7 @@ export function Keypad({ onKey, onDelete, disabled = false, testID }: KeypadProp
   return (
     <Stack gap={2} testID={testID}>
       {ROWS.map((row, r) => (
-        <Row key={r} physical gap={2}>
+        <Row key={r} physical gap={2} testID={testID ? `${testID}-row-${r}` : undefined}>
           {row.map((k, c) =>
             k === '' ? (
               <View key={c} className="h-key flex-1" />

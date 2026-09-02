@@ -32,7 +32,8 @@
     "resend": "కోడ్ మళ్లీ పంపు",
     "verify": "వెరిఫై చేయి",
     "changeNumber": "నంబర్ మార్చు",
-    "deleteDigit": "అంకె తొలగించు"
+    "deleteDigit": "అంకె తొలగించు",
+    "autofillHint": "ఆటోఫిల్ ఉపయోగించడానికి నొక్కి పట్టుకోండి"
   },
   "onboarding": {
     "step": "{{n}} / {{total}}",

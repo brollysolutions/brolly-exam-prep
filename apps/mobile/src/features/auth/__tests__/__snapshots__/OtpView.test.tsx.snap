@@ -1355,6 +1355,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
               "justifyContent": undefined,
             }
           }
+          testID="otp-keypad-row-0"
         >
           <View
             accessibilityLabel="1"
@@ -1535,6 +1536,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
               "justifyContent": undefined,
             }
           }
+          testID="otp-keypad-row-1"
         >
           <View
             accessibilityLabel="4"
@@ -1715,6 +1717,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
               "justifyContent": undefined,
             }
           }
+          testID="otp-keypad-row-2"
         >
           <View
             accessibilityLabel="7"
@@ -1895,6 +1898,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
               "justifyContent": undefined,
             }
           }
+          testID="otp-keypad-row-3"
         >
           <View
             className="h-key flex-1"
