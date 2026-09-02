@@ -5,7 +5,8 @@
  *
  * Usage:
  *   pnpm --filter mobile export:web            # builds apps/mobile/dist
- *   node scripts/screenshots.mjs [--routes /dev/states,/login] [--langs en,te,ur] [--out docs/screenshots]
+ *   node scripts/screenshots.mjs [--routes dev/states,login] [--langs en,te,ur] [--out docs/screenshots]
+ *                               [--lang-labels en=EN,te=తె,ur=اُر]   # click the in-app switcher per language
  *
  * Requires: `pnpm add -Dw playwright && npx playwright install chromium` (one-time, ~150 MB).
  * Language is injected through the persisted zustand store key used by apps/mobile/src/data/lang.ts
@@ -19,7 +20,9 @@ import path from 'node:path';
 const args = Object.fromEntries(
   process.argv.slice(2).map((a, i, arr) => (a.startsWith('--') ? [a.slice(2), arr[i + 1] ?? 'true'] : [])).filter((x) => x.length),
 );
-const routes = (args.routes ?? '/dev/states').split(',');
+// Routes may be given without a leading slash (`dev/states`) — Git Bash on Windows rewrites
+// `/dev/...` arguments into Windows paths (MSYS path conversion); we add the slash back here.
+const routes = (args.routes ?? 'dev/states').split(',').map((r) => (r.startsWith('/') ? r : `/${r}`));
 const langs = (args.langs ?? 'en,te,ur').split(',');
 const out = args.out ?? 'docs/screenshots';
 const storageKey = args['storage-key'] ?? 'tslprb.lang';
@@ -35,8 +38,16 @@ let chromium;
 try {
   ({ chromium } = await import('playwright'));
 } catch {
-  console.error('Playwright missing. Run: pnpm add -Dw playwright && npx playwright install chromium');
-  process.exit(1);
+  // Fall back to a global install (`npm i -g playwright`) so the workspace lockfile stays untouched.
+  try {
+    const { createRequire } = await import('node:module');
+    const { execSync } = await import('node:child_process');
+    const globalRoot = execSync('npm root -g').toString().trim();
+    ({ chromium } = createRequire(path.join(globalRoot, 'x.js'))('playwright'));
+  } catch {
+    console.error('Playwright missing. Run: pnpm add -Dw playwright && npx playwright install chromium (or npm i -g playwright)');
+    process.exit(1);
+  }
 }
 
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.ttf': 'font/ttf', '.woff2': 'font/woff2', '.svg': 'image/svg+xml' };
@@ -62,11 +73,38 @@ try {
     const ctx = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: 2, reducedMotion: 'reduce' });
     await ctx.addInitScript(([k, l]) => localStorage.setItem(k, JSON.stringify({ state: { lang: l }, version: 0 })), [storageKey, lang]);
     const page = await ctx.newPage();
+    // Optional: switch language through the in-page switcher instead of storage
+    // (native kv-store falls back to memory on web). --lang-labels en=EN,te=తె,ur=اُر
+    const langLabels = Object.fromEntries((args['lang-labels'] ?? '').split(',').filter(Boolean).map((p) => p.split('=')));
     for (const route of routes) {
       await page.goto(`http://localhost:${port}${route}`, { waitUntil: 'networkidle' });
       await page.waitForTimeout(600);
+      if (langLabels[lang]) {
+        const chip = page.getByText(langLabels[lang], { exact: true }).first();
+        if (await chip.count()) {
+          await chip.click();
+          await page.waitForTimeout(400);
+        }
+      }
       const name = `${route.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'index'}.${lang}.png`;
+      // RN-web renders a fixed-height internal ScrollView, so `fullPage` only sees one viewport.
+      // Grow the viewport to the tallest scrollable element so the whole screen is captured.
+      const tallest = await page.evaluate(() => {
+        let max = document.documentElement.scrollHeight;
+        for (const el of document.querySelectorAll('*')) {
+          const s = getComputedStyle(el);
+          if ((s.overflowY === 'auto' || s.overflowY === 'scroll') && el.scrollHeight > el.clientHeight) {
+            max = Math.max(max, el.scrollHeight + (window.innerHeight - el.clientHeight));
+          }
+        }
+        return Math.min(max, 20000);
+      });
+      if (tallest > height) {
+        await page.setViewportSize({ width, height: tallest });
+        await page.waitForTimeout(300);
+      }
       await page.screenshot({ path: path.join(out, name), fullPage: true });
+      await page.setViewportSize({ width, height });
       console.log(`saved ${path.join(out, name)}`);
     }
     await ctx.close();

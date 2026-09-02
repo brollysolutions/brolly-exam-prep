@@ -63,6 +63,9 @@ Allowed without prompting: pnpm/expo/jest/eslint/tsc, docker compose, non-destru
 - `.github/workflows/claude-review.yml` — Claude reviews every PR. Requires repo secret `ANTHROPIC_API_KEY` (or switch to `claude_code_oauth_token` via `/install-github-app`).
 - PR template and feature issue template.
 
+## Parallel implementers
+One implementer at a time per checkout. To run a second one in parallel, give it its own git worktree (`git worktree add ../Tsplrb-<id> <branch>`), let it `pnpm install` there, and rebase the stacked branches afterwards. Reviewers are read-only and may overlap freely.
+
 ## Rulings / deviations log
 - 2026-09-02 — `corepack enable` cannot write to `C:\Program Files\nodejs`; pnpm installed with `npm i -g pnpm` instead.
 - 2026-09-02 — Expo Go only in this phase: MMKV, Unistyles, SMS auto-read, call detection are stubbed. The incoming-call overlay is a dev-only simulated state.
