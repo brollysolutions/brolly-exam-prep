@@ -14,7 +14,7 @@
  */
 import { createServer } from 'node:http';
 import { readFile, mkdir } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
+import { existsSync, statSync } from 'node:fs';
 import path from 'node:path';
 
 const args = Object.fromEntries(
@@ -54,15 +54,30 @@ try {
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.ttf': 'font/ttf', '.woff2': 'font/woff2', '.svg': 'image/svg+xml' };
 const server = createServer(async (req, res) => {
   const url = new URL(req.url, 'http://x');
-  let file = path.join(dist, decodeURIComponent(url.pathname));
-  if (!existsSync(file) || url.pathname === '/') file = path.join(dist, url.pathname.replace(/\/$/, '') + '.html');
-  if (!existsSync(file)) file = path.join(dist, 'index.html');
-  try {
-    res.writeHead(200, { 'content-type': mime[path.extname(file)] ?? 'application/octet-stream' });
-    res.end(await readFile(file));
-  } catch {
-    res.writeHead(404).end();
+  const p = decodeURIComponent(url.pathname).replace(/\/$/, '');
+  const candidates = [
+    path.join(dist, p),
+    path.join(dist, p + '.html'),
+    path.join(dist, p, 'index.html'),
+    path.join(dist, 'index.html'),
+  ];
+  let body = null;
+  let file = '';
+  for (const c of candidates) {
+    try {
+      if (existsSync(c) && statSync(c).isFile()) {
+        body = await readFile(c);
+        file = c;
+        break;
+      }
+    } catch {}
   }
+  if (body === null) {
+    res.writeHead(404).end();
+    return;
+  }
+  res.writeHead(200, { 'content-type': mime[path.extname(file)] ?? 'application/octet-stream' });
+  res.end(body);
 });
 await new Promise((r) => server.listen(0, r));
 const port = server.address().port;
