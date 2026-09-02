@@ -2,9 +2,9 @@ import { CATEGORIES, type CategoryId } from '@tslprb/fixtures';
 import { useDir } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable, ScrollView, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
-import { Button, Card, Num, Row, Screen, Stack, Text } from '@/ui';
+import { BackRow, Button, Card, Num, Row, Screen, Stack, Text } from '@/ui';
 
 const COLUMNS = 2;
 
@@ -16,7 +16,6 @@ const ROWS = Array.from({ length: Math.ceil(CATEGORIES.length / COLUMNS) }, (_, 
 export type CategoryViewProps = {
   /** The category already on file, if the user is revisiting the step. */
   initialCategory?: CategoryId;
-  busy?: boolean;
   onSubmit: (category: CategoryId) => void;
   onBack: () => void;
 };
@@ -25,12 +24,7 @@ export type CategoryViewProps = {
  * Onboarding 2/2. The category sets the PWT qualifying percentage every result is measured
  * against, so each card carries its own number rather than hiding it in a footnote.
  */
-export function CategoryView({
-  initialCategory,
-  busy = false,
-  onSubmit,
-  onBack,
-}: CategoryViewProps) {
+export function CategoryView({ initialCategory, onSubmit, onBack }: CategoryViewProps) {
   const { t } = useTranslation();
   const d = useDir();
   const [category, setCategory] = useState<CategoryId | undefined>(initialCategory);
@@ -42,27 +36,13 @@ export function CategoryView({
         contentContainerClassName="px-4 pb-3 pt-5"
         showsVerticalScrollIndicator={false}
       >
-        <Pressable
-          testID="category-back"
-          accessibilityRole="button"
-          onPress={onBack}
-          className="h-touch justify-center"
-        >
-          <Row testID="category-back-row" gap={2} align="center">
-            <Text variant="glyph" color="dim" accessibilityElementsHidden>
-              {d.chevronPrev}
-            </Text>
-            <Text variant="body" weight="600" color="dim">
-              {t('common.back')}
-            </Text>
-          </Row>
-        </Pressable>
+        <BackRow testID="category-back" label={t('common.back')} onPress={onBack} />
 
         <Num
           variant="kicker"
           weight="700"
           color="hazard"
-          tracking="kicker"
+          tracking={d.lang === 'en' ? 'kicker' : 'none'}
           testID="category-step"
           className="mt-1"
         >
@@ -98,6 +78,8 @@ export function CategoryView({
                   </Row>
                 </Card>
               ))}
+              {/* An odd last row keeps its card half-width instead of stretching across. */}
+              {row.length < COLUMNS && <View className="flex-1" />}
             </Row>
           ))}
         </Stack>
@@ -107,7 +89,7 @@ export function CategoryView({
           testID="category-start"
           size="lg"
           label={t('onboarding.startTest')}
-          disabled={category === undefined || busy}
+          disabled={category === undefined}
           onPress={() => category !== undefined && onSubmit(category)}
         />
       </View>

@@ -890,6 +890,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
+          style={null}
           testID="category-back"
         >
           <View
@@ -907,18 +908,20 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
             <Text
               accessibilityElementsHidden={true}
               className="text-dim"
+              importantForAccessibility="no"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_400Regular",
-                  "fontSize": 21,
+                  "fontFamily": "Archivo_400Regular",
+                  "fontSize": 20,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 43.1,
+                  "lineHeight": 29,
                   "textAlign": "right",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
+              testID="category-back-chevron"
             >
               ›
             </Text>
@@ -951,7 +954,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
               "fontVariant": [
                 "tabular-nums",
               ],
-              "letterSpacing": 2,
+              "letterSpacing": 0,
               "lineHeight": 15.2,
               "textAlign": "right",
               "textTransform": undefined,

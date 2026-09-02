@@ -75,6 +75,11 @@ describe('CategoryView (ur)', () => {
     await render(<CategoryView initialCategory="bc" onSubmit={jest.fn()} {...noops()} />);
     expect(screen.getByText('آپ کا زمرہ')).toBeOnTheScreen();
     expect(screen.getByTestId('category-row-0')).toHaveStyle({ flexDirection: 'row-reverse' });
+    expect(screen.getByTestId('category-back-row')).toHaveStyle({ flexDirection: 'row-reverse' });
+    expect(screen.getByTestId('category-step')).toHaveStyle({ letterSpacing: 0 });
+    expect(
+      screen.getByTestId('category-back-chevron', { includeHiddenElements: true }),
+    ).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });
