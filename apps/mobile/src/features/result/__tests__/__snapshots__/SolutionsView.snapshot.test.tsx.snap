@@ -986,12 +986,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-          style={
-            [
-              null,
-              undefined,
-            ]
-          }
+          style={{}}
           testID="solutions-filter-wrong"
         >
           <Text
@@ -1045,12 +1040,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-          style={
-            [
-              null,
-              undefined,
-            ]
-          }
+          style={{}}
           testID="solutions-filter-all"
         >
           <Text

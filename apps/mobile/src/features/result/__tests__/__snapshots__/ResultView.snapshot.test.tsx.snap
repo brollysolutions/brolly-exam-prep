@@ -2104,7 +2104,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
           }
         }
         accessible={true}
-        className="items-center justify-center rounded-sm px-4 h-touchLg bg-hivis"
+        className="items-center justify-center rounded-sm px-4 bg-hivis"
         collapsable={false}
         focusable={true}
         onBlur={[Function]}
@@ -2117,10 +2117,9 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            null,
-            undefined,
-          ]
+          {
+            "height": 56,
+          }
         }
         testID="result-cta"
       >
