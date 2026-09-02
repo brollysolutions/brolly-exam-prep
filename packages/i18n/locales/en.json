@@ -19,7 +19,9 @@
     "marks": "+{{plus}} / −{{minus}}",
     "noNegative": "No negative marking",
     "close": "Close",
-    "networkError": "No connection. Try again."
+    "networkError": "No connection. Try again.",
+    "questionsUnit": "questions",
+    "minutesUnit": "min"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "Language" },
   "auth": {
@@ -146,7 +148,9 @@
     "weakTopics": "Weak topics",
     "streak": "{{count}}-day streak",
     "startNow": "Start now",
-    "examCountdown": "{{days}} days to PWT"
+    "examCountdown": "{{days}} days to PWT",
+    "greetingPlain": "Ready?",
+    "outOf": "out of {{max}}"
   },
   "library": {
     "title": "Tests",

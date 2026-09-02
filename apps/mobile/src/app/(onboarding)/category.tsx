@@ -16,8 +16,7 @@ export default function CategoryRoute() {
       onSubmit={(next) => {
         setCategory(next);
         completeOnboarding();
-        // TODO(F-07): replace with `/(tabs)` once the tab shell exists.
-        router.replace('/dev/states');
+        router.replace('/(tabs)');
       }}
       onBack={() => router.back()}
     />

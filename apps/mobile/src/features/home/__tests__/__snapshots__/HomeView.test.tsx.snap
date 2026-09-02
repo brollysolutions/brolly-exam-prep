@@ -1,0 +1,1802 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the snapshot 1`] = `
+<View
+  className="flex-1 bg-tar"
+  style={
+    {
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 0,
+    }
+  }
+  testID="home-screen"
+>
+  <View
+    accessibilityElementsHidden={true}
+    className="h-rail overflow-hidden bg-tar"
+    importantForAccessibility="no-hide-descendants"
+    style={
+      {
+        "height": 5,
+      }
+    }
+    testID="hazard-rail"
+  >
+    <View
+      style={
+        [
+          {
+            "flexDirection": "row",
+          },
+          {
+            "transform": [
+              {
+                "translateX": -56,
+              },
+            ],
+          },
+        ]
+      }
+      testID="hazard-rail-track"
+    >
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+    </View>
+  </View>
+  <RCTScrollView
+    className="flex-1"
+    contentContainerClassName="pb-6 px-4"
+    keyboardShouldPersistTaps="handled"
+    showsVerticalScrollIndicator={false}
+  >
+    <View>
+      <View
+        className="mt-4"
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row-reverse",
+            "flexWrap": undefined,
+            "gap": undefined,
+            "justifyContent": "space-between",
+          }
+        }
+        testID="home-header"
+      >
+        <Text
+          className="text-hivis"
+          style={
+            {
+              "fontFamily": "Archivo_700Bold",
+              "fontSize": 10.5,
+              "fontVariant": undefined,
+              "letterSpacing": 3.4,
+              "lineHeight": 15.2,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "ltr",
+            }
+          }
+        >
+          TSLPRB
+        </Text>
+        <View
+          accessibilityRole="radiogroup"
+          className="h-touch self-start overflow-hidden rounded-sm border border-line"
+          style={
+            {
+              "alignItems": undefined,
+              "flexDirection": "row-reverse",
+              "flexWrap": undefined,
+              "gap": undefined,
+              "justifyContent": undefined,
+            }
+          }
+          testID="home-lang"
+        >
+          <View
+            accessibilityLabel="EN"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "Archivo_700Bold",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 19.6,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              EN
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="తె"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 22.3,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              తె
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="اُر"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": true,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-full min-w-touch items-center justify-center px-2 bg-hivis"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={null}
+          >
+            <Text
+              className="text-tar"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              اُر
+            </Text>
+          </View>
+        </View>
+      </View>
+      <Text
+        className="text-chalk mt-4"
+        style={
+          {
+            "fontFamily": "NotoNastaliqUrdu_700Bold",
+            "fontSize": 24,
+            "fontVariant": undefined,
+            "letterSpacing": 0,
+            "lineHeight": 49.2,
+            "textAlign": "right",
+            "textTransform": undefined,
+            "writingDirection": "rtl",
+          }
+        }
+        testID="home-greeting"
+      >
+        تیار ہیں، …1234؟
+      </Text>
+      <View
+        className="mt-3"
+        style={
+          {
+            "alignItems": undefined,
+            "flexDirection": "row-reverse",
+            "flexWrap": undefined,
+            "gap": undefined,
+            "justifyContent": undefined,
+          }
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "selected": true,
+            }
+          }
+          className="items-center justify-center border rounded-xs h-chip px-3 bg-sand border-sand"
+          testID="home-countdown"
+        >
+          <Text
+            className="text-tar"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_700Bold",
+                "fontSize": 13.5,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 27.7,
+                "textAlign": "center",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            پی ڈبلیو ٹی میں ⁦45⁩ دن
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "selected": false,
+          }
+        }
+        className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4 mt-6"
+        testID="home-next-mock"
+      >
+        <Text
+          className="text-dim"
+          style={
+            {
+              "fontFamily": "NotoNastaliqUrdu_700Bold",
+              "fontSize": 12,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 24.6,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "rtl",
+            }
+          }
+        >
+          اگلا فل ماک
+        </Text>
+        <Text
+          className="text-chalk mt-2"
+          style={
+            {
+              "fontFamily": "NotoNastaliqUrdu_700Bold",
+              "fontSize": 20,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 41,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "rtl",
+            }
+          }
+        >
+          پی ڈبلیو ٹی فل ماک 08
+        </Text>
+        <View
+          className="mt-2"
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row-reverse",
+              "flexWrap": "wrap",
+              "gap": 8,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": "baseline",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 4,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "Archivo_600SemiBold",
+                  "fontSize": 11.5,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 16.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦200⁩
+            </Text>
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_400Regular",
+                  "fontSize": 12.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 25.6,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              سوالات
+            </Text>
+          </View>
+          <Text
+            className="text-mute"
+            style={
+              {
+                "fontFamily": "Archivo_400Regular",
+                "fontSize": 11.5,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 16.7,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+          >
+            ·
+          </Text>
+          <View
+            style={
+              {
+                "alignItems": "baseline",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 4,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "Archivo_600SemiBold",
+                  "fontSize": 11.5,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 16.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦180⁩
+            </Text>
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_400Regular",
+                  "fontSize": 12.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 25.6,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              منٹ
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="items-center justify-center rounded-sm px-4 h-touchLg bg-hivis mt-4"
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              null,
+              undefined,
+            ]
+          }
+          testID="home-start"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              className="text-tar"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 15.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 31.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              ابھی شروع کریں
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "selected": false,
+          }
+        }
+        className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4 mt-3"
+        testID="home-last-score"
+      >
+        <Text
+          className="text-dim"
+          style={
+            {
+              "fontFamily": "NotoNastaliqUrdu_700Bold",
+              "fontSize": 12,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 24.6,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "rtl",
+            }
+          }
+        >
+          پچھلا اسکور
+        </Text>
+        <View
+          className="mt-2"
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row-reverse",
+              "flexWrap": undefined,
+              "gap": 12,
+              "justifyContent": "space-between",
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": "baseline",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-hivis"
+              style={
+                {
+                  "fontFamily": "Archivo_700Bold",
+                  "fontSize": 28,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 40.6,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+              testID="home-score"
+            >
+              ⁦62.25⁩
+            </Text>
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_400Regular",
+                  "fontSize": 12.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 25.6,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              ⁦100⁩ میں سے
+            </Text>
+          </View>
+          <View
+            accessibilityState={
+              {
+                "selected": true,
+              }
+            }
+            className="items-center justify-center border rounded-full h-chip px-3 bg-hivis border-hivis"
+          >
+            <Text
+              className="text-tar"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 27.7,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              اہل قرار
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "selected": false,
+          }
+        }
+        className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4 mt-3"
+        testID="home-weak-topics"
+      >
+        <Text
+          className="text-dim"
+          style={
+            {
+              "fontFamily": "NotoNastaliqUrdu_700Bold",
+              "fontSize": 12,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 24.6,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "rtl",
+            }
+          }
+        >
+          کمزور موضوعات
+        </Text>
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="min-h-touch justify-center mt-1"
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={null}
+          testID="home-topic-drill-seating"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 12,
+                "justifyContent": "space-between",
+              }
+            }
+          >
+            <Text
+              className="text-chalk flex-1"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              سیٹنگ آرینجمنٹ — 20 سوالات کا سیکشنل
+            </Text>
+            <Text
+              accessibilityElementsHidden={true}
+              className="text-dim"
+              importantForAccessibility="no"
+              style={
+                {
+                  "fontFamily": "Archivo_400Regular",
+                  "fontSize": 20,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ‹
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="min-h-touch justify-center border-t border-line2"
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={null}
+          testID="home-topic-drill-blood"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 12,
+                "justifyContent": "space-between",
+              }
+            }
+          >
+            <Text
+              className="text-chalk flex-1"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              بلڈ ریلیشنز — 15 سوالات
+            </Text>
+            <Text
+              accessibilityElementsHidden={true}
+              className="text-dim"
+              importantForAccessibility="no"
+              style={
+                {
+                  "fontFamily": "Archivo_400Regular",
+                  "fontSize": 20,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ‹
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="min-h-touch justify-center border-t border-line2"
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={null}
+          testID="home-topic-drill-timed"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 12,
+                "justifyContent": "space-between",
+              }
+            }
+          >
+            <Text
+              className="text-chalk flex-1"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              ٹائمڈ ریزننگ — 18 منٹ میں 20 سوالات
+            </Text>
+            <Text
+              accessibilityElementsHidden={true}
+              className="text-dim"
+              importantForAccessibility="no"
+              style={
+                {
+                  "fontFamily": "Archivo_400Regular",
+                  "fontSize": 20,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ‹
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        className="mt-4"
+        style={
+          {
+            "alignItems": undefined,
+            "flexDirection": "row-reverse",
+            "flexWrap": undefined,
+            "gap": undefined,
+            "justifyContent": undefined,
+          }
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "selected": false,
+            }
+          }
+          className="items-center justify-center border rounded-xs h-chip px-3 border-line"
+          testID="home-streak"
+        >
+          <Text
+            className="text-dim"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_700Bold",
+                "fontSize": 13.5,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 27.7,
+                "textAlign": "center",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            4 دن کا سلسلہ
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

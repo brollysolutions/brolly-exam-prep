@@ -19,7 +19,9 @@
     "marks": "+{{plus}} / −{{minus}}",
     "noNegative": "నెగటివ్ మార్కులు లేవు",
     "close": "మూసివేయి",
-    "networkError": "కనెక్షన్ లేదు. మళ్లీ ప్రయత్నించండి."
+    "networkError": "కనెక్షన్ లేదు. మళ్లీ ప్రయత్నించండి.",
+    "questionsUnit": "ప్రశ్నలు",
+    "minutesUnit": "నిమి"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "భాష" },
   "auth": {
@@ -146,7 +148,9 @@
     "weakTopics": "బలహీన టాపిక్స్",
     "streak": "{{count}} రోజుల స్ట్రీక్",
     "startNow": "ఇప్పుడే మొదలుపెట్టు",
-    "examCountdown": "PWTకి {{days}} రోజులు"
+    "examCountdown": "PWTకి {{days}} రోజులు",
+    "greetingPlain": "సిద్ధమా?",
+    "outOf": "{{max}}కి"
   },
   "library": {
     "title": "టెస్టులు",

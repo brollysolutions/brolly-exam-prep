@@ -19,7 +19,9 @@
     "marks": "+{{plus}} / −{{minus}}",
     "noNegative": "منفی نمبر نہیں",
     "close": "بند کریں",
-    "networkError": "کنکشن نہیں۔ دوبارہ کوشش کریں۔"
+    "networkError": "کنکشن نہیں۔ دوبارہ کوشش کریں۔",
+    "questionsUnit": "سوالات",
+    "minutesUnit": "منٹ"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "زبان" },
   "auth": {
@@ -146,7 +148,9 @@
     "weakTopics": "کمزور موضوعات",
     "streak": "{{count}} دن کا سلسلہ",
     "startNow": "ابھی شروع کریں",
-    "examCountdown": "پی ڈبلیو ٹی میں {{days}} دن"
+    "examCountdown": "پی ڈبلیو ٹی میں {{days}} دن",
+    "greetingPlain": "تیار ہیں؟",
+    "outOf": "{{max}} میں سے"
   },
   "library": {
     "title": "ٹیسٹ",
