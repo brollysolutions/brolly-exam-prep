@@ -1,5 +1,12 @@
 import { colors } from '@tslprb/design-tokens';
-import { Pressable, type PressableProps, type StyleProp, type ViewStyle } from 'react-native';
+import {
+  Pressable,
+  View,
+  type PressableProps,
+  type StyleProp,
+  type ViewProps,
+  type ViewStyle,
+} from 'react-native';
 
 import { cx } from './cx';
 import * as haptics from './haptics';
@@ -45,39 +52,53 @@ export function Chip({
   style,
   ...rest
 }: ChipProps) {
-  const pressable = !!onPress && !disabled;
+  const classes = cx(
+    'items-center justify-center border',
+    shape === 'pill' ? 'rounded-full' : 'rounded-xs',
+    height[size],
+    active ? fill[tone] : 'border-line',
+    disabled && 'opacity-40',
+    className,
+  );
+  const text = (
+    <Text
+      variant="small"
+      weight={active ? '700' : '600'}
+      color={active ? 'tar' : 'dim'}
+      align="center"
+    >
+      {label}
+    </Text>
+  );
+  // Static badge (e.g. "Marked"): a plain View, so it never reports a button/disabled state.
+  if (!onPress) {
+    return (
+      <View
+        accessibilityState={{ selected: active }}
+        {...(rest as ViewProps)}
+        className={classes}
+        style={style}
+      >
+        {text}
+      </View>
+    );
+  }
   return (
     <Pressable
-      accessibilityRole={onPress ? 'button' : undefined}
+      accessibilityRole="button"
       accessibilityState={{ selected: active, disabled: !!disabled }}
-      android_ripple={
-        pressable ? { color: active ? colors.pressTint : colors.hivisTint3 } : undefined
-      }
+      android_ripple={{ color: active ? colors.pressTint : colors.hivisTint3 }}
       hitSlop={size === 'sm' ? 7 : size === 'md' ? 4 : 0}
       {...rest}
-      disabled={!pressable}
+      disabled={disabled}
       onPress={(e) => {
         haptics.tapLight();
-        onPress?.(e);
+        onPress(e);
       }}
-      className={cx(
-        'items-center justify-center border',
-        shape === 'pill' ? 'rounded-full' : 'rounded-xs',
-        height[size],
-        active ? fill[tone] : 'border-line',
-        disabled && 'opacity-40',
-        className,
-      )}
-      style={({ pressed }) => [pressed && pressable ? { opacity: 0.85 } : null, style]}
+      className={classes}
+      style={({ pressed }) => [pressed && !disabled ? { opacity: 0.85 } : null, style]}
     >
-      <Text
-        variant="small"
-        weight={active ? '700' : '600'}
-        color={active ? 'tar' : 'dim'}
-        align="center"
-      >
-        {label}
-      </Text>
+      {text}
     </Pressable>
   );
 }
