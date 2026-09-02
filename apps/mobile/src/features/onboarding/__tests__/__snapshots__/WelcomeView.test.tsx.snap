@@ -1,0 +1,1213 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snapshot 1`] = `
+<View
+  className="flex-1 bg-tar"
+  style={
+    {
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 0,
+    }
+  }
+  testID="welcome-screen"
+>
+  <View
+    accessibilityElementsHidden={true}
+    className="h-rail overflow-hidden bg-tar"
+    importantForAccessibility="no-hide-descendants"
+    style={
+      {
+        "height": 5,
+      }
+    }
+    testID="hazard-rail"
+  >
+    <View
+      style={
+        [
+          {
+            "flexDirection": "row",
+          },
+          {
+            "transform": [
+              {
+                "translateX": -56,
+              },
+            ],
+          },
+        ]
+      }
+      testID="hazard-rail-track"
+    >
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    className="flex-1"
+  >
+    <View
+      className="items-center pb-6 pt-8"
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "column",
+            "gap": undefined,
+            "justifyContent": undefined,
+          }
+        }
+        testID="welcome-brand"
+      >
+        <View
+          className="h-[34px] w-[84px] items-center justify-center rounded-xs bg-hivis"
+        >
+          <Text
+            className="text-tar"
+            style={
+              {
+                "fontFamily": "Archivo_700Bold",
+                "fontSize": 20,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 29,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+          >
+            PWT
+          </Text>
+        </View>
+        <Text
+          className="text-chalk mt-2"
+          style={
+            {
+              "fontFamily": "Archivo_600SemiBold",
+              "fontSize": 17,
+              "fontVariant": undefined,
+              "letterSpacing": 3.4,
+              "lineHeight": 24.7,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "ltr",
+            }
+          }
+        >
+          TSLPRB
+        </Text>
+        <View
+          className="mt-3 h-1 w-[84px] bg-hazard"
+        />
+      </View>
+    </View>
+    <RCTScrollView
+      className="flex-1"
+      data={
+        [
+          3,
+          2,
+          1,
+        ]
+      }
+      getItem={[Function]}
+      getItemCount={[Function]}
+      getItemLayout={[Function]}
+      horizontal={true}
+      initialScrollIndex={2}
+      keyExtractor={[Function]}
+      onContentSizeChange={[Function]}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      pagingEnabled={true}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={0.0001}
+      showsHorizontalScrollIndicator={false}
+      stickyHeaderIndices={[]}
+      testID="welcome-pager"
+      viewabilityConfigCallbackPairs={[]}
+    >
+      <View>
+        <View
+          style={
+            {
+              "width": 1500,
+            }
+          }
+        />
+        <View
+          onFocusCapture={[Function]}
+          style={
+            [
+              {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            className="justify-center px-6"
+            style={
+              {
+                "width": 750,
+              }
+            }
+            testID="welcome-slide-1"
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-hazard"
+              style={
+                {
+                  "fontFamily": "Archivo_700Bold",
+                  "fontSize": 10.5,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 15.2,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦1 / 3⁩
+            </Text>
+            <Text
+              className="text-chalk mt-3"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 24,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 49.2,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              اصل پی ڈبلیو ٹی کی مشق
+            </Text>
+            <Text
+              className="text-dim mt-3"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_400Regular",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              200 سوالات، 3 گھنٹے، سرکاری امتحان جیسے سیکشن اور مارکنگ۔
+            </Text>
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+    <View
+      accessibilityElementsHidden={true}
+      className="py-4"
+      importantForAccessibility="no-hide-descendants"
+      style={
+        {
+          "alignItems": undefined,
+          "flexDirection": "row",
+          "flexWrap": undefined,
+          "gap": 8,
+          "justifyContent": "center",
+        }
+      }
+      testID="welcome-dots"
+    >
+      <View
+        className="h-dot w-dot rounded-xs bg-line3"
+        testID="welcome-dot-3"
+      />
+      <View
+        className="h-dot w-dot rounded-xs bg-line3"
+        testID="welcome-dot-2"
+      />
+      <View
+        className="h-dot w-dot rounded-xs bg-hivis"
+        testID="welcome-dot-1"
+      />
+    </View>
+    <View
+      className="px-3 pb-4"
+      style={
+        {
+          "alignItems": "center",
+          "flexDirection": "row-reverse",
+          "flexWrap": undefined,
+          "gap": 12,
+          "justifyContent": undefined,
+        }
+      }
+      testID="welcome-footer"
+    >
+      <View
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        className="items-center justify-center rounded-sm px-4 h-touch"
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            null,
+            undefined,
+          ]
+        }
+        testID="welcome-skip"
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row-reverse",
+              "flexWrap": undefined,
+              "gap": 8,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <Text
+            className="text-dim"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_700Bold",
+                "fontSize": 14.5,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 29.7,
+                "textAlign": "center",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            چھوڑیں
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        className="items-center justify-center rounded-sm px-4 h-touchLg bg-hivis flex-1"
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            null,
+            undefined,
+          ]
+        }
+        testID="welcome-primary"
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row-reverse",
+              "flexWrap": undefined,
+              "gap": 8,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <Text
+            className="text-tar"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_700Bold",
+                "fontSize": 15.5,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 31.8,
+                "textAlign": "center",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            اگلا
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

@@ -2,12 +2,15 @@ import { Redirect } from 'expo-router';
 
 import { useSessionStore } from '@/data/session';
 
-/** Boot router: signed-out users land in the auth stack, everyone else in the app shell. */
+/**
+ * Boot router: a first launch gets the intro, signed-out users the auth stack, everyone
+ * with a token and both onboarding answers the tab shell.
+ */
 export default function Index() {
   const token = useSessionStore((s) => s.token);
   const onboarded = useSessionStore((s) => s.onboarded);
-  if (!token) return <Redirect href="/(auth)/login" />;
+  const seenWelcome = useSessionStore((s) => s.seenWelcome);
+  if (!token) return <Redirect href={seenWelcome ? '/(auth)/login' : '/(onboarding)/welcome'} />;
   if (!onboarded) return <Redirect href="/(onboarding)/post" />;
-  // TODO(F-07): replace with `/(tabs)` once the tab shell exists.
-  return <Redirect href="/dev/states" />;
+  return <Redirect href="/(tabs)" />;
 }

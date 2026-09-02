@@ -14,6 +14,13 @@ export type SessionState = {
   category?: CategoryId;
   /** Post and category have both been chosen (onboarding steps 1/2 and 2/2). */
   onboarded: boolean;
+  /**
+   * The intro slides have been shown once. A property of the *handset*, not of the user:
+   * it survives `logout()`, because a returning user re-reading the pitch is noise.
+   */
+  seenWelcome: boolean;
+  /** Daily practice reminder. On by default — the app is useless to someone who forgets it. */
+  notifications: boolean;
 };
 
 export type SessionActions = {
@@ -22,7 +29,9 @@ export type SessionActions = {
   setPost: (post: Post) => void;
   setCategory: (category: CategoryId) => void;
   completeOnboarding: () => void;
-  /** Full reset: nothing about the previous user survives on a shared handset. */
+  markWelcomeSeen: () => void;
+  setNotifications: (on: boolean) => void;
+  /** Full reset of the person, not the handset: `seenWelcome` is deliberately kept. */
   logout: () => void;
   signedIn: () => boolean;
 };
@@ -37,6 +46,8 @@ const initial: SessionState = {
   post: undefined,
   category: undefined,
   onboarded: false,
+  seenWelcome: false,
+  notifications: true,
 };
 
 export const useSessionStore = create<SessionStore>()(
@@ -48,7 +59,9 @@ export const useSessionStore = create<SessionStore>()(
       setPost: (post) => set({ post }),
       setCategory: (category) => set({ category }),
       completeOnboarding: () => set({ onboarded: true }),
-      logout: () => set({ ...initial }),
+      markWelcomeSeen: () => set({ seenWelcome: true }),
+      setNotifications: (notifications) => set({ notifications }),
+      logout: () => set({ ...initial, seenWelcome: get().seenWelcome }),
       signedIn: () => Boolean(get().token),
     }),
     {
@@ -60,6 +73,8 @@ export const useSessionStore = create<SessionStore>()(
         post: s.post,
         category: s.category,
         onboarded: s.onboarded,
+        seenWelcome: s.seenWelcome,
+        notifications: s.notifications,
       }),
     },
   ),
