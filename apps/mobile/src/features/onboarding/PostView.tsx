@@ -1,4 +1,5 @@
 import type { Post } from '@tslprb/fixtures';
+import { useDir } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
@@ -14,7 +15,6 @@ const POSTS: readonly { id: Post; titleKey: string; subKey: string }[] = [
 export type PostViewProps = {
   /** The post already on file, if the user is revisiting the step. */
   initialPost?: Post;
-  busy?: boolean;
   onSubmit: (post: Post) => void;
 };
 
@@ -22,8 +22,9 @@ export type PostViewProps = {
  * Onboarding 1/2. The post decides the exam pattern, the physical standards and which tests
  * the library offers, so nothing else can be chosen until it is.
  */
-export function PostView({ initialPost, busy = false, onSubmit }: PostViewProps) {
+export function PostView({ initialPost, onSubmit }: PostViewProps) {
   const { t } = useTranslation();
+  const d = useDir();
   const [post, setPost] = useState<Post | undefined>(initialPost);
 
   return (
@@ -33,7 +34,13 @@ export function PostView({ initialPost, busy = false, onSubmit }: PostViewProps)
         contentContainerClassName="px-4 pb-3 pt-6"
         showsVerticalScrollIndicator={false}
       >
-        <Num variant="kicker" weight="700" color="hazard" tracking="kicker" testID="post-step">
+        <Num
+          variant="kicker"
+          weight="700"
+          color="hazard"
+          tracking={d.lang === 'en' ? 'kicker' : 'none'}
+          testID="post-step"
+        >
           {t('onboarding.step', { n: 1, total: 2 })}
         </Num>
         <Text variant="title" weight="600" className="mt-3">
@@ -60,7 +67,7 @@ export function PostView({ initialPost, busy = false, onSubmit }: PostViewProps)
           testID="post-continue"
           size="lg"
           label={t('common.continue')}
-          disabled={post === undefined || busy}
+          disabled={post === undefined}
           onPress={() => post !== undefined && onSubmit(post)}
         />
       </View>

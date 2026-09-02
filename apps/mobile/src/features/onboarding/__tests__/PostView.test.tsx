@@ -63,8 +63,10 @@ describe('PostView (ur)', () => {
 
   it('mirrors the copy and matches the snapshot', async () => {
     await render(<PostView initialPost="pc" onSubmit={jest.fn()} />);
-    expect(screen.getByText('کانسٹیبل')).toBeOnTheScreen();
+    expect(screen.getByText('کانسٹیبل')).toHaveStyle({ textAlign: 'right' });
+    // The cards stack, so the mirroring shows in the copy; the step counter loses its tracking.
     expect(screen.getByTestId('post-cards')).toHaveStyle({ flexDirection: 'column' });
+    expect(screen.getByTestId('post-step')).toHaveStyle({ letterSpacing: 0 });
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });

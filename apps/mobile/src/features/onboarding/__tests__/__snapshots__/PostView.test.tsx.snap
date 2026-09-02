@@ -868,7 +868,7 @@ exports[`PostView (ur) mirrors the copy and matches the snapshot 1`] = `
               "fontVariant": [
                 "tabular-nums",
               ],
-              "letterSpacing": 2,
+              "letterSpacing": 0,
               "lineHeight": 15.2,
               "textAlign": "right",
               "textTransform": undefined,
