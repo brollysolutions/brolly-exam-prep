@@ -31,13 +31,13 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - [x] `git` initial commit on `main` (c823868) · [ ] `gh repo create` (pause point)
 
 ## Phase 3 — Design system (F-01)
-- [ ] Tokens (TS + Tailwind theme) from prototype palette
-- [ ] Fonts loaded via `useFonts` (Archivo, Noto Sans Telugu, Noto Nastaliq Urdu); `useTypography()`
-- [ ] `@tslprb/i18n`: en/te/ur locales (all prototype strings), i18next init, `useDir()`, `dir()`, `<Num>`
-- [ ] Primitives in `apps/mobile/src/ui`
-- [ ] Motion helpers (sheet/fade/toast/hazard marquee) with reduced-motion
-- [ ] `src/app/dev/states.tsx` state matrix (14 states + language toggle)
-- [ ] Jest + RNTL configured; locale parity test; RTL helper tests
+- [x] Tokens (TS + Tailwind theme) from prototype palette
+- [x] Fonts loaded via `useFonts` (Archivo, Noto Sans Telugu, Noto Nastaliq Urdu); `useTypography()`
+- [x] `@tslprb/i18n`: en/te/ur locales (all prototype strings), i18next init, `useDir()`, `dir()`, `<Num>`
+- [x] Primitives in `apps/mobile/src/ui`
+- [x] Motion helpers (sheet/fade/toast/hazard marquee) with reduced-motion
+- [x] `src/app/dev/states.tsx` primitive gallery + language toggle (the 14 test states arrive with F-11)
+- [x] Jest + RNTL configured; locale parity test; RTL helper tests
 
 ## Phase 4 — Screens (one PR each; order below)
 - [x] F-15 exam pattern config + fixtures
@@ -62,4 +62,6 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - [ ] FEATURES/PR_TRACKING complete and consistent with `gh pr list`
 
 ## Deviations / rulings
+- 2026-09-02 — Branches are stacked (main ← F-17 ← F-01 ← F-16 ← …) instead of merged locally, so each feature still gets its own PR once the GitHub repo exists.
+- 2026-09-02 — ESLint pinned to 9.x in apps/mobile: eslint-config-expo 57's react plugin crashes on ESLint 10. `lint` script is `eslint .` (expo lint hard-codes a non-hoisted path).
 - 2026-09-02 — Styling stack decided after checking the official `expo-tailwind-setup` skill; see spec §Styling for the final choice and why.

@@ -5,7 +5,7 @@ Status ∈ `todo` · `in-progress` · `review` · `done` · `parked`. One row pe
 | ID | Feature | Screens / route | Status | PR | Agent | Notes |
 |---|---|---|---|---|---|---|
 | F-00 | Workflow, tooling, monorepo scaffold | repo root, `.claude/`, `docs/` | done | c823868, b5c0fff, d7bf982 (main) | controller | plugins, skills, MCPs, hooks, agents, CI |
-| F-01 | Design system: tokens, fonts, primitives, RTL layer, dev states screen | `packages/design-tokens`, `packages/i18n`, `apps/mobile/src/ui`, `src/app/dev/states` | todo | - | ui-builder | NativeWind + tokens |
+| F-01 | Design system: tokens, fonts, primitives, RTL layer, dev states screen | `packages/design-tokens`, `packages/i18n`, `apps/mobile/src/ui`, `src/app/dev/states` | review | branch `feat/F-01-design-system` (stacked on F-17; PR after repo creation) | ui-builder | 20 primitives, 34 tests, ur snapshot; reviewed (opus) + fix round clean |
 | F-02 | Splash + onboarding intro (3 slides) | `src/app/(onboarding)/welcome` | todo | - | ui-builder | not in prototype |
 | F-03 | Phone login | `src/app/(auth)/login` | todo | - | ui-builder | custom keypad, +91 |
 | F-04 | OTP verification | `src/app/(auth)/otp` | todo | - | ui-builder | 6 cells, 24 s resend |
