@@ -53,7 +53,7 @@ export function PaletteCell({
         <View
           pointerEvents="none"
           testID="palette-current"
-          className="absolute -inset-1 rounded-md border-2 border-chalk"
+          className="absolute -inset-[2px] rounded-md border-2 border-chalk"
         />
       )}
       {dot && (

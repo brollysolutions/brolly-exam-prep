@@ -54,3 +54,12 @@ describe('PaletteCell', () => {
     expect(onPress).toHaveBeenCalledTimes(1);
   });
 });
+
+describe('PaletteCell current outline', () => {
+  it('sits 2 px outside the cell (2 px border at -2 px inset)', async () => {
+    await render(<PaletteCell n={3} state="a" current />);
+    const outline = screen.getByTestId('palette-current');
+    expect(outline.props.className).toContain('-inset-[2px]');
+    expect(outline.props.className).toContain('border-2 border-chalk');
+  });
+});
