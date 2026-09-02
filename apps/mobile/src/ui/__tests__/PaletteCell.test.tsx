@@ -1,5 +1,5 @@
 import { render, screen, userEvent } from '@testing-library/react-native';
-import { colors, paletteState, type PaletteState } from '@tslprb/design-tokens';
+import { colors, paletteState, size, type PaletteState } from '@tslprb/design-tokens';
 import { initI18n } from '@tslprb/i18n';
 
 import { PaletteCell } from '../PaletteCell';
@@ -18,14 +18,25 @@ describe('PaletteCell', () => {
     async (state) => {
       await render(<PaletteCell n={7} state={state} testID="cell" />);
       const s = paletteState[state];
-      expect(screen.getByTestId('cell')).toHaveStyle({
+      const cell = screen.getByTestId('cell');
+      expect(cell).toHaveStyle({
         backgroundColor: s.bg,
         borderColor: s.border,
         borderWidth: s.borderWidth,
+        width: size.cell,
+        height: size.cell,
       });
+      // Not a `style` CALLBACK: css-interop cannot see inside one, so on web the cell rendered
+      // with no fill or border at all (review round 1). The object form is the regression guard.
+      expect(typeof cell.props.style).not.toBe('function');
       expect(screen.getByText(num(7))).toHaveStyle({ color: s.fg });
     },
   );
+
+  it('merges a layout override (the palette grid column width) over the defaults', async () => {
+    await render(<PaletteCell n={7} state="a" style={{ width: 51 }} testID="cell" />);
+    expect(screen.getByTestId('cell')).toHaveStyle({ width: 51, height: size.cell });
+  });
 
   it('answered is hi-vis on tar, not-answered is a flag outline', () => {
     expect(paletteState.a.bg).toBe(colors.hivis);
