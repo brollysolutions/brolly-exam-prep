@@ -1,9 +1,9 @@
 import Constants from 'expo-constants';
 import { useRouter } from 'expo-router';
 
-import { useAttemptStore } from '@/data/attempt';
 import { useLangStore } from '@/data/lang';
 import { useSessionStore } from '@/data/session';
+import { signOut } from '@/data/signOut';
 import { ProfileView } from '@/features/profile/ProfileView';
 
 const VERSION = Constants.expoConfig?.version ?? '0.0.0';
@@ -17,10 +17,14 @@ export default function ProfileRoute() {
   const category = useSessionStore((s) => s.category);
   const notifications = useSessionStore((s) => s.notifications);
   const setNotifications = useSessionStore((s) => s.setNotifications);
-  const logout = useSessionStore((s) => s.logout);
 
-  const signOut = () => {
-    logout();
+  /**
+   * Both exits use the shared `signOut()`, which clears the attempt store as well as the
+   * session: leaving a half-finished paper on disk would drop the next person on a shared
+   * handset straight into someone else's running test.
+   */
+  const leave = () => {
+    signOut();
     router.replace('/(auth)/login');
   };
 
@@ -33,15 +37,11 @@ export default function ProfileRoute() {
       version={VERSION}
       onLang={setLang}
       onNotifications={setNotifications}
-      onEditPost={() => router.push('/(onboarding)/post')}
-      onEditCategory={() => router.push('/(onboarding)/category')}
-      onLogout={signOut}
-      onDelete={() => {
-        // Deleting the account clears the attempt in progress too: nothing of this person
-        // may survive on a handset that is often shared.
-        useAttemptStore.getState().reset();
-        signOut();
-      }}
+      // `returnTo` sends the step straight back here instead of walking the sign-up flow on.
+      onEditPost={() => router.push('/(onboarding)/post?returnTo=profile')}
+      onEditCategory={() => router.push('/(onboarding)/category?returnTo=profile')}
+      onLogout={leave}
+      onDelete={leave}
     />
   );
 }

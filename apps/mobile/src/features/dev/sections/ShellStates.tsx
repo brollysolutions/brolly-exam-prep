@@ -1,4 +1,3 @@
-import { colors } from '@tslprb/design-tokens';
 import { type ReactNode } from 'react';
 import { View } from 'react-native';
 
@@ -7,13 +6,11 @@ import { HomeView } from '@/features/home/HomeView';
 import { LibraryView } from '@/features/library/LibraryView';
 import { WelcomeView } from '@/features/onboarding/WelcomeView';
 import { ProfileView } from '@/features/profile/ProfileView';
-import { TabIcon, type TabIconName } from '@/features/shell/TabIcon';
-import { Kicker, Row, Stack, Text } from '@/ui';
+import { Kicker, Stack, Text } from '@/ui';
 
 /** Developer-only gallery labels — not product copy, so deliberately outside the locale files. */
 const DEV = {
   shell: 'App shell (F-02 / F-07 / F-08 / F-14)',
-  tabIcons: 'Tab icons — inactive (dim) / active (hi-vis)',
   welcome: 'WelcomeView — slide 1 of 3',
   home: 'HomeView — signed in, 45 days out',
   library: 'LibraryView — full mocks',
@@ -25,8 +22,6 @@ const DEV = {
  * `features/<area>/__tests__`, and every preview here costs the gallery's Urdu snapshot a
  * full screen tree.
  */
-
-const ICONS: TabIconName[] = ['home', 'tests', 'profile'];
 
 /** Dev frame: every screen is `flex-1`, so a preview inside a scroll needs a bounded height. */
 const PREVIEW_H = 560;
@@ -61,18 +56,6 @@ export function ShellStates({ index }: { index: string }) {
         {DEV.shell}
       </Kicker>
 
-      <Text variant="caption" color="dim">
-        {DEV.tabIcons}
-      </Text>
-      <Row gap={4} align="center" className="border border-line bg-panel p-3">
-        {ICONS.map((name) => (
-          <Row key={name} gap={2} align="center">
-            <TabIcon name={name} color={colors.dim} />
-            <TabIcon name={name} color={colors.hivis} focused />
-          </Row>
-        ))}
-      </Row>
-
       <Preview label={DEV.welcome}>
         <WelcomeView onDone={noop} />
       </Preview>
@@ -88,7 +71,7 @@ export function ShellStates({ index }: { index: string }) {
         />
       </Preview>
       <Preview label={DEV.library}>
-        <LibraryView onOpen={noop} onLocked={noop} />
+        <LibraryView lang={lang} onOpen={noop} onLocked={noop} />
       </Preview>
       <Preview label={DEV.profile}>
         <ProfileView

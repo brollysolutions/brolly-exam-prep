@@ -889,10 +889,10 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
           style={
             {
               "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 12,
+              "fontSize": 13,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 24.6,
+              "lineHeight": 26.7,
               "textAlign": "right",
               "textTransform": undefined,
               "writingDirection": "rtl",
@@ -954,6 +954,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                   "justifyContent": "space-between",
                 }
               }
+              testID="profile-post-row"
             >
               <Text
                 className="text-chalk flex-1"
@@ -1068,6 +1069,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                   "justifyContent": "space-between",
                 }
               }
+              testID="profile-category-row"
             >
               <Text
                 className="text-chalk flex-1"
@@ -1154,10 +1156,10 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
           style={
             {
               "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 12,
+              "fontSize": 13,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 24.6,
+              "lineHeight": 26.7,
               "textAlign": "right",
               "textTransform": undefined,
               "writingDirection": "rtl",
@@ -1188,6 +1190,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                   "justifyContent": "space-between",
                 }
               }
+              testID="profile-language-row"
             >
               <Text
                 className="text-chalk flex-1"
@@ -1383,39 +1386,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
             </View>
           </View>
           <View
-            accessibilityLabel="روزانہ یاد دہانی"
-            accessibilityRole="switch"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": true,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
             className="border-t border-line2"
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            testID="profile-notifications"
           >
             <View
               className="h-touchLg"
@@ -1447,29 +1418,71 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                 روزانہ یاد دہانی
               </Text>
               <View
-                importantForAccessibility="no-hide-descendants"
-                pointerEvents="none"
-              >
-                <RCTSwitch
-                  accessibilityRole="switch"
-                  onChange={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  onTintColor="#FFE01B"
-                  style={
-                    [
-                      {
-                        "alignSelf": "flex-start",
-                      },
-                      {
-                        "backgroundColor": "#1E2023",
-                        "borderRadius": 16,
-                      },
-                    ]
+                accessibilityLabel="روزانہ یاد دہانی"
+                accessibilityRole="switch"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": true,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
-                  thumbTintColor="#0D0D0E"
-                  tintColor="#1E2023"
-                  value={true}
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                hitSlop={
+                  {
+                    "bottom": 8,
+                    "left": 0,
+                    "right": 0,
+                    "top": 8,
+                  }
+                }
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "backgroundColor": "#FFE01B",
+                    "borderColor": "#FFE01B",
+                    "borderRadius": 3,
+                    "borderWidth": 1,
+                    "height": 32,
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "width": 52,
+                  }
+                }
+                testID="profile-notifications"
+              >
+                <View
+                  style={
+                    {
+                      "backgroundColor": "#0D0D0E",
+                      "borderRadius": 2,
+                      "height": 26,
+                      "position": "absolute",
+                      "right": 23,
+                      "width": 26,
+                    }
+                  }
+                  testID="profile-notifications-thumb"
                 />
               </View>
             </View>
@@ -1492,10 +1505,10 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
           style={
             {
               "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 12,
+              "fontSize": 13,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 24.6,
+              "lineHeight": 26.7,
               "textAlign": "right",
               "textTransform": undefined,
               "writingDirection": "rtl",
@@ -1611,7 +1624,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 bg-flag"
+              className="items-center justify-center rounded-sm px-4 border border-flag"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -1642,7 +1655,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                 }
               >
                 <Text
-                  className="text-white"
+                  className="text-flag"
                   style={
                     {
                       "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -1664,7 +1677,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
         </View>
       </View>
       <Text
-        className="text-mute mt-6"
+        className="text-dim mt-6"
         style={
           {
             "fontFamily": "NotoNastaliqUrdu_400Regular",

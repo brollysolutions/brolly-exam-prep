@@ -1,4 +1,5 @@
 import { act, render, screen, userEvent } from '@testing-library/react-native';
+import { colors } from '@tslprb/design-tokens';
 import { initI18n, setLanguage } from '@tslprb/i18n';
 
 import { ProfileView } from '../ProfileView';
@@ -49,13 +50,35 @@ describe('ProfileView', () => {
     expect(h.onEditCategory).toHaveBeenCalledTimes(1);
   });
 
-  it('toggles the daily reminder from anywhere on its row', async () => {
+  it('toggles the daily reminder', async () => {
     const h = handlers();
     await render(<ProfileView {...base} lang="en" {...h} />);
-    const row = screen.getByTestId('profile-notifications');
-    expect(row.props.accessibilityState.checked).toBe(true);
-    await userEvent.press(row);
+    const toggle = screen.getByTestId('profile-notifications');
+    expect(toggle.props.accessibilityState.checked).toBe(true);
+    await userEvent.press(toggle);
     expect(h.onNotifications).toHaveBeenCalledWith(false);
+  });
+
+  it('draws the reminder switch from the palette, not the platform', async () => {
+    const { rerender } = await render(<ProfileView {...base} lang="en" {...handlers()} />);
+    expect(screen.getByTestId('profile-notifications')).toHaveStyle({
+      backgroundColor: colors.hivis,
+    });
+    await act(async () =>
+      rerender(<ProfileView {...base} notifications={false} lang="en" {...handlers()} />),
+    );
+    expect(screen.getByTestId('profile-notifications')).toHaveStyle({
+      backgroundColor: colors.panel3,
+    });
+  });
+
+  it('asks in outline and only commits in solid red', async () => {
+    await render(<ProfileView {...base} lang="en" {...handlers()} />);
+    // A solid red button sitting on a settings list reads as the screen's primary action.
+    expect(screen.getByTestId('profile-delete').props.className).toContain('border-flag');
+    expect(screen.getByTestId('profile-delete').props.className).not.toContain('bg-flag');
+    await userEvent.press(screen.getByTestId('profile-delete'));
+    expect(screen.getByTestId('profile-delete-dialog')).toBeOnTheScreen();
   });
 
   it('switches language inline', async () => {
@@ -110,6 +133,10 @@ describe('ProfileView (ur)', () => {
   it('mirrors the setting rows and matches the snapshot', async () => {
     await render(<ProfileView {...base} lang="ur" {...handlers()} />);
     expect(screen.getByText('پروفائل')).toBeOnTheScreen();
+    // The settings rows mirror like every other row on the screen.
+    expect(screen.getByTestId('profile-post-row')).toHaveStyle({ flexDirection: 'row-reverse' });
+    // "On" travels toward the reading end, which in Urdu is the left.
+    expect(screen.getByTestId('profile-notifications-thumb')).toHaveStyle({ right: 23 });
     expect(screen.getByTestId('profile-notifications').props.accessibilityState.checked).toBe(true);
     // Chevrons must stay Latin-faced: Nastaliq has no U+203A.
     expect(screen.getAllByText('‹', { includeHiddenElements: true })[0]).toHaveStyle({

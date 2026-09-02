@@ -3,7 +3,7 @@ import { CATEGORIES, type CategoryId, type Post } from '@tslprb/fixtures';
 import { LANGS, useDir, type Lang } from '@tslprb/i18n';
 import { type ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable, Switch, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 
 import {
   Button,
@@ -17,6 +17,7 @@ import {
   SegmentedChips,
   Stack,
   Text,
+  Toggle,
   usePressed,
 } from '@/ui';
 
@@ -41,7 +42,13 @@ function SettingRow({
 }) {
   const { pressed, handlers } = usePressed();
   const body = (
-    <Row gap={3} align="center" justify="between" className="h-touchLg">
+    <Row
+      testID={testID ? `${testID}-row` : undefined}
+      gap={3}
+      align="center"
+      justify="between"
+      className="h-touchLg"
+    >
       <Text variant="body" weight="600" className="flex-1">
         {label}
       </Text>
@@ -117,7 +124,6 @@ export function ProfileView({
   const { t } = useTranslation();
   const d = useDir();
   const [confirming, setConfirming] = useState(false);
-  const { pressed: notificationsPressed, handlers: notificationsHandlers } = usePressed();
   const langOptions = LANGS.map((l: Lang) => ({ value: l, label: t(`lang.${l}Short`), lang: l }));
   const categoryLabel = CATEGORIES.find((c) => c.id === category)?.labelKey;
 
@@ -131,6 +137,7 @@ export function ProfileView({
     <Screen
       scroll
       padded
+      bottomInset={false}
       testID="profile-screen"
       overlay={
         <Dialog
@@ -188,33 +195,16 @@ export function ProfileView({
             testID="profile-lang"
           />
         </SettingRow>
-        {/* The row is the target, not the 31 px switch: one 56 px control, one a11y node. */}
-        <Pressable
-          testID="profile-notifications"
-          accessibilityRole="switch"
-          accessibilityLabel={t('profile.notifications')}
-          accessibilityState={{ checked: notifications }}
-          android_ripple={{ color: colors.hivisTint3 }}
-          onPress={() => onNotifications(!notifications)}
-          {...notificationsHandlers}
-          className="border-t border-line2"
-          style={notificationsPressed ? { opacity: 0.85 } : undefined}
-        >
-          <Row gap={3} align="center" justify="between" className="h-touchLg">
-            <Text variant="body" weight="600" className="flex-1">
-              {t('profile.notifications')}
-            </Text>
-            <View pointerEvents="none" importantForAccessibility="no-hide-descendants">
-              <Switch
-                value={notifications}
-                onValueChange={onNotifications}
-                trackColor={{ false: colors.panel3, true: colors.hivis }}
-                thumbColor={notifications ? colors.tar : colors.dim}
-                ios_backgroundColor={colors.panel3}
-              />
-            </View>
-          </Row>
-        </Pressable>
+        {/* One control, one accessibility node: the `Toggle` carries the switch role and its
+            own hit slop, so the row around it stays a plain label. */}
+        <SettingRow label={t('profile.notifications')}>
+          <Toggle
+            testID="profile-notifications"
+            value={notifications}
+            onValueChange={onNotifications}
+            accessibilityLabel={t('profile.notifications')}
+          />
+        </SettingRow>
       </Section>
 
       <Section title={t('profile.sectionAccount')}>
@@ -225,16 +215,17 @@ export function ProfileView({
             label={t('profile.logout')}
             onPress={onLogout}
           />
+          {/* Solid flag lives inside the dialog, where the press actually destroys something. */}
           <Button
             testID="profile-delete"
-            variant="danger"
+            variant="dangerOutline"
             label={t('profile.deleteAccount')}
             onPress={() => setConfirming(true)}
           />
         </Stack>
       </Section>
 
-      <Text variant="caption" color="mute" testID="profile-version" className="mt-6">
+      <Text variant="caption" color="dim" testID="profile-version" className="mt-6">
         {t('profile.version', { v: version })}
       </Text>
     </Screen>
