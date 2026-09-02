@@ -15,3 +15,4 @@ paths:
 - Platform idioms: `Platform.select` for iOS (HIG: large titles, SF Symbols via `expo-symbols`) vs Android (Material: ripple, edge-to-edge, predictive back). Keep the hi-vis identity on both.
 - Each screen exports a default route component and a pure `*View` component that takes props, so tests and the dev states screen can render any state.
 - Add every new state to `src/app/dev/states.tsx`.
+- Web gotcha (react-native-css-interop + React Compiler): never combine an array `style` with a `className` that changes between renders — classes accumulate and the stale one wins. Pass a flattened style object (`StyleSheet.flatten`) or put the dynamic part in `className` only. Reanimated `Animated.View` ignores `className` entirely: give it inline styles and wrap a styled `View` inside.
