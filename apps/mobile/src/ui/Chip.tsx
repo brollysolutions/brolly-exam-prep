@@ -21,6 +21,11 @@ export type ChipProps = Omit<PressableProps, 'style' | 'children'> & {
   tone?: ChipTone;
   /** sm = 34, md = 40, lg = 48 px. */
   size?: ChipSize;
+  /**
+   * Present but not yet available (a locked section tab): `ghost` label instead of `dim`.
+   * Unlike `disabled` it stays pressable, because the tap is what raises the locked toast.
+   */
+  muted?: boolean;
   shape?: 'rect' | 'pill';
   className?: string;
   style?: StyleProp<ViewStyle>;
@@ -45,6 +50,7 @@ export function Chip({
   active = false,
   tone = 'hivis',
   size = 'sm',
+  muted = false,
   shape = 'rect',
   onPress,
   disabled,
@@ -64,7 +70,7 @@ export function Chip({
     <Text
       variant="small"
       weight={active ? '700' : '600'}
-      color={active ? 'tar' : 'dim'}
+      color={active ? 'tar' : muted ? 'ghost' : 'dim'}
       align="center"
     >
       {label}
