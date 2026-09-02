@@ -23,6 +23,8 @@
     "questionsUnit": "سوالات",
     "minutesUnit": "منٹ",
     "questionsUnit": "سوالات",
+    "minutesUnit": "منٹ",
+    "questionsUnit": "سوالات",
     "minutesUnit": "منٹ"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "زبان" },
@@ -154,6 +156,8 @@
     "greetingPlain": "تیار ہیں؟",
     "outOf": "{{max}} میں سے",
     "greetingPlain": "تیار ہیں؟",
+    "outOf": "{{max}} میں سے",
+    "greetingPlain": "تیار ہیں؟",
     "outOf": "{{max}} میں سے"
   },
   "library": {
@@ -163,6 +167,7 @@
     "previousYear": "گزشتہ سال",
     "attempted": "دیے گئے",
     "bestScore": "بہترین {{score}}",
+    "lockedToast": "یہ ٹیسٹ مقفل ہے۔ مفت والا کوئی ٹیسٹ آزمائیں۔",
     "lockedToast": "یہ ٹیسٹ مقفل ہے۔ مفت والا کوئی ٹیسٹ آزمائیں۔"
   },
   "profile": {
@@ -174,7 +179,12 @@
     "logout": "لاگ آؤٹ",
     "deleteAccount": "اکاؤنٹ حذف کریں",
     "deleteConfirm": "اس سے آپ کی کوششیں اور نتائج مستقل طور پر حذف ہو جائیں گے۔",
-    "version": "ورژن {{v}}"
+    "version": "ورژن {{v}}",
+    "sectionExam": "آپ کا امتحان",
+    "sectionApp": "ایپ",
+    "sectionAccount": "اکاؤنٹ",
+    "deleteTitle": "اکاؤنٹ حذف کریں؟",
+    "deleteYes": "سب کچھ حذف کریں"
   },
   "tabs": { "home": "ہوم", "tests": "ٹیسٹ", "profile": "پروفائل" }
 }

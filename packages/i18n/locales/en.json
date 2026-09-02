@@ -23,6 +23,8 @@
     "questionsUnit": "questions",
     "minutesUnit": "min",
     "questionsUnit": "questions",
+    "minutesUnit": "min",
+    "questionsUnit": "questions",
     "minutesUnit": "min"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "Language" },
@@ -154,6 +156,8 @@
     "greetingPlain": "Ready?",
     "outOf": "out of {{max}}",
     "greetingPlain": "Ready?",
+    "outOf": "out of {{max}}",
+    "greetingPlain": "Ready?",
     "outOf": "out of {{max}}"
   },
   "library": {
@@ -163,6 +167,7 @@
     "previousYear": "Previous year",
     "attempted": "Attempted",
     "bestScore": "Best {{score}}",
+    "lockedToast": "That test is locked. Try one marked Free.",
     "lockedToast": "That test is locked. Try one marked Free."
   },
   "profile": {
@@ -174,7 +179,12 @@
     "logout": "Log out",
     "deleteAccount": "Delete account",
     "deleteConfirm": "This removes your attempts and results permanently.",
-    "version": "Version {{v}}"
+    "version": "Version {{v}}",
+    "sectionExam": "Your exam",
+    "sectionApp": "App",
+    "sectionAccount": "Account",
+    "deleteTitle": "Delete your account?",
+    "deleteYes": "Delete everything"
   },
   "tabs": { "home": "Home", "tests": "Tests", "profile": "Profile" }
 }

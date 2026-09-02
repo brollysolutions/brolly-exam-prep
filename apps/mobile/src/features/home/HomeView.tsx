@@ -16,7 +16,10 @@ import {
   Screen,
   SegmentedChips,
   Text,
+  usePressed,
 } from '@/ui';
+
+type WeakTopicAction = (typeof SAMPLE_RESULT.actions)[number];
 
 /** The full mock the home card pitches (`mock-08`). */
 const NEXT_MOCK = TESTS[1];
@@ -39,6 +42,46 @@ function Meta({ n, unit }: { n: number; unit: string }) {
         {unit}
       </Text>
     </Row>
+  );
+}
+
+/**
+ * One row of `home-weak-topics`. A `Pressable` `style` FUNCTION would drop its static
+ * `className` entries on web (see `usePressed`), so press feedback is state-driven instead —
+ * one `usePressed` call per row, via its own component rather than inside the list `.map`.
+ */
+function WeakTopicRow({
+  action,
+  lang,
+  first,
+  onPress,
+}: {
+  action: WeakTopicAction;
+  lang: Lang;
+  first: boolean;
+  onPress: () => void;
+}) {
+  const d = useDir();
+  const { pressed, handlers } = usePressed();
+  return (
+    <Pressable
+      testID={`home-topic-${action.id}`}
+      accessibilityRole="button"
+      android_ripple={{ color: colors.hivisTint3 }}
+      onPress={onPress}
+      {...handlers}
+      className={cx('min-h-touch justify-center', first ? 'mt-1' : 'border-t border-line2')}
+      style={pressed ? { opacity: 0.85 } : undefined}
+    >
+      <Row gap={3} align="center" justify="between">
+        <Text variant="body" weight="600" className="flex-1">
+          {action.title[lang]}
+        </Text>
+        <Glyph color="dim" accessibilityElementsHidden importantForAccessibility="no">
+          {d.chevronNext}
+        </Glyph>
+      </Row>
+    </Pressable>
   );
 }
 
@@ -68,7 +111,6 @@ export function HomeView({
   onWeakTopic,
 }: HomeViewProps) {
   const { t } = useTranslation();
-  const d = useDir();
   const langOptions = LANGS.map((l: Lang) => ({ value: l, label: t(`lang.${l}Short`), lang: l }));
   const pattern = NEXT_MOCK.pattern;
 
@@ -134,27 +176,13 @@ export function HomeView({
       <Card testID="home-weak-topics" className="mt-3">
         <Kicker>{t('home.weakTopics')}</Kicker>
         {SAMPLE_RESULT.actions.map((action, i) => (
-          <Pressable
+          <WeakTopicRow
             key={action.id}
-            testID={`home-topic-${action.id}`}
-            accessibilityRole="button"
-            android_ripple={{ color: colors.hivisTint3 }}
+            action={action}
+            lang={lang}
+            first={i === 0}
             onPress={() => onWeakTopic(action.id)}
-            className={cx(
-              'min-h-touch justify-center',
-              i === 0 ? 'mt-1' : 'border-t border-line2',
-            )}
-            style={({ pressed }) => (pressed ? { opacity: 0.85 } : null)}
-          >
-            <Row gap={3} align="center" justify="between">
-              <Text variant="body" weight="600" className="flex-1">
-                {action.title[lang]}
-              </Text>
-              <Glyph color="dim" accessibilityElementsHidden importantForAccessibility="no">
-                {d.chevronNext}
-              </Glyph>
-            </Row>
-          </Pressable>
+          />
         ))}
       </Card>
 

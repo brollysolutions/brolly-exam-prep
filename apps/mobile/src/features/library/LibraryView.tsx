@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Pressable } from 'react-native';
 
-import { Chip, cx, Num, Row, Screen, Stack, Text, Toast, useAutoDismiss } from '@/ui';
+import { Chip, cx, Num, Row, Screen, Stack, Text, Toast, useAutoDismiss, usePressed } from '@/ui';
 
 /** Reading order of the three shelves; also the chip order. */
 const KINDS: { kind: TestKind; labelKey: string }[] = [
@@ -15,6 +15,78 @@ const KINDS: { kind: TestKind; labelKey: string }[] = [
 ];
 
 const iso = (value: number | string) => `⁦${value}⁩`;
+
+/**
+ * One shelf row. A `Pressable` `style` FUNCTION would drop its static `className` entries on
+ * web (see `usePressed`), so press feedback is state-driven instead — one `usePressed` call
+ * per row, via its own component rather than inside `FlatList`'s `renderItem`.
+ */
+function LibraryRow({
+  test,
+  lang,
+  first,
+  onPress,
+}: {
+  test: TestMeta;
+  lang: Lang;
+  first: boolean;
+  onPress: () => void;
+}) {
+  const { t } = useTranslation();
+  const { pressed, handlers } = usePressed();
+  return (
+    <Pressable
+      testID={`library-row-${test.id}`}
+      accessibilityRole="button"
+      accessibilityState={{ disabled: false }}
+      android_ripple={{ color: colors.hivisTint3 }}
+      onPress={onPress}
+      {...handlers}
+      className={cx('min-h-[72px] justify-center border-b border-line', first && 'border-t')}
+      style={pressed ? { opacity: 0.85 } : undefined}
+    >
+      <Row gap={3} align="center" justify="between">
+        <Stack gap={1} className="flex-1">
+          <Text variant="bodyLg" weight="600">
+            {test.title[lang]}
+          </Text>
+          <Row gap={1} align="baseline" wrap>
+            <Num variant="caption" weight="600" color="dim">
+              {test.pattern.totalQuestions}
+            </Num>
+            <Text variant="caption" color="dim">
+              {t('common.questionsUnit')}
+            </Text>
+            <Text variant="caption" color="mute" lang="en">
+              ·
+            </Text>
+            <Num variant="caption" weight="600" color="dim">
+              {test.pattern.durationMinutes}
+            </Num>
+            <Text variant="caption" color="dim">
+              {t('common.minutesUnit')}
+            </Text>
+          </Row>
+        </Stack>
+        <Row gap={2} align="center">
+          {test.attempted && (
+            <Chip
+              testID={`library-best-${test.id}`}
+              label={t('library.bestScore', { score: iso(test.attempted.bestScore) })}
+              tone="sand"
+              active
+            />
+          )}
+          <Chip
+            testID={`library-badge-${test.id}`}
+            label={test.free ? t('common.free') : t('common.locked')}
+            active={test.free}
+          />
+        </Row>
+      </Row>
+    </Pressable>
+  );
+}
 
 export type LibraryViewProps = {
   /** Shelf the screen opens on. */
@@ -88,58 +160,7 @@ export function LibraryView({ initialKind = 'full', onOpen, onLocked }: LibraryV
         keyExtractor={(test) => test.id}
         showsVerticalScrollIndicator={false}
         renderItem={({ item, index }) => (
-          <Pressable
-            testID={`library-row-${item.id}`}
-            accessibilityRole="button"
-            accessibilityState={{ disabled: false }}
-            android_ripple={{ color: colors.hivisTint3 }}
-            onPress={() => press(item)}
-            className={cx(
-              'min-h-[72px] justify-center border-b border-line',
-              index === 0 && 'border-t',
-            )}
-            style={({ pressed }) => (pressed ? { opacity: 0.85 } : null)}
-          >
-            <Row gap={3} align="center" justify="between">
-              <Stack gap={1} className="flex-1">
-                <Text variant="bodyLg" weight="600">
-                  {item.title[lang]}
-                </Text>
-                <Row gap={1} align="baseline" wrap>
-                  <Num variant="caption" weight="600" color="dim">
-                    {item.pattern.totalQuestions}
-                  </Num>
-                  <Text variant="caption" color="dim">
-                    {t('common.questionsUnit')}
-                  </Text>
-                  <Text variant="caption" color="mute" lang="en">
-                    ·
-                  </Text>
-                  <Num variant="caption" weight="600" color="dim">
-                    {item.pattern.durationMinutes}
-                  </Num>
-                  <Text variant="caption" color="dim">
-                    {t('common.minutesUnit')}
-                  </Text>
-                </Row>
-              </Stack>
-              <Row gap={2} align="center">
-                {item.attempted && (
-                  <Chip
-                    testID={`library-best-${item.id}`}
-                    label={t('library.bestScore', { score: iso(item.attempted.bestScore) })}
-                    tone="sand"
-                    active
-                  />
-                )}
-                <Chip
-                  testID={`library-badge-${item.id}`}
-                  label={item.free ? t('common.free') : t('common.locked')}
-                  active={item.free}
-                />
-              </Row>
-            </Row>
-          </Pressable>
+          <LibraryRow test={item} lang={lang} first={index === 0} onPress={() => press(item)} />
         )}
       />
     </Screen>
