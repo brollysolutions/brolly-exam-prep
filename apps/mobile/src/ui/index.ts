@@ -39,4 +39,5 @@ export { Sheet, type SheetHandle, type SheetProps } from './Sheet';
 export { Stack, type StackProps } from './Stack';
 export { Text, type TextAlign, type TextProps } from './Text';
 export { Toast, type ToastProps } from './Toast';
+export { Toggle, type ToggleProps } from './Toggle';
 export { AUTO_DISMISS_MS, useAutoDismiss } from './useAutoDismiss';

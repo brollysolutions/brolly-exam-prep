@@ -67,7 +67,14 @@ const DEV = {
   empty: 'empty',
 } as const;
 
-const VARIANTS: ButtonVariant[] = ['primary', 'secondary', 'ghost', 'danger', 'hazard'];
+const VARIANTS: ButtonVariant[] = [
+  'primary',
+  'secondary',
+  'ghost',
+  'danger',
+  'dangerOutline',
+  'hazard',
+];
 const TONES: ChipTone[] = ['hivis', 'hazard', 'flag', 'sand'];
 const TEXT_VARIANTS = [
   'kicker',

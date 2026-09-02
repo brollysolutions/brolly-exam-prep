@@ -1,4 +1,5 @@
 import { colors, type ColorName } from '@tslprb/design-tokens';
+import type { ReactNode } from 'react';
 import {
   Pressable,
   StyleSheet,
@@ -21,6 +22,12 @@ export type ChipSize = 'sm' | 'md' | 'lg';
 
 export type ChipProps = Omit<PressableProps, 'style' | 'children'> & {
   label: string;
+  /**
+   * Rendered before the label, inside the same box: a `<Num>` for a score, a `Glyph` for a
+   * lock. Composing beats interpolation, because a count baked into a translated sentence
+   * can never be tabular or LTR-isolated.
+   */
+  leading?: ReactNode;
   /**
    * A tally after the label ("Wrong (3)"). Rendered as `<Num>` so the digits stay tabular
    * and LTR-isolated instead of being interpolated into the translated string.
@@ -56,6 +63,7 @@ const height: Record<ChipSize, string> = {
 /** Filter / status chip. Static when no `onPress` (e.g. the "Marked" badge). */
 export function Chip({
   label,
+  leading,
   count,
   active = false,
   tone = 'hivis',
@@ -81,21 +89,28 @@ export function Chip({
   );
   const weight = active ? '700' : '600';
   const color: ColorName = active ? 'tar' : muted ? 'mute' : 'dim';
-  const label_ = (
+  const caption = (
     <Text variant="small" weight={weight} color={color} align="center">
       {label}
     </Text>
   );
+  const tally =
+    count === undefined ? null : (
+      <Num variant="small" weight={weight} color={color}>
+        {`(${count})`}
+      </Num>
+    );
+  // A bare label stays a single Text so `toHaveTextContent` and the snapshots read cleanly;
+  // only a composed chip pays for the extra Row.
   const text =
-    count === undefined ? (
-      label_
-    ) : (
-      <Row gap={1} align="baseline">
-        {label_}
-        <Num variant="small" weight={weight} color={color}>
-          {`(${count})`}
-        </Num>
+    leading || tally ? (
+      <Row gap={1} align={leading ? 'center' : 'baseline'}>
+        {leading}
+        {caption}
+        {tally}
       </Row>
+    ) : (
+      caption
     );
   // Static badge (e.g. "Marked"): a plain View, so it never reports a button/disabled state.
   if (!onPress) {

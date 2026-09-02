@@ -67,7 +67,9 @@ describe('Kicker contrast and tracking', () => {
       </Kicker>,
     );
     expect(screen.getByText('⁦01⁩')).toHaveStyle({ letterSpacing: 0 });
-    expect(screen.getByTestId('k')).toHaveStyle({ letterSpacing: 0, fontSize: 12 });
+    // 13, not the 12 px general Nastaliq floor: kickers carry their meaning in marks that
+    // disappear at caption size, so they get their own per-face minimum.
+    expect(screen.getByTestId('k')).toHaveStyle({ letterSpacing: 0, fontSize: 13 });
     await act(async () => {
       await setLanguage('en');
     });

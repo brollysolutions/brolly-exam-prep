@@ -14,7 +14,13 @@ import { usePressed } from './pressable';
 import { Row } from './Row';
 import { Text } from './Text';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'hazard';
+export type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'ghost'
+  | 'danger'
+  | 'dangerOutline'
+  | 'hazard';
 export type ButtonSize = 'md' | 'lg';
 
 export type ButtonProps = Omit<PressableProps, 'style' | 'children'> & {
@@ -35,6 +41,9 @@ const box: Record<ButtonVariant, string> = {
   secondary: 'border border-line3',
   ghost: '',
   danger: 'bg-flag',
+  // Destructive but not yet destructive: the outlined form asks, the filled form commits.
+  // A solid red button standing on a settings list reads as the screen's primary action.
+  dangerOutline: 'border border-flag',
   hazard: 'border border-hazard',
 };
 
@@ -43,6 +52,7 @@ const fg: Record<ButtonVariant, ColorName> = {
   secondary: 'chalk',
   ghost: 'dim',
   danger: 'white',
+  dangerOutline: 'flag',
   hazard: 'hazard',
 };
 

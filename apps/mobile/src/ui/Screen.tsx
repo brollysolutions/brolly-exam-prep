@@ -15,6 +15,12 @@ export type ScreenProps = ViewProps & {
   /** Body becomes a ScrollView. */
   scroll?: boolean;
   /**
+   * Pad for the bottom safe area. Turn it OFF inside a tab navigator: the tab bar already
+   * sits in that inset, so a screen that pads for it too leaves a gap the height of the
+   * home indicator above the bar.
+   */
+  bottomInset?: boolean;
+  /**
    * Absolute-fill layer rendered as a sibling *after* the body, outside any ScrollView.
    * Put `Dialog` (and top-anchored `Toast`s) here — inside a scrolling body an absolute-fill
    * overlay would size to the content, not the viewport. Touches pass through empty areas.
@@ -32,6 +38,7 @@ export function Screen({
   critical = false,
   padded = false,
   scroll = false,
+  bottomInset = true,
   overlay,
   children,
   className,
@@ -47,7 +54,7 @@ export function Screen({
       style={StyleSheet.flatten([
         {
           paddingTop: insets.top,
-          paddingBottom: insets.bottom,
+          paddingBottom: bottomInset ? insets.bottom : 0,
           paddingLeft: insets.left,
           paddingRight: insets.right,
         },

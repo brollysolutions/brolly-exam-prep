@@ -52,7 +52,8 @@ describe('Text', () => {
     expect(screen.getByTestId('u')).toHaveStyle({
       letterSpacing: 0,
       fontFamily: 'NotoNastaliqUrdu_400Regular',
-      fontSize: 12,
+      // Kickers have their own floor per face: 13 in Nastaliq, not the 12 px general minimum.
+      fontSize: 13,
     });
   });
 

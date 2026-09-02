@@ -30,13 +30,20 @@ export const fonts = raw.font as Record<
     bodyDelta: number;
     /** Floor for any role — Nastaliq below 12 px is unreadable. */
     minSize: number;
+    /**
+     * Floor for the `kicker` role alone. Kickers are 10.5 px, bold and letter-spaced: legible
+     * in Archivo's caps, but Telugu and Urdu carry their meaning in marks that vanish at that
+     * size (design review round 1). `0` means "no special floor".
+     */
+    kickerMin: number;
   }
 >;
 
 /** Resolve the font family, size and line-height for a language + weight + text role. */
 export function typography(lang: Lang, role: TextName, weight: FontWeight = '400') {
   const f = fonts[lang];
-  const base = Math.max(raw.text[role] + f.bodyDelta, f.minSize);
+  const floor = role === 'kicker' ? Math.max(f.minSize, f.kickerMin) : f.minSize;
+  const base = Math.max(raw.text[role] + f.bodyDelta, floor);
   return {
     fontFamily: f.weights[weight],
     fontSize: base,
