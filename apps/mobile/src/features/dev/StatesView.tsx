@@ -7,6 +7,7 @@ import { useLangStore } from '@/data/lang';
 import { LoginView } from '@/features/auth/LoginView';
 import { OtpView } from '@/features/auth/OtpView';
 import { AttemptStates } from '@/features/dev/sections/AttemptStates';
+import { PostView } from '@/features/onboarding/PostView';
 import {
   Banner,
   Button,
@@ -54,6 +55,7 @@ const DEV = {
   auth: 'Auth & onboarding',
   login: 'LoginView — filled + error toast',
   otp: 'OtpView — partial code, resend ready',
+  post: 'PostView — step 1/2, SI chosen',
   disabled: 'disabled',
   selected: 'selected',
   active: 'active',
@@ -337,6 +339,9 @@ export function StatesView() {
             onResend={() => {}}
             onChangeNumber={() => {}}
           />
+        </Preview>
+        <Preview label={DEV.post}>
+          <PostView initialPost="si" onSubmit={() => {}} />
         </Preview>
       </Section>
     </Screen>
