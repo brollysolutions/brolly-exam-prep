@@ -1,10 +1,10 @@
 import { act, render, screen, userEvent } from '@testing-library/react-native';
+import { latestAffairs, latestNotices } from '@tslprb/fixtures';
 import { initI18n, setLanguage } from '@tslprb/i18n';
 
 import { iso } from '@/ui';
 
 import { HomeView, targetFill, TARGET_SEGMENTS, type HomeContinue } from '../HomeView';
-import { SAMPLE_AFFAIRS, SAMPLE_NOTICES } from '../homeData';
 
 const runningMock: HomeContinue = {
   kind: 'mock',
@@ -22,8 +22,8 @@ const props = {
   streakDays: 4,
   today: { done: 12, target: 20 },
   continueItem: runningMock,
-  notices: SAMPLE_NOTICES,
-  affairs: SAMPLE_AFFAIRS,
+  notices: latestNotices(3),
+  affairs: latestAffairs(3),
   progress: { topicsRead: 5, topicsTotal: 11, papers: 3, bestScore: 62 },
   onLang: jest.fn(),
   onSignIn: jest.fn(),
@@ -207,14 +207,16 @@ describe('HomeView — the three shelves', () => {
     initI18n('en');
   });
 
+  // Newest first, and the chip is F-24's own `updates.kind.*` label, so a notice reads the
+  // same word on this shelf as it does on `/updates`.
   it('shows the board’s notices with their kind and date', async () => {
     await render(<HomeView {...props} lang="en" />);
     const cards = screen.getAllByTestId('home-notice');
     expect(cards).toHaveLength(3);
-    expect(cards[0]).toHaveTextContent(has('Notification'));
-    expect(cards[0]).toHaveTextContent(has(iso('28-08')));
-    expect(cards[1]).toHaveTextContent(has('Exam date'));
-    expect(cards[2]).toHaveTextContent(has('Admit card'));
+    expect(cards[0]).toHaveTextContent(has('PMT / PET'));
+    expect(cards[0]).toHaveTextContent(has(iso('24-10')));
+    expect(cards[1]).toHaveTextContent(has('Hall ticket'));
+    expect(cards[2]).toHaveTextContent(has('Exam date'));
   });
 
   it('offers the physical standards check without a paywall or a gate in front of it', async () => {

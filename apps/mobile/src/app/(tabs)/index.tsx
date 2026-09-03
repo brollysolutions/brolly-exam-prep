@@ -1,4 +1,11 @@
-import { EXAM_INFO, findStudyTopic, STUDY_TOPICS, TESTS } from '@tslprb/fixtures';
+import {
+  EXAM_INFO,
+  findStudyTopic,
+  latestAffairs,
+  latestNotices,
+  STUDY_TOPICS,
+  TESTS,
+} from '@tslprb/fixtures';
 import { useRouter, type Href } from 'expo-router';
 
 import { streakDays, todayProgress, useActivityStore } from '@/data/activity';
@@ -10,19 +17,21 @@ import { useRequireAuth } from '@/data/requireAuth';
 import { useSessionStore } from '@/data/session';
 import { useStudyStore } from '@/data/study';
 import { useNow } from '@/data/useNow';
+import { daysUntil, fullDate } from '@/features/home/dates';
 import { HomeView, type HomeContinue } from '@/features/home/HomeView';
-import { daysUntil, fullDate, SAMPLE_AFFAIRS, SAMPLE_NOTICES } from '@/features/home/homeData';
 
-/**
- * Routes F-24 and F-25 own. Home links to them before they exist, because the alternative is
- * shipping the screen with three dead cards and wiring them afterwards.
- */
-// F-24 add this route
-const UPDATES = '/updates' as Href;
-// F-24 add this route
-const AFFAIRS = '/affairs' as Href;
+/** The route F-25 owns. Home links to it before it exists, so the card is never dead. */
 // F-25 add this route
 const ELIGIBILITY = '/eligibility' as Href;
+
+/**
+ * The head of each shelf, taken once at module load rather than on every render: the
+ * fixtures are static, and Home re-renders on every tick of the running paper's clock.
+ * Three is what fits — the shelves are a trailer for `/updates` and `/affairs`, and both
+ * section heads lead off to the full list.
+ */
+const SHELF_NOTICES = latestNotices(3);
+const SHELF_AFFAIRS = latestAffairs(3);
 
 /** The signed-in user, addressed by the only part of their number that is safe to show. */
 const elide = (phone?: string) => (phone && phone.length >= 4 ? `…${phone.slice(-4)}` : undefined);
@@ -96,9 +105,8 @@ export default function HomeRoute() {
       streakDays={streakDays({ byDay }, now)}
       today={todayProgress({ byDay }, undefined, now)}
       continueItem={continueItem}
-      // F-24 replaces with @tslprb/fixtures
-      notices={SAMPLE_NOTICES}
-      affairs={SAMPLE_AFFAIRS}
+      notices={SHELF_NOTICES}
+      affairs={SHELF_AFFAIRS}
       progress={{
         topicsRead: STUDY_TOPICS.reduce((n, t) => (read[t.id] ? n + 1 : n), 0),
         topicsTotal: STUDY_TOPICS.length,
@@ -116,9 +124,9 @@ export default function HomeRoute() {
         if (runningTestId) ensure(`/test/${runningTestId}`);
         else if (topic) router.push({ pathname: '/study/[topic]', params: { topic: topic.id } });
       }}
-      onOpenUpdates={() => router.push(UPDATES)}
+      onOpenUpdates={() => router.push('/updates')}
       onOpenPhysical={() => router.push(ELIGIBILITY)}
-      onOpenAffairs={() => router.push(AFFAIRS)}
+      onOpenAffairs={() => router.push('/affairs')}
     />
   );
 }

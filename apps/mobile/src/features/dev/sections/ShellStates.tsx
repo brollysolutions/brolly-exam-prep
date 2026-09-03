@@ -1,10 +1,9 @@
-import { EXAM_INFO, STUDY_TOPICS, TESTS } from '@tslprb/fixtures';
+import { EXAM_INFO, latestAffairs, latestNotices, STUDY_TOPICS, TESTS } from '@tslprb/fixtures';
 import { type ReactNode } from 'react';
 import { View } from 'react-native';
 
 import { useLangStore } from '@/data/lang';
 import { HomeView } from '@/features/home/HomeView';
-import { SAMPLE_AFFAIRS, SAMPLE_NOTICES } from '@/features/home/homeData';
 import { LibraryView } from '@/features/library/LibraryView';
 import { WelcomeView } from '@/features/onboarding/WelcomeView';
 import { ProfileView } from '@/features/profile/ProfileView';
@@ -43,6 +42,10 @@ function Preview({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
+/** The same three-item head of each shelf the Home route draws. */
+const SHELF_NOTICES = latestNotices(3);
+const SHELF_AFFAIRS = latestAffairs(3);
+
 const noop = () => {};
 
 /**
@@ -80,8 +83,8 @@ export function ShellStates({ index }: { index: string }) {
             answered: 23,
             remainingSec: 2472,
           }}
-          notices={SAMPLE_NOTICES}
-          affairs={SAMPLE_AFFAIRS}
+          notices={SHELF_NOTICES}
+          affairs={SHELF_AFFAIRS}
           progress={{ topicsRead: 5, topicsTotal: 11, papers: 3, bestScore: 62 }}
           onSignIn={noop}
           onOpenTests={noop}
@@ -102,8 +105,8 @@ export function ShellStates({ index }: { index: string }) {
           streakDays={0}
           today={{ done: 0, target: 20 }}
           continueItem={{ kind: 'start', title: STUDY_TOPICS[0].title[lang], minutes: 8 }}
-          notices={SAMPLE_NOTICES}
-          affairs={SAMPLE_AFFAIRS}
+          notices={SHELF_NOTICES}
+          affairs={SHELF_AFFAIRS}
           progress={{ topicsRead: 0, topicsTotal: 11, papers: 0 }}
           onSignIn={noop}
           onOpenTests={noop}

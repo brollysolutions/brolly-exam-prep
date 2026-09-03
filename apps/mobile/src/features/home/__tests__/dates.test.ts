@@ -1,6 +1,4 @@
-import { LANGS } from '@tslprb/i18n';
-
-import { daysUntil, fullDate, SAMPLE_AFFAIRS, SAMPLE_NOTICES, shortDate } from '../homeData';
+import { daysUntil, fullDate, shortDate } from '../dates';
 
 describe('daysUntil', () => {
   const at = (y: number, m: number, d: number, h = 12) => new Date(y, m - 1, d, h).getTime();
@@ -41,24 +39,5 @@ describe('date rendering', () => {
   it('hands back anything it cannot parse, rather than inventing a date', () => {
     expect(shortDate('later')).toBe('later');
     expect(fullDate('later')).toBe('later');
-  });
-});
-
-describe('sample shelves', () => {
-  it('gives Home three notices and three affairs to draw', () => {
-    expect(SAMPLE_NOTICES).toHaveLength(3);
-    expect(SAMPLE_AFFAIRS).toHaveLength(3);
-  });
-
-  it('carries every headline in all three languages', () => {
-    for (const lang of LANGS) {
-      for (const notice of SAMPLE_NOTICES) expect(notice.title[lang].length).toBeGreaterThan(0);
-      for (const affair of SAMPLE_AFFAIRS) expect(affair.headline[lang].length).toBeGreaterThan(0);
-    }
-  });
-
-  it('dates every row the way `shortDate` expects to read it', () => {
-    for (const row of [...SAMPLE_NOTICES, ...SAMPLE_AFFAIRS])
-      expect(row.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   });
 });

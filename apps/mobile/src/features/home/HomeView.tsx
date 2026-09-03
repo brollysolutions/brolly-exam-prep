@@ -1,4 +1,5 @@
 import { colors, radius } from '@tslprb/design-tokens';
+import type { Affair, Notice } from '@tslprb/fixtures';
 import { LANGS, useDir, type Lang } from '@tslprb/i18n';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
@@ -22,7 +23,7 @@ import {
   usePressed,
 } from '@/ui';
 
-import { shortDate, type HomeAffair, type HomeNotice } from './homeData';
+import { shortDate } from './dates';
 
 /**
  * The one thing to do next, in the order the screen looks for it: a paper still running, then
@@ -190,8 +191,8 @@ export type HomeViewProps = {
   today: { done: number; target: number };
   /** Omitted only in the unreachable state where there is nothing left to read or sit. */
   continueItem?: HomeContinue;
-  notices: HomeNotice[];
-  affairs: HomeAffair[];
+  notices: Notice[];
+  affairs: Affair[];
   progress: HomeProgress;
   onSignIn: () => void;
   /** The countdown hero opens the shelf of papers it is counting down to. */
@@ -454,7 +455,7 @@ function NoticeCard({
   lang,
   onPress,
 }: {
-  notice: HomeNotice;
+  notice: Notice;
   lang: Lang;
   onPress: () => void;
 }) {
@@ -478,7 +479,7 @@ function NoticeCard({
       <Row gap={2} align="center" justify="between">
         {/* Outlined, like every other badge on the screen: the kind is a label to read, not
             a state to react to. */}
-        <Chip label={t(`home.kind.${notice.kind}`)} />
+        <Chip label={t(`updates.kind.${notice.kind}`)} />
         <Num variant="caption" weight="600" color="dim">
           {shortDate(notice.date)}
         </Num>
@@ -496,7 +497,7 @@ function AffairRow({
   lang,
   onPress,
 }: {
-  affair: HomeAffair;
+  affair: Affair;
   lang: Lang;
   onPress: () => void;
 }) {
@@ -524,7 +525,7 @@ function AffairRow({
         style={pressed ? { opacity: 0.85 } : undefined}
       >
         <Row gap={2} align="baseline" justify="between">
-          <Kicker color="sand">{t(`home.cat.${affair.category}`)}</Kicker>
+          <Kicker color="sand">{t(`affairs.cat.${affair.category}`)}</Kicker>
           <Num variant="caption" weight="600" color="dim">
             {shortDate(affair.date)}
           </Num>
