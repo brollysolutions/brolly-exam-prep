@@ -38,6 +38,16 @@ export type SessionActions = {
 
 export type SessionStore = SessionState & SessionActions;
 
+/**
+ * Onboarding is finished only when the flag AND both answers are present.
+ *
+ * The flag alone would let a half-answered sign-up count as done — a token with a post and
+ * no category, say — and every gate in the app has to agree on the question or the user is
+ * asked for the same answer twice.
+ */
+export const isOnboarded = (s: SessionState): boolean =>
+  s.onboarded && s.post !== undefined && s.category !== undefined;
+
 export const SESSION_STORAGE_KEY = 'tslprb.session';
 
 const initial: SessionState = {

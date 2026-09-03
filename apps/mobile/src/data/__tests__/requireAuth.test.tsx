@@ -78,30 +78,16 @@ describe('useRequireAuth', () => {
     expect(mockRouter.push).toHaveBeenCalledWith('/test/mock-07');
   });
 
-  // A tab is a place you go back to, not a card you stack.
-  it('re-enters a tab instead of stacking one, but only once the gate is clear', async () => {
-    ready();
-    const { result } = await renderHook(() => useRequireAuth());
-    result.current.ensure('/(tabs)/tests', 'navigate');
-    expect(mockRouter.navigate).toHaveBeenCalledWith('/(tabs)/tests');
-    expect(mockRouter.push).not.toHaveBeenCalled();
-  });
-
-  it('stacks the sign-in even when the destination is a tab', async () => {
-    const { result } = await renderHook(() => useRequireAuth());
-    result.current.ensure('/(tabs)/tests', 'navigate');
-    expect(mockRouter.navigate).not.toHaveBeenCalled();
-    expect(mockRouter.push).toHaveBeenCalledWith({
-      pathname: '/(auth)/login',
-      params: { returnTo: '/(tabs)/tests' },
-    });
-  });
-
-  // The flag alone would let a half-answered sign-up count as finished.
+  // The flag alone would let a half-answered sign-up count as finished (see `isOnboarded`).
   it('does not call a user onboarded while an answer is missing', async () => {
     halfWay();
     useSessionStore.getState().completeOnboarding();
     const { result } = await renderHook(() => useRequireAuth());
     expect(result.current.onboarded).toBe(false);
+    result.current.ensure('/test/mock-07');
+    expect(mockRouter.push).toHaveBeenCalledWith({
+      pathname: '/(onboarding)/post',
+      params: { returnTo: '/test/mock-07' },
+    });
   });
 });

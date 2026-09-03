@@ -1,7 +1,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 
 import { withReturnTo } from '@/data/href';
-import { useSessionStore } from '@/data/session';
+import { isOnboarded, useSessionStore } from '@/data/session';
 import { PostView } from '@/features/onboarding/PostView';
 import { returnFromEdit } from '@/features/onboarding/returnTo';
 
@@ -11,8 +11,10 @@ export default function PostRoute() {
   const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
   const post = useSessionStore((s) => s.post);
   const setPost = useSessionStore((s) => s.setPost);
+  // A first-run sign-up starts here, so there is nothing behind it to go back to.
+  const canGoBack = router.canGoBack();
   // Someone who has already answered both questions is here to change one, not to sign up.
-  const editing = useSessionStore((s) => s.onboarded);
+  const editing = useSessionStore(isOnboarded);
 
   return (
     <PostView
@@ -23,6 +25,7 @@ export default function PostRoute() {
         // The walk carries the destination on, so step 2 knows where the chain ends.
         else router.push(withReturnTo('/(onboarding)/category', returnTo));
       }}
+      onBack={canGoBack ? () => router.back() : undefined}
     />
   );
 }

@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 
-import { useSessionStore } from '@/data/session';
+import { isOnboarded, useSessionStore } from '@/data/session';
 import { CategoryView } from '@/features/onboarding/CategoryView';
 import { leaveOnboarding, returnFromEdit } from '@/features/onboarding/returnTo';
 
@@ -12,7 +12,7 @@ export default function CategoryRoute() {
   const setCategory = useSessionStore((s) => s.setCategory);
   const completeOnboarding = useSessionStore((s) => s.completeOnboarding);
   // Read before the submit sets it: someone already onboarded is changing one answer.
-  const editing = useSessionStore((s) => s.onboarded);
+  const editing = useSessionStore(isOnboarded);
 
   return (
     <CategoryView
