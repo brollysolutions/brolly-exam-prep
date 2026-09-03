@@ -28,7 +28,10 @@ export type PaperViewProps = {
 
 const SKELETON = ['chip', 'card', 'card', 'card'] as const;
 
-/** 1-based number of the first question in section `i`, from the section sizes alone. */
+/**
+ * 0-based list index of the first question in section `i`, from the section sizes alone —
+ * what `scrollToIndex` wants, not the question number the card is headed with.
+ */
 export function firstIndexOfSection(sections: SectionSpec[], i: number): number {
   return sections.slice(0, i).reduce((n, s) => n + s.questions, 0);
 }
@@ -185,6 +188,8 @@ export function PaperView({
   const { t } = useTranslation();
   const d = useDir();
   const list = useRef<FlatList<PaperQuestion>>(null);
+  /** Set while the one `scrollToIndex` retry is in flight — see `onScrollToIndexFailed`. */
+  const retrying = useRef(false);
 
   /**
    * Jump to a section's first question. `getItemLayout` is off the table — a card's height
@@ -209,6 +214,17 @@ export function PaperView({
         offset: info.averageItemLength * info.index,
         animated: false,
       });
+      // The estimate only lands *near* the section; the rows it mounts are what the list needs
+      // to measure before it can land on the card itself. So retry once on the next frame,
+      // when those rows exist. `scrollToIndex` calls this handler back synchronously when it
+      // fails, hence the flag: a retry that misses again settles for the offset rather than
+      // scheduling a third jump that would only shuffle the page.
+      if (retrying.current) return;
+      requestAnimationFrame(() => {
+        retrying.current = true;
+        list.current?.scrollToIndex({ index: info.index, animated: false });
+        retrying.current = false;
+      });
     },
     [],
   );
@@ -225,7 +241,9 @@ export function PaperView({
       <Measure
         value={questions.length}
         unit={t('paper.questions')}
-        className="px-3 pb-2"
+        // `px-4`, the cards' own gutter: the count and the jump chips are the head of the
+        // list, so they have to start on the same line the cards start on.
+        className="px-4 pb-2"
         testID="paper-count"
       />
       {sections.length > 1 && (
@@ -237,7 +255,7 @@ export function PaperView({
           contentContainerStyle={{
             flexDirection: d.row,
             gap: spacing['2'],
-            paddingHorizontal: spacing['3'],
+            paddingHorizontal: spacing['4'],
             paddingBottom: spacing['2'],
           }}
         >

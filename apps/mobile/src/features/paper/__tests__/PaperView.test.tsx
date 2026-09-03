@@ -1,4 +1,4 @@
-import { render, screen, userEvent, within } from '@testing-library/react-native';
+import { act, render, screen, userEvent, within } from '@testing-library/react-native';
 import { colors } from '@tslprb/design-tokens';
 import { buildPaper, type SectionSpec } from '@tslprb/fixtures';
 import { initI18n } from '@tslprb/i18n';
@@ -25,6 +25,13 @@ const props = () => ({
 
 /** `test.optionKeys` in English — the glyph each option is labelled with. */
 const KEYS = ['A', 'B', 'C', 'D'];
+
+/** The list's own miss handler, as `VirtualizedList` would call it. */
+const onScrollToIndexFailed = () =>
+  screen.getByTestId('paper-list').props.onScrollToIndexFailed as (info: {
+    index: number;
+    averageItemLength: number;
+  }) => void;
 
 describe('PaperView', () => {
   beforeAll(() => {
@@ -93,6 +100,47 @@ describe('PaperView', () => {
     // Section 2 starts at question 4, which is index 3.
     expect(scrollToIndex).toHaveBeenCalledWith({ index: 3, animated: false });
     scrollToIndex.mockRestore();
+  });
+
+  // A card's height depends on its stem, four options and an explanation in three scripts, so
+  // there is no `getItemLayout` and a long paper may not have measured as far as the section.
+  it('estimates the offset when the jump misses, then lands on the card a frame later', async () => {
+    const scrollToOffset = jest.spyOn(FlatList.prototype, 'scrollToOffset').mockImplementation();
+    const scrollToIndex = jest.spyOn(FlatList.prototype, 'scrollToIndex').mockImplementation();
+    await render(<PaperView {...props()} />);
+    const failed = onScrollToIndexFailed();
+
+    await act(async () => failed({ index: 3, averageItemLength: 200 }));
+    expect(scrollToOffset).toHaveBeenCalledWith({ offset: 600, animated: false });
+
+    await act(async () => {
+      await new Promise(requestAnimationFrame);
+    });
+    expect(scrollToIndex).toHaveBeenCalledWith({ index: 3, animated: false });
+    scrollToIndex.mockRestore();
+    scrollToOffset.mockRestore();
+  });
+
+  it('settles for the estimate when the retry misses too, instead of jumping again', async () => {
+    const scrollToOffset = jest.spyOn(FlatList.prototype, 'scrollToOffset').mockImplementation();
+    await render(<PaperView {...props()} />);
+    const failed = onScrollToIndexFailed();
+    // A list that still has not measured that far calls the handler straight back.
+    const scrollToIndex = jest
+      .spyOn(FlatList.prototype, 'scrollToIndex')
+      .mockImplementation(() => failed({ index: 3, averageItemLength: 200 }));
+
+    await act(async () => failed({ index: 3, averageItemLength: 200 }));
+    await act(async () => {
+      await new Promise(requestAnimationFrame);
+    });
+    await act(async () => {
+      await new Promise(requestAnimationFrame);
+    });
+    expect(scrollToIndex).toHaveBeenCalledTimes(1);
+    expect(scrollToOffset).toHaveBeenCalledTimes(2);
+    scrollToIndex.mockRestore();
+    scrollToOffset.mockRestore();
   });
 
   it('hides the section strip when the paper has only one section', async () => {
