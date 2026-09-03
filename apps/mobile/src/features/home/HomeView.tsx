@@ -9,11 +9,9 @@ import {
   Button,
   Card,
   Chip,
-  Duration,
   Glyph,
   iso,
   Kicker,
-  Measure,
   Num,
   Row,
   Screen,
@@ -24,16 +22,6 @@ import {
 } from '@/ui';
 
 import { shortDate } from './dates';
-
-/**
- * The one thing to do next, in the order the screen looks for it: a paper still running, then
- * the topic last open, then the first topic never opened. Exactly one is ever shown — a home
- * screen that offers three "continue"s has answered nothing.
- */
-export type HomeContinue =
-  | { kind: 'mock'; title: string; answered: number; remainingSec: number }
-  | { kind: 'reading'; title: string; minutes: number }
-  | { kind: 'start'; title: string; minutes: number };
 
 export type HomeProgress = {
   topicsRead: number;
@@ -189,15 +177,12 @@ export type HomeViewProps = {
   streakDays: number;
   /** Today's work against the day's target; `done` may exceed `target`. */
   today: { done: number; target: number };
-  /** Omitted only in the unreachable state where there is nothing left to read or sit. */
-  continueItem?: HomeContinue;
   notices: Notice[];
   affairs: Affair[];
   progress: HomeProgress;
   onSignIn: () => void;
   /** The countdown hero opens the shelf of papers it is counting down to. */
   onOpenTests: () => void;
-  onContinue: () => void;
   onOpenUpdates: () => void;
   onOpenPhysical: () => void;
   onOpenAffairs: () => void;
@@ -207,9 +192,10 @@ export type HomeViewProps = {
  * F-23 — Home v3.
  *
  * The tab bar already carries Study and Tests, so the screen stops repeating them and answers
- * the questions only a home screen can: how long have I got, what was I in the middle of, what
- * has the board said, do I clear the physical, what happened today, and how far along am I.
- * One hi-vis action — the Continue card — because there is only ever one next thing.
+ * the questions only a home screen can: how long have I got, what has the board said, do I
+ * clear the physical, what happened today, and how far along am I.
+ * One hi-vis action — "Check eligibility" — the one place on the screen the tab bar cannot
+ * take a candidate. (The Continue card was removed at the user's request, 2026-09-03.)
  */
 export function HomeView({
   name,
@@ -221,13 +207,11 @@ export function HomeView({
   examLabel,
   streakDays,
   today,
-  continueItem,
   notices,
   affairs,
   progress,
   onSignIn,
   onOpenTests,
-  onContinue,
   onOpenUpdates,
   onOpenPhysical,
   onOpenAffairs,
@@ -245,19 +229,6 @@ export function HomeView({
     t('home.examCountdown', { days: iso(daysToExam) }),
     t('home.targetDone', { done: iso(today.done), target: iso(today.target) }),
   ].join(' · ');
-
-  const continueKicker =
-    continueItem?.kind === 'mock'
-      ? t('home.continueMock')
-      : continueItem?.kind === 'reading'
-        ? t('home.continueReading')
-        : t('home.startWith');
-  const continueAction =
-    continueItem?.kind === 'mock'
-      ? t('home.resume')
-      : continueItem?.kind === 'reading'
-        ? t('common.continue')
-        : t('home.startNow');
 
   return (
     <Screen scroll padded bottomInset={false} testID="home-screen">
@@ -280,7 +251,7 @@ export function HomeView({
 
       {/* ------------------------------------------------------- countdown hero */}
       {/* Hazard, not hi-vis: a date closing in is a warning, and the yellow on this screen
-          belongs to the one action. Tapping it opens the papers it is counting down to. */}
+          belongs to "Check eligibility". Tapping it opens the papers it is counting down to. */}
       <Card
         testID="home-hero"
         onPress={onOpenTests}
@@ -320,45 +291,6 @@ export function HomeView({
         </View>
       </Card>
 
-      {/* ------------------------------------------------------------- continue */}
-      {continueItem && (
-        <Card testID="home-continue" className="mt-3">
-          <Kicker>{continueKicker}</Kicker>
-          <Text variant="subtitle" weight="700" className="mt-2" testID="home-continue-title">
-            {continueItem.title}
-          </Text>
-          <Row gap={2} align="baseline" wrap className="mt-2">
-            {continueItem.kind === 'mock' ? (
-              <>
-                <Measure
-                  testID="home-continue-answered"
-                  value={continueItem.answered}
-                  unit={t('common.questionsUnit')}
-                />
-                <Glyph variant="caption" color="mute">
-                  ·
-                </Glyph>
-                <Duration testID="home-continue-left" seconds={continueItem.remainingSec} />
-              </>
-            ) : (
-              <Measure
-                testID="home-continue-minutes"
-                value={continueItem.minutes}
-                unit={t('common.minutesUnit')}
-              />
-            )}
-          </Row>
-          {/* The screen's single hi-vis action: whatever "next" happens to be today. */}
-          <Button
-            testID="home-continue-action"
-            size="lg"
-            label={continueAction}
-            onPress={onContinue}
-            className="mt-4"
-          />
-        </Card>
-      )}
-
       {/* -------------------------------------------------------------- updates */}
       <View testID="home-updates" className="mt-6">
         <SectionHead
@@ -388,11 +320,10 @@ export function HomeView({
         <Text variant="bodyLg" weight="600" className="mt-2">
           {t('home.physicalSub')}
         </Text>
-        {/* Outlined, not filled: the card's own primary action, but the screen keeps one
-            yellow and it belongs to Continue. */}
+        {/* The screen's one hi-vis action: the only block whose destination is not already a
+            tab, so it is the one thing Home has to say "go here" about. */}
         <Button
           testID="home-physical-action"
-          variant="secondary"
           label={t('home.checkEligibility')}
           onPress={onOpenPhysical}
           className="mt-4"

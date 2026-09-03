@@ -1,4 +1,4 @@
-import { EXAM_INFO, latestAffairs, latestNotices, STUDY_TOPICS, TESTS } from '@tslprb/fixtures';
+import { EXAM_INFO, latestAffairs, latestNotices } from '@tslprb/fixtures';
 import { type ReactNode } from 'react';
 import { View } from 'react-native';
 
@@ -13,8 +13,8 @@ import { Kicker, Stack, Text } from '@/ui';
 const DEV = {
   shell: 'App shell (F-02 / F-07 / F-08 / F-14)',
   welcome: 'WelcomeView — slide 1 of 3',
-  home: 'HomeView — signed in, a mock still running, half the day done (F-23)',
-  homeGuest: 'HomeView — guest, nothing sat yet, first topic offered (F-23)',
+  home: 'HomeView — signed in, half the day done (F-23)',
+  homeGuest: 'HomeView — guest, nothing sat yet (F-23)',
   library: 'LibraryView — full mocks',
   profile: 'ProfileView — reminders on',
   profileGuest: 'ProfileView — guest, account section offers a sign-in (F-19)',
@@ -77,18 +77,11 @@ export function ShellStates({ index }: { index: string }) {
           examLabel={EXAM_INFO.label[lang]}
           streakDays={4}
           today={{ done: 12, target: 20 }}
-          continueItem={{
-            kind: 'mock',
-            title: TESTS[0].title[lang],
-            answered: 23,
-            remainingSec: 2472,
-          }}
           notices={SHELF_NOTICES}
           affairs={SHELF_AFFAIRS}
           progress={{ topicsRead: 5, topicsTotal: 11, papers: 3, bestScore: 62 }}
           onSignIn={noop}
           onOpenTests={noop}
-          onContinue={noop}
           onOpenUpdates={noop}
           onOpenPhysical={noop}
           onOpenAffairs={noop}
@@ -104,13 +97,11 @@ export function ShellStates({ index }: { index: string }) {
           examLabel={EXAM_INFO.label[lang]}
           streakDays={0}
           today={{ done: 0, target: 20 }}
-          continueItem={{ kind: 'start', title: STUDY_TOPICS[0].title[lang], minutes: 8 }}
           notices={SHELF_NOTICES}
           affairs={SHELF_AFFAIRS}
           progress={{ topicsRead: 0, topicsTotal: 11, papers: 0 }}
           onSignIn={noop}
           onOpenTests={noop}
-          onContinue={noop}
           onOpenUpdates={noop}
           onOpenPhysical={noop}
           onOpenAffairs={noop}

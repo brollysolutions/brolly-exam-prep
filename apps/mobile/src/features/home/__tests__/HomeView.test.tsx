@@ -4,14 +4,7 @@ import { initI18n, setLanguage } from '@tslprb/i18n';
 
 import { iso } from '@/ui';
 
-import { HomeView, targetFill, TARGET_SEGMENTS, type HomeContinue } from '../HomeView';
-
-const runningMock: HomeContinue = {
-  kind: 'mock',
-  title: 'PWT Full Mock 07',
-  answered: 23,
-  remainingSec: 2472,
-};
+import { HomeView, targetFill, TARGET_SEGMENTS } from '../HomeView';
 
 const props = {
   name: '…1234',
@@ -21,14 +14,12 @@ const props = {
   examLabel: 'Preliminary Written Test',
   streakDays: 4,
   today: { done: 12, target: 20 },
-  continueItem: runningMock,
   notices: latestNotices(3),
   affairs: latestAffairs(3),
   progress: { topicsRead: 5, topicsTotal: 11, papers: 3, bestScore: 62 },
   onLang: jest.fn(),
   onSignIn: jest.fn(),
   onOpenTests: jest.fn(),
-  onContinue: jest.fn(),
   onOpenUpdates: jest.fn(),
   onOpenPhysical: jest.fn(),
   onOpenAffairs: jest.fn(),
@@ -152,56 +143,6 @@ describe('targetFill', () => {
   });
 });
 
-describe('HomeView — continue', () => {
-  beforeAll(() => {
-    initI18n('en');
-  });
-
-  it('offers to resume a paper that is still running, with what is left of it', async () => {
-    await render(<HomeView {...props} lang="en" />);
-    expect(screen.getByTestId('home-continue')).toHaveTextContent(has('Still running'));
-    expect(screen.getByTestId('home-continue-title')).toHaveTextContent('PWT Full Mock 07');
-    expect(screen.getByTestId('home-continue-answered')).toHaveTextContent(
-      has(`${iso('23')}questions`),
-    );
-    expect(screen.getByTestId('home-continue-left')).toHaveTextContent(has(`${iso('41')}m`));
-    expect(screen.getByTestId('home-continue-action')).toHaveTextContent('Resume');
-  });
-
-  it('offers the topic last open when no paper is running', async () => {
-    await render(
-      <HomeView
-        {...props}
-        continueItem={{ kind: 'reading', title: 'Percentages', minutes: 8 }}
-        lang="en"
-      />,
-    );
-    expect(screen.getByTestId('home-continue')).toHaveTextContent(has('Continue reading'));
-    expect(screen.getByTestId('home-continue-title')).toHaveTextContent('Percentages');
-    expect(screen.getByTestId('home-continue-minutes')).toHaveTextContent(has(`${iso('8')}min`));
-    expect(screen.getByTestId('home-continue-action')).toHaveTextContent('Continue');
-    expect(screen.queryByTestId('home-continue-left')).toBeNull();
-  });
-
-  it('offers the first topic never opened to someone who has done nothing', async () => {
-    await render(
-      <HomeView
-        {...props}
-        continueItem={{ kind: 'start', title: 'Percentages', minutes: 8 }}
-        lang="en"
-      />,
-    );
-    expect(screen.getByTestId('home-continue')).toHaveTextContent(has('Start with'));
-    expect(screen.getByTestId('home-continue-action')).toHaveTextContent('Start now');
-  });
-
-  it('is the screen’s one action, whichever of the three it is', async () => {
-    await render(<HomeView {...props} lang="en" />);
-    await userEvent.press(screen.getByTestId('home-continue-action'));
-    expect(props.onContinue).toHaveBeenCalledTimes(1);
-  });
-});
-
 describe('HomeView — the three shelves', () => {
   beforeAll(() => {
     initI18n('en');
@@ -226,6 +167,19 @@ describe('HomeView — the three shelves', () => {
     );
     await userEvent.press(screen.getByTestId('home-physical-action'));
     expect(guest.onOpenPhysical).toHaveBeenCalledTimes(1);
+  });
+
+  // The Continue card went (2026-09-03), and the yellow it carried went to the one action left
+  // that leads somewhere a candidate cannot reach from the tab bar.
+  it('makes Check eligibility the screen’s only hi-vis action', async () => {
+    await render(<HomeView {...props} lang="en" />);
+    expect(screen.getByTestId('home-physical-action').props.className).toContain('bg-hivis');
+    // The selected language chip is the one other yellow fill: a state, not an action.
+    const yellow = screen
+      .getAllByRole('button')
+      .filter((node) => String(node.props.className).includes('bg-hivis'))
+      .filter((node) => !node.props.accessibilityState?.selected);
+    expect(yellow).toHaveLength(1);
   });
 
   it("shows today's affairs with their category", async () => {
@@ -296,7 +250,6 @@ describe('HomeView — guest', () => {
     await render(<HomeView {...guest} lang="en" />);
     expect(screen.getByTestId('home-greeting')).toHaveTextContent('Ready?');
     expect(screen.getByTestId('home-hero')).toBeOnTheScreen();
-    expect(screen.getByTestId('home-continue')).toBeOnTheScreen();
     expect(screen.getByTestId('home-updates')).toBeOnTheScreen();
     expect(screen.getByTestId('home-physical')).toBeOnTheScreen();
     expect(screen.getByTestId('home-affairs')).toBeOnTheScreen();
@@ -343,6 +296,16 @@ describe('HomeView — what F-23 removed', () => {
     expect(screen.queryByText('Previous question papers')).toBeNull();
     expect(screen.queryByText('Mock test')).toBeNull();
   });
+
+  // Removed at the user's request, 2026-09-03: the whole card, not one variant of it.
+  it('no longer offers a Continue card of any kind', async () => {
+    await render(<HomeView {...props} lang="en" />);
+    expect(screen.queryByTestId('home-continue')).toBeNull();
+    expect(screen.queryByTestId('home-continue-action')).toBeNull();
+    expect(screen.queryByText('Still running')).toBeNull();
+    expect(screen.queryByText('Continue reading')).toBeNull();
+    expect(screen.queryByText('Start with')).toBeNull();
+  });
 });
 
 describe('HomeView (ur)', () => {
@@ -363,9 +326,6 @@ describe('HomeView (ur)', () => {
     await render(<HomeView {...props} lang="ur" />);
     expect(screen.getByTestId('home-header')).toHaveStyle({ flexDirection: 'row-reverse' });
     expect(screen.getByTestId('home-target')).toHaveStyle({ flexDirection: 'row-reverse' });
-    expect(screen.getByTestId('home-continue-answered')).toHaveStyle({
-      flexDirection: 'row-reverse',
-    });
     expect(screen.getByTestId('home-days')).toHaveStyle({ fontFamily: 'Archivo_700Bold' });
     expect(screen.toJSON()).toMatchSnapshot();
   });

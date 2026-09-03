@@ -31,7 +31,7 @@ const signIn = () => {
   useSessionStore.getState().completeOnboarding();
 };
 
-/** A paper armed and two questions answered, so Home has something to resume. */
+/** A paper armed and two questions answered: Home used to resume it, and now must not. */
 const startMock = () => {
   const attempt = useAttemptStore.getState();
   attempt.start(TESTS[0]);
@@ -84,73 +84,17 @@ describe('HomeRoute (guest)', () => {
   });
 });
 
-// The one question Home exists to answer, and the order it answers it in.
-describe('HomeRoute — what to continue', () => {
-  it('offers the first unread topic to someone who has done nothing', async () => {
-    await render(<HomeRoute />);
-    expect(screen.getByTestId('home-continue')).toHaveTextContent(has('Start with'));
-    expect(screen.getByTestId('home-continue-title')).toHaveTextContent('Percentages');
-  });
-
-  it('opens that topic with no gate in front of it — reading is free', async () => {
-    await render(<HomeRoute />);
-    await userEvent.press(screen.getByTestId('home-continue-action'));
-    expect(mockRouter.push).toHaveBeenCalledWith({
-      pathname: '/study/[topic]',
-      params: { topic: 'st-ar-percentages' },
-    });
-  });
-
-  it('offers the topic last open once there is a bookmark', async () => {
-    useStudyStore.getState().open('st-tg-statehood');
-    await render(<HomeRoute />);
-    expect(screen.getByTestId('home-continue')).toHaveTextContent(has('Continue reading'));
-    expect(screen.getByTestId('home-continue-title')).toHaveTextContent(has('Statehood movement'));
-    await userEvent.press(screen.getByTestId('home-continue-action'));
-    expect(mockRouter.push).toHaveBeenCalledWith({
-      pathname: '/study/[topic]',
-      params: { topic: 'st-tg-statehood' },
-    });
-  });
-
-  // A paper on the clock outranks anything else: it is the only thing that expires.
-  it('outranks the bookmark with a paper that is still running', async () => {
+// Removed at the user's request (2026-09-03): Home no longer offers anything to continue,
+// whatever the stores hold. The tab bar is where Study and Tests live.
+describe('HomeRoute — no Continue card', () => {
+  it('shows nothing to continue, even with a bookmark and a paper still running', async () => {
     useStudyStore.getState().open('st-tg-statehood');
     startMock();
     await render(<HomeRoute />);
-    expect(screen.getByTestId('home-continue')).toHaveTextContent(has('Still running'));
-    expect(screen.getByTestId('home-continue-title')).toHaveTextContent('PWT Full Mock 07');
-    expect(screen.getByTestId('home-continue-answered')).toHaveTextContent(
-      has(`${iso('2')}questions`),
-    );
-    expect(screen.getByTestId('home-continue-action')).toHaveTextContent('Resume');
-  });
-
-  it('falls back to the bookmark once the paper is submitted', async () => {
-    useStudyStore.getState().open('st-tg-statehood');
-    startMock();
-    useAttemptStore.getState().submit();
-    await render(<HomeRoute />);
-    expect(screen.getByTestId('home-continue')).toHaveTextContent(has('Continue reading'));
-  });
-
-  // F-19 — sitting a paper is the one thing on this screen that needs an account.
-  it('collects an account before it resumes a paper, and comes back to it', async () => {
-    startMock();
-    await render(<HomeRoute />);
-    await userEvent.press(screen.getByTestId('home-continue-action'));
-    expect(mockRouter.push).toHaveBeenCalledWith({
-      pathname: '/(auth)/login',
-      params: { returnTo: '/test/mock-07' },
-    });
-  });
-
-  it('resumes the paper straight away once there is an account', async () => {
-    signIn();
-    startMock();
-    await render(<HomeRoute />);
-    await userEvent.press(screen.getByTestId('home-continue-action'));
-    expect(mockRouter.push).toHaveBeenCalledWith('/test/mock-07');
+    expect(screen.queryByTestId('home-continue')).toBeNull();
+    expect(screen.queryByTestId('home-continue-action')).toBeNull();
+    expect(screen.queryByText('Still running')).toBeNull();
+    expect(screen.queryByText(has('Statehood movement'))).toBeNull();
   });
 });
 
