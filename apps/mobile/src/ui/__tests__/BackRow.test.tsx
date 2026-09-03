@@ -1,4 +1,4 @@
-import { act, render, screen, userEvent } from '@testing-library/react-native';
+import { act, fireEvent, render, screen, userEvent } from '@testing-library/react-native';
 import { initI18n, setLanguage } from '@tslprb/i18n';
 
 import { BackRow } from '../BackRow';
@@ -8,13 +8,25 @@ describe('BackRow', () => {
     initI18n('en');
   });
 
-  it('reports presses as a button and offers Android ripple', async () => {
+  it('reports presses as a button', async () => {
     const onPress = jest.fn();
     await render(<BackRow label="Back" onPress={onPress} testID="back" />);
     await userEvent.press(screen.getByTestId('back'));
     expect(onPress).toHaveBeenCalledTimes(1);
-    // Pressed feedback: Pressable resolves `style` per press state.
-    expect(typeof screen.getByTestId('back').props.style).toBe('object');
+  });
+
+  it('dims while held — press feedback is state, not a `style` callback', async () => {
+    await render(<BackRow label="Back" onPress={jest.fn()} testID="back" />);
+    const row = screen.getByTestId('back');
+    expect(row).not.toHaveStyle({ opacity: 0.8 });
+    await act(async () => {
+      fireEvent(row, 'pressIn');
+    });
+    expect(screen.getByTestId('back')).toHaveStyle({ opacity: 0.8 });
+    await act(async () => {
+      fireEvent(row, 'pressOut');
+    });
+    expect(screen.getByTestId('back')).not.toHaveStyle({ opacity: 0.8 });
   });
 
   it('is a 48 px target', async () => {

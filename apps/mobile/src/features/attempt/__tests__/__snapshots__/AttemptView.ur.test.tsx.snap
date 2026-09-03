@@ -902,21 +902,20 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-          style={null}
           testID="btn-exit"
         >
           <Text
             className="text-dim"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_400Regular",
-                "fontSize": 21,
+                "fontFamily": "Archivo_400Regular",
+                "fontSize": 20,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 43.1,
+                "lineHeight": 29,
                 "textAlign": "right",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
@@ -970,7 +969,6 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               className="text-dim"
@@ -1023,7 +1021,6 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               className="text-dim"
@@ -1076,7 +1073,6 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               className="text-tar"
@@ -2048,26 +2044,69 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
           >
             اس سوال پر وقت ·
           </Text>
-          <Text
-            accessibilityLanguage="en"
-            className="text-dim"
+          <View
+            accessibilityLabel="41 سیکنڈ"
+            accessible={true}
             style={
               {
-                "fontFamily": "Archivo_400Regular",
-                "fontSize": 11.5,
-                "fontVariant": [
-                  "tabular-nums",
-                ],
-                "letterSpacing": 0,
-                "lineHeight": 16.7,
-                "textAlign": "right",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
+                "alignItems": "baseline",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 4,
+                "justifyContent": undefined,
               }
             }
           >
-            ⁦41 سیکنڈ⁩
-          </Text>
+            <View
+              style={
+                {
+                  "alignItems": "baseline",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                accessibilityLanguage="en"
+                className="text-dim"
+                style={
+                  {
+                    "fontFamily": "Archivo_400Regular",
+                    "fontSize": 11.5,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 16.7,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ⁦41⁩
+              </Text>
+              <Text
+                className="text-dim"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 12.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 25.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                 سیکنڈ
+              </Text>
+            </View>
+          </View>
         </View>
       </View>
     </RCTScrollView>
@@ -2280,7 +2319,6 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
             testID="btn-prev"
           >
             <Text
@@ -2335,7 +2373,6 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
             testID="btn-palette"
           >
             <Text

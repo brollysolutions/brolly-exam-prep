@@ -1092,7 +1092,6 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1148,7 +1147,6 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1204,7 +1202,6 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1273,7 +1270,6 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1329,7 +1325,6 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1385,7 +1380,6 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1454,7 +1448,6 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1510,7 +1503,6 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1566,7 +1558,6 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1638,7 +1629,6 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1694,7 +1684,6 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               className="text-chalk"

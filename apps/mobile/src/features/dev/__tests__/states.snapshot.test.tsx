@@ -11,7 +11,9 @@ describe('dev states screen (ur)', () => {
     initI18n('ur');
   });
 
-  it('renders every primitive mirrored and matches the snapshot', async () => {
+  // No whole-gallery snapshot: a 1.5 MB blob nobody reads, invalidated by every primitive
+  // change. The per-view `ur` snapshots stay; this file keeps the targeted assertions.
+  it('renders every primitive mirrored', async () => {
     await render(<StatesView />);
     expect(screen.getByTestId('states-header')).toHaveStyle({ flexDirection: 'row-reverse' });
     // Numbers stay physical LTR even in Urdu.
@@ -22,6 +24,5 @@ describe('dev states screen (ur)', () => {
     expect(screen.queryByTestId('dialog')).toBeNull();
     await userEvent.press(screen.getByTestId('dialog-toggle'));
     expect(screen.getByTestId('dialog')).toBeOnTheScreen();
-    expect(screen.toJSON()).toMatchSnapshot();
   });
 });

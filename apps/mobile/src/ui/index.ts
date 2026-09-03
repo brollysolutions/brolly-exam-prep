@@ -11,11 +11,23 @@ export {
   type DialogStat,
   type DialogTone,
 } from './Dialog';
+export { Duration, useDurationUnits, type DurationProps } from './Duration';
+export {
+  durationParts,
+  formatCount,
+  formatDuration,
+  formatRank,
+  isLatinValue,
+  LATIN_UNITS,
+  type DurationPart,
+  type DurationUnits,
+} from './format';
 export { Glyph, type GlyphProps } from './Glyph';
 export * as haptics from './haptics';
 export { HazardRail, type HazardRailProps } from './HazardRail';
 export { Keypad, type KeypadProps } from './Keypad';
 export { Kicker, type KickerProps } from './Kicker';
+export { Measure, type MeasureProps } from './Measure';
 export {
   fadeIn,
   fadeOut,
@@ -26,7 +38,7 @@ export {
   useMotion,
   useReducedMotionSafe,
 } from './motion';
-export { Num } from './Num';
+export { iso, Num } from './Num';
 export { OtpCells, type OtpCellsProps } from './OtpCells';
 export { PaletteCell, type PaletteCellProps } from './PaletteCell';
 export { usePressed, type PressHandlers } from './pressable';

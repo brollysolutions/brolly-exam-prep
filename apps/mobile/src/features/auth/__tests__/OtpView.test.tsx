@@ -1,14 +1,12 @@
 import { act, render, screen, userEvent, within } from '@testing-library/react-native';
 import { initI18n, setLanguage } from '@tslprb/i18n';
 
+import { iso } from '@/ui';
 import * as haptics from '@/ui/haptics';
 
 import { OtpView } from '../OtpView';
 
 const T0 = Date.parse('2026-09-02T10:00:00.000Z');
-
-/** `Num` isolates its content in LRI…PDI, so matching rendered digits needs the same wrapper. */
-const iso = (value: string) => `\u2066${value}\u2069`;
 
 /** Fresh spies for the callbacks a case does not care about. */
 const noops = () => ({ onResend: jest.fn(), onChangeNumber: jest.fn() });

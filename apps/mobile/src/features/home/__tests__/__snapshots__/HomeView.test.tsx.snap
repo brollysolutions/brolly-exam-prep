@@ -933,7 +933,6 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               className="text-dim"
@@ -986,7 +985,6 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               className="text-dim"
@@ -1039,7 +1037,6 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               className="text-tar"

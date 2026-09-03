@@ -1,14 +1,13 @@
 import { act, render, screen, userEvent, within } from '@testing-library/react-native';
 import { initI18n, setLanguage } from '@tslprb/i18n';
 
+import { iso } from '@/ui';
+
 import { LoginView } from '../LoginView';
 
 const type = async (digits: string) => {
   for (const d of digits) await userEvent.press(screen.getByLabelText(d));
 };
-
-/** `Num` isolates its content in LRI…PDI, so matching rendered digits needs the same wrapper. */
-const iso = (value: string) => `\u2066${value}\u2069`;
 
 /** Scoped to the field, because the keypad renders the same digits. */
 const field = (value: string) => within(screen.getByTestId('login-phone')).getByText(iso(value));

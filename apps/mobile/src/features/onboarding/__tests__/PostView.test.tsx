@@ -1,10 +1,9 @@
 import { act, render, screen, userEvent } from '@testing-library/react-native';
 import { initI18n, setLanguage } from '@tslprb/i18n';
 
-import { PostView } from '../PostView';
+import { iso } from '@/ui';
 
-/** `Num` isolates its content in LRI…PDI, so matching rendered digits needs the same wrapper. */
-const iso = (value: string) => `\u2066${value}\u2069`;
+import { PostView } from '../PostView';
 
 describe('PostView', () => {
   beforeAll(() => {

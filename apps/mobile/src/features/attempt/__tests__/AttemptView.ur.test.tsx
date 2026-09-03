@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react-native';
-import { initI18n } from '@tslprb/i18n';
+import { render, screen, within } from '@testing-library/react-native';
+import { initI18n, ur } from '@tslprb/i18n';
 
 import { useLangStore } from '@/data/lang';
 import {
@@ -8,11 +8,30 @@ import {
   DEMO_PAPER,
   DEMO_REMAINING_SEC,
 } from '@/features/dev/sections/attemptDemo';
+import { iso } from '@/ui';
 
 import { AttemptNotices } from '../AttemptOverlays';
 import { AttemptView } from '../AttemptView';
 
 const noop = () => undefined;
+
+const props = {
+  attempt: DEMO_ATTEMPT,
+  question: DEMO_PAPER[DEMO_ATTEMPT.current - 1],
+  remainingSec: DEMO_REMAINING_SEC,
+  elapsedSec: DEMO_ELAPSED_SEC,
+  lang: 'ur' as const,
+  onLangChange: noop,
+  onExit: noop,
+  onSectionPress: noop,
+  onLockedTap: noop,
+  onAnswer: noop,
+  onClear: noop,
+  onToggleMark: noop,
+  onPrev: noop,
+  onNext: noop,
+  onOpenPalette: noop,
+};
 
 describe('AttemptView (ur)', () => {
   beforeAll(() => {
@@ -21,26 +40,7 @@ describe('AttemptView (ur)', () => {
   });
 
   it('mirrors the header and footer, keeps the clock LTR, and matches the snapshot', async () => {
-    await render(
-      <AttemptView
-        attempt={DEMO_ATTEMPT}
-        question={DEMO_PAPER[DEMO_ATTEMPT.current - 1]}
-        remainingSec={DEMO_REMAINING_SEC}
-        elapsedSec={DEMO_ELAPSED_SEC}
-        lang="ur"
-        onLangChange={noop}
-        onExit={noop}
-        onSectionPress={noop}
-        onLockedTap={noop}
-        onAnswer={noop}
-        onClear={noop}
-        onToggleMark={noop}
-        onPrev={noop}
-        onNext={noop}
-        onOpenPalette={noop}
-        notices={<AttemptNotices offline />}
-      />,
-    );
+    await render(<AttemptView {...props} notices={<AttemptNotices offline />} />);
 
     // The Urdu question stem is on screen, in the Nastaliq face.
     expect(
@@ -58,5 +58,21 @@ describe('AttemptView (ur)', () => {
     expect(screen.getByTestId('chevron-next')).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
 
     expect(screen.toJSON()).toMatchSnapshot();
+  });
+
+  // The line used to be `<Num>{t('common.seconds', { count })}</Num>`, which forced the whole
+  // string — Urdu unit included — through Archivo and drew the unit as tofu boxes.
+  it('splits the time-on-question line: digits in Archivo, the unit in Nastaliq', async () => {
+    await render(<AttemptView {...props} />);
+    const line = within(screen.getByTestId('time-on-question'));
+
+    expect(line.getByText(iso(String(DEMO_ELAPSED_SEC)))).toHaveStyle({
+      fontFamily: 'Archivo_400Regular',
+    });
+    expect(line.getByText(` ${ur.common.unitS}`)).toHaveStyle({
+      fontFamily: 'NotoNastaliqUrdu_400Regular',
+    });
+    // The flat string is still what a screen reader announces.
+    expect(screen.getByLabelText(`${DEMO_ELAPSED_SEC} ${ur.common.unitS}`)).toBeOnTheScreen();
   });
 });

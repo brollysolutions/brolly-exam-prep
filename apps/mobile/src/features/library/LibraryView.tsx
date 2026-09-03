@@ -5,7 +5,20 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Pressable, StyleSheet } from 'react-native';
 
-import { Chip, cx, Glyph, Num, Row, Screen, Stack, Text, Toast, useAutoDismiss, usePressed } from '@/ui';
+import {
+  Chip,
+  cx,
+  Glyph,
+  Measure,
+  Num,
+  Row,
+  Screen,
+  Stack,
+  Text,
+  Toast,
+  useAutoDismiss,
+  usePressed,
+} from '@/ui';
 
 /** Reading order of the three shelves; also the chip order. */
 const KINDS: { kind: TestKind; labelKey: string }[] = [
@@ -63,22 +76,12 @@ function TestRow({
           <Text variant="bodyLg" weight="600" color={locked ? 'dim' : 'chalk'}>
             {test.title[lang]}
           </Text>
-          <Row gap={1} align="baseline" wrap>
-            <Num variant="caption" weight="600" color="dim">
-              {test.pattern.totalQuestions}
-            </Num>
-            <Text variant="caption" color="dim">
-              {t('common.questionsUnit')}
-            </Text>
+          <Row gap={2} align="baseline" wrap>
+            <Measure value={test.pattern.totalQuestions} unit={t('common.questionsUnit')} />
             <Glyph variant="caption" color="mute">
               ·
             </Glyph>
-            <Num variant="caption" weight="600" color="dim">
-              {test.pattern.durationMinutes}
-            </Num>
-            <Text variant="caption" color="dim">
-              {t('common.minutesUnit')}
-            </Text>
+            <Measure value={test.pattern.durationMinutes} unit={t('common.minutesUnit')} />
           </Row>
         </Stack>
         <Row gap={2} align="center">

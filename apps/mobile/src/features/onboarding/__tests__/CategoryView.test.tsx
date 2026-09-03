@@ -1,10 +1,9 @@
 import { act, render, screen, userEvent, within } from '@testing-library/react-native';
 import { initI18n, setLanguage } from '@tslprb/i18n';
 
-import { CategoryView } from '../CategoryView';
+import { iso } from '@/ui';
 
-/** `Num` isolates its content in LRI…PDI, so matching rendered digits needs the same wrapper. */
-const iso = (value: string) => `\u2066${value}\u2069`;
+import { CategoryView } from '../CategoryView';
 
 const noops = () => ({ onBack: jest.fn() });
 

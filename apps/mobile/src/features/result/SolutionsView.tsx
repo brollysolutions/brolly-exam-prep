@@ -4,9 +4,8 @@ import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, View } from 'react-native';
 
-import { Chip, Glyph, Kicker, Num, Row, Screen, Stack, Text } from '@/ui';
+import { Chip, Duration, Glyph, Kicker, Num, Row, Screen, Stack, Text } from '@/ui';
 
-import { Duration } from './Duration';
 import { startEdge } from './edge';
 import { BackHeader } from './Header';
 import { LoadError, Skeleton } from './Placeholder';

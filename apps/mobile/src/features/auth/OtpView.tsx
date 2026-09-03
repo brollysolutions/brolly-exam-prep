@@ -21,6 +21,7 @@ import {
   Screen,
   Text,
   Toast,
+  usePressed,
   useReducedMotionSafe,
 } from '@/ui';
 
@@ -224,6 +225,7 @@ function Resend({ seconds, onResend }: ResendProps) {
   const [endsAt, setEndsAt] = useState(() => Date.now() + seconds * 1000);
   const [ticking, setTicking] = useState(seconds > 0);
   const { remainingSec } = useCountdown({ endsAt, enabled: ticking });
+  const { pressed, handlers } = usePressed();
   // Nothing left to tick: the interval stops instead of running for the rest of the session.
   if (ticking && remainingSec <= 0) setTicking(false);
 
@@ -251,8 +253,10 @@ function Resend({ seconds, onResend }: ResendProps) {
         setTicking(true);
         onResend();
       }}
+      {...handlers}
       className="mt-2 min-h-touch justify-center"
-      style={({ pressed }) => (pressed ? { opacity: 0.8 } : null)}
+      // One flattened object, never a callback: see `usePressed`.
+      style={pressed ? { opacity: 0.8 } : undefined}
     >
       <Text variant="small" weight="600" color="sand">
         {t('auth.resend')}

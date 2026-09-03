@@ -1,10 +1,9 @@
 import { act, render, screen, userEvent, within } from '@testing-library/react-native';
 import { initI18n, setLanguage } from '@tslprb/i18n';
 
-import { LibraryView } from '../LibraryView';
+import { iso } from '@/ui';
 
-/** `Num` isolates its content in LRI…PDI, so matching rendered digits needs the same wrapper. */
-const iso = (value: string) => `⁦${value}⁩`;
+import { LibraryView } from '../LibraryView';
 
 const handlers = () => ({ lang: 'en' as const, onOpen: jest.fn(), onLocked: jest.fn() });
 

@@ -1,5 +1,5 @@
 /**
- * Number/duration formatting for the result and solutions screens. Deliberately
+ * Number/duration formatting shared by every screen that prints one. Deliberately
  * Intl-free: Hermes ships Intl only on some platforms, and jest must produce the same
  * string the phone does.
  */

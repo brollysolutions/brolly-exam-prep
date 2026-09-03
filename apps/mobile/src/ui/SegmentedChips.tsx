@@ -4,6 +4,7 @@ import { Pressable, type ViewProps } from 'react-native';
 
 import { cx } from './cx';
 import * as haptics from './haptics';
+import { usePressed } from './pressable';
 import { Row } from './Row';
 import { Text } from './Text';
 
@@ -19,6 +20,43 @@ export type SegmentedChipsProps<V extends string> = Omit<ViewProps, 'children'> 
   onChange: (value: V) => void;
   options: SegmentedOption<V>[];
 };
+
+/**
+ * One cell. Its own component so the press delta can live in state: a `style` callback next to
+ * `className` loses its static values under css-interop on web (see `usePressed`).
+ */
+function Segment({
+  label,
+  lang,
+  active,
+  className,
+  onPress,
+}: {
+  label: string;
+  lang?: Lang;
+  active: boolean;
+  className?: string;
+  onPress: () => void;
+}) {
+  const { pressed, handlers } = usePressed();
+  return (
+    <Pressable
+      accessibilityRole="radio"
+      accessibilityState={{ checked: active }}
+      accessibilityLabel={label}
+      android_ripple={{ color: active ? colors.pressTint : colors.hivisTint3 }}
+      onPress={onPress}
+      {...handlers}
+      className={className}
+      // One flattened object, never a callback: see `usePressed`.
+      style={pressed && !active ? { opacity: 0.85 } : undefined}
+    >
+      <Text variant="body" weight="700" color={active ? 'tar' : 'dim'} align="center" lang={lang}>
+        {label}
+      </Text>
+    </Pressable>
+  );
+}
 
 /** The bordered language switcher from the prototype header: 48 px tall, cells ≥ 48 px wide. */
 export function SegmentedChips<V extends string>({
@@ -39,12 +77,11 @@ export function SegmentedChips<V extends string>({
       {options.map((o, i) => {
         const active = o.value === value;
         return (
-          <Pressable
+          <Segment
             key={o.value}
-            accessibilityRole="radio"
-            accessibilityState={{ checked: active }}
-            accessibilityLabel={o.label}
-            android_ripple={{ color: active ? colors.pressTint : colors.hivisTint3 }}
+            label={o.label}
+            lang={o.lang}
+            active={active}
             onPress={() => {
               if (active) return;
               haptics.select();
@@ -55,18 +92,7 @@ export function SegmentedChips<V extends string>({
               active && 'bg-hivis',
               i < last && cx('border-line', dir(d, 'border-r', 'border-l')),
             )}
-            style={({ pressed }) => (pressed && !active ? { opacity: 0.85 } : null)}
-          >
-            <Text
-              variant="body"
-              weight="700"
-              color={active ? 'tar' : 'dim'}
-              align="center"
-              lang={o.lang}
-            >
-              {o.label}
-            </Text>
-          </Pressable>
+          />
         );
       })}
     </Row>

@@ -10,7 +10,9 @@ import {
   Card,
   Chip,
   Glyph,
+  iso,
   Kicker,
+  Measure,
   Num,
   Row,
   Screen,
@@ -25,27 +27,6 @@ import {
  * a locked paper would make the screen's one hi-vis action a dead end (design review round 1).
  */
 const NEXT_MOCK = TESTS.find((test) => test.kind === 'full' && test.free) ?? TESTS[0];
-
-/**
- * A number inside an interpolated sentence cannot be wrapped in `<Num>`, so it gets the same
- * LRI…PDI isolation `<Num>` applies: it keeps its reading order inside an Urdu line. Only the
- * tabular figures are lost, which at caption size is invisible.
- */
-const iso = (value: number | string) => `⁦${value}⁩`;
-
-/** Digits plus a unit noun — the one shape that keeps `<Num>` and `t()` both honest. */
-function Meta({ n, unit }: { n: number; unit: string }) {
-  return (
-    <Row gap={1} align="baseline">
-      <Num variant="caption" weight="600" color="dim">
-        {n}
-      </Num>
-      <Text variant="caption" color="dim">
-        {unit}
-      </Text>
-    </Row>
-  );
-}
 
 /**
  * The prototype's action row: a 3 px hi-vis bar on the reading-start side, a title, the reason
@@ -163,11 +144,11 @@ export function HomeView({
           {NEXT_MOCK.title[lang]}
         </Text>
         <Row gap={2} align="center" wrap className="mt-2">
-          <Meta n={pattern.totalQuestions} unit={t('common.questionsUnit')} />
+          <Measure value={pattern.totalQuestions} unit={t('common.questionsUnit')} />
           <Glyph variant="caption" color="mute">
             ·
           </Glyph>
-          <Meta n={pattern.durationMinutes} unit={t('common.minutesUnit')} />
+          <Measure value={pattern.durationMinutes} unit={t('common.minutesUnit')} />
         </Row>
         <Button
           testID="home-start"

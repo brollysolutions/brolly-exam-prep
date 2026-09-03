@@ -6,11 +6,25 @@ import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, View } from 'react-native';
 
 import type { ResultAction, ResultDetail } from '@/data/api';
-import { Button, Chip, Glyph, Kicker, Num, Row, Screen, Stack, Text, usePressed } from '@/ui';
+import {
+  Button,
+  Chip,
+  Duration,
+  formatDuration,
+  formatRank,
+  Glyph,
+  isLatinValue,
+  Kicker,
+  Num,
+  Row,
+  Screen,
+  Stack,
+  Text,
+  useDurationUnits,
+  usePressed,
+} from '@/ui';
 
-import { Duration, useDurationUnits } from './Duration';
 import { startEdge } from './edge';
-import { formatDuration, formatRank, isLatinValue } from './format';
 import { BackHeader } from './Header';
 import { LoadError, Skeleton } from './Placeholder';
 

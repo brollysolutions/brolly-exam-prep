@@ -17,6 +17,8 @@ import {
   Button,
   Chip,
   cx,
+  Duration,
+  Glyph,
   haptics,
   Num,
   ProgressRail,
@@ -198,6 +200,41 @@ function OptionRow({
 }
 
 /**
+ * A pressable whose press delta lives in state instead of a `style` callback: a callback
+ * next to `className` silently loses its static values under css-interop on web (`usePressed`).
+ */
+function PressBox({
+  className,
+  pressedOpacity = 0.85,
+  accessibilityLabel,
+  onPress,
+  testID,
+  children,
+}: {
+  className: string;
+  pressedOpacity?: number;
+  accessibilityLabel: string;
+  onPress: () => void;
+  testID: string;
+  children: ReactNode;
+}) {
+  const { pressed, handlers } = usePressed();
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel}
+      onPress={onPress}
+      testID={testID}
+      {...handlers}
+      className={className}
+      style={pressed ? { opacity: pressedOpacity } : undefined}
+    >
+      {children}
+    </Pressable>
+  );
+}
+
+/**
  * The test-attempt screen, pure: every value is a prop and every action is a callback, so the
  * route, the tests and the dev states gallery all render the same component.
  */
@@ -243,18 +280,15 @@ export function AttemptView({
     <Screen rail critical={armed && remainingSec <= CRITICAL_SEC} overlay={overlay} testID={testID}>
       <View className="border-b border-line bg-panel" testID="attempt-header">
         <Row align="center" gap={2} className="px-2 py-1" testID="attempt-header-row">
-          <Pressable
-            accessibilityRole="button"
+          <PressBox
             accessibilityLabel={t('test.exit')}
             onPress={onExit}
             testID="btn-exit"
             className="h-touch w-touch items-center justify-center"
-            style={({ pressed }) => (pressed ? { opacity: 0.7 } : null)}
+            pressedOpacity={0.7}
           >
-            <Text variant="glyph" color="dim">
-              ✕
-            </Text>
-          </Pressable>
+            <Glyph color="dim">✕</Glyph>
+          </PressBox>
           <SegmentedChips
             value={lang}
             onChange={onLangChange}
@@ -357,9 +391,9 @@ export function AttemptView({
           <Text variant="caption" color="dim">
             {`${t('test.timeOnQ')} ·`}
           </Text>
-          <Num variant="caption" weight="400" color="dim">
-            {t('common.seconds', { count: elapsedSec })}
-          </Num>
+          {/* Digits in Archivo, the unit in the language's own face: `common.seconds`
+              inside `<Num>` drew the Telugu and Urdu unit as tofu. */}
+          <Duration seconds={elapsedSec} variant="caption" weight="400" color="dim" />
         </Row>
       </ScrollView>
 
@@ -383,26 +417,22 @@ export function AttemptView({
             />
           </Row>
           <Row gap={2}>
-            <Pressable
-              accessibilityRole="button"
+            <PressBox
               accessibilityLabel={t('test.previous')}
               onPress={onPrev}
               testID="btn-prev"
               className="h-touchLg w-touchLg items-center justify-center rounded-sm border border-line3"
-              style={({ pressed }) => (pressed ? { opacity: 0.85 } : null)}
             >
               {/* Latin face: Nastaliq has no chevron glyph, so Urdu fell back to a tofu box. */}
-              <Text variant="glyph" color="chalk" lang="en" testID="chevron-prev">
+              <Glyph color="chalk" testID="chevron-prev">
                 {d.chevronPrev}
-              </Text>
-            </Pressable>
-            <Pressable
-              accessibilityRole="button"
+              </Glyph>
+            </PressBox>
+            <PressBox
               accessibilityLabel={`${t('test.palette')} ${tally.answered}/${total}`}
               onPress={onOpenPalette}
               testID="btn-palette"
               className="h-touchLg flex-1 items-center justify-center rounded-sm border border-line3"
-              style={({ pressed }) => (pressed ? { opacity: 0.85 } : null)}
             >
               <Text variant="body" weight="600">
                 {t('test.palette')}
@@ -410,14 +440,14 @@ export function AttemptView({
               <Num variant="caption" weight="400" color="dim">
                 {`${tally.answered} / ${total}`}
               </Num>
-            </Pressable>
+            </PressBox>
             <Button
               size="lg"
               label={t('test.next')}
               icon={
-                <Text variant="glyph" color="tar" lang="en" testID="chevron-next">
+                <Glyph color="tar" testID="chevron-next">
                   {d.chevronNext}
-                </Text>
+                </Glyph>
               }
               onPress={onNext}
               style={{ width: size.nextBtn }}

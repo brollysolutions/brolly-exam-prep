@@ -891,7 +891,6 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-          style={null}
           testID="otp-change-number"
         >
           <View
@@ -1376,7 +1375,6 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1432,7 +1430,6 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1488,7 +1485,6 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1557,7 +1553,6 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1613,7 +1608,6 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1669,7 +1663,6 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1738,7 +1731,6 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1794,7 +1786,6 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1850,7 +1841,6 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1922,7 +1912,6 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               accessibilityLanguage="en"
@@ -1978,7 +1967,6 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={null}
           >
             <Text
               className="text-chalk"

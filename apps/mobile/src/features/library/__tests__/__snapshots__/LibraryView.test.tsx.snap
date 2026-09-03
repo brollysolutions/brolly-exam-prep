@@ -1249,48 +1249,60 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                       "alignItems": "baseline",
                       "flexDirection": "row-reverse",
                       "flexWrap": "wrap",
-                      "gap": 4,
+                      "gap": 8,
                       "justifyContent": undefined,
                     }
                   }
                 >
-                  <Text
-                    accessibilityLanguage="en"
-                    className="text-dim"
+                  <View
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
-                        "fontSize": 11.5,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "letterSpacing": 0,
-                        "lineHeight": 16.7,
-                        "textAlign": "right",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
+                        "alignItems": "baseline",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
                       }
                     }
                   >
-                    ⁦40⁩
-                  </Text>
-                  <Text
-                    className="text-dim"
-                    style={
-                      {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 12.5,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 25.6,
-                        "textAlign": "right",
-                        "textTransform": undefined,
-                        "writingDirection": "rtl",
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "Archivo_600SemiBold",
+                          "fontSize": 11.5,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 16.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
                       }
-                    }
-                  >
-                    سوالات
-                  </Text>
+                    >
+                      ⁦40⁩
+                    </Text>
+                    <Text
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 12.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 25.6,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      سوالات
+                    </Text>
+                  </View>
                   <Text
                     className="text-mute"
                     style={
@@ -1308,43 +1320,55 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                   >
                     ·
                   </Text>
-                  <Text
-                    accessibilityLanguage="en"
-                    className="text-dim"
+                  <View
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
-                        "fontSize": 11.5,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "letterSpacing": 0,
-                        "lineHeight": 16.7,
-                        "textAlign": "right",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
+                        "alignItems": "baseline",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
                       }
                     }
                   >
-                    ⁦60⁩
-                  </Text>
-                  <Text
-                    className="text-dim"
-                    style={
-                      {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 12.5,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 25.6,
-                        "textAlign": "right",
-                        "textTransform": undefined,
-                        "writingDirection": "rtl",
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "Archivo_600SemiBold",
+                          "fontSize": 11.5,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 16.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
                       }
-                    }
-                  >
-                    منٹ
-                  </Text>
+                    >
+                      ⁦60⁩
+                    </Text>
+                    <Text
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 12.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 25.6,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      منٹ
+                    </Text>
+                  </View>
                 </View>
               </View>
               <View
@@ -1533,48 +1557,60 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                       "alignItems": "baseline",
                       "flexDirection": "row-reverse",
                       "flexWrap": "wrap",
-                      "gap": 4,
+                      "gap": 8,
                       "justifyContent": undefined,
                     }
                   }
                 >
-                  <Text
-                    accessibilityLanguage="en"
-                    className="text-dim"
+                  <View
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
-                        "fontSize": 11.5,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "letterSpacing": 0,
-                        "lineHeight": 16.7,
-                        "textAlign": "right",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
+                        "alignItems": "baseline",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
                       }
                     }
                   >
-                    ⁦200⁩
-                  </Text>
-                  <Text
-                    className="text-dim"
-                    style={
-                      {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 12.5,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 25.6,
-                        "textAlign": "right",
-                        "textTransform": undefined,
-                        "writingDirection": "rtl",
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "Archivo_600SemiBold",
+                          "fontSize": 11.5,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 16.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
                       }
-                    }
-                  >
-                    سوالات
-                  </Text>
+                    >
+                      ⁦200⁩
+                    </Text>
+                    <Text
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 12.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 25.6,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      سوالات
+                    </Text>
+                  </View>
                   <Text
                     className="text-mute"
                     style={
@@ -1592,43 +1628,55 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                   >
                     ·
                   </Text>
-                  <Text
-                    accessibilityLanguage="en"
-                    className="text-dim"
+                  <View
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
-                        "fontSize": 11.5,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "letterSpacing": 0,
-                        "lineHeight": 16.7,
-                        "textAlign": "right",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
+                        "alignItems": "baseline",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
                       }
                     }
                   >
-                    ⁦180⁩
-                  </Text>
-                  <Text
-                    className="text-dim"
-                    style={
-                      {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 12.5,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 25.6,
-                        "textAlign": "right",
-                        "textTransform": undefined,
-                        "writingDirection": "rtl",
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "Archivo_600SemiBold",
+                          "fontSize": 11.5,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 16.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
                       }
-                    }
-                  >
-                    منٹ
-                  </Text>
+                    >
+                      ⁦180⁩
+                    </Text>
+                    <Text
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 12.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 25.6,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      منٹ
+                    </Text>
+                  </View>
                 </View>
               </View>
               <View

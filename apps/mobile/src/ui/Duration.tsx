@@ -2,9 +2,10 @@ import type { ColorName, FontWeight, TextName } from '@tslprb/design-tokens';
 import { useDir } from '@tslprb/i18n';
 import { useTranslation } from 'react-i18next';
 
-import { Num, Row, Text } from '@/ui';
-
 import { durationParts, formatDuration, type DurationUnits } from './format';
+import { Num } from './Num';
+import { Row } from './Row';
+import { Text } from './Text';
 
 /**
  * The duration units for the current language. English abuts them to the digits ("54s");

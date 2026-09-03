@@ -1256,7 +1256,6 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                   onResponderTerminate={[Function]}
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
-                  style={null}
                 >
                   <Text
                     className="text-dim"
@@ -1309,7 +1308,6 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                   onResponderTerminate={[Function]}
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
-                  style={null}
                 >
                   <Text
                     className="text-dim"
@@ -1362,7 +1360,6 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                   onResponderTerminate={[Function]}
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
-                  style={null}
                 >
                   <Text
                     className="text-tar"

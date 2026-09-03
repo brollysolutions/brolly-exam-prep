@@ -890,7 +890,6 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-          style={null}
           testID="category-back"
         >
           <View

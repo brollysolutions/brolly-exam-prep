@@ -10,6 +10,7 @@ import { forwardRef, useCallback, useImperativeHandle, useRef, type ReactNode } 
 import { useTranslation } from 'react-i18next';
 import { Platform, Pressable } from 'react-native';
 
+import { usePressed } from './pressable';
 import { Row } from './Row';
 import { Text } from './Text';
 
@@ -40,6 +41,7 @@ export const Sheet = forwardRef<SheetHandle, SheetProps>(function Sheet(
 ) {
   const { t } = useTranslation();
   const modal = useRef<BottomSheetModal>(null);
+  const { pressed, handlers } = usePressed();
   useImperativeHandle(ref, () => ({
     present: () => modal.current?.present(),
     dismiss: () => modal.current?.dismiss(),
@@ -86,8 +88,10 @@ export const Sheet = forwardRef<SheetHandle, SheetProps>(function Sheet(
             accessibilityRole="button"
             accessibilityLabel={t('common.close')}
             onPress={() => modal.current?.dismiss()}
+            {...handlers}
             className="h-touch w-touch items-center justify-center"
-            style={({ pressed }) => (pressed ? { opacity: 0.7 } : null)}
+            // One flattened object, never a callback: see `usePressed`.
+            style={pressed ? { opacity: 0.7 } : undefined}
           >
             <Text variant="subtitle" color="dim">
               ✕

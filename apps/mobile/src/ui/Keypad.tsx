@@ -1,10 +1,12 @@
 import { colors } from '@tslprb/design-tokens';
+import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, View } from 'react-native';
 
 import { Glyph } from './Glyph';
 import * as haptics from './haptics';
 import { Num } from './Num';
+import { usePressed } from './pressable';
 import { Row } from './Row';
 import { Stack } from './Stack';
 
@@ -23,6 +25,40 @@ const ROWS: readonly (readonly string[])[] = [
   ['', '0', DEL],
 ];
 
+/**
+ * One key. Its own component so the press delta can live in state: a `style` callback next to
+ * `className` loses its static values under css-interop on web (see `usePressed`).
+ */
+function Key({
+  disabled,
+  accessibilityLabel,
+  onPress,
+  children,
+}: {
+  disabled: boolean;
+  accessibilityLabel: string;
+  onPress: () => void;
+  children: ReactNode;
+}) {
+  const { pressed, handlers } = usePressed();
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel}
+      accessibilityState={{ disabled }}
+      disabled={disabled}
+      android_ripple={{ color: colors.hivisTint3 }}
+      onPress={onPress}
+      {...handlers}
+      className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+      // One flattened object, never a callback: see `usePressed`.
+      style={pressed ? { opacity: 0.8 } : undefined}
+    >
+      {children}
+    </Pressable>
+  );
+}
+
 /** 3×4 numeric keypad. Digit order stays physical LTR in every language, like the OS dialer. */
 export function Keypad({ onKey, onDelete, disabled = false, testID }: KeypadProps) {
   const { t } = useTranslation();
@@ -34,20 +70,15 @@ export function Keypad({ onKey, onDelete, disabled = false, testID }: KeypadProp
             k === '' ? (
               <View key={c} className="h-key flex-1" />
             ) : (
-              <Pressable
+              <Key
                 key={c}
-                accessibilityRole="button"
-                accessibilityLabel={k === DEL ? t('auth.deleteDigit') : k}
-                accessibilityState={{ disabled }}
                 disabled={disabled}
-                android_ripple={{ color: colors.hivisTint3 }}
+                accessibilityLabel={k === DEL ? t('auth.deleteDigit') : k}
                 onPress={() => {
                   haptics.tapLight();
                   if (k === DEL) onDelete();
                   else onKey(k);
                 }}
-                className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
-                style={({ pressed }) => (pressed ? { opacity: 0.8 } : null)}
               >
                 {k === DEL ? (
                   <Glyph weight="600" align="center">
@@ -58,7 +89,7 @@ export function Keypad({ onKey, onDelete, disabled = false, testID }: KeypadProp
                     {k}
                   </Num>
                 )}
-              </Pressable>
+              </Key>
             ),
           )}
         </Row>
