@@ -201,5 +201,37 @@
     "tip": "Exam tip",
     "notFound": "That topic is not in the study material."
   },
-  "tabs": { "home": "Home", "study": "Study", "tests": "Tests", "profile": "Profile" }
+  "tabs": { "home": "Home", "study": "Study", "tests": "Tests", "profile": "Profile" },
+  "eligibility": {
+    "title": "PMT / PET check",
+    "sub": "Enter your measurements and see how they stand against the physical standards for your post.",
+    "post": "Post",
+    "gender": "Gender",
+    "male": "Men",
+    "female": "Women",
+    "group": "Category",
+    "general": "General",
+    "st": "ST / agency",
+    "height": "Height",
+    "chest": "Chest (unexpanded)",
+    "chestExpansion": "Chest expansion",
+    "run800": "\u2066800\u2069 m run",
+    "run100": "\u2066100\u2069 m run",
+    "longJump": "Long jump",
+    "shotPut": "Shot put",
+    "check": "Check eligibility",
+    "eligible": "You meet the standards",
+    "notYet": "Not yet",
+    "incomplete": "Fill in every measurement",
+    "improve": "What to work on",
+    "required": "Required",
+    "yours": "Yours",
+    "pass": "Meets the standard",
+    "fail": "Below the standard",
+    "notEntered": "Not entered",
+    "cm": "cm",
+    "m": "m",
+    "s": "sec",
+    "disclaimer": "Standards as per the \u20662022\u2069 notification; confirm with the latest TSLPRB notification."
+  }
 }
