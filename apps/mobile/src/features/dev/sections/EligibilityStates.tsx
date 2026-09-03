@@ -16,7 +16,7 @@ const DEV = {
   eligible: 'F-25 — every standard met (constable, men, general)',
   notYet: 'F-25 — short on height and the 1600 m (constable, men, general)',
   stChest: 'F-25 — ST chest relaxation tagged unconfirmed (constable, men, ST)',
-  incomplete: 'F-25 — half a form, SI note and every row tagged unconfirmed (SI, women, ST)',
+  incomplete: 'F-25 — half a form, unconfirmed note and every row tagged (SI, women, ST)',
 } as const;
 
 const FRAME_HEIGHT = 560;

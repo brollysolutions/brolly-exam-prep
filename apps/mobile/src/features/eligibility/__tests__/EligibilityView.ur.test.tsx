@@ -60,9 +60,14 @@ describe('EligibilityView (ur)', () => {
       flexDirection: 'row-reverse',
     });
 
-    // A measurement is typed in Latin figures in every language: the field never mirrors.
+    // A measurement is typed in Latin figures in every language, so the field's writing
+    // direction never mirrors — but the caret sits on the reading side, which is the right.
     expect(screen.getByTestId('eligibility-field-height')).toHaveStyle({
-      textAlign: 'left',
+      textAlign: 'right',
+      writingDirection: 'ltr',
+    });
+    expect(screen.getByTestId('eligibility-field-run800m-min')).toHaveStyle({
+      textAlign: 'right',
       writingDirection: 'ltr',
     });
 
@@ -74,14 +79,14 @@ describe('EligibilityView (ur)', () => {
     );
     expect(screen.getByTestId('eligibility-improve-height')).toBeOnTheScreen();
 
-    // Every constable figure is confirmed: no tag, no SI note.
+    // Every constable figure is confirmed: no tag, no note.
     expect(screen.queryByText(i18n.t('eligibility.unverified'))).toBeNull();
-    expect(screen.queryByTestId('eligibility-si-note')).toBeNull();
+    expect(screen.queryByTestId('eligibility-unverified-note')).toBeNull();
 
     expect(screen.toJSON()).toMatchSnapshot();
   });
 
-  it('carries the unconfirmed tag and the SI note in Urdu', async () => {
+  it('carries the unconfirmed tag and the note in Urdu', async () => {
     await render(
       <EligibilityView
         post="si"
@@ -97,8 +102,8 @@ describe('EligibilityView (ur)', () => {
         onBack={noop}
       />,
     );
-    expect(screen.getByTestId('eligibility-si-note')).toHaveTextContent(
-      i18n.t('eligibility.siUnverified'),
+    expect(screen.getByTestId('eligibility-unverified-note')).toHaveTextContent(
+      i18n.t('eligibility.unverifiedNote'),
     );
     expect(screen.getAllByText(i18n.t('eligibility.unverified'))).toHaveLength(5);
     expect(screen.getByTestId('eligibility-unverified-run100m')).toBeOnTheScreen();

@@ -244,6 +244,7 @@
   "eligibility": {
     "title": "PMT / PET check",
     "sub": "Enter your measurements and see how they stand against the physical standards for your post.",
+    "measurements": "Your measurements",
     "post": "Post",
     "gender": "Gender",
     "male": "Men",
@@ -254,9 +255,7 @@
     "height": "Height",
     "chest": "Chest (unexpanded)",
     "chestExpansion": "Chest expansion",
-    "run1600": "⁦1600⁩ m run",
-    "run800": "\u2066800\u2069 m run",
-    "run100": "\u2066100\u2069 m run",
+    "run": "{{m}} m run",
     "longJump": "Long jump",
     "shotPut": "Shot put",
     "check": "Check eligibility",
@@ -270,10 +269,12 @@
     "fail": "Below the standard",
     "notEntered": "Not entered",
     "cm": "cm",
+    "min": "min",
+    "sec": "sec",
     "m": "m",
     "s": "sec",
     "unverified": "Unconfirmed",
-    "siUnverified": "SI figures are not yet confirmed against the notification.",
-    "disclaimer": "Standards as per the \u20662022\u2069 notification; confirm with the latest TSLPRB notification."
+    "unverifiedNote": "Some of these figures are not yet confirmed against the notification.",
+    "disclaimer": "Standards as per the {{year}} notification; confirm with the latest TSLPRB notification."
   }
 }

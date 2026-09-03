@@ -905,7 +905,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
         >
           <Text
             accessibilityElementsHidden={true}
-            className="text-dim"
+            className="text-chalk"
             importantForAccessibility="no"
             style={
               {
@@ -969,7 +969,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
           اپنی پیمائشیں درج کریں — آپ کی پوسٹ کے جسمانی معیارات سے موازنہ دکھایا جائے گا۔
         </Text>
         <View
-          className="mt-5"
+          className="mt-6"
           style={
             {
               "alignItems": undefined,
@@ -999,7 +999,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   "letterSpacing": 0,
                   "lineHeight": 26.7,
                   "textAlign": "right",
-                  "textTransform": "uppercase",
+                  "textTransform": undefined,
                   "writingDirection": "rtl",
                 }
               }
@@ -1008,7 +1008,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
             </Text>
             <View
               accessibilityRole="radiogroup"
-              className="h-touch self-start overflow-hidden rounded-sm border border-line"
+              className="h-touch overflow-hidden rounded-sm border border-line self-stretch"
               style={
                 {
                   "alignItems": undefined,
@@ -1041,7 +1041,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-2 bg-hivis border-line border-l"
+                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-panel3 border-line3 border-line3 border-l"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -1055,7 +1055,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 onStartShouldSetResponder={[Function]}
               >
                 <Text
-                  className="text-tar"
+                  className="text-chalk"
                   style={
                     {
                       "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -1093,7 +1093,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-2"
+                className="h-full min-w-touch items-center justify-center px-3 flex-1"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -1146,7 +1146,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   "letterSpacing": 0,
                   "lineHeight": 26.7,
                   "textAlign": "right",
-                  "textTransform": "uppercase",
+                  "textTransform": undefined,
                   "writingDirection": "rtl",
                 }
               }
@@ -1155,7 +1155,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
             </Text>
             <View
               accessibilityRole="radiogroup"
-              className="h-touch self-start overflow-hidden rounded-sm border border-line"
+              className="h-touch overflow-hidden rounded-sm border border-line self-stretch"
               style={
                 {
                   "alignItems": undefined,
@@ -1188,7 +1188,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+                className="h-full min-w-touch items-center justify-center px-3 flex-1 border-line border-l"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -1240,7 +1240,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-2 bg-hivis"
+                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-panel3 border-line3"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -1254,7 +1254,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 onStartShouldSetResponder={[Function]}
               >
                 <Text
-                  className="text-tar"
+                  className="text-chalk"
                   style={
                     {
                       "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -1293,7 +1293,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   "letterSpacing": 0,
                   "lineHeight": 26.7,
                   "textAlign": "right",
-                  "textTransform": "uppercase",
+                  "textTransform": undefined,
                   "writingDirection": "rtl",
                 }
               }
@@ -1302,7 +1302,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
             </Text>
             <View
               accessibilityRole="radiogroup"
-              className="h-touch self-start overflow-hidden rounded-sm border border-line"
+              className="h-touch overflow-hidden rounded-sm border border-line self-stretch"
               style={
                 {
                   "alignItems": undefined,
@@ -1335,7 +1335,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-2 bg-hivis border-line border-l"
+                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-panel3 border-line3 border-line3 border-l"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -1349,7 +1349,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 onStartShouldSetResponder={[Function]}
               >
                 <Text
-                  className="text-tar"
+                  className="text-chalk"
                   style={
                     {
                       "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -1387,7 +1387,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-2"
+                className="h-full min-w-touch items-center justify-center px-3 flex-1"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -1433,6 +1433,23 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
           }
           testID="eligibility-fields"
         >
+          <Text
+            className="text-dim"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_700Bold",
+                "fontSize": 13,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 26.7,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            آپ کی پیمائشیں
+          </Text>
           <View
             style={
               {
@@ -1490,35 +1507,48 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               </Text>
             </View>
             <View
-              className="h-touchLg justify-center rounded-sm border bg-panel2 px-3 border-line"
-            >
-              <TextInput
-                accessibilityLabel="قد (سینٹی میٹر)"
-                inputMode="decimal"
-                keyboardType="decimal-pad"
-                maxLength={6}
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onFocus={[Function]}
-                placeholderTextColor="#5A5D62"
-                selectionColor="#FFE01B"
-                style={
-                  {
-                    "color": "#EDEBE3",
-                    "fontFamily": "Archivo_600SemiBold",
-                    "fontSize": 22,
-                    "height": 56,
-                    "letterSpacing": 0,
-                    "lineHeight": 31.9,
-                    "padding": 0,
-                    "textAlign": "left",
-                    "textAlignVertical": "center",
-                    "writingDirection": "ltr",
-                  }
+              style={
+                {
+                  "alignItems": undefined,
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": undefined,
+                  "justifyContent": undefined,
                 }
-                testID="eligibility-field-height"
-                value="151"
-              />
+              }
+            >
+              <View
+                className="h-touchLg flex-1 justify-center rounded-sm border bg-panel2 px-3 border-line"
+              >
+                <TextInput
+                  accessibilityLabel="قد (سینٹی میٹر)"
+                  inputMode="decimal"
+                  keyboardType="decimal-pad"
+                  maxLength={6}
+                  onBlur={[Function]}
+                  onChangeText={[Function]}
+                  onFocus={[Function]}
+                  placeholder="152.5"
+                  placeholderTextColor="#5A5D62"
+                  selectionColor="#FFE01B"
+                  style={
+                    {
+                      "color": "#EDEBE3",
+                      "fontFamily": "Archivo_600SemiBold",
+                      "fontSize": 22,
+                      "height": 56,
+                      "letterSpacing": 0,
+                      "lineHeight": 31.9,
+                      "padding": 0,
+                      "textAlign": "right",
+                      "textAlignVertical": "center",
+                      "writingDirection": "ltr",
+                    }
+                  }
+                  testID="eligibility-field-height"
+                  value="151"
+                />
+              </View>
             </View>
           </View>
           <View
@@ -1531,10 +1561,27 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               }
             }
           >
+            <Text
+              className="text-chalk2"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              ⁦800⁩ میٹر دوڑ
+            </Text>
             <View
               style={
                 {
-                  "alignItems": "baseline",
+                  "alignItems": undefined,
                   "flexDirection": "row-reverse",
                   "flexWrap": undefined,
                   "gap": 8,
@@ -1542,71 +1589,128 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 }
               }
             >
-              <Text
-                className="text-chalk2"
+              <View
+                className="flex-1"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 14.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "alignItems": undefined,
+                    "flexDirection": "column",
+                    "gap": 4,
+                    "justifyContent": undefined,
                   }
                 }
               >
-                ⁦800⁩ میٹر دوڑ
-              </Text>
-              <Text
-                className="text-dim"
+                <View
+                  className="h-touchLg flex-1 justify-center rounded-sm border bg-panel2 px-3 border-line"
+                >
+                  <TextInput
+                    accessibilityLabel="⁦800⁩ میٹر دوڑ (منٹ)"
+                    inputMode="numeric"
+                    keyboardType="number-pad"
+                    maxLength={3}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder="5"
+                    placeholderTextColor="#5A5D62"
+                    selectionColor="#FFE01B"
+                    style={
+                      {
+                        "color": "#EDEBE3",
+                        "fontFamily": "Archivo_600SemiBold",
+                        "fontSize": 22,
+                        "height": 56,
+                        "letterSpacing": 0,
+                        "lineHeight": 31.9,
+                        "padding": 0,
+                        "textAlign": "right",
+                        "textAlignVertical": "center",
+                        "writingDirection": "ltr",
+                      }
+                    }
+                    testID="eligibility-field-run800m-min"
+                    value="5"
+                  />
+                </View>
+                <Text
+                  className="text-dim"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_400Regular",
+                      "fontSize": 12.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 25.6,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  منٹ
+                </Text>
+              </View>
+              <View
+                className="flex-1"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 12.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 25.6,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "alignItems": undefined,
+                    "flexDirection": "column",
+                    "gap": 4,
+                    "justifyContent": undefined,
                   }
                 }
               >
-                سیکنڈ
-              </Text>
-            </View>
-            <View
-              className="h-touchLg justify-center rounded-sm border bg-panel2 px-3 border-line"
-            >
-              <TextInput
-                accessibilityLabel="⁦800⁩ میٹر دوڑ (سیکنڈ)"
-                inputMode="decimal"
-                keyboardType="decimal-pad"
-                maxLength={6}
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onFocus={[Function]}
-                placeholderTextColor="#5A5D62"
-                selectionColor="#FFE01B"
-                style={
-                  {
-                    "color": "#EDEBE3",
-                    "fontFamily": "Archivo_600SemiBold",
-                    "fontSize": 22,
-                    "height": 56,
-                    "letterSpacing": 0,
-                    "lineHeight": 31.9,
-                    "padding": 0,
-                    "textAlign": "left",
-                    "textAlignVertical": "center",
-                    "writingDirection": "ltr",
+                <View
+                  className="h-touchLg flex-1 justify-center rounded-sm border bg-panel2 px-3 border-line"
+                >
+                  <TextInput
+                    accessibilityLabel="⁦800⁩ میٹر دوڑ (سیکنڈ)"
+                    inputMode="numeric"
+                    keyboardType="number-pad"
+                    maxLength={3}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder="20"
+                    placeholderTextColor="#5A5D62"
+                    selectionColor="#FFE01B"
+                    style={
+                      {
+                        "color": "#EDEBE3",
+                        "fontFamily": "Archivo_600SemiBold",
+                        "fontSize": 22,
+                        "height": 56,
+                        "letterSpacing": 0,
+                        "lineHeight": 31.9,
+                        "padding": 0,
+                        "textAlign": "right",
+                        "textAlignVertical": "center",
+                        "writingDirection": "ltr",
+                      }
+                    }
+                    testID="eligibility-field-run800m-sec"
+                    value="00"
+                  />
+                </View>
+                <Text
+                  className="text-dim"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_400Regular",
+                      "fontSize": 12.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 25.6,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
                   }
-                }
-                testID="eligibility-field-run800m"
-                value="300"
-              />
+                >
+                  سیکنڈ
+                </Text>
+              </View>
             </View>
           </View>
           <View
@@ -1666,35 +1770,48 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               </Text>
             </View>
             <View
-              className="h-touchLg justify-center rounded-sm border bg-panel2 px-3 border-line"
-            >
-              <TextInput
-                accessibilityLabel="لمبی چھلانگ (میٹر)"
-                inputMode="decimal"
-                keyboardType="decimal-pad"
-                maxLength={6}
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onFocus={[Function]}
-                placeholderTextColor="#5A5D62"
-                selectionColor="#FFE01B"
-                style={
-                  {
-                    "color": "#EDEBE3",
-                    "fontFamily": "Archivo_600SemiBold",
-                    "fontSize": 22,
-                    "height": 56,
-                    "letterSpacing": 0,
-                    "lineHeight": 31.9,
-                    "padding": 0,
-                    "textAlign": "left",
-                    "textAlignVertical": "center",
-                    "writingDirection": "ltr",
-                  }
+              style={
+                {
+                  "alignItems": undefined,
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": undefined,
+                  "justifyContent": undefined,
                 }
-                testID="eligibility-field-longJump"
-                value="3"
-              />
+              }
+            >
+              <View
+                className="h-touchLg flex-1 justify-center rounded-sm border bg-panel2 px-3 border-line"
+              >
+                <TextInput
+                  accessibilityLabel="لمبی چھلانگ (میٹر)"
+                  inputMode="decimal"
+                  keyboardType="decimal-pad"
+                  maxLength={6}
+                  onBlur={[Function]}
+                  onChangeText={[Function]}
+                  onFocus={[Function]}
+                  placeholder="2.5"
+                  placeholderTextColor="#5A5D62"
+                  selectionColor="#FFE01B"
+                  style={
+                    {
+                      "color": "#EDEBE3",
+                      "fontFamily": "Archivo_600SemiBold",
+                      "fontSize": 22,
+                      "height": 56,
+                      "letterSpacing": 0,
+                      "lineHeight": 31.9,
+                      "padding": 0,
+                      "textAlign": "right",
+                      "textAlignVertical": "center",
+                      "writingDirection": "ltr",
+                    }
+                  }
+                  testID="eligibility-field-longJump"
+                  value="3"
+                />
+              </View>
             </View>
           </View>
           <View
@@ -1754,35 +1871,48 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               </Text>
             </View>
             <View
-              className="h-touchLg justify-center rounded-sm border bg-panel2 px-3 border-line"
-            >
-              <TextInput
-                accessibilityLabel="گولہ پھینک (میٹر)"
-                inputMode="decimal"
-                keyboardType="decimal-pad"
-                maxLength={6}
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onFocus={[Function]}
-                placeholderTextColor="#5A5D62"
-                selectionColor="#FFE01B"
-                style={
-                  {
-                    "color": "#EDEBE3",
-                    "fontFamily": "Archivo_600SemiBold",
-                    "fontSize": 22,
-                    "height": 56,
-                    "letterSpacing": 0,
-                    "lineHeight": 31.9,
-                    "padding": 0,
-                    "textAlign": "left",
-                    "textAlignVertical": "center",
-                    "writingDirection": "ltr",
-                  }
+              style={
+                {
+                  "alignItems": undefined,
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": undefined,
+                  "justifyContent": undefined,
                 }
-                testID="eligibility-field-shotPut"
-                value="4.5"
-              />
+              }
+            >
+              <View
+                className="h-touchLg flex-1 justify-center rounded-sm border bg-panel2 px-3 border-line"
+              >
+                <TextInput
+                  accessibilityLabel="گولہ پھینک (میٹر)"
+                  inputMode="decimal"
+                  keyboardType="decimal-pad"
+                  maxLength={6}
+                  onBlur={[Function]}
+                  onChangeText={[Function]}
+                  onFocus={[Function]}
+                  placeholder="4"
+                  placeholderTextColor="#5A5D62"
+                  selectionColor="#FFE01B"
+                  style={
+                    {
+                      "color": "#EDEBE3",
+                      "fontFamily": "Archivo_600SemiBold",
+                      "fontSize": 22,
+                      "height": 56,
+                      "letterSpacing": 0,
+                      "lineHeight": 31.9,
+                      "padding": 0,
+                      "textAlign": "right",
+                      "textAlignVertical": "center",
+                      "writingDirection": "ltr",
+                    }
+                  }
+                  testID="eligibility-field-shotPut"
+                  value="4.5"
+                />
+              </View>
             </View>
           </View>
         </View>
@@ -1856,19 +1986,13 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
           </View>
         </View>
         <View
-          className="mt-6"
-          style={
-            {
-              "alignItems": undefined,
-              "flexDirection": "column",
-              "gap": 12,
-              "justifyContent": undefined,
-            }
-          }
+          entering={BaseAnimationMock {}}
+          layout={BaseAnimationMock {}}
+          onLayout={[Function]}
+          testID="eligibility-result"
         >
           <View
-            accessibilityLiveRegion="polite"
-            className="rounded-md border p-4 border-flag bg-flagTint"
+            className="mt-6"
             style={
               {
                 "alignItems": undefined,
@@ -1877,189 +2001,196 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 "justifyContent": undefined,
               }
             }
-            testID="eligibility-verdict"
           >
             <View
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row-reverse",
-                  "flexWrap": undefined,
-                  "gap": 8,
-                  "justifyContent": undefined,
-                }
-              }
-            >
-              <Text
-                accessibilityElementsHidden={true}
-                className="text-flag"
-                importantForAccessibility="no"
-                style={
-                  {
-                    "fontFamily": "Archivo_400Regular",
-                    "fontSize": 20,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 29,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                ✕
-              </Text>
-              <Text
-                className="text-flag flex-1"
-                style={
-                  {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 20,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 41,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "rtl",
-                  }
-                }
-              >
-                ابھی نہیں
-              </Text>
-            </View>
-            <View
+              accessibilityLiveRegion="polite"
+              className="rounded-md border p-4 border-flag bg-flagTint"
               style={
                 {
                   "alignItems": undefined,
                   "flexDirection": "column",
-                  "gap": 8,
+                  "gap": 12,
                   "justifyContent": undefined,
                 }
               }
+              testID="eligibility-verdict"
             >
-              <Text
-                className="text-dim"
-                style={
-                  {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 13,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 26.7,
-                    "textAlign": "right",
-                    "textTransform": "uppercase",
-                    "writingDirection": "rtl",
-                  }
-                }
-              >
-                کس پر محنت کرنی ہے
-              </Text>
               <View
                 style={
                   {
-                    "alignItems": "baseline",
+                    "alignItems": "center",
                     "flexDirection": "row-reverse",
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": undefined,
                   }
                 }
-                testID="eligibility-improve-height"
               >
                 <Text
                   accessibilityElementsHidden={true}
-                  className="text-hazard"
+                  className="text-flag"
                   importantForAccessibility="no"
                   style={
                     {
                       "fontFamily": "Archivo_400Regular",
-                      "fontSize": 11.5,
+                      "fontSize": 20,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 16.7,
+                      "lineHeight": 29,
                       "textAlign": "right",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
                     }
                   }
                 >
-                  ■
+                  ✕
                 </Text>
                 <Text
-                  className="text-chalk2 flex-1"
+                  className="text-flag flex-1"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 13.5,
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 20,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 27.7,
+                      "lineHeight": 41,
                       "textAlign": "right",
                       "textTransform": undefined,
                       "writingDirection": "rtl",
                     }
                   }
                 >
-                  قد
+                  ابھی نہیں
                 </Text>
               </View>
-            </View>
-          </View>
-          <View
-            className="rounded-md border border-line bg-panel2 px-3 py-1"
-            style={
-              {
-                "alignItems": undefined,
-                "flexDirection": "column",
-                "gap": undefined,
-                "justifyContent": undefined,
-              }
-            }
-            testID="eligibility-rows"
-          >
-            <View
-              className="py-2"
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row-reverse",
-                  "flexWrap": undefined,
-                  "gap": 8,
-                  "justifyContent": undefined,
-                }
-              }
-              testID="eligibility-row-height"
-            >
-              <Text
-                accessibilityLabel="معیار سے کم"
-                className="text-flag"
-                style={
-                  {
-                    "fontFamily": "Archivo_400Regular",
-                    "fontSize": 13.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 19.6,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                ✕
-              </Text>
               <View
-                className="flex-1"
                 style={
                   {
                     "alignItems": undefined,
                     "flexDirection": "column",
-                    "gap": 4,
+                    "gap": 8,
                     "justifyContent": undefined,
                   }
                 }
               >
+                <Text
+                  className="text-dim"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 13,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 26.7,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  کس پر محنت کرنی ہے
+                </Text>
                 <View
+                  style={
+                    {
+                      "alignItems": "baseline",
+                      "flexDirection": "row-reverse",
+                      "flexWrap": undefined,
+                      "gap": 8,
+                      "justifyContent": undefined,
+                    }
+                  }
+                  testID="eligibility-improve-height"
+                >
+                  <Text
+                    accessibilityElementsHidden={true}
+                    className="text-hazard"
+                    importantForAccessibility="no"
+                    style={
+                      {
+                        "fontFamily": "Archivo_400Regular",
+                        "fontSize": 11.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 16.7,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ■
+                  </Text>
+                  <Text
+                    className="text-chalk2 flex-1"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_400Regular",
+                        "fontSize": 13.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 27.7,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                    قد
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              className="rounded-md border border-line bg-panel2 px-3"
+              style={
+                {
+                  "alignItems": undefined,
+                  "flexDirection": "column",
+                  "gap": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+              testID="eligibility-rows"
+            >
+              <View
+                className="py-3 border-b border-line2"
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row-reverse",
+                    "flexWrap": undefined,
+                    "gap": 8,
+                    "justifyContent": undefined,
+                  }
+                }
+                testID="eligibility-row-height"
+              >
+                <View
+                  className="w-6 items-center"
+                  testID="eligibility-mark-height"
+                >
+                  <Text
+                    accessibilityLabel="معیار سے کم"
+                    className="text-flag"
+                    style={
+                      {
+                        "fontFamily": "Archivo_400Regular",
+                        "fontSize": 16.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 23.9,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ✕
+                  </Text>
+                </View>
+                <View
+                  className="flex-1"
                   style={
                     {
                       "alignItems": "center",
@@ -2089,12 +2220,12 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   </Text>
                 </View>
                 <View
+                  className="w-16"
                   style={
                     {
-                      "alignItems": "baseline",
-                      "flexDirection": "row-reverse",
-                      "flexWrap": "wrap",
-                      "gap": 8,
+                      "alignItems": "flex-start",
+                      "flexDirection": "column",
+                      "gap": 4,
                       "justifyContent": undefined,
                     }
                   }
@@ -2165,6 +2296,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                       سینٹی میٹر
                     </Text>
                   </View>
+                </View>
+                <View
+                  className="w-16"
+                  style={
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "column",
+                      "gap": 4,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
                   <Text
                     className="text-dim"
                     style={
@@ -2234,50 +2377,44 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   </View>
                 </View>
               </View>
-            </View>
-            <View
-              className="py-2"
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row-reverse",
-                  "flexWrap": undefined,
-                  "gap": 8,
-                  "justifyContent": undefined,
-                }
-              }
-              testID="eligibility-row-run800m"
-            >
-              <Text
-                accessibilityLabel="معیار پر پورا"
-                className="text-hivis"
-                style={
-                  {
-                    "fontFamily": "Archivo_400Regular",
-                    "fontSize": 13.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 19.6,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                ✓
-              </Text>
               <View
-                className="flex-1"
+                className="py-3 border-b border-line2"
                 style={
                   {
-                    "alignItems": undefined,
-                    "flexDirection": "column",
-                    "gap": 4,
+                    "alignItems": "center",
+                    "flexDirection": "row-reverse",
+                    "flexWrap": undefined,
+                    "gap": 8,
                     "justifyContent": undefined,
                   }
                 }
+                testID="eligibility-row-run800m"
               >
                 <View
+                  className="w-6 items-center"
+                  testID="eligibility-mark-run800m"
+                >
+                  <Text
+                    accessibilityLabel="معیار پر پورا"
+                    className="text-hivis"
+                    style={
+                      {
+                        "fontFamily": "Archivo_400Regular",
+                        "fontSize": 16.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 23.9,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ✓
+                  </Text>
+                </View>
+                <View
+                  className="flex-1"
                   style={
                     {
                       "alignItems": "center",
@@ -2307,12 +2444,12 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   </Text>
                 </View>
                 <View
+                  className="w-16"
                   style={
                     {
-                      "alignItems": "baseline",
-                      "flexDirection": "row-reverse",
-                      "flexWrap": "wrap",
-                      "gap": 8,
+                      "alignItems": "flex-start",
+                      "flexDirection": "column",
+                      "gap": 4,
                       "justifyContent": undefined,
                     }
                   }
@@ -2334,55 +2471,38 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   >
                     مطلوب
                   </Text>
-                  <View
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-dim"
                     style={
                       {
-                        "alignItems": "baseline",
-                        "flexDirection": "row-reverse",
-                        "flexWrap": undefined,
-                        "gap": 4,
-                        "justifyContent": undefined,
+                        "fontFamily": "Archivo_600SemiBold",
+                        "fontSize": 11.5,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 16.7,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    <Text
-                      accessibilityLanguage="en"
-                      className="text-dim"
-                      style={
-                        {
-                          "fontFamily": "Archivo_600SemiBold",
-                          "fontSize": 11.5,
-                          "fontVariant": [
-                            "tabular-nums",
-                          ],
-                          "letterSpacing": 0,
-                          "lineHeight": 16.7,
-                          "textAlign": "right",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        }
-                      }
-                    >
-                      ⁦320⁩
-                    </Text>
-                    <Text
-                      className="text-dim"
-                      style={
-                        {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
-                          "textTransform": undefined,
-                          "writingDirection": "rtl",
-                        }
-                      }
-                    >
-                      سیکنڈ
-                    </Text>
-                  </View>
+                    ⁦5:20⁩
+                  </Text>
+                </View>
+                <View
+                  className="w-16"
+                  style={
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "column",
+                      "gap": 4,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
                   <Text
                     className="text-dim"
                     style={
@@ -2400,102 +2520,67 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   >
                     آپ کا
                   </Text>
-                  <View
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-hivis"
                     style={
                       {
-                        "alignItems": "baseline",
-                        "flexDirection": "row-reverse",
-                        "flexWrap": undefined,
-                        "gap": 4,
-                        "justifyContent": undefined,
+                        "fontFamily": "Archivo_600SemiBold",
+                        "fontSize": 11.5,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 16.7,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
                       }
                     }
                     testID="eligibility-yours-run800m"
                   >
-                    <Text
-                      accessibilityLanguage="en"
-                      className="text-hivis"
-                      style={
-                        {
-                          "fontFamily": "Archivo_600SemiBold",
-                          "fontSize": 11.5,
-                          "fontVariant": [
-                            "tabular-nums",
-                          ],
-                          "letterSpacing": 0,
-                          "lineHeight": 16.7,
-                          "textAlign": "right",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        }
-                      }
-                    >
-                      ⁦300⁩
-                    </Text>
-                    <Text
-                      className="text-hivis"
-                      style={
-                        {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
-                          "textTransform": undefined,
-                          "writingDirection": "rtl",
-                        }
-                      }
-                    >
-                      سیکنڈ
-                    </Text>
-                  </View>
+                    ⁦5:00⁩
+                  </Text>
                 </View>
               </View>
-            </View>
-            <View
-              className="py-2"
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row-reverse",
-                  "flexWrap": undefined,
-                  "gap": 8,
-                  "justifyContent": undefined,
-                }
-              }
-              testID="eligibility-row-longJump"
-            >
-              <Text
-                accessibilityLabel="معیار پر پورا"
-                className="text-hivis"
-                style={
-                  {
-                    "fontFamily": "Archivo_400Regular",
-                    "fontSize": 13.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 19.6,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                ✓
-              </Text>
               <View
-                className="flex-1"
+                className="py-3 border-b border-line2"
                 style={
                   {
-                    "alignItems": undefined,
-                    "flexDirection": "column",
-                    "gap": 4,
+                    "alignItems": "center",
+                    "flexDirection": "row-reverse",
+                    "flexWrap": undefined,
+                    "gap": 8,
                     "justifyContent": undefined,
                   }
                 }
+                testID="eligibility-row-longJump"
               >
                 <View
+                  className="w-6 items-center"
+                  testID="eligibility-mark-longJump"
+                >
+                  <Text
+                    accessibilityLabel="معیار پر پورا"
+                    className="text-hivis"
+                    style={
+                      {
+                        "fontFamily": "Archivo_400Regular",
+                        "fontSize": 16.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 23.9,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ✓
+                  </Text>
+                </View>
+                <View
+                  className="flex-1"
                   style={
                     {
                       "alignItems": "center",
@@ -2525,12 +2610,12 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   </Text>
                 </View>
                 <View
+                  className="w-16"
                   style={
                     {
-                      "alignItems": "baseline",
-                      "flexDirection": "row-reverse",
-                      "flexWrap": "wrap",
-                      "gap": 8,
+                      "alignItems": "flex-start",
+                      "flexDirection": "column",
+                      "gap": 4,
                       "justifyContent": undefined,
                     }
                   }
@@ -2601,6 +2686,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                       میٹر
                     </Text>
                   </View>
+                </View>
+                <View
+                  className="w-16"
+                  style={
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "column",
+                      "gap": 4,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
                   <Text
                     className="text-dim"
                     style={
@@ -2670,50 +2767,44 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   </View>
                 </View>
               </View>
-            </View>
-            <View
-              className="py-2"
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row-reverse",
-                  "flexWrap": undefined,
-                  "gap": 8,
-                  "justifyContent": undefined,
-                }
-              }
-              testID="eligibility-row-shotPut"
-            >
-              <Text
-                accessibilityLabel="معیار پر پورا"
-                className="text-hivis"
-                style={
-                  {
-                    "fontFamily": "Archivo_400Regular",
-                    "fontSize": 13.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 19.6,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                ✓
-              </Text>
               <View
-                className="flex-1"
+                className="py-3"
                 style={
                   {
-                    "alignItems": undefined,
-                    "flexDirection": "column",
-                    "gap": 4,
+                    "alignItems": "center",
+                    "flexDirection": "row-reverse",
+                    "flexWrap": undefined,
+                    "gap": 8,
                     "justifyContent": undefined,
                   }
                 }
+                testID="eligibility-row-shotPut"
               >
                 <View
+                  className="w-6 items-center"
+                  testID="eligibility-mark-shotPut"
+                >
+                  <Text
+                    accessibilityLabel="معیار پر پورا"
+                    className="text-hivis"
+                    style={
+                      {
+                        "fontFamily": "Archivo_400Regular",
+                        "fontSize": 16.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 23.9,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ✓
+                  </Text>
+                </View>
+                <View
+                  className="flex-1"
                   style={
                     {
                       "alignItems": "center",
@@ -2743,12 +2834,12 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   </Text>
                 </View>
                 <View
+                  className="w-16"
                   style={
                     {
-                      "alignItems": "baseline",
-                      "flexDirection": "row-reverse",
-                      "flexWrap": "wrap",
-                      "gap": 8,
+                      "alignItems": "flex-start",
+                      "flexDirection": "column",
+                      "gap": 4,
                       "justifyContent": undefined,
                     }
                   }
@@ -2819,6 +2910,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                       میٹر
                     </Text>
                   </View>
+                </View>
+                <View
+                  className="w-16"
+                  style={
+                    {
+                      "alignItems": "flex-start",
+                      "flexDirection": "column",
+                      "gap": 4,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
                   <Text
                     className="text-dim"
                     style={

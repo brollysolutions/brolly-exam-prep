@@ -29,6 +29,9 @@ import type { Post } from './exam-pattern';
  * The eligibility screen prints `eligibility.disclaimer` under every verdict regardless.
  */
 
+/** The notification the table was researched against; printed in the screen's disclaimer. */
+export const STANDARDS_NOTIFICATION_YEAR = 2022;
+
 export type Gender = 'male' | 'female';
 
 /** Scheduled Tribe and agency-area candidates measure against the relaxed column. */

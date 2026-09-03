@@ -402,7 +402,7 @@ describe('HomeView (en) — the shelf scroller', () => {
 
   it('leaves the shelf at its start, where the newest notice already is', async () => {
     await render(<HomeView {...props} lang="en" />);
-    fireEvent(screen.getByTestId('home-updates-shelf'), 'contentSizeChange', 724, 120);
+    await fireEvent(screen.getByTestId('home-updates-shelf'), 'contentSizeChange', 724, 120);
     expect(ScrollView.prototype.scrollToEnd).not.toHaveBeenCalled();
   });
 });
@@ -436,7 +436,7 @@ describe('HomeView (ur)', () => {
   // help Urdu opened on the two oldest notices with the newest off-screen (review I1).
   it('starts the notice shelf at the newest notice, which is on the right', async () => {
     await render(<HomeView {...props} lang="ur" />);
-    fireEvent(screen.getByTestId('home-updates-shelf'), 'contentSizeChange', 724, 120);
+    await fireEvent(screen.getByTestId('home-updates-shelf'), 'contentSizeChange', 724, 120);
     expect(ScrollView.prototype.scrollToEnd).toHaveBeenCalledWith({ animated: false });
   });
 

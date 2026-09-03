@@ -60,7 +60,7 @@ describe('EligibilityRoute', () => {
 
   it('keeps what was typed and only answers once Check is pressed', async () => {
     await render(<EligibilityRoute />);
-    fireEvent.changeText(screen.getByTestId('eligibility-field-height'), '172');
+    await fireEvent.changeText(screen.getByTestId('eligibility-field-height'), '172');
     expect(useEligibilityStore.getState().values.height).toBe('172');
     expect(screen.queryByTestId('eligibility-verdict')).toBeNull();
 
