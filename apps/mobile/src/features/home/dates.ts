@@ -8,42 +8,40 @@
  * LTR-isolated, and identical in all three. Day-first, which is how India writes them.
  *
  * `/updates` and `/affairs` print their own, longer form (`src/features/news/format.ts`):
- * those screens have a row to spend on a month name, a 60 px notice card does not.
+ * those screens have a row to spend on a month name, a 60 px notice card does not. Both
+ * parse through the same strict `isoDayParts`, so a malformed date is refused the same way.
  */
+
+import { isoDayParts } from '@/lib/day';
 
 const DAY_MS = 86_400_000;
 
-/** `YYYY-MM-DD` split into its three numbers, or `undefined` for anything else. */
-function parts(isoDate: string): [number, number, number] | undefined {
-  const [y, m, d] = isoDate.split('-').map(Number);
-  if (!Number.isFinite(y) || !Number.isFinite(m) || !Number.isFinite(d)) return undefined;
-  return [y, m, d];
-}
-
 /**
- * Whole calendar days from today to an exam date, floored at 0.
+ * Whole calendar days from today to an exam date: positive before it, zero on the day and
+ * negative after it, so Home can tell "exam day" from "already held" instead of counting
+ * down to zero for ever. An unreadable date counts as zero.
  *
  * Both ends are pinned to LOCAL midnight before subtracting. `new Date('2026-10-18')` parses
  * as UTC midnight, which is 5:30 am in Chennai — subtract that from a local `now` and the
  * count is a day out for every candidate reading Home in the evening.
  */
 export function daysUntil(isoDate: string, now: number = Date.now()): number {
-  const ymd = parts(isoDate);
+  const ymd = isoDayParts(isoDate);
   if (!ymd) return 0;
   const target = new Date(ymd[0], ymd[1] - 1, ymd[2]).getTime();
   const today = new Date(now);
   today.setHours(0, 0, 0, 0);
-  return Math.max(0, Math.round((target - today.getTime()) / DAY_MS));
+  return Math.round((target - today.getTime()) / DAY_MS);
 }
 
 /** `DD-MM` — the compact form, for a shelf card that has no room for a year. */
 export const shortDate = (isoDate: string): string => {
-  const ymd = parts(isoDate);
+  const ymd = isoDayParts(isoDate);
   return ymd ? `${String(ymd[2]).padStart(2, '0')}-${String(ymd[1]).padStart(2, '0')}` : isoDate;
 };
 
 /** `DD-MM-YYYY` — the long form, for the one date on the screen that carries a year. */
 export const fullDate = (isoDate: string): string => {
-  const ymd = parts(isoDate);
+  const ymd = isoDayParts(isoDate);
   return ymd ? `${shortDate(isoDate)}-${ymd[0]}` : isoDate;
 };

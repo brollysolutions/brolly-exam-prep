@@ -25,13 +25,8 @@ export function sectionRange(
   return { first, last: first + (pattern.sections[sectionIndex]?.questions ?? 0) - 1 };
 }
 
-/**
- * Deadline-based, never a counter: `max(0, endsAt - now)`.
- *
- * Takes only the deadline, so a screen that subscribes to `endsAt` alone (Home's Continue
- * card) can call it without holding the whole attempt.
- */
-export const remainingMs = (state: Pick<AttemptState, 'endsAt'>, now: number): number =>
+/** Deadline-based, never a counter: `max(0, endsAt - now)`. */
+export const remainingMs = (state: AttemptState, now: number): number =>
   state.endsAt === undefined ? 0 : Math.max(0, state.endsAt - now);
 
 /** Palette cell state, in the prototype's precedence: answered beats marked. */

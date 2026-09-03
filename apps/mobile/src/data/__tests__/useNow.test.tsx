@@ -7,10 +7,22 @@ const T0 = Date.parse('2026-09-03T18:00:00.000Z');
 
 let handler: ((status: AppStateStatus) => void) | undefined;
 
+/** The focus callback the hook registers, kept so a test can re-focus the screen. */
+let mockFocus: (() => void) | undefined;
+
+jest.mock('expo-router', () => ({
+  useFocusEffect: (effect: () => void) => {
+    mockFocus = effect;
+    // Fetched here rather than imported: `jest.mock` is hoisted above the imports.
+    jest.requireActual<typeof import('react')>('react').useEffect(effect, [effect]);
+  },
+}));
+
 beforeEach(() => {
   jest.useFakeTimers();
   jest.setSystemTime(T0);
   handler = undefined;
+  mockFocus = undefined;
   jest.spyOn(AppState, 'addEventListener').mockImplementation((_event, listener) => {
     handler = listener as (status: AppStateStatus) => void;
     return { remove: jest.fn() } as ReturnType<typeof AppState.addEventListener>;
@@ -44,6 +56,17 @@ describe('useNow', () => {
     const { result } = await renderHook(() => useNow());
     jest.setSystemTime(T0 + 8 * 3_600_000);
     await appStateChange('active');
+    expect(result.current).toBe(T0 + 8 * 3_600_000);
+  });
+
+  // Home stays mounted under `/test/[id]`: a candidate who works through midnight without
+  // backgrounding the app comes back to it by tab, not by AppState (review M3).
+  it('re-reads when the screen comes back into focus', async () => {
+    const { result } = await renderHook(() => useNow());
+    jest.setSystemTime(T0 + 8 * 3_600_000);
+    await act(async () => {
+      mockFocus?.();
+    });
     expect(result.current).toBe(T0 + 8 * 3_600_000);
   });
 

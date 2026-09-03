@@ -2,7 +2,7 @@ import { EXAM_INFO, latestAffairs, latestNotices, STUDY_TOPICS } from '@tslprb/f
 import { useRouter } from 'expo-router';
 
 import { streakDays, todayProgress, useActivityStore } from '@/data/activity';
-import { attemptCount, bestScore, useHistoryStore } from '@/data/history';
+import { attemptCount, bestPercent, useHistoryStore } from '@/data/history';
 import { useLangStore } from '@/data/lang';
 import { useRequireAuth } from '@/data/requireAuth';
 import { useSessionStore } from '@/data/session';
@@ -43,12 +43,12 @@ export default function HomeRoute() {
   const attempts = useHistoryStore((s) => s.attempts);
 
   // A snapshot, not a clock: Home shows a day count, which has no need to move while it is
-  // being watched. `useNow` re-reads on the way back from the background, which is the only
-  // way this screen can go stale.
+  // being watched. `useNow` re-reads on the way back from the background and on focus, the
+  // two ways this screen can go stale.
   const now = useNow();
 
   // --------------------------------------------------------------- progress
-  const best = bestScore({ attempts });
+  const best = bestPercent({ attempts });
 
   return (
     <HomeView
@@ -68,14 +68,14 @@ export default function HomeRoute() {
         topicsTotal: STUDY_TOPICS.length,
         papers: attemptCount({ attempts }),
         // Rounded: a stat tile has room for a number, not for two decimal places of one.
-        bestScore: best === undefined ? undefined : Math.round(best),
+        bestPct: best === undefined ? undefined : Math.round(best),
       }}
       // The header link has no destination of its own: it signs you in and leaves you here.
       onSignIn={() => ensure('/(tabs)')}
-      // `navigate` rather than `push`: a tab you are already on should be re-entered, not
-      // stacked a second time.
-      onOpenTests={() => router.navigate('/(tabs)/tests')}
       onOpenUpdates={() => router.push('/updates')}
+      // The object form, not `/updates?open=${id}`: expo-router encodes the param, so an id
+      // is never pasted into a path.
+      onOpenNotice={(id) => router.push({ pathname: '/updates', params: { open: id } })}
       onOpenPhysical={() => router.push('/eligibility')}
       onOpenAffairs={() => router.push('/affairs')}
     />

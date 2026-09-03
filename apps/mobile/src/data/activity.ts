@@ -58,9 +58,12 @@ export function dayKey(now: number = Date.now()): string {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
-/** Days older than `ACTIVITY_DAYS_KEPT` dropped, so the persisted record stays bounded. */
+/**
+ * Everything but the last `ACTIVITY_DAYS_KEPT` days dropped, so the persisted record stays
+ * bounded. The window is inclusive of today: 90 kept is today and the 89 before it.
+ */
 function prune(byDay: Record<string, DayCounts>, now: number): Record<string, DayCounts> {
-  const oldest = dayKey(now - ACTIVITY_DAYS_KEPT * DAY_MS);
+  const oldest = dayKey(now - (ACTIVITY_DAYS_KEPT - 1) * DAY_MS);
   // String comparison is a date comparison for `YYYY-MM-DD`, which is why the key is padded.
   const kept = Object.entries(byDay).filter(([key]) => key >= oldest);
   return kept.length === Object.keys(byDay).length ? byDay : Object.fromEntries(kept);

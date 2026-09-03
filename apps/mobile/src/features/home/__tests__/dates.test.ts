@@ -17,14 +17,26 @@ describe('daysUntil', () => {
     expect(new Set(day).size).toBe(1);
   });
 
-  it('is zero on the day itself and never negative afterwards', () => {
+  // Zero is the day itself; a negative count is how Home knows the paper has been sat, so it
+  // can say "held on" instead of counting down to nothing for ever (review M5).
+  it('is zero on the day itself and counts on past it', () => {
     expect(daysUntil('2026-10-18', at(2026, 10, 18))).toBe(0);
-    expect(daysUntil('2026-10-18', at(2026, 11, 1))).toBe(0);
+    expect(daysUntil('2026-10-18', at(2026, 10, 19))).toBe(-1);
+    expect(daysUntil('2026-10-18', at(2026, 11, 1))).toBe(-14);
   });
 
   it('does not throw on a date it cannot read', () => {
     expect(daysUntil('', at(2026, 9, 3))).toBe(0);
     expect(daysUntil('soon', at(2026, 9, 3))).toBe(0);
+  });
+
+  // The same strict parser as `/updates` (review M4): a month 13 used to roll over into a
+  // plausible wrong date instead of being refused.
+  it('refuses a date that is not a real calendar day', () => {
+    expect(daysUntil('2026-13-45', at(2026, 9, 3))).toBe(0);
+    expect(daysUntil('2026-02-30', at(2026, 9, 3))).toBe(0);
+    expect(shortDate('2026-13-45')).toBe('2026-13-45');
+    expect(fullDate('2026-2-3')).toBe('2026-2-3');
   });
 });
 

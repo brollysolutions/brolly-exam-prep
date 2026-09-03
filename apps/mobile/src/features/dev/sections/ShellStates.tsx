@@ -15,6 +15,8 @@ const DEV = {
   welcome: 'WelcomeView — slide 1 of 3',
   home: 'HomeView — signed in, half the day done (F-23)',
   homeGuest: 'HomeView — guest, nothing sat yet (F-23)',
+  homeExamDay: 'HomeView — exam day, no countdown number (F-23)',
+  homeHeld: 'HomeView — PWT held, nothing from the Board yet: empty shelves hidden (F-23)',
   library: 'LibraryView — full mocks',
   profile: 'ProfileView — reminders on',
   profileGuest: 'ProfileView — guest, account section offers a sign-in (F-19)',
@@ -79,10 +81,10 @@ export function ShellStates({ index }: { index: string }) {
           today={{ done: 12, target: 20 }}
           notices={SHELF_NOTICES}
           affairs={SHELF_AFFAIRS}
-          progress={{ topicsRead: 5, topicsTotal: 11, papers: 3, bestScore: 62 }}
+          progress={{ topicsRead: 5, topicsTotal: 11, papers: 3, bestPct: 62 }}
           onSignIn={noop}
-          onOpenTests={noop}
           onOpenUpdates={noop}
+          onOpenNotice={noop}
           onOpenPhysical={noop}
           onOpenAffairs={noop}
         />
@@ -101,8 +103,50 @@ export function ShellStates({ index }: { index: string }) {
           affairs={SHELF_AFFAIRS}
           progress={{ topicsRead: 0, topicsTotal: 11, papers: 0 }}
           onSignIn={noop}
-          onOpenTests={noop}
           onOpenUpdates={noop}
+          onOpenNotice={noop}
+          onOpenPhysical={noop}
+          onOpenAffairs={noop}
+        />
+      </Preview>
+      <Preview label={DEV.homeExamDay}>
+        <HomeView
+          name="…1234"
+          signedIn
+          lang={lang}
+          onLang={setLang}
+          daysToExam={0}
+          examDate="18-10-2026"
+          examLabel={EXAM_INFO.label[lang]}
+          streakDays={12}
+          today={{ done: 0, target: 20 }}
+          notices={SHELF_NOTICES}
+          affairs={SHELF_AFFAIRS}
+          progress={{ topicsRead: 11, topicsTotal: 11, papers: 9, bestPct: 78 }}
+          onSignIn={noop}
+          onOpenUpdates={noop}
+          onOpenNotice={noop}
+          onOpenPhysical={noop}
+          onOpenAffairs={noop}
+        />
+      </Preview>
+      <Preview label={DEV.homeHeld}>
+        <HomeView
+          name="…1234"
+          signedIn
+          lang={lang}
+          onLang={setLang}
+          daysToExam={-3}
+          examDate="18-10-2026"
+          examLabel={EXAM_INFO.label[lang]}
+          streakDays={0}
+          today={{ done: 0, target: 20 }}
+          notices={[]}
+          affairs={[]}
+          progress={{ topicsRead: 11, topicsTotal: 11, papers: 9, bestPct: 78 }}
+          onSignIn={noop}
+          onOpenUpdates={noop}
+          onOpenNotice={noop}
           onOpenPhysical={noop}
           onOpenAffairs={noop}
         />

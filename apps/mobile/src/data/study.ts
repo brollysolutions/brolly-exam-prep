@@ -3,24 +3,16 @@ import { persist } from 'zustand/middleware';
 
 import { persistedJSONStorage } from './storage';
 
-/** The topic the reader was last in, whether or not they finished it. */
-export type LastRead = { id: string; at: number };
-
 /**
  * Which study topics have been read.
  *
  * A set stored as `Record<id, true>` rather than an array: reading a topic twice must not
  * grow the record, and `isRead` has to be a lookup, not a scan, because the study list calls
  * it once per row on every render.
- *
- * `lastRead` is the bookmark Home's Continue card reads. It is where the reader *was*, not
- * what they finished, so opening a topic sets it and marking one read keeps it there.
  */
-export type StudyState = { read: Record<string, true>; lastRead?: LastRead };
+export type StudyState = { read: Record<string, true> };
 
 export type StudyActions = {
-  /** The topic screen was opened on `id`. Moves the bookmark; does not mark anything read. */
-  open: (id: string, now?: number) => void;
   markRead: (id: string, now?: number) => void;
   isRead: (id: string) => boolean;
   /** Clear the marks. Used by tests; there is no product action that unreads a topic. */
@@ -34,27 +26,30 @@ export const STUDY_STORAGE_KEY = 'tslprb.study';
 /**
  * F-21 — study progress. Deliberately NOT cleared by `signOut()`: what you have read belongs
  * to the handset, like the language preference, and the material is free to guests anyway.
+ *
+ * `merge` takes only the `read` map from storage: an earlier build also persisted a
+ * `lastRead` bookmark for a Continue card that no longer exists, and a blob that still
+ * carries it must load without dragging the dead field back into the store.
  */
 export const useStudyStore = create<StudyStore>()(
   persist(
     (set, get) => ({
       read: {},
-      lastRead: undefined,
-      open: (id, now = Date.now()) => set({ lastRead: { id, at: now } }),
       // Marking a topic already marked returns the SAME `read` object, so a repeat press
-      // cannot re-render every row in the list; only the bookmark moves.
-      markRead: (id, now = Date.now()) =>
-        set((s) => ({
-          read: s.read[id] ? s.read : { ...s.read, [id]: true as const },
-          lastRead: { id, at: now },
-        })),
+      // cannot re-render every row in the list.
+      markRead: (id) =>
+        set((s) => ({ read: s.read[id] ? s.read : { ...s.read, [id]: true as const } })),
       isRead: (id) => Boolean(get().read[id]),
-      reset: () => set({ read: {}, lastRead: undefined }),
+      reset: () => set({ read: {} }),
     }),
     {
       name: STUDY_STORAGE_KEY,
       storage: persistedJSONStorage(),
-      partialize: (s): StudyState => ({ read: s.read, lastRead: s.lastRead }),
+      partialize: (s): StudyState => ({ read: s.read }),
+      merge: (persisted, current) => {
+        const stored = persisted as Partial<StudyState> | undefined;
+        return { ...current, read: stored?.read ?? {} };
+      },
     },
   ),
 );

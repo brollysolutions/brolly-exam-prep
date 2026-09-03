@@ -12,6 +12,10 @@
  * translated month name in that face would be tofu.
  */
 
+import { isoDayParts } from '@/lib/day';
+
+export { isIsoDay } from '@/lib/day';
+
 const MONTHS = [
   'Jan',
   'Feb',
@@ -27,24 +31,6 @@ const MONTHS = [
   'Dec',
 ] as const;
 
-const ISO_DAY = /^(\d{4})-(\d{2})-(\d{2})$/;
-
-/** Days in `month` (1-12) of `year`, Gregorian, leap years included. */
-function daysInMonth(year: number, month: number): number {
-  if (month === 2) return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0 ? 29 : 28;
-  return month === 4 || month === 6 || month === 9 || month === 11 ? 30 : 31;
-}
-
-/** True when `value` is a real `YYYY-MM-DD` calendar day — `2026-02-30` is not. */
-export function isIsoDay(value: string): boolean {
-  const match = ISO_DAY.exec(value);
-  if (!match) return false;
-  const [, y, m, d] = match;
-  const month = Number(m);
-  const day = Number(d);
-  return month >= 1 && month <= 12 && day >= 1 && day <= daysInMonth(Number(y), month);
-}
-
 /**
  * `'2026-08-04'` -> `'4 Aug 2026'`. The day loses its leading zero; the year never does.
  *
@@ -53,7 +39,7 @@ export function isIsoDay(value: string): boolean {
  * on the row, where it is obvious, instead of a plausible wrong one.
  */
 export function formatDay(value: string): string {
-  if (!isIsoDay(value)) return value;
-  const [y, m, d] = value.split('-');
-  return `${Number(d)} ${MONTHS[Number(m) - 1]} ${y}`;
+  const ymd = isoDayParts(value);
+  if (!ymd) return value;
+  return `${ymd[2]} ${MONTHS[ymd[1] - 1]} ${ymd[0]}`;
 }

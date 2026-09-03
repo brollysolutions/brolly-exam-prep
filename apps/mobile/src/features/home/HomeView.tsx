@@ -1,6 +1,7 @@
 import { colors, radius } from '@tslprb/design-tokens';
 import type { Affair, Notice } from '@tslprb/fixtures';
 import { LANGS, useDir, type Lang } from '@tslprb/i18n';
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
@@ -27,8 +28,12 @@ export type HomeProgress = {
   topicsRead: number;
   topicsTotal: number;
   papers: number;
-  /** Absent until a paper has been scored — a different thing from zero, drawn differently. */
-  bestScore?: number;
+  /**
+   * The best paper as a percentage of its marks (0–100), already rounded. A percentage and
+   * not a score, because the papers do not share a scale (200, 40, 20 or 15 marks). Absent
+   * until a paper has been scored — a different thing from zero, drawn differently.
+   */
+  bestPct?: number;
 };
 
 /**
@@ -52,6 +57,8 @@ export function targetFill(done: number, target: number): number {
  * the identity already draws at the top of every screen, and it needs no dependency Expo Go
  * would have to be left for. Nothing animates, so there is nothing to gate under reduced
  * motion — the bar is simply drawn at the value it has.
+ *
+ * An unlit block is `line3`: `panel3` on the card was 1.14:1 and read as nothing at all.
  */
 function TargetBar({ done, target }: { done: number; target: number }) {
   const filled = targetFill(done, target);
@@ -66,7 +73,7 @@ function TargetBar({ done, target }: { done: number; target: number }) {
         <View
           key={i}
           testID="home-target-seg"
-          className={`h-progress flex-1 rounded-xs ${i < filled ? 'bg-hivis' : 'bg-panel3'}`}
+          className={`h-progress flex-1 rounded-xs ${i < filled ? 'bg-hivis' : 'bg-line3'}`}
         />
       ))}
     </Row>
@@ -76,23 +83,26 @@ function TargetBar({ done, target }: { done: number; target: number }) {
 /**
  * A block's heading and the way past it: "Updates · Sample data … All updates ›".
  *
- * The link is 20 px of text with 14 px of hit slop either side rather than a 48 px box: a
- * half-height control beside a kicker would push the heading off its own baseline, and the
- * slop is what the finger actually lands in.
+ * The link is 20 px of text with 16 px of hit slop above and below rather than a 48 px box:
+ * a half-height control beside a kicker would push the heading off its own baseline, and
+ * the slop is what the finger actually lands in. Its label is `chalk2`, not yellow: the
+ * screen has one yellow action and the chevron is enough to say "this goes somewhere".
  *
- * `badge` is a static chip after the title — "Sample data" while the shelf is seeded from
+ * `badge` is a static tag after the title — "Sample data" while the shelf is seeded from
  * fixtures. It sits inside the heading `Row`, so it follows the reading direction and lands
  * on the left of the kicker in Urdu without a mirrored class of its own.
  */
 function SectionHead({
   title,
   badge,
+  badgeTestID,
   link,
   onPress,
   testID,
 }: {
   title: string;
   badge?: string;
+  badgeTestID?: string;
   link: string;
   onPress: () => void;
   testID: string;
@@ -103,19 +113,19 @@ function SectionHead({
     <Row align="center" justify="between" gap={3}>
       <Row align="center" gap={2} className="flex-1" wrap>
         <Kicker>{title}</Kicker>
-        {badge !== undefined && <Chip label={badge} testID="sample-data" />}
+        {badge !== undefined && <Chip label={badge} tone="label" testID={badgeTestID} />}
       </Row>
       <Pressable
         testID={testID}
         accessibilityRole="link"
         accessibilityLabel={link}
-        hitSlop={{ top: 14, bottom: 14, left: 10, right: 10 }}
+        hitSlop={{ top: 16, bottom: 16, left: 12, right: 12 }}
         onPress={onPress}
         {...handlers}
         style={pressed ? { opacity: 0.85 } : undefined}
       >
         <Row gap={1} align="center">
-          <Text variant="caption" weight="700" color="hivis">
+          <Text variant="caption" weight="600" color="chalk2">
             {link}
           </Text>
           <Glyph
@@ -177,7 +187,10 @@ export type HomeViewProps = {
   signedIn: boolean;
   lang: Lang;
   onLang: (lang: Lang) => void;
-  /** Days left until the notified PWT date. */
+  /**
+   * Days until the notified PWT date: positive before it, zero on the day, negative after
+   * it. The hero counts down, says "exam day", or says when the paper was held.
+   */
   daysToExam: number;
   /** That date as digits, `DD-MM-YYYY` — see `fullDate`. */
   examDate: string;
@@ -186,13 +199,14 @@ export type HomeViewProps = {
   streakDays: number;
   /** Today's work against the day's target; `done` may exceed `target`. */
   today: { done: number; target: number };
+  /** Newest first. An empty shelf is not drawn at all — not even its heading. */
   notices: Notice[];
   affairs: Affair[];
   progress: HomeProgress;
   onSignIn: () => void;
-  /** The countdown hero opens the shelf of papers it is counting down to. */
-  onOpenTests: () => void;
   onOpenUpdates: () => void;
+  /** A tapped notice card opens THAT notice on `/updates`, not the top of the list. */
+  onOpenNotice: (id: string) => void;
   onOpenPhysical: () => void;
   onOpenAffairs: () => void;
 };
@@ -220,8 +234,8 @@ export function HomeView({
   affairs,
   progress,
   onSignIn,
-  onOpenTests,
   onOpenUpdates,
+  onOpenNotice,
   onOpenPhysical,
   onOpenAffairs,
 }: HomeViewProps) {
@@ -230,13 +244,35 @@ export function HomeView({
   const langOptions = LANGS.map((l: Lang) => ({ value: l, label: t(`lang.${l}Short`), lang: l }));
 
   /**
-   * The hero is one button, so a screen reader is read its label INSTEAD of the four lines
-   * inside it — which means the label has to carry both facts the card is made of, or the
-   * day's target is invisible to anyone not looking at it.
+   * The notice shelf is a reversed `Row` inside a scroller whose origin is its LEFT edge
+   * (the app never calls `I18nManager.forceRTL`), so in Urdu the newest notice sits at the
+   * right and off-screen. The shelf is scrolled to its end once its content is measured.
+   */
+  const shelf = useRef<ScrollView>(null);
+
+  // The three ways the hero can read: counting down, on the day, or after it.
+  const examState =
+    daysToExam > 0 ? 'ahead' : daysToExam === 0 ? 'today' : ('held' as 'ahead' | 'today' | 'held');
+  const examLine =
+    examState === 'ahead'
+      ? t('home.examCountdown', { days: iso(daysToExam) })
+      : examState === 'today'
+        ? t('home.examToday')
+        : t('home.examHeld', { date: iso(examDate) });
+  const dateLine = t('home.examDate', { label: examLabel, date: iso(examDate) });
+  const streakLine = t('home.streak', { count: streakDays, days: iso(streakDays) });
+  const targetLine = t('home.targetDone', { done: iso(today.done), target: iso(today.target) });
+
+  /**
+   * The hero is read as ONE element, so its label is read INSTEAD of the lines inside it —
+   * which means the label has to carry every fact the card is made of, or the date and the
+   * day's target are invisible to anyone not looking at them.
    */
   const heroLabel = [
-    t('home.examCountdown', { days: iso(daysToExam) }),
-    t('home.targetDone', { done: iso(today.done), target: iso(today.target) }),
+    examLine,
+    examState === 'held' ? examLabel : dateLine,
+    ...(streakDays > 0 ? [streakLine] : []),
+    targetLine,
   ].join(' · ');
 
   return (
@@ -260,31 +296,40 @@ export function HomeView({
 
       {/* ------------------------------------------------------- countdown hero */}
       {/* Hazard, not hi-vis: a date closing in is a warning, and the yellow on this screen
-          belongs to "Check eligibility". Tapping it opens the papers it is counting down to. */}
+          belongs to "Check eligibility". A fact, not a button: Tests is a tab already. */}
       <Card
         testID="home-hero"
-        onPress={onOpenTests}
+        accessible
         accessibilityLabel={heroLabel}
         className="mt-4"
         style={startEdge(d.isRTL, 'hazard')}
       >
-        <Kicker color="hazard">{t('home.examIn')}</Kicker>
-        <Row gap={2} align="baseline" className="mt-2">
-          <Num variant="display" color="hivis" testID="home-days">
-            {daysToExam}
-          </Num>
-          <Text variant="bodyLg" color="dim">
-            {t('home.days')}
+        {examState === 'ahead' ? (
+          <>
+            <Kicker color="hazard">{t('home.examIn')}</Kicker>
+            <Row gap={2} align="baseline" className="mt-2">
+              <Num variant="display" color="hivis" testID="home-days">
+                {daysToExam}
+              </Num>
+              <Text variant="bodyLg" color="dim">
+                {t('home.days')}
+              </Text>
+            </Row>
+          </>
+        ) : (
+          // No number on or after the day: "0 days" next to a past date reads as a stuck clock.
+          <Text variant="subtitle" weight="700" color="hivis" testID="home-exam-state">
+            {examLine}
           </Text>
-        </Row>
+        )}
         <Text variant="caption" color="dim" testID="home-exam-date" className="mt-1">
-          {t('home.examDate', { label: examLabel, date: iso(examDate) })}
+          {examState === 'held' ? examLabel : dateLine}
         </Text>
         {/* Not a control: a run of practice is a fact about the reader. Hidden at zero — a
             "0-day streak" is a scold, not a fact worth a line. */}
         {streakDays > 0 && (
           <Text variant="caption" color="dim" testID="home-streak" className="mt-1">
-            {t('home.streak', { count: streakDays })}
+            {streakLine}
           </Text>
         )}
 
@@ -292,7 +337,7 @@ export function HomeView({
         <Row align="center" justify="between" gap={3} className="mt-3">
           <Kicker>{t('home.todayTarget')}</Kicker>
           <Text variant="caption" color="dim" testID="home-target-count">
-            {t('home.targetDone', { done: iso(today.done), target: iso(today.target) })}
+            {targetLine}
           </Text>
         </Row>
         <View className="mt-2">
@@ -301,28 +346,41 @@ export function HomeView({
       </Card>
 
       {/* -------------------------------------------------------------- updates */}
-      <View testID="home-updates" className="mt-6">
-        <SectionHead
-          title={t('home.updates')}
-          badge={t('common.sampleData')}
-          link={t('home.allUpdates')}
-          onPress={onOpenUpdates}
-          testID="home-updates-all"
-        />
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          className="mt-3"
-          // A row inside the scroller rather than `contentContainerStyle`: `Row` is what
-          // knows the reading direction, so Urdu gets the newest notice on the right.
-        >
-          <Row gap={2}>
-            {notices.map((notice) => (
-              <NoticeCard key={notice.id} notice={notice} lang={lang} onPress={onOpenUpdates} />
-            ))}
-          </Row>
-        </ScrollView>
-      </View>
+      {notices.length > 0 && (
+        <View testID="home-updates" className="mt-6">
+          <SectionHead
+            title={t('home.updates')}
+            badge={t('common.sampleData')}
+            badgeTestID="sample-data-updates"
+            link={t('home.allUpdates')}
+            onPress={onOpenUpdates}
+            testID="home-updates-all"
+          />
+          <ScrollView
+            ref={shelf}
+            testID="home-updates-shelf"
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            className="mt-3"
+            onContentSizeChange={() => {
+              if (d.isRTL) shelf.current?.scrollToEnd({ animated: false });
+            }}
+            // A row inside the scroller rather than `contentContainerStyle`: `Row` is what
+            // knows the reading direction, so Urdu gets the newest notice on the right.
+          >
+            <Row gap={2}>
+              {notices.map((notice) => (
+                <NoticeCard
+                  key={notice.id}
+                  notice={notice}
+                  lang={lang}
+                  onPress={() => onOpenNotice(notice.id)}
+                />
+              ))}
+            </Row>
+          </ScrollView>
+        </View>
+      )}
 
       {/* --------------------------------------------------------- physical test */}
       <Card testID="home-physical" className="mt-6">
@@ -331,9 +389,10 @@ export function HomeView({
           {t('home.physicalSub')}
         </Text>
         {/* The screen's one hi-vis action: the only block whose destination is not already a
-            tab, so it is the one thing Home has to say "go here" about. */}
+            tab, so it is the one thing Home has to say "go here" about — at the primary size. */}
         <Button
           testID="home-physical-action"
+          size="lg"
           label={t('home.checkEligibility')}
           onPress={onOpenPhysical}
           className="mt-4"
@@ -341,20 +400,23 @@ export function HomeView({
       </Card>
 
       {/* --------------------------------------------------------------- affairs */}
-      <View testID="home-affairs" className="mt-6">
-        <SectionHead
-          title={t('home.affairs')}
-          badge={t('common.sampleData')}
-          link={t('home.more')}
-          onPress={onOpenAffairs}
-          testID="home-affairs-more"
-        />
-        <Stack gap={2} className="mt-3">
-          {affairs.map((affair) => (
-            <AffairRow key={affair.id} affair={affair} lang={lang} onPress={onOpenAffairs} />
-          ))}
-        </Stack>
-      </View>
+      {affairs.length > 0 && (
+        <View testID="home-affairs" className="mt-6">
+          <SectionHead
+            title={t('home.affairs')}
+            badge={t('common.sampleData')}
+            badgeTestID="sample-data-affairs"
+            link={t('home.more')}
+            onPress={onOpenAffairs}
+            testID="home-affairs-more"
+          />
+          <Stack gap={2} className="mt-3">
+            {affairs.map((affair) => (
+              <AffairRow key={affair.id} affair={affair} lang={lang} onPress={onOpenAffairs} />
+            ))}
+          </Stack>
+        </View>
+      )}
 
       {/* -------------------------------------------------------------- progress */}
       <View testID="home-progress" className="mt-6">
@@ -374,9 +436,9 @@ export function HomeView({
           />
           <StatTile
             testID="home-progress-best"
-            value={progress.bestScore === undefined ? '—' : String(progress.bestScore)}
+            value={progress.bestPct === undefined ? '—' : `${progress.bestPct}%`}
             label={t('home.bestScore')}
-            empty={progress.bestScore === undefined}
+            empty={progress.bestPct === undefined}
           />
         </Row>
         {/* The tiles are the same for a guest; only the warning that they live on this one
@@ -419,9 +481,9 @@ function NoticeCard({
       ])}
     >
       <Row gap={2} align="center" justify="between">
-        {/* Outlined, like every other badge on the screen: the kind is a label to read, not
-            a state to react to. */}
-        <Chip label={t(`updates.kind.${notice.kind}`)} />
+        {/* A tag, not a chip: the kind is a label to read, and it must not out-shout the
+            title under it. */}
+        <Chip label={t(`updates.kind.${notice.kind}`)} tone="label" />
         <Num variant="caption" weight="600" color="dim">
           {shortDate(notice.date)}
         </Num>

@@ -20,6 +20,10 @@ const has = (text: string) => new RegExp(text.replace(/[.*+?^${}()|[\]\\]/g, '\\
 
 jest.mock('expo-router', () => ({
   useRouter: () => mockRouter,
+  useFocusEffect: (effect: () => void) => {
+    // Fetched here rather than imported: `jest.mock` is hoisted above the imports.
+    jest.requireActual<typeof import('react')>('react').useEffect(effect, [effect]);
+  },
 }));
 
 /** Everything answered: the state in which nothing should be asked for again. */
@@ -77,18 +81,18 @@ describe('HomeRoute (guest)', () => {
     });
   });
 
-  it('re-enters the Tests tab from the hero rather than stacking a second copy of it', async () => {
+  // Tests is a tab; the hero is a fact, not a second way there (design review 9).
+  it('does not turn the countdown into a button', async () => {
     await render(<HomeRoute />);
-    await userEvent.press(screen.getByTestId('home-hero'));
-    expect(mockRouter.navigate).toHaveBeenCalledWith('/(tabs)/tests');
+    expect(screen.getByTestId('home-hero').props.accessibilityRole).toBeUndefined();
+    expect(mockRouter.navigate).not.toHaveBeenCalled();
   });
 });
 
 // Removed at the user's request (2026-09-03): Home no longer offers anything to continue,
 // whatever the stores hold. The tab bar is where Study and Tests live.
 describe('HomeRoute — no Continue card', () => {
-  it('shows nothing to continue, even with a bookmark and a paper still running', async () => {
-    useStudyStore.getState().open('st-tg-statehood');
+  it('shows nothing to continue, even with a paper still running', async () => {
     startMock();
     await render(<HomeRoute />);
     expect(screen.queryByTestId('home-continue')).toBeNull();
@@ -99,7 +103,8 @@ describe('HomeRoute — no Continue card', () => {
 
   it('labels the seeded notices and affairs as sample data', async () => {
     await render(<HomeRoute />);
-    expect(screen.getAllByTestId('sample-data')).toHaveLength(2);
+    expect(screen.getByTestId('sample-data-updates')).toBeOnTheScreen();
+    expect(screen.getByTestId('sample-data-affairs')).toBeOnTheScreen();
   });
 });
 
@@ -112,6 +117,17 @@ describe('HomeRoute — links F-24 and F-25 will own', () => {
     expect(mockRouter.push).toHaveBeenCalledWith('/affairs');
     await userEvent.press(screen.getByTestId('home-physical-action'));
     expect(mockRouter.push).toHaveBeenCalledWith('/eligibility');
+  });
+
+  // A tapped notice opens itself on `/updates`, expanded (review M6). The object form, so
+  // expo-router encodes the id rather than having it pasted into a path.
+  it('opens the notice that was tapped', async () => {
+    await render(<HomeRoute />);
+    await userEvent.press(screen.getAllByTestId('home-notice')[0]);
+    expect(mockRouter.push).toHaveBeenCalledWith({
+      pathname: '/updates',
+      params: { open: 'nt-2026-pmt-pet' },
+    });
   });
 
   // Free for guests: nothing behind these three links is worth an account.
@@ -146,8 +162,22 @@ describe('HomeRoute — the numbers', () => {
     expect(screen.getByTestId('home-progress-papers')).toHaveTextContent(
       `${iso('1')}Papers practised`,
     );
-    // Rounded: a stat tile has room for a number, not two decimal places of one.
-    expect(screen.getByTestId('home-progress-best')).toHaveTextContent(`${iso('62')}Best score`);
+    // Rounded, and a percentage: a stat tile has room for one number, and the papers do not
+    // share a scale, so a raw score would say nothing (review C1).
+    expect(screen.getByTestId('home-progress-best')).toHaveTextContent(`${iso('62%')}Best score`);
+  });
+
+  it('ranks a perfect drill above a middling full paper', async () => {
+    useHistoryStore
+      .getState()
+      .record({ id: 'res-full', testId: 'mock-07', score: 120, maxScore: 200, at: 1 });
+    useHistoryStore
+      .getState()
+      .record({ id: 'res-drill', testId: 'sec-blood', score: 15, maxScore: 15, at: 2 });
+    await render(<HomeRoute />);
+    expect(screen.getByTestId('home-progress-best')).toHaveTextContent(
+      `${iso('100%')}Best score`,
+    );
   });
 
   it('draws a dash, not a zero, before any paper has been sat', async () => {

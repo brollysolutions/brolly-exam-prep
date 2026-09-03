@@ -905,7 +905,7 @@ exports[`AffairsView (ur) mirrors the screen and keeps the day heading in Latin 
         >
           <Text
             accessibilityElementsHidden={true}
-            className="text-dim"
+            className="text-chalk"
             importantForAccessibility="no"
             style={
               {
@@ -950,7 +950,7 @@ exports[`AffairsView (ur) mirrors the screen and keeps the day heading in Latin 
                 "selected": false,
               }
             }
-            className="items-center justify-center border rounded-xs h-chip px-3 border-line"
+            className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line"
             testID="sample-data"
           >
             <Text

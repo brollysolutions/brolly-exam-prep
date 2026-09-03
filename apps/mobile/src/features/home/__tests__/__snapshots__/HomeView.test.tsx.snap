@@ -899,7 +899,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
         >
           <View
             accessibilityRole="radiogroup"
-            className="h-touch self-start overflow-hidden rounded-sm border border-line"
+            className="h-touch overflow-hidden rounded-sm border border-line self-start"
             style={
               {
                 "alignItems": undefined,
@@ -932,7 +932,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 }
               }
               accessible={true}
-              className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+              className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -984,7 +984,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 }
               }
               accessible={true}
-              className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+              className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -1036,7 +1036,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 }
               }
               accessible={true}
-              className="h-full min-w-touch items-center justify-center px-2 bg-hivis"
+              className="h-full min-w-touch items-center justify-center px-3 bg-hivis"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -1089,38 +1089,14 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
         تیار ہیں، ⁦…1234⁩؟
       </Text>
       <View
-        accessibilityLabel="پی ڈبلیو ٹی میں ⁦45⁩ دن · ⁦20⁩ میں سے ⁦12⁩ مکمل"
-        accessibilityRole="button"
+        accessibilityLabel="پی ڈبلیو ٹی میں ⁦45⁩ دن · Preliminary Written Test · ⁦18-10-2026⁩ · ⁦4⁩ دن کا سلسلہ · ⁦20⁩ میں سے ⁦12⁩ مکمل"
         accessibilityState={
           {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
             "selected": false,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
           }
         }
         accessible={true}
         className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4 mt-4"
-        collapsable={false}
-        focusable={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           {
             "borderRightColor": "#FF8A00",
@@ -1231,7 +1207,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
           }
           testID="home-streak"
         >
-          4 دن کا سلسلہ
+          ⁦4⁩ دن کا سلسلہ
         </Text>
         <View
           className="mt-4 h-px bg-line2"
@@ -1332,19 +1308,19 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               testID="home-target-seg"
             />
             <View
-              className="h-progress flex-1 rounded-xs bg-panel3"
+              className="h-progress flex-1 rounded-xs bg-line3"
               testID="home-target-seg"
             />
             <View
-              className="h-progress flex-1 rounded-xs bg-panel3"
+              className="h-progress flex-1 rounded-xs bg-line3"
               testID="home-target-seg"
             />
             <View
-              className="h-progress flex-1 rounded-xs bg-panel3"
+              className="h-progress flex-1 rounded-xs bg-line3"
               testID="home-target-seg"
             />
             <View
-              className="h-progress flex-1 rounded-xs bg-panel3"
+              className="h-progress flex-1 rounded-xs bg-line3"
               testID="home-target-seg"
             />
           </View>
@@ -1395,23 +1371,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               ٹی ایس ایل پی آر بی اپ ڈیٹس
             </Text>
             <View
-              accessibilityState={
-                {
-                  "selected": false,
-                }
-              }
-              className="items-center justify-center border rounded-xs h-chip px-3 border-line"
-              testID="sample-data"
+              className="rounded-xs bg-panel3 px-2 py-0.5"
+              testID="sample-data-updates"
             >
               <Text
                 className="text-dim"
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 13.5,
+                    "fontSize": 13,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 27.7,
+                    "lineHeight": 26.7,
                     "textAlign": "center",
                     "textTransform": undefined,
                     "writingDirection": "rtl",
@@ -1447,10 +1418,10 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
             focusable={true}
             hitSlop={
               {
-                "bottom": 14,
-                "left": 10,
-                "right": 10,
-                "top": 14,
+                "bottom": 16,
+                "left": 12,
+                "right": 12,
+                "top": 16,
               }
             }
             onBlur={[Function]}
@@ -1476,7 +1447,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               }
             >
               <Text
-                className="text-hivis"
+                className="text-chalk2"
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -1517,7 +1488,9 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
         <RCTScrollView
           className="mt-3"
           horizontal={true}
+          onContentSizeChange={[Function]}
           showsHorizontalScrollIndicator={false}
+          testID="home-updates-shelf"
         >
           <View>
             <View
@@ -1583,22 +1556,17 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                   }
                 >
                   <View
-                    accessibilityState={
-                      {
-                        "selected": false,
-                      }
-                    }
-                    className="items-center justify-center border rounded-xs h-chip px-3 border-line"
+                    className="rounded-xs bg-panel3 px-2 py-0.5"
                   >
                     <Text
                       className="text-dim"
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 13.5,
+                          "fontSize": 13,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 27.7,
+                          "lineHeight": 26.7,
                           "textAlign": "center",
                           "textTransform": undefined,
                           "writingDirection": "rtl",
@@ -1700,22 +1668,17 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                   }
                 >
                   <View
-                    accessibilityState={
-                      {
-                        "selected": false,
-                      }
-                    }
-                    className="items-center justify-center border rounded-xs h-chip px-3 border-line"
+                    className="rounded-xs bg-panel3 px-2 py-0.5"
                   >
                     <Text
                       className="text-dim"
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 13.5,
+                          "fontSize": 13,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 27.7,
+                          "lineHeight": 26.7,
                           "textAlign": "center",
                           "textTransform": undefined,
                           "writingDirection": "rtl",
@@ -1817,22 +1780,17 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                   }
                 >
                   <View
-                    accessibilityState={
-                      {
-                        "selected": false,
-                      }
-                    }
-                    className="items-center justify-center border rounded-xs h-chip px-3 border-line"
+                    className="rounded-xs bg-panel3 px-2 py-0.5"
                   >
                     <Text
                       className="text-dim"
                       style={
                         {
                           "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 13.5,
+                          "fontSize": 13,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 27.7,
+                          "lineHeight": 26.7,
                           "textAlign": "center",
                           "textTransform": undefined,
                           "writingDirection": "rtl",
@@ -1963,7 +1921,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
           onStartShouldSetResponder={[Function]}
           style={
             {
-              "height": 48,
+              "height": 56,
             }
           }
           testID="home-physical-action"
@@ -1984,10 +1942,10 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               style={
                 {
                   "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 14.5,
+                  "fontSize": 15.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29.7,
+                  "lineHeight": 31.8,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "rtl",
@@ -2044,23 +2002,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               آج کے حالاتِ حاضرہ
             </Text>
             <View
-              accessibilityState={
-                {
-                  "selected": false,
-                }
-              }
-              className="items-center justify-center border rounded-xs h-chip px-3 border-line"
-              testID="sample-data"
+              className="rounded-xs bg-panel3 px-2 py-0.5"
+              testID="sample-data-affairs"
             >
               <Text
                 className="text-dim"
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 13.5,
+                    "fontSize": 13,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 27.7,
+                    "lineHeight": 26.7,
                     "textAlign": "center",
                     "textTransform": undefined,
                     "writingDirection": "rtl",
@@ -2096,10 +2049,10 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
             focusable={true}
             hitSlop={
               {
-                "bottom": 14,
-                "left": 10,
-                "right": 10,
-                "top": 14,
+                "bottom": 16,
+                "left": 12,
+                "right": 12,
+                "top": 16,
               }
             }
             onBlur={[Function]}
@@ -2125,7 +2078,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               }
             >
               <Text
-                className="text-hivis"
+                className="text-chalk2"
                 style={
                   {
                     "fontFamily": "NotoNastaliqUrdu_700Bold",
@@ -2662,7 +2615,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
             </Text>
           </View>
           <View
-            accessibilityLabel="بہترین اسکور 62"
+            accessibilityLabel="بہترین اسکور 62%"
             accessible={true}
             className="flex-1 rounded-md border border-line bg-panel2 p-3"
             style={
@@ -2693,7 +2646,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 }
               }
             >
-              ⁦62⁩
+              ⁦62%⁩
             </Text>
             <Text
               className="text-dim"

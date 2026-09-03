@@ -66,6 +66,15 @@ describe('activity store', () => {
     expect(Object.keys(read().byDay)).toEqual(['2026-09-03']);
   });
 
+  // "90 days kept" means today and the 89 before it — not 91 (review M2).
+  it('keeps exactly the advertised number of days, today included', () => {
+    read().bump('answered', NOW - ACTIVITY_DAYS_KEPT * DAY);
+    read().bump('answered', NOW - (ACTIVITY_DAYS_KEPT - 1) * DAY);
+    read().bump('answered', NOW);
+    const kept = Object.keys(read().byDay).sort();
+    expect(kept).toEqual([dayKey(NOW - (ACTIVITY_DAYS_KEPT - 1) * DAY), '2026-09-03']);
+  });
+
   it('persists the record under its own key', () => {
     read().bump('topicsRead', NOW);
     const stored = Storage.getItemSync(ACTIVITY_STORAGE_KEY);

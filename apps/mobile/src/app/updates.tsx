@@ -1,5 +1,5 @@
 import { latestNotices } from '@tslprb/fixtures';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Linking } from 'react-native';
 
 import { useLangStore } from '@/data/lang';
@@ -16,15 +16,19 @@ const FEED = latestNotices();
  *
  * No gate. Whether the hall tickets are out is public information; asking a guest for a phone
  * number before showing it would cost more than it could ever buy.
+ *
+ * `?open=<id>` is what a tapped card on Home sends: the list opens with that notice expanded.
  */
 export default function UpdatesRoute() {
   const router = useRouter();
+  const { open } = useLocalSearchParams<{ open?: string }>();
   const lang = useLangStore((s) => s.lang);
 
   return (
     <UpdatesView
       notices={FEED}
       lang={lang}
+      openId={open}
       onBack={() => router.back()}
       onOpenLink={(link) => {
         // The only failure here is a device with nothing registered for https, which leaves

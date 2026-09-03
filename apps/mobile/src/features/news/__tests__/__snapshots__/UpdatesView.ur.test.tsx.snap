@@ -905,7 +905,7 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
         >
           <Text
             accessibilityElementsHidden={true}
-            className="text-dim"
+            className="text-chalk"
             importantForAccessibility="no"
             style={
               {
@@ -950,7 +950,7 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                 "selected": false,
               }
             }
-            className="items-center justify-center border rounded-xs h-chip px-3 border-line"
+            className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line"
             testID="sample-data"
           >
             <Text
@@ -1059,7 +1059,7 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                         "selected": false,
                       }
                     }
-                    className="items-center justify-center border rounded-xs h-chip px-3 border-line"
+                    className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line"
                     testID="update-kind-nt-2026-hall-ticket"
                   >
                     <Text
@@ -1318,7 +1318,7 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                         "selected": false,
                       }
                     }
-                    className="items-center justify-center border rounded-xs h-chip px-3 border-line"
+                    className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line"
                     testID="update-kind-nt-2026-exam-date"
                   >
                     <Text

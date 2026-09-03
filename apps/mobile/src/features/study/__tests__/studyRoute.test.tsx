@@ -74,21 +74,16 @@ describe('StudyTopicRoute', () => {
 });
 
 /**
- * F-23 — what the topic screen writes for Home: the bookmark its Continue card reads, and the
- * day's tally. Both from the route, because no store in `src/data` imports another.
+ * F-23 — what the topic screen writes for Home: the day's tally, from the route, because no
+ * store in `src/data` imports another. (It no longer writes a bookmark: the Continue card
+ * that read one was removed, and the field went with it.)
  */
 describe('StudyTopicRoute (what it writes for Home)', () => {
-  it('bookmarks the topic as soon as it is opened, read or not', async () => {
+  it('writes nothing to the study store just for being opened', async () => {
     mockParams = { topic: 'st-re-blood' };
     await render(<StudyTopicRoute />);
-    expect(useStudyStore.getState().lastRead?.id).toBe('st-re-blood');
+    expect(useStudyStore.getState()).not.toHaveProperty('lastRead');
     expect(useStudyStore.getState().isRead('st-re-blood')).toBe(false);
-  });
-
-  it('bookmarks nothing for an id the shelf does not hold', async () => {
-    mockParams = { topic: 'st-nope' };
-    await render(<StudyTopicRoute />);
-    expect(useStudyStore.getState().lastRead).toBeUndefined();
   });
 
   it('counts a topic marked read towards the day', async () => {

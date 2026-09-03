@@ -1,6 +1,7 @@
-import { act, render, screen, userEvent } from '@testing-library/react-native';
+import { act, fireEvent, render, screen, userEvent } from '@testing-library/react-native';
 import { latestAffairs, latestNotices } from '@tslprb/fixtures';
 import { initI18n, setLanguage } from '@tslprb/i18n';
+import { ScrollView } from 'react-native';
 
 import { iso } from '@/ui';
 
@@ -16,11 +17,11 @@ const props = {
   today: { done: 12, target: 20 },
   notices: latestNotices(3),
   affairs: latestAffairs(3),
-  progress: { topicsRead: 5, topicsTotal: 11, papers: 3, bestScore: 62 },
+  progress: { topicsRead: 5, topicsTotal: 11, papers: 3, bestPct: 62 },
   onLang: jest.fn(),
   onSignIn: jest.fn(),
-  onOpenTests: jest.fn(),
   onOpenUpdates: jest.fn(),
+  onOpenNotice: jest.fn(),
   onOpenPhysical: jest.fn(),
   onOpenAffairs: jest.fn(),
 };
@@ -57,11 +58,18 @@ describe('HomeView — countdown hero', () => {
     );
   });
 
+  // The count is isolated like every other digit on the screen (review I2), and a one-day
+  // streak is one day, not "1 days".
   it('greets the signed-in number and reads the streak as a fact, not a button', async () => {
     await render(<HomeView {...props} lang="en" />);
     expect(screen.getByTestId('home-greeting')).toHaveTextContent(`Ready, ${iso('…1234')}?`);
-    expect(screen.getByTestId('home-streak')).toHaveTextContent('4-day streak');
+    expect(screen.getByTestId('home-streak')).toHaveTextContent(`${iso('4')}-day streak`);
     expect(screen.getByTestId('home-streak').props.accessibilityRole).toBeUndefined();
+  });
+
+  it('counts a single day in the singular', async () => {
+    await render(<HomeView {...props} streakDays={1} lang="en" />);
+    expect(screen.getByTestId('home-streak')).toHaveTextContent(`${iso('1')}-day streak`);
   });
 
   // "0-day streak" is a scold, not a fact worth a line.
@@ -70,19 +78,52 @@ describe('HomeView — countdown hero', () => {
     expect(screen.queryByTestId('home-streak')).toBeNull();
   });
 
-  it('opens the papers it is counting down to', async () => {
+  // Tests is a tab: the hero is a fact about the date, not a silent way to somewhere the tab
+  // bar already goes (design review 9).
+  it('is a fact, not a button', async () => {
     await render(<HomeView {...props} lang="en" />);
-    await userEvent.press(screen.getByTestId('home-hero'));
-    expect(props.onOpenTests).toHaveBeenCalledTimes(1);
+    const hero = screen.getByTestId('home-hero');
+    expect(hero.props.accessibilityRole).toBeUndefined();
+    expect(hero.props.onPress).toBeUndefined();
   });
 
-  // The hero is one button, so its label is read INSTEAD of the lines inside it: both facts
-  // the card is made of have to be in there.
+  // The hero is read as one element, so its label is read INSTEAD of the lines inside it:
+  // every fact the card is made of has to be in there — the count, the date, the streak and
+  // the day's target.
   it('says the whole card to a screen reader, which cannot see the layout', async () => {
     await render(<HomeView {...props} lang="en" />);
+    expect(screen.getByTestId('home-hero').props.accessible).toBe(true);
     expect(screen.getByTestId('home-hero').props.accessibilityLabel).toBe(
-      `${iso('45')} days to PWT · ${iso('12')} of ${iso('20')} done`,
+      [
+        `${iso('45')} days to PWT`,
+        `Preliminary Written Test · ${iso('18-10-2026')}`,
+        `${iso('4')}-day streak`,
+        `${iso('12')} of ${iso('20')} done`,
+      ].join(' · '),
     );
+  });
+
+  // The countdown cannot count down to zero for ever (review M5): on the day it says so, and
+  // afterwards it says when the paper was held, with no number to misread as "0 days left".
+  it('says it is exam day on the day itself', async () => {
+    await render(<HomeView {...props} daysToExam={0} lang="en" />);
+    expect(screen.queryByTestId('home-days')).toBeNull();
+    expect(screen.getByTestId('home-exam-state')).toHaveTextContent('Exam day');
+    expect(screen.getByTestId('home-exam-date')).toHaveTextContent(
+      `Preliminary Written Test · ${iso('18-10-2026')}`,
+    );
+    expect(screen.getByTestId('home-hero').props.accessibilityLabel).toContain('Exam day');
+  });
+
+  it('says when the paper was held once the date has passed', async () => {
+    await render(<HomeView {...props} daysToExam={-3} lang="en" />);
+    expect(screen.queryByTestId('home-days')).toBeNull();
+    expect(screen.getByTestId('home-exam-state')).toHaveTextContent(
+      `PWT held on ${iso('18-10-2026')}`,
+    );
+    expect(screen.queryByText(/days to PWT/)).toBeNull();
+    // The target bar is still the day's work, whatever the date.
+    expect(screen.getByTestId('home-target')).toBeOnTheScreen();
   });
 });
 
@@ -95,6 +136,10 @@ describe("HomeView — today's target", () => {
     await render(<HomeView {...props} today={{ done: 0, target: 20 }} lang="en" />);
     expect(screen.getAllByTestId('home-target-seg')).toHaveLength(TARGET_SEGMENTS);
     expect(litSegments()).toBe(0);
+    // `line3`, not `panel3`: an unlit block at 1.14:1 against the card was invisible.
+    for (const seg of screen.getAllByTestId('home-target-seg')) {
+      expect(seg.props.className).toContain('bg-line3');
+    }
     expect(screen.getByTestId('home-target-count')).toHaveTextContent(
       `${iso('0')} of ${iso('20')} done`,
     );
@@ -174,6 +219,8 @@ describe('HomeView — the three shelves', () => {
   it('makes Check eligibility the screen’s only hi-vis action', async () => {
     await render(<HomeView {...props} lang="en" />);
     expect(screen.getByTestId('home-physical-action').props.className).toContain('bg-hivis');
+    // The one primary action per screen is the 56 px size, per Button's own contract.
+    expect(screen.getByTestId('home-physical-action')).toHaveStyle({ height: 56 });
     // The selected language chip is the one other yellow fill: a state, not an action.
     const yellow = screen
       .getAllByRole('button')
@@ -183,15 +230,44 @@ describe('HomeView — the three shelves', () => {
   });
 
   // Seeded fixtures, not the Board's feed: both rows say so until the API serves live content.
+  // A quiet tag, never a control, and quieter than the heading it sits beside (design 7).
   it('marks the notices and the affairs as sample data', async () => {
     await render(<HomeView {...props} lang="en" />);
-    const chips = screen.getAllByTestId('sample-data');
-    expect(chips).toHaveLength(2);
-    for (const chip of chips) {
+    for (const id of ['sample-data-updates', 'sample-data-affairs']) {
+      const chip = screen.getByTestId(id);
       expect(chip).toHaveTextContent('Sample data');
       expect(chip.props.accessibilityRole).toBeUndefined();
       expect(chip.props.className).not.toContain('bg-hivis');
+      expect(chip.props.className).toContain('bg-panel3');
     }
+  });
+
+  // A card that ignored which card it was would be a small lie (review M6): a tapped notice
+  // opens itself on `/updates`; an affair row keeps the section link.
+  it('opens the notice that was tapped, and the affairs list from any row', async () => {
+    await render(<HomeView {...props} lang="en" />);
+    await userEvent.press(screen.getAllByTestId('home-notice')[1]);
+    expect(props.onOpenNotice).toHaveBeenCalledWith(props.notices[1].id);
+    expect(props.onOpenUpdates).not.toHaveBeenCalled();
+    await userEvent.press(screen.getAllByTestId('home-affair')[0]);
+    expect(props.onOpenAffairs).toHaveBeenCalledTimes(1);
+  });
+
+  it('gives the section links a 48 px target and keeps the yellow for the chevron', async () => {
+    await render(<HomeView {...props} lang="en" />);
+    const link = screen.getByTestId('home-updates-all');
+    expect(link.props.hitSlop).toEqual({ top: 16, bottom: 16, left: 12, right: 12 });
+    expect(screen.getByText('All updates').props.className).toContain('text-chalk2');
+    expect(screen.getByText('All updates').props.className).not.toContain('text-hivis');
+  });
+
+  // Nothing from the Board yet is nothing to show: no heading over an empty shelf (design 14).
+  it('hides a shelf that has nothing on it', async () => {
+    await render(<HomeView {...props} notices={[]} affairs={[]} lang="en" />);
+    expect(screen.queryByTestId('home-updates')).toBeNull();
+    expect(screen.queryByTestId('home-affairs')).toBeNull();
+    expect(screen.getByTestId('home-physical')).toBeOnTheScreen();
+    expect(screen.getByTestId('home-progress')).toBeOnTheScreen();
   });
 
   it("shows today's affairs with their category", async () => {
@@ -207,10 +283,8 @@ describe('HomeView — the three shelves', () => {
     await render(<HomeView {...props} lang="en" />);
     await userEvent.press(screen.getByTestId('home-updates-all'));
     await userEvent.press(screen.getByTestId('home-affairs-more'));
-    await userEvent.press(screen.getAllByTestId('home-notice')[0]);
-    await userEvent.press(screen.getAllByTestId('home-affair')[0]);
-    expect(props.onOpenUpdates).toHaveBeenCalledTimes(2);
-    expect(props.onOpenAffairs).toHaveBeenCalledTimes(2);
+    expect(props.onOpenUpdates).toHaveBeenCalledTimes(1);
+    expect(props.onOpenAffairs).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -227,7 +301,8 @@ describe('HomeView — progress', () => {
     expect(screen.getByTestId('home-progress-papers')).toHaveTextContent(
       `${iso('3')}Papers practised`,
     );
-    expect(screen.getByTestId('home-progress-best')).toHaveTextContent(`${iso('62')}Best score`);
+    // A percentage, never a bare numerator: the papers are out of 200, 40, 20 or 15 marks.
+    expect(screen.getByTestId('home-progress-best')).toHaveTextContent(`${iso('62%')}Best score`);
   });
 
   // No paper sat is not a score of zero, and a tile that said "0" would be a worse lie the
@@ -320,6 +395,18 @@ describe('HomeView — what F-23 removed', () => {
   });
 });
 
+describe('HomeView (en) — the shelf scroller', () => {
+  beforeAll(() => {
+    initI18n('en');
+  });
+
+  it('leaves the shelf at its start, where the newest notice already is', async () => {
+    await render(<HomeView {...props} lang="en" />);
+    fireEvent(screen.getByTestId('home-updates-shelf'), 'contentSizeChange', 724, 120);
+    expect(ScrollView.prototype.scrollToEnd).not.toHaveBeenCalled();
+  });
+});
+
 describe('HomeView (ur)', () => {
   beforeAll(async () => {
     initI18n('en');
@@ -339,8 +426,18 @@ describe('HomeView (ur)', () => {
     expect(screen.getByTestId('home-header')).toHaveStyle({ flexDirection: 'row-reverse' });
     expect(screen.getByTestId('home-target')).toHaveStyle({ flexDirection: 'row-reverse' });
     expect(screen.getByTestId('home-days')).toHaveStyle({ fontFamily: 'Archivo_700Bold' });
-    expect(screen.getAllByTestId('sample-data')[0]).toHaveTextContent('نمونہ ڈیٹا');
+    expect(screen.getByTestId('sample-data-updates')).toHaveTextContent('نمونہ ڈیٹا');
+    // The streak digit is isolated, so it stays a Latin figure inside the Nastaliq line.
+    expect(screen.getByTestId('home-streak')).toHaveTextContent(has(iso('4')));
     expect(screen.toJSON()).toMatchSnapshot();
+  });
+
+  // The shelf is a reversed row inside a scroller whose origin is the LEFT edge, so without
+  // help Urdu opened on the two oldest notices with the newest off-screen (review I1).
+  it('starts the notice shelf at the newest notice, which is on the right', async () => {
+    await render(<HomeView {...props} lang="ur" />);
+    fireEvent(screen.getByTestId('home-updates-shelf'), 'contentSizeChange', 724, 120);
+    expect(ScrollView.prototype.scrollToEnd).toHaveBeenCalledWith({ animated: false });
   });
 
   it('keeps the shelf links in the Latin face, where the chevron has a glyph', async () => {

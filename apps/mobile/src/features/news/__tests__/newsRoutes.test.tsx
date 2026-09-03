@@ -8,9 +8,11 @@ import UpdatesRoute from '@/app/updates';
 import { useSessionStore } from '@/data/session';
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), navigate: jest.fn(), back: jest.fn() };
+let mockParams: Record<string, string> = {};
 
 jest.mock('expo-router', () => ({
   useRouter: () => mockRouter,
+  useLocalSearchParams: () => mockParams,
 }));
 
 beforeAll(() => {
@@ -18,6 +20,7 @@ beforeAll(() => {
 });
 
 beforeEach(() => {
+  mockParams = {};
   jest.clearAllMocks();
   useSessionStore.getState().logout();
 });
@@ -63,6 +66,14 @@ describe('UpdatesRoute', () => {
     await render(<UpdatesRoute />);
     await userEvent.press(screen.getByTestId('updates-header-back'));
     expect(mockRouter.back).toHaveBeenCalledTimes(1);
+  });
+
+  // `/updates?open=<id>` is what a tapped card on Home sends (review M6).
+  it('arrives with the named notice already open', async () => {
+    mockParams = { open: 'nt-2026-hall-ticket' };
+    await render(<UpdatesRoute />);
+    expect(screen.getByTestId('update-body-nt-2026-hall-ticket')).toBeOnTheScreen();
+    expect(screen.queryByTestId('update-body-nt-2026-exam-date')).toBeNull();
   });
 });
 

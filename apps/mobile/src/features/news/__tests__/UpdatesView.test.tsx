@@ -57,6 +57,14 @@ describe('UpdatesView', () => {
     expect(screen.queryByTestId('update-body-nt-2026-hall-ticket')).toBeNull();
   });
 
+  // Arriving from a tapped card on Home (`/updates?open=<id>`), the notice is already open.
+  it('opens the notice it was asked to open, and only that one', async () => {
+    await render(<UpdatesView {...props()} openId="nt-2026-hall-ticket" />);
+    expect(screen.getByTestId('update-row-nt-2026-hall-ticket')).toBeExpanded();
+    expect(screen.getByTestId('update-body-nt-2026-hall-ticket')).toBeOnTheScreen();
+    expect(screen.getByTestId('update-row-nt-2026-exam-date')).toBeCollapsed();
+  });
+
   it('opens one notice at a time without closing the others', async () => {
     await render(<UpdatesView {...props()} />);
     await userEvent.press(screen.getByTestId('update-row-nt-2026-hall-ticket'));

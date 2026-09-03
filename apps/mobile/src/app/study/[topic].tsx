@@ -1,6 +1,5 @@
 import { findStudyTopic } from '@tslprb/fixtures';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useEffect } from 'react';
 
 import { useActivityStore } from '@/data/activity';
 import { useLangStore } from '@/data/lang';
@@ -19,16 +18,9 @@ export default function StudyTopicRoute() {
   const setLang = useLangStore((s) => s.setLang);
   const read = useStudyStore((s) => (id ? Boolean(s.read[id]) : false));
   const markRead = useStudyStore((s) => s.markRead);
-  const open = useStudyStore((s) => s.open);
 
   const found = findStudyTopic(id);
   const foundId = found?.topic.id;
-
-  // F-23 — the bookmark Home's Continue card reads. Opening the page is what sets it: a
-  // candidate who put the phone down mid-topic is still in that topic, marked read or not.
-  useEffect(() => {
-    if (foundId) open(foundId);
-  }, [foundId, open]);
 
   return (
     <TopicView

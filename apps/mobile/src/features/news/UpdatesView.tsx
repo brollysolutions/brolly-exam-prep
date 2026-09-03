@@ -28,6 +28,8 @@ export type UpdatesViewProps = {
   onBack: () => void;
   /** Opens the notice on the Board's site. Omitted, the link row is not offered. */
   onOpenLink?: (link: string) => void;
+  /** The notice to arrive with already open — a card tapped on Home sends its id here. */
+  openId?: string;
 };
 
 /** The "read the full notice" row. Its own 48 px target, below the body, only when expanded. */
@@ -80,15 +82,17 @@ function LinkRow({
 function NoticeCard({
   notice,
   lang,
+  initiallyOpen,
   onOpenLink,
 }: {
   notice: Notice;
   lang: Lang;
+  initiallyOpen: boolean;
   onOpenLink?: (link: string) => void;
 }) {
   const { t } = useTranslation();
   const d = useDir();
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(initiallyOpen);
   const { pressed, handlers } = usePressed();
   const link = notice.link;
   return (
@@ -155,7 +159,7 @@ function NoticeCard({
  *
  * Pure, so the route, the tests and the dev gallery render the same component.
  */
-export function UpdatesView({ notices, lang, onBack, onOpenLink }: UpdatesViewProps) {
+export function UpdatesView({ notices, lang, onBack, onOpenLink, openId }: UpdatesViewProps) {
   const { t } = useTranslation();
   return (
     <Screen testID="updates-screen">
@@ -178,7 +182,13 @@ export function UpdatesView({ notices, lang, onBack, onOpenLink }: UpdatesViewPr
         >
           <Stack gap={3}>
             {notices.map((notice) => (
-              <NoticeCard key={notice.id} notice={notice} lang={lang} onOpenLink={onOpenLink} />
+              <NoticeCard
+                key={notice.id}
+                notice={notice}
+                lang={lang}
+                initiallyOpen={notice.id === openId}
+                onOpenLink={onOpenLink}
+              />
             ))}
           </Stack>
         </ScrollView>

@@ -64,18 +64,28 @@ export const useHistoryStore = create<HistoryStore>()(
 export const attemptCount = (state: HistoryState): number => state.attempts.length;
 
 /**
- * The best score so far, or `undefined` when nothing has been sat — which is a different
- * thing from zero and has to render differently.
+ * A paper's score as a share of its marks, 0..1. A paper with no marks on offer is a zero
+ * rather than a division by nothing.
  */
-export function bestScore(state: HistoryState): number | undefined {
-  if (state.attempts.length === 0) return undefined;
-  return state.attempts.reduce((best, a) => Math.max(best, a.score), Number.NEGATIVE_INFINITY);
-}
+const ratio = (a: AttemptRecord): number => (a.maxScore > 0 ? a.score / a.maxScore : 0);
 
-/** The paper the best score was scored on, for the marks-out-of it belongs to. */
+/**
+ * The paper the best result was scored on — best by SHARE of the marks, never by raw marks:
+ * the papers a candidate can sit are out of 200, 40, 20 or 15, so 15/15 on a drill has to
+ * beat 120/200 on the full paper, and 40/40 on the short mock has to beat 30/200.
+ * `undefined` when nothing has been sat, which is a different thing from zero.
+ */
 export function bestAttempt(state: HistoryState): AttemptRecord | undefined {
   return state.attempts.reduce<AttemptRecord | undefined>(
-    (best, a) => (best === undefined || a.score > best.score ? a : best),
+    (best, a) => (best === undefined || ratio(a) > ratio(best) ? a : best),
     undefined,
   );
+}
+
+/** The best result as a percentage (0–100, unrounded), or `undefined` when nothing has been sat. */
+export function bestPercent(state: HistoryState): number | undefined {
+  const best = bestAttempt(state);
+  if (best === undefined) return undefined;
+  // `score * 100 / max`, not `ratio * 100`: 62.25 / 100 * 100 is 62.25000000000001.
+  return best.maxScore > 0 ? (best.score * 100) / best.maxScore : 0;
 }
