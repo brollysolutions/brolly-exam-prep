@@ -943,7 +943,7 @@ exports[`PaperView (ur) mirrors the screen and moves the correct-answer bar to t
         </Text>
       </View>
       <View
-        className="px-3 pb-2"
+        className="px-4 pb-2"
         style={
           {
             "alignItems": "baseline",
@@ -1000,7 +1000,7 @@ exports[`PaperView (ur) mirrors the screen and moves the correct-answer bar to t
             "flexDirection": "row-reverse",
             "gap": 8,
             "paddingBottom": 8,
-            "paddingHorizontal": 12,
+            "paddingHorizontal": 16,
           }
         }
         horizontal={true}

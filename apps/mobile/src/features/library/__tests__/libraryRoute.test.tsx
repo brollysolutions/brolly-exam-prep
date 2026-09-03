@@ -18,9 +18,9 @@ jest.mock('expo-router', () => ({
   useRouter: () => mockRouter,
   useFocusEffect: (effect: () => void) => {
     mockFocusTab = effect;
-    // `require` inside the factory: `jest.mock` is hoisted above the imports, so an imported
-    // binding is out of scope here.
-    (require('react') as typeof import('react')).useEffect(effect, [effect]);
+    // Fetched here rather than imported: `jest.mock` is hoisted above the imports, so an
+    // imported binding would be out of scope inside this factory.
+    jest.requireActual<typeof import('react')>('react').useEffect(effect, [effect]);
   },
 }));
 
