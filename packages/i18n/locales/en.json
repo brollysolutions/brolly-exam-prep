@@ -201,5 +201,28 @@
     "tip": "Exam tip",
     "notFound": "That topic is not in the study material."
   },
-  "tabs": { "home": "Home", "study": "Study", "tests": "Tests", "profile": "Profile" }
+  "tabs": { "home": "Home", "study": "Study", "tests": "Tests", "profile": "Profile" },
+  "updates": {
+    "title": "TSLPRB updates",
+    "kind": {
+      "notification": "Notification",
+      "admitCard": "Hall ticket",
+      "examDate": "Exam date",
+      "result": "Result",
+      "pet": "PMT / PET"
+    },
+    "open": "Read the full notice",
+    "empty": "No updates from the Board yet."
+  },
+  "affairs": {
+    "title": "Current affairs",
+    "cat": {
+      "india": "India",
+      "telangana": "Telangana",
+      "world": "World",
+      "sports": "Sports",
+      "awards": "Awards"
+    },
+    "empty": "No current affairs yet."
+  }
 }

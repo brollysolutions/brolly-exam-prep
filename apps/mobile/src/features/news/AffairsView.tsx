@@ -1,0 +1,116 @@
+import type { Affair } from '@tslprb/fixtures';
+import type { Lang } from '@tslprb/i18n';
+import { useTranslation } from 'react-i18next';
+import { ScrollView, View } from 'react-native';
+
+import { BackHeader } from '@/features/result/Header';
+import { Kicker, Num, Screen, Stack, Text } from '@/ui';
+
+import { NewsEmpty } from './Empty';
+import { formatDay } from './format';
+
+export type AffairsViewProps = {
+  /** Newest first — the order the days are printed in. */
+  affairs: Affair[];
+  /** Which language's face the headline and summary are drawn in. */
+  lang: Lang;
+  onBack: () => void;
+};
+
+export type AffairDay = { date: string; items: Affair[] };
+
+/**
+ * The list, cut into days in the order it arrives.
+ *
+ * Sorting is the caller's business (`latestAffairs`): a run of same-day items becomes one
+ * group, and a day that somehow appears twice becomes two, which is the honest rendering of
+ * an unsorted feed rather than a silent merge that hides it.
+ */
+export function groupByDay(affairs: Affair[]): AffairDay[] {
+  const days: AffairDay[] = [];
+  for (const affair of affairs) {
+    const last = days[days.length - 1];
+    if (last && last.date === affair.date) last.items.push(affair);
+    else days.push({ date: affair.date, items: [affair] });
+  }
+  return days;
+}
+
+/** One item: what it is about, what happened, and one sentence of why it matters. */
+function AffairCard({ affair, lang }: { affair: Affair; lang: Lang }) {
+  const { t } = useTranslation();
+  return (
+    <View
+      className="rounded-md border border-line bg-panel2 p-4"
+      testID={`affair-card-${affair.id}`}
+    >
+      {/* Sand is the info accent — the same one the `Why` block on a paper carries. */}
+      <Kicker color="sand" tracking="kickerTight" testID={`affair-cat-${affair.id}`}>
+        {t(`affairs.cat.${affair.category}`)}
+      </Kicker>
+      <Text variant="body" weight="600" className="mt-2" testID={`affair-headline-${affair.id}`}>
+        {affair.headline[lang]}
+      </Text>
+      <Text
+        variant="caption"
+        color="chalk2"
+        className="mt-2"
+        testID={`affair-summary-${affair.id}`}
+      >
+        {affair.summary[lang]}
+      </Text>
+    </View>
+  );
+}
+
+/**
+ * F-24 — the daily current-affairs digest, grouped by the day it belongs to.
+ *
+ * A date is what a candidate revises by ("what did I miss on Tuesday"), so the day is the
+ * heading and the category is the card's own kicker, not the other way round.
+ *
+ * Pure, so the route, the tests and the dev gallery render the same component.
+ */
+export function AffairsView({ affairs, lang, onBack }: AffairsViewProps) {
+  const { t } = useTranslation();
+  const days = groupByDay(affairs);
+  return (
+    <Screen testID="affairs-screen">
+      <BackHeader title={t('affairs.title')} onBack={onBack} testID="affairs-header" />
+      {days.length === 0 ? (
+        <NewsEmpty message={t('affairs.empty')} testID="affairs-empty" />
+      ) : (
+        <ScrollView
+          className="flex-1"
+          contentContainerClassName="px-4 pb-6 pt-4"
+          showsVerticalScrollIndicator={false}
+          testID="affairs-list"
+        >
+          {days.map((day, i) => (
+            <Stack
+              key={`${day.date}-${i}`}
+              gap={3}
+              className={i === 0 ? undefined : 'mt-6'}
+              testID={`affairs-day-${day.date}`}
+            >
+              {/* The day heading is a date, so it goes through `Num`: Latin face, tabular,
+                  LTR-isolated, at the kicker's own size and weight. */}
+              <Num
+                variant="kicker"
+                weight="700"
+                color="dim"
+                tracking="none"
+                testID={`affairs-date-${day.date}`}
+              >
+                {formatDay(day.date)}
+              </Num>
+              {day.items.map((affair) => (
+                <AffairCard key={affair.id} affair={affair} lang={lang} />
+              ))}
+            </Stack>
+          ))}
+        </ScrollView>
+      )}
+    </Screen>
+  );
+}
