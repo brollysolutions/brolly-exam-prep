@@ -5,7 +5,12 @@ import { iso } from '@/ui';
 
 import { LibraryView } from '../LibraryView';
 
-const handlers = () => ({ lang: 'en' as const, onOpen: jest.fn(), onLocked: jest.fn() });
+const handlers = () => ({
+  lang: 'en' as const,
+  onOpen: jest.fn(),
+  onViewPaper: jest.fn(),
+  onLocked: jest.fn(),
+});
 
 describe('LibraryView', () => {
   beforeAll(() => {
@@ -78,6 +83,92 @@ describe('LibraryView', () => {
     await render(<LibraryView initialKind="previous" {...handlers()} />);
     expect(screen.getByTestId('library-row-prev-2018')).toBeOnTheScreen();
     expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+  });
+
+  // The Tests tab is already mounted when Home links to `?kind=previous`, so a shelf that
+  // only ever read the first value would leave the candidate on the full mocks.
+  it('moves to the shelf a later request names', async () => {
+    const h = handlers();
+    const view = await render(<LibraryView {...h} />);
+    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+    await act(async () => {
+      view.rerender(<LibraryView initialKind="previous" {...h} />);
+    });
+    expect(screen.getByTestId('library-row-prev-2022')).toBeOnTheScreen();
+    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+  });
+
+  // A chip pressed after the link is the candidate's own choice, and outlives it.
+  it('leaves a chip the candidate pressed alone when nothing new is asked for', async () => {
+    const h = handlers();
+    const view = await render(<LibraryView initialKind="previous" {...h} />);
+    await userEvent.press(screen.getByTestId('library-filter-full'));
+    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+    await act(async () => {
+      view.rerender(<LibraryView initialKind="previous" {...h} />);
+    });
+    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+  });
+});
+
+/**
+ * F-22 — a previous paper is two things at once, so its row offers both instead of guessing.
+ */
+describe('LibraryView — previous papers', () => {
+  beforeAll(() => {
+    initI18n('en');
+  });
+
+  const previous = async () => {
+    const h = handlers();
+    await render(<LibraryView initialKind="previous" {...h} />);
+    return h;
+  };
+
+  it('gives every previous paper a practise and a view action', async () => {
+    await previous();
+    for (const id of ['prev-2022', 'prev-2018']) {
+      expect(screen.getByTestId(`library-practise-${id}`)).toHaveTextContent('Practise');
+      expect(screen.getByTestId(`library-view-${id}`)).toHaveTextContent('View paper');
+    }
+  });
+
+  it('sends practise through the gate and view paper straight to the paper', async () => {
+    const h = await previous();
+    await userEvent.press(screen.getByTestId('library-practise-prev-2022'));
+    expect(h.onOpen).toHaveBeenCalledWith('prev-2022');
+    expect(h.onViewPaper).not.toHaveBeenCalled();
+    await userEvent.press(screen.getByTestId('library-view-prev-2018'));
+    expect(h.onViewPaper).toHaveBeenCalledWith('prev-2018');
+    expect(h.onOpen).toHaveBeenCalledTimes(1);
+  });
+
+  it('reads a previous paper as free — the account is for the attempt, not the paper', async () => {
+    await previous();
+    expect(screen.getByTestId('library-badge-prev-2022')).toHaveTextContent('Free');
+    expect(screen.queryByTestId('library-locked-toast')).toBeNull();
+  });
+
+  it('keeps both controls 48 px and spends no hi-vis on either', async () => {
+    await previous();
+    const practise = screen.getByTestId('library-practise-prev-2022');
+    const view = screen.getByTestId('library-view-prev-2022');
+    expect(practise).toHaveStyle({ height: 48 });
+    expect(view).toHaveStyle({ height: 48 });
+    // The active filter chip is the screen's one hi-vis element; weight, not fill, leads.
+    expect(practise.props.className).not.toContain('bg-hivis');
+    expect(view.props.className).not.toContain('bg-hivis');
+    expect(within(practise).getByText('Practise').props.style.fontFamily).toContain('700Bold');
+    expect(within(view).getByText('View paper').props.style.fontFamily).not.toContain('700Bold');
+  });
+
+  it('leaves the other shelves with the one whole-row action they had', async () => {
+    await render(<LibraryView {...handlers()} />);
+    expect(screen.queryByTestId('library-practise-mock-07')).toBeNull();
+    expect(screen.queryByTestId('library-view-mock-07')).toBeNull();
+    await userEvent.press(screen.getByTestId('library-filter-sectional'));
+    expect(screen.queryByTestId('library-practise-sec-seating')).toBeNull();
+    expect(screen.getByTestId('library-row-sec-seating')).toBeOnTheScreen();
   });
 });
 

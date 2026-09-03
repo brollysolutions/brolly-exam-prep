@@ -1,4 +1,4 @@
-import { colors, size as sizes, type ColorName } from '@tslprb/design-tokens';
+import { colors, size as sizes, type ColorName, type FontWeight } from '@tslprb/design-tokens';
 import type { ReactNode } from 'react';
 import {
   Pressable,
@@ -30,6 +30,12 @@ export type ButtonProps = Omit<PressableProps, 'style' | 'children'> & {
   size?: ButtonSize;
   /** Hazard variant only: filled state (e.g. "Marked"). */
   active?: boolean;
+  /**
+   * Overrides the size's default label weight (md 600, lg 700). For a pair of same-variant
+   * buttons where one leads: the screen keeps its single hi-vis element and the weight, not
+   * a second yellow fill, says which of the two is the main move.
+   */
+  weight?: FontWeight;
   /** Optional glyph/icon rendered after the label in reading order. */
   icon?: ReactNode;
   className?: string;
@@ -65,6 +71,7 @@ export function Button({
   variant = 'primary',
   size = 'md',
   active = false,
+  weight,
   icon,
   disabled,
   onPress,
@@ -111,7 +118,7 @@ export function Button({
       <Row gap={2} align="center">
         <Text
           variant={size === 'lg' ? 'bodyLg' : 'body'}
-          weight={size === 'lg' ? '700' : '600'}
+          weight={weight ?? (size === 'lg' ? '700' : '600')}
           color={color}
           align="center"
         >

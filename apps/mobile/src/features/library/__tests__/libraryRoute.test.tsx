@@ -5,8 +5,11 @@ import LibraryRoute from '@/app/(tabs)/tests';
 import { useSessionStore } from '@/data/session';
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), navigate: jest.fn(), back: jest.fn() };
+/** The `?kind=` Home links with; reassigned per test. */
+let mockParams: { kind?: string } = {};
 
 jest.mock('expo-router', () => ({
+  useLocalSearchParams: () => mockParams,
   useRouter: () => mockRouter,
 }));
 
@@ -16,6 +19,7 @@ beforeAll(() => {
 
 beforeEach(() => {
   jest.clearAllMocks();
+  mockParams = {};
   useSessionStore.getState().logout();
 });
 
@@ -40,6 +44,42 @@ describe('LibraryRoute', () => {
     await userEvent.press(screen.getByTestId('library-row-mock-08'));
     expect(screen.getByTestId('library-locked-toast')).toBeOnTheScreen();
     expect(mockRouter.push).not.toHaveBeenCalled();
+  });
+
+  // F-20's Home card links to `/(tabs)/tests?kind=previous`; the shelf has to honour it.
+  it('opens on the shelf the link asks for', async () => {
+    mockParams = { kind: 'previous' };
+    await render(<LibraryRoute />);
+    expect(screen.getByTestId('library-row-prev-2022')).toBeOnTheScreen();
+    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+  });
+
+  it('falls back to the full mocks when the link names a shelf that does not exist', async () => {
+    mockParams = { kind: 'nonsense' };
+    await render(<LibraryRoute />);
+    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+  });
+
+  // Reading a paper is not an attempt: there is nothing to score and nothing to keep, so
+  // there is nothing for an account to hold.
+  it('opens a previous paper for a guest with no sign-in', async () => {
+    mockParams = { kind: 'previous' };
+    await render(<LibraryRoute />);
+    await userEvent.press(screen.getByTestId('library-view-prev-2022'));
+    expect(mockRouter.push).toHaveBeenCalledWith({
+      pathname: '/paper/[id]',
+      params: { id: 'prev-2022' },
+    });
+  });
+
+  it('still asks for an account before practising one', async () => {
+    mockParams = { kind: 'previous' };
+    await render(<LibraryRoute />);
+    await userEvent.press(screen.getByTestId('library-practise-prev-2022'));
+    expect(mockRouter.push).toHaveBeenCalledWith({
+      pathname: '/(auth)/login',
+      params: { returnTo: '/test/prev-2022' },
+    });
   });
 
   it('opens the paper directly once the account is in place', async () => {

@@ -142,6 +142,13 @@
     "avgTime": "Average",
     "allCorrect": "No wrong answers in this test."
   },
+  "paper": {
+    "title": "Question paper",
+    "questions": "questions",
+    "section": "Section",
+    "why": "Why",
+    "notFound": "That paper could not be opened."
+  },
   "home": {
     "greeting": "Ready, {{name}}?",
     "greetingPlain": "Ready?",
@@ -161,6 +168,8 @@
     "previousYear": "Previous year",
     "attempted": "Attempted",
     "bestScore": "Best",
+    "practise": "Practise",
+    "viewPaper": "View paper",
     "lockedToast": "That test is locked. Try one marked Free."
   },
   "profile": {

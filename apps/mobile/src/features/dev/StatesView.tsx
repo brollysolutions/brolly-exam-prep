@@ -7,6 +7,7 @@ import { useLangStore } from '@/data/lang';
 import { LoginView } from '@/features/auth/LoginView';
 import { OtpView } from '@/features/auth/OtpView';
 import { AttemptStates } from '@/features/dev/sections/AttemptStates';
+import { PaperStates } from '@/features/dev/sections/PaperStates';
 import { ResultStates } from '@/features/dev/sections/ResultStates';
 import { ShellStates } from '@/features/dev/sections/ShellStates';
 import { CategoryView } from '@/features/onboarding/CategoryView';
@@ -362,6 +363,8 @@ export function StatesView() {
       <ResultStates index="14" />
 
       <ShellStates index="15" />
+
+      <PaperStates index="16" />
     </Screen>
   );
 }

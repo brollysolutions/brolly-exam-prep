@@ -35,15 +35,28 @@ export function Skeleton({ blocks, testID }: { blocks: SkeletonBlock[]; testID: 
   );
 }
 
-/** Failed load: a flag kicker, the message, and a secondary retry button (48 px). */
-export function LoadError({ onRetry, testID }: { onRetry?: () => void; testID: string }) {
+/**
+ * Failed load: a flag kicker, the message, and a secondary retry button (48 px).
+ *
+ * `message` names what could not be loaded when the screen knows ("that paper could not be
+ * opened"); left off, it falls back to the generic line every other screen shares.
+ */
+export function LoadError({
+  message,
+  onRetry,
+  testID,
+}: {
+  message?: string;
+  onRetry?: () => void;
+  testID: string;
+}) {
   const { t } = useTranslation();
   return (
     <Stack gap={4} className="px-4 pt-6" testID={testID}>
       <Stack gap={2}>
         <Kicker color="flag">{t('result.errorKicker')}</Kicker>
         <Text variant="body" color="dim">
-          {t('result.loadError')}
+          {message ?? t('result.loadError')}
         </Text>
       </Stack>
       <Button

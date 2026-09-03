@@ -142,6 +142,13 @@
     "avgTime": "اوسط",
     "allCorrect": "اس ٹیسٹ میں کوئی غلط جواب نہیں۔"
   },
+  "paper": {
+    "title": "سوالیہ پرچہ",
+    "questions": "سوالات",
+    "section": "سیکشن",
+    "why": "کیوں",
+    "notFound": "یہ پرچہ کھل نہیں سکا۔"
+  },
   "home": {
     "greeting": "تیار ہیں، {{name}}؟",
     "greetingPlain": "تیار ہیں؟",
@@ -161,6 +168,8 @@
     "previousYear": "گزشتہ سال",
     "attempted": "دیے گئے",
     "bestScore": "بہترین",
+    "practise": "مشق کریں",
+    "viewPaper": "پرچہ دیکھیں",
     "lockedToast": "یہ ٹیسٹ مقفل ہے۔ مفت والا کوئی ٹیسٹ آزمائیں۔"
   },
   "profile": {
