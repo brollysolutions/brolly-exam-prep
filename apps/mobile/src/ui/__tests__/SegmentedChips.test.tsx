@@ -38,3 +38,50 @@ describe('SegmentedChips (language switcher)', () => {
     expect(onChange).toHaveBeenCalledWith('en');
   });
 });
+
+describe('SegmentedChips (form pickers)', () => {
+  beforeAll(() => {
+    initI18n('en');
+  });
+
+  const posts = [
+    { value: 'pc', label: 'Constable' },
+    { value: 'si', label: 'Sub-Inspector' },
+  ];
+
+  it('is hi-vis, self-sized and 8 px-padded by default — the header switcher', async () => {
+    await render(<SegmentedChips value="pc" onChange={() => {}} options={posts} testID="seg" />);
+    expect(screen.getByTestId('seg').props.className).toContain('self-start');
+    const active = screen.getByRole('radio', { name: 'Constable' });
+    expect(active.props.className).toContain('bg-hivis');
+    expect(active.props.className).toContain('px-3');
+    expect(active.props.className).not.toContain('flex-1');
+    expect(screen.getByText('Constable').props.className).toContain('text-tar');
+  });
+
+  // Three stacked pickers on one screen cannot each carry a yellow block: the selected cell
+  // reads as a state (panel3, chalk), and the yellow stays with the one action.
+  it('has a quiet tone whose selected cell is a raised panel, not yellow', async () => {
+    await render(
+      <SegmentedChips value="pc" onChange={() => {}} options={posts} tone="quiet" testID="seg" />,
+    );
+    const active = screen.getByRole('radio', { name: 'Constable' });
+    expect(active.props.className).toContain('bg-panel3');
+    expect(active.props.className).toContain('border-line3');
+    expect(active.props.className).not.toContain('bg-hivis');
+    expect(screen.getByText('Constable').props.className).toContain('text-chalk');
+    expect(screen.getByText('Constable')).toHaveStyle({ fontFamily: 'Archivo_700Bold' });
+    expect(screen.getByText('Sub-Inspector').props.className).toContain('text-dim');
+  });
+
+  it('fills its row as a block, every segment an equal share', async () => {
+    await render(
+      <SegmentedChips value="pc" onChange={() => {}} options={posts} block testID="seg" />,
+    );
+    expect(screen.getByTestId('seg').props.className).toContain('self-stretch');
+    expect(screen.getByTestId('seg').props.className).not.toContain('self-start');
+    for (const name of ['Constable', 'Sub-Inspector']) {
+      expect(screen.getByRole('radio', { name }).props.className).toContain('flex-1');
+    }
+  });
+});

@@ -259,6 +259,7 @@ export function StatesView() {
           <Chip label="md 40" active size="md" />
           <Chip label="lg 48" active size="lg" />
           <Chip label={t('result.qualified')} active shape="pill" size="md" />
+          <Chip label={t('common.sampleData')} tone="label" />
         </Row>
       </Section>
 

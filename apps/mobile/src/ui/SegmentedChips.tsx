@@ -1,4 +1,4 @@
-import { colors, type Lang } from '@tslprb/design-tokens';
+import { colors, type ColorName, type Lang } from '@tslprb/design-tokens';
 import { dir, useDir } from '@tslprb/i18n';
 import { Pressable, type ViewProps } from 'react-native';
 
@@ -15,11 +15,28 @@ export type SegmentedOption<V extends string> = {
   lang?: Lang;
 };
 
+/**
+ * `hivis` is the header language switcher: one selected cell in yellow. `quiet` is for a form
+ * picker — three of them stacked on the eligibility screen cannot each carry a yellow block
+ * beside the one yellow action, so the selected cell is a raised panel instead.
+ */
+export type SegmentedTone = 'hivis' | 'quiet';
+
 export type SegmentedChipsProps<V extends string> = Omit<ViewProps, 'children'> & {
   value: V;
   onChange: (value: V) => void;
   options: SegmentedOption<V>[];
+  tone?: SegmentedTone;
+  /** Fill the row, every segment an equal share, instead of hugging the reading-start edge. */
+  block?: boolean;
 };
+
+const selectedFill: Record<SegmentedTone, string> = {
+  hivis: 'bg-hivis',
+  quiet: 'bg-panel3 border-line3',
+};
+
+const selectedColor: Record<SegmentedTone, ColorName> = { hivis: 'tar', quiet: 'chalk' };
 
 /**
  * One cell. Its own component so the press delta can live in state: a `style` callback next to
@@ -29,12 +46,16 @@ function Segment({
   label,
   lang,
   active,
+  color,
+  ripple,
   className,
   onPress,
 }: {
   label: string;
   lang?: Lang;
   active: boolean;
+  color: ColorName;
+  ripple: string;
   className?: string;
   onPress: () => void;
 }) {
@@ -44,14 +65,14 @@ function Segment({
       accessibilityRole="radio"
       accessibilityState={{ checked: active }}
       accessibilityLabel={label}
-      android_ripple={{ color: active ? colors.pressTint : colors.hivisTint3 }}
+      android_ripple={{ color: ripple }}
       onPress={onPress}
       {...handlers}
       className={className}
       // One flattened object, never a callback: see `usePressed`.
       style={pressed && !active ? { opacity: 0.85 } : undefined}
     >
-      <Text variant="body" weight="700" color={active ? 'tar' : 'dim'} align="center" lang={lang}>
+      <Text variant="body" weight="700" color={active ? color : 'dim'} align="center" lang={lang}>
         {label}
       </Text>
     </Pressable>
@@ -63,6 +84,8 @@ export function SegmentedChips<V extends string>({
   value,
   onChange,
   options,
+  tone = 'hivis',
+  block = false,
   className,
   ...rest
 }: SegmentedChipsProps<V>) {
@@ -72,25 +95,35 @@ export function SegmentedChips<V extends string>({
     <Row
       accessibilityRole="radiogroup"
       {...rest}
-      className={cx('h-touch self-start overflow-hidden rounded-sm border border-line', className)}
+      className={cx(
+        'h-touch overflow-hidden rounded-sm border border-line',
+        block ? 'self-stretch' : 'self-start',
+        className,
+      )}
     >
       {options.map((o, i) => {
         const active = o.value === value;
+        // The divider between cells follows the selected cell's own border colour, so a quiet
+        // selection is edged in `line3` on both sides rather than one.
+        const divider = active && tone === 'quiet' ? 'border-line3' : 'border-line';
         return (
           <Segment
             key={o.value}
             label={o.label}
             lang={o.lang}
             active={active}
+            color={selectedColor[tone]}
+            ripple={active && tone === 'hivis' ? colors.pressTint : colors.hivisTint3}
             onPress={() => {
               if (active) return;
               haptics.select();
               onChange(o.value);
             }}
             className={cx(
-              'h-full min-w-touch items-center justify-center px-2',
-              active && 'bg-hivis',
-              i < last && cx('border-line', dir(d, 'border-r', 'border-l')),
+              'h-full min-w-touch items-center justify-center px-3',
+              block && 'flex-1',
+              active && selectedFill[tone],
+              i < last && cx(divider, dir(d, 'border-r', 'border-l')),
             )}
           />
         );

@@ -32,7 +32,13 @@ module.exports = {
         dot: px(t.size.dot),
         call: px(t.size.call),
       },
-      minHeight: { touch: px(t.size.touch), touchLg: px(t.size.touchLg), key: px(t.size.key) },
+      minHeight: {
+        touch: px(t.size.touch),
+        touchLg: px(t.size.touchLg),
+        key: px(t.size.key),
+        chip: px(t.size.chip),
+        chipMd: px(t.size.chipMd),
+      },
       minWidth: { touch: px(t.size.touch), touchMin: px(t.size.touchMin) },
       width: {
         touch: px(t.size.touch),

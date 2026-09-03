@@ -39,7 +39,8 @@ export function BackHeader({ title, onBack, trailing, children, testID }: BackHe
           style={pressed ? { opacity: 0.85 } : undefined}
           testID={testID ? `${testID}-back` : undefined}
         >
-          <Glyph color="dim" accessibilityElementsHidden importantForAccessibility="no">
+          {/* `chalk`, not `dim`: the way back is a control, and it sits beside a chalk title. */}
+          <Glyph color="chalk" accessibilityElementsHidden importantForAccessibility="no">
             {d.chevronPrev}
           </Glyph>
         </Pressable>

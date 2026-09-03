@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react-native';
-import { colors, size } from '@tslprb/design-tokens';
+import { colors } from '@tslprb/design-tokens';
 import { act, type ReactNode } from 'react';
 import { initI18n, setLanguage, type Lang } from '@tslprb/i18n';
 
@@ -81,9 +81,11 @@ describe('tab bar', () => {
     expect(options.tabBarStyle).toMatchObject({ borderTopWidth: 1, elevation: 0 });
   });
 
+  // 56 px clipped the English labels by a pixel (design review, F-23-25): the label band
+  // needs 62 before the inset is added.
   it('adds the bottom inset to its own height rather than sitting inside it', async () => {
     await render(<TabsLayout />);
-    expect(barStyle().height).toBe(size.touchLg + BOTTOM_INSET);
+    expect(barStyle().height).toBe(62 + BOTTOM_INSET);
     expect(itemStyle().paddingBottom).toBe(6 + BOTTOM_INSET);
   });
 
