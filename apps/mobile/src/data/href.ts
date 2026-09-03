@@ -19,10 +19,14 @@ export function withReturnTo(pathname: ReturnTarget, returnTo?: string): Href {
  * A `returnTo` read back off the URL, if it is somewhere this app can actually go.
  *
  * The value arrives from a link, so it is not trusted: only an app-absolute path is honoured,
- * never `//host` or a scheme. A crafted link must not be able to bounce someone out of the
- * app at the exact moment they finish signing in.
+ * never a scheme and never a protocol-relative one. A crafted link must not be able to bounce
+ * someone out of the app at the exact moment they finish signing in.
  */
 export function returnHref(returnTo: string | undefined): Href | undefined {
-  if (!returnTo || !returnTo.startsWith('/') || returnTo.startsWith('//')) return undefined;
+  if (!returnTo || !returnTo.startsWith('/')) return undefined;
+  // A second separator is what makes it protocol-relative: `//host`, and the `/\host` that
+  // some parsers read the same way. 92 is a backslash; comparing the code keeps this line
+  // free of escapes.
+  if (returnTo[1] === '/' || returnTo.charCodeAt(1) === 92) return undefined;
   return returnTo as Href;
 }

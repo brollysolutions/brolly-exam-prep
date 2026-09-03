@@ -22,6 +22,8 @@ describe('returnHref', () => {
   it('refuses anything that leaves the app', () => {
     expect(returnHref(undefined)).toBeUndefined();
     expect(returnHref('//evil.example')).toBeUndefined();
+    // Some parsers read a backslash as the second separator too.
+    expect(returnHref(String.raw`/\evil.example`)).toBeUndefined();
     expect(returnHref('https://evil.example')).toBeUndefined();
     expect(returnHref('tests')).toBeUndefined();
   });
