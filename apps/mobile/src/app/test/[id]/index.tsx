@@ -1,5 +1,5 @@
 import { firstQuestionOf } from '@tslprb/fixtures';
-import { useRouter, useLocalSearchParams } from 'expo-router';
+import { Redirect, useRouter, useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BackHandler } from 'react-native';
@@ -8,6 +8,7 @@ import { getApi, type PaperQuestion } from '@/data/api';
 import { useAttemptStore, type Choice, type GotoResult } from '@/data/attempt';
 import { counts, elapsedOnCurrentSec, sectionOf } from '@/data/attempt.selectors';
 import { useLangStore } from '@/data/lang';
+import { gateHref, useRequireAuth } from '@/data/requireAuth';
 import { useCountdown } from '@/data/useCountdown';
 import { useNetwork } from '@/data/useNetwork';
 import {
@@ -28,9 +29,24 @@ import { haptics, Screen, type SheetHandle } from '@/ui';
 /** A locked-section notice clears itself; the timer warnings stay until the next one lands. */
 const LOCKED_TOAST_MS = 4000;
 
-/** Test attempt (F-09/10/11): wires the attempt store, the mock API, the clock and the router. */
+/**
+ * F-19 — the gate stands in front of the attempt rather than inside it.
+ *
+ * A deep link is the one way into a paper that never passes `ensure`, and the screen below
+ * creates an attempt, downloads a paper and arms a timer on mount. None of that may happen
+ * for someone with no account to keep the result in, so the redirect has to come before the
+ * first of those hooks runs — which is why the screen is two components and not one.
+ */
 export default function TestAttemptRoute() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { signedIn, onboarded } = useRequireAuth();
+  if (!signedIn || !onboarded)
+    return <Redirect href={gateHref(`/test/${id}`, { signedIn, onboarded })} />;
+  return <TestAttempt id={id} />;
+}
+
+/** Test attempt (F-09/10/11): wires the attempt store, the mock API, the clock and the router. */
+function TestAttempt({ id }: { id: string }) {
   const { t } = useTranslation();
   const router = useRouter();
   const attempt = useAttemptStore();

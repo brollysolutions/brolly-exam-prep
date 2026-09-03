@@ -6,13 +6,28 @@ import { AppState, BackHandler, type AppStateStatus } from 'react-native';
 import TestAttemptRoute from '@/app/test/[id]/index';
 import { MockApi, resetApi } from '@/data/api';
 import { useAttemptStore } from '@/data/attempt';
+import { useSessionStore } from '@/data/session';
 
 const mockReplace = jest.fn();
 const mockBack = jest.fn();
+const mockRedirect = jest.fn();
 jest.mock('expo-router', () => ({
   useLocalSearchParams: () => ({ id: 'mock-07' }),
-  useRouter: () => ({ replace: mockReplace, back: mockBack }),
+  useRouter: () => ({ replace: mockReplace, back: mockBack, push: jest.fn() }),
+  // `Redirect` renders nothing and just records where it would have gone.
+  Redirect: ({ href }: { href: unknown }) => {
+    mockRedirect(href);
+    return null;
+  },
 }));
+
+/** The account a paper needs before it will load: F-19 turns the deep link away without one. */
+const signIn = () => {
+  useSessionStore.getState().setToken('tok-1');
+  useSessionStore.getState().setPost('pc');
+  useSessionStore.getState().setCategory('oc');
+  useSessionStore.getState().completeOnboarding();
+};
 jest.mock('expo-network', () => ({ useNetworkState: () => ({ isConnected: true }) }));
 jest.mock('expo-keep-awake', () => ({
   activateKeepAwakeAsync: jest.fn(() => Promise.resolve()),
@@ -48,6 +63,9 @@ beforeEach(() => {
   jest.setSystemTime(T0);
   mockReplace.mockClear();
   mockBack.mockClear();
+  mockRedirect.mockClear();
+  useSessionStore.getState().logout();
+  signIn();
   appStateHandler = undefined;
   backHandler = undefined;
   resetApi();
@@ -73,6 +91,40 @@ async function mountRoute() {
   await flush();
   return useAttemptStore.getState();
 }
+
+// F-19 — `ensure` covers every tap; a deep link is the one way in that never passes it.
+describe('test attempt route (gate)', () => {
+  it('turns a guest away before a paper is loaded or a clock is armed', async () => {
+    useSessionStore.getState().logout();
+    await render(<TestAttemptRoute />);
+    await flush();
+    expect(mockRedirect).toHaveBeenCalledWith({
+      pathname: '/(auth)/login',
+      params: { returnTo: '/test/mock-07' },
+    });
+    expect(screen.queryByTestId('attempt-screen')).toBeNull();
+    // Nothing was created for someone with no account to keep it in.
+    expect(useAttemptStore.getState().status).toBe('idle');
+  });
+
+  it('collects the missing answers first when the account is half-made', async () => {
+    useSessionStore.getState().logout();
+    useSessionStore.getState().setToken('tok-1');
+    await render(<TestAttemptRoute />);
+    await flush();
+    expect(mockRedirect).toHaveBeenCalledWith({
+      pathname: '/(onboarding)/post',
+      params: { returnTo: '/test/mock-07' },
+    });
+    expect(useAttemptStore.getState().status).toBe('idle');
+  });
+
+  it('opens the paper for someone who has an account and both answers', async () => {
+    const state = await mountRoute();
+    expect(mockRedirect).not.toHaveBeenCalled();
+    expect(state.status).toBe('running');
+  });
+});
 
 describe('test attempt route', () => {
   it('starts the attempt from the mock API and arms the clock', async () => {
