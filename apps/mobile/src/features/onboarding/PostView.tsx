@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 
-import { Button, Card, Num, Screen, Stack, Text } from '@/ui';
+import { BackRow, Button, Card, Num, Screen, Stack, Text } from '@/ui';
 
 /** Step 1 of 2: the two post families the PWT is written for. */
 const POSTS: readonly { id: Post; titleKey: string; subKey: string }[] = [
@@ -16,13 +16,18 @@ export type PostViewProps = {
   /** The post already on file, if the user is revisiting the step. */
   initialPost?: Post;
   onSubmit: (post: Post) => void;
+  /**
+   * Since F-19 step 1 can be reached from anywhere, so there has to be a way back. Omitted on
+   * a first-run sign-up, where the step is the beginning and there is nothing behind it.
+   */
+  onBack?: () => void;
 };
 
 /**
  * Onboarding 1/2. The post decides the exam pattern, the physical standards and which tests
  * the library offers, so nothing else can be chosen until it is.
  */
-export function PostView({ initialPost, onSubmit }: PostViewProps) {
+export function PostView({ initialPost, onSubmit, onBack }: PostViewProps) {
   const { t } = useTranslation();
   const d = useDir();
   const [post, setPost] = useState<Post | undefined>(initialPost);
@@ -34,6 +39,7 @@ export function PostView({ initialPost, onSubmit }: PostViewProps) {
         contentContainerClassName="px-4 pb-3 pt-6"
         showsVerticalScrollIndicator={false}
       >
+        {onBack && <BackRow testID="post-back" label={t('common.back')} onPress={onBack} />}
         <Num
           variant="kicker"
           weight="700"

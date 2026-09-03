@@ -17,6 +17,19 @@ describe('PostView', () => {
     expect(screen.getByTestId('post-continue')).toBeEnabled();
   });
 
+  // F-19 — step 1 can be reached from anywhere now, so it needs a way back.
+  it('offers a way back when the step was reached from somewhere', async () => {
+    const onBack = jest.fn();
+    await render(<PostView onSubmit={jest.fn()} onBack={onBack} />);
+    await userEvent.press(screen.getByTestId('post-back'));
+    expect(onBack).toHaveBeenCalledTimes(1);
+  });
+
+  it('offers none on a first-run sign-up, which begins here', async () => {
+    await render(<PostView onSubmit={jest.fn()} />);
+    expect(screen.queryByTestId('post-back')).toBeNull();
+  });
+
   it('marks only the chosen card as selected', async () => {
     await render(<PostView onSubmit={jest.fn()} />);
     await userEvent.press(screen.getByTestId('post-card-si'));

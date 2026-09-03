@@ -17,6 +17,9 @@ export default function LoginRoute() {
   const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
   const phone = useSessionStore((s) => s.phone);
   const setPhone = useSessionStore((s) => s.setPhone);
+  // The screen now stands on top of a working app; only a first run or a deep link has
+  // nothing behind it, and then there is nothing to offer a way back to.
+  const canGoBack = router.canGoBack();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   // The banner is not a state the user has to dismiss; it goes on its own.
@@ -47,6 +50,7 @@ export default function LoginRoute() {
       onSubmit={(next) => {
         void submit(next);
       }}
+      onBack={canGoBack ? () => router.back() : undefined}
     />
   );
 }

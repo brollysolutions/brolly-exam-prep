@@ -26,6 +26,19 @@ describe('LoginView', () => {
     expect(screen.getByTestId('login-continue')).toBeEnabled();
   });
 
+  // F-19 — the sign-in now sits on top of a working app, so it needs a way back to it.
+  it('offers a way back when there is something behind the screen', async () => {
+    const onBack = jest.fn();
+    await render(<LoginView onSubmit={jest.fn()} onBack={onBack} />);
+    await userEvent.press(screen.getByTestId('login-back'));
+    expect(onBack).toHaveBeenCalledTimes(1);
+  });
+
+  it('offers none on a first run, where there is nothing behind it', async () => {
+    await render(<LoginView onSubmit={jest.fn()} />);
+    expect(screen.queryByTestId('login-back')).toBeNull();
+  });
+
   it('appends keypad digits and deletes the last one', async () => {
     await render(<LoginView onSubmit={jest.fn()} />);
     await type('98');

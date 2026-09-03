@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, TextInput, View } from 'react-native';
 
-import { Button, Keypad, Kicker, PhoneField, Screen, Text, Toast } from '@/ui';
+import { BackRow, Button, Keypad, Kicker, PhoneField, Screen, Text, Toast } from '@/ui';
 
 /** Indian mobile numbers are 10 digits; the keypad refuses the eleventh. */
 const PHONE_LENGTH = 10;
@@ -18,6 +18,11 @@ export type LoginViewProps = {
   error?: string | null;
   /** Called with the full 10-digit number. */
   onSubmit: (phone: string) => void;
+  /**
+   * Since F-19 this screen sits on top of a working app, so there has to be a way back to it.
+   * Omitted when there is nothing behind it — a first run, or a deep link straight here.
+   */
+  onBack?: () => void;
 };
 
 /**
@@ -25,7 +30,13 @@ export type LoginViewProps = {
  * covers the field. The hidden `TextInput` exists only so Android/iOS autofill can still put
  * a saved number in (long-press the field to reach it).
  */
-export function LoginView({ initialPhone = '', busy = false, error, onSubmit }: LoginViewProps) {
+export function LoginView({
+  initialPhone = '',
+  busy = false,
+  error,
+  onSubmit,
+  onBack,
+}: LoginViewProps) {
   const { t } = useTranslation();
   const [phone, setPhone] = useState(() => digitsOnly(initialPhone));
   const hidden = useRef<TextInput>(null);
@@ -48,6 +59,7 @@ export function LoginView({ initialPhone = '', busy = false, error, onSubmit }: 
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
       >
+        {onBack && <BackRow testID="login-back" label={t('common.back')} onPress={onBack} />}
         <Kicker lang="en" color="hivis" tracking="brand" testID="login-brand">
           {t('common.brand')}
         </Kicker>
