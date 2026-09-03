@@ -19,7 +19,7 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - [x] `.github/` ci.yml, claude-review.yml, PR template, issue template
 - [x] `docs/` FEATURES, PR_TRACKING, WORKFLOW, DESIGN_SYSTEM, IMPLEMENTATION_PLAN
 - [x] `docs/specs/2026-09-02-tslprb-mobile-ui-design.md`
-- [ ] Add this repo to user-level `autoMode.environment` (show diff first)
+- [ ] Add this repo to user-level `autoMode.environment` — proposed lines are in `docs/WORKFLOW.md` § Handoff; the auto-mode classifier blocked writing user settings from the session
 - [x] Hooks smoke-tested (`node .claude/hooks/session-brief.mjs`, `skill-hint.mjs` with a sample prompt)
 
 ## Phase 2 — Monorepo scaffold
@@ -59,9 +59,26 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - [x] Urdu snapshot tests for every screen
 - [x] Timer deadline tests (background/foreground, auto-submit) — countdown + route tests
 - [x] `docker compose --profile dev up` → `/health` 200; worker registers cron jobs (verified by F-17 implementer on ports 5434/8010)
-- [ ] FEATURES/PR_TRACKING complete and consistent with `gh pr list`
+- [ ] FEATURES/PR_TRACKING complete and consistent with `gh pr list` (PRs open after `gh auth login` + repo creation)
 
 ## Deviations / rulings
 - 2026-09-02 — Branches are stacked (main ← F-17 ← F-01 ← F-16 ← …) instead of merged locally, so each feature still gets its own PR once the GitHub repo exists.
 - 2026-09-02 — ESLint pinned to 9.x in apps/mobile: eslint-config-expo 57's react plugin crashes on ESLint 10. `lint` script is `eslint .` (expo lint hard-codes a non-hoisted path).
 - 2026-09-02 — Styling stack decided after checking the official `expo-tailwind-setup` skill; see spec §Styling for the final choice and why.
+
+## Handoff (2026-09-03) — what needs you
+1. `gh auth login`, then create the repo and push the stack in order (each PR's base is the branch below it):
+   `gh repo create <owner>/tslprb --private --source . --remote origin --push` (pushes the current branch); then `git push -u origin main feat/F-17-api-scaffold feat/F-01-design-system feat/F-16-data-layer feat/F-09-11-test-attempt feat/F-03-06-auth-onboarding feat/F-12-13-result-solutions feat/F-02-07-08-14-shell`, and `gh pr create --base <previous-branch> --head <branch> --fill` for each, bottom-up. `@pr-tracker` (or the `track-pr` hook) fills `docs/PR_TRACKING.md`.
+2. Repo secret `ANTHROPIC_API_KEY` (or `/install-github-app`) so `.github/workflows/claude-review.yml` can review PRs.
+3. `services/api/.env.example`: delete the two `JWT_SECRET` lines (+ comment) and set `CORS_ORIGINS=http://localhost:8081,http://localhost:19006,http://localhost:3000`. The project deny rule on `.env*` blocked the session from editing it.
+4. Run on your phone: `pnpm dev:mobile`, scan with Expo Go; check hazard-rail marquee, sheet/dialog motion, Nastaliq line-heights, tab-bar heights (te 68 / ur 76), the Toggle. Screenshots so far are from the web export (`docs/screenshots/*`).
+5. Optional: connect the Claude Chrome extension (or keep `pnpm screenshots`), install adb + Maestro for `.maestro/` flows, add `context7` API key header in `.mcp.json`.
+6. Delete the leftover folder `..\Tsplrb-w4` (a OneDrive lock stopped the session from removing it).
+
+## Follow-ups (not blocking)
+- `Dialog` `onDismiss` (Android back + scrim) — `TODO(follow-up)` in `src/ui/Dialog.tsx`.
+- Web hydration mismatch (React #418): static HTML is pre-rendered in the default language.
+- Urdu "صاف کریں" wraps in the 92 px Clear button.
+- Per-language line-height is one multiplier per language (te 1.65 / ur 2.05) rather than per role.
+- API: routers still serve fixtures in-memory; crons read DB tables the routers don't write yet; leaderboard stub.
+- SI exam-pattern section split unverified (`PWT_SI.verified=false`); category qualifying % are prototype values; extra-screen te/ur copy needs a native read.
