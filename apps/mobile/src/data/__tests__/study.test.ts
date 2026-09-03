@@ -36,7 +36,7 @@ describe('study store', () => {
   });
 
   it('persists the marks under its own key', () => {
-    read().markRead('st-gs-polity', 1_700_000_000_000);
+    read().markRead('st-gs-polity');
     const stored = Storage.getItemSync(STUDY_STORAGE_KEY);
     expect(stored).not.toBeNull();
     expect(JSON.parse(stored as string).state).toEqual({ read: { 'st-gs-polity': true } });
@@ -56,7 +56,7 @@ describe('study store', () => {
     await useStudyStore.persist.rehydrate();
     expect(read().isRead('st-ar-percentages')).toBe(true);
     expect('lastRead' in read()).toBe(false);
-    read().markRead('st-re-coding', 2);
+    read().markRead('st-re-coding');
     expect(JSON.parse(Storage.getItemSync(STUDY_STORAGE_KEY) as string).state).toEqual({
       read: { 'st-ar-percentages': true, 'st-re-coding': true },
     });

@@ -1089,7 +1089,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
         تیار ہیں، ⁦…1234⁩؟
       </Text>
       <View
-        accessibilityLabel="پی ڈبلیو ٹی میں ⁦45⁩ دن · Preliminary Written Test · ⁦18-10-2026⁩ · ⁦4⁩ دن کا سلسلہ · ⁦20⁩ میں سے ⁦12⁩ مکمل"
+        accessibilityLabel="PWT میں ⁦45⁩ دن · Preliminary Written Test · ⁦18-10-2026⁩ · ⁦4⁩ دن کا سلسلہ · ⁦20⁩ میں سے ⁦12⁩ مکمل"
         accessibilityState={
           {
             "selected": false,
@@ -1120,7 +1120,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
             }
           }
         >
-          پی ڈبلیو ٹی امتحان میں باقی
+          PWT امتحان میں باقی
         </Text>
         <View
           className="mt-2"

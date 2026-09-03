@@ -400,6 +400,12 @@ describe('HomeView (en) — the shelf scroller', () => {
     initI18n('en');
   });
 
+  // `scrollToEnd` is a mock shared by the whole file; asserting `.not.toHaveBeenCalled()` here
+  // must not depend on running after a test that never calls it — clear it locally too.
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('leaves the shelf at its start, where the newest notice already is', async () => {
     await render(<HomeView {...props} lang="en" />);
     await fireEvent(screen.getByTestId('home-updates-shelf'), 'contentSizeChange', 724, 120);

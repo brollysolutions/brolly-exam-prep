@@ -94,3 +94,4 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - Per-language line-height is one multiplier per language (te 1.65 / ur 2.05) rather than per role.
 - API: routers still serve fixtures in-memory; crons read DB tables the routers don't write yet; leaderboard stub.
 - SI exam-pattern section split unverified (`PWT_SI.verified=false`); category qualifying % are prototype values; extra-screen te/ur copy needs a native read.
+- Pre-existing en keys `auth.phoneHint`, `onboarding.welcome1Sub`, `test.warn5`, `test.warn1` bake digits into strings (same rule class as the eligibility `runTime` fix, F-23-25 fix1 review #7) — interpolate the numbers instead.

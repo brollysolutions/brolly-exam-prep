@@ -103,9 +103,11 @@ export function SegmentedChips<V extends string>({
     >
       {options.map((o, i) => {
         const active = o.value === value;
-        // The divider between cells follows the selected cell's own border colour, so a quiet
-        // selection is edged in `line3` on both sides rather than one.
-        const divider = active && tone === 'quiet' ? 'border-line3' : 'border-line';
+        // This cell draws only its own trailing edge (the leading edge belongs to the cell
+        // before it), so the divider must also light up when the NEXT cell is the quiet
+        // selection — otherwise only the trailing side of a quiet selection reads `line3`.
+        const nextActive = i < last && options[i + 1].value === value;
+        const divider = tone === 'quiet' && (active || nextActive) ? 'border-line3' : 'border-line';
         return (
           <Segment
             key={o.value}

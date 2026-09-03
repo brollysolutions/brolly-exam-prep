@@ -39,8 +39,17 @@ describe('joinRunTime', () => {
     expect(joinRunTime('-1', '15')).toBe('');
   });
 
-  it('accepts a decimal comma in the seconds, like every other field', () => {
-    expect(joinRunTime('7', '15,5')).toBe('435.5');
+  // Review fix1 #7: neither field is a fraction of a minute or second here — a decimal in
+  // either one (a web hardware keyboard can type "7.1" where a numeric pad would not) makes
+  // the whole entry blank, same as any other junk. The 100 m sprint's own field goes through
+  // `parseMeasure` (evaluate.ts), a different path, and keeps its decimals.
+  it('rejects a decimal in the minutes field', () => {
+    expect(joinRunTime('7.1', '15')).toBe('');
+  });
+
+  it('rejects a decimal in the seconds field', () => {
+    expect(joinRunTime('7', '15,5')).toBe('');
+    expect(joinRunTime('7', '15.5')).toBe('');
   });
 });
 

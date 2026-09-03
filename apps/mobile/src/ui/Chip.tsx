@@ -82,7 +82,7 @@ function LabelChip({
 }: Pick<ChipProps, 'label' | 'className' | 'style'> & ViewProps) {
   return (
     <View {...rest} className={cx('rounded-xs bg-panel3 px-2 py-0.5', className)} style={style}>
-      <Text variant="kicker" weight="700" color="dim" align="center">
+      <Text variant="kicker" weight="600" color="dim" align="center">
         {label}
       </Text>
     </View>

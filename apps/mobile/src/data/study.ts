@@ -13,7 +13,7 @@ import { persistedJSONStorage } from './storage';
 export type StudyState = { read: Record<string, true> };
 
 export type StudyActions = {
-  markRead: (id: string, now?: number) => void;
+  markRead: (id: string) => void;
   isRead: (id: string) => boolean;
   /** Clear the marks. Used by tests; there is no product action that unreads a topic. */
   reset: () => void;

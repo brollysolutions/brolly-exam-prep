@@ -25,17 +25,30 @@ function part(text: string): number | undefined {
 }
 
 /**
+ * Same as `part`, but whole numbers only — for the minutes and seconds fields themselves. A
+ * web hardware keyboard can type "7.1" where a phone's numeric pad would not, and neither a
+ * fraction of a minute nor a fraction of a second typed into these two fields means anything:
+ * the checker only ever compares whole mm:ss against a whole-number standard. This does not
+ * apply to the 100 m sprint's own field (`parseMeasure` in evaluate.ts, a different path),
+ * which keeps its decimals for hand-timed hundredths.
+ */
+function wholePart(text: string): number | undefined {
+  const n = part(text);
+  return n !== undefined && Number.isInteger(n) ? n : undefined;
+}
+
+/**
  * Minutes and seconds fields → the seconds string `evaluate()` reads. Blank seconds beside
  * a filled minutes field count as `m:00`, and blank minutes as zero; both blank is blank.
- * Junk in either field makes the whole entry blank rather than a half-number.
+ * Junk — including a decimal — in either field makes the whole entry blank rather than a
+ * half-number.
  */
 export function joinRunTime(min: string, sec: string): string {
-  const m = part(min);
-  const s = part(sec);
+  const m = wholePart(min);
+  const s = wholePart(sec);
   if (m === undefined && s === undefined) return '';
   if ((min.trim() !== '' && m === undefined) || (sec.trim() !== '' && s === undefined)) return '';
-  const total = (m ?? 0) * 60 + (s ?? 0);
-  return String(Math.round(total * 100) / 100);
+  return String((m ?? 0) * 60 + (s ?? 0));
 }
 
 /**

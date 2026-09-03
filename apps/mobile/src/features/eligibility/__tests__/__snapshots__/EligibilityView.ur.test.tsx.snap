@@ -1188,7 +1188,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 flex-1 border-line border-l"
+                className="h-full min-w-touch items-center justify-center px-3 flex-1 border-line3 border-l"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
