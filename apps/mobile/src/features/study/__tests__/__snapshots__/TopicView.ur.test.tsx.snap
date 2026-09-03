@@ -1,0 +1,1792 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopicView (ur) mirrors the header and the block accents, and matches the snapshot 1`] = `
+<View
+  className="flex-1 bg-tar"
+  style={
+    {
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 0,
+    }
+  }
+  testID="topic-screen"
+>
+  <View
+    accessibilityElementsHidden={true}
+    className="h-rail overflow-hidden bg-tar"
+    importantForAccessibility="no-hide-descendants"
+    style={
+      {
+        "height": 5,
+      }
+    }
+    testID="hazard-rail"
+  >
+    <View
+      style={
+        [
+          {
+            "flexDirection": "row",
+          },
+          {
+            "transform": [
+              {
+                "translateX": -56,
+              },
+            ],
+          },
+        ]
+      }
+      testID="hazard-rail-track"
+    >
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+    </View>
+  </View>
+  <RCTScrollView
+    className="flex-1"
+    contentContainerClassName="pb-6 px-4"
+    keyboardShouldPersistTaps="handled"
+    showsVerticalScrollIndicator={false}
+  >
+    <View>
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row-reverse",
+            "flexWrap": undefined,
+            "gap": 12,
+            "justifyContent": "space-between",
+          }
+        }
+        testID="topic-header"
+      >
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="h-touch justify-center"
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          testID="topic-back"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+            testID="topic-back-row"
+          >
+            <Text
+              accessibilityElementsHidden={true}
+              className="text-dim"
+              importantForAccessibility="no"
+              style={
+                {
+                  "fontFamily": "Archivo_400Regular",
+                  "fontSize": 20,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+              testID="topic-back-chevron"
+            >
+              ›
+            </Text>
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              واپس
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="radiogroup"
+          className="h-touch self-start overflow-hidden rounded-sm border border-line"
+          style={
+            {
+              "alignItems": undefined,
+              "flexDirection": "row-reverse",
+              "flexWrap": undefined,
+              "gap": undefined,
+              "justifyContent": undefined,
+            }
+          }
+          testID="topic-lang"
+        >
+          <View
+            accessibilityLabel="EN"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+          >
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "Archivo_700Bold",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 19.6,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              EN
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="తె"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+          >
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 22.3,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              తె
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="اُر"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": true,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="h-full min-w-touch items-center justify-center px-2 bg-hivis"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+          >
+            <Text
+              className="text-tar"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              اُر
+            </Text>
+          </View>
+        </View>
+      </View>
+      <Text
+        className="text-dim mt-4"
+        style={
+          {
+            "fontFamily": "NotoNastaliqUrdu_700Bold",
+            "fontSize": 13,
+            "fontVariant": undefined,
+            "letterSpacing": 0,
+            "lineHeight": 26.7,
+            "textAlign": "right",
+            "textTransform": "uppercase",
+            "writingDirection": "rtl",
+          }
+        }
+      >
+        تلنگانہ
+      </Text>
+      <Text
+        className="text-chalk mt-2"
+        style={
+          {
+            "fontFamily": "NotoNastaliqUrdu_700Bold",
+            "fontSize": 24,
+            "fontVariant": undefined,
+            "letterSpacing": 0,
+            "lineHeight": 49.2,
+            "textAlign": "right",
+            "textTransform": undefined,
+            "writingDirection": "rtl",
+          }
+        }
+      >
+        تحریکِ ریاست اور تشکیل
+      </Text>
+      <View
+        className="mt-2"
+        style={
+          {
+            "alignItems": "baseline",
+            "flexDirection": "row-reverse",
+            "flexWrap": undefined,
+            "gap": 4,
+            "justifyContent": undefined,
+          }
+        }
+        testID="topic-minutes"
+      >
+        <Text
+          accessibilityLanguage="en"
+          className="text-dim"
+          style={
+            {
+              "fontFamily": "Archivo_600SemiBold",
+              "fontSize": 11.5,
+              "fontVariant": [
+                "tabular-nums",
+              ],
+              "letterSpacing": 0,
+              "lineHeight": 16.7,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "ltr",
+            }
+          }
+        >
+          ⁦10⁩
+        </Text>
+        <Text
+          className="text-dim"
+          style={
+            {
+              "fontFamily": "NotoNastaliqUrdu_400Regular",
+              "fontSize": 12.5,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 25.6,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "rtl",
+            }
+          }
+        >
+          منٹ
+        </Text>
+      </View>
+      <View
+        className="mt-6"
+        style={
+          {
+            "alignItems": undefined,
+            "flexDirection": "column",
+            "gap": 16,
+            "justifyContent": undefined,
+          }
+        }
+      >
+        <Text
+          className="text-dim"
+          style={
+            {
+              "fontFamily": "NotoNastaliqUrdu_700Bold",
+              "fontSize": 13,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 26.7,
+              "textAlign": "right",
+              "textTransform": "uppercase",
+              "writingDirection": "rtl",
+            }
+          }
+          testID="study-block-heading"
+        >
+          1956 سے 2 جون 2014 تک
+        </Text>
+        <Text
+          className="text-chalk2"
+          style={
+            {
+              "fontFamily": "NotoNastaliqUrdu_400Regular",
+              "fontSize": 14.5,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 29.7,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "rtl",
+            }
+          }
+          testID="study-block-para"
+        >
+          1956 میں جنٹلمینز ایگریمنٹ کی ضمانتوں پر تلنگانہ کو آندھرا ریاست کے ساتھ ملا کر آندھرا پردیش بنایا گیا۔ یہ احساس کہ وہ ضمانتیں پوری نہیں ہوئیں، پوری تحریک کی بنیاد ہے۔
+        </Text>
+        <Text
+          className="text-chalk2"
+          style={
+            {
+              "fontFamily": "NotoNastaliqUrdu_400Regular",
+              "fontSize": 14.5,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 29.7,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "rtl",
+            }
+          }
+          testID="study-block-para"
+        >
+          پہلی عوامی تحریک 1969 میں اٹھی، جس کی قیادت طلبہ نے کی اور تلنگانہ پرجا سمیتی نے اسے آگے بڑھایا۔ اسے دبا دیا گیا، مگر مطالبہ کبھی ختم نہیں ہوا۔
+        </Text>
+        <Text
+          className="text-chalk2"
+          style={
+            {
+              "fontFamily": "NotoNastaliqUrdu_400Regular",
+              "fontSize": 14.5,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 29.7,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "rtl",
+            }
+          }
+          testID="study-block-para"
+        >
+          2001 میں تلنگانہ راشٹرا سمیتی قائم ہوئی جس کا واحد مطالبہ الگ ریاست تھا۔ مرکز نے دسمبر 2009 میں عمل کا اعلان کیا، 2010 میں سری کرشنا کمیٹی مقرر کی، اور پارلیمنٹ نے فروری 2014 میں آندھرا پردیش تنظیمِ نو ایکٹ منظور کیا۔
+        </Text>
+        <View
+          style={
+            {
+              "alignItems": undefined,
+              "flexDirection": "column",
+              "gap": 8,
+              "justifyContent": undefined,
+            }
+          }
+          testID="study-block-bullets"
+        >
+          <View
+            style={
+              {
+                "alignItems": "baseline",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              accessibilityElementsHidden={true}
+              className="text-hivis"
+              importantForAccessibility="no"
+              style={
+                {
+                  "fontFamily": "Archivo_400Regular",
+                  "fontSize": 12.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 18.1,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ■
+            </Text>
+            <Text
+              className="text-chalk2 flex-1"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_400Regular",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              1956 — آندھرا پردیش کی تشکیل؛ جنٹلمینز ایگریمنٹ نے تلنگانہ کے لیے ضمانتیں طے کیں۔
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": "baseline",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              accessibilityElementsHidden={true}
+              className="text-hivis"
+              importantForAccessibility="no"
+              style={
+                {
+                  "fontFamily": "Archivo_400Regular",
+                  "fontSize": 12.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 18.1,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ■
+            </Text>
+            <Text
+              className="text-chalk2 flex-1"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_400Regular",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              1969 — پہلی تلنگانہ تحریک؛ قیادت تلنگانہ پرجا سمیتی نے کی۔
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": "baseline",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              accessibilityElementsHidden={true}
+              className="text-hivis"
+              importantForAccessibility="no"
+              style={
+                {
+                  "fontFamily": "Archivo_400Regular",
+                  "fontSize": 12.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 18.1,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ■
+            </Text>
+            <Text
+              className="text-chalk2 flex-1"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_400Regular",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              2001 — کے۔ چندر شیکھر راؤ نے تلنگانہ راشٹرا سمیتی قائم کی۔
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": "baseline",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              accessibilityElementsHidden={true}
+              className="text-hivis"
+              importantForAccessibility="no"
+              style={
+                {
+                  "fontFamily": "Archivo_400Regular",
+                  "fontSize": 12.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 18.1,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ■
+            </Text>
+            <Text
+              className="text-chalk2 flex-1"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_400Regular",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              2 جون 2014 — تلنگانہ ہندوستان کی 29ویں ریاست بنی؛ حیدرآباد دس سال تک مشترکہ دارالحکومت رہا۔
+            </Text>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": "baseline",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              accessibilityElementsHidden={true}
+              className="text-hivis"
+              importantForAccessibility="no"
+              style={
+                {
+                  "fontFamily": "Archivo_400Regular",
+                  "fontSize": 12.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 18.1,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ■
+            </Text>
+            <Text
+              className="text-chalk2 flex-1"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_400Regular",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              کے۔ چندر شیکھر راؤ پہلے وزیر اعلیٰ اور ای۔ ایس۔ ایل۔ نرسمہن پہلے گورنر بنے۔
+            </Text>
+          </View>
+        </View>
+        <View
+          className="bg-panel2 px-3 py-3"
+          style={
+            {
+              "borderRightColor": "#FFE01B",
+              "borderRightWidth": 3,
+            }
+          }
+          testID="study-block-example"
+        >
+          <Text
+            className="text-hivis"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_700Bold",
+                "fontSize": 13,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 26.7,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            حل شدہ مثال
+          </Text>
+          <Text
+            className="text-chalk2 mt-2"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_400Regular",
+                "fontSize": 14.5,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 29.7,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            ایک معیاری سوال: "تلنگانہ کس تاریخ کو اور ہندوستان کی کون سے نمبر کی ریاست کے طور پر بنی؟" جواب 2 جون 2014، 29ویں ریاست کے طور پر۔ یاد رہے کہ پارلیمنٹ نے ایکٹ فروری 2014 میں منظور کیا — ایکٹ اور تشکیل دو الگ تاریخیں ہیں، اور پرچہ اسی فرق کو پسند کرتا ہے۔
+          </Text>
+        </View>
+        <View
+          className="bg-panel2 px-3 py-3"
+          style={
+            {
+              "borderRightColor": "#B79A55",
+              "borderRightWidth": 3,
+            }
+          }
+          testID="study-block-tip"
+        >
+          <Text
+            className="text-sand"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_700Bold",
+                "fontSize": 13,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 26.7,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            امتحانی مشورہ
+          </Text>
+          <Text
+            className="text-chalk2 mt-2"
+            style={
+              {
+                "fontFamily": "NotoNastaliqUrdu_400Regular",
+                "fontSize": 14.5,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 29.7,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "rtl",
+              }
+            }
+          >
+            ٹائم لائن کو ایک بار سالوں کے ایک عمودی کالم کی شکل میں لکھ لیں۔ امتحان میں آپ کو کہانی نہیں، ترتیب یاد کرنی ہوگی۔
+          </Text>
+        </View>
+      </View>
+      <View
+        className="mt-8"
+        style={
+          {
+            "alignItems": undefined,
+            "flexDirection": "column",
+            "gap": 8,
+            "justifyContent": undefined,
+          }
+        }
+      >
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="items-center justify-center rounded-sm px-4 bg-hivis"
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "height": 56,
+            }
+          }
+          testID="topic-mark-read"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              className="text-tar"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 15.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 31.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              پڑھا ہوا نشان زد کریں
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="items-center justify-center rounded-sm px-4 border border-line3"
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "height": 48,
+            }
+          }
+          testID="topic-practise"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              className="text-chalk"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 14.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 29.7,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              اس حصے کی مشق کریں
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

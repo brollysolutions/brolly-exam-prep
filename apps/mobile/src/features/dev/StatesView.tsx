@@ -9,6 +9,7 @@ import { OtpView } from '@/features/auth/OtpView';
 import { AttemptStates } from '@/features/dev/sections/AttemptStates';
 import { ResultStates } from '@/features/dev/sections/ResultStates';
 import { ShellStates } from '@/features/dev/sections/ShellStates';
+import { StudyStates } from '@/features/dev/sections/StudyStates';
 import { CategoryView } from '@/features/onboarding/CategoryView';
 import { PostView } from '@/features/onboarding/PostView';
 import {
@@ -115,10 +116,7 @@ function Preview({ label, children }: { label: string; children: ReactNode }) {
   return (
     <Stack gap={2}>
       <Label>{label}</Label>
-      <View
-        className="overflow-hidden rounded-md border border-line"
-        style={{ height: PREVIEW_H }}
-      >
+      <View className="overflow-hidden rounded-md border border-line" style={{ height: PREVIEW_H }}>
         {children}
       </View>
     </Stack>
@@ -362,6 +360,8 @@ export function StatesView() {
       <ResultStates index="14" />
 
       <ShellStates index="15" />
+
+      <StudyStates index="16" />
     </Screen>
   );
 }

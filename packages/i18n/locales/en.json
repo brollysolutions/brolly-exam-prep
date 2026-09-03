@@ -180,5 +180,16 @@
     "signedOutTitle": "You're not signed in",
     "signedOutBody": "Sign in to keep your attempts and results on this phone."
   },
-  "tabs": { "home": "Home", "tests": "Tests", "profile": "Profile" }
+  "study": {
+    "title": "Study",
+    "minutes": "min",
+    "topics": "topics",
+    "read": "Read",
+    "markRead": "Mark as read",
+    "practiseSection": "Practise this section",
+    "example": "Worked example",
+    "tip": "Exam tip",
+    "notFound": "That topic is not in the study material."
+  },
+  "tabs": { "home": "Home", "study": "Study", "tests": "Tests", "profile": "Profile" }
 }

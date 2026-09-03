@@ -17,6 +17,9 @@ import { haptics } from '@/ui';
  */
 const TABS = [
   { name: 'index', icon: 'home', labelKey: 'tabs.home' },
+  // Study sits next to Home, before Tests: reading comes before sitting a paper, and it is the
+  // one tab a guest can use end to end.
+  { name: 'study', icon: 'book', labelKey: 'tabs.study' },
   { name: 'tests', icon: 'list', labelKey: 'tabs.tests' },
   { name: 'profile', icon: 'person', labelKey: 'tabs.profile' },
 ] as const;
