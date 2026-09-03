@@ -61,8 +61,6 @@ export function useCountdown(options: CountdownOptions): Countdown {
 
   // The reading is tagged with the deadline it came from, so a new deadline re-derives it
   // during render (React's "adjusting state when a prop changes") instead of in an effect.
-  // The reading is tagged with the deadline it came from, so a new deadline re-derives it
-  // during render (React's "adjusting state when a prop changes") instead of in an effect.
   const [reading, setReading] = useState(() => ({ endsAt, sec: read() }));
   if (reading.endsAt !== endsAt) setReading({ endsAt, sec: read() });
   const remainingSec = reading.sec;

@@ -59,7 +59,7 @@ describe('boot router', () => {
     useSessionStore.getState().logout();
     expect(useSessionStore.getState().seenWelcome).toBe(true);
     expect(useSessionStore.getState().token).toBeUndefined();
-    // A preference, though, belongs to the person who set it.
+    // …and a preference resets with the person: the next user gets the default.
     expect(useSessionStore.getState().notifications).toBe(true);
   });
 });

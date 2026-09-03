@@ -26,7 +26,13 @@ export type DialogProps = {
   testID?: string;
 };
 
-/** Bottom-anchored confirmation card over a heavy scrim. Render it last inside a `Screen`. */
+/**
+ * Bottom-anchored confirmation card over a heavy scrim. Render it last inside a `Screen`.
+ */
+// TODO(follow-up): `onDismiss` — hardware back (BackHandler) and a scrim tap should close the
+// card. Today every caller wires its own `BackHandler` listener and the scrim is inert, so the
+// only way out is a button. Add the prop here and drop the per-screen listeners.
+
 export function Dialog({
   visible,
   tone = 'hivis',

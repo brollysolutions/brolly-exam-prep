@@ -100,7 +100,10 @@ export type ProfileViewProps = {
   onEditPost: () => void;
   onEditCategory: () => void;
   onLogout: () => void;
-  /** Confirmed account deletion: wipe every store, then land back on sign-in. */
+  /**
+   * Confirmed account deletion, phase 1: same local reset as sign-out; the
+   * account-deletion endpoint lands with F-17 phase 2.
+   */
   onDelete: () => void;
 };
 

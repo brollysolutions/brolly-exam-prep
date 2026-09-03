@@ -62,10 +62,10 @@ function Frame({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
-export function ResultStates() {
+export function ResultStates({ index }: { index: string }) {
   return (
     <Stack gap={3} className="mt-6">
-      <Kicker index="12" color="dim" uppercase>
+      <Kicker index={index} color="dim" uppercase>
         {DEV.title}
       </Kicker>
       <Frame label={DEV.qualified}>

@@ -114,7 +114,7 @@ function configFor(id: StateId, lockedText: string, warn5: string, warn1: string
 const noop = () => undefined;
 
 /** Gallery section for F-09/10/11: pick a state, see the real screen render it. */
-export function AttemptStates() {
+export function AttemptStates({ index }: { index: string }) {
   const { t } = useTranslation();
   const lang = useLangStore((s) => s.lang);
   const setLang = useLangStore((s) => s.setLang);
@@ -157,7 +157,7 @@ export function AttemptStates() {
 
   return (
     <Stack gap={3} className="mt-6">
-      <Kicker index="12" color="dim" uppercase>
+      <Kicker index={index} color="dim" uppercase>
         {DEV.title}
       </Kicker>
       <Text variant="small" color="dim">

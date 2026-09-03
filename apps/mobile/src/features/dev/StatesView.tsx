@@ -331,9 +331,9 @@ export function StatesView() {
         <HazardRail critical />
       </Section>
 
-      <AttemptStates />
+      <AttemptStates index="12" />
 
-      <Section index="12" title={DEV.auth}>
+      <Section index="13" title={DEV.auth}>
         <Preview label={DEV.login}>
           <LoginView
             initialPhone="9000012345"
@@ -359,9 +359,9 @@ export function StatesView() {
         </Preview>
       </Section>
 
-      <ResultStates />
+      <ResultStates index="14" />
 
-      <ShellStates index="13" />
+      <ShellStates index="15" />
     </Screen>
   );
 }
