@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import type { PaletteCounts } from '@/data/attempt.selectors';
-import { Banner, cx, Dialog, Kicker, Num, Row, Stack, Text, Toast, usePressed } from '@/ui';
+import { Banner, cx, Dialog, Glyph, Kicker, Num, Row, Stack, Text, Toast, usePressed } from '@/ui';
 
 /** The four confirmation cards of the attempt screen (prototype `D` map). */
 export type AttemptDialogKind = 'exit' | 'submit' | 'resume' | 'auto';
@@ -156,9 +156,7 @@ function CallButton({
         pressed ? { opacity: 0.85 } : null,
       ])}
     >
-      <Text variant="glyph" color="white" lang="en">
-        {glyph}
-      </Text>
+      <Glyph color="white">{glyph}</Glyph>
     </Pressable>
   );
 }
