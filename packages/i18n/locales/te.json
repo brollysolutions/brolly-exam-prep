@@ -9,6 +9,7 @@
     "save": "సేవ్",
     "skip": "దాటవేయి",
     "getStarted": "మొదలుపెట్టు",
+    "signIn": "సైన్ ఇన్",
     "free": "ఉచితం",
     "locked": "లాక్",
     "minutes": "{{count}} నిమి",
@@ -175,7 +176,9 @@
     "sectionApp": "యాప్",
     "sectionAccount": "ఖాతా",
     "deleteTitle": "ఖాతా తొలగించాలా?",
-    "deleteYes": "అంతా తొలగించు"
+    "deleteYes": "అంతా తొలగించు",
+    "signedOutTitle": "మీరు సైన్ ఇన్ కాలేదు",
+    "signedOutBody": "మీ ప్రయత్నాలు, ఫలితాలు ఈ ఫోన్‌లో ఉండేందుకు సైన్ ఇన్ చేయండి."
   },
   "tabs": { "home": "హోమ్", "tests": "టెస్టులు", "profile": "ప్రొఫైల్" }
 }

@@ -9,6 +9,7 @@
     "save": "Save",
     "skip": "Skip",
     "getStarted": "Get started",
+    "signIn": "Sign in",
     "free": "Free",
     "locked": "Locked",
     "minutes": "{{count}} min",
@@ -175,7 +176,9 @@
     "sectionApp": "App",
     "sectionAccount": "Account",
     "deleteTitle": "Delete your account?",
-    "deleteYes": "Delete everything"
+    "deleteYes": "Delete everything",
+    "signedOutTitle": "You're not signed in",
+    "signedOutBody": "Sign in to keep your attempts and results on this phone."
   },
   "tabs": { "home": "Home", "tests": "Tests", "profile": "Profile" }
 }

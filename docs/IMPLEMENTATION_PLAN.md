@@ -46,6 +46,7 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - [x] F-09 attempt core · [x] F-10 palette · [x] F-11 dialogs/toasts/banners/call overlay (reviewed; branch feat/F-09-11-test-attempt)
 - [x] F-12 result · [x] F-13 solutions (reviewed; branch feat/F-12-13-result-solutions)
 - [x] F-02 splash/onboarding · [x] F-07 home · [x] F-08 test library · [x] F-14 profile/settings (reviewed; branch feat/F-02-07-08-14-shell)
+- [x] F-19 guest mode — the app opens on Home with no login; `useRequireAuth().ensure()` asks for phone + post + category only when an action needs an account (Start now, a library row, a weak-topic drill, the Profile account rows) and returns to what was tapped; signed-out Profile keeps the app settings and offers a sign-in card (main)
 
 ## Phase 5 — Backend scaffold (F-17)
 - [x] FastAPI app, routers, models, Alembic initial migration, arq worker with 3 cron jobs

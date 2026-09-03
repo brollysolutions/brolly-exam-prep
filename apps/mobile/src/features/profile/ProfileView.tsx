@@ -91,12 +91,18 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
 export type ProfileViewProps = {
   post?: Post;
   category?: CategoryId;
+  /**
+   * F-19: a guest gets the same settings and an invitation instead of an account section.
+   * There is nothing to log out of and nothing to delete, so neither exit is offered.
+   */
+  signedIn: boolean;
   lang: Lang;
   notifications: boolean;
   /** From `expoConfig.version` — the number a support call asks for first. */
   version: string;
   onLang: (lang: Lang) => void;
   onNotifications: (on: boolean) => void;
+  onSignIn: () => void;
   onEditPost: () => void;
   onEditCategory: () => void;
   onLogout: () => void;
@@ -114,11 +120,13 @@ export type ProfileViewProps = {
 export function ProfileView({
   post,
   category,
+  signedIn,
   lang,
   notifications,
   version,
   onLang,
   onNotifications,
+  onSignIn,
   onEditPost,
   onEditCategory,
   onLogout,
@@ -143,6 +151,7 @@ export function ProfileView({
       bottomInset={false}
       testID="profile-screen"
       overlay={
+        !signedIn ? undefined : (
         <Dialog
           testID="profile-delete-dialog"
           visible={confirming}
@@ -159,6 +168,7 @@ export function ProfileView({
           }}
           secondary={{ label: t('common.cancel'), onPress: () => setConfirming(false) }}
         />
+        )
       }
     >
       <Text variant="titleLg" weight="600" className="mt-5">
@@ -211,21 +221,40 @@ export function ProfileView({
       </Section>
 
       <Section title={t('profile.sectionAccount')}>
-        <Stack gap={3}>
-          <Button
-            testID="profile-logout"
-            variant="secondary"
-            label={t('profile.logout')}
-            onPress={onLogout}
-          />
-          {/* Solid flag lives inside the dialog, where the press actually destroys something. */}
-          <Button
-            testID="profile-delete"
-            variant="dangerOutline"
-            label={t('profile.deleteAccount')}
-            onPress={() => setConfirming(true)}
-          />
-        </Stack>
+        {signedIn ? (
+          <Stack gap={3}>
+            <Button
+              testID="profile-logout"
+              variant="secondary"
+              label={t('profile.logout')}
+              onPress={onLogout}
+            />
+            {/* Solid flag lives inside the dialog, where the press actually destroys something. */}
+            <Button
+              testID="profile-delete"
+              variant="dangerOutline"
+              label={t('profile.deleteAccount')}
+              onPress={() => setConfirming(true)}
+            />
+          </Stack>
+        ) : (
+          /* The one place on the screen that says what an account is for. It is an offer, not
+             a wall: everything above it works without one. */
+          <Stack gap={2} testID="profile-signed-out">
+            <Text variant="subtitle" weight="700">
+              {t('profile.signedOutTitle')}
+            </Text>
+            <Text variant="caption" color="dim">
+              {t('profile.signedOutBody')}
+            </Text>
+            <Button
+              testID="profile-signin"
+              label={t('common.signIn')}
+              onPress={onSignIn}
+              className="mt-2"
+            />
+          </Stack>
+        )}
       </Section>
 
       <Text variant="caption" color="dim" testID="profile-version" className="mt-6">

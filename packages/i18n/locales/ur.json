@@ -9,6 +9,7 @@
     "save": "محفوظ کریں",
     "skip": "چھوڑیں",
     "getStarted": "شروع کریں",
+    "signIn": "سائن ان",
     "free": "مفت",
     "locked": "مقفل",
     "minutes": "{{count}} منٹ",
@@ -175,7 +176,9 @@
     "sectionApp": "ایپ",
     "sectionAccount": "اکاؤنٹ",
     "deleteTitle": "اکاؤنٹ حذف کریں؟",
-    "deleteYes": "سب کچھ حذف کریں"
+    "deleteYes": "سب کچھ حذف کریں",
+    "signedOutTitle": "آپ سائن ان نہیں ہیں",
+    "signedOutBody": "اپنی کوششیں اور نتائج اس فون پر محفوظ رکھنے کے لیے سائن ان کریں۔"
   },
   "tabs": { "home": "ہوم", "tests": "ٹیسٹ", "profile": "پروفائل" }
 }

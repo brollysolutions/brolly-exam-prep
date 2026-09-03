@@ -13,8 +13,10 @@ const DEV = {
   shell: 'App shell (F-02 / F-07 / F-08 / F-14)',
   welcome: 'WelcomeView — slide 1 of 3',
   home: 'HomeView — signed in, 45 days out',
+  homeGuest: 'HomeView — guest, sign-in in the header (F-19)',
   library: 'LibraryView — full mocks',
   profile: 'ProfileView — reminders on',
+  profileGuest: 'ProfileView — guest, account section offers a sign-in (F-19)',
 } as const;
 
 /**
@@ -62,10 +64,24 @@ export function ShellStates({ index }: { index: string }) {
       <Preview label={DEV.home}>
         <HomeView
           name="…1234"
+          signedIn
           lang={lang}
           onLang={setLang}
           daysToExam={45}
           streakDays={4}
+          onSignIn={noop}
+          onStartMock={noop}
+          onWeakTopic={noop}
+        />
+      </Preview>
+      <Preview label={DEV.homeGuest}>
+        <HomeView
+          signedIn={false}
+          lang={lang}
+          onLang={setLang}
+          daysToExam={45}
+          streakDays={4}
+          onSignIn={noop}
           onStartMock={noop}
           onWeakTopic={noop}
         />
@@ -77,11 +93,28 @@ export function ShellStates({ index }: { index: string }) {
         <ProfileView
           post="si"
           category="bc"
+          signedIn
           lang={lang}
           notifications
           version="1.0.0"
           onLang={setLang}
           onNotifications={noop}
+          onSignIn={noop}
+          onEditPost={noop}
+          onEditCategory={noop}
+          onLogout={noop}
+          onDelete={noop}
+        />
+      </Preview>
+      <Preview label={DEV.profileGuest}>
+        <ProfileView
+          signedIn={false}
+          lang={lang}
+          notifications
+          version="1.0.0"
+          onLang={setLang}
+          onNotifications={noop}
+          onSignIn={noop}
           onEditPost={noop}
           onEditCategory={noop}
           onLogout={noop}

@@ -1,8 +1,9 @@
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { getApi } from '@/data/api';
+import { withReturnTo } from '@/data/href';
 import { useSessionStore } from '@/data/session';
 import { LoginView } from '@/features/auth/LoginView';
 import { setOtpRequestId } from '@/features/auth/otpRequest';
@@ -12,6 +13,8 @@ import { useAutoDismiss } from '@/ui';
 export default function LoginRoute() {
   const { t } = useTranslation();
   const router = useRouter();
+  // Where the chain ends: whatever the user tapped that needed an account (F-19).
+  const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
   const phone = useSessionStore((s) => s.phone);
   const setPhone = useSessionStore((s) => s.setPhone);
   const [busy, setBusy] = useState(false);
@@ -28,7 +31,7 @@ export default function LoginRoute() {
       const { request_id } = await getApi().requestOtp({ phone: next });
       setOtpRequestId(request_id);
       setPhone(next);
-      router.push('/(auth)/otp');
+      router.push(withReturnTo('/(auth)/otp', returnTo));
     } catch {
       setError(t('common.networkError'));
     } finally {

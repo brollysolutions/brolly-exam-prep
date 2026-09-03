@@ -25,8 +25,11 @@ import {
 /**
  * What the home card pitches: the first full mock a candidate can actually sit. Pointing at
  * a locked paper would make the screen's one hi-vis action a dead end (design review round 1).
+ *
+ * Exported because the route has to open *this* paper: an id repeated there is an id that
+ * drifts, and the drift is invisible until someone taps a card for one mock and gets another.
  */
-const NEXT_MOCK = TESTS.find((test) => test.kind === 'full' && test.free) ?? TESTS[0];
+export const NEXT_MOCK = TESTS.find((test) => test.kind === 'full' && test.free) ?? TESTS[0];
 
 /**
  * The prototype's action row: a 3 px hi-vis bar on the reading-start side, a title, the reason
@@ -84,11 +87,17 @@ function TopicRow({
 export type HomeViewProps = {
   /** Who is signed in — the last four digits of the phone, already elided ("…1234"). */
   name?: string;
+  /**
+   * F-19: the screen renders the same either way. Being signed out only adds the quiet way
+   * in; the actions below stay where they are and collect an account when they are pressed.
+   */
+  signedIn: boolean;
   lang: Lang;
   onLang: (lang: Lang) => void;
   /** Days left until the notified PWT date. */
   daysToExam: number;
   streakDays: number;
+  onSignIn: () => void;
   onStartMock: () => void;
   onWeakTopic: (id: string) => void;
 };
@@ -99,10 +108,12 @@ export type HomeViewProps = {
  */
 export function HomeView({
   name,
+  signedIn,
   lang,
   onLang,
   daysToExam,
   streakDays,
+  onSignIn,
   onStartMock,
   onWeakTopic,
 }: HomeViewProps) {
@@ -112,11 +123,18 @@ export function HomeView({
 
   return (
     <Screen scroll padded bottomInset={false} testID="home-screen">
-      <Row testID="home-header" align="center" justify="between" className="mt-4">
+      <Row testID="home-header" align="center" justify="between" gap={2} wrap className="mt-4">
         <Kicker lang="en" color="hivis" tracking="brand">
           {t('common.brand')}
         </Kicker>
-        <SegmentedChips value={lang} onChange={onLang} options={langOptions} testID="home-lang" />
+        <Row gap={2} align="center">
+          {/* Outlined, not hi-vis: signing in is not what this screen is for. The yellow stays
+              on "Start now", which asks for an account itself when it needs one. */}
+          {!signedIn && (
+            <Chip testID="home-signin" label={t('common.signIn')} onPress={onSignIn} />
+          )}
+          <SegmentedChips value={lang} onChange={onLang} options={langOptions} testID="home-lang" />
+        </Row>
       </Row>
 
       <Text variant="title" weight="600" testID="home-greeting" className="mt-4">

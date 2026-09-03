@@ -1,12 +1,20 @@
 import Constants from 'expo-constants';
 import { useRouter } from 'expo-router';
 
+import { withReturnTo, type ReturnTarget } from '@/data/href';
 import { useLangStore } from '@/data/lang';
+import { useRequireAuth } from '@/data/requireAuth';
 import { useSessionStore } from '@/data/session';
 import { signOut } from '@/data/signOut';
 import { ProfileView } from '@/features/profile/ProfileView';
 
 const VERSION = Constants.expoConfig?.version ?? '0.0.0';
+
+/** The two questions onboarding asks, in the order it asks them. */
+type OnboardingStep = '/(onboarding)/post' | '/(onboarding)/category';
+
+/** Everything a step opened from here has to come back to. */
+const HERE: ReturnTarget = '/(tabs)/profile';
 
 /** F-14 — profile and settings. */
 export default function ProfileRoute() {
@@ -17,6 +25,7 @@ export default function ProfileRoute() {
   const category = useSessionStore((s) => s.category);
   const notifications = useSessionStore((s) => s.notifications);
   const setNotifications = useSessionStore((s) => s.setNotifications);
+  const { ensure, signedIn, onboarded } = useRequireAuth();
 
   /**
    * Both exits use the shared `signOut()`, which clears the attempt store as well as the
@@ -25,21 +34,33 @@ export default function ProfileRoute() {
    */
   const leave = () => {
     signOut();
-    router.replace('/(auth)/login');
+    // Not to the login form: since F-19 there is an app to be signed out *into*.
+    router.replace('/(tabs)');
+  };
+
+  /**
+   * A settings row is an edit only for someone who has already answered both questions.
+   * For anyone else the same tap is the start of the sign-in chain — which ends back here.
+   */
+  const edit = (step: OnboardingStep) => {
+    if (signedIn && onboarded) router.push(withReturnTo(step, HERE));
+    else ensure(HERE);
   };
 
   return (
     <ProfileView
       post={post}
       category={category}
+      signedIn={signedIn}
       lang={lang}
       notifications={notifications}
       version={VERSION}
       onLang={setLang}
       onNotifications={setNotifications}
+      onSignIn={() => ensure(HERE)}
       // `returnTo` sends the step straight back here instead of walking the sign-up flow on.
-      onEditPost={() => router.push('/(onboarding)/post?returnTo=profile')}
-      onEditCategory={() => router.push('/(onboarding)/category?returnTo=profile')}
+      onEditPost={() => edit('/(onboarding)/post')}
+      onEditCategory={() => edit('/(onboarding)/category')}
       onLogout={leave}
       onDelete={leave}
     />
