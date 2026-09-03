@@ -4,7 +4,7 @@ import { initI18n } from '@tslprb/i18n';
 import { AppState, BackHandler, type AppStateStatus } from 'react-native';
 
 import TestAttemptRoute from '@/app/test/[id]/index';
-import { resetApi } from '@/data/api';
+import { MockApi, resetApi } from '@/data/api';
 import { useAttemptStore } from '@/data/attempt';
 
 const mockReplace = jest.fn();
@@ -138,5 +138,28 @@ describe('test attempt route', () => {
     await userEvent.press(screen.getByTestId('option-2'));
     expect(useAttemptStore.getState().answers[1]).toBe(2);
     expect(screen.getByTestId('btn-palette')).toHaveTextContent(`Questions${num('1 / 40')}`);
+  });
+
+  it('offers a retry when the paper fails to load, and starts the attempt on the retry', async () => {
+    // One rejection, then the real fixture paper: the retry has to actually re-fetch.
+    const getPaper = jest
+      .spyOn(MockApi.prototype, 'getPaper')
+      .mockRejectedValueOnce(new Error('offline'));
+
+    await render(<TestAttemptRoute />);
+    await flush();
+
+    // No blank stem with four blank options: the failure owns the screen.
+    expect(screen.getByTestId('attempt-load-error')).toBeOnTheScreen();
+    expect(screen.queryByTestId('question-text')).toBeNull();
+    expect(useAttemptStore.getState().status).not.toBe('running');
+
+    await userEvent.press(screen.getByTestId('attempt-load-error-retry'));
+    await flush();
+
+    expect(getPaper).toHaveBeenCalledTimes(2);
+    expect(screen.queryByTestId('attempt-load-error')).toBeNull();
+    expect(useAttemptStore.getState().status).toBe('running');
+    expect(screen.getByTestId('question-text')).not.toHaveTextContent('');
   });
 });

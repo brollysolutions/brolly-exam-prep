@@ -20,7 +20,10 @@ import {
 import { AttemptView } from '@/features/attempt/AttemptView';
 import { PaletteSheet } from '@/features/attempt/PaletteSheet';
 import { useAttemptGuards } from '@/features/attempt/useAttemptGuards';
-import { haptics, type SheetHandle } from '@/ui';
+// Generic in name and in copy ("could not load, try again"), so the attempt screen borrows
+// the result screens' placeholder rather than growing a second one.
+import { LoadError } from '@/features/result/Placeholder';
+import { haptics, Screen, type SheetHandle } from '@/ui';
 
 /** A locked-section notice clears itself; the timer warnings stay until the next one lands. */
 const LOCKED_TOAST_MS = 4000;
@@ -36,6 +39,10 @@ export default function TestAttemptRoute() {
   const { offline } = useNetwork();
 
   const [paper, setPaper] = useState<PaperQuestion[]>([]);
+  // The paper never arrived. Bumping `attempt` re-runs the load; the screen is otherwise
+  // a blank stem with four blank options and no way out but the back gesture.
+  const [failed, setFailed] = useState(false);
+  const [loadAttempt, setLoadAttempt] = useState(0);
   const [dialog, setDialog] = useState<AttemptDialogKind | null>(null);
   const [toast, setToast] = useState<AttemptToast | null>(null);
   const sheet = useRef<SheetHandle>(null);
@@ -79,7 +86,11 @@ export default function TestAttemptRoute() {
         if (cancelled) return;
         meta = loadedMeta;
         setPaper(questions);
+        setFailed(false);
       } catch {
+        // Creating the attempt is allowed to fail (offline start below); loading the paper
+        // is not — without questions there is nothing to sit.
+        if (!cancelled) setFailed(true);
         return;
       }
       const state = useAttemptStore.getState();
@@ -99,7 +110,7 @@ export default function TestAttemptRoute() {
     return () => {
       cancelled = true;
     };
-  }, [id]);
+  }, [id, loadAttempt]);
 
   // ------------------------------------------------------------------- clock
 
@@ -282,6 +293,13 @@ export default function TestAttemptRoute() {
       />
     </>
   );
+
+  if (failed && !attempt.pattern)
+    return (
+      <Screen testID="attempt-screen">
+        <LoadError onRetry={() => setLoadAttempt((n) => n + 1)} testID="attempt-load-error" />
+      </Screen>
+    );
 
   return (
     <AttemptView
