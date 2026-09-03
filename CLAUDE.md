@@ -19,7 +19,7 @@ Languages: **English default**, Telugu, Urdu (RTL, mirrored live without restart
 ## Commands
 ```
 pnpm dev:mobile          # expo start (scan QR with Expo Go on Android)
-pnpm web:mobile          # expo web for screenshot review
+pnpm web:mobile          # expo web preview in the browser
 pnpm typecheck | lint | test
 pnpm doctor              # expo-doctor
 pnpm api:up | api:down | api:migrate
@@ -53,7 +53,7 @@ Invoke the listed skill(s) BEFORE starting work that matches. Process skills fir
 1. `pnpm typecheck && pnpm lint && pnpm test` green (hooks enforce this on edit/stop).
 2. Screen renders in en, te, ur; Urdu mirrored; no hard-coded hex or strings.
 3. Unit tests for logic (timer, palette counts, OTP countdown, RTL helpers); snapshot in `ur`.
-4. Screenshots (web export via Chrome MCP or Expo Go) attached to the PR.
+4. Visually checked in the web preview or Expo Go in en, te and ur.
 5. `docs/FEATURES.md` + `docs/PR_TRACKING.md` updated (the `track-pr` hook does it on `gh pr create/merge`; verify).
 
 ## Conventions

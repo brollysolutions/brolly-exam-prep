@@ -4,11 +4,6 @@
 
 ## What changed
 
-## Screenshots
-| English | Telugu | Urdu (RTL) |
-|---|---|---|
-|  |  |  |
-
 ## Checklist
 - [ ] `pnpm typecheck && pnpm lint && pnpm test` green
 - [ ] All strings via `t()`; en/te/ur keys in parity

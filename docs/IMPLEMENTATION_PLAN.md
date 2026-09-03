@@ -55,7 +55,7 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 ## Phase 6 — Verification
 - [x] `pnpm typecheck && pnpm lint && pnpm test` green on the stack tip (347 mobile tests, 51 suites; i18n 6/6; package typechecks)
 - [ ] `npx expo-doctor` clean; app opens in Expo Go on Android (needs your phone: `pnpm dev:mobile`)
-- [x] Web export screenshots (en/te/ur) for every screen reviewed by `@design-critic` (`docs/screenshots/*`)
+- [x] Every screen visually reviewed by `@design-critic` in en/te/ur on the web export
 - [x] Urdu snapshot tests for every screen
 - [x] Timer deadline tests (background/foreground, auto-submit) — countdown + route tests
 - [x] `docker compose --profile dev up` → `/health` 200; worker registers cron jobs (verified by F-17 implementer on ports 5434/8010)
@@ -71,8 +71,8 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
    `gh repo create <owner>/tslprb --private --source . --remote origin --push` (pushes the current branch); then `git push -u origin main feat/F-17-api-scaffold feat/F-01-design-system feat/F-16-data-layer feat/F-09-11-test-attempt feat/F-03-06-auth-onboarding feat/F-12-13-result-solutions feat/F-02-07-08-14-shell`, and `gh pr create --base <previous-branch> --head <branch> --fill` for each, bottom-up. `@pr-tracker` (or the `track-pr` hook) fills `docs/PR_TRACKING.md`.
 2. Repo secret `ANTHROPIC_API_KEY` (or `/install-github-app`) so `.github/workflows/claude-review.yml` can review PRs.
 3. `services/api/.env.example`: delete the two `JWT_SECRET` lines (+ comment) and set `CORS_ORIGINS=http://localhost:8081,http://localhost:19006,http://localhost:3000`. The project deny rule on `.env*` blocked the session from editing it.
-4. Run on your phone: `pnpm dev:mobile`, scan with Expo Go; check hazard-rail marquee, sheet/dialog motion, Nastaliq line-heights, tab-bar heights (te 68 / ur 76), the Toggle. Screenshots so far are from the web export (`docs/screenshots/*`).
-5. Optional: connect the Claude Chrome extension (or keep `pnpm screenshots`), install adb + Maestro for `.maestro/` flows, add `context7` API key header in `.mcp.json`.
+4. Run on your phone: `pnpm dev:mobile`, scan with Expo Go; check hazard-rail marquee, sheet/dialog motion, Nastaliq line-heights, tab-bar heights (te 68 / ur 76), the Toggle.
+5. Optional: connect the Claude Chrome extension for in-browser review, install adb + Maestro for `.maestro/` flows, add `context7` API key header in `.mcp.json`.
 6. Delete the leftover folder `..\Tsplrb-w4` (a OneDrive lock stopped the session from removing it).
 
 ## Follow-ups (not blocking)

@@ -8,7 +8,7 @@ Build the user-facing flow of a mock-test app for Telangana police recruitment (
 ## 2. Users and constraints
 - Aspirants for Constable (PC) and SI/ASI posts in Telangana, mostly on mid-range Android phones, often with poor connectivity. Telugu and Urdu readers are first-class; English is the default UI language.
 - Must work offline during a test. Timer must survive backgrounding and calls.
-- Single developer machine: Windows, no Android SDK, no Mac → Expo Go on a physical phone; web export for screenshots.
+- Single developer machine: Windows, no Android SDK, no Mac → Expo Go on a physical phone; web export for browser preview.
 
 ## 3. Scope
 In: 7 prototype screens, 14 test states, 4 extra screens (splash/onboarding, home, test library, profile/settings), three languages with live RTL, local logic on fixtures, dev states screen, API scaffold (Docker: Postgres 17, Redis, FastAPI, arq scheduler), Next.js placeholder.
@@ -56,7 +56,7 @@ NativeWind 4.2 + Tailwind 3.4 (stable; className on every RN component via babel
 `services/api` FastAPI with `/health`, OTP (dev code 123456), tests, attempts, results; SQLAlchemy models + Alembic initial migration; `arq` worker cron: auto-submit expired attempts (1 min), purge OTPs (10 min), recompute leaderboard (nightly). `docker-compose.yml` profile `dev`: postgres:17, redis:7, api, worker. Contracts mirrored in `packages/api-contracts` (zod) and regenerated from OpenAPI.
 
 ## 11. Testing
-Unit: jest-expo + RNTL; stores and helpers (timer math, palette counts, section lock, OTP countdown, `useDir`); locale parity; Urdu snapshot per screen. E2E: Maestro flows in `.maestro/` (optional locally; runs in EAS Workflows later). Visual: web export screenshots per language reviewed by `@design-critic` before each PR.
+Unit: jest-expo + RNTL; stores and helpers (timer math, palette counts, section lock, OTP countdown, `useDir`); locale parity; Urdu snapshot per screen. E2E: Maestro flows in `.maestro/` (optional locally; runs in EAS Workflows later). Visual: the web export per language reviewed by `@design-critic` before each PR.
 
 ## 12. Delivery
 One PR per feature ID (`docs/FEATURES.md`), tracked in `docs/PR_TRACKING.md`; CI runs typecheck/lint/test/web-export and API ruff+pytest; Claude reviews every PR via GitHub Action.

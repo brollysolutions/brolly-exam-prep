@@ -41,7 +41,7 @@ Everything here is wired so you do not have to name a skill. `CLAUDE.md` holds t
 | `context7` (https://mcp.context7.com/mcp) | version-accurate library docs | add `CONTEXT7_API_KEY` header for higher limits |
 | `github` (plugin) | issues/PRs | needs `gh auth login` or PAT |
 | `maestro` | drive the USB Android phone, run `.maestro/*.yml` | only after installing Maestro CLI + adb: `claude mcp add --scope project maestro -- maestro mcp` |
-| Chrome (claude-in-chrome) | screenshots of `expo start --web` for design review | needs the Claude Chrome extension connected; fallback: `pnpm --filter mobile export:web && pnpm screenshots` (headless Playwright, `scripts/screenshots.mjs`) |
+| Chrome (claude-in-chrome) | in-browser review of `expo start --web` | needs the Claude Chrome extension connected |
 
 ### Subagents (`.claude/agents/`)
 `ui-builder`, `design-critic`, `i18n-rtl-reviewer`, `test-writer`, `pr-tracker`, `backend-scaffolder`, `research`. Invoke with `@name` or let the routing table do it.
