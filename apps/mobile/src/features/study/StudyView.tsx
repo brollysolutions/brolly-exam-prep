@@ -67,7 +67,9 @@ function TopicRow({
               testID={`study-read-${topic.id}`}
               label={t('study.read')}
               leading={
-                <Glyph variant="small" color="dim">
+                // The same hi-vis tick the topic page marks itself read with: the shelf and
+                // the page must not disagree about what "read" looks like.
+                <Glyph variant="small" color="hivis">
                   {READ_GLYPH}
                 </Glyph>
               }

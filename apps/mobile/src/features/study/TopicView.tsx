@@ -237,8 +237,10 @@ export function TopicView({
                 testID="topic-mark-read"
               />
             )}
+            {/* Once the topic is read, drilling the section is the only thing left to do on
+                this page, so it takes over the hi-vis the mark-read button was holding. */}
             <Button
-              variant="secondary"
+              variant={read ? 'primary' : 'secondary'}
               label={t('study.practiseSection')}
               onPress={onPractise}
               testID="topic-practise"

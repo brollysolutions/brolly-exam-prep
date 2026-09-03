@@ -75,6 +75,17 @@ describe('TopicView', () => {
     expect(p.onPractise).toHaveBeenCalledTimes(1);
   });
 
+  // Hi-vis follows what is still to do: mark-read while there is reading left, then the drills.
+  it('hands the hi-vis to the drills once the topic is read', async () => {
+    const p = props();
+    const view = await render(<TopicView {...p} />);
+    expect(screen.getByTestId('topic-mark-read').props.className).toContain('bg-hivis');
+    expect(screen.getByTestId('topic-practise').props.className).not.toContain('bg-hivis');
+
+    await view.rerender(<TopicView {...p} read />);
+    expect(screen.getByTestId('topic-practise').props.className).toContain('bg-hivis');
+  });
+
   it('switches the reading language from the header', async () => {
     const p = props();
     await render(<TopicView {...p} />);

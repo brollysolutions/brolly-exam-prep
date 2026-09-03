@@ -1,4 +1,4 @@
-import { act, render, screen, userEvent } from '@testing-library/react-native';
+import { act, render, screen, userEvent, within } from '@testing-library/react-native';
 import { STUDY_SECTIONS, STUDY_TOPICS } from '@tslprb/fixtures';
 import { initI18n, setLanguage } from '@tslprb/i18n';
 
@@ -50,7 +50,7 @@ describe('StudyView', () => {
     expect(p.onOpen).toHaveBeenCalledWith('st-gs-rivers');
   });
 
-  it('spends hi-vis on the chevron and nothing else in the row', async () => {
+  it('keeps the row hi-vis to ink — the chevron and the read tick — and never a fill', async () => {
     await render(<StudyView {...props()} read={{ 'st-re-coding': true }} />);
     // The chevron is decorative, so it is hidden from the accessibility tree and has to be
     // asked for explicitly.
@@ -58,7 +58,10 @@ describe('StudyView', () => {
       includeHiddenElements: true,
     });
     expect(chevron.props.className).toContain('text-hivis');
-    expect(screen.getByTestId('study-read-st-re-coding').props.className).not.toContain('bg-hivis');
+    const chip = screen.getByTestId('study-read-st-re-coding');
+    expect(chip.props.className).not.toContain('bg-hivis');
+    // The same tick the topic page uses once you mark it read.
+    expect(within(chip).getByText('✓').props.className).toContain('text-hivis');
   });
 
   it('gives every row a 48 px-plus target', async () => {
