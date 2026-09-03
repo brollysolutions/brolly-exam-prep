@@ -16,6 +16,7 @@ export type EligibilityInput = {
   heightCm?: number;
   chestCm?: number;
   chestExpansionCm?: number;
+  run1600s?: number;
   run800s?: number;
   run100s?: number;
   longJumpM?: number;
@@ -30,6 +31,8 @@ export type EligibilityRow = {
   actual?: number;
   /** `undefined` = not answered yet, so this row cannot pass or fail. */
   pass?: boolean;
+  /** `false` = the figure is seeded from secondary reporting; the screen tags the row. */
+  verified: boolean;
 };
 
 export type Verdict = 'eligible' | 'notYet' | 'incomplete';
@@ -73,6 +76,7 @@ export function toInput(
     heightCm: parseMeasure(values.height),
     chestCm: parseMeasure(values.chest),
     chestExpansionCm: parseMeasure(values.chestExpansion),
+    run1600s: parseMeasure(values.run1600m),
     run800s: parseMeasure(values.run800m),
     run100s: parseMeasure(values.run100m),
     longJumpM: parseMeasure(values.longJump),
@@ -85,6 +89,7 @@ const ACTUAL: Record<StandardKey, (i: EligibilityInput) => number | undefined> =
   height: (i) => i.heightCm,
   chest: (i) => i.chestCm,
   chestExpansion: (i) => i.chestExpansionCm,
+  run1600m: (i) => i.run1600s,
   run800m: (i) => i.run800s,
   run100m: (i) => i.run100s,
   longJump: (i) => i.longJumpM,
@@ -95,8 +100,8 @@ const ACTUAL: Record<StandardKey, (i: EligibilityInput) => number | undefined> =
  * Measure a candidate against the standards for their post, gender and category group.
  *
  * Pure and total: it never throws on a half-filled form, and the boundary counts as a pass —
- * the notification says "not less than 167.6 cm" and "within 170 seconds", so exactly 167.6 and
- * exactly 170 qualify.
+ * the notification says "not less than 167.6 cm" and "within 7 min 15 s", so exactly 167.6 and
+ * exactly 435 seconds qualify.
  *
  * A confirmed failure outranks a blank field. Someone who has typed a height 8 cm short is not
  * eligible whatever else they fill in later, and telling them "incomplete" would waste the trip
@@ -114,7 +119,7 @@ export function evaluate(
         : standard.dir === 'min'
           ? actual >= standard.value
           : actual <= standard.value;
-    return { key, required: standard.value, actual, pass };
+    return { key, required: standard.value, actual, pass, verified: standard.verified };
   });
 
   const improve = rows.filter((r) => r.pass === false).map((r) => r.key);

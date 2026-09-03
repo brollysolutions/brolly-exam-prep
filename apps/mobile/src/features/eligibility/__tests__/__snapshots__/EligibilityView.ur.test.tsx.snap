@@ -1605,95 +1605,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   }
                 }
                 testID="eligibility-field-run800m"
-                value="190"
-              />
-            </View>
-          </View>
-          <View
-            style={
-              {
-                "alignItems": undefined,
-                "flexDirection": "column",
-                "gap": 4,
-                "justifyContent": undefined,
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "alignItems": "baseline",
-                  "flexDirection": "row-reverse",
-                  "flexWrap": undefined,
-                  "gap": 8,
-                  "justifyContent": undefined,
-                }
-              }
-            >
-              <Text
-                className="text-chalk2"
-                style={
-                  {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 14.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "rtl",
-                  }
-                }
-              >
-                ⁦100⁩ میٹر دوڑ
-              </Text>
-              <Text
-                className="text-dim"
-                style={
-                  {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 12.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 25.6,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "rtl",
-                  }
-                }
-              >
-                سیکنڈ
-              </Text>
-            </View>
-            <View
-              className="h-touchLg justify-center rounded-sm border bg-panel2 px-3 border-line"
-            >
-              <TextInput
-                accessibilityLabel="⁦100⁩ میٹر دوڑ (سیکنڈ)"
-                inputMode="decimal"
-                keyboardType="decimal-pad"
-                maxLength={6}
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onFocus={[Function]}
-                placeholderTextColor="#5A5D62"
-                selectionColor="#FFE01B"
-                style={
-                  {
-                    "color": "#EDEBE3",
-                    "fontFamily": "Archivo_600SemiBold",
-                    "fontSize": 22,
-                    "height": 56,
-                    "letterSpacing": 0,
-                    "lineHeight": 31.9,
-                    "padding": 0,
-                    "textAlign": "left",
-                    "textAlignVertical": "center",
-                    "writingDirection": "ltr",
-                  }
-                }
-                testID="eligibility-field-run100m"
-                value="15"
+                value="300"
               />
             </View>
           </View>
@@ -2147,23 +2059,35 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   }
                 }
               >
-                <Text
-                  className="text-chalk"
+                <View
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
-                      "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "alignItems": "center",
+                      "flexDirection": "row-reverse",
+                      "flexWrap": "wrap",
+                      "gap": 8,
+                      "justifyContent": undefined,
                     }
                   }
                 >
-                  قد
-                </Text>
+                  <Text
+                    className="text-chalk"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_700Bold",
+                        "fontSize": 14.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 29.7,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                    قد
+                  </Text>
+                </View>
                 <View
                   style={
                     {
@@ -2353,23 +2277,35 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   }
                 }
               >
-                <Text
-                  className="text-chalk"
+                <View
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
-                      "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "alignItems": "center",
+                      "flexDirection": "row-reverse",
+                      "flexWrap": "wrap",
+                      "gap": 8,
+                      "justifyContent": undefined,
                     }
                   }
                 >
-                  ⁦800⁩ میٹر دوڑ
-                </Text>
+                  <Text
+                    className="text-chalk"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_700Bold",
+                        "fontSize": 14.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 29.7,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                    ⁦800⁩ میٹر دوڑ
+                  </Text>
+                </View>
                 <View
                   style={
                     {
@@ -2427,7 +2363,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                         }
                       }
                     >
-                      ⁦200⁩
+                      ⁦320⁩
                     </Text>
                     <Text
                       className="text-dim"
@@ -2494,213 +2430,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                         }
                       }
                     >
-                      ⁦190⁩
-                    </Text>
-                    <Text
-                      className="text-hivis"
-                      style={
-                        {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
-                          "textTransform": undefined,
-                          "writingDirection": "rtl",
-                        }
-                      }
-                    >
-                      سیکنڈ
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View
-              className="py-2"
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row-reverse",
-                  "flexWrap": undefined,
-                  "gap": 8,
-                  "justifyContent": undefined,
-                }
-              }
-              testID="eligibility-row-run100m"
-            >
-              <Text
-                accessibilityLabel="معیار پر پورا"
-                className="text-hivis"
-                style={
-                  {
-                    "fontFamily": "Archivo_400Regular",
-                    "fontSize": 13.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 19.6,
-                    "textAlign": "right",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                ✓
-              </Text>
-              <View
-                className="flex-1"
-                style={
-                  {
-                    "alignItems": undefined,
-                    "flexDirection": "column",
-                    "gap": 4,
-                    "justifyContent": undefined,
-                  }
-                }
-              >
-                <Text
-                  className="text-chalk"
-                  style={
-                    {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
-                      "textTransform": undefined,
-                      "writingDirection": "rtl",
-                    }
-                  }
-                >
-                  ⁦100⁩ میٹر دوڑ
-                </Text>
-                <View
-                  style={
-                    {
-                      "alignItems": "baseline",
-                      "flexDirection": "row-reverse",
-                      "flexWrap": "wrap",
-                      "gap": 8,
-                      "justifyContent": undefined,
-                    }
-                  }
-                >
-                  <Text
-                    className="text-dim"
-                    style={
-                      {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 12.5,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 25.6,
-                        "textAlign": "right",
-                        "textTransform": undefined,
-                        "writingDirection": "rtl",
-                      }
-                    }
-                  >
-                    مطلوب
-                  </Text>
-                  <View
-                    style={
-                      {
-                        "alignItems": "baseline",
-                        "flexDirection": "row-reverse",
-                        "flexWrap": undefined,
-                        "gap": 4,
-                        "justifyContent": undefined,
-                      }
-                    }
-                  >
-                    <Text
-                      accessibilityLanguage="en"
-                      className="text-dim"
-                      style={
-                        {
-                          "fontFamily": "Archivo_600SemiBold",
-                          "fontSize": 11.5,
-                          "fontVariant": [
-                            "tabular-nums",
-                          ],
-                          "letterSpacing": 0,
-                          "lineHeight": 16.7,
-                          "textAlign": "right",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        }
-                      }
-                    >
-                      ⁦16⁩
-                    </Text>
-                    <Text
-                      className="text-dim"
-                      style={
-                        {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
-                          "textTransform": undefined,
-                          "writingDirection": "rtl",
-                        }
-                      }
-                    >
-                      سیکنڈ
-                    </Text>
-                  </View>
-                  <Text
-                    className="text-dim"
-                    style={
-                      {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 12.5,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 25.6,
-                        "textAlign": "right",
-                        "textTransform": undefined,
-                        "writingDirection": "rtl",
-                      }
-                    }
-                  >
-                    آپ کا
-                  </Text>
-                  <View
-                    style={
-                      {
-                        "alignItems": "baseline",
-                        "flexDirection": "row-reverse",
-                        "flexWrap": undefined,
-                        "gap": 4,
-                        "justifyContent": undefined,
-                      }
-                    }
-                    testID="eligibility-yours-run100m"
-                  >
-                    <Text
-                      accessibilityLanguage="en"
-                      className="text-hivis"
-                      style={
-                        {
-                          "fontFamily": "Archivo_600SemiBold",
-                          "fontSize": 11.5,
-                          "fontVariant": [
-                            "tabular-nums",
-                          ],
-                          "letterSpacing": 0,
-                          "lineHeight": 16.7,
-                          "textAlign": "right",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        }
-                      }
-                    >
-                      ⁦15⁩
+                      ⁦300⁩
                     </Text>
                     <Text
                       className="text-hivis"
@@ -2765,23 +2495,35 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   }
                 }
               >
-                <Text
-                  className="text-chalk"
+                <View
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
-                      "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "alignItems": "center",
+                      "flexDirection": "row-reverse",
+                      "flexWrap": "wrap",
+                      "gap": 8,
+                      "justifyContent": undefined,
                     }
                   }
                 >
-                  لمبی چھلانگ
-                </Text>
+                  <Text
+                    className="text-chalk"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_700Bold",
+                        "fontSize": 14.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 29.7,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                    لمبی چھلانگ
+                  </Text>
+                </View>
                 <View
                   style={
                     {
@@ -2839,7 +2581,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                         }
                       }
                     >
-                      ⁦2.75⁩
+                      ⁦2.5⁩
                     </Text>
                     <Text
                       className="text-dim"
@@ -2971,23 +2713,35 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   }
                 }
               >
-                <Text
-                  className="text-chalk"
+                <View
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
-                      "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "alignItems": "center",
+                      "flexDirection": "row-reverse",
+                      "flexWrap": "wrap",
+                      "gap": 8,
+                      "justifyContent": undefined,
                     }
                   }
                 >
-                  گولہ پھینک
-                </Text>
+                  <Text
+                    className="text-chalk"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_700Bold",
+                        "fontSize": 14.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 29.7,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                    گولہ پھینک
+                  </Text>
+                </View>
                 <View
                   style={
                     {
@@ -3045,7 +2799,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                         }
                       }
                     >
-                      ⁦4.25⁩
+                      ⁦4⁩
                     </Text>
                     <Text
                       className="text-dim"

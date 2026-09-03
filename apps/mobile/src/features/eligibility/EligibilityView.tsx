@@ -21,6 +21,7 @@ const UNIT: Record<StandardKey, 'cm' | 'm' | 's'> = {
   height: 'cm',
   chest: 'cm',
   chestExpansion: 'cm',
+  run1600m: 's',
   run800m: 's',
   run100m: 's',
   longJump: 'm',
@@ -32,6 +33,7 @@ const LABEL: Record<StandardKey, string> = {
   height: 'height',
   chest: 'chest',
   chestExpansion: 'chestExpansion',
+  run1600m: 'run1600',
   run800m: 'run800',
   run100m: 'run100',
   longJump: 'longJump',
@@ -114,6 +116,21 @@ const rowTone = (pass: boolean | undefined): ColorName =>
 const rowGlyph = (pass: boolean | undefined): string =>
   pass === true ? '✓' : pass === false ? '✕' : '·';
 
+/**
+ * Marks a figure seeded from secondary reporting. Dim rather than hazard: it is a caveat about
+ * the table, not a fault in the candidate, and it must not compete with the ✓ / ✕ beside it.
+ */
+function UnverifiedTag({ testID }: { testID: string }) {
+  const { t } = useTranslation();
+  return (
+    <View testID={testID} className="rounded-sm border border-line px-2">
+      <Text variant="caption" color="dim">
+        {t('eligibility.unverified')}
+      </Text>
+    </View>
+  );
+}
+
 function ResultRow({ row, label, unit }: { row: EligibilityRow; label: string; unit: string }) {
   const { t } = useTranslation();
   const tone = rowTone(row.pass);
@@ -129,9 +146,12 @@ function ResultRow({ row, label, unit }: { row: EligibilityRow; label: string; u
         {rowGlyph(row.pass)}
       </Glyph>
       <Stack gap={1} className="flex-1">
-        <Text variant="body" weight="600">
-          {label}
-        </Text>
+        <Row gap={2} align="center" wrap>
+          <Text variant="body" weight="600">
+            {label}
+          </Text>
+          {!row.verified && <UnverifiedTag testID={`eligibility-unverified-${row.key}`} />}
+        </Row>
         <Row gap={2} align="baseline" wrap>
           <Text variant="caption" color="dim">
             {t('eligibility.required')}
@@ -235,7 +255,8 @@ export type EligibilityViewProps = {
  * Free for guests: it measures a body against a published table, so there is nothing here an
  * account could hold. The fields on screen come from `standardEntries`, the same list the
  * checker measures against, so the two can never disagree about whether a woman is asked for a
- * chest measurement.
+ * chest measurement or a constable for the SI-only 100 m. A figure the research could not
+ * confirm is tagged on its row, and the SI post carries a note under the pickers.
  */
 export function EligibilityView({
   post,
@@ -263,7 +284,7 @@ export function EligibilityView({
         className="flex-1"
         contentContainerClassName="px-4 pb-8 pt-4"
         keyboardShouldPersistTaps="handled"
-        // Seven fields and a numeric keyboard: without this the last of them sits under the
+        // Up to seven fields and a numeric keyboard: without this the last of them sits under the
         // keypad on iOS. Android resizes the window itself; the prop is ignored there.
         automaticallyAdjustKeyboardInsets
         showsVerticalScrollIndicator={false}
@@ -309,6 +330,13 @@ export function EligibilityView({
               ]}
             />
           </Stack>
+          {post === 'si' && (
+            // Nothing on the SI rows is confirmed yet; say so where the reader is looking, not
+            // only in the small print at the bottom.
+            <Text testID="eligibility-si-note" variant="caption" color="dim">
+              {t('eligibility.siUnverified')}
+            </Text>
+          )}
         </Stack>
 
         <Stack testID="eligibility-fields" gap={4} className="mt-6">
