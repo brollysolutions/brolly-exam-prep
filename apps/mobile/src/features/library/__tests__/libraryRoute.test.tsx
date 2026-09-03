@@ -1,4 +1,4 @@
-import { render, screen, userEvent } from '@testing-library/react-native';
+import { act, render, screen, userEvent } from '@testing-library/react-native';
 import { initI18n } from '@tslprb/i18n';
 
 import LibraryRoute from '@/app/(tabs)/tests';
@@ -7,10 +7,21 @@ import { useSessionStore } from '@/data/session';
 const mockRouter = { push: jest.fn(), replace: jest.fn(), navigate: jest.fn(), back: jest.fn() };
 /** The `?kind=` Home and the study topics link with; reassigned per test. */
 let mockParams: { kind?: string } = {};
+/**
+ * The tab-focus callback the route registers. The mock runs it once on mount like the real
+ * hook, and keeps it so a test can re-focus the tab the way pressing Home's card again does.
+ */
+let mockFocusTab: (() => void) | undefined;
 
 jest.mock('expo-router', () => ({
   useLocalSearchParams: () => mockParams,
   useRouter: () => mockRouter,
+  useFocusEffect: (effect: () => void) => {
+    mockFocusTab = effect;
+    // `require` inside the factory: `jest.mock` is hoisted above the imports, so an imported
+    // binding is out of scope here.
+    (require('react') as typeof import('react')).useEffect(effect, [effect]);
+  },
 }));
 
 beforeAll(() => {
@@ -19,6 +30,7 @@ beforeAll(() => {
 
 beforeEach(() => {
   mockParams = {};
+  mockFocusTab = undefined;
   jest.clearAllMocks();
   useSessionStore.getState().logout();
 });
@@ -59,6 +71,20 @@ describe('LibraryRoute', () => {
     mockParams = { kind: 'sectional' };
     await render(<LibraryRoute />);
     expect(screen.getByTestId('library-row-sec-seating')).toBeOnTheScreen();
+    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+  });
+
+  // The second press of Home's card sends the same `?kind=previous` as the first, so the
+  // value alone cannot tell the two navigations apart — the tab's own focus can.
+  it('honours the link again when the candidate has since chosen another shelf', async () => {
+    mockParams = { kind: 'previous' };
+    await render(<LibraryRoute />);
+    await userEvent.press(screen.getByTestId('library-filter-full'));
+    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+    await act(async () => {
+      mockFocusTab?.();
+    });
+    expect(screen.getByTestId('library-row-prev-2022')).toBeOnTheScreen();
     expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
   });
 

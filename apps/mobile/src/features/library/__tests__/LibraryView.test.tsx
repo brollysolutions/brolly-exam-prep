@@ -89,25 +89,44 @@ describe('LibraryView', () => {
   // only ever read the first value would leave the candidate on the full mocks.
   it('moves to the shelf a later request names', async () => {
     const h = handlers();
-    const view = await render(<LibraryView {...h} />);
+    const view = await render(<LibraryView kindKey="undefined:1" {...h} />);
     expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
     await act(async () => {
-      view.rerender(<LibraryView initialKind="previous" {...h} />);
+      view.rerender(<LibraryView initialKind="previous" kindKey="previous:2" {...h} />);
     });
     expect(screen.getByTestId('library-row-prev-2022')).toBeOnTheScreen();
     expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
   });
 
-  // A chip pressed after the link is the candidate's own choice, and outlives it.
+  // A chip pressed after the link is the candidate's own choice, and outlives it: the same
+  // visit re-rendering (a language change, a store write) must not undo it.
   it('leaves a chip the candidate pressed alone when nothing new is asked for', async () => {
     const h = handlers();
-    const view = await render(<LibraryView initialKind="previous" {...h} />);
+    const view = await render(
+      <LibraryView initialKind="previous" kindKey="previous:1" {...h} />,
+    );
     await userEvent.press(screen.getByTestId('library-filter-full'));
     expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
     await act(async () => {
-      view.rerender(<LibraryView initialKind="previous" {...h} />);
+      view.rerender(<LibraryView initialKind="previous" kindKey="previous:1" {...h} />);
     });
     expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+  });
+
+  // The bug the key exists for: pressing Home's card a second time repeats `?kind=previous`
+  // verbatim, so only the visit tells the two navigations apart.
+  it('honours a repeat of the same link once the candidate has moved off it', async () => {
+    const h = handlers();
+    const view = await render(
+      <LibraryView initialKind="previous" kindKey="previous:1" {...h} />,
+    );
+    await userEvent.press(screen.getByTestId('library-filter-full'));
+    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+    await act(async () => {
+      view.rerender(<LibraryView initialKind="previous" kindKey="previous:2" {...h} />);
+    });
+    expect(screen.getByTestId('library-row-prev-2022')).toBeOnTheScreen();
+    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
   });
 });
 

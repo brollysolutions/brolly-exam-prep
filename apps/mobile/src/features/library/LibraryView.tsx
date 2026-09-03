@@ -38,9 +38,16 @@ export type LibraryViewProps = {
   lang: Lang;
   /**
    * Shelf the screen opens on, from `?kind=`. The Tests tab is already mounted when Home
-   * links to it, so a *changed* request moves the shelf too — see the sync below.
+   * links to it, so a later request moves the shelf too — see the sync below.
    */
   initialKind?: TestKind;
+  /**
+   * Identity of the *navigation* that asked for `initialKind`, not of the value: two presses
+   * of Home's Previous-papers card send `previous` both times, and a shelf that compared
+   * values would ignore the second. The route bumps a visit counter on focus and passes
+   * `` `${kind}:${visit}` ``, so every arrival is its own key.
+   */
+  kindKey?: string;
   /** A test the candidate may sit. */
   onOpen: (id: string) => void;
   /** A previous-year paper to read rather than sit. Ungated: no account, no attempt. */
@@ -193,19 +200,21 @@ function PreviousRow({
 export function LibraryView({
   lang,
   initialKind,
+  kindKey,
   onOpen,
   onViewPaper,
   onLocked,
 }: LibraryViewProps) {
   const { t } = useTranslation();
   const [kind, setKind] = useState<TestKind>(initialKind ?? 'full');
-  // The Tests tab is mounted long before Home links to `?kind=previous`, so the requested
-  // shelf has to be watched, not just read once. React's own "adjust state when a prop
-  // changes" shape rather than an effect: the list never paints the stale shelf for a frame,
-  // and a chip the candidate presses afterwards still wins until the next request arrives.
-  const [requested, setRequested] = useState(initialKind);
-  if (initialKind !== requested) {
-    setRequested(initialKind);
+  // The Tests tab is mounted long before Home links to `?kind=previous`, so the request has to
+  // be watched, not just read once — and watched by *navigation*, not by value, or a repeat of
+  // the same link would be a no-op. React's own "adjust state when a prop changes" shape rather
+  // than an effect: the list never paints the stale shelf for a frame, and a chip the candidate
+  // presses afterwards still wins until the next navigation arrives.
+  const [requested, setRequested] = useState(kindKey);
+  if (kindKey !== requested) {
+    setRequested(kindKey);
     if (initialKind) setKind(initialKind);
   }
   // A tick, not a timestamp: `Date.now()` in a handler trips the React Compiler purity rule,

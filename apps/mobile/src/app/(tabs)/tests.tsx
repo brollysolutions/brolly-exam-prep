@@ -1,5 +1,6 @@
 import type { TestKind } from '@tslprb/fixtures';
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
+import { useCallback, useState } from 'react';
 
 import { useLangStore } from '@/data/lang';
 import { useRequireAuth } from '@/data/requireAuth';
@@ -19,12 +20,22 @@ function asKind(value: string | string[] | undefined): TestKind | undefined {
 export default function LibraryRoute() {
   // `?kind=previous` from Home's card (F-20), `?kind=sectional` from a study topic sending you
   // here to drill its section (F-21). The Tests tab is already mounted when either links to it,
-  // so a *changed* shelf has to move the list too — `LibraryView` watches `initialKind` and
-  // adjusts its own state, which keeps the scroll position a remount would throw away.
+  // so the shelf has to move on the link too — `LibraryView` adjusts its own state, which keeps
+  // the scroll position a remount would throw away.
   const { kind } = useLocalSearchParams<{ kind?: string }>();
   const lang = useLangStore((s) => s.lang);
   const { ensure } = useRequireAuth();
   const router = useRouter();
+  // Pressing Home's card twice sends the *same* `?kind=previous` both times, so a shelf that
+  // watched the value would ignore every request after the first — the candidate would tap the
+  // card and stay on whatever chip they had chosen. The counter makes each arrival on this tab
+  // its own identity, and `kindKey` is what `LibraryView` re-syncs on.
+  const [visit, setVisit] = useState(0);
+  useFocusEffect(
+    useCallback(() => {
+      setVisit((n) => n + 1);
+    }, []),
+  );
   // A locked paper never reaches `onOpen`: `LibraryView` answers that tap with its own toast,
   // and a paywall is not a reason to make someone sign in. Viewing a previous paper is not a
   // reason either — it is reading, not an attempt, so it goes straight there (F-22).
@@ -32,6 +43,7 @@ export default function LibraryRoute() {
     <LibraryView
       lang={lang}
       initialKind={asKind(kind)}
+      kindKey={`${kind}:${visit}`}
       onOpen={(id) => ensure(`/test/${id}`)}
       // The object form, not `/paper/${id}`: expo-router encodes the param, so an id is never
       // pasted into a path (the same reason `withReturnTo` uses it).
