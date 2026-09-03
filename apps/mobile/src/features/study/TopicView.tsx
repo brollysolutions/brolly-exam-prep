@@ -11,7 +11,6 @@ import {
   Glyph,
   Kicker,
   Measure,
-  Num,
   Row,
   Screen,
   SegmentedChips,
@@ -115,11 +114,13 @@ function Block({ block, lang }: { block: StudyBlock; lang: Lang }) {
           testID="study-block-formula"
           className="rounded-sm border border-line bg-panel2 px-3 py-3"
         >
-          {/* Latin face, tabular, LTR-isolated: `18/5` must never re-order inside an Urdu
-              page, and the digits have to line up column-wise. */}
-          <Num variant="body" weight="600" color="chalk">
+          {/* The box carries words now, not just symbols — a Telugu reader should not have to
+              decode "New ÷ Old" — so it reads in the page's own face rather than going
+              through `Num`'s Latin one. The digits stay tabular, and each maths run in the
+              Urdu fixture carries its own LRI…PDI isolation, so `18/5` never re-orders. */}
+          <Text variant="body" weight="600" color="chalk" numeric>
             {block.text[lang]}
-          </Num>
+          </Text>
         </View>
       );
     case 'example':
