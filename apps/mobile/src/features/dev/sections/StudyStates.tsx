@@ -12,6 +12,7 @@ const DEV = {
   study: 'Study material (F-21)',
   list: 'StudyView — one topic read, the rest open',
   topic: 'TopicView — every block kind, unread',
+  topicRead: 'TopicView — read: badge instead of a button, hi-vis on the drills',
 } as const;
 
 /** Dev frame: every screen is `flex-1`, so a preview inside a scroll needs a bounded height. */
@@ -58,6 +59,18 @@ export function StudyStates({ index }: { index: string }) {
           section={SPEED?.section}
           lang={lang}
           onLang={setLang}
+          onBack={noop}
+          onMarkRead={noop}
+          onPractise={noop}
+        />
+      </Preview>
+      <Preview label={DEV.topicRead}>
+        <TopicView
+          topic={SPEED?.topic}
+          section={SPEED?.section}
+          lang={lang}
+          onLang={setLang}
+          read
           onBack={noop}
           onMarkRead={noop}
           onPractise={noop}

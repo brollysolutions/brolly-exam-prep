@@ -29,7 +29,9 @@ export default function LibraryRoute() {
   // Pressing Home's card twice sends the *same* `?kind=previous` both times, so a shelf that
   // watched the value would ignore every request after the first — the candidate would tap the
   // card and stay on whatever chip they had chosen. The counter makes each arrival on this tab
-  // its own identity, and `kindKey` is what `LibraryView` re-syncs on.
+  // its own identity, and `kindKey` is what `LibraryView` re-syncs on. Coming back from a paper
+  // is an arrival too, and lands on the shelf the link named: within one visit the chip wins,
+  // across visits the link does.
   const [visit, setVisit] = useState(0);
   useFocusEffect(
     useCallback(() => {
