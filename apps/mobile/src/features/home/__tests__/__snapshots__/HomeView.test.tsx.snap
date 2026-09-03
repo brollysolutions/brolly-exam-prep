@@ -862,8 +862,8 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
           {
             "alignItems": "center",
             "flexDirection": "row-reverse",
-            "flexWrap": undefined,
-            "gap": undefined,
+            "flexWrap": "wrap",
+            "gap": 8,
             "justifyContent": "space-between",
           }
         }
@@ -887,174 +887,186 @@ exports[`HomeView (ur) mirrors the header, keeps the score LTR, and matches the 
           TSLPRB
         </Text>
         <View
-          accessibilityRole="radiogroup"
-          className="h-touch self-start overflow-hidden rounded-sm border border-line"
           style={
             {
-              "alignItems": undefined,
+              "alignItems": "center",
               "flexDirection": "row-reverse",
               "flexWrap": undefined,
-              "gap": undefined,
+              "gap": 8,
               "justifyContent": undefined,
             }
           }
-          testID="home-lang"
         >
           <View
-            accessibilityLabel="EN"
-            accessibilityRole="radio"
-            accessibilityState={
+            accessibilityRole="radiogroup"
+            className="h-touch self-start overflow-hidden rounded-sm border border-line"
+            style={
               {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
+                "alignItems": undefined,
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": undefined,
+                "justifyContent": undefined,
               }
             }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            testID="home-lang"
           >
-            <Text
-              className="text-dim"
-              style={
+            <View
+              accessibilityLabel="EN"
+              accessibilityRole="radio"
+              accessibilityState={
                 {
-                  "fontFamily": "Archivo_700Bold",
-                  "fontSize": 13.5,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.6,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
-            >
-              EN
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="తె"
-            accessibilityRole="radio"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-          >
-            <Text
-              className="text-dim"
-              style={
+              accessibilityValue={
                 {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 13.5,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 22.3,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
+              accessible={true}
+              className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
             >
-              తె
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="اُر"
-            accessibilityRole="radio"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": true,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            className="h-full min-w-touch items-center justify-center px-2 bg-hivis"
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-          >
-            <Text
-              className="text-tar"
-              style={
+              <Text
+                className="text-dim"
+                style={
+                  {
+                    "fontFamily": "Archivo_700Bold",
+                    "fontSize": 13.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.6,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                EN
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="తె"
+              accessibilityRole="radio"
+              accessibilityState={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 14.5,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 29.7,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
             >
-              اُر
-            </Text>
+              <Text
+                className="text-dim"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 13.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 22.3,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                తె
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="اُر"
+              accessibilityRole="radio"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": true,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              className="h-full min-w-touch items-center justify-center px-2 bg-hivis"
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+            >
+              <Text
+                className="text-tar"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 14.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 29.7,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                اُر
+              </Text>
+            </View>
           </View>
         </View>
       </View>

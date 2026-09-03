@@ -9,12 +9,15 @@ import { setOtpRequestId } from '../otpRequest';
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn() };
 const mockRedirect = jest.fn();
+/** What the URL is carrying: the place the sign-in chain has to end (F-19). */
+let mockParams: { returnTo?: string } = {};
 
 // `Redirect` renders nothing and just records where it would have gone.
 jest.mock('expo-router', () => ({
   useRouter: () => mockRouter,
-  Redirect: ({ href }: { href: string }) => {
-    mockRedirect(String(href));
+  useLocalSearchParams: () => mockParams,
+  Redirect: ({ href }: { href: unknown }) => {
+    mockRedirect(href);
     return null;
   },
 }));
@@ -35,6 +38,7 @@ beforeAll(() => {
 beforeEach(() => {
   jest.clearAllMocks();
   resetApi();
+  mockParams = {};
   setOtpRequestId(undefined);
   useSessionStore.getState().logout();
   useSessionStore.getState().setPhone('9000012345');
@@ -54,6 +58,27 @@ describe('OtpRoute', () => {
     await verify('123456');
     expect(useSessionStore.getState().token).toBeDefined();
     expect(mockRouter.replace).toHaveBeenCalledWith('/(onboarding)/post');
+  });
+
+  it('carries the destination on to onboarding so the chain ends where it started', async () => {
+    mockParams = { returnTo: '/test/mock-07' };
+    const { request_id } = await getApi().requestOtp({ phone: '9000012345' });
+    setOtpRequestId(request_id);
+    await render(<OtpRoute />);
+    await verify('123456');
+    expect(mockRouter.replace).toHaveBeenCalledWith({
+      pathname: '/(onboarding)/post',
+      params: { returnTo: '/test/mock-07' },
+    });
+  });
+
+  it('keeps the destination when a reload sends it back to the number', async () => {
+    mockParams = { returnTo: '/test/mock-07' };
+    await render(<OtpRoute />);
+    expect(mockRedirect).toHaveBeenCalledWith({
+      pathname: '/(auth)/login',
+      params: { returnTo: '/test/mock-07' },
+    });
   });
 
   it('says nothing about a wrong code — the cells do the talking', async () => {

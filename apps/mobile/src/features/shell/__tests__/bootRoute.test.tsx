@@ -32,20 +32,23 @@ describe('boot router', () => {
     expect(mockRedirect).toHaveBeenCalledWith('/(onboarding)/welcome');
   });
 
-  it('skips the intro once it has been seen', async () => {
+  // F-19: the door is open. A login here would be a wall in front of a free mock test.
+  it('opens the app for a guest once the intro has been seen', async () => {
     useSessionStore.getState().markWelcomeSeen();
     await render(<Index />);
-    expect(mockRedirect).toHaveBeenCalledWith('/(auth)/login');
+    expect(mockRedirect).toHaveBeenCalledWith('/(tabs)');
   });
 
-  it('sends a signed-in but un-onboarded user to step 1', async () => {
+  it('does not stop a signed-in user who never finished onboarding', async () => {
     useSessionStore.getState().markWelcomeSeen();
     useSessionStore.getState().setToken('tok-1');
     await render(<Index />);
-    expect(mockRedirect).toHaveBeenCalledWith('/(onboarding)/post');
+    // The missing answers are collected by the action that needs them, not at boot.
+    expect(mockRedirect).toHaveBeenCalledWith('/(tabs)');
   });
 
   it('sends a finished user into the tab shell', async () => {
+    useSessionStore.getState().markWelcomeSeen();
     useSessionStore.getState().setToken('tok-1');
     useSessionStore.getState().completeOnboarding();
     await render(<Index />);

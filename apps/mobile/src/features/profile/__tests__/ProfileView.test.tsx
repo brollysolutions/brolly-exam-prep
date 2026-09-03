@@ -7,13 +7,20 @@ import { ProfileView } from '../ProfileView';
 const handlers = () => ({
   onLang: jest.fn(),
   onNotifications: jest.fn(),
+  onSignIn: jest.fn(),
   onEditPost: jest.fn(),
   onEditCategory: jest.fn(),
   onLogout: jest.fn(),
   onDelete: jest.fn(),
 });
 
-const base = { post: 'si', category: 'bc', notifications: true, version: '1.0.0' } as const;
+const base = {
+  post: 'si',
+  category: 'bc',
+  signedIn: true,
+  notifications: true,
+  version: '1.0.0',
+} as const;
 
 describe('ProfileView', () => {
   beforeAll(() => {
@@ -30,12 +37,7 @@ describe('ProfileView', () => {
 
   it('leaves a dash where an answer is missing rather than guessing', async () => {
     await render(
-      <ProfileView
-        notifications={false}
-        version="1.0.0"
-        lang="en"
-        {...handlers()}
-      />,
+      <ProfileView signedIn notifications={false} version="1.0.0" lang="en" {...handlers()} />,
     );
     expect(screen.getByTestId('profile-post')).toHaveTextContent(/—/);
     expect(screen.getByTestId('profile-category')).toHaveTextContent(/—/);
@@ -117,6 +119,50 @@ describe('ProfileView', () => {
   });
 });
 
+// F-19 — a guest gets the same settings and an offer, not a wall.
+describe('ProfileView (signed out)', () => {
+  const guest = { signedIn: false, notifications: true, version: '1.0.0' } as const;
+
+  beforeAll(() => {
+    initI18n('en');
+  });
+
+  it('says what an account is for and offers the one way in', async () => {
+    const h = handlers();
+    await render(<ProfileView {...guest} lang="en" {...h} />);
+    expect(screen.getByTestId('profile-signed-out')).toBeOnTheScreen();
+    expect(screen.getByText("You're not signed in")).toBeOnTheScreen();
+    expect(
+      screen.getByText('Sign in to keep your attempts and results on this phone.'),
+    ).toBeOnTheScreen();
+    await userEvent.press(screen.getByTestId('profile-signin'));
+    expect(h.onSignIn).toHaveBeenCalledTimes(1);
+  });
+
+  it('offers neither exit, because there is nothing to leave', async () => {
+    await render(<ProfileView {...guest} lang="en" {...handlers()} />);
+    expect(screen.queryByTestId('profile-logout')).toBeNull();
+    expect(screen.queryByTestId('profile-delete')).toBeNull();
+    expect(screen.queryByTestId('profile-delete-dialog')).toBeNull();
+  });
+
+  it('keeps the app settings, which belong to the handset and not to an account', async () => {
+    const h = handlers();
+    await render(<ProfileView {...guest} lang="en" {...h} />);
+    expect(screen.getByTestId('profile-language')).toBeOnTheScreen();
+    await userEvent.press(screen.getByTestId('profile-notifications'));
+    expect(h.onNotifications).toHaveBeenCalledWith(false);
+  });
+
+  it('leaves the unanswered exam rows tappable — the tap is what asks for the account', async () => {
+    const h = handlers();
+    await render(<ProfileView {...guest} lang="en" {...h} />);
+    expect(screen.getByTestId('profile-post')).toHaveTextContent(/—/);
+    await userEvent.press(screen.getByTestId('profile-post'));
+    expect(h.onEditPost).toHaveBeenCalledTimes(1);
+  });
+});
+
 describe('ProfileView (ur)', () => {
   beforeAll(async () => {
     await act(async () => {
@@ -143,5 +189,13 @@ describe('ProfileView (ur)', () => {
       fontFamily: 'Archivo_400Regular',
     });
     expect(screen.toJSON()).toMatchSnapshot();
+  });
+
+  it('reads the sign-in offer in Urdu', async () => {
+    await render(
+      <ProfileView signedIn={false} notifications version="1.0.0" lang="ur" {...handlers()} />,
+    );
+    expect(screen.getByText('آپ سائن ان نہیں ہیں')).toBeOnTheScreen();
+    expect(screen.getByTestId('profile-signin')).toHaveTextContent('سائن ان');
   });
 });

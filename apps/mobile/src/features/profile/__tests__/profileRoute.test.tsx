@@ -8,6 +8,15 @@ import { useSessionStore } from '@/data/session';
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), navigate: jest.fn() };
 
+/** Everything answered — the only state in which a settings row is an edit and not a sign-up. */
+const signIn = () => {
+  useSessionStore.getState().setToken('tok-1');
+  useSessionStore.getState().setPhone('9000012345');
+  useSessionStore.getState().setPost('si');
+  useSessionStore.getState().setCategory('bc');
+  useSessionStore.getState().completeOnboarding();
+};
+
 jest.mock('expo-router', () => ({
   useRouter: () => mockRouter,
 }));
@@ -26,8 +35,7 @@ beforeEach(() => {
   jest.clearAllMocks();
   useAttemptStore.getState().reset();
   useSessionStore.getState().logout();
-  useSessionStore.getState().setToken('tok-1');
-  useSessionStore.getState().setPhone('9000012345');
+  signIn();
 });
 
 describe('ProfileRoute', () => {
@@ -42,7 +50,8 @@ describe('ProfileRoute', () => {
     expect(useAttemptStore.getState().status).toBe('idle');
     expect(useAttemptStore.getState().attemptId).toBeUndefined();
     expect(useAttemptStore.getState().answers).toEqual({});
-    expect(mockRouter.replace).toHaveBeenCalledWith('/(auth)/login');
+    // F-19: there is an app to be signed out *into*, so the exit lands on Home, not a form.
+    expect(mockRouter.replace).toHaveBeenCalledWith('/(tabs)');
   });
 
   it('deleting the account clears both stores by the same route', async () => {
@@ -54,7 +63,7 @@ describe('ProfileRoute', () => {
     expect(useSessionStore.getState().token).toBeUndefined();
     expect(useAttemptStore.getState().status).toBe('idle');
     expect(useAttemptStore.getState().answers).toEqual({});
-    expect(mockRouter.replace).toHaveBeenCalledWith('/(auth)/login');
+    expect(mockRouter.replace).toHaveBeenCalledWith('/(tabs)');
   });
 
   it('keeps a running attempt while the confirm dialog is still open', async () => {
@@ -70,8 +79,52 @@ describe('ProfileRoute', () => {
   it('sends an edit back to Profile instead of walking the sign-up flow on', async () => {
     await render(<ProfileRoute />);
     await userEvent.press(screen.getByTestId('profile-post'));
-    expect(mockRouter.push).toHaveBeenCalledWith('/(onboarding)/post?returnTo=profile');
+    expect(mockRouter.push).toHaveBeenCalledWith({
+      pathname: '/(onboarding)/post',
+      params: { returnTo: '/(tabs)/profile' },
+    });
     await userEvent.press(screen.getByTestId('profile-category'));
-    expect(mockRouter.push).toHaveBeenCalledWith('/(onboarding)/category?returnTo=profile');
+    expect(mockRouter.push).toHaveBeenCalledWith({
+      pathname: '/(onboarding)/category',
+      params: { returnTo: '/(tabs)/profile' },
+    });
+  });
+});
+
+// F-19 — the settings are readable without an account; only the account part is missing.
+describe('ProfileRoute (guest)', () => {
+  beforeEach(() => {
+    useSessionStore.getState().logout();
+  });
+
+  it('offers a sign-in where the two exits would be', async () => {
+    await render(<ProfileRoute />);
+    expect(screen.getByTestId('profile-signed-out')).toBeOnTheScreen();
+    expect(screen.queryByTestId('profile-logout')).toBeNull();
+    await userEvent.press(screen.getByTestId('profile-signin'));
+    expect(mockRouter.push).toHaveBeenCalledWith({
+      pathname: '/(auth)/login',
+      params: { returnTo: '/(tabs)/profile' },
+    });
+  });
+
+  it('turns an exam row into the same sign-in, not an edit of nothing', async () => {
+    await render(<ProfileRoute />);
+    expect(screen.getByTestId('profile-post')).toHaveTextContent(/—/);
+    await userEvent.press(screen.getByTestId('profile-post'));
+    expect(mockRouter.push).toHaveBeenCalledWith({
+      pathname: '/(auth)/login',
+      params: { returnTo: '/(tabs)/profile' },
+    });
+  });
+
+  it('collects the missing answers first for someone signed in mid-sign-up', async () => {
+    useSessionStore.getState().setToken('tok-1');
+    await render(<ProfileRoute />);
+    await userEvent.press(screen.getByTestId('profile-category'));
+    expect(mockRouter.push).toHaveBeenCalledWith({
+      pathname: '/(onboarding)/post',
+      params: { returnTo: '/(tabs)/profile' },
+    });
   });
 });
