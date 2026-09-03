@@ -3,6 +3,7 @@ import { initI18n } from '@tslprb/i18n';
 
 import StudyRoute from '@/app/(tabs)/study';
 import StudyTopicRoute from '@/app/study/[topic]';
+import { useActivityStore } from '@/data/activity';
 import { useSessionStore } from '@/data/session';
 import { useStudyStore } from '@/data/study';
 
@@ -22,6 +23,7 @@ beforeEach(() => {
   mockParams = {};
   jest.clearAllMocks();
   useStudyStore.getState().reset();
+  useActivityStore.getState().reset();
   useSessionStore.getState().logout();
 });
 
@@ -68,5 +70,42 @@ describe('StudyTopicRoute', () => {
     expect(screen.getByTestId('topic-not-found')).toBeOnTheScreen();
     await userEvent.press(screen.getByTestId('topic-not-found-back'));
     expect(mockRouter.back).toHaveBeenCalledTimes(1);
+  });
+});
+
+/**
+ * F-23 — what the topic screen writes for Home: the bookmark its Continue card reads, and the
+ * day's tally. Both from the route, because no store in `src/data` imports another.
+ */
+describe('StudyTopicRoute (what it writes for Home)', () => {
+  it('bookmarks the topic as soon as it is opened, read or not', async () => {
+    mockParams = { topic: 'st-re-blood' };
+    await render(<StudyTopicRoute />);
+    expect(useStudyStore.getState().lastRead?.id).toBe('st-re-blood');
+    expect(useStudyStore.getState().isRead('st-re-blood')).toBe(false);
+  });
+
+  it('bookmarks nothing for an id the shelf does not hold', async () => {
+    mockParams = { topic: 'st-nope' };
+    await render(<StudyTopicRoute />);
+    expect(useStudyStore.getState().lastRead).toBeUndefined();
+  });
+
+  it('counts a topic marked read towards the day', async () => {
+    mockParams = { topic: 'st-re-blood' };
+    await render(<StudyTopicRoute />);
+    await userEvent.press(screen.getByTestId('topic-mark-read'));
+    const today = Object.values(useActivityStore.getState().byDay)[0];
+    expect(today).toEqual({ answered: 0, topicsRead: 1 });
+  });
+
+  // The view turns the button into a badge once read, but a deep link back onto the page
+  // must not be able to inflate the day.
+  it('counts a topic already read no further', async () => {
+    useStudyStore.getState().markRead('st-re-blood');
+    mockParams = { topic: 'st-re-blood' };
+    await render(<StudyTopicRoute />);
+    expect(screen.queryByTestId('topic-mark-read')).toBeNull();
+    expect(useActivityStore.getState().byDay).toEqual({});
   });
 });

@@ -4,9 +4,11 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BackHandler } from 'react-native';
 
+import { useActivityStore } from '@/data/activity';
 import { getApi, type PaperQuestion } from '@/data/api';
 import { useAttemptStore, type Choice, type GotoResult } from '@/data/attempt';
 import { counts, elapsedOnCurrentSec, sectionOf } from '@/data/attempt.selectors';
+import { useHistoryStore } from '@/data/history';
 import { useLangStore } from '@/data/lang';
 import { gateHref, useRequireAuth } from '@/data/requireAuth';
 import { useCountdown } from '@/data/useCountdown';
@@ -221,7 +223,15 @@ function TestAttempt({ id }: { id: string }) {
     (choice: Choice) => {
       const state = useAttemptStore.getState();
       const n = state.current;
+      const wasAnswered = state.answers[n] !== undefined;
       state.answer(n, choice);
+      // The day's target counts questions answered, not option taps: changing your mind on a
+      // question already answered is not a second question, and a write the store refused
+      // (locked section, expired paper) is not one at all. The store is the arbiter of both.
+      // Bumped from the route, never from `attempt.ts`: a store that imports a store is a
+      // cycle waiting for the next feature to close it (F-23).
+      if (!wasAnswered && useAttemptStore.getState().answers[n] !== undefined)
+        useActivityStore.getState().bump('answered');
       patchAnswer(n, choice, state.marked[n] === true);
     },
     [patchAnswer],
@@ -269,12 +279,31 @@ function TestAttempt({ id }: { id: string }) {
     haptics.success();
     state.submit();
     setDialog(null);
-    if (state.attemptId)
+    if (state.attemptId) {
+      const testId = state.testId ?? id;
+      // F-23 — Home's "papers practised" and "best score" come from this row.
+      //
+      // The score is asked for rather than computed: the server owns the marking scheme, and
+      // a second opinion on this handset would be a second answer key to keep in step. Both
+      // calls stay best-effort — the result screen loads on its own, so a failure here costs
+      // one line on Home, not the paper. An attempt submitted with no network is therefore
+      // not counted until the real API can be asked again.
       void getApi()
         .submitAttempt(state.attemptId)
+        .then(async ({ result_id }) => {
+          const result = await getApi().getResult(result_id);
+          useHistoryStore.getState().record({
+            id: result_id,
+            testId,
+            score: result.score,
+            maxScore: result.max_score,
+            at: Date.now(),
+          });
+        })
         .catch(() => undefined);
+    }
     openResult();
-  }, [openResult]);
+  }, [id, openResult]);
 
   // ----------------------------------------------------------------- render
 

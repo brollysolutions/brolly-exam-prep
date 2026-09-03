@@ -4,8 +4,10 @@ import { initI18n } from '@tslprb/i18n';
 import { AppState, BackHandler, type AppStateStatus } from 'react-native';
 
 import TestAttemptRoute from '@/app/test/[id]/index';
+import { useActivityStore } from '@/data/activity';
 import { MockApi, resetApi } from '@/data/api';
 import { useAttemptStore } from '@/data/attempt';
+import { useHistoryStore } from '@/data/history';
 import { useSessionStore } from '@/data/session';
 
 const mockReplace = jest.fn();
@@ -70,6 +72,8 @@ beforeEach(() => {
   backHandler = undefined;
   resetApi();
   useAttemptStore.getState().reset();
+  useActivityStore.getState().reset();
+  useHistoryStore.getState().reset();
   jest.spyOn(AppState, 'addEventListener').mockImplementation((_event, listener) => {
     appStateHandler = listener as (status: AppStateStatus) => void;
     return { remove: jest.fn() } as ReturnType<typeof AppState.addEventListener>;
@@ -213,5 +217,44 @@ describe('test attempt route', () => {
     expect(screen.queryByTestId('attempt-load-error')).toBeNull();
     expect(useAttemptStore.getState().status).toBe('running');
     expect(screen.getByTestId('question-text')).not.toHaveTextContent('');
+  });
+});
+
+/**
+ * F-23 — the two things Home reads about a paper are written from here, because a store
+ * that imports another store is a cycle waiting for the next feature to close it.
+ */
+describe('test attempt route (what it writes for Home)', () => {
+  it('counts an answered question towards the day', async () => {
+    await mountRoute();
+    await userEvent.press(screen.getByTestId('option-2'));
+    expect(useActivityStore.getState().byDay['2026-09-02']).toEqual({
+      answered: 1,
+      topicsRead: 0,
+    });
+  });
+
+  // Changing your mind is not a second question, and the day's target would be trivial to
+  // farm if it were.
+  it('does not count a question answered twice twice', async () => {
+    await mountRoute();
+    await userEvent.press(screen.getByTestId('option-2'));
+    await userEvent.press(screen.getByTestId('option-1'));
+    expect(useActivityStore.getState().byDay['2026-09-02'].answered).toBe(1);
+  });
+
+  it('records the scored paper, so Home can count it and read a best score off it', async () => {
+    await mountRoute();
+    await userEvent.press(screen.getByTestId('option-2'));
+    await userEvent.press(screen.getByTestId('btn-palette'));
+    await userEvent.press(screen.getByTestId('palette-submit'));
+    await userEvent.press(screen.getByText('Yes, submit'));
+    await flush();
+
+    const [row] = useHistoryStore.getState().attempts;
+    expect(row).toBeDefined();
+    expect(row.testId).toBe('mock-07');
+    expect(row.maxScore).toBeGreaterThan(0);
+    expect(row.score).toBeLessThanOrEqual(row.maxScore);
   });
 });

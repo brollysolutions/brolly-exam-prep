@@ -36,9 +36,44 @@ describe('study store', () => {
   });
 
   it('persists the marks under its own key', () => {
-    read().markRead('st-gs-polity');
+    read().markRead('st-gs-polity', 1_700_000_000_000);
     const stored = Storage.getItemSync(STUDY_STORAGE_KEY);
     expect(stored).not.toBeNull();
-    expect(JSON.parse(stored as string).state).toEqual({ read: { 'st-gs-polity': true } });
+    expect(JSON.parse(stored as string).state).toEqual({
+      read: { 'st-gs-polity': true },
+      lastRead: { id: 'st-gs-polity', at: 1_700_000_000_000 },
+    });
+  });
+});
+
+// F-23 — the bookmark Home's Continue card reads.
+describe('study store (last read)', () => {
+  it('starts with no bookmark', () => {
+    expect(read().lastRead).toBeUndefined();
+  });
+
+  // Where the reader *was*, not what they finished: a topic put down half way is still the
+  // one to come back to.
+  it('moves the bookmark when a topic is merely opened', () => {
+    read().open('st-ar-percentages', 10);
+    expect(read().lastRead).toEqual({ id: 'st-ar-percentages', at: 10 });
+    expect(read().isRead('st-ar-percentages')).toBe(false);
+  });
+
+  it('moves the bookmark when a topic is marked read', () => {
+    read().markRead('st-tg-statehood', 20);
+    expect(read().lastRead).toEqual({ id: 'st-tg-statehood', at: 20 });
+  });
+
+  it('keeps the latest of several topics', () => {
+    read().open('st-ar-percentages', 10);
+    read().open('st-re-coding', 30);
+    expect(read().lastRead?.id).toBe('st-re-coding');
+  });
+
+  it('clears with the marks', () => {
+    read().open('st-ar-percentages', 10);
+    read().reset();
+    expect(read().lastRead).toBeUndefined();
   });
 });

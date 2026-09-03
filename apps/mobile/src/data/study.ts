@@ -3,17 +3,25 @@ import { persist } from 'zustand/middleware';
 
 import { persistedJSONStorage } from './storage';
 
+/** The topic the reader was last in, whether or not they finished it. */
+export type LastRead = { id: string; at: number };
+
 /**
  * Which study topics have been read.
  *
  * A set stored as `Record<id, true>` rather than an array: reading a topic twice must not
  * grow the record, and `isRead` has to be a lookup, not a scan, because the study list calls
  * it once per row on every render.
+ *
+ * `lastRead` is the bookmark Home's Continue card reads. It is where the reader *was*, not
+ * what they finished, so opening a topic sets it and marking one read keeps it there.
  */
-export type StudyState = { read: Record<string, true> };
+export type StudyState = { read: Record<string, true>; lastRead?: LastRead };
 
 export type StudyActions = {
-  markRead: (id: string) => void;
+  /** The topic screen was opened on `id`. Moves the bookmark; does not mark anything read. */
+  open: (id: string, now?: number) => void;
+  markRead: (id: string, now?: number) => void;
   isRead: (id: string) => boolean;
   /** Clear the marks. Used by tests; there is no product action that unreads a topic. */
   reset: () => void;
@@ -31,16 +39,22 @@ export const useStudyStore = create<StudyStore>()(
   persist(
     (set, get) => ({
       read: {},
-      // Marking a topic already marked returns the SAME object, so a repeat press cannot
-      // re-render every row in the list.
-      markRead: (id) => set((s) => (s.read[id] ? s : { read: { ...s.read, [id]: true as const } })),
+      lastRead: undefined,
+      open: (id, now = Date.now()) => set({ lastRead: { id, at: now } }),
+      // Marking a topic already marked returns the SAME `read` object, so a repeat press
+      // cannot re-render every row in the list; only the bookmark moves.
+      markRead: (id, now = Date.now()) =>
+        set((s) => ({
+          read: s.read[id] ? s.read : { ...s.read, [id]: true as const },
+          lastRead: { id, at: now },
+        })),
       isRead: (id) => Boolean(get().read[id]),
-      reset: () => set({ read: {} }),
+      reset: () => set({ read: {}, lastRead: undefined }),
     }),
     {
       name: STUDY_STORAGE_KEY,
       storage: persistedJSONStorage(),
-      partialize: (s): StudyState => ({ read: s.read }),
+      partialize: (s): StudyState => ({ read: s.read, lastRead: s.lastRead }),
     },
   ),
 );

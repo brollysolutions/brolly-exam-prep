@@ -1,10 +1,22 @@
 import { render, screen, userEvent } from '@testing-library/react-native';
+import { TESTS } from '@tslprb/fixtures';
 import { initI18n } from '@tslprb/i18n';
 
 import HomeRoute from '@/app/(tabs)/index';
+import { useActivityStore } from '@/data/activity';
+import { useAttemptStore } from '@/data/attempt';
+import { useHistoryStore } from '@/data/history';
 import { useSessionStore } from '@/data/session';
+import { useStudyStore } from '@/data/study';
+import { iso } from '@/ui';
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), navigate: jest.fn(), back: jest.fn() };
+
+/**
+ * RNTL matches a plain string against the WHOLE text content of a node, so one line of a card
+ * has to be asked for as a pattern rather than as a string.
+ */
+const has = (text: string) => new RegExp(text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
 
 jest.mock('expo-router', () => ({
   useRouter: () => mockRouter,
@@ -19,6 +31,14 @@ const signIn = () => {
   useSessionStore.getState().completeOnboarding();
 };
 
+/** A paper armed and two questions answered, so Home has something to resume. */
+const startMock = () => {
+  const attempt = useAttemptStore.getState();
+  attempt.start(TESTS[0]);
+  attempt.answer(1, 0);
+  attempt.answer(2, 1);
+};
+
 beforeAll(() => {
   initI18n('en');
 });
@@ -26,23 +46,26 @@ beforeAll(() => {
 beforeEach(() => {
   jest.clearAllMocks();
   useSessionStore.getState().logout();
+  useStudyStore.getState().reset();
+  useActivityStore.getState().reset();
+  useHistoryStore.getState().reset();
+  useAttemptStore.getState().reset();
 });
 
 describe('HomeRoute (guest)', () => {
-  it('renders the dashboard with no account at all', async () => {
+  it('renders the whole dashboard with no account at all', async () => {
     await render(<HomeRoute />);
     expect(screen.getByTestId('home-screen')).toBeOnTheScreen();
     expect(screen.getByTestId('home-greeting')).toHaveTextContent('Ready?');
     expect(screen.getByTestId('home-signin')).toBeOnTheScreen();
+    expect(screen.getByTestId('home-progress-nudge')).toBeOnTheScreen();
   });
 
-  it('asks for a sign-in only when the mock is started, and comes back to it', async () => {
+  it('counts down to the notified exam date', async () => {
     await render(<HomeRoute />);
-    await userEvent.press(screen.getByTestId('home-start'));
-    expect(mockRouter.push).toHaveBeenCalledWith({
-      pathname: '/(auth)/login',
-      params: { returnTo: '/test/mock-07' },
-    });
+    expect(screen.getByTestId('home-exam-date')).toHaveTextContent(
+      `Preliminary Written Test · ${iso('18-10-2026')}`,
+    );
   });
 
   it('sends the header link back to the dashboard it was pressed on', async () => {
@@ -54,41 +77,139 @@ describe('HomeRoute (guest)', () => {
     });
   });
 
-  // Reading is not something to sign in for: both shelves open with no account behind them.
-  it('lets the study row through without asking for anything', async () => {
+  it('re-enters the Tests tab from the hero rather than stacking a second copy of it', async () => {
     await render(<HomeRoute />);
-    await userEvent.press(screen.getByTestId('home-study'));
-    expect(mockRouter.navigate).toHaveBeenCalledWith('/(tabs)/study');
-    expect(mockRouter.push).not.toHaveBeenCalled();
-  });
-
-  it('lets the previous-papers row through, on the shelf it means', async () => {
-    await render(<HomeRoute />);
-    await userEvent.press(screen.getByTestId('home-previous'));
-    expect(mockRouter.navigate).toHaveBeenCalledWith('/(tabs)/tests?kind=previous');
-    expect(mockRouter.push).not.toHaveBeenCalled();
+    await userEvent.press(screen.getByTestId('home-hero'));
+    expect(mockRouter.navigate).toHaveBeenCalledWith('/(tabs)/tests');
   });
 });
 
-describe('HomeRoute (signed in)', () => {
-  beforeEach(signIn);
-
-  it('drops the header link and greets the number', async () => {
+// The one question Home exists to answer, and the order it answers it in.
+describe('HomeRoute — what to continue', () => {
+  it('offers the first unread topic to someone who has done nothing', async () => {
     await render(<HomeRoute />);
-    expect(screen.queryByTestId('home-signin')).toBeNull();
-    expect(screen.getByTestId('home-greeting')).toHaveTextContent(/2345/);
+    expect(screen.getByTestId('home-continue')).toHaveTextContent(has('Start with'));
+    expect(screen.getByTestId('home-continue-title')).toHaveTextContent('Percentages');
   });
 
-  // The card pitches mock-07, so the button must open mock-07 and not an id typed twice.
-  it('opens the paper the card is pitching', async () => {
+  it('opens that topic with no gate in front of it — reading is free', async () => {
     await render(<HomeRoute />);
-    await userEvent.press(screen.getByTestId('home-start'));
+    await userEvent.press(screen.getByTestId('home-continue-action'));
+    expect(mockRouter.push).toHaveBeenCalledWith({
+      pathname: '/study/[topic]',
+      params: { topic: 'st-ar-percentages' },
+    });
+  });
+
+  it('offers the topic last open once there is a bookmark', async () => {
+    useStudyStore.getState().open('st-tg-statehood');
+    await render(<HomeRoute />);
+    expect(screen.getByTestId('home-continue')).toHaveTextContent(has('Continue reading'));
+    expect(screen.getByTestId('home-continue-title')).toHaveTextContent(has('Statehood movement'));
+    await userEvent.press(screen.getByTestId('home-continue-action'));
+    expect(mockRouter.push).toHaveBeenCalledWith({
+      pathname: '/study/[topic]',
+      params: { topic: 'st-tg-statehood' },
+    });
+  });
+
+  // A paper on the clock outranks anything else: it is the only thing that expires.
+  it('outranks the bookmark with a paper that is still running', async () => {
+    useStudyStore.getState().open('st-tg-statehood');
+    startMock();
+    await render(<HomeRoute />);
+    expect(screen.getByTestId('home-continue')).toHaveTextContent(has('Still running'));
+    expect(screen.getByTestId('home-continue-title')).toHaveTextContent('PWT Full Mock 07');
+    expect(screen.getByTestId('home-continue-answered')).toHaveTextContent(
+      has(`${iso('2')}questions`),
+    );
+    expect(screen.getByTestId('home-continue-action')).toHaveTextContent('Resume');
+  });
+
+  it('falls back to the bookmark once the paper is submitted', async () => {
+    useStudyStore.getState().open('st-tg-statehood');
+    startMock();
+    useAttemptStore.getState().submit();
+    await render(<HomeRoute />);
+    expect(screen.getByTestId('home-continue')).toHaveTextContent(has('Continue reading'));
+  });
+
+  // F-19 — sitting a paper is the one thing on this screen that needs an account.
+  it('collects an account before it resumes a paper, and comes back to it', async () => {
+    startMock();
+    await render(<HomeRoute />);
+    await userEvent.press(screen.getByTestId('home-continue-action'));
+    expect(mockRouter.push).toHaveBeenCalledWith({
+      pathname: '/(auth)/login',
+      params: { returnTo: '/test/mock-07' },
+    });
+  });
+
+  it('resumes the paper straight away once there is an account', async () => {
+    signIn();
+    startMock();
+    await render(<HomeRoute />);
+    await userEvent.press(screen.getByTestId('home-continue-action'));
     expect(mockRouter.push).toHaveBeenCalledWith('/test/mock-07');
   });
+});
 
-  it('re-enters a tab rather than stacking another copy of it', async () => {
+describe('HomeRoute — links F-24 and F-25 will own', () => {
+  it('goes to the updates list, the affairs list and the eligibility checker', async () => {
     await render(<HomeRoute />);
-    await userEvent.press(screen.getByTestId('home-previous'));
-    expect(mockRouter.navigate).toHaveBeenCalledWith('/(tabs)/tests?kind=previous');
+    await userEvent.press(screen.getByTestId('home-updates-all'));
+    expect(mockRouter.push).toHaveBeenCalledWith('/updates');
+    await userEvent.press(screen.getByTestId('home-affairs-more'));
+    expect(mockRouter.push).toHaveBeenCalledWith('/affairs');
+    await userEvent.press(screen.getByTestId('home-physical-action'));
+    expect(mockRouter.push).toHaveBeenCalledWith('/eligibility');
+  });
+
+  // Free for guests: nothing behind these three links is worth an account.
+  it('asks a guest for nothing on the way to any of them', async () => {
+    await render(<HomeRoute />);
+    await userEvent.press(screen.getByTestId('home-physical-action'));
+    expect(mockRouter.push).not.toHaveBeenCalledWith(
+      expect.objectContaining({ pathname: '/(auth)/login' }),
+    );
+  });
+});
+
+describe('HomeRoute — the numbers', () => {
+  it('reads today’s target off the activity store', async () => {
+    for (let i = 0; i < 10; i += 1) useActivityStore.getState().bump('answered');
+    await render(<HomeRoute />);
+    expect(screen.getByTestId('home-target-count')).toHaveTextContent(
+      `${iso('10')} of ${iso('20')} done`,
+    );
+  });
+
+  it('counts the topics read out of the shelf, and the papers sat', async () => {
+    useStudyStore.getState().markRead('st-ar-percentages');
+    useStudyStore.getState().markRead('st-re-coding');
+    useHistoryStore
+      .getState()
+      .record({ id: 'res-1', testId: 'mock-07', score: 62.25, maxScore: 100, at: 1 });
+    await render(<HomeRoute />);
+    expect(screen.getByTestId('home-progress-topics')).toHaveTextContent(
+      `${iso('2/11')}Topics read`,
+    );
+    expect(screen.getByTestId('home-progress-papers')).toHaveTextContent(
+      `${iso('1')}Papers practised`,
+    );
+    // Rounded: a stat tile has room for a number, not two decimal places of one.
+    expect(screen.getByTestId('home-progress-best')).toHaveTextContent(`${iso('62')}Best score`);
+  });
+
+  it('draws a dash, not a zero, before any paper has been sat', async () => {
+    await render(<HomeRoute />);
+    expect(screen.getByTestId('home-progress-best')).toHaveTextContent(has(iso('—')));
+  });
+
+  it('drops the guest nudge once there is an account to keep the numbers in', async () => {
+    signIn();
+    await render(<HomeRoute />);
+    expect(screen.queryByTestId('home-progress-nudge')).toBeNull();
+    expect(screen.getByTestId('home-greeting')).toHaveTextContent(/2345/);
   });
 });
