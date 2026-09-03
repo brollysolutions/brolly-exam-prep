@@ -168,17 +168,24 @@ describe('LibraryView — previous papers', () => {
     expect(screen.queryByTestId('library-locked-toast')).toBeNull();
   });
 
-  it('keeps both controls 48 px and spends no hi-vis on either', async () => {
+  it('keeps both controls 48 px and gives the row exactly one hi-vis action', async () => {
     await previous();
     const practise = screen.getByTestId('library-practise-prev-2022');
     const view = screen.getByTestId('library-view-prev-2022');
     expect(practise).toHaveStyle({ height: 48 });
     expect(view).toHaveStyle({ height: 48 });
-    // The active filter chip is the screen's one hi-vis element; weight, not fill, leads.
-    expect(practise.props.className).not.toContain('bg-hivis');
+    // Practise leads on fill, not on weight alone; View paper stays an outline.
+    expect(practise.props.className).toContain('bg-hivis');
     expect(view.props.className).not.toContain('bg-hivis');
     expect(within(practise).getByText('Practise').props.style.fontFamily).toContain('700Bold');
     expect(within(view).getByText('View paper').props.style.fontFamily).not.toContain('700Bold');
+  });
+
+  // Filling Practise must not cost the shelf its "which shelf am I on" mark.
+  it('leaves the active filter chip its hi-vis', async () => {
+    await previous();
+    expect(screen.getByTestId('library-filter-previous').props.className).toContain('bg-hivis');
+    expect(screen.getByTestId('library-filter-full').props.className).not.toContain('bg-hivis');
   });
 
   it('leaves the other shelves with the one whole-row action they had', async () => {

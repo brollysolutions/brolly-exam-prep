@@ -145,9 +145,9 @@ function TestRow({
  * the clock, and something to read with the answers already on it. One tap target cannot be
  * both, so the row states the paper and then offers the choice underneath.
  *
- * Both buttons are `secondary`: the active filter chip above is already the screen's one
- * hi-vis element, and a yellow Practise on every row would put three primary actions on a
- * shelf. Weight, not fill, says which of the two leads.
+ * Practise is the row's one hi-vis action and View paper stays `secondary`: a pair of
+ * identical outlines made the reader work out which was the main move, and weight alone was
+ * too quiet to say it. The filter chips overhead are navigation, not actions on this paper.
  */
 function PreviousRow({
   test,
@@ -171,7 +171,7 @@ function PreviousRow({
       <RowHead test={test} lang={lang} />
       <Row gap={2} className="mt-3">
         <Button
-          variant="secondary"
+          variant="primary"
           size="md"
           weight="700"
           label={t('library.practise')}
