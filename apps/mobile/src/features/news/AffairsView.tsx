@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 
 import { BackHeader } from '@/features/result/Header';
-import { Kicker, Num, Screen, Stack, Text } from '@/ui';
+import { Chip, Kicker, Num, Screen, Stack, Text } from '@/ui';
 
 import { NewsEmpty } from './Empty';
 import { formatDay } from './format';
@@ -76,7 +76,14 @@ export function AffairsView({ affairs, lang, onBack }: AffairsViewProps) {
   const days = groupByDay(affairs);
   return (
     <Screen testID="affairs-screen">
-      <BackHeader title={t('affairs.title')} onBack={onBack} testID="affairs-header" />
+      {/* Static and dim: a label on the digest, not a control, and never a second yellow. It
+          goes when `GET /affairs` replaces the seeded fixtures. */}
+      <BackHeader
+        title={t('affairs.title')}
+        onBack={onBack}
+        testID="affairs-header"
+        trailing={<Chip label={t('common.sampleData')} testID="sample-data" />}
+      />
       {days.length === 0 ? (
         <NewsEmpty message={t('affairs.empty')} testID="affairs-empty" />
       ) : (

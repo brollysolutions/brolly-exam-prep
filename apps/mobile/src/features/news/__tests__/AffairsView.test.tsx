@@ -104,6 +104,15 @@ describe('AffairsView', () => {
     await userEvent.press(screen.getByTestId('affairs-header-back'));
     expect(p.onBack).toHaveBeenCalledTimes(1);
   });
+
+  // Seeded fixtures until the API serves `GET /affairs`: the header says so, quietly.
+  it('marks the digest as sample data in the header, as a badge and not a button', async () => {
+    await render(<AffairsView {...props()} />);
+    const chip = within(screen.getByTestId('affairs-header')).getByTestId('sample-data');
+    expect(chip).toHaveTextContent('Sample data');
+    expect(chip.props.accessibilityRole).toBeUndefined();
+    expect(chip.props.className).not.toContain('bg-hivis');
+  });
 });
 
 describe('AffairsView (te)', () => {

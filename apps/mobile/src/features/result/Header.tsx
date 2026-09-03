@@ -8,6 +8,11 @@ import { Glyph, Row, Text, usePressed } from '@/ui';
 export type BackHeaderProps = {
   title: string;
   onBack?: () => void;
+  /**
+   * After the title, at the end of the title row (a static "Sample data" chip). The row is a
+   * `Row`, so in Urdu it lands at the left edge without a mirrored class of its own.
+   */
+  trailing?: ReactNode;
   /** Second row inside the header panel (the solutions filter chips). */
   children?: ReactNode;
   testID?: string;
@@ -18,7 +23,7 @@ export type BackHeaderProps = {
  * `panel` bar. The chevron is drawn `lang="en"` because Noto Nastaliq Urdu has no
  * U+2039/U+203A and silently falls back to parentheses.
  */
-export function BackHeader({ title, onBack, children, testID }: BackHeaderProps) {
+export function BackHeader({ title, onBack, trailing, children, testID }: BackHeaderProps) {
   const d = useDir();
   const { t } = useTranslation();
   const { pressed, handlers } = usePressed();
@@ -41,6 +46,9 @@ export function BackHeader({ title, onBack, children, testID }: BackHeaderProps)
         <Text variant="bodyLg" weight="600" className="flex-1" numberOfLines={1}>
           {title}
         </Text>
+        {/* 8 px off the bar's edge: the chevron target has its own 12 px of `px-2` on the
+            other side, and a chip flush to the frame reads as part of it. */}
+        {trailing !== undefined && <View className="px-2">{trailing}</View>}
       </Row>
       {children}
     </View>

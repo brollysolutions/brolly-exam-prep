@@ -22,7 +22,8 @@
     "close": "Close",
     "networkError": "No connection. Try again.",
     "questionsUnit": "questions",
-    "minutesUnit": "min"
+    "minutesUnit": "min",
+    "sampleData": "Sample data"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "Language" },
   "auth": {

@@ -1365,23 +1365,63 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
             }
           }
         >
-          <Text
-            className="text-dim"
+          <View
+            className="flex-1"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 13,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 26.7,
-                "textAlign": "right",
-                "textTransform": undefined,
-                "writingDirection": "rtl",
+                "alignItems": "center",
+                "flexDirection": "row-reverse",
+                "flexWrap": "wrap",
+                "gap": 8,
+                "justifyContent": undefined,
               }
             }
           >
-            ٹی ایس ایل پی آر بی اپ ڈیٹس
-          </Text>
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 13,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 26.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              ٹی ایس ایل پی آر بی اپ ڈیٹس
+            </Text>
+            <View
+              accessibilityState={
+                {
+                  "selected": false,
+                }
+              }
+              className="items-center justify-center border rounded-xs h-chip px-3 border-line"
+              testID="sample-data"
+            >
+              <Text
+                className="text-dim"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 13.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 27.7,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                نمونہ ڈیٹا
+              </Text>
+            </View>
+          </View>
           <View
             accessibilityLabel="تمام اپ ڈیٹس"
             accessibilityRole="link"
@@ -1974,23 +2014,63 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
             }
           }
         >
-          <Text
-            className="text-dim"
+          <View
+            className="flex-1"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 13,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 26.7,
-                "textAlign": "right",
-                "textTransform": undefined,
-                "writingDirection": "rtl",
+                "alignItems": "center",
+                "flexDirection": "row-reverse",
+                "flexWrap": "wrap",
+                "gap": 8,
+                "justifyContent": undefined,
               }
             }
           >
-            آج کے حالاتِ حاضرہ
-          </Text>
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 13,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 26.7,
+                  "textAlign": "right",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              آج کے حالاتِ حاضرہ
+            </Text>
+            <View
+              accessibilityState={
+                {
+                  "selected": false,
+                }
+              }
+              className="items-center justify-center border rounded-xs h-chip px-3 border-line"
+              testID="sample-data"
+            >
+              <Text
+                className="text-dim"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 13.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 27.7,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                نمونہ ڈیٹا
+              </Text>
+            </View>
+          </View>
           <View
             accessibilityLabel="مزید"
             accessibilityRole="link"

@@ -182,6 +182,18 @@ describe('HomeView — the three shelves', () => {
     expect(yellow).toHaveLength(1);
   });
 
+  // Seeded fixtures, not the Board's feed: both rows say so until the API serves live content.
+  it('marks the notices and the affairs as sample data', async () => {
+    await render(<HomeView {...props} lang="en" />);
+    const chips = screen.getAllByTestId('sample-data');
+    expect(chips).toHaveLength(2);
+    for (const chip of chips) {
+      expect(chip).toHaveTextContent('Sample data');
+      expect(chip.props.accessibilityRole).toBeUndefined();
+      expect(chip.props.className).not.toContain('bg-hivis');
+    }
+  });
+
   it("shows today's affairs with their category", async () => {
     await render(<HomeView {...props} lang="en" />);
     const rows = screen.getAllByTestId('home-affair');
@@ -327,6 +339,7 @@ describe('HomeView (ur)', () => {
     expect(screen.getByTestId('home-header')).toHaveStyle({ flexDirection: 'row-reverse' });
     expect(screen.getByTestId('home-target')).toHaveStyle({ flexDirection: 'row-reverse' });
     expect(screen.getByTestId('home-days')).toHaveStyle({ fontFamily: 'Archivo_700Bold' });
+    expect(screen.getAllByTestId('sample-data')[0]).toHaveTextContent('نمونہ ڈیٹا');
     expect(screen.toJSON()).toMatchSnapshot();
   });
 

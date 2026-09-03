@@ -22,7 +22,8 @@
     "close": "بند کریں",
     "networkError": "کنکشن نہیں۔ دوبارہ کوشش کریں۔",
     "questionsUnit": "سوالات",
-    "minutesUnit": "منٹ"
+    "minutesUnit": "منٹ",
+    "sampleData": "نمونہ ڈیٹا"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "زبان" },
   "auth": {

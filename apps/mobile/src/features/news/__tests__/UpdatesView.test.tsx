@@ -1,4 +1,4 @@
-import { render, screen, userEvent } from '@testing-library/react-native';
+import { render, screen, userEvent, within } from '@testing-library/react-native';
 import { latestNotices, NOTICES } from '@tslprb/fixtures';
 import { initI18n } from '@tslprb/i18n';
 
@@ -113,6 +113,15 @@ describe('UpdatesView', () => {
     await render(<UpdatesView {...p} />);
     await userEvent.press(screen.getByTestId('updates-header-back'));
     expect(p.onBack).toHaveBeenCalledTimes(1);
+  });
+
+  // Seeded fixtures until the API serves `GET /notices`: the header says so, quietly.
+  it('marks the feed as sample data in the header, as a badge and not a button', async () => {
+    await render(<UpdatesView {...props()} />);
+    const chip = within(screen.getByTestId('updates-header')).getByTestId('sample-data');
+    expect(chip).toHaveTextContent('Sample data');
+    expect(chip.props.accessibilityRole).toBeUndefined();
+    expect(chip.props.className).not.toContain('bg-hivis');
   });
 });
 

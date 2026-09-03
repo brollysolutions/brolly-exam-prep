@@ -96,6 +96,11 @@ describe('HomeRoute — no Continue card', () => {
     expect(screen.queryByText('Still running')).toBeNull();
     expect(screen.queryByText(has('Statehood movement'))).toBeNull();
   });
+
+  it('labels the seeded notices and affairs as sample data', async () => {
+    await render(<HomeRoute />);
+    expect(screen.getAllByTestId('sample-data')).toHaveLength(2);
+  });
 });
 
 describe('HomeRoute — links F-24 and F-25 will own', () => {

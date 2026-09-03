@@ -941,6 +941,37 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
         >
           بورڈ کی اطلاعات
         </Text>
+        <View
+          className="px-2"
+        >
+          <View
+            accessibilityState={
+              {
+                "selected": false,
+              }
+            }
+            className="items-center justify-center border rounded-xs h-chip px-3 border-line"
+            testID="sample-data"
+          >
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 27.7,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              نمونہ ڈیٹا
+            </Text>
+          </View>
+        </View>
       </View>
     </View>
     <RCTScrollView

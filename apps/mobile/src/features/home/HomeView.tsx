@@ -74,19 +74,25 @@ function TargetBar({ done, target }: { done: number; target: number }) {
 }
 
 /**
- * A block's heading and the way past it: "Updates … All updates ›".
+ * A block's heading and the way past it: "Updates · Sample data … All updates ›".
  *
  * The link is 20 px of text with 14 px of hit slop either side rather than a 48 px box: a
  * half-height control beside a kicker would push the heading off its own baseline, and the
  * slop is what the finger actually lands in.
+ *
+ * `badge` is a static chip after the title — "Sample data" while the shelf is seeded from
+ * fixtures. It sits inside the heading `Row`, so it follows the reading direction and lands
+ * on the left of the kicker in Urdu without a mirrored class of its own.
  */
 function SectionHead({
   title,
+  badge,
   link,
   onPress,
   testID,
 }: {
   title: string;
+  badge?: string;
   link: string;
   onPress: () => void;
   testID: string;
@@ -95,7 +101,10 @@ function SectionHead({
   const { pressed, handlers } = usePressed();
   return (
     <Row align="center" justify="between" gap={3}>
-      <Kicker>{title}</Kicker>
+      <Row align="center" gap={2} className="flex-1" wrap>
+        <Kicker>{title}</Kicker>
+        {badge !== undefined && <Chip label={badge} testID="sample-data" />}
+      </Row>
       <Pressable
         testID={testID}
         accessibilityRole="link"
@@ -295,6 +304,7 @@ export function HomeView({
       <View testID="home-updates" className="mt-6">
         <SectionHead
           title={t('home.updates')}
+          badge={t('common.sampleData')}
           link={t('home.allUpdates')}
           onPress={onOpenUpdates}
           testID="home-updates-all"
@@ -334,6 +344,7 @@ export function HomeView({
       <View testID="home-affairs" className="mt-6">
         <SectionHead
           title={t('home.affairs')}
+          badge={t('common.sampleData')}
           link={t('home.more')}
           onPress={onOpenAffairs}
           testID="home-affairs-more"

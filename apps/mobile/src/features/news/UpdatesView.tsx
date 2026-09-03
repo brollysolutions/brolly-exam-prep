@@ -159,7 +159,14 @@ export function UpdatesView({ notices, lang, onBack, onOpenLink }: UpdatesViewPr
   const { t } = useTranslation();
   return (
     <Screen testID="updates-screen">
-      <BackHeader title={t('updates.title')} onBack={onBack} testID="updates-header" />
+      {/* Static and dim: a label on the feed, not a control, and never a second yellow. It
+          goes when `GET /notices` replaces the seeded fixtures. */}
+      <BackHeader
+        title={t('updates.title')}
+        onBack={onBack}
+        testID="updates-header"
+        trailing={<Chip label={t('common.sampleData')} testID="sample-data" />}
+      />
       {notices.length === 0 ? (
         <NewsEmpty message={t('updates.empty')} testID="updates-empty" />
       ) : (
