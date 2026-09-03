@@ -22,3 +22,6 @@ __pycache__/
 .ruff_cache/
 .maestro/screenshots/
 *.orig
+
+# local design-review captures (not committed)
+docs/screenshots/
