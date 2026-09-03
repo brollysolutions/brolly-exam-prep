@@ -23,7 +23,8 @@
     "networkError": "No connection. Try again.",
     "questionsUnit": "questions",
     "minutesUnit": "min",
-    "sampleData": "Sample data"
+    "sampleData": "Sample data",
+    "nothingYet": "Nothing yet"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "Language" },
   "auth": {

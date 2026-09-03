@@ -73,13 +73,29 @@ describe('UpdatesView', () => {
     expect(screen.getByTestId('update-body-nt-2026-exam-date')).toBeOnTheScreen();
   });
 
+  // The caret is one glyph that turns, not two glyphs swapped: a swap is an instant jump, a
+  // turn is 180 ms the eye can follow (design 21).
   it('turns the caret over when a notice opens', async () => {
     await render(<UpdatesView {...props()} />);
     const caret = () =>
       screen.getByTestId('update-caret-nt-2026-hall-ticket', { includeHiddenElements: true });
+    const box = () =>
+      screen.getByTestId('update-caret-box-nt-2026-hall-ticket', { includeHiddenElements: true });
     expect(caret()).toHaveTextContent('▸');
+    expect(box()).toHaveStyle({ transform: [{ rotate: '0deg' }] });
     await userEvent.press(screen.getByTestId('update-row-nt-2026-hall-ticket'));
-    expect(caret()).toHaveTextContent('▾');
+    expect(caret()).toHaveTextContent('▸');
+    expect(box()).toHaveStyle({ transform: [{ rotate: '90deg' }] });
+  });
+
+  // The way to the full notice is chalk with a yellow chevron, not a second yellow line.
+  it('keeps the link row quiet, with the yellow on its chevron alone', async () => {
+    await render(<UpdatesView {...props()} />);
+    await userEvent.press(screen.getByTestId('update-row-nt-2026-notification'));
+    expect(screen.getByText('Read the full notice').props.className).toContain('text-chalk2');
+    expect(screen.getByText('›', { includeHiddenElements: true }).props.className).toContain(
+      'text-hivis',
+    );
   });
 
   it('offers the full notice only where there is one to open', async () => {
@@ -110,9 +126,14 @@ describe('UpdatesView', () => {
     );
   });
 
+  // Centred in the space the list would fill, with a kicker: not one grey line in the corner.
   it('says so plainly when the Board has posted nothing', async () => {
     await render(<UpdatesView notices={[]} lang="en" onBack={jest.fn()} />);
-    expect(screen.getByTestId('updates-empty')).toHaveTextContent('No updates from the Board yet.');
+    const empty = screen.getByTestId('updates-empty');
+    expect(empty).toHaveTextContent(/Nothing yet/);
+    expect(empty).toHaveTextContent(/No updates from the Board yet\./);
+    expect(empty.props.className).toContain('items-center');
+    expect(empty.props.className).toContain('justify-center');
     expect(screen.queryByTestId('updates-list')).toBeNull();
   });
 

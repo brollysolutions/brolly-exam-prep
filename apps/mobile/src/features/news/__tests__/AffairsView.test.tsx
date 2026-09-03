@@ -1,4 +1,5 @@
 import { render, screen, userEvent, within } from '@testing-library/react-native';
+import { colors } from '@tslprb/design-tokens';
 import { AFFAIRS, latestAffairs, type Affair } from '@tslprb/fixtures';
 import { initI18n } from '@tslprb/i18n';
 
@@ -87,14 +88,35 @@ describe('AffairsView', () => {
 
   it('keeps the category kicker sand — the info accent, never the primary one', async () => {
     await render(<AffairsView {...props()} />);
-    expect(screen.getByTestId('affair-cat-af-metro-corridor').props.className).toContain(
-      'text-sand',
+    const kicker = screen.getByTestId('affair-cat-af-metro-corridor');
+    expect(kicker.props.className).toContain('text-sand');
+    // The same tracking as every other kicker, Home's affairs rows included (design 23d).
+    expect(kicker).toHaveStyle({ letterSpacing: 2 });
+  });
+
+  // The same content on Home carries a 3 px sand edge; the rule is "a block with a non-hi-vis
+  // accent carries it on its start edge", so the card here does too (design 18).
+  it('carries the sand start edge the same rows have on Home', async () => {
+    await render(<AffairsView {...props()} />);
+    expect(screen.getByTestId('affair-card-af-metro-corridor')).toHaveStyle({
+      borderLeftWidth: 3,
+      borderLeftColor: colors.sand,
+    });
+  });
+
+  it('heads each day in chalk2, a step above the card text it introduces', async () => {
+    await render(<AffairsView {...props()} />);
+    expect(screen.getByTestId('affairs-date-2026-09-02').props.className).toContain(
+      'text-chalk2',
     );
   });
 
   it('says so plainly when there is no digest yet', async () => {
     await render(<AffairsView affairs={[]} lang="en" onBack={jest.fn()} />);
-    expect(screen.getByTestId('affairs-empty')).toHaveTextContent('No current affairs yet.');
+    const empty = screen.getByTestId('affairs-empty');
+    expect(empty).toHaveTextContent(/Nothing yet/);
+    expect(empty).toHaveTextContent(/No current affairs yet\./);
+    expect(empty.props.className).toContain('justify-center');
     expect(screen.queryByTestId('affairs-list')).toBeNull();
   });
 

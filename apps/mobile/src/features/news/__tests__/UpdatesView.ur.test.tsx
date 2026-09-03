@@ -24,13 +24,17 @@ describe('UpdatesView (ur)', () => {
     );
     expect(screen.getByTestId('updates-header')).toHaveStyle({ flexDirection: 'row-reverse' });
 
-    // Collapsed, the caret points along the reading direction — leftwards in Urdu.
+    // Collapsed, the caret points along the reading direction — leftwards in Urdu — and turns
+    // the other way to point down, so it never swings out through the card's edge.
     const caret = () =>
       screen.getByTestId('update-caret-nt-2026-hall-ticket', { includeHiddenElements: true });
+    const box = () =>
+      screen.getByTestId('update-caret-box-nt-2026-hall-ticket', { includeHiddenElements: true });
     expect(caret()).toHaveTextContent('◂');
 
     await userEvent.press(screen.getByTestId('update-row-nt-2026-hall-ticket'));
-    expect(caret()).toHaveTextContent('▾');
+    expect(caret()).toHaveTextContent('◂');
+    expect(box()).toHaveStyle({ transform: [{ rotate: '-90deg' }] });
     expect(screen.getByTestId('update-body-nt-2026-hall-ticket')).toHaveTextContent(
       FEED[0].body.ur,
     );

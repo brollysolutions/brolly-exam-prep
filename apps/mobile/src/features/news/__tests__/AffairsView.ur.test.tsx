@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react-native';
+import { colors } from '@tslprb/design-tokens';
 import { AFFAIRS } from '@tslprb/fixtures';
 import { initI18n } from '@tslprb/i18n';
 
@@ -30,6 +31,11 @@ describe('AffairsView (ur)', () => {
     expect(screen.getByTestId('affair-headline-af-metro-corridor')).toHaveTextContent(
       FEED[0].headline.ur,
     );
+    // The accent edge is on the reading-start side, which is the right in Urdu.
+    expect(screen.getByTestId('affair-card-af-metro-corridor')).toHaveStyle({
+      borderRightWidth: 3,
+      borderRightColor: colors.sand,
+    });
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });

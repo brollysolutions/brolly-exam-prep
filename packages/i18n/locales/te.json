@@ -23,7 +23,8 @@
     "networkError": "కనెక్షన్ లేదు. మళ్లీ ప్రయత్నించండి.",
     "questionsUnit": "ప్రశ్నలు",
     "minutesUnit": "నిమి",
-    "sampleData": "నమూనా డేటా"
+    "sampleData": "నమూనా డేటా",
+    "nothingYet": "ఇంకా ఏమీ లేదు"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "భాష" },
   "auth": {

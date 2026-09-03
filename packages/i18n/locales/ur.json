@@ -23,7 +23,8 @@
     "networkError": "کنکشن نہیں۔ دوبارہ کوشش کریں۔",
     "questionsUnit": "سوالات",
     "minutesUnit": "منٹ",
-    "sampleData": "نمونہ ڈیٹا"
+    "sampleData": "نمونہ ڈیٹا",
+    "nothingYet": "ابھی کچھ نہیں"
   },
   "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "زبان" },
   "auth": {

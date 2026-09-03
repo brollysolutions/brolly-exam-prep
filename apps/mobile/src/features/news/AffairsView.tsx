@@ -1,8 +1,9 @@
 import type { Affair } from '@tslprb/fixtures';
-import type { Lang } from '@tslprb/i18n';
+import { useDir, type Lang } from '@tslprb/i18n';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 
+import { startEdge } from '@/features/result/edge';
 import { BackHeader } from '@/features/result/Header';
 import { Chip, Kicker, Num, Screen, Stack, Text } from '@/ui';
 
@@ -36,16 +37,24 @@ export function groupByDay(affairs: Affair[]): AffairDay[] {
   return days;
 }
 
-/** One item: what it is about, what happened, and one sentence of why it matters. */
+/**
+ * One item: what it is about, what happened, and one sentence of why it matters.
+ *
+ * The 3 px sand start edge is the same one the row carries on Home: a block with a non-hi-vis
+ * accent colour carries it on its reading-start edge, wherever the block is. Sand is the info
+ * accent — the one the `Why` block on a paper carries.
+ */
 function AffairCard({ affair, lang }: { affair: Affair; lang: Lang }) {
   const { t } = useTranslation();
+  const d = useDir();
   return (
     <View
       className="rounded-md border border-line bg-panel2 p-4"
+      // The mirrored edge is a style, never a class: see `startEdge`.
+      style={startEdge(d.isRTL, 'sand')}
       testID={`affair-card-${affair.id}`}
     >
-      {/* Sand is the info accent — the same one the `Why` block on a paper carries. */}
-      <Kicker color="sand" tracking="kickerTight" testID={`affair-cat-${affair.id}`}>
+      <Kicker color="sand" testID={`affair-cat-${affair.id}`}>
         {t(`affairs.cat.${affair.category}`)}
       </Kicker>
       <Text variant="body" weight="600" className="mt-2" testID={`affair-headline-${affair.id}`}>
@@ -76,13 +85,13 @@ export function AffairsView({ affairs, lang, onBack }: AffairsViewProps) {
   const days = groupByDay(affairs);
   return (
     <Screen testID="affairs-screen">
-      {/* Static and dim: a label on the digest, not a control, and never a second yellow. It
-          goes when `GET /affairs` replaces the seeded fixtures. */}
+      {/* A quiet tag on the digest, not a control, and never a second yellow. It goes when
+          `GET /affairs` replaces the seeded fixtures. */}
       <BackHeader
         title={t('affairs.title')}
         onBack={onBack}
         testID="affairs-header"
-        trailing={<Chip label={t('common.sampleData')} testID="sample-data" />}
+        trailing={<Chip label={t('common.sampleData')} tone="label" testID="sample-data" />}
       />
       {days.length === 0 ? (
         <NewsEmpty message={t('affairs.empty')} testID="affairs-empty" />
@@ -101,11 +110,12 @@ export function AffairsView({ affairs, lang, onBack }: AffairsViewProps) {
               testID={`affairs-day-${day.date}`}
             >
               {/* The day heading is a date, so it goes through `Num`: Latin face, tabular,
-                  LTR-isolated, at the kicker's own size and weight. */}
+                  LTR-isolated, at the kicker's own size and weight — in `chalk2`, a step above
+                  the cards it introduces. */}
               <Num
                 variant="kicker"
                 weight="700"
-                color="dim"
+                color="chalk2"
                 tracking="none"
                 testID={`affairs-date-${day.date}`}
               >
