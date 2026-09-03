@@ -1,0 +1,3162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-right 1`] = `
+<View
+  className="flex-1 bg-tar"
+  style={
+    {
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "paddingRight": 0,
+      "paddingTop": 0,
+    }
+  }
+  testID="eligibility-screen"
+>
+  <View
+    accessibilityElementsHidden={true}
+    className="h-rail overflow-hidden bg-tar"
+    importantForAccessibility="no-hide-descendants"
+    style={
+      {
+        "height": 5,
+      }
+    }
+    testID="hazard-rail"
+  >
+    <View
+      style={
+        [
+          {
+            "flexDirection": "row",
+          },
+          {
+            "transform": [
+              {
+                "translateX": -56,
+              },
+            ],
+          },
+        ]
+      }
+      testID="hazard-rail-track"
+    >
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-hivis"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+      <View
+        className="h-rail bg-tar"
+        style={
+          {
+            "transform": [
+              {
+                "skewX": "-25deg",
+              },
+            ],
+            "width": 14,
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    className="flex-1"
+  >
+    <View
+      className="border-b border-line bg-panel"
+    >
+      <View
+        className="px-2 py-1"
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row-reverse",
+            "flexWrap": undefined,
+            "gap": 4,
+            "justifyContent": undefined,
+          }
+        }
+        testID="eligibility-header"
+      >
+        <View
+          accessibilityLabel="واپس"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="h-touch w-touch items-center justify-center"
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          testID="eligibility-header-back"
+        >
+          <Text
+            accessibilityElementsHidden={true}
+            className="text-dim"
+            importantForAccessibility="no"
+            style={
+              {
+                "fontFamily": "Archivo_400Regular",
+                "fontSize": 20,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 29,
+                "textAlign": "right",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+          >
+            ›
+          </Text>
+        </View>
+        <Text
+          className="text-chalk flex-1"
+          numberOfLines={1}
+          style={
+            {
+              "fontFamily": "NotoNastaliqUrdu_700Bold",
+              "fontSize": 15.5,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 31.8,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "rtl",
+            }
+          }
+        >
+          پی ایم ٹی / پی ای ٹی جانچ
+        </Text>
+      </View>
+    </View>
+    <RCTScrollView
+      automaticallyAdjustKeyboardInsets={true}
+      className="flex-1"
+      contentContainerClassName="px-4 pb-8 pt-4"
+      keyboardShouldPersistTaps="handled"
+      showsVerticalScrollIndicator={false}
+    >
+      <View>
+        <Text
+          className="text-dim"
+          style={
+            {
+              "fontFamily": "NotoNastaliqUrdu_400Regular",
+              "fontSize": 13.5,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 27.7,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "rtl",
+            }
+          }
+        >
+          اپنی پیمائشیں درج کریں — آپ کی پوسٹ کے جسمانی معیارات سے موازنہ دکھایا جائے گا۔
+        </Text>
+        <View
+          className="mt-5"
+          style={
+            {
+              "alignItems": undefined,
+              "flexDirection": "column",
+              "gap": 16,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": undefined,
+                "flexDirection": "column",
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 13,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 26.7,
+                  "textAlign": "right",
+                  "textTransform": "uppercase",
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              پوسٹ
+            </Text>
+            <View
+              accessibilityRole="radiogroup"
+              className="h-touch self-start overflow-hidden rounded-sm border border-line"
+              style={
+                {
+                  "alignItems": undefined,
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+              testID="eligibility-post"
+            >
+              <View
+                accessibilityLabel="کانسٹیبل"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": true,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                className="h-full min-w-touch items-center justify-center px-2 bg-hivis border-line border-l"
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  className="text-tar"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  کانسٹیبل
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="ایس آئی / اے ایس آئی"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                className="h-full min-w-touch items-center justify-center px-2"
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  className="text-dim"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  ایس آئی / اے ایس آئی
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": undefined,
+                "flexDirection": "column",
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 13,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 26.7,
+                  "textAlign": "right",
+                  "textTransform": "uppercase",
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              جنس
+            </Text>
+            <View
+              accessibilityRole="radiogroup"
+              className="h-touch self-start overflow-hidden rounded-sm border border-line"
+              style={
+                {
+                  "alignItems": undefined,
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+              testID="eligibility-gender"
+            >
+              <View
+                accessibilityLabel="مرد"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  className="text-dim"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  مرد
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="خواتین"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": true,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                className="h-full min-w-touch items-center justify-center px-2 bg-hivis"
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  className="text-tar"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  خواتین
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": undefined,
+                "flexDirection": "column",
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 13,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 26.7,
+                  "textAlign": "right",
+                  "textTransform": "uppercase",
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              زمرہ
+            </Text>
+            <View
+              accessibilityRole="radiogroup"
+              className="h-touch self-start overflow-hidden rounded-sm border border-line"
+              style={
+                {
+                  "alignItems": undefined,
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+              testID="eligibility-group"
+            >
+              <View
+                accessibilityLabel="جنرل"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": true,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                className="h-full min-w-touch items-center justify-center px-2 bg-hivis border-line border-l"
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  className="text-tar"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  جنرل
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="ایس ٹی / ایجنسی"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                className="h-full min-w-touch items-center justify-center px-2"
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  className="text-dim"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  ایس ٹی / ایجنسی
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          className="mt-6"
+          style={
+            {
+              "alignItems": undefined,
+              "flexDirection": "column",
+              "gap": 16,
+              "justifyContent": undefined,
+            }
+          }
+          testID="eligibility-fields"
+        >
+          <View
+            style={
+              {
+                "alignItems": undefined,
+                "flexDirection": "column",
+                "gap": 4,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "baseline",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-chalk2"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 14.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 29.7,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                قد
+              </Text>
+              <Text
+                className="text-dim"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 12.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 25.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                سینٹی میٹر
+              </Text>
+            </View>
+            <View
+              className="h-touchLg justify-center rounded-sm border bg-panel2 px-3 border-line"
+            >
+              <TextInput
+                accessibilityLabel="قد (سینٹی میٹر)"
+                inputMode="decimal"
+                keyboardType="decimal-pad"
+                maxLength={6}
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholderTextColor="#5A5D62"
+                selectionColor="#FFE01B"
+                style={
+                  {
+                    "color": "#EDEBE3",
+                    "fontFamily": "Archivo_600SemiBold",
+                    "fontSize": 22,
+                    "height": 56,
+                    "letterSpacing": 0,
+                    "lineHeight": 31.9,
+                    "padding": 0,
+                    "textAlign": "left",
+                    "textAlignVertical": "center",
+                    "writingDirection": "ltr",
+                  }
+                }
+                testID="eligibility-field-height"
+                value="151"
+              />
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": undefined,
+                "flexDirection": "column",
+                "gap": 4,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "baseline",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-chalk2"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 14.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 29.7,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                ⁦800⁩ میٹر دوڑ
+              </Text>
+              <Text
+                className="text-dim"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 12.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 25.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                سیکنڈ
+              </Text>
+            </View>
+            <View
+              className="h-touchLg justify-center rounded-sm border bg-panel2 px-3 border-line"
+            >
+              <TextInput
+                accessibilityLabel="⁦800⁩ میٹر دوڑ (سیکنڈ)"
+                inputMode="decimal"
+                keyboardType="decimal-pad"
+                maxLength={6}
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholderTextColor="#5A5D62"
+                selectionColor="#FFE01B"
+                style={
+                  {
+                    "color": "#EDEBE3",
+                    "fontFamily": "Archivo_600SemiBold",
+                    "fontSize": 22,
+                    "height": 56,
+                    "letterSpacing": 0,
+                    "lineHeight": 31.9,
+                    "padding": 0,
+                    "textAlign": "left",
+                    "textAlignVertical": "center",
+                    "writingDirection": "ltr",
+                  }
+                }
+                testID="eligibility-field-run800m"
+                value="190"
+              />
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": undefined,
+                "flexDirection": "column",
+                "gap": 4,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "baseline",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-chalk2"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 14.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 29.7,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                ⁦100⁩ میٹر دوڑ
+              </Text>
+              <Text
+                className="text-dim"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 12.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 25.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                سیکنڈ
+              </Text>
+            </View>
+            <View
+              className="h-touchLg justify-center rounded-sm border bg-panel2 px-3 border-line"
+            >
+              <TextInput
+                accessibilityLabel="⁦100⁩ میٹر دوڑ (سیکنڈ)"
+                inputMode="decimal"
+                keyboardType="decimal-pad"
+                maxLength={6}
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholderTextColor="#5A5D62"
+                selectionColor="#FFE01B"
+                style={
+                  {
+                    "color": "#EDEBE3",
+                    "fontFamily": "Archivo_600SemiBold",
+                    "fontSize": 22,
+                    "height": 56,
+                    "letterSpacing": 0,
+                    "lineHeight": 31.9,
+                    "padding": 0,
+                    "textAlign": "left",
+                    "textAlignVertical": "center",
+                    "writingDirection": "ltr",
+                  }
+                }
+                testID="eligibility-field-run100m"
+                value="15"
+              />
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": undefined,
+                "flexDirection": "column",
+                "gap": 4,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "baseline",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-chalk2"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 14.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 29.7,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                لمبی چھلانگ
+              </Text>
+              <Text
+                className="text-dim"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 12.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 25.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                میٹر
+              </Text>
+            </View>
+            <View
+              className="h-touchLg justify-center rounded-sm border bg-panel2 px-3 border-line"
+            >
+              <TextInput
+                accessibilityLabel="لمبی چھلانگ (میٹر)"
+                inputMode="decimal"
+                keyboardType="decimal-pad"
+                maxLength={6}
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholderTextColor="#5A5D62"
+                selectionColor="#FFE01B"
+                style={
+                  {
+                    "color": "#EDEBE3",
+                    "fontFamily": "Archivo_600SemiBold",
+                    "fontSize": 22,
+                    "height": 56,
+                    "letterSpacing": 0,
+                    "lineHeight": 31.9,
+                    "padding": 0,
+                    "textAlign": "left",
+                    "textAlignVertical": "center",
+                    "writingDirection": "ltr",
+                  }
+                }
+                testID="eligibility-field-longJump"
+                value="3"
+              />
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": undefined,
+                "flexDirection": "column",
+                "gap": 4,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "baseline",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-chalk2"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 14.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 29.7,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                گولہ پھینک
+              </Text>
+              <Text
+                className="text-dim"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_400Regular",
+                    "fontSize": 12.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 25.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                میٹر
+              </Text>
+            </View>
+            <View
+              className="h-touchLg justify-center rounded-sm border bg-panel2 px-3 border-line"
+            >
+              <TextInput
+                accessibilityLabel="گولہ پھینک (میٹر)"
+                inputMode="decimal"
+                keyboardType="decimal-pad"
+                maxLength={6}
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholderTextColor="#5A5D62"
+                selectionColor="#FFE01B"
+                style={
+                  {
+                    "color": "#EDEBE3",
+                    "fontFamily": "Archivo_600SemiBold",
+                    "fontSize": 22,
+                    "height": 56,
+                    "letterSpacing": 0,
+                    "lineHeight": 31.9,
+                    "padding": 0,
+                    "textAlign": "left",
+                    "textAlignVertical": "center",
+                    "writingDirection": "ltr",
+                  }
+                }
+                testID="eligibility-field-shotPut"
+                value="4.5"
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="items-center justify-center rounded-sm px-4 bg-hivis mt-6"
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "height": 56,
+            }
+          }
+          testID="eligibility-check"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row-reverse",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              className="text-tar"
+              style={
+                {
+                  "fontFamily": "NotoNastaliqUrdu_700Bold",
+                  "fontSize": 15.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 31.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "rtl",
+                }
+              }
+            >
+              اہلیت جانچیں
+            </Text>
+          </View>
+        </View>
+        <View
+          className="mt-6"
+          style={
+            {
+              "alignItems": undefined,
+              "flexDirection": "column",
+              "gap": 12,
+              "justifyContent": undefined,
+            }
+          }
+        >
+          <View
+            accessibilityLiveRegion="polite"
+            className="rounded-md border p-4 border-flag bg-flagTint"
+            style={
+              {
+                "alignItems": undefined,
+                "flexDirection": "column",
+                "gap": 12,
+                "justifyContent": undefined,
+              }
+            }
+            testID="eligibility-verdict"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                className="text-flag"
+                importantForAccessibility="no"
+                style={
+                  {
+                    "fontFamily": "Archivo_400Regular",
+                    "fontSize": 20,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 29,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ✕
+              </Text>
+              <Text
+                className="text-flag flex-1"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 20,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 41,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                ابھی نہیں
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": undefined,
+                  "flexDirection": "column",
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-dim"
+                style={
+                  {
+                    "fontFamily": "NotoNastaliqUrdu_700Bold",
+                    "fontSize": 13,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 26.7,
+                    "textAlign": "right",
+                    "textTransform": "uppercase",
+                    "writingDirection": "rtl",
+                  }
+                }
+              >
+                کس پر محنت کرنی ہے
+              </Text>
+              <View
+                style={
+                  {
+                    "alignItems": "baseline",
+                    "flexDirection": "row-reverse",
+                    "flexWrap": undefined,
+                    "gap": 8,
+                    "justifyContent": undefined,
+                  }
+                }
+                testID="eligibility-improve-height"
+              >
+                <Text
+                  accessibilityElementsHidden={true}
+                  className="text-hazard"
+                  importantForAccessibility="no"
+                  style={
+                    {
+                      "fontFamily": "Archivo_400Regular",
+                      "fontSize": 11.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 16.7,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ■
+                </Text>
+                <Text
+                  className="text-chalk2 flex-1"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_400Regular",
+                      "fontSize": 13.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 27.7,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  قد
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            className="rounded-md border border-line bg-panel2 px-3 py-1"
+            style={
+              {
+                "alignItems": undefined,
+                "flexDirection": "column",
+                "gap": undefined,
+                "justifyContent": undefined,
+              }
+            }
+            testID="eligibility-rows"
+          >
+            <View
+              className="py-2"
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+              testID="eligibility-row-height"
+            >
+              <Text
+                accessibilityLabel="معیار سے کم"
+                className="text-flag"
+                style={
+                  {
+                    "fontFamily": "Archivo_400Regular",
+                    "fontSize": 13.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ✕
+              </Text>
+              <View
+                className="flex-1"
+                style={
+                  {
+                    "alignItems": undefined,
+                    "flexDirection": "column",
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-chalk"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  قد
+                </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "baseline",
+                      "flexDirection": "row-reverse",
+                      "flexWrap": "wrap",
+                      "gap": 8,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    className="text-dim"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_400Regular",
+                        "fontSize": 12.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 25.6,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                    مطلوب
+                  </Text>
+                  <View
+                    style={
+                      {
+                        "alignItems": "baseline",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
+                      }
+                    }
+                  >
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "Archivo_600SemiBold",
+                          "fontSize": 11.5,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 16.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⁦152.5⁩
+                    </Text>
+                    <Text
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 12.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 25.6,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      سینٹی میٹر
+                    </Text>
+                  </View>
+                  <Text
+                    className="text-dim"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_400Regular",
+                        "fontSize": 12.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 25.6,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                    آپ کا
+                  </Text>
+                  <View
+                    style={
+                      {
+                        "alignItems": "baseline",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
+                      }
+                    }
+                    testID="eligibility-yours-height"
+                  >
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-flag"
+                      style={
+                        {
+                          "fontFamily": "Archivo_600SemiBold",
+                          "fontSize": 11.5,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 16.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⁦151⁩
+                    </Text>
+                    <Text
+                      className="text-flag"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 12.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 25.6,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      سینٹی میٹر
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              className="py-2"
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+              testID="eligibility-row-run800m"
+            >
+              <Text
+                accessibilityLabel="معیار پر پورا"
+                className="text-hivis"
+                style={
+                  {
+                    "fontFamily": "Archivo_400Regular",
+                    "fontSize": 13.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ✓
+              </Text>
+              <View
+                className="flex-1"
+                style={
+                  {
+                    "alignItems": undefined,
+                    "flexDirection": "column",
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-chalk"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  ⁦800⁩ میٹر دوڑ
+                </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "baseline",
+                      "flexDirection": "row-reverse",
+                      "flexWrap": "wrap",
+                      "gap": 8,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    className="text-dim"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_400Regular",
+                        "fontSize": 12.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 25.6,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                    مطلوب
+                  </Text>
+                  <View
+                    style={
+                      {
+                        "alignItems": "baseline",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
+                      }
+                    }
+                  >
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "Archivo_600SemiBold",
+                          "fontSize": 11.5,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 16.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⁦200⁩
+                    </Text>
+                    <Text
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 12.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 25.6,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      سیکنڈ
+                    </Text>
+                  </View>
+                  <Text
+                    className="text-dim"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_400Regular",
+                        "fontSize": 12.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 25.6,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                    آپ کا
+                  </Text>
+                  <View
+                    style={
+                      {
+                        "alignItems": "baseline",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
+                      }
+                    }
+                    testID="eligibility-yours-run800m"
+                  >
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-hivis"
+                      style={
+                        {
+                          "fontFamily": "Archivo_600SemiBold",
+                          "fontSize": 11.5,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 16.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⁦190⁩
+                    </Text>
+                    <Text
+                      className="text-hivis"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 12.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 25.6,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      سیکنڈ
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              className="py-2"
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+              testID="eligibility-row-run100m"
+            >
+              <Text
+                accessibilityLabel="معیار پر پورا"
+                className="text-hivis"
+                style={
+                  {
+                    "fontFamily": "Archivo_400Regular",
+                    "fontSize": 13.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ✓
+              </Text>
+              <View
+                className="flex-1"
+                style={
+                  {
+                    "alignItems": undefined,
+                    "flexDirection": "column",
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-chalk"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  ⁦100⁩ میٹر دوڑ
+                </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "baseline",
+                      "flexDirection": "row-reverse",
+                      "flexWrap": "wrap",
+                      "gap": 8,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    className="text-dim"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_400Regular",
+                        "fontSize": 12.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 25.6,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                    مطلوب
+                  </Text>
+                  <View
+                    style={
+                      {
+                        "alignItems": "baseline",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
+                      }
+                    }
+                  >
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "Archivo_600SemiBold",
+                          "fontSize": 11.5,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 16.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⁦16⁩
+                    </Text>
+                    <Text
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 12.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 25.6,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      سیکنڈ
+                    </Text>
+                  </View>
+                  <Text
+                    className="text-dim"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_400Regular",
+                        "fontSize": 12.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 25.6,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                    آپ کا
+                  </Text>
+                  <View
+                    style={
+                      {
+                        "alignItems": "baseline",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
+                      }
+                    }
+                    testID="eligibility-yours-run100m"
+                  >
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-hivis"
+                      style={
+                        {
+                          "fontFamily": "Archivo_600SemiBold",
+                          "fontSize": 11.5,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 16.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⁦15⁩
+                    </Text>
+                    <Text
+                      className="text-hivis"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 12.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 25.6,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      سیکنڈ
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              className="py-2"
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+              testID="eligibility-row-longJump"
+            >
+              <Text
+                accessibilityLabel="معیار پر پورا"
+                className="text-hivis"
+                style={
+                  {
+                    "fontFamily": "Archivo_400Regular",
+                    "fontSize": 13.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ✓
+              </Text>
+              <View
+                className="flex-1"
+                style={
+                  {
+                    "alignItems": undefined,
+                    "flexDirection": "column",
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-chalk"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  لمبی چھلانگ
+                </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "baseline",
+                      "flexDirection": "row-reverse",
+                      "flexWrap": "wrap",
+                      "gap": 8,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    className="text-dim"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_400Regular",
+                        "fontSize": 12.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 25.6,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                    مطلوب
+                  </Text>
+                  <View
+                    style={
+                      {
+                        "alignItems": "baseline",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
+                      }
+                    }
+                  >
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "Archivo_600SemiBold",
+                          "fontSize": 11.5,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 16.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⁦2.75⁩
+                    </Text>
+                    <Text
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 12.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 25.6,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      میٹر
+                    </Text>
+                  </View>
+                  <Text
+                    className="text-dim"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_400Regular",
+                        "fontSize": 12.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 25.6,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                    آپ کا
+                  </Text>
+                  <View
+                    style={
+                      {
+                        "alignItems": "baseline",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
+                      }
+                    }
+                    testID="eligibility-yours-longJump"
+                  >
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-hivis"
+                      style={
+                        {
+                          "fontFamily": "Archivo_600SemiBold",
+                          "fontSize": 11.5,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 16.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⁦3⁩
+                    </Text>
+                    <Text
+                      className="text-hivis"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 12.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 25.6,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      میٹر
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              className="py-2"
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row-reverse",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+              testID="eligibility-row-shotPut"
+            >
+              <Text
+                accessibilityLabel="معیار پر پورا"
+                className="text-hivis"
+                style={
+                  {
+                    "fontFamily": "Archivo_400Regular",
+                    "fontSize": 13.5,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.6,
+                    "textAlign": "right",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ✓
+              </Text>
+              <View
+                className="flex-1"
+                style={
+                  {
+                    "alignItems": undefined,
+                    "flexDirection": "column",
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-chalk"
+                  style={
+                    {
+                      "fontFamily": "NotoNastaliqUrdu_700Bold",
+                      "fontSize": 14.5,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 29.7,
+                      "textAlign": "right",
+                      "textTransform": undefined,
+                      "writingDirection": "rtl",
+                    }
+                  }
+                >
+                  گولہ پھینک
+                </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "baseline",
+                      "flexDirection": "row-reverse",
+                      "flexWrap": "wrap",
+                      "gap": 8,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    className="text-dim"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_400Regular",
+                        "fontSize": 12.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 25.6,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                    مطلوب
+                  </Text>
+                  <View
+                    style={
+                      {
+                        "alignItems": "baseline",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
+                      }
+                    }
+                  >
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "Archivo_600SemiBold",
+                          "fontSize": 11.5,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 16.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⁦4.25⁩
+                    </Text>
+                    <Text
+                      className="text-dim"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 12.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 25.6,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      میٹر
+                    </Text>
+                  </View>
+                  <Text
+                    className="text-dim"
+                    style={
+                      {
+                        "fontFamily": "NotoNastaliqUrdu_400Regular",
+                        "fontSize": 12.5,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 25.6,
+                        "textAlign": "right",
+                        "textTransform": undefined,
+                        "writingDirection": "rtl",
+                      }
+                    }
+                  >
+                    آپ کا
+                  </Text>
+                  <View
+                    style={
+                      {
+                        "alignItems": "baseline",
+                        "flexDirection": "row-reverse",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
+                      }
+                    }
+                    testID="eligibility-yours-shotPut"
+                  >
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-hivis"
+                      style={
+                        {
+                          "fontFamily": "Archivo_600SemiBold",
+                          "fontSize": 11.5,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 16.7,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⁦4.5⁩
+                    </Text>
+                    <Text
+                      className="text-hivis"
+                      style={
+                        {
+                          "fontFamily": "NotoNastaliqUrdu_400Regular",
+                          "fontSize": 12.5,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 25.6,
+                          "textAlign": "right",
+                          "textTransform": undefined,
+                          "writingDirection": "rtl",
+                        }
+                      }
+                    >
+                      میٹر
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <Text
+          className="text-dim mt-6"
+          style={
+            {
+              "fontFamily": "NotoNastaliqUrdu_400Regular",
+              "fontSize": 12.5,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 25.6,
+              "textAlign": "right",
+              "textTransform": undefined,
+              "writingDirection": "rtl",
+            }
+          }
+          testID="eligibility-disclaimer"
+        >
+          معیارات ⁦2022⁩ کے نوٹیفکیشن کے مطابق؛ تازہ ترین TSLPRB نوٹیفکیشن سے تصدیق کریں۔
+        </Text>
+      </View>
+    </RCTScrollView>
+  </View>
+</View>
+`;

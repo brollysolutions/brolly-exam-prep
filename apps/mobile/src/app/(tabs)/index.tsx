@@ -6,7 +6,7 @@ import {
   STUDY_TOPICS,
   TESTS,
 } from '@tslprb/fixtures';
-import { useRouter, type Href } from 'expo-router';
+import { useRouter } from 'expo-router';
 
 import { streakDays, todayProgress, useActivityStore } from '@/data/activity';
 import { useAttemptStore } from '@/data/attempt';
@@ -19,10 +19,6 @@ import { useStudyStore } from '@/data/study';
 import { useNow } from '@/data/useNow';
 import { daysUntil, fullDate } from '@/features/home/dates';
 import { HomeView, type HomeContinue } from '@/features/home/HomeView';
-
-/** The route F-25 owns. Home links to it before it exists, so the card is never dead. */
-// F-25 add this route
-const ELIGIBILITY = '/eligibility' as Href;
 
 /**
  * The head of each shelf, taken once at module load rather than on every render: the
@@ -125,7 +121,7 @@ export default function HomeRoute() {
         else if (topic) router.push({ pathname: '/study/[topic]', params: { topic: topic.id } });
       }}
       onOpenUpdates={() => router.push('/updates')}
-      onOpenPhysical={() => router.push(ELIGIBILITY)}
+      onOpenPhysical={() => router.push('/eligibility')}
       onOpenAffairs={() => router.push('/affairs')}
     />
   );
