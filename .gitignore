@@ -25,3 +25,6 @@ __pycache__/
 
 # local design-review captures (not committed)
 docs/screenshots/
+
+# Next.js generates this on every dev/build run
+next-env.d.ts
