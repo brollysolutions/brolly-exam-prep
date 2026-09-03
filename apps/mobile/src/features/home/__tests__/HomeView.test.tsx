@@ -110,6 +110,8 @@ describe('HomeView (guest)', () => {
     expect(chip).toHaveTextContent('Sign in');
     // The screen keeps one hi-vis action, and it is not this one.
     expect(chip.props.className).not.toContain('bg-hivis');
+    // 48 px, so it stands level with the language switcher it sits beside.
+    expect(chip.props.className).toContain('h-touch');
     await userEvent.press(chip);
     expect(guest.onSignIn).toHaveBeenCalledTimes(1);
   });

@@ -131,7 +131,12 @@ export function HomeView({
           {/* Outlined, not hi-vis: signing in is not what this screen is for. The yellow stays
               on "Start now", which asks for an account itself when it needs one. */}
           {!signedIn && (
-            <Chip testID="home-signin" label={t('common.signIn')} onPress={onSignIn} />
+            <Chip
+              testID="home-signin"
+              label={t('common.signIn')}
+              size="lg"
+              onPress={onSignIn}
+            />
           )}
           <SegmentedChips value={lang} onChange={onLang} options={langOptions} testID="home-lang" />
         </Row>
