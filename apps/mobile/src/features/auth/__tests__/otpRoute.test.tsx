@@ -81,14 +81,15 @@ describe('OtpRoute', () => {
     });
   });
 
-  it('says nothing about a wrong code — the cells do the talking', async () => {
+  // Against the mock there is no wrong code: any six digits walk on to onboarding.
+  it('takes any code and moves on', async () => {
     const { request_id } = await getApi().requestOtp({ phone: '9000012345' });
     setOtpRequestId(request_id);
     await render(<OtpRoute />);
     await verify('111111');
     expect(screen.queryByTestId('otp-error')).toBeNull();
-    expect(useSessionStore.getState().token).toBeUndefined();
-    expect(mockRouter.replace).not.toHaveBeenCalled();
+    expect(useSessionStore.getState().token).toBeTruthy();
+    expect(mockRouter.replace).toHaveBeenCalledWith('/(onboarding)/post');
   });
 
   it('explains an expired request and arms the resend at once', async () => {

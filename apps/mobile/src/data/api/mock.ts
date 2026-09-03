@@ -170,7 +170,10 @@ export class MockApi implements AppApi {
     await latency();
     const phone = this.otps.get(body.request_id);
     if (phone === undefined) throw new ApiError(404, 'otp_not_found', 'Request expired');
-    if (body.code !== DEV_OTP) throw new ApiError(400, 'otp_invalid', 'That code is not right');
+    // No SMS goes out in the mock, so any six digits are accepted and the code walks straight
+    // on to onboarding. The request still has to exist — an expired one is a different answer,
+    // and the screen has its own copy for it. The real check lives in `services/api`, which
+    // `HttpApi` talks to; `otp_invalid` handling in the route stays for that.
     this.otps.delete(body.request_id);
     return { token: nextId('tok'), user: { id: `usr-${phone}`, phone } };
   }

@@ -33,9 +33,12 @@ describe('MockApi — OTP', () => {
     expect(res.user.phone).toBe('9000000000');
   });
 
-  it('rejects any other code', async () => {
+  // No SMS goes out in the mock, so there is no code to get wrong.
+  it('accepts any other code just the same', async () => {
     const { request_id } = await api.requestOtp({ phone: '9000000000' });
-    await expect(api.verifyOtp({ request_id, code: '000000' })).rejects.toBeInstanceOf(ApiError);
+    const res = await api.verifyOtp({ request_id, code: '000000' });
+    expect(OtpVerifyResponseSchema.parse(res)).toBeTruthy();
+    expect(res.user.phone).toBe('9000000000');
   });
 
   it('rejects an unknown request id', async () => {
