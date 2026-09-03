@@ -1,5 +1,5 @@
 import { colors, radius } from '@tslprb/design-tokens';
-import { SAMPLE_RESULT, TESTS } from '@tslprb/fixtures';
+import { TESTS } from '@tslprb/fixtures';
 import { LANGS, useDir, type Lang } from '@tslprb/i18n';
 import { useTranslation } from 'react-i18next';
 import { Pressable, View } from 'react-native';
@@ -13,7 +13,6 @@ import {
   iso,
   Kicker,
   Measure,
-  Num,
   Row,
   Screen,
   SegmentedChips,
@@ -23,7 +22,7 @@ import {
 } from '@/ui';
 
 /**
- * What the home card pitches: the first full mock a candidate can actually sit. Pointing at
+ * What the mock card pitches: the first full mock a candidate can actually sit. Pointing at
  * a locked paper would make the screen's one hi-vis action a dead end (design review round 1).
  *
  * Exported because the route has to open *this* paper: an id repeated there is an id that
@@ -37,11 +36,15 @@ export const NEXT_MOCK = TESTS.find((test) => test.kind === 'full' && test.free)
  * half cannot be a class name (see `startEdge`), and the press delta comes from state because
  * a `style` callback next to `className` loses its static values on web (see `usePressed`).
  */
-function TopicRow({
-  action,
+function OptionCard({
+  testID,
+  title,
+  sub,
   onPress,
 }: {
-  action: (typeof SAMPLE_RESULT.actions)[number];
+  testID: string;
+  title: string;
+  sub: string;
   onPress: () => void;
 }) {
   const d = useDir();
@@ -58,7 +61,7 @@ function TopicRow({
       }}
     >
       <Pressable
-        testID={`home-topic-${action.id}`}
+        testID={testID}
         accessibilityRole="button"
         android_ripple={{ color: colors.hivisTint3 }}
         onPress={onPress}
@@ -69,10 +72,10 @@ function TopicRow({
         <Row gap={3} align="center">
           <Stack gap={1} className="flex-1">
             <Text variant="body" weight="600">
-              {action.title[d.lang]}
+              {title}
             </Text>
             <Text variant="caption" color="dim">
-              {action.sub[d.lang]}
+              {sub}
             </Text>
           </Stack>
           <Glyph color="hivis" accessibilityElementsHidden importantForAccessibility="no">
@@ -98,13 +101,15 @@ export type HomeViewProps = {
   daysToExam: number;
   streakDays: number;
   onSignIn: () => void;
+  onStudy: () => void;
+  onPreviousPapers: () => void;
   onStartMock: () => void;
-  onWeakTopic: (id: string) => void;
 };
 
 /**
- * F-07 — the home dashboard. One question is answered above the fold: *what do I do next?*
- * Everything below it is evidence for that answer, in the order a candidate asks for it.
+ * F-07 / F-20 — the home hub. One question is answered above the fold: *what do I do next?*
+ * Three ways to answer it, in the order a candidate reaches for them — read, rehearse, sit —
+ * with only the last one wearing the yellow.
  */
 export function HomeView({
   name,
@@ -114,8 +119,9 @@ export function HomeView({
   daysToExam,
   streakDays,
   onSignIn,
+  onStudy,
+  onPreviousPapers,
   onStartMock,
-  onWeakTopic,
 }: HomeViewProps) {
   const { t } = useTranslation();
   const langOptions = LANGS.map((l: Lang) => ({ value: l, label: t(`lang.${l}Short`), lang: l }));
@@ -160,14 +166,35 @@ export function HomeView({
         />
       </Row>
 
-      {/* The one hi-vis action on the screen. */}
-      <Card testID="home-next-mock" className="mt-6">
-        <Kicker>{t('home.nextMock')}</Kicker>
+      {/* Ungated on purpose: reading is not something to sign in for. Both shelves are open,
+          and the paper picked off one of them is what asks for an account. */}
+      <Stack gap={2} testID="home-options" className="mt-6">
+        <OptionCard
+          testID="home-study"
+          title={t('home.studyMaterial')}
+          sub={t('home.studyMaterialSub')}
+          onPress={onStudy}
+        />
+        <OptionCard
+          testID="home-previous"
+          title={t('home.previousPapers')}
+          sub={t('home.previousPapersSub')}
+          onPress={onPreviousPapers}
+        />
+      </Stack>
+
+      {/* Last, and the one hi-vis action on the screen: the other two lead to it. */}
+      <Card testID="home-next-mock" className="mt-2">
+        <Kicker>{t('home.mockTest')}</Kicker>
         <Text variant="subtitle" weight="700" className="mt-2">
           {NEXT_MOCK.title[lang]}
         </Text>
         <Row gap={2} align="center" wrap className="mt-2">
-          <Measure value={pattern.totalQuestions} unit={t('common.questionsUnit')} />
+          <Measure
+            testID="home-mock-questions"
+            value={pattern.totalQuestions}
+            unit={t('common.questionsUnit')}
+          />
           <Glyph variant="caption" color="mute">
             ·
           </Glyph>
@@ -181,28 +208,6 @@ export function HomeView({
           className="mt-4"
         />
       </Card>
-
-      <Card testID="home-last-score" className="mt-3">
-        <Kicker>{t('home.lastScore')}</Kicker>
-        <Row align="center" justify="between" gap={3} className="mt-2">
-          <Row gap={2} align="baseline">
-            <Num variant="display" color="hivis" testID="home-score">
-              {SAMPLE_RESULT.score}
-            </Num>
-            <Text variant="caption" color="dim">
-              {t('home.outOf', { max: iso(SAMPLE_RESULT.maxScore) })}
-            </Text>
-          </Row>
-          <Chip label={t('result.qualified')} tone="hivis" active />
-        </Row>
-      </Card>
-
-      <Kicker className="mt-6">{t('home.weakTopics')}</Kicker>
-      <Stack gap={2} testID="home-weak-topics" className="mt-2">
-        {SAMPLE_RESULT.actions.map((action) => (
-          <TopicRow key={action.id} action={action} onPress={() => onWeakTopic(action.id)} />
-        ))}
-      </Stack>
     </Screen>
   );
 }

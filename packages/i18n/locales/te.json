@@ -144,14 +144,15 @@
   },
   "home": {
     "greeting": "సిద్ధమా, {{name}}?",
-    "nextMock": "తర్వాతి ఫుల్ మాక్",
-    "lastScore": "గత స్కోరు",
-    "weakTopics": "బలహీన టాపిక్స్",
-    "streak": "{{count}} రోజుల స్ట్రీక్",
-    "startNow": "ఇప్పుడే మొదలుపెట్టు",
-    "examCountdown": "PWTకి {{days}} రోజులు",
     "greetingPlain": "సిద్ధమా?",
-    "outOf": "{{max}}కి"
+    "streak": "{{count}} రోజుల స్ట్రీక్",
+    "examCountdown": "PWTకి {{days}} రోజులు",
+    "studyMaterial": "స్టడీ మెటీరియల్",
+    "studyMaterialSub": "ప్రతి విభాగానికి నోట్స్",
+    "previousPapers": "గత ప్రశ్నపత్రాలు",
+    "previousPapersSub": "PWT 2022, 2018 · ప్రాక్టీస్ చేయండి లేదా చూడండి",
+    "mockTest": "మాక్ టెస్ట్",
+    "startNow": "ఇప్పుడే మొదలుపెట్టు"
   },
   "library": {
     "title": "టెస్టులు",

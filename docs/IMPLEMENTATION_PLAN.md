@@ -47,6 +47,7 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - [x] F-12 result · [x] F-13 solutions (reviewed; branch feat/F-12-13-result-solutions)
 - [x] F-02 splash/onboarding · [x] F-07 home · [x] F-08 test library · [x] F-14 profile/settings (reviewed; branch feat/F-02-07-08-14-shell)
 - [x] F-19 guest mode — the app opens on Home with no login; `useRequireAuth().ensure()` asks for phone + post + category only when an action needs an account (Start now, a library row, the Profile account rows) and returns to what was tapped, and `test/[id]` redirects a deep link through the same `gateHref` before it loads a paper; signed-out Profile keeps the app settings and offers a sign-in card (main)
+- [x] F-20 home re-layout — Home is a hub, not a report card: the last-score card and the weak-topics list are gone, replaced by three option cards in the order a candidate reaches for them (Study material → `/(tabs)/study`, Previous question papers → `/(tabs)/tests?kind=previous`, and the mock last as the only hi-vis action); the first two are ungated for guests and signed-in users alike (main)
 
 ## Phase 5 — Backend scaffold (F-17)
 - [x] FastAPI app, routers, models, Alembic initial migration, arq worker with 3 cron jobs

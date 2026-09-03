@@ -12,12 +12,17 @@ const props = {
   streakDays: 4,
   onLang: jest.fn(),
   onSignIn: jest.fn(),
+  onStudy: jest.fn(),
+  onPreviousPapers: jest.fn(),
   onStartMock: jest.fn(),
-  onWeakTopic: jest.fn(),
 };
 
 /** F-19 — nobody has signed in yet, so there is no number to greet. */
 const guest = { ...props, name: undefined, signedIn: false };
+
+/** The three ways off the screen, read in tree order. */
+const optionIds = () =>
+  screen.getAllByTestId(/^home-(study|previous|next-mock)$/).map((node) => node.props.testID);
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -45,6 +50,34 @@ describe('HomeView', () => {
     expect(screen.queryByTestId('home-signin')).toBeNull();
   });
 
+  // F-20 — read, rehearse, sit. The mock is last because the other two lead to it, and it is
+  // the only one wearing the yellow.
+  it('offers three ways on, in the order a candidate reaches for them', async () => {
+    await render(<HomeView {...props} lang="en" />);
+    expect(optionIds()).toEqual(['home-study', 'home-previous', 'home-next-mock']);
+    expect(screen.getByTestId('home-study')).toHaveTextContent(/Study material/);
+    expect(screen.getByTestId('home-previous')).toHaveTextContent(/Previous question papers/);
+    expect(screen.getByTestId('home-next-mock')).toHaveTextContent(/Mock test/);
+  });
+
+  it('gives each option its reason and a 64 px row', async () => {
+    await render(<HomeView {...props} lang="en" />);
+    const study = screen.getByTestId('home-study');
+    expect(study).toHaveTextContent(/Notes for every section/);
+    expect(study.props.className).toContain('min-h-16');
+    const previous = screen.getByTestId('home-previous');
+    expect(previous).toHaveTextContent(/PWT 2022, 2018 · practise or view/);
+    expect(previous.props.className).toContain('min-h-16');
+  });
+
+  it('opens the study shelf and the previous papers from their own rows', async () => {
+    await render(<HomeView {...props} lang="en" />);
+    await userEvent.press(screen.getByTestId('home-study'));
+    expect(props.onStudy).toHaveBeenCalledTimes(1);
+    await userEvent.press(screen.getByTestId('home-previous'));
+    expect(props.onPreviousPapers).toHaveBeenCalledTimes(1);
+  });
+
   // Pointing the screen's one hi-vis action at a locked paper would make it a dead end.
   it('pitches a full mock the candidate can actually sit', async () => {
     await render(<HomeView {...props} lang="en" />);
@@ -59,29 +92,20 @@ describe('HomeView', () => {
     expect(screen.getByTestId('home-streak').props.accessibilityRole).toBeUndefined();
   });
 
-  it('gives each weak topic its reason and a 64 px row', async () => {
-    await render(<HomeView {...props} lang="en" />);
-    const row = screen.getByTestId('home-topic-drill-blood');
-    expect(row).toHaveTextContent(/12 minutes · 3 wrong yesterday/);
-    expect(row.props.className).toContain('min-h-16');
-  });
-
   it('starts the mock from the single primary action', async () => {
     await render(<HomeView {...props} lang="en" />);
     await userEvent.press(screen.getByTestId('home-start'));
     expect(props.onStartMock).toHaveBeenCalledTimes(1);
   });
 
-  it('renders the last score and its verdict', async () => {
+  // F-20 dropped both: a score with nothing behind it, and a topic list nothing yet feeds.
+  it('no longer reports a last score or a weak-topics list', async () => {
     await render(<HomeView {...props} lang="en" />);
-    expect(screen.getByTestId('home-score')).toHaveTextContent(iso('62.25'));
-    expect(screen.getByText('Qualified')).toBeOnTheScreen();
-  });
-
-  it('opens a weak topic', async () => {
-    await render(<HomeView {...props} lang="en" />);
-    await userEvent.press(screen.getByTestId('home-topic-drill-blood'));
-    expect(props.onWeakTopic).toHaveBeenCalledWith('drill-blood');
+    expect(screen.queryByTestId('home-last-score')).toBeNull();
+    expect(screen.queryByTestId('home-score')).toBeNull();
+    expect(screen.queryByTestId('home-weak-topics')).toBeNull();
+    expect(screen.queryByText('Last score')).toBeNull();
+    expect(screen.queryByText('Weak topics')).toBeNull();
   });
 
   it('switches language from the header', async () => {
@@ -100,8 +124,8 @@ describe('HomeView (guest)', () => {
   it('greets nobody in particular and shows the whole screen anyway', async () => {
     await render(<HomeView {...guest} lang="en" />);
     expect(screen.getByTestId('home-greeting')).toHaveTextContent('Ready?');
-    expect(screen.getByTestId('home-next-mock')).toBeOnTheScreen();
-    expect(screen.getByTestId('home-weak-topics')).toBeOnTheScreen();
+    expect(screen.getByTestId('home-options')).toBeOnTheScreen();
+    expect(optionIds()).toEqual(['home-study', 'home-previous', 'home-next-mock']);
   });
 
   it('puts a quiet way in beside the language switcher', async () => {
@@ -114,6 +138,14 @@ describe('HomeView (guest)', () => {
     expect(chip.props.className).toContain('h-touch');
     await userEvent.press(chip);
     expect(guest.onSignIn).toHaveBeenCalledTimes(1);
+  });
+
+  it('lets a guest into both shelves without asking for anything', async () => {
+    await render(<HomeView {...guest} lang="en" />);
+    await userEvent.press(screen.getByTestId('home-study'));
+    await userEvent.press(screen.getByTestId('home-previous'));
+    expect(guest.onStudy).toHaveBeenCalledTimes(1);
+    expect(guest.onPreviousPapers).toHaveBeenCalledTimes(1);
   });
 
   it('still starts the mock — the gate lives behind the press, not in front of it', async () => {
@@ -136,12 +168,25 @@ describe('HomeView (ur)', () => {
     });
   });
 
-  it('mirrors the header, keeps the score LTR, and matches the snapshot', async () => {
+  it('mirrors the header, keeps the count LTR, and matches the snapshot', async () => {
     await render(<HomeView {...props} lang="ur" />);
     expect(screen.getByTestId('home-header')).toHaveStyle({ flexDirection: 'row-reverse' });
+    expect(screen.getByTestId('home-mock-questions')).toHaveStyle({
+      flexDirection: 'row-reverse',
+    });
     expect(screen.getByText('پی ڈبلیو ٹی فل ماک 07')).toBeOnTheScreen();
-    expect(screen.getByTestId('home-score')).toHaveStyle({ fontFamily: 'Archivo_700Bold' });
+    expect(screen.getByText(iso('40'))).toHaveStyle({ fontFamily: 'Archivo_600SemiBold' });
     expect(screen.toJSON()).toMatchSnapshot();
+  });
+
+  it('mirrors the option rows and keeps the chevron in the Latin face', async () => {
+    await render(<HomeView {...props} lang="ur" />);
+    expect(screen.getByTestId('home-study')).toHaveTextContent(/اسٹڈی میٹریل/);
+    // Nastaliq has no U+2039, so the mirrored chevron has to render in Archivo or it is tofu.
+    // Hidden from the a11y tree on purpose, so the query has to ask for it explicitly.
+    const chevrons = screen.getAllByText('‹', { includeHiddenElements: true });
+    expect(chevrons.length).toBe(2);
+    expect(chevrons[0]).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
   });
 
   // The guest header carries one more control, so it has to mirror with the rest of the row.

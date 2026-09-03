@@ -144,14 +144,15 @@
   },
   "home": {
     "greeting": "تیار ہیں، {{name}}؟",
-    "nextMock": "اگلا فل ماک",
-    "lastScore": "پچھلا اسکور",
-    "weakTopics": "کمزور موضوعات",
-    "streak": "{{count}} دن کا سلسلہ",
-    "startNow": "ابھی شروع کریں",
-    "examCountdown": "پی ڈبلیو ٹی میں {{days}} دن",
     "greetingPlain": "تیار ہیں؟",
-    "outOf": "{{max}} میں سے"
+    "streak": "{{count}} دن کا سلسلہ",
+    "examCountdown": "پی ڈبلیو ٹی میں {{days}} دن",
+    "studyMaterial": "اسٹڈی میٹریل",
+    "studyMaterialSub": "ہر سیکشن کے نوٹس",
+    "previousPapers": "گزشتہ سوالیہ پرچے",
+    "previousPapersSub": "پی ڈبلیو ٹی 2022، 2018 · مشق کریں یا دیکھیں",
+    "mockTest": "ماک ٹیسٹ",
+    "startNow": "ابھی شروع کریں"
   },
   "library": {
     "title": "ٹیسٹ",

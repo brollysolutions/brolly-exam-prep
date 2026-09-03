@@ -12,7 +12,7 @@ import { Kicker, Stack, Text } from '@/ui';
 const DEV = {
   shell: 'App shell (F-02 / F-07 / F-08 / F-14)',
   welcome: 'WelcomeView — slide 1 of 3',
-  home: 'HomeView — signed in, 45 days out',
+  home: 'HomeView — signed in, 45 days out, three options (F-20)',
   homeGuest: 'HomeView — guest, sign-in in the header (F-19)',
   library: 'LibraryView — full mocks',
   profile: 'ProfileView — reminders on',
@@ -70,8 +70,9 @@ export function ShellStates({ index }: { index: string }) {
           daysToExam={45}
           streakDays={4}
           onSignIn={noop}
+          onStudy={noop}
+          onPreviousPapers={noop}
           onStartMock={noop}
-          onWeakTopic={noop}
         />
       </Preview>
       <Preview label={DEV.homeGuest}>
@@ -82,8 +83,9 @@ export function ShellStates({ index }: { index: string }) {
           daysToExam={45}
           streakDays={4}
           onSignIn={noop}
+          onStudy={noop}
+          onPreviousPapers={noop}
           onStartMock={noop}
-          onWeakTopic={noop}
         />
       </Preview>
       <Preview label={DEV.library}>

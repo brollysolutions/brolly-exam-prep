@@ -54,11 +54,18 @@ describe('HomeRoute (guest)', () => {
     });
   });
 
-  // The shelf is readable by anyone; the paper picked off it is what asks for an account.
-  it('lets a weak-topic row through to the shelf without asking for anything', async () => {
+  // Reading is not something to sign in for: both shelves open with no account behind them.
+  it('lets the study row through without asking for anything', async () => {
     await render(<HomeRoute />);
-    await userEvent.press(screen.getByTestId('home-topic-drill-blood'));
-    expect(mockRouter.navigate).toHaveBeenCalledWith('/(tabs)/tests');
+    await userEvent.press(screen.getByTestId('home-study'));
+    expect(mockRouter.navigate).toHaveBeenCalledWith('/(tabs)/study');
+    expect(mockRouter.push).not.toHaveBeenCalled();
+  });
+
+  it('lets the previous-papers row through, on the shelf it means', async () => {
+    await render(<HomeRoute />);
+    await userEvent.press(screen.getByTestId('home-previous'));
+    expect(mockRouter.navigate).toHaveBeenCalledWith('/(tabs)/tests?kind=previous');
     expect(mockRouter.push).not.toHaveBeenCalled();
   });
 });
@@ -79,9 +86,9 @@ describe('HomeRoute (signed in)', () => {
     expect(mockRouter.push).toHaveBeenCalledWith('/test/mock-07');
   });
 
-  it('re-enters the Tests tab rather than stacking another copy of it', async () => {
+  it('re-enters a tab rather than stacking another copy of it', async () => {
     await render(<HomeRoute />);
-    await userEvent.press(screen.getByTestId('home-topic-drill-blood'));
-    expect(mockRouter.navigate).toHaveBeenCalledWith('/(tabs)/tests');
+    await userEvent.press(screen.getByTestId('home-previous'));
+    expect(mockRouter.navigate).toHaveBeenCalledWith('/(tabs)/tests?kind=previous');
   });
 });

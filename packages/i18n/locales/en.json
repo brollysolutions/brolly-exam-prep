@@ -144,14 +144,15 @@
   },
   "home": {
     "greeting": "Ready, {{name}}?",
-    "nextMock": "Next full mock",
-    "lastScore": "Last score",
-    "weakTopics": "Weak topics",
-    "streak": "{{count}}-day streak",
-    "startNow": "Start now",
-    "examCountdown": "{{days}} days to PWT",
     "greetingPlain": "Ready?",
-    "outOf": "out of {{max}}"
+    "streak": "{{count}}-day streak",
+    "examCountdown": "{{days}} days to PWT",
+    "studyMaterial": "Study material",
+    "studyMaterialSub": "Notes for every section",
+    "previousPapers": "Previous question papers",
+    "previousPapersSub": "PWT 2022, 2018 · practise or view",
+    "mockTest": "Mock test",
+    "startNow": "Start now"
   },
   "library": {
     "title": "Tests",
