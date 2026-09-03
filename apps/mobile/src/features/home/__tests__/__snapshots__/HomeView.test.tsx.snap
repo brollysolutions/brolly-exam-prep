@@ -1573,7 +1573,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                         }
                       }
                     >
-                      جسمانی امتحان
+                      PMT / PET
                     </Text>
                   </View>
                   <Text
@@ -1868,7 +1868,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
             }
           }
         >
-          پی ایم ٹی / پی ای ٹی
+          PMT / PET
         </Text>
         <Text
           className="text-chalk mt-2"
