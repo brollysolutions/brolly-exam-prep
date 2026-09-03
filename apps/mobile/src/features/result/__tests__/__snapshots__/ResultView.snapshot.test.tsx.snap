@@ -905,7 +905,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
         >
           <Text
             accessibilityElementsHidden={true}
-            className="text-dim"
+            className="text-chalk"
             importantForAccessibility="no"
             style={
               {
@@ -1038,7 +1038,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                 "selected": true,
               }
             }
-            className="items-center justify-center border rounded-xs h-chip px-3 bg-hivis border-hivis"
+            className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 bg-hivis border-hivis"
             testID="result-qualified"
           >
             <Text

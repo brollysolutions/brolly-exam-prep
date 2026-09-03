@@ -924,7 +924,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
         </View>
         <View
           accessibilityRole="radiogroup"
-          className="h-touch self-start overflow-hidden rounded-sm border border-line"
+          className="h-touch overflow-hidden rounded-sm border border-line self-start"
           style={
             {
               "alignItems": undefined,
@@ -957,7 +957,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+            className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1009,7 +1009,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+            className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1061,7 +1061,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-2 bg-hivis"
+            className="h-full min-w-touch items-center justify-center px-3 bg-hivis"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1186,7 +1186,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs h-touch px-4 border-line"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -1240,7 +1240,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs h-touch px-4 bg-hivis border-hivis"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 bg-hivis border-hivis"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -1294,7 +1294,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs h-touch px-4 border-line"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -1348,7 +1348,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs h-touch px-4 border-line"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line"
             collapsable={false}
             focusable={true}
             hitSlop={0}

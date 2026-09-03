@@ -905,7 +905,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
         >
           <Text
             accessibilityElementsHidden={true}
-            className="text-dim"
+            className="text-chalk"
             importantForAccessibility="no"
             style={
               {
@@ -975,7 +975,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
             }
           }
           accessible={true}
-          className="items-center justify-center border rounded-xs h-chipMd px-4 bg-hivis border-hivis"
+          className="items-center justify-center border rounded-xs min-h-chipMd py-1.5 px-4 bg-hivis border-hivis"
           collapsable={false}
           focusable={true}
           hitSlop={4}
@@ -1061,7 +1061,7 @@ exports[`SolutionsView (ur) mirrors the screen and matches the snapshot 1`] = `
             }
           }
           accessible={true}
-          className="items-center justify-center border rounded-xs h-chipMd px-4 border-line"
+          className="items-center justify-center border rounded-xs min-h-chipMd py-1.5 px-4 border-line"
           collapsable={false}
           focusable={true}
           hitSlop={4}

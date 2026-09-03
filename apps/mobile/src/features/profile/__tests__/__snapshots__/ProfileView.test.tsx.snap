@@ -1211,7 +1211,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
               </Text>
               <View
                 accessibilityRole="radiogroup"
-                className="h-touch self-start overflow-hidden rounded-sm border border-line"
+                className="h-touch overflow-hidden rounded-sm border border-line self-start"
                 style={
                   {
                     "alignItems": undefined,
@@ -1244,7 +1244,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                     }
                   }
                   accessible={true}
-                  className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+                  className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
                   collapsable={false}
                   focusable={true}
                   onBlur={[Function]}
@@ -1296,7 +1296,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                     }
                   }
                   accessible={true}
-                  className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+                  className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
                   collapsable={false}
                   focusable={true}
                   onBlur={[Function]}
@@ -1348,7 +1348,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                     }
                   }
                   accessible={true}
-                  className="h-full min-w-touch items-center justify-center px-2 bg-hivis"
+                  className="h-full min-w-touch items-center justify-center px-3 bg-hivis"
                   collapsable={false}
                   focusable={true}
                   onBlur={[Function]}

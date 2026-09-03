@@ -955,7 +955,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
         </View>
         <View
           accessibilityRole="radiogroup"
-          className="h-touch self-start overflow-hidden rounded-sm border border-line"
+          className="h-touch overflow-hidden rounded-sm border border-line self-start"
           style={
             {
               "alignItems": undefined,
@@ -988,7 +988,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+            className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1040,7 +1040,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-2 border-line border-l"
+            className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1092,7 +1092,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-2 bg-hivis"
+            className="h-full min-w-touch items-center justify-center px-3 bg-hivis"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}

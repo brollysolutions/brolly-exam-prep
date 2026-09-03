@@ -905,7 +905,7 @@ exports[`PaperView (ur) mirrors the screen and moves the correct-answer bar to t
         >
           <Text
             accessibilityElementsHidden={true}
-            className="text-dim"
+            className="text-chalk"
             importantForAccessibility="no"
             style={
               {
@@ -1028,7 +1028,7 @@ exports[`PaperView (ur) mirrors the screen and moves the correct-answer bar to t
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs h-touch px-4 border-line"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -1082,7 +1082,7 @@ exports[`PaperView (ur) mirrors the screen and moves the correct-answer bar to t
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs h-touch px-4 border-line"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line"
             collapsable={false}
             focusable={true}
             hitSlop={0}

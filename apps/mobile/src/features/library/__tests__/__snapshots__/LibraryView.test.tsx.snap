@@ -903,7 +903,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
           }
         }
         accessible={true}
-        className="items-center justify-center border rounded-xs h-touch px-4 bg-hivis border-hivis"
+        className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 bg-hivis border-hivis"
         collapsable={false}
         focusable={true}
         hitSlop={0}
@@ -957,7 +957,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
           }
         }
         accessible={true}
-        className="items-center justify-center border rounded-xs h-touch px-4 border-line"
+        className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line"
         collapsable={false}
         focusable={true}
         hitSlop={0}
@@ -1011,7 +1011,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
           }
         }
         accessible={true}
-        className="items-center justify-center border rounded-xs h-touch px-4 border-line"
+        className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line"
         collapsable={false}
         focusable={true}
         hitSlop={0}
@@ -1388,7 +1388,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                       "selected": false,
                     }
                   }
-                  className="items-center justify-center border rounded-xs h-chip px-3 border-line"
+                  className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line"
                   testID="library-best-mock-07"
                 >
                   <View
@@ -1447,7 +1447,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                       "selected": false,
                     }
                   }
-                  className="items-center justify-center border rounded-xs h-chip px-3 border-line"
+                  className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line"
                   testID="library-badge-mock-07"
                 >
                   <Text
@@ -1696,7 +1696,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                       "selected": false,
                     }
                   }
-                  className="items-center justify-center border rounded-xs h-chip px-3 border-line"
+                  className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line"
                   testID="library-badge-mock-08"
                 >
                   <View
