@@ -5,6 +5,7 @@ import {
   standardsFor,
   type Gender,
   type Post,
+  type StandardKey,
   type StandardsGroup,
 } from '@tslprb/fixtures';
 
@@ -16,6 +17,9 @@ const every = (fn: (post: Post, gender: Gender, group: StandardsGroup) => void) 
   POSTS.forEach((post) =>
     GENDERS.forEach((gender) => GROUPS.forEach((group) => fn(post, gender, group))),
   );
+
+const keys = (post: Post, gender: Gender, group: StandardsGroup): StandardKey[] =>
+  standardEntries(standardsFor(post, gender, group)).map((e) => e.key);
 
 describe('physical standards table', () => {
   it('answers for every post × gender × category group', () => {
@@ -38,7 +42,7 @@ describe('physical standards table', () => {
   it('reads the runs as limits and the rest as floors', () => {
     every((post, gender, group) => {
       standardEntries(standardsFor(post, gender, group)).forEach(({ key, standard }) => {
-        expect(standard.dir).toBe(key === 'run800m' || key === 'run100m' ? 'max' : 'min');
+        expect(standard.dir).toBe(key.startsWith('run') ? 'max' : 'min');
         expect(standard.value).toBeGreaterThan(0);
       });
     });
@@ -61,17 +65,118 @@ describe('physical standards table', () => {
       );
     });
   });
+});
 
-  /**
-   * The table is seeded from secondary reporting, so this is a reminder rather than a
-   * requirement: nothing is fully confirmed yet, and the screen carries the disclaimer that
-   * says so. When someone checks the notification PDF and flips these to `verified: true`,
-   * this expectation is the line to update.
-   */
-  it('is still awaiting confirmation against the notification', () => {
-    every((post, gender, group) => {
-      expect(allVerified(standardsFor(post, gender, group))).toBe(false);
+describe('physical standards — the events per post', () => {
+  // The Constable PET is three events: one run, the long jump and the shot put. The 100 m is
+  // an SI event and must never be asked of a constable applicant.
+  it('runs a constable man over 1600 m and nothing else', () => {
+    GROUPS.forEach((group) => {
+      expect(keys('pc', 'male', group)).toEqual([
+        'height',
+        'chest',
+        'chestExpansion',
+        'run1600m',
+        'longJump',
+        'shotPut',
+      ]);
     });
-    expect(PHYSICAL_STANDARDS.pc.male.general.height.verified).toBe(true);
+  });
+
+  it('runs a constable woman over 800 m and nothing else', () => {
+    GROUPS.forEach((group) => {
+      expect(keys('pc', 'female', group)).toEqual(['height', 'run800m', 'longJump', 'shotPut']);
+    });
+  });
+
+  it('keeps the 100 m off every constable row', () => {
+    GENDERS.forEach((gender) =>
+      GROUPS.forEach((group) => {
+        expect(standardsFor('pc', gender, group).run100m).toBeUndefined();
+        expect(keys('pc', gender, group)).not.toContain('run100m');
+      }),
+    );
+  });
+
+  it('runs an SI applicant over both 100 m and 800 m, never 1600 m', () => {
+    GENDERS.forEach((gender) =>
+      GROUPS.forEach((group) => {
+        const k = keys('si', gender, group);
+        expect(k).toContain('run100m');
+        expect(k).toContain('run800m');
+        expect(k).not.toContain('run1600m');
+      }),
+    );
+  });
+
+  it('lists the events in measuring order', () => {
+    expect(keys('si', 'male', 'general')).toEqual([
+      'height',
+      'chest',
+      'chestExpansion',
+      'run800m',
+      'run100m',
+      'longJump',
+      'shotPut',
+    ]);
+  });
+});
+
+describe('physical standards — the figures', () => {
+  it('holds a constable man to the 2022 notification', () => {
+    const s = PHYSICAL_STANDARDS.pc.male.general;
+    expect(s.height.value).toBe(167.6);
+    expect(s.chest?.unexpanded.value).toBe(86.3);
+    expect(s.chest?.expansion.value).toBe(5);
+    expect(s.run1600m?.value).toBe(435);
+    expect(s.longJump.value).toBe(4);
+    expect(s.shotPut.value).toBe(6);
+    expect(s.shotKg).toBe(7.26);
+  });
+
+  it('holds a constable woman to the 2022 notification', () => {
+    const s = PHYSICAL_STANDARDS.pc.female.general;
+    expect(s.height.value).toBe(152.5);
+    expect(s.run800m?.value).toBe(320);
+    expect(s.longJump.value).toBe(2.5);
+    expect(s.shotPut.value).toBe(4);
+    expect(s.shotKg).toBe(4);
+  });
+
+  it('relaxes the height and the chest for ST / agency-area candidates', () => {
+    expect(PHYSICAL_STANDARDS.pc.male.st.height.value).toBe(160);
+    expect(PHYSICAL_STANDARDS.pc.female.st.height.value).toBe(150);
+    expect(PHYSICAL_STANDARDS.pc.male.st.chest?.unexpanded.value).toBe(80);
+    expect(PHYSICAL_STANDARDS.pc.male.st.chest?.expansion.value).toBe(3);
+  });
+});
+
+describe('physical standards — what is confirmed', () => {
+  it('confirms every constable figure except the ST chest', () => {
+    expect(allVerified(PHYSICAL_STANDARDS.pc.male.general)).toBe(true);
+    expect(allVerified(PHYSICAL_STANDARDS.pc.female.general)).toBe(true);
+    expect(allVerified(PHYSICAL_STANDARDS.pc.female.st)).toBe(true);
+
+    const st = PHYSICAL_STANDARDS.pc.male.st;
+    expect(allVerified(st)).toBe(false);
+    expect(st.height.verified).toBe(true);
+    expect(st.chest?.unexpanded.verified).toBe(false);
+    expect(st.chest?.expansion.verified).toBe(false);
+    expect(st.run1600m?.verified).toBe(true);
+    expect(st.longJump.verified).toBe(true);
+    expect(st.shotPut.verified).toBe(true);
+  });
+
+  // The sources disagree about the SI events, so nothing on an SI row may claim to be confirmed
+  // until the notification PDF has been read: the screen tags every one of these.
+  it('confirms nothing for SI', () => {
+    GENDERS.forEach((gender) =>
+      GROUPS.forEach((group) => {
+        expect(allVerified(standardsFor('si', gender, group))).toBe(false);
+        standardEntries(standardsFor('si', gender, group)).forEach(({ standard }) => {
+          expect(standard.verified).toBe(false);
+        });
+      }),
+    );
   });
 });

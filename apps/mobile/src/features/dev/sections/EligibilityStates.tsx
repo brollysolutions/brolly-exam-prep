@@ -14,27 +14,27 @@ import { Kicker, Stack, Text } from '@/ui';
 const DEV = {
   title: 'PMT / PET eligibility',
   eligible: 'F-25 — every standard met (constable, men, general)',
-  notYet: 'F-25 — short on height and the 800 m (constable, men, general)',
-  incomplete: 'F-25 — half a form, nothing failing yet (SI, women, ST)',
+  notYet: 'F-25 — short on height and the 1600 m (constable, men, general)',
+  stChest: 'F-25 — ST chest relaxation tagged unconfirmed (constable, men, ST)',
+  incomplete: 'F-25 — half a form, SI note and every row tagged unconfirmed (SI, women, ST)',
 } as const;
 
 const FRAME_HEIGHT = 560;
 
-/** A man who clears everything, including the boundary height exactly. */
+/** A constable man who clears everything, including the boundary height exactly. */
 const PASSING: MeasureValues = {
   height: '167.6',
   chest: '88',
   chestExpansion: '5',
-  run800m: '162',
-  run100m: '14.2',
+  run1600m: '425',
   longJump: '4.1',
   shotPut: '6.2',
 };
 
-/** The same man 8 cm shorter and 20 seconds slower. */
-const FAILING: MeasureValues = { ...PASSING, height: '159.5', run800m: '190' };
+/** The same man 8 cm shorter and 25 seconds slower. */
+const FAILING: MeasureValues = { ...PASSING, height: '159.5', run1600m: '460' };
 
-/** Two answers in, five to go. */
+/** Two answers in, three to go (an SI woman has no chest rows). */
 const PARTIAL: MeasureValues = { height: '155', run100m: '15.5' };
 
 function Frame({ label, children }: { label: string; children: ReactNode }) {
@@ -95,6 +95,7 @@ export function EligibilityStates({ index }: { index: string }) {
       </Kicker>
       <Preview label={DEV.eligible} post="pc" gender="male" group="general" values={PASSING} />
       <Preview label={DEV.notYet} post="pc" gender="male" group="general" values={FAILING} />
+      <Preview label={DEV.stChest} post="pc" gender="male" group="st" values={PASSING} />
       <Preview label={DEV.incomplete} post="si" gender="female" group="st" values={PARTIAL} />
     </Stack>
   );

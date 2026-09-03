@@ -7,11 +7,10 @@ import { useLangStore } from '@/data/lang';
 import { EligibilityView } from '../EligibilityView';
 import { evaluate, toInput, type MeasureValues } from '../evaluate';
 
-/** A woman one centimetre short: one failing row, one banner, five rows to mirror. */
+/** A constable woman one centimetre short: one failing row, one banner, four rows to mirror. */
 const VALUES: MeasureValues = {
   height: '151',
-  run800m: '190',
-  run100m: '15',
+  run800m: '300',
   longJump: '3',
   shotPut: '4.5',
 };
@@ -19,6 +18,14 @@ const VALUES: MeasureValues = {
 const RESULT = evaluate(
   toInput('pc', 'female', 'general', VALUES),
   standardsFor('pc', 'female', 'general'),
+);
+
+/** An SI woman: every figure unconfirmed, so every row carries the tag and the note shows. */
+const SI_VALUES: MeasureValues = { height: '158', run800m: '190', run100m: '15' };
+
+const SI_RESULT = evaluate(
+  toInput('si', 'female', 'general', SI_VALUES),
+  standardsFor('si', 'female', 'general'),
 );
 
 const noop = () => {};
@@ -67,6 +74,33 @@ describe('EligibilityView (ur)', () => {
     );
     expect(screen.getByTestId('eligibility-improve-height')).toBeOnTheScreen();
 
+    // Every constable figure is confirmed: no tag, no SI note.
+    expect(screen.queryByText(i18n.t('eligibility.unverified'))).toBeNull();
+    expect(screen.queryByTestId('eligibility-si-note')).toBeNull();
+
     expect(screen.toJSON()).toMatchSnapshot();
+  });
+
+  it('carries the unconfirmed tag and the SI note in Urdu', async () => {
+    await render(
+      <EligibilityView
+        post="si"
+        gender="female"
+        group="general"
+        values={SI_VALUES}
+        result={SI_RESULT}
+        onPost={noop}
+        onGender={noop}
+        onGroup={noop}
+        onChange={noop}
+        onCheck={noop}
+        onBack={noop}
+      />,
+    );
+    expect(screen.getByTestId('eligibility-si-note')).toHaveTextContent(
+      i18n.t('eligibility.siUnverified'),
+    );
+    expect(screen.getAllByText(i18n.t('eligibility.unverified'))).toHaveLength(5);
+    expect(screen.getByTestId('eligibility-unverified-run100m')).toBeOnTheScreen();
   });
 });

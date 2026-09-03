@@ -250,6 +250,7 @@
     "height": "Height",
     "chest": "Chest (unexpanded)",
     "chestExpansion": "Chest expansion",
+    "run1600": "⁦1600⁩ m run",
     "run800": "\u2066800\u2069 m run",
     "run100": "\u2066100\u2069 m run",
     "longJump": "Long jump",
@@ -267,6 +268,8 @@
     "cm": "cm",
     "m": "m",
     "s": "sec",
+    "unverified": "Unconfirmed",
+    "siUnverified": "SI figures are not yet confirmed against the notification.",
     "disclaimer": "Standards as per the \u20662022\u2069 notification; confirm with the latest TSLPRB notification."
   }
 }
