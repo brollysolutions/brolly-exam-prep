@@ -5,7 +5,7 @@ import LibraryRoute from '@/app/(tabs)/tests';
 import { useSessionStore } from '@/data/session';
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), navigate: jest.fn(), back: jest.fn() };
-/** The `?kind=` Home links with; reassigned per test. */
+/** The `?kind=` Home and the study topics link with; reassigned per test. */
 let mockParams: { kind?: string } = {};
 
 jest.mock('expo-router', () => ({
@@ -18,8 +18,8 @@ beforeAll(() => {
 });
 
 beforeEach(() => {
-  jest.clearAllMocks();
   mockParams = {};
+  jest.clearAllMocks();
   useSessionStore.getState().logout();
 });
 
@@ -51,6 +51,14 @@ describe('LibraryRoute', () => {
     mockParams = { kind: 'previous' };
     await render(<LibraryRoute />);
     expect(screen.getByTestId('library-row-prev-2022')).toBeOnTheScreen();
+    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+  });
+
+  // F-21 sends a reader here with `?kind=sectional`; the shelf has to follow that link too.
+  it('opens on the sectional shelf when the link asks for it', async () => {
+    mockParams = { kind: 'sectional' };
+    await render(<LibraryRoute />);
+    expect(screen.getByTestId('library-row-sec-seating')).toBeOnTheScreen();
     expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
   });
 

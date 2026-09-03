@@ -17,8 +17,12 @@ function asKind(value: string | string[] | undefined): TestKind | undefined {
 
 /** F-08 — the test library. Readable as a guest; sitting a paper is what asks for an account. */
 export default function LibraryRoute() {
-  const lang = useLangStore((s) => s.lang);
+  // `?kind=previous` from Home's card (F-20), `?kind=sectional` from a study topic sending you
+  // here to drill its section (F-21). The Tests tab is already mounted when either links to it,
+  // so a *changed* shelf has to move the list too — `LibraryView` watches `initialKind` and
+  // adjusts its own state, which keeps the scroll position a remount would throw away.
   const { kind } = useLocalSearchParams<{ kind?: string }>();
+  const lang = useLangStore((s) => s.lang);
   const { ensure } = useRequireAuth();
   const router = useRouter();
   // A locked paper never reaches `onOpen`: `LibraryView` answers that tap with its own toast,

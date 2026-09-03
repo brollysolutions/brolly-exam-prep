@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react-native';
 import { colors, size } from '@tslprb/design-tokens';
-import { act } from 'react';
+import { act, type ReactNode } from 'react';
 import { initI18n, setLanguage, type Lang } from '@tslprb/i18n';
 
 import TabsLayout from '@/app/(tabs)/_layout';
@@ -8,17 +8,27 @@ import TabsLayout from '@/app/(tabs)/_layout';
 const BOTTOM_INSET = 34;
 
 let options: Record<string, unknown> = {};
+let mockScreens: { name: string; options: Record<string, unknown> }[] = [];
 
 /**
  * `Tabs` needs a navigation container to render for real. The screen options are the whole
  * subject here, so the navigator is replaced with a probe that records them.
  */
 jest.mock('expo-router/js-tabs', () => {
-  function Tabs({ screenOptions }: { screenOptions: Record<string, unknown> }) {
+  function Tabs({
+    screenOptions,
+    children,
+  }: {
+    screenOptions: Record<string, unknown>;
+    children?: ReactNode;
+  }) {
     options = screenOptions;
-    return null;
+    // The children ARE rendered, so each `Tabs.Screen` can record the tab it declares —
+    // the bar's contents and its order are as much the subject here as its styling.
+    return children;
   }
-  function Screen() {
+  function Screen({ name, options: o }: { name: string; options: Record<string, unknown> }) {
+    mockScreens.push({ name, options: o });
     return null;
   }
   Tabs.Screen = Screen;
@@ -36,9 +46,29 @@ beforeAll(() => {
   initI18n('en');
 });
 
+beforeEach(() => {
+  mockScreens = [];
+});
+
 afterAll(async () => {
   await act(async () => {
     await setLanguage('en');
+  });
+});
+
+describe('the tabs themselves', () => {
+  it('carries four tabs, with Study between Home and Tests', async () => {
+    await render(<TabsLayout />);
+    expect(mockScreens.map((s) => s.name)).toEqual(['index', 'study', 'tests', 'profile']);
+    expect(mockScreens.map((s) => s.options.title)).toEqual(['Home', 'Study', 'Tests', 'Profile']);
+  });
+
+  it('gives every tab a testID and an icon', async () => {
+    await render(<TabsLayout />);
+    for (const s of mockScreens) {
+      expect(s.options.tabBarButtonTestID).toBe(`tab-${s.name}`);
+      expect(typeof s.options.tabBarIcon).toBe('function');
+    }
   });
 });
 
