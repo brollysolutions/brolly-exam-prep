@@ -54,13 +54,12 @@ describe('HomeRoute (guest)', () => {
     });
   });
 
-  it('gates a weak-topic drill too', async () => {
+  // The shelf is readable by anyone; the paper picked off it is what asks for an account.
+  it('lets a weak-topic row through to the shelf without asking for anything', async () => {
     await render(<HomeRoute />);
     await userEvent.press(screen.getByTestId('home-topic-drill-blood'));
-    expect(mockRouter.push).toHaveBeenCalledWith({
-      pathname: '/(auth)/login',
-      params: { returnTo: '/(tabs)/tests' },
-    });
+    expect(mockRouter.navigate).toHaveBeenCalledWith('/(tabs)/tests');
+    expect(mockRouter.push).not.toHaveBeenCalled();
   });
 });
 

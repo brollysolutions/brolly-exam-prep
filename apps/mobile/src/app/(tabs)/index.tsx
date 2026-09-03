@@ -1,3 +1,5 @@
+import { useRouter } from 'expo-router';
+
 import { useLangStore } from '@/data/lang';
 import { useRequireAuth } from '@/data/requireAuth';
 import { useSessionStore } from '@/data/session';
@@ -12,6 +14,7 @@ const elide = (phone?: string) => (phone && phone.length >= 4 ? `…${phone.slic
 
 /** F-07 — home. Open to guests; the actions on it collect an account when they need one. */
 export default function HomeRoute() {
+  const router = useRouter();
   const lang = useLangStore((s) => s.lang);
   const setLang = useLangStore((s) => s.setLang);
   const phone = useSessionStore((s) => s.phone);
@@ -29,8 +32,9 @@ export default function HomeRoute() {
       onSignIn={() => ensure('/(tabs)')}
       // The paper the card is pitching — never an id repeated by hand (F-09 owns `test/[id]`).
       onStartMock={() => ensure(`/test/${NEXT_MOCK.id}`)}
-      // `navigate`, not `push`: a tab is a place you go back to, not a card you stack.
-      onWeakTopic={() => ensure('/(tabs)/tests', 'navigate')}
+      // Ungated, and `navigate` rather than `push`: a topic row only moves you to the shelf,
+      // which is readable by anyone — the paper you pick there is what asks for an account.
+      onWeakTopic={() => router.navigate('/(tabs)/tests')}
     />
   );
 }
