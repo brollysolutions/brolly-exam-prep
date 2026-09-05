@@ -1,7 +1,6 @@
 services:
   postgres:
     image: postgres:17-alpine
-    profiles: [dev]
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-tslprb}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-tslprb}
@@ -18,9 +17,8 @@ services:
 
   redis:
     image: redis:7-alpine
-    profiles: [dev]
     ports:
-      - "6379:6379"
+      - "${REDIS_HOST_PORT:-6379}:6379"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
@@ -30,7 +28,6 @@ services:
   api:
     build:
       context: services/api
-    profiles: [dev]
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
     env_file:
       - path: services/api/.env
@@ -39,8 +36,9 @@ services:
       DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://tslprb:tslprb@postgres:5432/tslprb}
       REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
       OTP_DEV_MODE: ${OTP_DEV_MODE:-true}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3201,http://localhost:8081,http://localhost:19006}
     ports:
-      - "${API_HOST_PORT:-8000}:8000"
+      - "${API_HOST_PORT:-8200}:8000"
     volumes:
       - ./services/api/app:/app/app
       - ./services/api/alembic:/app/alembic
@@ -50,11 +48,16 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\" || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
 
   worker:
     build:
       context: services/api
-    profiles: [dev]
     command: arq app.worker.WorkerSettings
     env_file:
       - path: services/api/.env
@@ -71,6 +74,25 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/mobile/Dockerfile
+      args:
+        EXPO_PUBLIC_API: ${EXPO_PUBLIC_API:-http}
+        EXPO_PUBLIC_API_URL: ${EXPO_PUBLIC_API_URL:-http://localhost:8200}
+    ports:
+      - "${WEB_HOST_PORT:-3201}:80"
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost/ || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
 
 volumes:
   tslprb_pgdata:
