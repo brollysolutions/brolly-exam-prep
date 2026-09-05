@@ -545,11 +545,6 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                 }
               >
                 <View
-                  accessibilityState={
-                    {
-                      "selected": false,
-                    }
-                  }
                   className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-outline"
                   testID="library-best-mock-07"
                 >
@@ -604,11 +599,6 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                   </View>
                 </View>
                 <View
-                  accessibilityState={
-                    {
-                      "selected": false,
-                    }
-                  }
                   className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-outline"
                   testID="library-badge-mock-07"
                 >
@@ -853,11 +843,6 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                 }
               >
                 <View
-                  accessibilityState={
-                    {
-                      "selected": false,
-                    }
-                  }
                   className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-outline"
                   testID="library-badge-mock-08"
                 >

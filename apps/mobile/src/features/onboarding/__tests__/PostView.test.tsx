@@ -30,19 +30,22 @@ describe('PostView', () => {
     expect(screen.queryByTestId('post-back')).toBeNull();
   });
 
-  it('marks only the chosen card as selected', async () => {
+  // One of a set: the cards report `radio` with a checked state, not a button with a
+  // selected one (design review D18).
+  it('marks only the chosen card as checked', async () => {
     await render(<PostView onSubmit={jest.fn()} />);
     await userEvent.press(screen.getByTestId('post-card-si'));
-    expect(screen.getByTestId('post-card-si').props.accessibilityState.selected).toBe(true);
-    expect(screen.getByTestId('post-card-pc').props.accessibilityState.selected).toBe(false);
+    expect(screen.getByTestId('post-card-si').props.accessibilityRole).toBe('radio');
+    expect(screen.getByTestId('post-card-si').props.accessibilityState.checked).toBe(true);
+    expect(screen.getByTestId('post-card-pc').props.accessibilityState.checked).toBe(false);
     await userEvent.press(screen.getByTestId('post-card-pc'));
-    expect(screen.getByTestId('post-card-pc').props.accessibilityState.selected).toBe(true);
-    expect(screen.getByTestId('post-card-si').props.accessibilityState.selected).toBe(false);
+    expect(screen.getByTestId('post-card-pc').props.accessibilityState.checked).toBe(true);
+    expect(screen.getByTestId('post-card-si').props.accessibilityState.checked).toBe(false);
   });
 
   it('opens on the post already stored', async () => {
     await render(<PostView initialPost="si" onSubmit={jest.fn()} />);
-    expect(screen.getByTestId('post-card-si').props.accessibilityState.selected).toBe(true);
+    expect(screen.getByTestId('post-card-si').props.accessibilityState.checked).toBe(true);
     expect(screen.getByTestId('post-continue')).toBeEnabled();
   });
 

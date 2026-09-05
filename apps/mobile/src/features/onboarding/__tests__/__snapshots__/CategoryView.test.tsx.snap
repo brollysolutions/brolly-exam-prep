@@ -18,7 +18,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
   >
     <RCTScrollView
       className="flex-1"
-      contentContainerClassName="px-4 pb-3 pt-5"
+      contentContainerClassName="px-4 pb-3"
       showsVerticalScrollIndicator={false}
     >
       <View>
@@ -108,7 +108,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
           </View>
         </View>
         <View
-          className="mt-1"
+          className="mt-5"
           style={
             {
               "alignItems": undefined,
@@ -233,14 +233,14 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
             testID="category-row-0"
           >
             <View
-              accessibilityRole="button"
+              accessibilityRole="radio"
               accessibilityState={
                 {
                   "busy": undefined,
-                  "checked": undefined,
+                  "checked": false,
                   "disabled": false,
                   "expanded": undefined,
-                  "selected": false,
+                  "selected": undefined,
                 }
               }
               accessibilityValue={
@@ -327,14 +327,14 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               </Text>
             </View>
             <View
-              accessibilityRole="button"
+              accessibilityRole="radio"
               accessibilityState={
                 {
                   "busy": undefined,
-                  "checked": undefined,
+                  "checked": false,
                   "disabled": false,
                   "expanded": undefined,
-                  "selected": false,
+                  "selected": undefined,
                 }
               }
               accessibilityValue={
@@ -434,14 +434,14 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
             testID="category-row-1"
           >
             <View
-              accessibilityRole="button"
+              accessibilityRole="radio"
               accessibilityState={
                 {
                   "busy": undefined,
-                  "checked": undefined,
+                  "checked": true,
                   "disabled": false,
                   "expanded": undefined,
-                  "selected": true,
+                  "selected": undefined,
                 }
               }
               accessibilityValue={
@@ -453,7 +453,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                 }
               }
               accessible={true}
-              className="justify-center rounded-md min-h-[72px] border-2 border-accent p-[11px] bg-accentTint flex-1"
+              className="justify-center rounded-md min-h-[72px] border-2 border-accentStrong p-[11px] bg-accentTint flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -528,14 +528,14 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               </Text>
             </View>
             <View
-              accessibilityRole="button"
+              accessibilityRole="radio"
               accessibilityState={
                 {
                   "busy": undefined,
-                  "checked": undefined,
+                  "checked": false,
                   "disabled": false,
                   "expanded": undefined,
-                  "selected": false,
+                  "selected": undefined,
                 }
               }
               accessibilityValue={
@@ -635,14 +635,14 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
             testID="category-row-2"
           >
             <View
-              accessibilityRole="button"
+              accessibilityRole="radio"
               accessibilityState={
                 {
                   "busy": undefined,
-                  "checked": undefined,
+                  "checked": false,
                   "disabled": false,
                   "expanded": undefined,
-                  "selected": false,
+                  "selected": undefined,
                 }
               }
               accessibilityValue={
@@ -729,14 +729,14 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               </Text>
             </View>
             <View
-              accessibilityRole="button"
+              accessibilityRole="radio"
               accessibilityState={
                 {
                   "busy": undefined,
-                  "checked": undefined,
+                  "checked": false,
                   "disabled": false,
                   "expanded": undefined,
-                  "selected": false,
+                  "selected": undefined,
                 }
               }
               accessibilityValue={
@@ -827,10 +827,11 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
       </View>
     </RCTScrollView>
     <View
-      className="bg-surface px-4 pb-4 pt-3 border-t border-line"
+      className="bg-surface px-4 pt-3 border-t border-line"
       style={
         {
           "boxShadow": "0 -8px 32px -16px rgba(33,28,23,0.30)",
+          "paddingBottom": 16,
         }
       }
       testID="category-bar"

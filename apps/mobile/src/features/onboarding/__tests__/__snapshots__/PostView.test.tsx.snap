@@ -18,11 +18,12 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
   >
     <RCTScrollView
       className="flex-1"
-      contentContainerClassName="px-4 pb-3 pt-6"
+      contentContainerClassName="px-4 pb-3"
       showsVerticalScrollIndicator={false}
     >
       <View>
         <View
+          className="mt-5"
           style={
             {
               "alignItems": undefined,
@@ -135,14 +136,14 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
           testID="post-cards"
         >
           <View
-            accessibilityRole="button"
+            accessibilityRole="radio"
             accessibilityState={
               {
                 "busy": undefined,
-                "checked": undefined,
+                "checked": true,
                 "disabled": false,
                 "expanded": undefined,
-                "selected": true,
+                "selected": undefined,
               }
             }
             accessibilityValue={
@@ -154,7 +155,7 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
               }
             }
             accessible={true}
-            className="justify-center rounded-md min-h-16 border-2 border-accent p-[15px] bg-accentTint"
+            className="justify-center rounded-md min-h-16 border-2 border-accentStrong p-[15px] bg-accentTint"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -249,14 +250,14 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="button"
+            accessibilityRole="radio"
             accessibilityState={
               {
                 "busy": undefined,
-                "checked": undefined,
+                "checked": false,
                 "disabled": false,
                 "expanded": undefined,
-                "selected": false,
+                "selected": undefined,
               }
             }
             accessibilityValue={
@@ -326,10 +327,11 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
       </View>
     </RCTScrollView>
     <View
-      className="bg-surface px-4 pb-4 pt-3 border-t border-line"
+      className="bg-surface px-4 pt-3 border-t border-line"
       style={
         {
           "boxShadow": "0 -8px 32px -16px rgba(33,28,23,0.30)",
+          "paddingBottom": 16,
         }
       }
       testID="post-bar"

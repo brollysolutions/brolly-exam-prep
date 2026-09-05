@@ -197,11 +197,6 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
           }
         >
           <View
-            accessibilityState={
-              {
-                "selected": true,
-              }
-            }
             className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 bg-accentSoft border-accent border-b-2 border-b-accentStrong"
             testID="result-qualified"
           >

@@ -112,11 +112,6 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
           </View>
         </View>
         <View
-          accessibilityState={
-            {
-              "selected": false,
-            }
-          }
           className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
           style={
             {
@@ -145,6 +140,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
               }
             }
             accessible={true}
+            className="min-h-touchLg justify-center py-2"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -159,10 +155,9 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
             testID="profile-post"
           >
             <View
-              className="min-h-touchLg py-2"
               style={
                 {
-                  "alignItems": "center",
+                  "alignItems": "flex-start",
                   "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
@@ -200,42 +195,57 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                   పోస్ట్
                 </Text>
               </View>
-              <Text
-                className="text-ink3"
+              <View
                 style={
                   {
-                    "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 15,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 24.8,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
+                    "alignItems": "center",
+                    "alignSelf": "flex-start",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 8,
+                    "height": 24.8,
+                    "justifyContent": undefined,
                   }
                 }
+                testID="profile-post-end"
               >
-                ఎస్‌ఐ / ఏఎస్‌ఐ
-              </Text>
-              <Text
-                accessibilityElementsHidden={true}
-                className="text-ink3"
-                importantForAccessibility="no"
-                style={
-                  {
-                    "fontFamily": "Inter_400Regular",
-                    "fontSize": 20,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 30,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
+                <Text
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 15,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 24.8,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
                   }
-                }
-              >
-                ›
-              </Text>
+                >
+                  ఎస్‌ఐ / ఏఎస్‌ఐ
+                </Text>
+                <Text
+                  accessibilityElementsHidden={true}
+                  className="text-ink3"
+                  importantForAccessibility="no"
+                  style={
+                    {
+                      "fontFamily": "Inter_400Regular",
+                      "fontSize": 20,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 30,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ›
+                </Text>
+              </View>
             </View>
           </View>
           <View
@@ -259,7 +269,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
               }
             }
             accessible={true}
-            className="border-t border-line"
+            className="min-h-touchLg justify-center py-2 border-t border-line"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -274,10 +284,9 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
             testID="profile-category"
           >
             <View
-              className="min-h-touchLg py-2"
               style={
                 {
-                  "alignItems": "center",
+                  "alignItems": "flex-start",
                   "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
@@ -315,42 +324,57 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                   కేటగిరీ
                 </Text>
               </View>
-              <Text
-                className="text-ink3"
+              <View
                 style={
                   {
-                    "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 15,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 24.8,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
+                    "alignItems": "center",
+                    "alignSelf": "flex-start",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 8,
+                    "height": 24.8,
+                    "justifyContent": undefined,
                   }
                 }
+                testID="profile-category-end"
               >
-                బీసీ
-              </Text>
-              <Text
-                accessibilityElementsHidden={true}
-                className="text-ink3"
-                importantForAccessibility="no"
-                style={
-                  {
-                    "fontFamily": "Inter_400Regular",
-                    "fontSize": 20,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 30,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
+                <Text
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 15,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 24.8,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
                   }
-                }
-              >
-                ›
-              </Text>
+                >
+                  బీసీ
+                </Text>
+                <Text
+                  accessibilityElementsHidden={true}
+                  className="text-ink3"
+                  importantForAccessibility="no"
+                  style={
+                    {
+                      "fontFamily": "Inter_400Regular",
+                      "fontSize": 20,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 30,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ›
+                </Text>
+              </View>
             </View>
           </View>
         </View>
@@ -406,11 +430,6 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
           </View>
         </View>
         <View
-          accessibilityState={
-            {
-              "selected": false,
-            }
-          }
           className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
           style={
             {
@@ -419,13 +438,13 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
           }
         >
           <View
+            className="min-h-touchLg justify-center py-2"
             testID="profile-language"
           >
             <View
-              className="min-h-touchLg py-2"
               style={
                 {
-                  "alignItems": "center",
+                  "alignItems": "flex-start",
                   "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
@@ -464,134 +483,148 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                 </Text>
               </View>
               <View
-                accessibilityRole="radiogroup"
-                className="h-touch overflow-hidden rounded-sm border border-outline self-start"
                 style={
                   {
-                    "alignItems": undefined,
+                    "alignItems": "center",
+                    "alignSelf": "flex-start",
                     "flexDirection": "row",
                     "flexWrap": undefined,
-                    "gap": undefined,
+                    "gap": 8,
+                    "height": 24.8,
                     "justifyContent": undefined,
                   }
                 }
-                testID="profile-lang"
+                testID="profile-language-end"
               >
                 <View
-                  accessibilityLabel="EN"
-                  accessibilityRole="radio"
-                  accessibilityState={
+                  accessibilityRole="radiogroup"
+                  className="h-touch overflow-hidden rounded-sm border border-outline self-start"
+                  style={
                     {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
+                      "alignItems": undefined,
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": undefined,
+                      "justifyContent": undefined,
                     }
                   }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  className="h-full min-w-touch items-center justify-center px-3 border-line2 border-r"
-                  collapsable={false}
-                  focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
+                  testID="profile-lang"
                 >
-                  <Text
-                    className="text-ink3"
-                    style={
+                  <View
+                    accessibilityLabel="EN"
+                    accessibilityRole="radio"
+                    accessibilityState={
                       {
-                        "fontFamily": "Inter_700Bold",
-                        "fontSize": 15,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 22.5,
-                        "textAlign": "center",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
                       }
                     }
-                  >
-                    EN
-                  </Text>
-                </View>
-                <View
-                  accessibilityLabel="తె"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": true,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
-                  collapsable={false}
-                  focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                >
-                  <Text
-                    className="text-ink"
-                    style={
+                    accessibilityValue={
                       {
-                        "fontFamily": "NotoSansTelugu_700Bold",
-                        "fontSize": 15,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 24.8,
-                        "textAlign": "center",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
                       }
                     }
+                    accessible={true}
+                    className="h-full min-w-touch items-center justify-center px-3 border-line2 border-r"
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
                   >
-                    తె
-                  </Text>
+                    <Text
+                      className="text-ink3"
+                      style={
+                        {
+                          "fontFamily": "Inter_700Bold",
+                          "fontSize": 15,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 22.5,
+                          "textAlign": "center",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      EN
+                    </Text>
+                  </View>
+                  <View
+                    accessibilityLabel="తె"
+                    accessibilityRole="radio"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": true,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                  >
+                    <Text
+                      className="text-ink"
+                      style={
+                        {
+                          "fontFamily": "NotoSansTelugu_700Bold",
+                          "fontSize": 15,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 24.8,
+                          "textAlign": "center",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      తె
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
           <View
-            className="border-t border-line"
+            className="min-h-touchLg justify-center py-2 border-t border-line"
           >
             <View
-              className="min-h-touchLg py-2"
               style={
                 {
-                  "alignItems": "center",
+                  "alignItems": "flex-start",
                   "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
@@ -629,72 +662,86 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                 </Text>
               </View>
               <View
-                accessibilityLabel="రోజువారీ రిమైండర్"
-                accessibilityRole="switch"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": true,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                hitSlop={
-                  {
-                    "bottom": 8,
-                    "left": 0,
-                    "right": 0,
-                    "top": 8,
-                  }
-                }
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "backgroundColor": "#c29b38",
-                    "borderColor": "#c29b38",
-                    "borderRadius": 999,
-                    "borderWidth": 1,
-                    "height": 32,
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "width": 52,
+                    "alignItems": "center",
+                    "alignSelf": "flex-start",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 8,
+                    "height": 24.8,
+                    "justifyContent": undefined,
                   }
                 }
-                testID="profile-notifications"
               >
                 <View
-                  style={
+                  accessibilityLabel="రోజువారీ రిమైండర్"
+                  accessibilityRole="switch"
+                  accessibilityState={
                     {
-                      "backgroundColor": "#211c17",
-                      "borderRadius": 999,
-                      "height": 26,
-                      "left": 23,
-                      "position": "absolute",
-                      "width": 26,
+                      "busy": undefined,
+                      "checked": true,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
                     }
                   }
-                  testID="profile-notifications-thumb"
-                />
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  hitSlop={
+                    {
+                      "bottom": 8,
+                      "left": 0,
+                      "right": 0,
+                      "top": 8,
+                    }
+                  }
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "backgroundColor": "#c29b38",
+                      "borderColor": "#c29b38",
+                      "borderRadius": 999,
+                      "borderWidth": 1,
+                      "height": 32,
+                      "justifyContent": "center",
+                      "opacity": 1,
+                      "width": 52,
+                    }
+                  }
+                  testID="profile-notifications"
+                >
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "#211c17",
+                        "borderRadius": 999,
+                        "height": 26,
+                        "left": 23,
+                        "position": "absolute",
+                        "width": 26,
+                      }
+                    }
+                    testID="profile-notifications-thumb"
+                  />
+                </View>
               </View>
             </View>
           </View>
@@ -751,11 +798,6 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
           </View>
         </View>
         <View
-          accessibilityState={
-            {
-              "selected": false,
-            }
-          }
           className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
           style={
             {

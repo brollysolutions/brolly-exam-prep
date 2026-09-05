@@ -18,7 +18,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
   >
     <RCTScrollView
       className="flex-1"
-      contentContainerClassName="px-4 pb-2 pt-5"
+      contentContainerClassName="px-4 pb-2"
       keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}
     >
@@ -109,7 +109,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           </View>
         </View>
         <View
-          className="mt-2"
+          className="mt-5"
           style={
             {
               "alignItems": undefined,
@@ -409,39 +409,23 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
             </View>
           </View>
         </View>
-        <View
-          className="mt-4"
+        <Text
+          className="text-ink3 mt-4"
           style={
             {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "flexWrap": undefined,
-              "gap": 8,
-              "justifyContent": undefined,
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 12,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 19.8,
+              "textAlign": "left",
+              "textTransform": undefined,
+              "writingDirection": "ltr",
             }
           }
         >
-          <View
-            className="border-1.5 h-dot w-dot rounded-full border-ink3"
-          />
-          <Text
-            className="text-ink3 flex-1"
-            style={
-              {
-                "fontFamily": "NotoSansTelugu_400Regular",
-                "fontSize": 12,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 19.8,
-                "textAlign": "left",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
-              }
-            }
-          >
-            SMS వచ్చాక ఆటోమేటిక్‌గా నింపుతాము
-          </Text>
-        </View>
+          SMS వచ్చాక ఆటోమేటిక్‌గా నింపుతాము
+        </Text>
         <View
           className="mt-3"
         >
@@ -528,7 +512,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
               }
             }
             accessible={true}
-            className="mt-1 min-h-touch justify-center"
+            className="mt-1 min-h-touch justify-center self-start px-1"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -562,7 +546,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           </View>
         </View>
         <View
-          className="mt-2 min-h-touch justify-center"
+          className="mt-2 min-h-touch justify-center self-start px-1"
           testID="otp-resend-line"
         >
           <Text
@@ -624,10 +608,11 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
       </View>
     </RCTScrollView>
     <View
-      className="bg-surface px-4 pb-4 pt-3 border-t border-line"
+      className="bg-surface px-4 pt-3 border-t border-line"
       style={
         {
           "boxShadow": "0 -8px 32px -16px rgba(33,28,23,0.30)",
+          "paddingBottom": 16,
         }
       }
       testID="otp-bar"

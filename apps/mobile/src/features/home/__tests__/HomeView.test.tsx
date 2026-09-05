@@ -141,8 +141,8 @@ describe("HomeView — today's target", () => {
     expect(litSegments()).toBe(0);
     // `line2`, not `surface2`: an unlit block at 1.05:1 against the card was invisible.
     for (const seg of screen.getAllByTestId('home-target-seg')) {
-      expect(seg.props.className).toContain('bg-line2');
-      expect(seg.props.className).toContain('rounded-full');
+      expect(seg.props.className).toMatch(/\bbg-line2\b/);
+      expect(seg.props.className).toMatch(/\brounded-full\b/);
     }
     expect(screen.getByTestId('home-target-count')).toHaveTextContent(
       `${iso('0')} of ${iso('20')} done`,
@@ -222,7 +222,7 @@ describe('HomeView — the three shelves', () => {
   // left that leads somewhere a candidate cannot reach from the tab bar.
   it('makes Check eligibility the screen’s only ink action', async () => {
     await render(<HomeView {...props} lang="en" />);
-    expect(screen.getByTestId('home-physical-action').props.className).toContain('bg-ink');
+    expect(screen.getByTestId('home-physical-action').props.className).toMatch(/\bbg-ink\b/);
     // The one primary action per screen is the 56 px size, per Button's own contract.
     expect(screen.getByTestId('home-physical-action')).toHaveStyle({ height: 56 });
     // The selected language chip is a soft gold state, not an ink action.
@@ -233,17 +233,16 @@ describe('HomeView — the three shelves', () => {
     expect(inkFills).toHaveLength(1);
   });
 
-  // Seeded fixtures, not the Board's feed: both rows say so until the API serves live content.
-  // A quiet tag, never a control, and quieter than the heading it sits beside (design 7).
-  it('marks the notices and the affairs as sample data', async () => {
+  // A heading and a tag beside it read as one object, and the pill under the tag was the
+  // heading itself: the "Sample data" tag lives on Updates and Affairs, where the seeded
+  // content is (design review D3). What is left on Home is a heading and its link.
+  it('leaves the section heads a name and a way past, and nothing else', async () => {
     await render(<HomeView {...props} lang="en" />);
-    for (const id of ['sample-data-updates', 'sample-data-affairs']) {
-      const chip = screen.getByTestId(id);
-      expect(chip).toHaveTextContent('Sample data');
-      expect(chip.props.accessibilityRole).toBeUndefined();
-      expect(chip.props.className).not.toContain('bg-accentSoft');
-      expect(chip.props.className).toContain('bg-surface2');
-    }
+    expect(screen.queryByTestId('sample-data-updates')).toBeNull();
+    expect(screen.queryByTestId('sample-data-affairs')).toBeNull();
+    expect(screen.queryAllByText('Sample data')).toHaveLength(0);
+    expect(screen.getByText('TSLPRB updates')).toBeOnTheScreen();
+    expect(screen.getByTestId('home-updates-all')).toBeOnTheScreen();
   });
 
   // A card that ignored which card it was would be a small lie (review M6): a tapped notice
@@ -259,14 +258,42 @@ describe('HomeView — the three shelves', () => {
 
   // Gold is a fill on cream, never a word: the link and its chevron are both ink, and the
   // screen's gold is the hero's edge and the dots on its pills.
-  it('gives the section links a 48 px target and keeps them ink', async () => {
+  //
+  // The target is padding it gives back as negative margin, not `hitSlop`: `hitSlop` is not
+  // implemented in react-native-web, which left the link 18 px tall on the web build (D6).
+  it('pads the section links into a real target and keeps them ink', async () => {
     await render(<HomeView {...props} lang="en" />);
     const link = screen.getByTestId('home-updates-all');
-    expect(link.props.hitSlop).toEqual({ top: 16, bottom: 16, left: 12, right: 12 });
-    expect(screen.getByText('All updates').props.className).toContain('text-ink');
-    expect(screen.getByText('All updates').props.className).not.toContain('text-hivis');
+    expect(link.props.hitSlop).toBeUndefined();
+    expect(link.props.className).toMatch(/\bpy-2\b/);
+    expect(link.props.className).toMatch(/(^|\s)-my-2(\s|$)/);
+    expect(link.props.className).toMatch(/(^|\s)-mx-1(\s|$)/);
+    expect(link.props.className).toMatch(/\bpx-1\b/);
+    expect(screen.getByText('All updates').props.className).toMatch(/\btext-ink\b/);
     const chevron = screen.getAllByText('›', { includeHiddenElements: true })[0];
-    expect(chevron.props.className).toContain('text-ink');
+    expect(chevron.props.className).toMatch(/\btext-ink\b/);
+  });
+
+  // Pressed feedback on cream is a `surface2` fill: an opacity dim between two creams is
+  // invisible (code review I4 / design review D5).
+  it('fills the section link surface2 while it is held', async () => {
+    await render(<HomeView {...props} lang="en" />);
+    const link = screen.getByTestId('home-updates-all');
+    expect(link.props.className).not.toMatch(/\bbg-surface2\b/);
+    expect(link.props.style).toBeUndefined();
+    await act(async () => {
+      fireEvent(link, 'pressIn');
+    });
+    expect(screen.getByTestId('home-updates-all').props.className).toMatch(/\bbg-surface2\b/);
+  });
+
+  // A dot is status in this app (mine / active); the name of a block is not a state, so the
+  // heading pill carries none (ruling M14).
+  it('puts no status dot on a section heading', async () => {
+    await render(<HomeView {...props} lang="en" />);
+    // The pill's inner Row holds the label and nothing else; a dot would lead it.
+    expect(screen.getByText('TSLPRB updates').parent?.children).toHaveLength(1);
+    expect(screen.getByText("Today's current affairs").parent?.children).toHaveLength(1);
   });
 
   // Nothing from the Board yet is nothing to show: no heading over an empty shelf (design 14).
@@ -372,8 +399,9 @@ describe('HomeView — guest', () => {
     const chip = screen.getByTestId('home-signin');
     expect(chip).toHaveTextContent('Sign in');
     // The screen keeps one hi-vis action, and it is not this one.
-    expect(chip.props.className).not.toContain('bg-hivis');
-    expect(chip.props.className).toContain('h-touch');
+    expect(chip.props.className).not.toMatch(/\bbg-accentSoft\b/);
+    // `md` (40 px), not `lg`: the Telugu header row had no slack left (design review D14).
+    expect(chip.props.className).toMatch(/\bmin-h-chipMd\b/);
     await userEvent.press(chip);
     expect(guest.onSignIn).toHaveBeenCalledTimes(1);
   });
@@ -456,7 +484,6 @@ describe('HomeView (te)', () => {
     expect(screen.getByTestId('home-header-top')).toHaveStyle({ flexDirection: 'row' });
     expect(screen.getByTestId('home-target')).toHaveStyle({ flexDirection: 'row' });
     expect(screen.getByTestId('home-days')).toHaveStyle({ fontFamily: 'Inter_700Bold' });
-    expect(screen.getByTestId('sample-data-updates')).toHaveTextContent('నమూనా డేటా');
     // The streak digit is isolated, so it stays a Latin figure inside the Telugu line.
     expect(screen.getByTestId('home-streak')).toHaveTextContent(has(iso('4')));
     expect(screen.toJSON()).toMatchSnapshot();

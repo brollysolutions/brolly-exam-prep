@@ -101,10 +101,12 @@ describe('HomeRoute — no Continue card', () => {
     expect(screen.queryByText(has('Statehood movement'))).toBeNull();
   });
 
-  it('labels the seeded notices and affairs as sample data', async () => {
+  // The tag moved to the screens the seeded content actually lives on: a heading and a tag
+  // beside it read as one object (design review D3).
+  it('keeps the sample-data tag off the home headings', async () => {
     await render(<HomeRoute />);
-    expect(screen.getByTestId('sample-data-updates')).toBeOnTheScreen();
-    expect(screen.getByTestId('sample-data-affairs')).toBeOnTheScreen();
+    expect(screen.queryByTestId('sample-data-updates')).toBeNull();
+    expect(screen.queryByTestId('sample-data-affairs')).toBeNull();
   });
 });
 

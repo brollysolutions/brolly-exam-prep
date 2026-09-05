@@ -19,13 +19,15 @@ describe('CategoryView', () => {
     expect(screen.getByTestId('category-start')).toBeEnabled();
   });
 
-  it('marks only the chosen card as selected', async () => {
+  // One of a set: the tiles report `radio` with a checked state (design review D18).
+  it('marks only the chosen card as checked', async () => {
     await render(<CategoryView onSubmit={jest.fn()} {...noops()} />);
     await userEvent.press(screen.getByTestId('category-card-sc'));
-    expect(screen.getByTestId('category-card-sc').props.accessibilityState.selected).toBe(true);
+    expect(screen.getByTestId('category-card-sc').props.accessibilityRole).toBe('radio');
+    expect(screen.getByTestId('category-card-sc').props.accessibilityState.checked).toBe(true);
     await userEvent.press(screen.getByTestId('category-card-oc'));
-    expect(screen.getByTestId('category-card-oc').props.accessibilityState.selected).toBe(true);
-    expect(screen.getByTestId('category-card-sc').props.accessibilityState.selected).toBe(false);
+    expect(screen.getByTestId('category-card-oc').props.accessibilityState.checked).toBe(true);
+    expect(screen.getByTestId('category-card-sc').props.accessibilityState.checked).toBe(false);
   });
 
   it('renders all six categories with their qualifying percentage', async () => {
@@ -46,7 +48,7 @@ describe('CategoryView', () => {
   it('opens on the category already stored and can go back', async () => {
     const onBack = jest.fn();
     await render(<CategoryView initialCategory="ews" onSubmit={jest.fn()} onBack={onBack} />);
-    expect(screen.getByTestId('category-card-ews').props.accessibilityState.selected).toBe(true);
+    expect(screen.getByTestId('category-card-ews').props.accessibilityState.checked).toBe(true);
     await userEvent.press(screen.getByTestId('category-back'));
     expect(onBack).toHaveBeenCalled();
   });

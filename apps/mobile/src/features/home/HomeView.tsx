@@ -9,15 +9,18 @@ import {
   Button,
   Card,
   Chip,
+  cx,
   Glyph,
   iso,
   MarkerRow,
   Num,
   PageHeader,
   Pill,
+  pressedClass,
   Row,
   Screen,
   SegmentedChips,
+  Stack,
   StatTile,
   Text,
   usePressed,
@@ -82,28 +85,25 @@ function TargetBar({ done, target }: { done: number; target: number }) {
 }
 
 /**
- * A block's heading and the way past it: "Updates · Sample data … All updates ›".
+ * A block's heading and the way past it: "Updates … All updates ›".
  *
- * The link is 20 px of text with 16 px of hit slop above and below rather than a 48 px box:
- * a half-height control beside a heading would push it off its own baseline, and the slop is
- * what the finger actually lands in. Its label and chevron are ink, not gold: the screen has
- * one gold-edged card and one ink action, and gold is a fill here, never a word.
+ * The heading pill carries no dot: a dot is status in this app's vocabulary (mine / active),
+ * and the name of a block is not a state (ruling M14). It carries no tag either — a heading
+ * and a tag beside it read as one object, so "Sample data" lives on the Updates and Affairs
+ * screens where the seeded content actually is (design review D3).
  *
- * `badge` is a static pill after the title — "Sample data" while the shelf is seeded from
- * fixtures. It sits inside the heading `Row`, so it follows the reading direction and lands
- * at the reading end without a mirrored class of its own.
+ * The link grows its target with padding it gives back as negative margin, not with `hitSlop`:
+ * `hitSlop` is not implemented in react-native-web, which left the link 18 px tall on the web
+ * build (design review D6). Its label and chevron are ink, not gold: the screen has one
+ * gold-edged card and one ink action, and gold is a fill here, never a word.
  */
 function SectionHead({
   title,
-  badge,
-  badgeTestID,
   link,
   onPress,
   testID,
 }: {
   title: string;
-  badge?: string;
-  badgeTestID?: string;
   link: string;
   onPress: () => void;
   testID: string;
@@ -112,18 +112,16 @@ function SectionHead({
   const { pressed, handlers } = usePressed();
   return (
     <Row align="center" justify="between" gap={3}>
-      <Row align="center" gap={2} className="flex-1" wrap>
-        <Pill label={title} dot />
-        {badge !== undefined && <Pill label={badge} testID={badgeTestID} />}
-      </Row>
+      <Pill label={title} className="flex-shrink" />
       <Pressable
         testID={testID}
         accessibilityRole="link"
         accessibilityLabel={link}
-        hitSlop={{ top: 16, bottom: 16, left: 12, right: 12 }}
         onPress={onPress}
         {...handlers}
-        style={pressed ? { opacity: 0.85 } : undefined}
+        // Padding for the finger, negative margin so the heading keeps its own baseline; the
+        // pressed fill is `surface2`, because opacity is invisible between two creams.
+        className={cx('-mx-1 -my-2 px-1 py-2', pressed && pressedClass)}
       >
         <Row gap={1} align="center">
           <Text variant="caption" weight="600">
@@ -245,17 +243,18 @@ export function HomeView({
         brand
         brandTestID="home-brand"
         testID="home-header"
-        className="mt-4"
         titleTestID="home-greeting"
         title={name ? t('home.greeting', { name: iso(name) }) : t('home.greetingPlain')}
         trailing={
           <Row gap={2} align="center">
-            {/* An outlined capsule, not a fill: signing in is not what this screen is for. */}
+            {/* An outlined capsule, not a fill: signing in is not what this screen is for.
+                `md`, not `lg`: at the Telugu face the lockup, the capsule and the switcher
+                filled the row edge to edge with no slack left (design review D14). */}
             {!signedIn && (
               <Chip
                 testID="home-signin"
                 label={t('common.signIn')}
-                size="lg"
+                size="md"
                 shape="pill"
                 onPress={onSignIn}
               />
@@ -280,42 +279,45 @@ export function HomeView({
         className="mt-7"
         style={startEdge(d.isRTL, 'accentStrong')}
       >
-        {examState === 'ahead' ? (
-          <>
-            <Pill label={t('home.examIn')} dot />
-            <Row gap={2} align="baseline" className="mt-2">
-              {/* Ink, not gold: gold is a fill on cream, and the card's own edge is the gold. */}
-              <Num variant="display" testID="home-days">
-                {daysToExam}
-              </Num>
-              <Text variant="bodyLg" color="ink3">
-                {t('home.days')}
-              </Text>
-            </Row>
-          </>
-        ) : (
-          // No number on or after the day: "0 days" next to a past date reads as a stuck clock.
-          <Text variant="subtitle" weight="700" testID="home-exam-state">
-            {examLine}
+        {/* One rhythm, not six: the card used to carry `mt-1`, `mt-2`, `mt-3` and `mt-4` in
+            a single column, so nothing lined up with anything (design review D15). The only
+            margin left is the break before the rule. */}
+        <Stack gap={2}>
+          {examState === 'ahead' ? (
+            <>
+              <Pill label={t('home.examIn')} dot />
+              <Row gap={2} align="baseline">
+                {/* Ink, not gold: gold is a fill on cream, and the card's own edge is the gold. */}
+                <Num variant="display" testID="home-days">
+                  {daysToExam}
+                </Num>
+                <Text variant="bodyLg" color="ink3">
+                  {t('home.days')}
+                </Text>
+              </Row>
+            </>
+          ) : (
+            // No number on or after the day: "0 days" beside a past date reads as a stuck clock.
+            <Text variant="subtitle" weight="700" testID="home-exam-state">
+              {examLine}
+            </Text>
+          )}
+          <Text variant="caption" color="ink3" testID="home-exam-date">
+            {examState === 'held' ? examLabel : dateLine}
           </Text>
-        )}
-        <Text variant="caption" color="ink3" testID="home-exam-date" className="mt-1">
-          {examState === 'held' ? examLabel : dateLine}
-        </Text>
-        {/* Not a control: a run of practice is a fact about the reader. Hidden at zero — a
-            "0-day streak" is a scold, not a fact worth a line. */}
-        {streakDays > 0 && <Pill testID="home-streak" label={streakLine} className="mt-3" />}
+          {/* Not a control: a run of practice is a fact about the reader. Hidden at zero — a
+              "0-day streak" is a scold, not a fact worth a line. */}
+          {streakDays > 0 && <Pill testID="home-streak" label={streakLine} />}
 
-        <View className="mt-4 h-px bg-line" />
-        <Row align="center" justify="between" gap={3} className="mt-3">
-          <Pill label={t('home.todayTarget')} />
-          <Text variant="caption" color="ink3" testID="home-target-count">
-            {targetLine}
-          </Text>
-        </Row>
-        <View className="mt-2">
+          <View className="mt-4 h-px bg-line" />
+          <Row align="center" justify="between" gap={3}>
+            <Pill label={t('home.todayTarget')} />
+            <Text variant="caption" color="ink3" testID="home-target-count">
+              {targetLine}
+            </Text>
+          </Row>
           <TargetBar done={today.done} target={today.target} />
-        </View>
+        </Stack>
       </Card>
 
       {/* -------------------------------------------------------------- updates */}
@@ -323,8 +325,6 @@ export function HomeView({
         <View testID="home-updates" className="mt-7">
           <SectionHead
             title={t('home.updates')}
-            badge={t('common.sampleData')}
-            badgeTestID="sample-data-updates"
             link={t('home.allUpdates')}
             onPress={onOpenUpdates}
             testID="home-updates-all"
@@ -377,8 +377,6 @@ export function HomeView({
         <View testID="home-affairs" className="mt-7">
           <SectionHead
             title={t('home.affairs')}
-            badge={t('common.sampleData')}
-            badgeTestID="sample-data-affairs"
             link={t('home.more')}
             onPress={onOpenAffairs}
             testID="home-affairs-more"
@@ -480,17 +478,23 @@ function AffairRow({
   onPress: () => void;
 }) {
   const { t } = useTranslation();
-  // The headline leads: the category and the date are what it was, not what it says.
+  const date = shortDate(affair.date);
+  // The headline leads: the category and the date are what it was, not what it says. Two lines
+  // of it, then the ellipsis — the list is a shelf, and the full story is on `/affairs`.
+  // `trailingLabel` puts the date back into the row's name: a row that sets its own label
+  // stops its children being read (code review I3, I5).
   return (
     <MarkerRow
       testID="home-affair"
       marker="dot"
       first={first}
       title={affair.headline[lang]}
+      titleLines={2}
       meta={t(`affairs.cat.${affair.category}`)}
+      trailingLabel={date}
       trailing={
         <Num variant="caption" weight="600" color="ink3">
-          {shortDate(affair.date)}
+          {date}
         </Num>
       }
       onPress={onPress}

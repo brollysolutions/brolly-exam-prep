@@ -21,7 +21,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
   >
     <View>
       <View
-        className="mt-4"
+        className="mt-5"
         style={
           {
             "alignItems": undefined,
@@ -311,11 +311,6 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
       </View>
       <View
         accessibilityLabel="PWTకి ⁦45⁩ రోజులు · Preliminary Written Test · ⁦18-10-2026⁩ · ⁦4⁩ రోజుల స్ట్రీక్ · ⁦20⁩లో ⁦12⁩ పూర్తి"
-        accessibilityState={
-          {
-            "selected": false,
-          }
-        }
         accessible={true}
         className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface mt-7"
         style={
@@ -328,168 +323,12 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         testID="home-hero"
       >
         <View
-          className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
           style={
             {
-              "justifyContent": "center",
-              "minHeight": 24,
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 4,
-                "justifyContent": undefined,
-              }
-            }
-          >
-            <View
-              className="h-1.5 w-1.5 rounded-full bg-accentStrong"
-            />
-            <Text
-              className="text-ink3"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              PWT పరీక్షకు ఇంకా
-            </Text>
-          </View>
-        </View>
-        <View
-          className="mt-2"
-          style={
-            {
-              "alignItems": "baseline",
-              "flexDirection": "row",
-              "flexWrap": undefined,
+              "alignItems": undefined,
+              "flexDirection": "column",
               "gap": 8,
               "justifyContent": undefined,
-            }
-          }
-        >
-          <Text
-            accessibilityLanguage="en"
-            className="text-ink"
-            style={
-              {
-                "fontFamily": "Inter_700Bold",
-                "fontSize": 30,
-                "fontVariant": [
-                  "tabular-nums",
-                ],
-                "letterSpacing": 0,
-                "lineHeight": 45,
-                "textAlign": "left",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
-              }
-            }
-            testID="home-days"
-          >
-            ⁦45⁩
-          </Text>
-          <Text
-            className="text-ink3"
-            style={
-              {
-                "fontFamily": "NotoSansTelugu_400Regular",
-                "fontSize": 16,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 26.4,
-                "textAlign": "left",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
-              }
-            }
-          >
-            రోజులు
-          </Text>
-        </View>
-        <Text
-          className="text-ink3 mt-1"
-          style={
-            {
-              "fontFamily": "NotoSansTelugu_400Regular",
-              "fontSize": 12,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 19.8,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
-            }
-          }
-          testID="home-exam-date"
-        >
-          Preliminary Written Test · ⁦18-10-2026⁩
-        </Text>
-        <View
-          className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line mt-3"
-          style={
-            {
-              "justifyContent": "center",
-              "minHeight": 24,
-            }
-          }
-          testID="home-streak"
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 4,
-                "justifyContent": undefined,
-              }
-            }
-          >
-            <Text
-              className="text-ink3"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              ⁦4⁩ రోజుల స్ట్రీక్
-            </Text>
-          </View>
-        </View>
-        <View
-          className="mt-4 h-px bg-line"
-        />
-        <View
-          className="mt-3"
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "flexWrap": undefined,
-              "gap": 12,
-              "justifyContent": "space-between",
             }
           }
         >
@@ -501,6 +340,117 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 "minHeight": 24,
               }
             }
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <View
+                className="h-1.5 w-1.5 rounded-full bg-accentStrong"
+              />
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                PWT పరీక్షకు ఇంకా
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": "baseline",
+                "flexDirection": "row",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-ink"
+              style={
+                {
+                  "fontFamily": "Inter_700Bold",
+                  "fontSize": 30,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 45,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+              testID="home-days"
+            >
+              ⁦45⁩
+            </Text>
+            <Text
+              className="text-ink3"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 16,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 26.4,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              రోజులు
+            </Text>
+          </View>
+          <Text
+            className="text-ink3"
+            style={
+              {
+                "fontFamily": "NotoSansTelugu_400Regular",
+                "fontSize": 12,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 19.8,
+                "textAlign": "left",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+            testID="home-exam-date"
+          >
+            Preliminary Written Test · ⁦18-10-2026⁩
+          </Text>
+          <View
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+            style={
+              {
+                "justifyContent": "center",
+                "minHeight": 24,
+              }
+            }
+            testID="home-streak"
           >
             <View
               style={
@@ -528,32 +478,82 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   }
                 }
               >
-                ఈరోజు లక్ష్యం
+                ⁦4⁩ రోజుల స్ట్రీక్
               </Text>
             </View>
           </View>
-          <Text
-            className="text-ink3"
+          <View
+            className="mt-4 h-px bg-line"
+          />
+          <View
             style={
               {
-                "fontFamily": "NotoSansTelugu_400Regular",
-                "fontSize": 12,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 19.8,
-                "textAlign": "left",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
+                "alignItems": "center",
+                "flexDirection": "row",
+                "flexWrap": undefined,
+                "gap": 12,
+                "justifyContent": "space-between",
               }
             }
-            testID="home-target-count"
           >
-            ⁦20⁩లో ⁦12⁩ పూర్తి
-          </Text>
-        </View>
-        <View
-          className="mt-2"
-        >
+            <View
+              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+              style={
+                {
+                  "justifyContent": "center",
+                  "minHeight": 24,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 12,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 19.8,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ఈరోజు లక్ష్యం
+                </Text>
+              </View>
+            </View>
+            <Text
+              className="text-ink3"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 12,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 19.8,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+              testID="home-target-count"
+            >
+              ⁦20⁩లో ⁦12⁩ పూర్తి
+            </Text>
+          </View>
           <View
             accessibilityRole="progressbar"
             accessibilityValue={
@@ -633,98 +633,42 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           }
         >
           <View
-            className="flex-1"
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line flex-shrink"
             style={
               {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "flexWrap": "wrap",
-                "gap": 8,
-                "justifyContent": undefined,
+                "justifyContent": "center",
+                "minHeight": 24,
               }
             }
           >
             <View
-              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
               style={
                 {
-                  "justifyContent": "center",
-                  "minHeight": 24,
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
                 }
               }
             >
-              <View
+              <Text
+                className="text-ink3"
                 style={
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 4,
-                    "justifyContent": undefined,
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                <View
-                  className="h-1.5 w-1.5 rounded-full bg-accentStrong"
-                />
-                <Text
-                  className="text-ink3"
-                  style={
-                    {
-                      "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  TSLPRB అప్‌డేట్‌లు
-                </Text>
-              </View>
-            </View>
-            <View
-              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
-              style={
-                {
-                  "justifyContent": "center",
-                  "minHeight": 24,
-                }
-              }
-              testID="sample-data-updates"
-            >
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 4,
-                    "justifyContent": undefined,
-                  }
-                }
-              >
-                <Text
-                  className="text-ink3"
-                  style={
-                    {
-                      "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  నమూనా డేటా
-                </Text>
-              </View>
+                TSLPRB అప్‌డేట్‌లు
+              </Text>
             </View>
           </View>
           <View
@@ -748,16 +692,9 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               }
             }
             accessible={true}
+            className="-mx-1 -my-2 px-1 py-2"
             collapsable={false}
             focusable={true}
-            hitSlop={
-              {
-                "bottom": 16,
-                "left": 12,
-                "right": 12,
-                "top": 16,
-              }
-            }
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -846,7 +783,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                     "checked": undefined,
                     "disabled": false,
                     "expanded": undefined,
-                    "selected": false,
+                    "selected": undefined,
                   }
                 }
                 accessibilityValue={
@@ -976,7 +913,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                     "checked": undefined,
                     "disabled": false,
                     "expanded": undefined,
-                    "selected": false,
+                    "selected": undefined,
                   }
                 }
                 accessibilityValue={
@@ -1106,7 +1043,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                     "checked": undefined,
                     "disabled": false,
                     "expanded": undefined,
-                    "selected": false,
+                    "selected": undefined,
                   }
                 }
                 accessibilityValue={
@@ -1233,11 +1170,6 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         </RCTScrollView>
       </View>
       <View
-        accessibilityState={
-          {
-            "selected": false,
-          }
-        }
         className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface mt-7"
         style={
           {
@@ -1388,98 +1320,42 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           }
         >
           <View
-            className="flex-1"
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line flex-shrink"
             style={
               {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "flexWrap": "wrap",
-                "gap": 8,
-                "justifyContent": undefined,
+                "justifyContent": "center",
+                "minHeight": 24,
               }
             }
           >
             <View
-              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
               style={
                 {
-                  "justifyContent": "center",
-                  "minHeight": 24,
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
                 }
               }
             >
-              <View
+              <Text
+                className="text-ink3"
                 style={
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 4,
-                    "justifyContent": undefined,
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                <View
-                  className="h-1.5 w-1.5 rounded-full bg-accentStrong"
-                />
-                <Text
-                  className="text-ink3"
-                  style={
-                    {
-                      "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  నేటి కరెంట్ అఫైర్స్
-                </Text>
-              </View>
-            </View>
-            <View
-              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
-              style={
-                {
-                  "justifyContent": "center",
-                  "minHeight": 24,
-                }
-              }
-              testID="sample-data-affairs"
-            >
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 4,
-                    "justifyContent": undefined,
-                  }
-                }
-              >
-                <Text
-                  className="text-ink3"
-                  style={
-                    {
-                      "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  నమూనా డేటా
-                </Text>
-              </View>
+                నేటి కరెంట్ అఫైర్స్
+              </Text>
             </View>
           </View>
           <View
@@ -1503,16 +1379,9 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               }
             }
             accessible={true}
+            className="-mx-1 -my-2 px-1 py-2"
             collapsable={false}
             focusable={true}
-            hitSlop={
-              {
-                "bottom": 16,
-                "left": 12,
-                "right": 12,
-                "top": 16,
-              }
-            }
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1575,11 +1444,6 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           </View>
         </View>
         <View
-          accessibilityState={
-            {
-              "selected": false,
-            }
-          }
           className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface mt-3"
           style={
             {
@@ -1589,7 +1453,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           testID="home-affair-card"
         >
           <View
-            accessibilityLabel="ఎయిర్‌పోర్ట్ మెట్రో కారిడార్ తొలి దశ ప్రారంభం తెలంగాణ"
+            accessibilityLabel="ఎయిర్‌పోర్ట్ మెట్రో కారిడార్ తొలి దశ ప్రారంభం తెలంగాణ 02-09"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -1609,6 +1473,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               }
             }
             accessible={true}
+            className="min-h-touchLg justify-center py-2"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1623,10 +1488,9 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             testID="home-affair"
           >
             <View
-              className="min-h-touchLg py-2"
               style={
                 {
-                  "alignItems": "center",
+                  "alignItems": "flex-start",
                   "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
@@ -1639,9 +1503,12 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 className="items-center justify-center"
                 style={
                   {
+                    "alignSelf": "flex-start",
+                    "height": 24.8,
                     "width": 18,
                   }
                 }
+                testID="home-affair-mark"
               >
                 <View
                   className="h-2 w-2 rounded-full bg-accentStrong"
@@ -1661,6 +1528,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               >
                 <Text
                   className="text-ink"
+                  numberOfLines={2}
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1694,30 +1562,45 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   తెలంగాణ
                 </Text>
               </View>
-              <Text
-                accessibilityLanguage="en"
-                className="text-ink3"
+              <View
                 style={
                   {
-                    "fontFamily": "Inter_600SemiBold",
-                    "fontSize": 12,
-                    "fontVariant": [
-                      "tabular-nums",
-                    ],
-                    "letterSpacing": 0,
-                    "lineHeight": 18,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
+                    "alignItems": "center",
+                    "alignSelf": "flex-start",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 8,
+                    "height": 24.8,
+                    "justifyContent": undefined,
                   }
                 }
+                testID="home-affair-end"
               >
-                ⁦02-09⁩
-              </Text>
+                <Text
+                  accessibilityLanguage="en"
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "Inter_600SemiBold",
+                      "fontSize": 12,
+                      "fontVariant": [
+                        "tabular-nums",
+                      ],
+                      "letterSpacing": 0,
+                      "lineHeight": 18,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ⁦02-09⁩
+                </Text>
+              </View>
             </View>
           </View>
           <View
-            accessibilityLabel="గ్రామీణ రహదారుల పథకానికి కేబినెట్ పొడిగింపు భారత్"
+            accessibilityLabel="గ్రామీణ రహదారుల పథకానికి కేబినెట్ పొడిగింపు భారత్ 02-09"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -1737,7 +1620,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               }
             }
             accessible={true}
-            className="border-t border-line"
+            className="min-h-touchLg justify-center py-2 border-t border-line"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1752,10 +1635,9 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             testID="home-affair"
           >
             <View
-              className="min-h-touchLg py-2"
               style={
                 {
-                  "alignItems": "center",
+                  "alignItems": "flex-start",
                   "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
@@ -1768,9 +1650,12 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 className="items-center justify-center"
                 style={
                   {
+                    "alignSelf": "flex-start",
+                    "height": 24.8,
                     "width": 18,
                   }
                 }
+                testID="home-affair-mark"
               >
                 <View
                   className="h-2 w-2 rounded-full bg-accentStrong"
@@ -1790,6 +1675,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               >
                 <Text
                   className="text-ink"
+                  numberOfLines={2}
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1823,30 +1709,45 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   భారత్
                 </Text>
               </View>
-              <Text
-                accessibilityLanguage="en"
-                className="text-ink3"
+              <View
                 style={
                   {
-                    "fontFamily": "Inter_600SemiBold",
-                    "fontSize": 12,
-                    "fontVariant": [
-                      "tabular-nums",
-                    ],
-                    "letterSpacing": 0,
-                    "lineHeight": 18,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
+                    "alignItems": "center",
+                    "alignSelf": "flex-start",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 8,
+                    "height": 24.8,
+                    "justifyContent": undefined,
                   }
                 }
+                testID="home-affair-end"
               >
-                ⁦02-09⁩
-              </Text>
+                <Text
+                  accessibilityLanguage="en"
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "Inter_600SemiBold",
+                      "fontSize": 12,
+                      "fontVariant": [
+                        "tabular-nums",
+                      ],
+                      "letterSpacing": 0,
+                      "lineHeight": 18,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ⁦02-09⁩
+                </Text>
+              </View>
             </View>
           </View>
           <View
-            accessibilityLabel="వరంగల్‌లో అంతర్ జిల్లా క్రికెట్ టోర్నీ ముగింపు క్రీడలు"
+            accessibilityLabel="వరంగల్‌లో అంతర్ జిల్లా క్రికెట్ టోర్నీ ముగింపు క్రీడలు 02-09"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -1866,7 +1767,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               }
             }
             accessible={true}
-            className="border-t border-line"
+            className="min-h-touchLg justify-center py-2 border-t border-line"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1881,10 +1782,9 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             testID="home-affair"
           >
             <View
-              className="min-h-touchLg py-2"
               style={
                 {
-                  "alignItems": "center",
+                  "alignItems": "flex-start",
                   "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
@@ -1897,9 +1797,12 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 className="items-center justify-center"
                 style={
                   {
+                    "alignSelf": "flex-start",
+                    "height": 24.8,
                     "width": 18,
                   }
                 }
+                testID="home-affair-mark"
               >
                 <View
                   className="h-2 w-2 rounded-full bg-accentStrong"
@@ -1919,6 +1822,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               >
                 <Text
                   className="text-ink"
+                  numberOfLines={2}
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1952,26 +1856,41 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   క్రీడలు
                 </Text>
               </View>
-              <Text
-                accessibilityLanguage="en"
-                className="text-ink3"
+              <View
                 style={
                   {
-                    "fontFamily": "Inter_600SemiBold",
-                    "fontSize": 12,
-                    "fontVariant": [
-                      "tabular-nums",
-                    ],
-                    "letterSpacing": 0,
-                    "lineHeight": 18,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
+                    "alignItems": "center",
+                    "alignSelf": "flex-start",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 8,
+                    "height": 24.8,
+                    "justifyContent": undefined,
                   }
                 }
+                testID="home-affair-end"
               >
-                ⁦02-09⁩
-              </Text>
+                <Text
+                  accessibilityLanguage="en"
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "Inter_600SemiBold",
+                      "fontSize": 12,
+                      "fontVariant": [
+                        "tabular-nums",
+                      ],
+                      "letterSpacing": 0,
+                      "lineHeight": 18,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ⁦02-09⁩
+                </Text>
+              </View>
             </View>
           </View>
         </View>

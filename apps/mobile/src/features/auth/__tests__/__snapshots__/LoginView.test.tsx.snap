@@ -18,12 +18,13 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
   >
     <RCTScrollView
       className="flex-1"
-      contentContainerClassName="px-4 pb-2 pt-7"
+      contentContainerClassName="px-4 pb-2"
       keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}
     >
       <View>
         <View
+          className="mt-5"
           style={
             {
               "alignItems": undefined,
@@ -321,10 +322,11 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
       </View>
     </RCTScrollView>
     <View
-      className="bg-surface px-4 pb-4 pt-3 border-t border-line"
+      className="bg-surface px-4 pt-3 border-t border-line"
       style={
         {
           "boxShadow": "0 -8px 32px -16px rgba(33,28,23,0.30)",
+          "paddingBottom": 16,
         }
       }
       testID="login-bar"
