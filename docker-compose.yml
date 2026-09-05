@@ -36,7 +36,8 @@ services:
       DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://tslprb:tslprb@postgres:5432/tslprb}
       REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
       OTP_DEV_MODE: ${OTP_DEV_MODE:-true}
-      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3201,http://localhost:8081,http://localhost:19006}
+      # The web image is opened on WEB_HOST_PORT, so the default origin list follows it.
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:${WEB_HOST_PORT:-3201},http://localhost:8081,http://localhost:19006}
     ports:
       - "${API_HOST_PORT:-8200}:8000"
     volumes:
@@ -81,14 +82,15 @@ services:
       dockerfile: apps/mobile/Dockerfile
       args:
         EXPO_PUBLIC_API: ${EXPO_PUBLIC_API:-http}
-        EXPO_PUBLIC_API_URL: ${EXPO_PUBLIC_API_URL:-http://localhost:8200}
+        # Baked into the bundle: the browser calls the API on the HOST port (see apps/mobile/Dockerfile).
+        EXPO_PUBLIC_API_URL: ${EXPO_PUBLIC_API_URL:-http://localhost:${API_HOST_PORT:-8200}}
     ports:
       - "${WEB_HOST_PORT:-3201}:80"
     depends_on:
       api:
         condition: service_healthy
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost/ || exit 1"]
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/ >/dev/null || exit 1"]
       interval: 5s
       timeout: 5s
       retries: 10

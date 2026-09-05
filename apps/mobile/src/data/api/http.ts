@@ -39,12 +39,16 @@ export type HttpApiOptions = {
  * Thin fetch client against services/api. Responses are validated with the shared zod
  * schemas so a drifting backend fails loudly here rather than deep inside a screen.
  *
- * The AppApi extras have no /v1 endpoint yet. `listTestMetas`, `getTestMeta` and
- * `getPaper` reject with 501 rather than fabricate data (the earlier version invented
- * Telugu titles by copying the English one and guessed a pattern from the post,
- * which would have shipped silently wrong section locks). `getResultDetail` is the one
- * exception: it serves the fixture analysis so the result screen still renders against a
- * real backend, and says so.
+ * The AppApi extras have no /v1 endpoint yet. `/v1/tests` carries no exam pattern, no
+ * section locks and no answer key, so `listTestMetas`, `getTestMeta` and `getPaper` are
+ * NOT derived from it (an earlier version invented Telugu titles by copying the English
+ * one and guessed a pattern from the post, which would have shipped silently wrong
+ * section locks). They are served from the fixture bank the app ships — the same one
+ * `MockApi` uses — exactly like `getResultDetail`, so the catalogue, the paper and the
+ * analysis still render against a real backend (F-27 runs the web build with
+ * `EXPO_PUBLIC_API=http`). The attempt lifecycle (`createAttempt`, `patchAttemptAnswer`,
+ * `submitAttempt`, `getResult`) and the OTP calls do go over the wire. Replace the three
+ * fixture reads when `GET /v1/tests/{id}/paper` lands.
  *
  * Category spelling: the app and @tslprb/fixtures use lower-case ids ("oc", "exs"); the
  * wire uses "OC" / "ExS". No /v1 request or response carries a category yet, so there is
@@ -140,25 +144,18 @@ export class HttpApi implements AppApi {
     return this.request(`/v1/results/${encodeURIComponent(id)}`, ResultSchema);
   }
 
-  // --- AppApi extras: not served by /v1 yet ---------------------------------
-
-  /** Rejects (never throws synchronously) so every AppApi method fails the same way. */
-  private notYet(what: string): Promise<never> {
-    return Promise.reject(
-      new ApiError(501, 'not_implemented', `${what} is not available over http yet`),
-    );
-  }
+  // --- AppApi extras: not served by /v1 yet (fixture bank, see the class comment) -----
 
   listTestMetas(): Promise<TestMeta[]> {
-    return this.notYet('listTestMetas');
+    return this.fallback.listTestMetas();
   }
 
-  getTestMeta(): Promise<TestMeta> {
-    return this.notYet('getTestMeta');
+  getTestMeta(id: string): Promise<TestMeta> {
+    return this.fallback.getTestMeta(id);
   }
 
-  getPaper(): Promise<PaperQuestion[]> {
-    return this.notYet('getPaper');
+  getPaper(testId: string): Promise<PaperQuestion[]> {
+    return this.fallback.getPaper(testId);
   }
 
   /** Fixture analysis: the endpoint does not exist, but the result screen must still render. */

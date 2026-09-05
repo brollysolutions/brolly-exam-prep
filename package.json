@@ -13,10 +13,14 @@
     "lint": "pnpm -r --if-present lint",
     "test": "pnpm -r --if-present test",
     "doctor": "pnpm --filter mobile exec expo-doctor",
-    "api:up": "docker compose --profile dev up -d",
-    "api:down": "docker compose --profile dev down",
-    "api:logs": "docker compose --profile dev logs -f api worker",
-    "api:migrate": "docker compose --profile dev exec api alembic upgrade head",
+    "docker:up": "docker compose up -d --build",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f web api worker",
+    "docker:build": "docker compose build",
+    "api:up": "docker compose up -d postgres redis api worker",
+    "api:down": "docker compose down",
+    "api:logs": "docker compose logs -f api worker",
+    "api:migrate": "docker compose exec api alembic upgrade head",
     "contracts:gen": "pnpm --filter @tslprb/api-contracts gen"
   },
   "devDependencies": {

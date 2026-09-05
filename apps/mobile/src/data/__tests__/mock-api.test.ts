@@ -217,15 +217,19 @@ describe('HttpApi', () => {
     expect(new HttpApi({ baseUrl: 'http://localhost:8000/' })).toBeInstanceOf(HttpApi);
   });
 
-  it('rejects the fixture-only reads with 501 instead of fabricating data', async () => {
+  it('serves the catalogue and the paper from the fixture bank without touching the network', async () => {
+    const fetchSpy = jest.spyOn(globalThis, 'fetch');
     const http = new HttpApi({ baseUrl: 'http://localhost:8000' });
-    for (const call of [
-      () => http.listTestMetas(),
-      () => http.getTestMeta(),
-      () => http.getPaper(),
-    ]) {
-      await expect(call()).rejects.toMatchObject({ status: 501 });
-    }
+    await expect(http.listTestMetas()).resolves.toEqual(TESTS);
+    await expect(http.getTestMeta('mock-07')).resolves.toEqual(
+      TESTS.find((t) => t.id === 'mock-07'),
+    );
+    const paper = await http.getPaper('mock-07');
+    expect(paper).toHaveLength(FREE_MOCK_SHORT.totalQuestions);
+    // Never derived from /v1/tests: that shape has no pattern, locks or answer key.
+    expect(fetchSpy).not.toHaveBeenCalled();
+    await expect(http.getTestMeta('nope')).rejects.toMatchObject({ status: 404 });
+    fetchSpy.mockRestore();
   });
 
   it('still serves the fixture analysis so the result screen renders', async () => {
