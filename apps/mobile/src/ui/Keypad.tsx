@@ -3,10 +3,11 @@ import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, View } from 'react-native';
 
+import { cx } from './cx';
 import { Glyph } from './Glyph';
 import * as haptics from './haptics';
 import { Num } from './Num';
-import { usePressed } from './pressable';
+import { pressedClass, usePressed } from './pressable';
 import { Row } from './Row';
 import { Stack } from './Stack';
 
@@ -47,12 +48,14 @@ function Key({
       accessibilityLabel={accessibilityLabel}
       accessibilityState={{ disabled }}
       disabled={disabled}
-      android_ripple={{ color: colors.hivisTint3 }}
+      android_ripple={{ color: colors.accentTint }}
       onPress={onPress}
       {...handlers}
-      className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
-      // One flattened object, never a callback: see `usePressed`.
-      style={pressed ? { opacity: 0.8 } : undefined}
+      // A surface key on the cream canvas; pressed swaps the fill (one `bg-*` class at a time).
+      className={cx(
+        'h-key flex-1 items-center justify-center rounded-sm border border-line2',
+        pressed ? pressedClass : 'bg-surface',
+      )}
     >
       {children}
     </Pressable>

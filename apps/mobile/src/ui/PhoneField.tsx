@@ -28,16 +28,16 @@ export function PhoneField({ value, placeholder, prefix, testID }: PhoneFieldPro
       accessibilityLabel={t('auth.loginTitle')}
       accessibilityValue={{ text: filled ? value : (placeholder ?? t('auth.phoneHint')) }}
     >
-      <View className="h-field w-prefix items-center justify-center rounded-sm border border-line">
-        <Num variant="prefix" weight="600" color="dim">
+      <View className="h-field w-prefix items-center justify-center rounded-sm border border-line2 bg-surface">
+        <Num variant="prefix" weight="600" color="ink3">
           {prefix ?? t('auth.countryCode')}
         </Num>
       </View>
       {/* One a11y node per field: the label and the value live on the row above. */}
       <View
         className={cx(
-          'h-field flex-1 justify-center rounded-sm border px-3',
-          filled ? 'border-hivis' : 'border-line',
+          'h-field flex-1 justify-center rounded-sm border bg-surface px-3',
+          filled ? 'border-accentStrong' : 'border-line2',
         )}
       >
         {/* A phone number reads left-to-right in every language, and so does its placeholder. */}
@@ -46,7 +46,7 @@ export function PhoneField({ value, placeholder, prefix, testID }: PhoneFieldPro
             {value}
           </Num>
         ) : (
-          <Text variant="bodyLg" weight="600" color="ghost" style={LTR}>
+          <Text variant="bodyLg" weight="600" color="ink3" style={LTR}>
             {placeholder ?? t('auth.phoneHint')}
           </Text>
         )}

@@ -2,7 +2,7 @@
 
 exports[`TopicView (te) sets the page in the Telugu face, keeps the block accents on the left, and matches the snapshot 1`] = `
 <View
-  className="flex-1 bg-tar"
+  className="flex-1 bg-canvas"
   style={
     {
       "paddingBottom": 0,
@@ -80,7 +80,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
           >
             <Text
               accessibilityElementsHidden={true}
-              className="text-dim"
+              className="text-ink3"
               importantForAccessibility="no"
               style={
                 {
@@ -99,7 +99,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               ‹
             </Text>
             <Text
-              className="text-dim"
+              className="text-ink2"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -119,7 +119,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
         </View>
         <View
           accessibilityRole="radiogroup"
-          className="h-touch overflow-hidden rounded-sm border border-line self-start"
+          className="h-touch overflow-hidden rounded-sm border border-line2 self-start"
           style={
             {
               "alignItems": undefined,
@@ -152,7 +152,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-3 border-line border-r"
+            className="h-full min-w-touch items-center justify-center px-3 border-line2 border-r"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -166,7 +166,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
             onStartShouldSetResponder={[Function]}
           >
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "Inter_700Bold",
@@ -204,7 +204,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-3 bg-hivis"
+            className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -218,7 +218,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
             onStartShouldSetResponder={[Function]}
           >
             <Text
-              className="text-tar"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -238,7 +238,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
         </View>
       </View>
       <Text
-        className="text-dim mt-4"
+        className="text-ink3 mt-4"
         style={
           {
             "fontFamily": "NotoSansTelugu_700Bold",
@@ -255,7 +255,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
         తెలంగాణ
       </Text>
       <Text
-        className="text-chalk mt-2"
+        className="text-ink mt-2"
         style={
           {
             "fontFamily": "NotoSansTelugu_700Bold",
@@ -334,7 +334,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
         }
       >
         <Text
-          className="text-dim"
+          className="text-ink3"
           style={
             {
               "fontFamily": "NotoSansTelugu_700Bold",
@@ -779,7 +779,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
             }
           }
           accessible={true}
-          className="items-center justify-center rounded-sm px-4 bg-hivis"
+          className="items-center justify-center rounded-sm px-4 bg-ink"
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -810,7 +810,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
             }
           >
             <Text
-              className="text-tar"
+              className="text-onInk"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -848,7 +848,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
             }
           }
           accessible={true}
-          className="items-center justify-center rounded-sm px-4 border border-line3"
+          className="items-center justify-center rounded-sm px-4 border border-line2"
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -879,7 +879,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
             }
           >
             <Text
-              className="text-chalk"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",

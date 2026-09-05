@@ -214,19 +214,19 @@ describe('HomeView — the three shelves', () => {
     expect(guest.onOpenPhysical).toHaveBeenCalledTimes(1);
   });
 
-  // The Continue card went (2026-09-03), and the yellow it carried went to the one action left
-  // that leads somewhere a candidate cannot reach from the tab bar.
-  it('makes Check eligibility the screen’s only hi-vis action', async () => {
+  // The Continue card went (2026-09-03), and the primary fill it carried went to the one action
+  // left that leads somewhere a candidate cannot reach from the tab bar.
+  it('makes Check eligibility the screen’s only ink action', async () => {
     await render(<HomeView {...props} lang="en" />);
-    expect(screen.getByTestId('home-physical-action').props.className).toContain('bg-hivis');
+    expect(screen.getByTestId('home-physical-action').props.className).toContain('bg-ink');
     // The one primary action per screen is the 56 px size, per Button's own contract.
     expect(screen.getByTestId('home-physical-action')).toHaveStyle({ height: 56 });
-    // The selected language chip is the one other yellow fill: a state, not an action.
-    const yellow = screen
+    // The selected language chip is a soft gold state, not an ink action.
+    const inkFills = screen
       .getAllByRole('button')
-      .filter((node) => String(node.props.className).includes('bg-hivis'))
+      .filter((node) => String(node.props.className).includes('bg-ink'))
       .filter((node) => !node.props.accessibilityState?.selected);
-    expect(yellow).toHaveLength(1);
+    expect(inkFills).toHaveLength(1);
   });
 
   // Seeded fixtures, not the Board's feed: both rows say so until the API serves live content.
@@ -237,8 +237,8 @@ describe('HomeView — the three shelves', () => {
       const chip = screen.getByTestId(id);
       expect(chip).toHaveTextContent('Sample data');
       expect(chip.props.accessibilityRole).toBeUndefined();
-      expect(chip.props.className).not.toContain('bg-hivis');
-      expect(chip.props.className).toContain('bg-panel3');
+      expect(chip.props.className).not.toContain('bg-accentSoft');
+      expect(chip.props.className).toContain('bg-surface2');
     }
   });
 

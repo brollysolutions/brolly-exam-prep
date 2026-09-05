@@ -2,7 +2,7 @@
 
 exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] = `
 <View
-  className="flex-1 bg-tar"
+  className="flex-1 bg-canvas"
   style={
     {
       "paddingBottom": 0,
@@ -71,7 +71,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           >
             <Text
               accessibilityElementsHidden={true}
-              className="text-dim"
+              className="text-ink3"
               importantForAccessibility="no"
               style={
                 {
@@ -90,7 +90,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
               ‹
             </Text>
             <Text
-              className="text-dim"
+              className="text-ink2"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -109,7 +109,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           </View>
         </View>
         <Text
-          className="text-chalk mt-2"
+          className="text-ink mt-2"
           style={
             {
               "fontFamily": "NotoSansTelugu_700Bold",
@@ -232,12 +232,12 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
                 testID="otp-cells"
               >
                 <View
-                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
+                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-surface border-line2"
                   testID="otp-cells-0"
                 >
                   <Text
                     accessibilityLanguage="en"
-                    className="text-chalk"
+                    className="text-ink"
                     style={
                       {
                         "fontFamily": "Inter_700Bold",
@@ -257,12 +257,12 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
                   </Text>
                 </View>
                 <View
-                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
+                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-surface border-line2"
                   testID="otp-cells-1"
                 >
                   <Text
                     accessibilityLanguage="en"
-                    className="text-chalk"
+                    className="text-ink"
                     style={
                       {
                         "fontFamily": "Inter_700Bold",
@@ -282,12 +282,12 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
                   </Text>
                 </View>
                 <View
-                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
+                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-surface border-line2"
                   testID="otp-cells-2"
                 >
                   <Text
                     accessibilityLanguage="en"
-                    className="text-chalk"
+                    className="text-ink"
                     style={
                       {
                         "fontFamily": "Inter_700Bold",
@@ -307,12 +307,12 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
                   </Text>
                 </View>
                 <View
-                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-hivis"
+                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-surface border-accentStrong"
                   testID="otp-cells-3"
                 >
                   <Text
                     accessibilityLanguage="en"
-                    className="text-chalk"
+                    className="text-ink"
                     style={
                       {
                         "fontFamily": "Inter_700Bold",
@@ -332,12 +332,12 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
                   </Text>
                 </View>
                 <View
-                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
+                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-surface border-line2"
                   testID="otp-cells-4"
                 >
                   <Text
                     accessibilityLanguage="en"
-                    className="text-chalk"
+                    className="text-ink"
                     style={
                       {
                         "fontFamily": "Inter_700Bold",
@@ -357,12 +357,12 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
                   </Text>
                 </View>
                 <View
-                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-panel2 border-line"
+                  className="h-touch flex-1 items-center justify-center rounded-sm border bg-surface border-line2"
                   testID="otp-cells-5"
                 >
                   <Text
                     accessibilityLanguage="en"
-                    className="text-chalk"
+                    className="text-ink"
                     style={
                       {
                         "fontFamily": "Inter_700Bold",
@@ -422,7 +422,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           className="mt-3"
         >
           <Text
-            className="text-dim"
+            className="text-ink3"
             style={
               {
                 "fontFamily": "NotoSansTelugu_700Bold",
@@ -624,7 +624,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -639,7 +639,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           >
             <Text
               accessibilityLanguage="en"
-              className="text-chalk"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_600SemiBold",
@@ -679,7 +679,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -694,7 +694,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           >
             <Text
               accessibilityLanguage="en"
-              className="text-chalk"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_600SemiBold",
@@ -734,7 +734,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -749,7 +749,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           >
             <Text
               accessibilityLanguage="en"
-              className="text-chalk"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_600SemiBold",
@@ -802,7 +802,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -817,7 +817,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           >
             <Text
               accessibilityLanguage="en"
-              className="text-chalk"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_600SemiBold",
@@ -857,7 +857,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -872,7 +872,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           >
             <Text
               accessibilityLanguage="en"
-              className="text-chalk"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_600SemiBold",
@@ -912,7 +912,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -927,7 +927,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           >
             <Text
               accessibilityLanguage="en"
-              className="text-chalk"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_600SemiBold",
@@ -980,7 +980,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -995,7 +995,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           >
             <Text
               accessibilityLanguage="en"
-              className="text-chalk"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_600SemiBold",
@@ -1035,7 +1035,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1050,7 +1050,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           >
             <Text
               accessibilityLanguage="en"
-              className="text-chalk"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_600SemiBold",
@@ -1090,7 +1090,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1105,7 +1105,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           >
             <Text
               accessibilityLanguage="en"
-              className="text-chalk"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_600SemiBold",
@@ -1161,7 +1161,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1176,7 +1176,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           >
             <Text
               accessibilityLanguage="en"
-              className="text-chalk"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_600SemiBold",
@@ -1216,7 +1216,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-panel4"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1230,7 +1230,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
             onStartShouldSetResponder={[Function]}
           >
             <Text
-              className="text-chalk"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_600SemiBold",
@@ -1269,7 +1269,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           }
         }
         accessible={true}
-        className="items-center justify-center rounded-sm px-4 bg-panel3 mt-3"
+        className="items-center justify-center rounded-sm px-4 bg-surface2 mt-3"
         collapsable={false}
         focusable={true}
         onBlur={[Function]}
@@ -1300,7 +1300,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           }
         >
           <Text
-            className="text-ghost"
+            className="text-ink4"
             style={
               {
                 "fontFamily": "NotoSansTelugu_700Bold",

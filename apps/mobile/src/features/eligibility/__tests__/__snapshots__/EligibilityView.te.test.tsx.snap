@@ -2,7 +2,7 @@
 
 exports[`EligibilityView (te) sets the screen in Telugu while the digits stay Latin 1`] = `
 <View
-  className="flex-1 bg-tar"
+  className="flex-1 bg-canvas"
   style={
     {
       "paddingBottom": 0,
@@ -88,7 +88,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
           </Text>
         </View>
         <Text
-          className="text-chalk flex-1"
+          className="text-ink flex-1"
           numberOfLines={1}
           style={
             {
@@ -154,7 +154,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
             }
           >
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -172,7 +172,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
             </Text>
             <View
               accessibilityRole="radiogroup"
-              className="h-touch overflow-hidden rounded-sm border border-line self-stretch"
+              className="h-touch overflow-hidden rounded-sm border border-line2 self-stretch"
               style={
                 {
                   "alignItems": undefined,
@@ -205,7 +205,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-panel3 border-line3 border-line3 border-r"
+                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-surface2 border-line2 border-r"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -219,7 +219,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                 onStartShouldSetResponder={[Function]}
               >
                 <Text
-                  className="text-chalk"
+                  className="text-ink"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_700Bold",
@@ -271,7 +271,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                 onStartShouldSetResponder={[Function]}
               >
                 <Text
-                  className="text-dim"
+                  className="text-ink3"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_700Bold",
@@ -301,7 +301,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
             }
           >
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -319,7 +319,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
             </Text>
             <View
               accessibilityRole="radiogroup"
-              className="h-touch overflow-hidden rounded-sm border border-line self-stretch"
+              className="h-touch overflow-hidden rounded-sm border border-line2 self-stretch"
               style={
                 {
                   "alignItems": undefined,
@@ -352,7 +352,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 flex-1 border-line3 border-r"
+                className="h-full min-w-touch items-center justify-center px-3 flex-1 border-line2 border-r"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -366,7 +366,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                 onStartShouldSetResponder={[Function]}
               >
                 <Text
-                  className="text-dim"
+                  className="text-ink3"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_700Bold",
@@ -404,7 +404,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-panel3 border-line3"
+                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-surface2"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -418,7 +418,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                 onStartShouldSetResponder={[Function]}
               >
                 <Text
-                  className="text-chalk"
+                  className="text-ink"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_700Bold",
@@ -448,7 +448,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
             }
           >
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -466,7 +466,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
             </Text>
             <View
               accessibilityRole="radiogroup"
-              className="h-touch overflow-hidden rounded-sm border border-line self-stretch"
+              className="h-touch overflow-hidden rounded-sm border border-line2 self-stretch"
               style={
                 {
                   "alignItems": undefined,
@@ -499,7 +499,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-panel3 border-line3 border-line3 border-r"
+                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-surface2 border-line2 border-r"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -513,7 +513,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                 onStartShouldSetResponder={[Function]}
               >
                 <Text
-                  className="text-chalk"
+                  className="text-ink"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_700Bold",
@@ -565,7 +565,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                 onStartShouldSetResponder={[Function]}
               >
                 <Text
-                  className="text-dim"
+                  className="text-ink3"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_700Bold",
@@ -598,7 +598,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
           testID="eligibility-fields"
         >
           <Text
-            className="text-dim"
+            className="text-ink3"
             style={
               {
                 "fontFamily": "NotoSansTelugu_700Bold",
@@ -1100,7 +1100,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
             }
           }
           accessible={true}
-          className="items-center justify-center rounded-sm px-4 bg-hivis mt-6"
+          className="items-center justify-center rounded-sm px-4 bg-ink mt-6"
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -1131,7 +1131,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
             }
           >
             <Text
-              className="text-tar"
+              className="text-onInk"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -1238,7 +1238,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                 }
               >
                 <Text
-                  className="text-dim"
+                  className="text-ink3"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_700Bold",
@@ -1366,7 +1366,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   }
                 >
                   <Text
-                    className="text-chalk"
+                    className="text-ink"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1590,7 +1590,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   }
                 >
                   <Text
-                    className="text-chalk"
+                    className="text-ink"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1756,7 +1756,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   }
                 >
                   <Text
-                    className="text-chalk"
+                    className="text-ink"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1980,7 +1980,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   }
                 >
                   <Text
-                    className="text-chalk"
+                    className="text-ink"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_600SemiBold",

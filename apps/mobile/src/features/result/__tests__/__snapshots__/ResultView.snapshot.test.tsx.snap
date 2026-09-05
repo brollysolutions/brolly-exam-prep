@@ -2,7 +2,7 @@
 
 exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
 <View
-  className="flex-1 bg-tar"
+  className="flex-1 bg-canvas"
   style={
     {
       "paddingBottom": 0,
@@ -88,7 +88,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
           </Text>
         </View>
         <Text
-          className="text-chalk flex-1"
+          className="text-ink flex-1"
           numberOfLines={1}
           style={
             {
@@ -113,7 +113,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
     >
       <View>
         <Text
-          className="text-dim"
+          className="text-ink3"
           style={
             {
               "fontFamily": "NotoSansTelugu_700Bold",
@@ -202,11 +202,11 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                 "selected": true,
               }
             }
-            className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 bg-hivis border-hivis"
+            className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 bg-accentSoft border-accent"
             testID="result-qualified"
           >
             <Text
-              className="text-tar"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -300,7 +300,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
           >
             <Text
               accessibilityLanguage="en"
-              className="text-hazard"
+              className="text-accentInk"
               style={
                 {
                   "fontFamily": "Inter_700Bold",
@@ -319,7 +319,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
               ⁦01⁩
             </Text>
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -371,7 +371,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
               </Text>
               <Text
                 accessibilityLanguage="en"
-                className="text-chalk shrink-0"
+                className="text-ink shrink-0"
                 numberOfLines={1}
                 style={
                   {
@@ -425,7 +425,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
               </Text>
               <Text
                 accessibilityLanguage="en"
-                className="text-chalk shrink-0"
+                className="text-ink shrink-0"
                 numberOfLines={1}
                 style={
                   {
@@ -568,7 +568,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
           >
             <Text
               accessibilityLanguage="en"
-              className="text-hazard"
+              className="text-accentInk"
               style={
                 {
                   "fontFamily": "Inter_700Bold",
@@ -587,7 +587,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
               ⁦02⁩
             </Text>
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -630,7 +630,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                 }
               >
                 <Text
-                  className="text-chalk"
+                  className="text-ink"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_400Regular",
@@ -711,7 +711,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                 }
               >
                 <Text
-                  className="text-chalk"
+                  className="text-ink"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_400Regular",
@@ -791,7 +791,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                 }
               >
                 <Text
-                  className="text-chalk"
+                  className="text-ink"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_400Regular",
@@ -989,7 +989,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                     }
                   >
                     <Text
-                      className="text-chalk"
+                      className="text-ink"
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1115,7 +1115,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                     }
                   >
                     <Text
-                      className="text-chalk"
+                      className="text-ink"
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1241,7 +1241,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                     }
                   >
                     <Text
-                      className="text-chalk"
+                      className="text-ink"
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1324,7 +1324,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
           }
         }
         accessible={true}
-        className="items-center justify-center rounded-sm px-4 bg-hivis"
+        className="items-center justify-center rounded-sm px-4 bg-ink"
         collapsable={false}
         focusable={true}
         onBlur={[Function]}
@@ -1355,7 +1355,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
           }
         >
           <Text
-            className="text-tar"
+            className="text-onInk"
             style={
               {
                 "fontFamily": "NotoSansTelugu_700Bold",

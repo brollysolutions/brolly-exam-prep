@@ -2,8 +2,9 @@ import { colors } from '@tslprb/design-tokens';
 import { useDir } from '@tslprb/i18n';
 import { Pressable } from 'react-native';
 
+import { cx } from './cx';
 import { Glyph } from './Glyph';
-import { usePressed } from './pressable';
+import { pressedClass, usePressed } from './pressable';
 import { Row } from './Row';
 import { Text } from './Text';
 
@@ -22,23 +23,22 @@ export function BackRow({ label, onPress, testID }: BackRowProps) {
     <Pressable
       testID={testID}
       accessibilityRole="button"
-      android_ripple={{ color: colors.hivisTint3 }}
+      android_ripple={{ color: colors.accentTint }}
       onPress={onPress}
       {...handlers}
-      className="h-touch justify-center"
-      // One flattened object, never a callback: see `usePressed`.
-      style={pressed ? { opacity: 0.8 } : undefined}
+      // Pressed = a `surface2` fill, the only feedback that shows on cream (see `pressedClass`).
+      className={cx('h-touch justify-center', pressed && pressedClass)}
     >
       <Row testID={testID ? `${testID}-row` : undefined} gap={2} align="center">
         <Glyph
           testID={testID ? `${testID}-chevron` : undefined}
-          color="dim"
+          color="ink3"
           accessibilityElementsHidden
           importantForAccessibility="no"
         >
           {d.chevronPrev}
         </Glyph>
-        <Text variant="body" weight="600" color="dim">
+        <Text variant="body" weight="600" color="ink2">
           {label}
         </Text>
       </Row>

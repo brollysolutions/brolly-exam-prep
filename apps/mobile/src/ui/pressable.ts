@@ -10,6 +10,20 @@ export type PressHandlers = {
 };
 
 /**
+ * The pressed-state fill for an outlined or ghost control on a cream surface.
+ *
+ * `opacity: 0.85` was the old feedback and is invisible on cream — `surface` and `canvas`
+ * differ by three percent, so dimming an outline by fifteen changes nothing the eye can see.
+ * A pressed control swaps its fill to `surface2` instead. Emit it INSTEAD of the resting
+ * `bg-*` class, never beside it: two background utilities on one element let Tailwind's
+ * emission order, not the press, decide which wins.
+ */
+export const pressedClass = 'bg-surface2';
+
+/** The pressed delta for a filled control (ink, gold), where a fill swap would hide the fill. */
+export const pressedStyle = { opacity: 0.85 } as const;
+
+/**
  * Press feedback as state instead of a `style` callback.
  *
  * A `style` FUNCTION on a component that also carries `className` silently loses its static

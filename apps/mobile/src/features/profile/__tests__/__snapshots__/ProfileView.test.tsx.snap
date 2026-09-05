@@ -2,7 +2,7 @@
 
 exports[`ProfileView (te) renders the Telugu setting rows and matches the snapshot 1`] = `
 <View
-  className="flex-1 bg-tar"
+  className="flex-1 bg-canvas"
   style={
     {
       "paddingBottom": 0,
@@ -21,7 +21,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
   >
     <View>
       <Text
-        className="text-chalk mt-5"
+        className="text-ink mt-5"
         style={
           {
             "fontFamily": "NotoSansTelugu_700Bold",
@@ -49,7 +49,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
         }
       >
         <Text
-          className="text-dim"
+          className="text-ink3"
           style={
             {
               "fontFamily": "NotoSansTelugu_700Bold",
@@ -71,7 +71,12 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
               "selected": false,
             }
           }
-          className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4"
+          className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
+          style={
+            {
+              "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+            }
+          }
         >
           <View
             accessibilityLabel="పోస్ట్"
@@ -121,7 +126,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
               testID="profile-post-row"
             >
               <Text
-                className="text-chalk flex-1"
+                className="text-ink flex-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -236,7 +241,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
               testID="profile-category-row"
             >
               <Text
-                className="text-chalk flex-1"
+                className="text-ink flex-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -316,7 +321,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
         }
       >
         <Text
-          className="text-dim"
+          className="text-ink3"
           style={
             {
               "fontFamily": "NotoSansTelugu_700Bold",
@@ -338,7 +343,12 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
               "selected": false,
             }
           }
-          className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4"
+          className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
+          style={
+            {
+              "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+            }
+          }
         >
           <View
             testID="profile-language"
@@ -357,7 +367,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
               testID="profile-language-row"
             >
               <Text
-                className="text-chalk flex-1"
+                className="text-ink flex-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -375,7 +385,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
               </Text>
               <View
                 accessibilityRole="radiogroup"
-                className="h-touch overflow-hidden rounded-sm border border-line self-start"
+                className="h-touch overflow-hidden rounded-sm border border-line2 self-start"
                 style={
                   {
                     "alignItems": undefined,
@@ -408,7 +418,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                     }
                   }
                   accessible={true}
-                  className="h-full min-w-touch items-center justify-center px-3 border-line border-r"
+                  className="h-full min-w-touch items-center justify-center px-3 border-line2 border-r"
                   collapsable={false}
                   focusable={true}
                   onBlur={[Function]}
@@ -422,7 +432,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                   onStartShouldSetResponder={[Function]}
                 >
                   <Text
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "Inter_700Bold",
@@ -460,7 +470,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                     }
                   }
                   accessible={true}
-                  className="h-full min-w-touch items-center justify-center px-3 bg-hivis"
+                  className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft"
                   collapsable={false}
                   focusable={true}
                   onBlur={[Function]}
@@ -474,7 +484,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                   onStartShouldSetResponder={[Function]}
                 >
                   <Text
-                    className="text-tar"
+                    className="text-ink"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_700Bold",
@@ -510,7 +520,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
               }
             >
               <Text
-                className="text-chalk flex-1"
+                className="text-ink flex-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -610,7 +620,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
         }
       >
         <Text
-          className="text-dim"
+          className="text-ink3"
           style={
             {
               "fontFamily": "NotoSansTelugu_700Bold",
@@ -632,7 +642,12 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
               "selected": false,
             }
           }
-          className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4"
+          className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
+          style={
+            {
+              "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+            }
+          }
         >
           <View
             style={
@@ -664,7 +679,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 border border-line3"
+              className="items-center justify-center rounded-sm px-4 border border-line2"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -695,7 +710,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                 }
               >
                 <Text
-                  className="text-chalk"
+                  className="text-ink"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -733,7 +748,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 border border-flag"
+              className="items-center justify-center rounded-sm px-4 border border-dangerInk"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -764,7 +779,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                 }
               >
                 <Text
-                  className="text-flag"
+                  className="text-dangerInk"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_600SemiBold",

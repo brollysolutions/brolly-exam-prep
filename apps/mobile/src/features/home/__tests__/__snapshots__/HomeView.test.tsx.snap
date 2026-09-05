@@ -2,7 +2,7 @@
 
 exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matches the snapshot 1`] = `
 <View
-  className="flex-1 bg-tar"
+  className="flex-1 bg-canvas"
   style={
     {
       "paddingBottom": 0,
@@ -63,7 +63,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         >
           <View
             accessibilityRole="radiogroup"
-            className="h-touch overflow-hidden rounded-sm border border-line self-start"
+            className="h-touch overflow-hidden rounded-sm border border-line2 self-start"
             style={
               {
                 "alignItems": undefined,
@@ -96,7 +96,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 }
               }
               accessible={true}
-              className="h-full min-w-touch items-center justify-center px-3 border-line border-r"
+              className="h-full min-w-touch items-center justify-center px-3 border-line2 border-r"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -110,7 +110,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               onStartShouldSetResponder={[Function]}
             >
               <Text
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "Inter_700Bold",
@@ -148,7 +148,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 }
               }
               accessible={true}
-              className="h-full min-w-touch items-center justify-center px-3 bg-hivis"
+              className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -162,7 +162,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               onStartShouldSetResponder={[Function]}
             >
               <Text
-                className="text-tar"
+                className="text-ink"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_700Bold",
@@ -183,7 +183,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         </View>
       </View>
       <Text
-        className="text-chalk mt-4"
+        className="text-ink mt-4"
         style={
           {
             "fontFamily": "NotoSansTelugu_700Bold",
@@ -208,11 +208,12 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           }
         }
         accessible={true}
-        className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4 mt-4"
+        className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface mt-4"
         style={
           {
             "borderLeftColor": "#856a22",
             "borderLeftWidth": 3,
+            "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
           }
         }
         testID="home-hero"
@@ -337,7 +338,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           }
         >
           <Text
-            className="text-dim"
+            className="text-ink3"
             style={
               {
                 "fontFamily": "NotoSansTelugu_700Bold",
@@ -466,7 +467,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             }
           >
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -483,11 +484,11 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               TSLPRB అప్‌డేట్‌లు
             </Text>
             <View
-              className="rounded-xs bg-panel3 px-2 py-0.5"
+              className="rounded-xs bg-surface2 px-2 py-0.5"
               testID="sample-data-updates"
             >
               <Text
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -668,10 +669,10 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   }
                 >
                   <View
-                    className="rounded-xs bg-panel3 px-2 py-0.5"
+                    className="rounded-xs bg-surface2 px-2 py-0.5"
                   >
                     <Text
-                      className="text-dim"
+                      className="text-ink3"
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -710,7 +711,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   </Text>
                 </View>
                 <Text
-                  className="text-chalk mt-2"
+                  className="text-ink mt-2"
                   numberOfLines={3}
                   style={
                     {
@@ -780,10 +781,10 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   }
                 >
                   <View
-                    className="rounded-xs bg-panel3 px-2 py-0.5"
+                    className="rounded-xs bg-surface2 px-2 py-0.5"
                   >
                     <Text
-                      className="text-dim"
+                      className="text-ink3"
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -822,7 +823,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   </Text>
                 </View>
                 <Text
-                  className="text-chalk mt-2"
+                  className="text-ink mt-2"
                   numberOfLines={3}
                   style={
                     {
@@ -892,10 +893,10 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   }
                 >
                   <View
-                    className="rounded-xs bg-panel3 px-2 py-0.5"
+                    className="rounded-xs bg-surface2 px-2 py-0.5"
                   >
                     <Text
-                      className="text-dim"
+                      className="text-ink3"
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -934,7 +935,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   </Text>
                 </View>
                 <Text
-                  className="text-chalk mt-2"
+                  className="text-ink mt-2"
                   numberOfLines={3}
                   style={
                     {
@@ -962,11 +963,16 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             "selected": false,
           }
         }
-        className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4 mt-6"
+        className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface mt-6"
+        style={
+          {
+            "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+          }
+        }
         testID="home-physical"
       >
         <Text
-          className="text-dim"
+          className="text-ink3"
           style={
             {
               "fontFamily": "NotoSansTelugu_700Bold",
@@ -983,7 +989,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           PMT / PET
         </Text>
         <Text
-          className="text-chalk mt-2"
+          className="text-ink mt-2"
           style={
             {
               "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1019,7 +1025,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             }
           }
           accessible={true}
-          className="items-center justify-center rounded-sm px-4 bg-hivis mt-4"
+          className="items-center justify-center rounded-sm px-4 bg-ink mt-4"
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -1050,7 +1056,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             }
           >
             <Text
-              className="text-tar"
+              className="text-onInk"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -1097,7 +1103,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             }
           >
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -1114,11 +1120,11 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               నేటి కరెంట్ అఫైర్స్
             </Text>
             <View
-              className="rounded-xs bg-panel3 px-2 py-0.5"
+              className="rounded-xs bg-surface2 px-2 py-0.5"
               testID="sample-data-affairs"
             >
               <Text
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1594,7 +1600,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         testID="home-progress"
       >
         <Text
-          className="text-dim"
+          className="text-ink3"
           style={
             {
               "fontFamily": "NotoSansTelugu_700Bold",

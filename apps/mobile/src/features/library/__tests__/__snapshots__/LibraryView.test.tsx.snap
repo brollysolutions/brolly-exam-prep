@@ -2,7 +2,7 @@
 
 exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] = `
 <View
-  className="flex-1 bg-tar"
+  className="flex-1 bg-canvas"
   style={
     {
       "paddingBottom": 0,
@@ -17,7 +17,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
     className="flex-1 px-4"
   >
     <Text
-      className="text-chalk mt-5"
+      className="text-ink mt-5"
       style={
         {
           "fontFamily": "NotoSansTelugu_700Bold",
@@ -67,7 +67,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
           }
         }
         accessible={true}
-        className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 bg-hivis border-hivis"
+        className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 bg-accentSoft border-accent"
         collapsable={false}
         focusable={true}
         hitSlop={0}
@@ -84,7 +84,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
         testID="library-filter-full"
       >
         <Text
-          className="text-tar"
+          className="text-ink"
           style={
             {
               "fontFamily": "NotoSansTelugu_700Bold",
@@ -121,7 +121,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
           }
         }
         accessible={true}
-        className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line"
+        className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line2"
         collapsable={false}
         focusable={true}
         hitSlop={0}
@@ -138,7 +138,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
         testID="library-filter-sectional"
       >
         <Text
-          className="text-dim"
+          className="text-ink3"
           style={
             {
               "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -175,7 +175,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
           }
         }
         accessible={true}
-        className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line"
+        className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line2"
         collapsable={false}
         focusable={true}
         hitSlop={0}
@@ -192,7 +192,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
         testID="library-filter-previous"
       >
         <Text
-          className="text-dim"
+          className="text-ink3"
           style={
             {
               "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -550,7 +550,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       "selected": false,
                     }
                   }
-                  className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line"
+                  className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line2"
                   testID="library-best-mock-07"
                 >
                   <View
@@ -585,7 +585,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       ⁦62.25⁩
                     </Text>
                     <Text
-                      className="text-dim"
+                      className="text-ink3"
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -609,11 +609,11 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       "selected": false,
                     }
                   }
-                  className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line"
+                  className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line2"
                   testID="library-badge-mock-07"
                 >
                   <Text
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -858,7 +858,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       "selected": false,
                     }
                   }
-                  className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line"
+                  className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line2"
                   testID="library-badge-mock-08"
                 >
                   <View
@@ -890,7 +890,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       ⛌
                     </Text>
                     <Text
-                      className="text-mute"
+                      className="text-ink4"
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_600SemiBold",

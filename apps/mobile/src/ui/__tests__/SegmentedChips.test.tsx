@@ -50,29 +50,39 @@ describe('SegmentedChips (form pickers)', () => {
     { value: 'si', label: 'Sub-Inspector' },
   ];
 
-  it('is hi-vis, self-sized and 8 px-padded by default — the header switcher', async () => {
+  it('is soft gold, self-sized and 8 px-padded by default — the header switcher', async () => {
     await render(<SegmentedChips value="pc" onChange={() => {}} options={posts} testID="seg" />);
     expect(screen.getByTestId('seg').props.className).toContain('self-start');
+    expect(screen.getByTestId('seg').props.className).toContain('border-line2');
     const active = screen.getByRole('radio', { name: 'Constable' });
-    expect(active.props.className).toContain('bg-hivis');
+    expect(active.props.className).toContain('bg-accentSoft');
     expect(active.props.className).toContain('px-3');
     expect(active.props.className).not.toContain('flex-1');
-    expect(screen.getByText('Constable').props.className).toContain('text-tar');
+    expect(screen.getByText('Constable').props.className).toContain('text-ink');
+    expect(screen.getByText('Sub-Inspector').props.className).toContain('text-ink3');
   });
 
-  // Three stacked pickers on one screen cannot each carry a yellow block: the selected cell
-  // reads as a state (panel3, chalk), and the yellow stays with the one action.
-  it('has a quiet tone whose selected cell is a raised panel, not yellow', async () => {
+  // Three stacked pickers on one screen cannot each carry a gold block: the selected cell
+  // reads as a state (surface2, ink), and the gold stays with the header switcher.
+  it('has a quiet tone whose selected cell is a raised panel, not gold', async () => {
     await render(
       <SegmentedChips value="pc" onChange={() => {}} options={posts} tone="quiet" testID="seg" />,
     );
     const active = screen.getByRole('radio', { name: 'Constable' });
-    expect(active.props.className).toContain('bg-panel3');
-    expect(active.props.className).toContain('border-line3');
-    expect(active.props.className).not.toContain('bg-hivis');
-    expect(screen.getByText('Constable').props.className).toContain('text-chalk');
+    expect(active.props.className).toContain('bg-surface2');
+    expect(active.props.className).not.toContain('bg-accentSoft');
+    expect(screen.getByText('Constable').props.className).toContain('text-ink');
     expect(screen.getByText('Constable')).toHaveStyle({ fontFamily: 'Inter_700Bold' });
-    expect(screen.getByText('Sub-Inspector').props.className).toContain('text-dim');
+    expect(screen.getByText('Sub-Inspector').props.className).toContain('text-ink3');
+  });
+
+  it('keeps `hivis` as the old name of the accent tone', async () => {
+    await render(
+      <SegmentedChips value="pc" onChange={() => {}} options={posts} tone="hivis" testID="seg" />,
+    );
+    expect(screen.getByRole('radio', { name: 'Constable' }).props.className).toContain(
+      'bg-accentSoft',
+    );
   });
 
   it('fills its row as a block, every segment an equal share', async () => {

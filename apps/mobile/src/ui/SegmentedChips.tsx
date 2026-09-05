@@ -1,10 +1,10 @@
-import { colors, type ColorName, type Lang } from '@tslprb/design-tokens';
+import { colors, type Lang } from '@tslprb/design-tokens';
 import { dir, useDir } from '@tslprb/i18n';
 import { Pressable, type ViewProps } from 'react-native';
 
 import { cx } from './cx';
 import * as haptics from './haptics';
-import { usePressed } from './pressable';
+import { pressedClass, usePressed } from './pressable';
 import { Row } from './Row';
 import { Text } from './Text';
 
@@ -16,11 +16,12 @@ export type SegmentedOption<V extends string> = {
 };
 
 /**
- * `hivis` is the header language switcher: one selected cell in yellow. `quiet` is for a form
- * picker — three of them stacked on the eligibility screen cannot each carry a yellow block
- * beside the one yellow action, so the selected cell is a raised panel instead.
+ * `accent` is the header language switcher: one selected cell on the soft gold. `quiet` is for
+ * a form picker — three of them stacked on the eligibility screen cannot each carry a gold
+ * block beside the one ink action, so the selected cell is a raised `surface2` panel instead.
+ * `hivis` is the old name of `accent`, kept one cycle.
  */
-export type SegmentedTone = 'hivis' | 'quiet';
+export type SegmentedTone = 'accent' | 'quiet' | 'hivis';
 
 export type SegmentedChipsProps<V extends string> = Omit<ViewProps, 'children'> & {
   value: V;
@@ -31,12 +32,10 @@ export type SegmentedChipsProps<V extends string> = Omit<ViewProps, 'children'> 
   block?: boolean;
 };
 
-const selectedFill: Record<SegmentedTone, string> = {
-  hivis: 'bg-hivis',
-  quiet: 'bg-panel3 border-line3',
+const selectedFill: Record<'accent' | 'quiet', string> = {
+  accent: 'bg-accentSoft',
+  quiet: 'bg-surface2',
 };
-
-const selectedColor: Record<SegmentedTone, ColorName> = { hivis: 'tar', quiet: 'chalk' };
 
 /**
  * One cell. Its own component so the press delta can live in state: a `style` callback next to
@@ -46,7 +45,6 @@ function Segment({
   label,
   lang,
   active,
-  color,
   ripple,
   className,
   onPress,
@@ -54,7 +52,6 @@ function Segment({
   label: string;
   lang?: Lang;
   active: boolean;
-  color: ColorName;
   ripple: string;
   className?: string;
   onPress: () => void;
@@ -68,11 +65,16 @@ function Segment({
       android_ripple={{ color: ripple }}
       onPress={onPress}
       {...handlers}
-      className={className}
-      // One flattened object, never a callback: see `usePressed`.
-      style={pressed && !active ? { opacity: 0.85 } : undefined}
+      // An inactive cell fills `surface2` while pressed; the active cell already has its fill.
+      className={cx(className, pressed && !active && pressedClass)}
     >
-      <Text variant="body" weight="700" color={active ? color : 'dim'} align="center" lang={lang}>
+      <Text
+        variant="body"
+        weight="700"
+        color={active ? 'ink' : 'ink3'}
+        align="center"
+        lang={lang}
+      >
         {label}
       </Text>
     </Pressable>
@@ -84,38 +86,33 @@ export function SegmentedChips<V extends string>({
   value,
   onChange,
   options,
-  tone = 'hivis',
+  tone: toneProp = 'accent',
   block = false,
   className,
   ...rest
 }: SegmentedChipsProps<V>) {
   const d = useDir();
+  const tone = toneProp === 'hivis' ? 'accent' : toneProp;
   const last = options.length - 1;
   return (
     <Row
       accessibilityRole="radiogroup"
       {...rest}
       className={cx(
-        'h-touch overflow-hidden rounded-sm border border-line',
+        'h-touch overflow-hidden rounded-sm border border-line2',
         block ? 'self-stretch' : 'self-start',
         className,
       )}
     >
       {options.map((o, i) => {
         const active = o.value === value;
-        // This cell draws only its own trailing edge (the leading edge belongs to the cell
-        // before it), so the divider must also light up when the NEXT cell is the quiet
-        // selection — otherwise only the trailing side of a quiet selection reads `line3`.
-        const nextActive = i < last && options[i + 1].value === value;
-        const divider = tone === 'quiet' && (active || nextActive) ? 'border-line3' : 'border-line';
         return (
           <Segment
             key={o.value}
             label={o.label}
             lang={o.lang}
             active={active}
-            color={selectedColor[tone]}
-            ripple={active && tone === 'hivis' ? colors.pressTint : colors.hivisTint3}
+            ripple={active && tone === 'accent' ? colors.pressTint : colors.accentTint}
             onPress={() => {
               if (active) return;
               haptics.select();
@@ -125,7 +122,8 @@ export function SegmentedChips<V extends string>({
               'h-full min-w-touch items-center justify-center px-3',
               block && 'flex-1',
               active && selectedFill[tone],
-              i < last && cx(divider, dir(d, 'border-r', 'border-l')),
+              // This cell draws only its own trailing edge; the leading one belongs to the cell before it.
+              i < last && cx('border-line2', dir(d, 'border-r', 'border-l')),
             )}
           />
         );

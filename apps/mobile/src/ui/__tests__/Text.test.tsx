@@ -14,20 +14,25 @@ describe('Text', () => {
     });
   });
 
+  it('is ink by default', async () => {
+    await render(<Text testID="t">EN</Text>);
+    expect(screen.getByTestId('t').props.className).toContain('text-ink');
+  });
+
   it('swaps the colour class cleanly on re-render (no stale class, plain object style)', async () => {
     await render(
-      <Text color="tar" testID="t">
+      <Text color="canvas" testID="t">
         EN
       </Text>,
     );
     await screen.rerender(
-      <Text color="dim" testID="t">
+      <Text color="ink3" testID="t">
         EN
       </Text>,
     );
     const el = screen.getByTestId('t');
-    expect(el.props.className).toContain('text-dim');
-    expect(el.props.className).not.toContain('text-tar');
+    expect(el.props.className).toContain('text-ink3');
+    expect(el.props.className).not.toContain('text-canvas');
     // css-interop pushes into array styles in place on web; Text must hand it an object.
     expect(Array.isArray(el.props.style)).toBe(false);
   });

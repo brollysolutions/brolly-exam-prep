@@ -1,5 +1,7 @@
 import { render, screen, userEvent } from '@testing-library/react-native';
+import { shadow } from '@tslprb/design-tokens';
 import { initI18n } from '@tslprb/i18n';
+import { Text } from 'react-native';
 
 import { Card } from '../Card';
 
@@ -16,10 +18,30 @@ describe('Card', () => {
     expect(screen.getByText('Constable')).toBeOnTheScreen();
   });
 
-  it('selected turns the title hi-vis and the border 2 px', async () => {
+  it('rests on surface with a 1 px line and the card shadow', async () => {
+    await render(<Card title="Constable" testID="card" />);
+    const el = screen.getByTestId('card');
+    expect(el.props.className).toContain('border border-line');
+    expect(el.props.className).toContain('bg-surface');
+    expect(el.props.style.boxShadow).toBe(shadow.card);
+    expect(screen.getByText('Constable').props.className).toContain('text-ink');
+  });
+
+  it('selected turns the border 2 px gold on a gold tint; the title stays ink', async () => {
     await render(<Card title="SI / ASI" selected onPress={() => {}} testID="card" />);
-    expect(screen.getByTestId('card').props.className).toContain('border-2 border-hivis');
-    expect(screen.getByText('SI / ASI').props.className).toContain('text-hivis');
+    expect(screen.getByTestId('card').props.className).toContain('border-2 border-accent');
+    expect(screen.getByTestId('card').props.className).toContain('bg-accentTint');
+    expect(screen.getByTestId('card').props.className).not.toContain('bg-surface');
+    // Gold is a fill, never text: the title keeps its ink at 11:1 on the tint.
+    expect(screen.getByText('SI / ASI').props.className).toContain('text-ink');
+  });
+
+  it('drops the shadow when flat and renders a trailing slot after the content', async () => {
+    await render(
+      <Card title="Constable" flat trailing={<Text testID="trail">✓</Text>} testID="card" />,
+    );
+    expect(screen.getByTestId('card').props.style?.boxShadow).toBeUndefined();
+    expect(screen.getByTestId('trail')).toBeOnTheScreen();
   });
 
   it('reports presses and the selected state as a button', async () => {

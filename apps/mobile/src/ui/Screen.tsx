@@ -33,7 +33,7 @@ export type ScreenProps = ViewProps & {
 };
 
 /**
- * Safe-area container on `tar`. Every route renders inside one.
+ * Safe-area container on `canvas`. Every route renders inside one.
  * Body goes in `children`; modal surfaces (Dialog, Toast) go in `overlay`.
  */
 export function Screen({
@@ -52,7 +52,7 @@ export function Screen({
   return (
     <View
       {...rest}
-      className={cx('flex-1 bg-tar', className)}
+      className={cx('flex-1 bg-canvas', className)}
       // Flattened on purpose: css-interop mutates array styles on web (see Text).
       style={StyleSheet.flatten([
         {

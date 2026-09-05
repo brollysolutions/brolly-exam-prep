@@ -57,14 +57,16 @@ describe('LibraryView', () => {
     expect(screen.getByTestId('library-locked-toast')).toBeOnTheScreen();
   });
 
-  it('spends hi-vis on the chosen filter and nothing else', async () => {
+  it('spends the gold fill on the chosen filter and nothing else', async () => {
     await render(<LibraryView {...handlers()} />);
-    // A shelf of solid-yellow Free badges next to three filters is six primary actions.
-    expect(screen.getByTestId('library-filter-full').props.className).toContain('bg-hivis');
+    // A shelf of solid-gold Free badges next to three filters is six primary actions.
+    expect(screen.getByTestId('library-filter-full').props.className).toContain('bg-accentSoft');
     expect(screen.getByTestId('library-filter-sectional').props.className).not.toContain(
-      'bg-hivis',
+      'bg-accentSoft',
     );
-    expect(screen.getByTestId('library-badge-mock-07').props.className).not.toContain('bg-hivis');
+    expect(screen.getByTestId('library-badge-mock-07').props.className).not.toContain(
+      'bg-accentSoft',
+    );
   });
 
   it('lets a locked paper recede instead of shouting like one you can sit', async () => {
@@ -175,17 +177,21 @@ describe('LibraryView — previous papers', () => {
     expect(practise).toHaveStyle({ height: 48 });
     expect(view).toHaveStyle({ height: 48 });
     // Practise leads on fill, not on weight alone; View paper stays an outline.
-    expect(practise.props.className).toContain('bg-hivis');
-    expect(view.props.className).not.toContain('bg-hivis');
+    expect(practise.props.className).toContain('bg-ink');
+    expect(view.props.className).not.toContain('bg-ink');
     expect(within(practise).getByText('Practise').props.style.fontFamily).toContain('700Bold');
     expect(within(view).getByText('View paper').props.style.fontFamily).not.toContain('700Bold');
   });
 
   // Filling Practise must not cost the shelf its "which shelf am I on" mark.
-  it('leaves the active filter chip its hi-vis', async () => {
+  it('leaves the active filter chip its gold', async () => {
     await previous();
-    expect(screen.getByTestId('library-filter-previous').props.className).toContain('bg-hivis');
-    expect(screen.getByTestId('library-filter-full').props.className).not.toContain('bg-hivis');
+    expect(screen.getByTestId('library-filter-previous').props.className).toContain(
+      'bg-accentSoft',
+    );
+    expect(screen.getByTestId('library-filter-full').props.className).not.toContain(
+      'bg-accentSoft',
+    );
   });
 
   it('leaves the other shelves with the one whole-row action they had', async () => {

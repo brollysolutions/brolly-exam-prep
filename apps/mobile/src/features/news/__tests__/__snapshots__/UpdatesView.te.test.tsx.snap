@@ -2,7 +2,7 @@
 
 exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on open 1`] = `
 <View
-  className="flex-1 bg-tar"
+  className="flex-1 bg-canvas"
   style={
     {
       "paddingBottom": 0,
@@ -88,7 +88,7 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
           </Text>
         </View>
         <Text
-          className="text-chalk flex-1"
+          className="text-ink flex-1"
           numberOfLines={1}
           style={
             {
@@ -109,11 +109,11 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
           className="px-2"
         >
           <View
-            className="rounded-xs bg-panel3 px-2 py-0.5"
+            className="rounded-xs bg-surface2 px-2 py-0.5"
             testID="sample-data"
           >
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -216,11 +216,11 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                     }
                   >
                     <View
-                      className="rounded-xs bg-panel3 px-2 py-0.5"
+                      className="rounded-xs bg-surface2 px-2 py-0.5"
                       testID="update-kind-nt-2026-hall-ticket"
                     >
                       <Text
-                        className="text-dim"
+                        className="text-ink3"
                         style={
                           {
                             "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -296,7 +296,7 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                   </View>
                 </View>
                 <Text
-                  className="text-chalk mt-2"
+                  className="text-ink mt-2"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -493,11 +493,11 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                     }
                   >
                     <View
-                      className="rounded-xs bg-panel3 px-2 py-0.5"
+                      className="rounded-xs bg-surface2 px-2 py-0.5"
                       testID="update-kind-nt-2026-exam-date"
                     >
                       <Text
-                        className="text-dim"
+                        className="text-ink3"
                         style={
                           {
                             "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -573,7 +573,7 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                   </View>
                 </View>
                 <Text
-                  className="text-chalk mt-2"
+                  className="text-ink mt-2"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_600SemiBold",

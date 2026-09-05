@@ -2,7 +2,7 @@
 
 exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in Latin digits 1`] = `
 <View
-  className="flex-1 bg-tar"
+  className="flex-1 bg-canvas"
   style={
     {
       "paddingBottom": 0,
@@ -88,7 +88,7 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
           </Text>
         </View>
         <Text
-          className="text-chalk flex-1"
+          className="text-ink flex-1"
           numberOfLines={1}
           style={
             {
@@ -109,11 +109,11 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
           className="px-2"
         >
           <View
-            className="rounded-xs bg-panel3 px-2 py-0.5"
+            className="rounded-xs bg-surface2 px-2 py-0.5"
             testID="sample-data"
           >
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -201,7 +201,7 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
               తెలంగాణ
             </Text>
             <Text
-              className="text-chalk mt-2"
+              className="text-ink mt-2"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -266,7 +266,7 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
               భారత్
             </Text>
             <Text
-              className="text-chalk mt-2"
+              className="text-ink mt-2"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -365,7 +365,7 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
               తెలంగాణ
             </Text>
             <Text
-              className="text-chalk mt-2"
+              className="text-ink mt-2"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",

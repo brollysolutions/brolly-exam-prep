@@ -77,8 +77,8 @@ describe('ProfileView', () => {
   it('asks in outline and only commits in solid red', async () => {
     await render(<ProfileView {...base} lang="en" {...handlers()} />);
     // A solid red button sitting on a settings list reads as the screen's primary action.
-    expect(screen.getByTestId('profile-delete').props.className).toContain('border-flag');
-    expect(screen.getByTestId('profile-delete').props.className).not.toContain('bg-flag');
+    expect(screen.getByTestId('profile-delete').props.className).toContain('border-dangerInk');
+    expect(screen.getByTestId('profile-delete').props.className).not.toContain('bg-danger');
     await userEvent.press(screen.getByTestId('profile-delete'));
     expect(screen.getByTestId('profile-delete-dialog')).toBeOnTheScreen();
   });

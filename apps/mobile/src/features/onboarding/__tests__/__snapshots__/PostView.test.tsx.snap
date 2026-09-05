@@ -2,7 +2,7 @@
 
 exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
 <View
-  className="flex-1 bg-tar"
+  className="flex-1 bg-canvas"
   style={
     {
       "paddingBottom": 0,
@@ -44,7 +44,7 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
           ⁦1 / 2⁩
         </Text>
         <Text
-          className="text-chalk mt-3"
+          className="text-ink mt-3"
           style={
             {
               "fontFamily": "NotoSansTelugu_700Bold",
@@ -109,7 +109,7 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
               }
             }
             accessible={true}
-            className="justify-center rounded-md min-h-16 border-2 border-hivis bg-hivisTint p-[15px]"
+            className="justify-center rounded-md min-h-16 border-2 border-accent p-[15px] bg-accentTint"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -121,11 +121,15 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={{}}
+            style={
+              {
+                "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+              }
+            }
             testID="post-card-pc"
           >
             <Text
-              className="text-hivis"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -142,7 +146,7 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
               కానిస్టేబుల్
             </Text>
             <Text
-              className="text-dim mt-1"
+              className="text-ink3 mt-1"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
@@ -179,7 +183,7 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
               }
             }
             accessible={true}
-            className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4"
+            className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -191,11 +195,15 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={{}}
+            style={
+              {
+                "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+              }
+            }
             testID="post-card-si"
           >
             <Text
-              className="text-chalk"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -212,7 +220,7 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
               ఎస్‌ఐ / ఏఎస్‌ఐ
             </Text>
             <Text
-              className="text-dim mt-1"
+              className="text-ink3 mt-1"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
@@ -255,7 +263,7 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
           }
         }
         accessible={true}
-        className="items-center justify-center rounded-sm px-4 bg-hivis"
+        className="items-center justify-center rounded-sm px-4 bg-ink"
         collapsable={false}
         focusable={true}
         onBlur={[Function]}
@@ -286,7 +294,7 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
           }
         >
           <Text
-            className="text-tar"
+            className="text-onInk"
             style={
               {
                 "fontFamily": "NotoSansTelugu_700Bold",

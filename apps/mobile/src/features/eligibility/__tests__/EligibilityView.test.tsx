@@ -174,9 +174,9 @@ describe('EligibilityView — the form', () => {
   it('draws the pickers quiet and full-width', async () => {
     await render(<EligibilityView {...props()} />);
     const cell = screen.getByRole('radio', { name: t('onboarding.pcTitle') });
-    expect(cell.props.className).toContain('bg-panel3');
+    expect(cell.props.className).toContain('bg-surface2');
     expect(cell.props.className).toContain('flex-1');
-    expect(cell.props.className).not.toContain('bg-hivis');
+    expect(cell.props.className).not.toContain('bg-accentSoft');
   });
 
   it('moves the three pickers', async () => {

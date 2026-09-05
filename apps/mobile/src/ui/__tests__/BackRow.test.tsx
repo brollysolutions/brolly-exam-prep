@@ -15,18 +15,20 @@ describe('BackRow', () => {
     expect(onPress).toHaveBeenCalledTimes(1);
   });
 
-  it('dims while held — press feedback is state, not a `style` callback', async () => {
+  it('fills surface2 while held — press feedback is state, not a `style` callback', async () => {
     await render(<BackRow label="Back" onPress={jest.fn()} testID="back" />);
     const row = screen.getByTestId('back');
-    expect(row).not.toHaveStyle({ opacity: 0.8 });
+    // Opacity is invisible on cream (see `pressedClass`): the row swaps its fill instead.
+    expect(row.props.className).not.toContain('bg-surface2');
     await act(async () => {
       fireEvent(row, 'pressIn');
     });
-    expect(screen.getByTestId('back')).toHaveStyle({ opacity: 0.8 });
+    expect(screen.getByTestId('back').props.className).toContain('bg-surface2');
+    expect(typeof screen.getByTestId('back').props.style).not.toBe('function');
     await act(async () => {
       fireEvent(row, 'pressOut');
     });
-    expect(screen.getByTestId('back')).not.toHaveStyle({ opacity: 0.8 });
+    expect(screen.getByTestId('back').props.className).not.toContain('bg-surface2');
   });
 
   it('is a 48 px target', async () => {

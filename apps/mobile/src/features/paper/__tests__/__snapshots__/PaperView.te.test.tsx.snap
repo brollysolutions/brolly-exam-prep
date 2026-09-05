@@ -2,7 +2,7 @@
 
 exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer bar on the left edge 1`] = `
 <View
-  className="flex-1 bg-tar"
+  className="flex-1 bg-canvas"
   style={
     {
       "paddingBottom": 0,
@@ -88,7 +88,7 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
           </Text>
         </View>
         <Text
-          className="text-chalk flex-1"
+          className="text-ink flex-1"
           numberOfLines={1}
           style={
             {
@@ -192,7 +192,7 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line2"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -209,7 +209,7 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
             testID="paper-section-0"
           >
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -246,7 +246,7 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line2"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -263,7 +263,7 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
             testID="paper-section-1"
           >
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -394,7 +394,7 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
               }
             >
               <Text
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_700Bold",
@@ -432,7 +432,7 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
               </Text>
             </View>
             <Text
-              className="text-chalk mt-3"
+              className="text-ink mt-3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
@@ -776,7 +776,7 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
               }
             >
               <Text
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_700Bold",
@@ -814,7 +814,7 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
               </Text>
             </View>
             <Text
-              className="text-chalk mt-3"
+              className="text-ink mt-3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",

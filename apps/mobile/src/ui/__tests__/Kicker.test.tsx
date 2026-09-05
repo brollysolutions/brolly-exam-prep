@@ -18,19 +18,19 @@ describe('Kicker', () => {
     );
     const el = screen.getByTestId('kicker');
     expect(el.props.className).toContain('mt-3');
-    expect(el.props.className).toContain('text-dim');
+    expect(el.props.className).toContain('text-ink3');
   });
 
-  it('counts are hazard by default and take a colour when the section is the primary one', async () => {
+  it('counts are dark gold by default and take a colour when the section is the primary one', async () => {
     const digits = String.fromCharCode(0x2066) + '03' + String.fromCharCode(0x2069);
     await render(<Kicker index="03">Do these three next</Kicker>);
-    expect(screen.getByText(digits).props.className).toContain('text-hazard');
+    expect(screen.getByText(digits).props.className).toContain('text-accentInk');
     await render(
-      <Kicker index="03" indexColor="hivis" color="hivis">
+      <Kicker index="03" indexColor="ink" color="ink">
         Do these three next
       </Kicker>,
     );
-    expect(screen.getByText(digits).props.className).toContain('text-hivis');
+    expect(screen.getByText(digits).props.className).toContain('text-ink');
   });
 
   it('puts className on the wrapping row when an index is given', async () => {
@@ -45,10 +45,10 @@ describe('Kicker', () => {
 });
 
 describe('Kicker contrast and tracking', () => {
-  it('defaults to dim (7.06:1), never mute', async () => {
+  it('defaults to ink3 (5.0:1), never ink4', async () => {
     await render(<Kicker testID="k">Section</Kicker>);
-    expect(screen.getByTestId('k').props.className).toContain('text-dim');
-    expect(screen.getByTestId('k').props.className).not.toContain('text-mute');
+    expect(screen.getByTestId('k').props.className).toContain('text-ink3');
+    expect(screen.getByTestId('k').props.className).not.toContain('text-ink4');
   });
 
   it('index digits share the label tracking: the kicker token in English, 0 in Telugu', async () => {

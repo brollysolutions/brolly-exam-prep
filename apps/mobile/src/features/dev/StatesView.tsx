@@ -53,7 +53,7 @@ const DEV = {
   sheet: 'Sheet',
   sheetOpen: 'Open sheet',
   dialogOpen: 'Open dialog',
-  sheetBody: 'Sheet body — panel2, 3 px hi-vis edge, scrim backdrop.',
+  sheetBody: 'Sheet body — surface, 3 px gold edge, warm scrim.',
   entry: 'Keypad + PhoneField + OTP',
   progress: 'ProgressRail 40 %',
   palette: 'PaletteCell',
@@ -71,15 +71,8 @@ const DEV = {
   empty: 'empty',
 } as const;
 
-const VARIANTS: ButtonVariant[] = [
-  'primary',
-  'secondary',
-  'ghost',
-  'danger',
-  'dangerOutline',
-  'hazard',
-];
-const TONES: ChipTone[] = ['hivis', 'hazard', 'flag', 'sand'];
+const VARIANTS: ButtonVariant[] = ['primary', 'secondary', 'ghost', 'danger', 'accent'];
+const TONES: ChipTone[] = ['accent', 'danger', 'ok'];
 const TEXT_VARIANTS = [
   'kicker',
   'caption',
@@ -104,7 +97,7 @@ function Section({
 }) {
   return (
     <Stack gap={3} className="mt-6">
-      <Kicker index={index} color="dim" uppercase>
+      <Kicker index={index} color="ink3" uppercase>
         {title}
       </Kicker>
       {children}
@@ -128,7 +121,7 @@ function Preview({ label, children }: { label: string; children: ReactNode }) {
 
 function Label({ children }: { children: string }) {
   return (
-    <Text variant="caption" color="dim">
+    <Text variant="caption" color="ink3">
       {children}
     </Text>
   );
@@ -165,7 +158,7 @@ export function StatesView() {
   return (
     <Screen scroll padded overlay={dialog} testID="states-screen">
       <Row testID="states-header" align="center" justify="between" className="mt-4">
-        <Kicker lang="en" color="hivis" tracking="brand">
+        <Kicker lang="en" color="accentInk" tracking="brand">
           {t('common.brand')}
         </Kicker>
         <SegmentedChips
@@ -178,7 +171,7 @@ export function StatesView() {
       <Text variant="title" weight="600" className="mt-3">
         {DEV.title}
       </Text>
-      <Text variant="small" color="dim" className="mt-2">
+      <Text variant="small" color="ink3" className="mt-2">
         {DEV.sub}
       </Text>
 
@@ -188,7 +181,7 @@ export function StatesView() {
             key={v}
             variant={v}
             weight={v === 'kicker' ? '700' : '400'}
-            color={v === 'kicker' ? 'dim' : 'chalk'}
+            color={v === 'kicker' ? 'ink3' : 'ink'}
             tracking={v === 'kicker' ? 'kicker' : undefined}
           >
             {v} · {t('auth.loginTitle')}
@@ -211,7 +204,7 @@ export function StatesView() {
                 disabled
                 className="flex-1"
               />
-              {v === 'hazard' && (
+              {v === 'accent' && (
                 <Button variant={v} active label={t('test.markedShort')} className="flex-1" />
               )}
             </Row>
@@ -288,7 +281,7 @@ export function StatesView() {
         />
         <Sheet ref={sheet} title={t('test.palette')}>
           <View className="px-3 pb-6">
-            <Text variant="body" color="chalk2">
+            <Text variant="body" color="ink2">
               {DEV.sheetBody}
             </Text>
           </View>

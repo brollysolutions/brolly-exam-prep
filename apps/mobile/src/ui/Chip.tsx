@@ -13,15 +13,19 @@ import {
 import { cx } from './cx';
 import * as haptics from './haptics';
 import { Num } from './Num';
-import { usePressed } from './pressable';
+import { pressedClass, pressedStyle, usePressed } from './pressable';
 import { Row } from './Row';
 import { Text } from './Text';
 
 /**
- * `label` is the odd one out: not a fill for an active chip but a whole other shape — the
- * small quiet tag on a card ("Sample data", a notice's kind). It is never a control.
+ * Status vocabulary: `accent` (gold) is the candidate's own input or the active filter,
+ * `danger` is wrong / unanswered, `ok` is eligible / correct. `label` is the odd one out: not
+ * a fill for an active chip but a whole other shape — the small quiet tag on a card ("Sample
+ * data", a notice's kind). It is never a control.
+ * `hivis`, `hazard`, `sand` (→ accent) and `flag` (→ danger) are the old names, kept one cycle.
  */
-export type ChipTone = 'hivis' | 'hazard' | 'flag' | 'sand' | 'label';
+export type ChipTone = 'accent' | 'danger' | 'ok' | 'label' | 'hivis' | 'hazard' | 'flag' | 'sand';
+type Tone = 'accent' | 'danger' | 'ok';
 export type ChipSize = 'sm' | 'md' | 'lg';
 
 export type ChipProps = Omit<PressableProps, 'style' | 'children'> & {
@@ -42,7 +46,7 @@ export type ChipProps = Omit<PressableProps, 'style' | 'children'> & {
   /** sm ≥ 34, md ≥ 40, lg ≥ 48 px. */
   size?: ChipSize;
   /**
-   * Present but not yet available (a locked section tab): `mute` label instead of `dim`.
+   * Present but not yet available (a locked section tab): `ink4` label instead of `ink3`.
    * Unlike `disabled` it stays pressable, because the tap is what raises the locked toast.
    */
   muted?: boolean;
@@ -51,12 +55,17 @@ export type ChipProps = Omit<PressableProps, 'style' | 'children'> & {
   style?: StyleProp<ViewStyle>;
 };
 
-const fill: Record<Exclude<ChipTone, 'label'>, string> = {
-  hivis: 'bg-hivis border-hivis',
-  hazard: 'bg-hazard border-hazard',
-  flag: 'bg-flag border-flag',
-  sand: 'bg-sand border-sand',
+const canonical = (t: Exclude<ChipTone, 'label'>): Tone =>
+  t === 'hivis' || t === 'hazard' || t === 'sand' ? 'accent' : t === 'flag' ? 'danger' : t;
+
+const fill: Record<Tone, string> = {
+  accent: 'bg-accentSoft border-accent',
+  danger: 'bg-dangerTint border-dangerInk',
+  ok: 'bg-ok border-ok',
 };
+
+/** Label colour on each active fill; ink reads on gold and green, red text on the red tint. */
+const activeColor: Record<Tone, ColorName> = { accent: 'ink', danger: 'dangerInk', ok: 'ink' };
 
 /**
  * Minimum heights with vertical padding, never a fixed box: a tall face at chip size is a
@@ -70,7 +79,7 @@ const height: Record<ChipSize, string> = {
 };
 
 /**
- * The tag tone: a kicker on `panel3` with no border and no yellow, ~18 px tall in Latin, so a
+ * The tag tone: a kicker on `surface2` with no border and no gold, ~18 px tall in Latin, so a
  * "Sample data" tag reads quieter than the heading it sits beside and a notice's kind chip
  * stops out-shouting the notice.
  */
@@ -81,8 +90,8 @@ function LabelChip({
   ...rest
 }: Pick<ChipProps, 'label' | 'className' | 'style'> & ViewProps) {
   return (
-    <View {...rest} className={cx('rounded-xs bg-panel3 px-2 py-0.5', className)} style={style}>
-      <Text variant="kicker" weight="600" color="dim" align="center">
+    <View {...rest} className={cx('rounded-xs bg-surface2 px-2 py-0.5', className)} style={style}>
+      <Text variant="kicker" weight="600" color="ink3" align="center">
         {label}
       </Text>
     </View>
@@ -95,7 +104,7 @@ export function Chip({
   leading,
   count,
   active = false,
-  tone = 'hivis',
+  tone: toneProp = 'accent',
   size = 'sm',
   muted = false,
   shape = 'rect',
@@ -108,20 +117,27 @@ export function Chip({
   ...rest
 }: ChipProps) {
   const { pressed, handlers } = usePressed(onPressIn, onPressOut);
-  if (tone === 'label') {
+  if (toneProp === 'label') {
     // A tag is not a control whatever it is handed: the press stays with the card around it.
     return <LabelChip {...(rest as ViewProps)} label={label} className={className} style={style} />;
   }
+  const tone = canonical(toneProp);
+  // One fill slot: the active fill, the pressed fill or a bare outline — never two `bg-*` classes.
+  const surface = active
+    ? fill[tone]
+    : pressed && !disabled
+      ? cx(pressedClass, 'border-line2')
+      : 'border-line2';
   const classes = cx(
     'items-center justify-center border',
     shape === 'pill' ? 'rounded-full' : 'rounded-xs',
     height[size],
-    active ? fill[tone] : 'border-line',
+    surface,
     disabled && 'opacity-40',
     className,
   );
   const weight = active ? '700' : '600';
-  const color: ColorName = active ? 'tar' : muted ? 'mute' : 'dim';
+  const color: ColorName = active ? activeColor[tone] : muted ? 'ink4' : 'ink3';
   const caption = (
     <Text variant="small" weight={weight} color={color} align="center">
       {label}
@@ -162,7 +178,7 @@ export function Chip({
     <Pressable
       accessibilityRole="button"
       accessibilityState={{ selected: active, disabled: !!disabled }}
-      android_ripple={{ color: active ? colors.pressTint : colors.hivisTint3 }}
+      android_ripple={{ color: active ? colors.pressTint : colors.accentTint }}
       hitSlop={size === 'sm' ? 7 : size === 'md' ? 4 : 0}
       {...rest}
       {...handlers}
@@ -172,8 +188,9 @@ export function Chip({
         onPress(e);
       }}
       className={classes}
-      // One flattened object, never a callback: see `usePressed`.
-      style={StyleSheet.flatten([style, pressed && !disabled ? { opacity: 0.85 } : null])}
+      // One flattened object, never a callback: see `usePressed`. A filled chip dims; an
+      // outlined one swapped its fill above.
+      style={StyleSheet.flatten([style, pressed && !disabled && active ? pressedStyle : null])}
     >
       {text}
     </Pressable>

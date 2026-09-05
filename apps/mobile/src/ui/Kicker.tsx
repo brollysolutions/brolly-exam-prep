@@ -9,18 +9,18 @@ export type KickerProps = Omit<TextProps, 'variant' | 'weight' | 'color'> & {
   color?: ColorName;
   /** Section counter rendered before the label, e.g. "01". */
   index?: string;
-  /** Counter colour; hazard orange unless the section itself is the primary one. */
+  /** Counter colour; dark gold unless the section itself is the primary one. */
   indexColor?: ColorName;
 };
 
 /**
- * The bold, letter-spaced label that introduces every block. Default `dim` (7.06:1 on tar);
- * `mute` is 3.97:1 and reserved for non-text use.
+ * The bold, letter-spaced label that introduces every block. Default `ink3` (5.0:1 on cream —
+ * the floor for text, and only at this weight); `ink4` is decorative and never a kicker.
  */
 export function Kicker({
-  color = 'dim',
+  color = 'ink3',
   index,
-  indexColor = 'hazard',
+  indexColor = 'accentInk',
   className,
   ...rest
 }: KickerProps) {

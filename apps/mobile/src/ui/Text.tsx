@@ -44,7 +44,7 @@ export type TextProps = Omit<RNTextProps, 'style'> & {
 export function Text({
   variant = 'body',
   weight = '400',
-  color = 'chalk',
+  color = 'ink',
   align = 'start',
   tracking,
   numeric,

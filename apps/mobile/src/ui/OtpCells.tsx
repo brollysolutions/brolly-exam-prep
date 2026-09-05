@@ -10,7 +10,7 @@ export type OtpCellsProps = {
   testID?: string;
 };
 
-/** Six equal cells; the next empty one carries the hi-vis border. Always LTR — it is a number. */
+/** Six equal surface cells; the next empty one carries the gold border. Always LTR — it is a number. */
 export function OtpCells({ value, length = 6, testID }: OtpCellsProps) {
   const current = value.length;
   return (
@@ -20,8 +20,8 @@ export function OtpCells({ value, length = 6, testID }: OtpCellsProps) {
           key={i}
           testID={testID ? `${testID}-${i}` : undefined}
           className={cx(
-            'h-touch flex-1 items-center justify-center rounded-sm border bg-panel2',
-            i === current ? 'border-hivis' : 'border-line',
+            'h-touch flex-1 items-center justify-center rounded-sm border bg-surface',
+            i === current ? 'border-accentStrong' : 'border-line2',
           )}
         >
           <Num variant="otp" align="center">

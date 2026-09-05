@@ -2,7 +2,7 @@
 
 exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
 <View
-  className="flex-1 bg-tar"
+  className="flex-1 bg-canvas"
   style={
     {
       "paddingBottom": 0,
@@ -88,7 +88,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
           </Text>
         </View>
         <Text
-          className="text-chalk flex-1"
+          className="text-ink flex-1"
           numberOfLines={1}
           style={
             {
@@ -139,7 +139,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
             }
           }
           accessible={true}
-          className="items-center justify-center border rounded-xs min-h-chipMd py-1.5 px-4 bg-hivis border-hivis"
+          className="items-center justify-center border rounded-xs min-h-chipMd py-1.5 px-4 bg-accentSoft border-accent"
           collapsable={false}
           focusable={true}
           hitSlop={4}
@@ -167,7 +167,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
             }
           >
             <Text
-              className="text-tar"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -185,7 +185,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
             </Text>
             <Text
               accessibilityLanguage="en"
-              className="text-tar"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_700Bold",
@@ -225,7 +225,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
             }
           }
           accessible={true}
-          className="items-center justify-center border rounded-xs min-h-chipMd py-1.5 px-4 border-line"
+          className="items-center justify-center border rounded-xs min-h-chipMd py-1.5 px-4 border-line2"
           collapsable={false}
           focusable={true}
           hitSlop={4}
@@ -253,7 +253,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
             }
           >
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -271,7 +271,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
             </Text>
             <Text
               accessibilityLanguage="en"
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "Inter_600SemiBold",
@@ -479,7 +479,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 }
               >
                 <Text
-                  className="text-dim"
+                  className="text-ink3"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_700Bold",
@@ -518,7 +518,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               </View>
             </View>
             <Text
-              className="text-chalk mt-3"
+              className="text-ink mt-3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
@@ -563,7 +563,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 మీ జవాబు
               </Text>
               <Text
-                className="text-chalk mt-1"
+                className="text-ink mt-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -610,7 +610,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 సరైన జవాబు
               </Text>
               <Text
-                className="text-chalk mt-1"
+                className="text-ink mt-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -967,7 +967,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 }
               >
                 <Text
-                  className="text-dim"
+                  className="text-ink3"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_700Bold",
@@ -1006,7 +1006,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               </View>
             </View>
             <Text
-              className="text-chalk mt-3"
+              className="text-ink mt-3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
@@ -1051,7 +1051,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 మీ జవాబు
               </Text>
               <Text
-                className="text-chalk mt-1"
+                className="text-ink mt-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -1098,7 +1098,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 సరైన జవాబు
               </Text>
               <Text
-                className="text-chalk mt-1"
+                className="text-ink mt-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -1455,7 +1455,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 }
               >
                 <Text
-                  className="text-dim"
+                  className="text-ink3"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_700Bold",
@@ -1494,7 +1494,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               </View>
             </View>
             <Text
-              className="text-chalk mt-3"
+              className="text-ink mt-3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
@@ -1539,7 +1539,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 మీ జవాబు
               </Text>
               <Text
-                className="text-chalk mt-1"
+                className="text-ink mt-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -1586,7 +1586,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 సరైన జవాబు
               </Text>
               <Text
-                className="text-chalk mt-1"
+                className="text-ink mt-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",

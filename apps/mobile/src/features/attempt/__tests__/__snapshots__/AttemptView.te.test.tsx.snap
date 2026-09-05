@@ -2,7 +2,7 @@
 
 exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Latin, and matches the snapshot 1`] = `
 <View
-  className="flex-1 bg-tar"
+  className="flex-1 bg-canvas"
   style={
     {
       "paddingBottom": 0,
@@ -88,7 +88,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
         </View>
         <View
           accessibilityRole="radiogroup"
-          className="h-touch overflow-hidden rounded-sm border border-line self-start"
+          className="h-touch overflow-hidden rounded-sm border border-line2 self-start"
           style={
             {
               "alignItems": undefined,
@@ -121,7 +121,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-3 border-line border-r"
+            className="h-full min-w-touch items-center justify-center px-3 border-line2 border-r"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -135,7 +135,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             onStartShouldSetResponder={[Function]}
           >
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "Inter_700Bold",
@@ -173,7 +173,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-3 bg-hivis"
+            className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -187,7 +187,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             onStartShouldSetResponder={[Function]}
           >
             <Text
-              className="text-tar"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -298,7 +298,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line2"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -315,7 +315,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             testID="section-chip-0"
           >
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -352,7 +352,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 bg-hivis border-hivis"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 bg-accentSoft border-accent"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -369,7 +369,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             testID="section-chip-1"
           >
             <Text
-              className="text-tar"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
@@ -406,7 +406,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line2"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -423,7 +423,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             testID="section-chip-2"
           >
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -460,7 +460,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line2"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -477,7 +477,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             testID="section-chip-3"
           >
             <Text
-              className="text-mute"
+              className="text-ink4"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -703,7 +703,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
           </View>
         </View>
         <Text
-          className="text-chalk mt-3"
+          className="text-ink mt-3"
           style={
             {
               "fontFamily": "NotoSansTelugu_400Regular",
@@ -811,7 +811,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 </Text>
               </View>
               <Text
-                className="text-chalk flex-1"
+                className="text-ink flex-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -908,7 +908,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 </Text>
               </View>
               <Text
-                className="text-chalk flex-1"
+                className="text-ink flex-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -1005,7 +1005,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 </Text>
               </View>
               <Text
-                className="text-chalk flex-1"
+                className="text-ink flex-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -1102,7 +1102,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 </Text>
               </View>
               <Text
-                className="text-chalk flex-1"
+                className="text-ink flex-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -1267,7 +1267,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center rounded-sm px-4 border border-line3"
+            className="items-center justify-center rounded-sm px-4 border border-line2"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1299,7 +1299,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             >
               <Text
-                className="text-chalk"
+                className="text-ink"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1337,7 +1337,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center rounded-sm px-4 border border-hazard flex-1"
+            className="items-center justify-center rounded-sm px-4 border border-accentStrong flex-1"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1368,7 +1368,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             >
               <Text
-                className="text-hazard"
+                className="text-accentInk"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1488,7 +1488,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             testID="btn-palette"
           >
             <Text
-              className="text-chalk"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1545,7 +1545,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center rounded-sm px-4 bg-hivis"
+            className="items-center justify-center rounded-sm px-4 bg-ink"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1577,7 +1577,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             >
               <Text
-                className="text-tar"
+                className="text-onInk"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_700Bold",

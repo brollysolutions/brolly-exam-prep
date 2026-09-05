@@ -2,7 +2,7 @@
 
 exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] = `
 <View
-  className="flex-1 bg-tar"
+  className="flex-1 bg-canvas"
   style={
     {
       "paddingBottom": 0,
@@ -70,7 +70,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
           >
             <Text
               accessibilityElementsHidden={true}
-              className="text-dim"
+              className="text-ink3"
               importantForAccessibility="no"
               style={
                 {
@@ -89,7 +89,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               ‹
             </Text>
             <Text
-              className="text-dim"
+              className="text-ink2"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -129,7 +129,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
           ⁦2 / 2⁩
         </Text>
         <Text
-          className="text-chalk mt-2"
+          className="text-ink mt-2"
           style={
             {
               "fontFamily": "NotoSansTelugu_700Bold",
@@ -206,7 +206,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                 }
               }
               accessible={true}
-              className="justify-center rounded-md min-h-[72px] border border-line bg-panel2 p-3 flex-1"
+              className="justify-center rounded-md min-h-[72px] border border-line p-3 bg-surface flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -218,11 +218,15 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              style={{}}
+              style={
+                {
+                  "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+                }
+              }
               testID="category-card-oc"
             >
               <Text
-                className="text-chalk"
+                className="text-ink"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_700Bold",
@@ -309,7 +313,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                 }
               }
               accessible={true}
-              className="justify-center rounded-md min-h-[72px] border border-line bg-panel2 p-3 flex-1"
+              className="justify-center rounded-md min-h-[72px] border border-line p-3 bg-surface flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -321,11 +325,15 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              style={{}}
+              style={
+                {
+                  "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+                }
+              }
               testID="category-card-ews"
             >
               <Text
-                className="text-chalk"
+                className="text-ink"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_700Bold",
@@ -425,7 +433,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                 }
               }
               accessible={true}
-              className="justify-center rounded-md min-h-[72px] border-2 border-hivis bg-hivisTint p-[11px] flex-1"
+              className="justify-center rounded-md min-h-[72px] border-2 border-accent p-[11px] bg-accentTint flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -437,11 +445,15 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              style={{}}
+              style={
+                {
+                  "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+                }
+              }
               testID="category-card-bc"
             >
               <Text
-                className="text-hivis"
+                className="text-ink"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_700Bold",
@@ -528,7 +540,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                 }
               }
               accessible={true}
-              className="justify-center rounded-md min-h-[72px] border border-line bg-panel2 p-3 flex-1"
+              className="justify-center rounded-md min-h-[72px] border border-line p-3 bg-surface flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -540,11 +552,15 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              style={{}}
+              style={
+                {
+                  "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+                }
+              }
               testID="category-card-sc"
             >
               <Text
-                className="text-chalk"
+                className="text-ink"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_700Bold",
@@ -644,7 +660,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                 }
               }
               accessible={true}
-              className="justify-center rounded-md min-h-[72px] border border-line bg-panel2 p-3 flex-1"
+              className="justify-center rounded-md min-h-[72px] border border-line p-3 bg-surface flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -656,11 +672,15 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              style={{}}
+              style={
+                {
+                  "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+                }
+              }
               testID="category-card-st"
             >
               <Text
-                className="text-chalk"
+                className="text-ink"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_700Bold",
@@ -747,7 +767,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                 }
               }
               accessible={true}
-              className="justify-center rounded-md min-h-[72px] border border-line bg-panel2 p-3 flex-1"
+              className="justify-center rounded-md min-h-[72px] border border-line p-3 bg-surface flex-1"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -759,11 +779,15 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              style={{}}
+              style={
+                {
+                  "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+                }
+              }
               testID="category-card-exs"
             >
               <Text
-                className="text-chalk"
+                className="text-ink"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_700Bold",
@@ -857,7 +881,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
           }
         }
         accessible={true}
-        className="items-center justify-center rounded-sm px-4 bg-hivis"
+        className="items-center justify-center rounded-sm px-4 bg-ink"
         collapsable={false}
         focusable={true}
         onBlur={[Function]}
@@ -888,7 +912,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
           }
         >
           <Text
-            className="text-tar"
+            className="text-onInk"
             style={
               {
                 "fontFamily": "NotoSansTelugu_700Bold",
