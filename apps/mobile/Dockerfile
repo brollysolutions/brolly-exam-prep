@@ -30,10 +30,10 @@ RUN pnpm install --frozen-lockfile --store-dir /pnpm/store --filter mobile...
 COPY packages ./packages
 COPY apps/mobile ./apps/mobile
 
-# Baked into the bundle at export time. The browser calls the API on the HOST port,
-# so this is http://localhost:8200 and not the compose service name.
+# Baked into the bundle at export time. The browser calls the api through nginx on the web
+# origin (PUBLIC_URL/api, see nginx.conf and docker-compose.yml), never the compose service name.
 ARG EXPO_PUBLIC_API=http
-ARG EXPO_PUBLIC_API_URL=http://localhost:8200
+ARG EXPO_PUBLIC_API_URL=http://localhost:3201/api
 ENV EXPO_PUBLIC_API=$EXPO_PUBLIC_API \
     EXPO_PUBLIC_API_URL=$EXPO_PUBLIC_API_URL
 

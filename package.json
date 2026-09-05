@@ -17,6 +17,7 @@
     "docker:down": "docker compose down",
     "docker:logs": "docker compose logs -f web api worker",
     "docker:build": "docker compose build",
+    "docker:prod": "docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build",
     "api:up": "docker compose up -d postgres redis api worker",
     "api:down": "docker compose down",
     "api:logs": "docker compose logs -f api worker",

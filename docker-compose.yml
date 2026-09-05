@@ -36,8 +36,9 @@ services:
       DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://tslprb:tslprb@postgres:5432/tslprb}
       REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
       OTP_DEV_MODE: ${OTP_DEV_MODE:-true}
-      # The web image is opened on WEB_HOST_PORT, so the default origin list follows it.
-      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:${WEB_HOST_PORT:-3201},http://localhost:8081,http://localhost:19006}
+      # Browsers reach the api through /api on the web origin (PUBLIC_URL), so that origin plus the
+      # local web port and the Expo dev origins are allowed by default.
+      CORS_ORIGINS: ${CORS_ORIGINS:-${PUBLIC_URL:-http://localhost:${WEB_HOST_PORT:-3201}},http://localhost:${WEB_HOST_PORT:-3201},http://localhost:8081,http://localhost:19006}
     ports:
       - "${API_HOST_PORT:-8200}:8000"
     volumes:
@@ -82,8 +83,10 @@ services:
       dockerfile: apps/mobile/Dockerfile
       args:
         EXPO_PUBLIC_API: ${EXPO_PUBLIC_API:-http}
-        # Baked into the bundle: the browser calls the API on the HOST port (see apps/mobile/Dockerfile).
-        EXPO_PUBLIC_API_URL: ${EXPO_PUBLIC_API_URL:-http://localhost:${API_HOST_PORT:-8200}}
+        # Baked into the bundle: the browser calls the api through nginx at PUBLIC_URL/api (same origin),
+        # so set PUBLIC_URL (default http://localhost:WEB_HOST_PORT) and rebuild web when it changes.
+        # docker-compose.prod.yml pins the public site's values.
+        EXPO_PUBLIC_API_URL: ${EXPO_PUBLIC_API_URL:-${PUBLIC_URL:-http://localhost:${WEB_HOST_PORT:-3201}}/api}
     ports:
       - "${WEB_HOST_PORT:-3201}:80"
     depends_on:
