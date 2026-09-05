@@ -12,7 +12,7 @@ Languages: **English default**, Telugu. Two languages only (Urdu removed 2026-09
 - `packages/i18n` (`@tslprb/i18n`) — en/te strings, i18next init, `useDir()` direction helpers (RTL dormant).
 - `packages/api-contracts` (`@tslprb/api-contracts`) — zod schemas + types shared by app and API.
 - `packages/fixtures` (`@tslprb/fixtures`) — exam pattern config, question bank (en/te), sample results.
-- `services/api` — FastAPI + SQLAlchemy 2 + Alembic + arq worker; `docker-compose.yml` profile `dev` (postgres:17, redis:7).
+- `services/api` — FastAPI + SQLAlchemy 2 + Alembic + arq worker. Root `docker-compose.yml` runs the whole app (F-27): `web` (Expo web export behind nginx, `apps/mobile/Dockerfile`) on :3201, `api` on :8200, `worker`, postgres:17 (:5432), redis:7 (:6379); no compose profiles.
 - `prototype/` — the approved Claude Design prototype. `prototype/extracted/template.html` is the readable source of every screen, state, string and colour. Treat it as the spec for content and behaviour.
 - `docs/` — `IMPLEMENTATION_PLAN.md` (live checklist), `FEATURES.md`, `PR_TRACKING.md`, `WORKFLOW.md`, `DESIGN_SYSTEM.md`, `specs/`.
 
@@ -22,7 +22,8 @@ pnpm dev:mobile          # expo start (scan QR with Expo Go on Android)
 pnpm web:mobile          # expo web preview in the browser
 pnpm typecheck | lint | test
 pnpm doctor              # expo-doctor
-pnpm api:up | api:down | api:migrate
+pnpm docker:up | docker:down | docker:logs | docker:build   # whole app in Docker: web http://localhost:3201, API http://localhost:8200
+pnpm api:up | api:down | api:logs | api:migrate               # backend only (postgres redis api worker); migrate = alembic upgrade head
 ```
 
 ## Skill routing (automatic — do not wait to be told)

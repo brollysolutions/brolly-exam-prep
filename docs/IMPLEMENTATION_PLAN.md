@@ -57,8 +57,9 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 
 ## Phase 5 — Backend scaffold (F-17)
 - [x] FastAPI app, routers, models, Alembic initial migration, arq worker with 3 cron jobs
-- [x] `docker-compose.yml` profile dev: postgres:17, redis:7, api, worker
+- [x] `docker-compose.yml`: postgres:17, redis:7, api, worker (the `dev` profile was removed in F-27)
 - [x] `packages/api-contracts` zod schemas + `ApiClient` interface · [ ] `pnpm contracts:gen` (needs live API)
+- [x] F-27 whole-app Docker stack — `pnpm docker:up` runs `web` (Expo static web export behind nginx, `apps/mobile/Dockerfile` + `nginx.conf`, built from the repo root with `EXPO_PUBLIC_API=http`) on :3201, `api` on :8200 (uvicorn 8000 inside, `--reload` bind mount, `/health` healthcheck, `CORS_ORIGINS` follows `WEB_HOST_PORT`), `worker`, postgres :5432, redis :6379; no compose profiles; root `.dockerignore`; `docker:*` / `api:*` scripts; `docker compose build web api` job in CI; `HttpApi` serves the catalogue, paper and analysis from the fixture bank until `/v1/tests/{id}/paper` exists (main)
 
 ## Phase 6 — Verification
 - [x] `pnpm typecheck && pnpm lint && pnpm test` green on the stack tip (478 mobile tests, 67 suites; i18n 6/6; package typechecks)
@@ -70,6 +71,7 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - [ ] FEATURES/PR_TRACKING complete and consistent with `gh pr list` (PRs open after `gh auth login` + repo creation)
 
 ## Deviations / rulings
+- 2026-09-05 — Whole-app Docker stack: web (Expo static export behind nginx) on 3201, API on 8200, no compose profiles; the web image is built with `EXPO_PUBLIC_API=http` against `http://localhost:8200`. `HttpApi` reads the catalogue/paper/analysis from the in-app fixture bank rather than rejecting 501, so the Dockerised app is playable; the API's fixture ids still differ from the app's (`test-pwt-07` vs `mock-07`), so attempts run on the local clock until F-17 aligns them.
 - 2026-09-05 — The hazard stripe is no longer screen chrome (user ruling): `Screen` defaults to `rail={false}` on every route; the attempt screen raises it only while the timer is critical.
 - 2026-09-02 — Branches are stacked (main ← F-17 ← F-01 ← F-16 ← …) instead of merged locally, so each feature still gets its own PR once the GitHub repo exists.
 - 2026-09-02 — ESLint pinned to 9.x in apps/mobile: eslint-config-expo 57's react plugin crashes on ESLint 10. `lint` script is `eslint .` (expo lint hard-codes a non-hoisted path).

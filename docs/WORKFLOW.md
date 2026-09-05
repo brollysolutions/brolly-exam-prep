@@ -66,6 +66,15 @@ Allowed without prompting: pnpm/expo/jest/eslint/tsc, docker compose, non-destru
 ## Parallel implementers
 One implementer at a time per checkout. To run a second one in parallel, give it its own git worktree (`git worktree add ../Tsplrb-<id> <branch>`), let it `pnpm install` there, and rebase the stacked branches afterwards. Reviewers are read-only and may overlap freely.
 
+## Run the whole app in Docker (F-27)
+Prereqs: Docker Desktop with Linux containers (BuildKit + Compose v2); nothing else on the host — Node, pnpm and Python live in the images.
+- `pnpm docker:up` (= `docker compose up -d --build`) builds and starts five services: `web` — the Expo static web export behind nginx — on http://localhost:3201, `api` (FastAPI; uvicorn `--reload` over the bind-mounted `services/api/app`) on http://localhost:8200 with Swagger at http://localhost:8200/docs, `worker` (arq crons), `postgres` (5432) and `redis` (6379). The dev OTP is `123456`.
+- `pnpm api:migrate` runs `alembic upgrade head` inside the api container (first boot and after every new migration). `pnpm docker:logs` tails web/api/worker; `pnpm docker:down` stops everything and keeps the database volume (`docker compose down -v` wipes it — ask first).
+- Change ports without touching the compose file: `WEB_HOST_PORT`, `API_HOST_PORT`, `POSTGRES_HOST_PORT`, `REDIS_HOST_PORT` in a root `.env` or on the command line (`WEB_HOST_PORT=3211 pnpm docker:up`). The api's `CORS_ORIGINS` default follows `WEB_HOST_PORT`; the web image's `EXPO_PUBLIC_API_URL` build arg follows `API_HOST_PORT` and is baked into the bundle, so a new API port means rebuilding `web`.
+- The web image is built from the repo root (`apps/mobile/Dockerfile`: node:22-alpine + pnpm 11.25.0 → `expo export --platform web` with `EXPO_PUBLIC_API=http` → `nginx:alpine`, `apps/mobile/nginx.conf`). The browser calls the API on the host port, so the URL is `http://localhost:8200`, never the compose service name. Edits under `apps/mobile` or `packages/*` are not live in the container: `docker compose build web && docker compose up -d web` (or `pnpm docker:up` again). API edits reload through the bind mount.
+- 8 GB laptops: build one image at a time — `docker compose build web`, then `pnpm docker:up`. `expo export` wants ~2 GB inside the Docker VM, so stop other stacks first. For day-to-day app work keep using `pnpm web:mobile` / Expo Go with the mock API and run only the backend with `pnpm api:up`.
+- What goes over the wire today: OTP request/verify and the attempt lifecycle (`POST /v1/attempts`, `PATCH …/answers`, `POST …/submit`, `GET /v1/results/{id}`). The test catalogue, the paper and the result analysis are served by `HttpApi` from the in-app fixture bank (`MockApi` fallback) until `GET /v1/tests/{id}/paper` exists. The API's fixture ids (`test-pwt-07`, `q-arith-*`) do not match the app's (`mock-07`, `q-ar-001#n`), so `POST /v1/attempts` answers 404 and the attempt runs on the local clock, as designed — aligning the two banks is an F-17 follow-up, not a Docker one.
+
 ## Testing notes
 - Update snapshots with `pnpm --filter mobile exec jest -u` (or `--runInBand -u`). `pnpm --filter mobile test -- -u` silently runs nothing on pnpm 11 (double `--`).
 - Jest runs with `testTimeout: 15000` and `maxWorkers: 50%`; digit-entry tests time out under full worker contention on this laptop.
@@ -74,7 +83,7 @@ One implementer at a time per checkout. To run a second one in parallel, give it
 The session could not write `~/.claude/settings.json` (classifier). Add these lines to `autoMode.environment` yourself if you want this repo trusted in auto mode:
 ```
 "**Trusted repo (TSLPRB)**: C:\Users\mouli\OneDrive\Documents\Desktop\Tsplrb and its GitHub origin once created — private; secrets only in `.env` files (gitignored); `services/api/.env.example` is safe to edit",
-"**Local services (TSLPRB)**: Docker Compose profile dev (postgres:17 on 5432, redis:7, FastAPI on 8000, arq worker) — dev only, never prod",
+"**Local services (TSLPRB)**: Docker Compose (web on 3201, FastAPI on 8200, postgres:17 on 5432, redis:7 on 6379, arq worker) — dev only, never prod",
 ```
 
 ## Rulings / deviations log
