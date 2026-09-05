@@ -108,25 +108,49 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
             </Text>
           </View>
         </View>
-        <Text
-          className="text-ink mt-2"
+        <View
+          className="mt-2"
           style={
             {
-              "fontFamily": "NotoSerifTelugu_700Bold",
-              "fontSize": 26,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 39,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
+              "alignItems": undefined,
+              "flexDirection": "column",
+              "gap": 12,
+              "justifyContent": undefined,
             }
           }
+          testID="otp-header"
         >
-          కోడ్ ఎంటర్ చేయండి
-        </Text>
+          <View
+            style={
+              {
+                "alignItems": undefined,
+                "flexDirection": "column",
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              className="text-ink"
+              style={
+                {
+                  "fontFamily": "NotoSerifTelugu_700Bold",
+                  "fontSize": 26,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 39,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              కోడ్ ఎంటర్ చేయండి
+            </Text>
+          </View>
+        </View>
         <Text
-          className="text-dim mt-2"
+          className="text-ink3 mt-2"
           style={
             {
               "fontFamily": "NotoSansTelugu_400Regular",
@@ -143,7 +167,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
         >
           <Text
             accessibilityLanguage="en"
-            className="text-chalk"
+            className="text-ink"
             style={
               {
                 "fontFamily": "Inter_600SemiBold",
@@ -398,10 +422,10 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           }
         >
           <View
-            className="border-1.5 h-dot w-dot rounded-full border-dim"
+            className="border-1.5 h-dot w-dot rounded-full border-ink3"
           />
           <Text
-            className="text-dim flex-1"
+            className="text-ink3 flex-1"
             style={
               {
                 "fontFamily": "NotoSansTelugu_400Regular",
@@ -421,47 +445,69 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
         <View
           className="mt-3"
         >
-          <Text
-            className="text-ink3"
+          <View
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
             style={
               {
-                "fontFamily": "NotoSansTelugu_700Bold",
-                "fontSize": 12,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 19.8,
-                "textAlign": "left",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
+                "justifyContent": "center",
+                "minHeight": 24,
               }
             }
             testID="otp-dev-code"
           >
-            టెస్ట్ బిల్డ్ — కోడ్ 
-            <Text
-              accessibilityLanguage="en"
-              className="text-dim"
+            <View
               style={
                 {
-                  "fontFamily": "Inter_700Bold",
-                  "fontSize": 10.5,
-                  "fontVariant": [
-                    "tabular-nums",
-                  ],
-                  "letterSpacing": 1.2,
-                  "lineHeight": 15.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
                 }
               }
             >
-              ⁦
-              123456
-              ⁩
-            </Text>
-             నమోదు చేయండి
-          </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                టెస్ట్ బిల్డ్ — కోడ్ 
+                <Text
+                  accessibilityLanguage="en"
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "Inter_700Bold",
+                      "fontSize": 12,
+                      "fontVariant": [
+                        "tabular-nums",
+                      ],
+                      "letterSpacing": 0,
+                      "lineHeight": 18,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ⁦
+                  123456
+                  ⁩
+                </Text>
+                 నమోదు చేయండి
+              </Text>
+            </View>
+          </View>
           <View
             accessibilityRole="button"
             accessibilityState={
@@ -482,7 +528,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
               }
             }
             accessible={true}
-            className="min-h-touch justify-center"
+            className="mt-1 min-h-touch justify-center"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -497,7 +543,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
             testID="otp-use-dev-code"
           >
             <Text
-              className="text-chalk2"
+              className="text-ink2"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -520,7 +566,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           testID="otp-resend-line"
         >
           <Text
-            className="text-sand"
+            className="text-ink3"
             style={
               {
                 "fontFamily": "NotoSansTelugu_400Regular",
@@ -536,7 +582,7 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           >
             <Text
               accessibilityLanguage="en"
-              className="text-sand"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "Inter_400Regular",
@@ -578,7 +624,13 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
       </View>
     </RCTScrollView>
     <View
-      className="px-3 pb-4 pt-2"
+      className="bg-surface px-4 pb-4 pt-3 border-t border-line"
+      style={
+        {
+          "boxShadow": "0 -8px 32px -16px rgba(33,28,23,0.30)",
+        }
+      }
+      testID="otp-bar"
     >
       <View
         style={
@@ -1250,72 +1302,90 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
         </View>
       </View>
       <View
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": true,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        className="items-center justify-center rounded-sm px-4 bg-surface2 border border-outline mt-3"
-        collapsable={false}
-        focusable={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        className="mt-3"
         style={
           {
-            "height": 56,
+            "alignItems": "center",
+            "flexDirection": "row",
+            "flexWrap": undefined,
+            "gap": 12,
+            "justifyContent": undefined,
           }
         }
-        testID="otp-verify"
+        testID="otp-bar-row"
       >
         <View
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "flexWrap": undefined,
-              "gap": 8,
-              "justifyContent": undefined,
-            }
-          }
+          className="flex-1"
         >
-          <Text
-            className="text-ink3"
-            style={
+          <View
+            accessibilityRole="button"
+            accessibilityState={
               {
-                "fontFamily": "NotoSansTelugu_700Bold",
-                "fontSize": 16,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 26.4,
-                "textAlign": "center",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": true,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center rounded-sm px-4 bg-surface2 border border-outline"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "height": 56,
+              }
+            }
+            testID="otp-verify"
           >
-            వెరిఫై చేయి
-          </Text>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 16,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 26.4,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                వెరిఫై చేయి
+              </Text>
+            </View>
+          </View>
         </View>
       </View>
     </View>

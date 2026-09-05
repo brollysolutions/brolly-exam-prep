@@ -3,7 +3,19 @@ import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, useWindowDimensions, View } from 'react-native';
 
-import { Brand, Button, cx, Num, Row, Screen, Text, useReducedMotionSafe } from '@/ui';
+import {
+  ActionBar,
+  Brand,
+  Button,
+  cx,
+  Num,
+  Pill,
+  Row,
+  Screen,
+  Stack,
+  Text,
+  useReducedMotionSafe,
+} from '@/ui';
 
 /** The three things a candidate needs to believe before signing up. */
 const SLIDES = [1, 2, 3] as const;
@@ -37,9 +49,8 @@ export function WelcomeView({ initialSlide = 1, onDone }: WelcomeViewProps) {
 
   const slide = pages[page] ?? 1;
   const last = slide === SLIDES.length;
-  // One step between the counter, the title and the subtitle. One class, never two competing
-  // ones: NativeWind has no last-wins merge.
-  const gap = 'mt-3';
+  // Digits are always Latin-faced; their tracking still follows the UI language.
+  const tracking = d.lang === 'en' ? 'kicker' : 'none';
 
   const goTo = (nextPage: number) => {
     if (nextPage < 0 || nextPage >= pages.length) return;
@@ -72,42 +83,39 @@ export function WelcomeView({ initialSlide = 1, onDone }: WelcomeViewProps) {
           setPage(Math.round(e.nativeEvent.contentOffset.x / Math.max(width, 1)))
         }
         renderItem={({ item }) => (
-          <View
+          <Stack
             testID={`welcome-slide-${item}`}
-            className="justify-center px-4"
+            gap={3}
+            className="items-center justify-center px-4"
             style={{ width, flex: 1 }}
           >
-            <Num
-              variant="kicker"
-              weight="700"
-              color="hazard"
-              align="center"
-              tracking={d.lang === 'en' ? 'kicker' : 'none'}
-            >
-              {t('onboarding.step', { n: item, total: SLIDES.length })}
-            </Num>
-            <Text
-              testID={`welcome-title-${item}`}
-              variant="title"
-              weight="600"
-              align="center"
-              className={gap}
-            >
+            {/* The counter is the accessible version of the dots below. */}
+            <Pill
+              leading={
+                <Num variant="caption" weight="700" tracking={tracking}>
+                  {t('onboarding.step', { n: item, total: SLIDES.length })}
+                </Num>
+              }
+            />
+            <Text testID={`welcome-title-${item}`} variant="title" weight="600" align="center">
               {t(`onboarding.welcome${item}Title`)}
             </Text>
-            <Text variant="body" color="dim" align="center" className={gap}>
+            <Text variant="body" color="ink3" align="center">
               {t(`onboarding.welcome${item}Sub`)}
             </Text>
-          </View>
+          </Stack>
         )}
       />
 
-      {/* Position, not a control: the counter above each slide is the accessible version. */}
+      {/* Position, not a control: the counter above each slide is the accessible version.
+          The page you are on stretches to a 20 px capsule, so which one is current reads
+          from the shape as well as from the gold. */}
       <Row
         physical
         testID="welcome-dots"
         gap={2}
         justify="center"
+        align="center"
         accessibilityElementsHidden
         importantForAccessibility="no-hide-descendants"
         className="py-4"
@@ -116,26 +124,26 @@ export function WelcomeView({ initialSlide = 1, onDone }: WelcomeViewProps) {
           <View
             key={n}
             testID={`welcome-dot-${n}`}
-            className={cx('h-dot w-dot rounded-xs', i === page ? 'bg-hivis' : 'bg-line3')}
+            className={cx('h-2 rounded-full', i === page ? 'w-5 bg-accentStrong' : 'w-2 bg-line2')}
           />
         ))}
       </Row>
 
-      <Row testID="welcome-footer" gap={3} align="center" className="px-3 pb-4">
-        <Button
-          testID="welcome-skip"
-          variant="ghost"
-          label={t('common.skip')}
-          onPress={onDone}
-        />
-        <Button
-          testID="welcome-primary"
-          size="lg"
-          label={last ? t('common.getStarted') : t('common.next')}
-          onPress={() => (last ? onDone() : goTo(d.isRTL ? page - 1 : page + 1))}
-          className="flex-1"
-        />
-      </Row>
+      <ActionBar
+        testID="welcome-footer"
+        bordered={false}
+        secondary={
+          <Button testID="welcome-skip" variant="ghost" label={t('common.skip')} onPress={onDone} />
+        }
+        primary={
+          <Button
+            testID="welcome-primary"
+            size="lg"
+            label={last ? t('common.getStarted') : t('common.next')}
+            onPress={() => (last ? onDone() : goTo(d.isRTL ? page - 1 : page + 1))}
+          />
+        }
+      />
     </Screen>
   );
 }

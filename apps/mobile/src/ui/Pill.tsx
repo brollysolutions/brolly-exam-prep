@@ -15,7 +15,11 @@ import { Text } from './Text';
 export type PillTone = 'quiet' | 'gold' | 'ink';
 
 export type PillProps = Omit<ViewProps, 'style' | 'children'> & {
-  label: string;
+  /**
+   * The pill's text. A `<Trans>` where the line interpolates a `<Num>` (the OTP dev-code
+   * hint); omitted where a `leading` `<Num>` is the whole content (a step counter).
+   */
+  label?: ReactNode;
   tone?: PillTone;
   /** The 6 px status dot before the label. */
   dot?: boolean;
@@ -89,9 +93,11 @@ export function Pill({
             className={cx('h-1.5 w-1.5 rounded-full', dotColor[tone])}
           />
         )}
-        <Text variant="caption" weight="700" color={fg[tone]} tracking="kicker">
-          {label}
-        </Text>
+        {label !== undefined && (
+          <Text variant="caption" weight="700" color={fg[tone]} tracking="kicker">
+            {label}
+          </Text>
+        )}
       </Row>
     </View>
   );

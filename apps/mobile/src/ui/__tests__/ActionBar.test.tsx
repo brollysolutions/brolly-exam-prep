@@ -54,6 +54,18 @@ describe('ActionBar', () => {
     expect(fills[0]).toHaveStyle({ height: 56 });
   });
 
+  // The actions follow the reading direction, so the quiet partner leads and the primary
+  // lands at the reading end without a mirrored class of its own.
+  it('lays the actions out in reading order', async () => {
+    await render(
+      <ActionBar
+        testID="bar"
+        primary={<Button size="lg" label="Continue" onPress={jest.fn()} />}
+      />,
+    );
+    expect(screen.getByTestId('bar-row')).toHaveStyle({ flexDirection: 'row' });
+  });
+
   it('hosts the keypad above the actions', async () => {
     await render(
       <ActionBar testID="bar" primary={<Button size="lg" label="Verify" onPress={jest.fn()} />}>

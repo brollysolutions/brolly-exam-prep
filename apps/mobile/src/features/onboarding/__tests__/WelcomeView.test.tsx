@@ -68,13 +68,15 @@ describe('WelcomeView (te)', () => {
   it('renders the Telugu pages left-to-right and matches the snapshot', async () => {
     await render(<WelcomeView onDone={jest.fn()} />);
     expect(screen.getByText('నిజమైన PWT లాగే ప్రాక్టీస్')).toBeOnTheScreen();
-    expect(screen.getByTestId('welcome-footer')).toHaveStyle({ flexDirection: 'row' });
+    expect(screen.getByTestId('welcome-footer-row')).toHaveStyle({ flexDirection: 'row' });
     // The dots track physical page order, which is 1-2-3 in a left-to-right language.
     const hidden = { includeHiddenElements: true };
     expect(screen.getByTestId('welcome-dots', hidden)).toHaveStyle({ flexDirection: 'row' });
-    expect(
-      screen.getAllByTestId(/^welcome-dot-/, hidden).map((dot) => dot.props.testID),
-    ).toEqual(['welcome-dot-1', 'welcome-dot-2', 'welcome-dot-3']);
+    expect(screen.getAllByTestId(/^welcome-dot-/, hidden).map((dot) => dot.props.testID)).toEqual([
+      'welcome-dot-1',
+      'welcome-dot-2',
+      'welcome-dot-3',
+    ]);
     // The brand keeps its Latin name in every language; the exam name stays in the Telugu copy.
     expect(screen.getByRole('image', { name: 'Brolly Solutions' })).toBeOnTheScreen();
     // A Telugu title is a serif too: Noto Serif Telugu 700 on a 1.5 line-height (24 px type
@@ -85,7 +87,12 @@ describe('WelcomeView (te)', () => {
       lineHeight: 36,
       fontFamily: 'NotoSerifTelugu_700Bold',
     });
-    expect(title.props.className).toContain('mt-3');
+    // One token step between the counter, the title and the line under it — a Stack gap
+    // now, not three `mt-*` classes.
+    expect(screen.getByTestId('welcome-slide-1')).toHaveStyle({
+      flexDirection: 'column',
+      gap: 12,
+    });
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });

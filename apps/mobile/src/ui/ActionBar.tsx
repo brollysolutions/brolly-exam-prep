@@ -45,7 +45,12 @@ export function ActionBar({
       style={shadowStyle('sheet')}
     >
       {children}
-      <Row gap={3} align="center" className={children !== undefined ? 'mt-3' : undefined}>
+      <Row
+        testID={testID ? `${testID}-row` : undefined}
+        gap={3}
+        align="center"
+        className={children !== undefined ? 'mt-3' : undefined}
+      >
         {secondary}
         <View className="flex-1">{primary}</View>
       </Row>

@@ -24,142 +24,178 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
     >
       <View>
         <View
-          accessibilityLabel="Brolly Solutions"
-          accessibilityRole="header"
-          accessible={true}
           style={
             {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "flexWrap": undefined,
-              "gap": 8,
+              "alignItems": undefined,
+              "flexDirection": "column",
+              "gap": 12,
               "justifyContent": undefined,
             }
           }
-          testID="login-brand"
+          testID="login-header"
         >
-          <ViewManagerAdapter_ExpoImage
-            accessibilityElementsHidden={true}
-            containerViewRef={"[React.ref]"}
-            contentFit="contain"
-            contentPosition={
-              {
-                "left": "50%",
-                "top": "50%",
-              }
-            }
-            height={22}
-            importantForAccessibility="no-hide-descendants"
-            nativeViewRef={"[React.ref]"}
-            onError={[Function]}
-            onLoad={[Function]}
-            onLoadStart={[Function]}
-            onProgress={[Function]}
-            placeholder={[]}
-            sfEffect={null}
-            source={
-              [
-                {
-                  "testUri": "../../../apps/mobile/assets/brand/umbrella.png",
-                },
-              ]
-            }
-            style={
-              {
-                "height": 22,
-                "width": 34,
-              }
-            }
-            symbolSize={null}
-            symbolWeight={null}
-            testID="login-brand-umbrella"
-            tintColor={4280359959}
-            transition={null}
-            width={34}
-          />
           <View
             style={
               {
-                "alignItems": "baseline",
+                "alignItems": "center",
                 "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 4,
+                "flexWrap": "wrap",
+                "gap": 8,
+                "justifyContent": "space-between",
+              }
+            }
+            testID="login-header-top"
+          >
+            <View
+              accessibilityLabel="Brolly Solutions"
+              accessibilityRole="header"
+              accessible={true}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+              testID="login-brand"
+            >
+              <ViewManagerAdapter_ExpoImage
+                accessibilityElementsHidden={true}
+                containerViewRef={"[React.ref]"}
+                contentFit="contain"
+                contentPosition={
+                  {
+                    "left": "50%",
+                    "top": "50%",
+                  }
+                }
+                height={22}
+                importantForAccessibility="no-hide-descendants"
+                nativeViewRef={"[React.ref]"}
+                onError={[Function]}
+                onLoad={[Function]}
+                onLoadStart={[Function]}
+                onProgress={[Function]}
+                placeholder={[]}
+                sfEffect={null}
+                source={
+                  [
+                    {
+                      "testUri": "../../../apps/mobile/assets/brand/umbrella.png",
+                    },
+                  ]
+                }
+                style={
+                  {
+                    "height": 22,
+                    "width": 34,
+                  }
+                }
+                symbolSize={null}
+                symbolWeight={null}
+                testID="login-brand-umbrella"
+                tintColor={4280359959}
+                transition={null}
+                width={34}
+              />
+              <View
+                style={
+                  {
+                    "alignItems": "baseline",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-ink"
+                  numberOfLines={1}
+                  style={
+                    {
+                      "fontFamily": "PlayfairDisplay_400Regular_Italic",
+                      "fontSize": 17,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 20.4,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  Brolly
+                </Text>
+                <Text
+                  className="text-ink"
+                  numberOfLines={1}
+                  style={
+                    {
+                      "fontFamily": "PlayfairDisplay_400Regular",
+                      "fontSize": 13,
+                      "fontVariant": undefined,
+                      "letterSpacing": 2,
+                      "lineHeight": 15.6,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  Solutions
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "alignItems": undefined,
+                "flexDirection": "column",
+                "gap": 8,
                 "justifyContent": undefined,
               }
             }
           >
             <Text
               className="text-ink"
-              numberOfLines={1}
               style={
                 {
-                  "fontFamily": "PlayfairDisplay_400Regular_Italic",
-                  "fontSize": 17,
+                  "fontFamily": "NotoSerifTelugu_700Bold",
+                  "fontSize": 26,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 20.4,
+                  "lineHeight": 39,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
               }
             >
-              Brolly
+              మీ ఫోన్ నంబర్
             </Text>
             <Text
-              className="text-ink"
-              numberOfLines={1}
+              className="text-ink3"
               style={
                 {
-                  "fontFamily": "PlayfairDisplay_400Regular",
-                  "fontSize": 13,
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 15,
                   "fontVariant": undefined,
-                  "letterSpacing": 2,
-                  "lineHeight": 15.6,
+                  "letterSpacing": 0,
+                  "lineHeight": 24.8,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
               }
             >
-              Solutions
+              OTP SMS ద్వారా వస్తుంది. ఇంటర్నెట్ అవసరం లేదు.
             </Text>
           </View>
         </View>
-        <Text
-          className="text-ink mt-3"
-          style={
-            {
-              "fontFamily": "NotoSerifTelugu_700Bold",
-              "fontSize": 26,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 39,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
-            }
-          }
-        >
-          మీ ఫోన్ నంబర్
-        </Text>
-        <Text
-          className="text-dim mt-2"
-          style={
-            {
-              "fontFamily": "NotoSansTelugu_400Regular",
-              "fontSize": 15,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 24.8,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
-            }
-          }
-        >
-          OTP SMS ద్వారా వస్తుంది. ఇంటర్నెట్ అవసరం లేదు.
-        </Text>
         <View
           accessibilityHint="ఆటోఫిల్ ఉపయోగించడానికి నొక్కి పట్టుకోండి"
           accessibilityLabel="మీ ఫోన్ నంబర్"
@@ -285,7 +321,13 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
       </View>
     </RCTScrollView>
     <View
-      className="px-3 pb-4 pt-2"
+      className="bg-surface px-4 pb-4 pt-3 border-t border-line"
+      style={
+        {
+          "boxShadow": "0 -8px 32px -16px rgba(33,28,23,0.30)",
+        }
+      }
+      testID="login-bar"
     >
       <View
         style={
@@ -957,72 +999,90 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
         </View>
       </View>
       <View
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        className="items-center justify-center rounded-sm px-4 bg-ink mt-3"
-        collapsable={false}
-        focusable={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        className="mt-3"
         style={
           {
-            "height": 56,
+            "alignItems": "center",
+            "flexDirection": "row",
+            "flexWrap": undefined,
+            "gap": 12,
+            "justifyContent": undefined,
           }
         }
-        testID="login-continue"
+        testID="login-bar-row"
       >
         <View
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "flexWrap": undefined,
-              "gap": 8,
-              "justifyContent": undefined,
-            }
-          }
+          className="flex-1"
         >
-          <Text
-            className="text-onInk"
-            style={
+          <View
+            accessibilityRole="button"
+            accessibilityState={
               {
-                "fontFamily": "NotoSansTelugu_700Bold",
-                "fontSize": 16,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 26.4,
-                "textAlign": "center",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center rounded-sm px-4 bg-ink"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "height": 56,
+              }
+            }
+            testID="login-continue"
           >
-            కొనసాగించు
-          </Text>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-onInk"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 16,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 26.4,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                కొనసాగించు
+              </Text>
+            </View>
+          </View>
         </View>
       </View>
     </View>

@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, TextInput, View } from 'react-native';
 
-import { BackRow, Brand, Button, Keypad, PhoneField, Screen, Text, Toast } from '@/ui';
+import { ActionBar, BackRow, Button, Keypad, PageHeader, PhoneField, Screen, Toast } from '@/ui';
 
 /** Indian mobile numbers are 10 digits; the keypad refuses the eleventh. */
 const PHONE_LENGTH = 10;
@@ -51,7 +51,7 @@ export function LoginView({
   return (
     <Screen
       testID="login-screen"
-      overlay={error ? <Toast testID="login-error" text={error} tone="flag" /> : undefined}
+      overlay={error ? <Toast testID="login-error" text={error} tone="danger" /> : undefined}
     >
       <ScrollView
         className="flex-1"
@@ -60,13 +60,13 @@ export function LoginView({
         showsVerticalScrollIndicator={false}
       >
         {onBack && <BackRow testID="login-back" label={t('common.back')} onPress={onBack} />}
-        <Brand testID="login-brand" />
-        <Text variant="titleLg" weight="600" className="mt-3">
-          {t('auth.loginTitle')}
-        </Text>
-        <Text variant="body" color="dim" className="mt-2">
-          {t('auth.loginSub')}
-        </Text>
+        <PageHeader
+          brand
+          brandTestID="login-brand"
+          title={t('auth.loginTitle')}
+          subtitle={t('auth.loginSub')}
+          testID="login-header"
+        />
         <Pressable
           accessibilityRole="button"
           accessibilityLabel={t('auth.loginTitle')}
@@ -94,17 +94,22 @@ export function LoginView({
           />
         </View>
       </ScrollView>
-      <View className="px-3 pb-4 pt-2">
+      {/* The keypad and the one ink action ride the same bar, so the decision never scrolls
+          away from the digits it is about. */}
+      <ActionBar
+        testID="login-bar"
+        primary={
+          <Button
+            testID="login-continue"
+            size="lg"
+            label={t('common.continue')}
+            disabled={!ready}
+            onPress={() => onSubmit(phone)}
+          />
+        }
+      >
         <Keypad onKey={append} onDelete={remove} testID="login-keypad" />
-        <Button
-          testID="login-continue"
-          size="lg"
-          label={t('common.continue')}
-          disabled={!ready}
-          onPress={() => onSubmit(phone)}
-          className="mt-3"
-        />
-      </View>
+      </ActionBar>
     </Screen>
   );
 }
