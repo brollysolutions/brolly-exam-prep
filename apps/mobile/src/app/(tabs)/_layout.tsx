@@ -27,12 +27,13 @@ const TABS = [
 /**
  * Bar height by language, before the safe-area inset is added.
  *
- * Telugu sits taller than Latin at the same point size — its line-height is 1.65 — so a bar
- * sized for English clips its labels (design review round 1).
- * English needs 62, not the 56 px touch target: icon, 6 px of padding each side and a caption
- * line come to 60, and the touch height clipped the label band by a pixel (review F-23-25).
+ * The bar has to hold the label's own line (below) or the tab button flex-shrinks the label
+ * and its single-line overflow clips the descenders — measured on the web export: the icon
+ * wrapper is 28, React Navigation pads the button 5 each side, the item 6 each side, so a
+ * 16 px Latin line needs 66 and a 19 px Telugu line 69; both get 2–3 px of slack (design
+ * review, F-28 fix wave 1, D1 — 62 left the label 11 px and cut "Study").
  */
-const BAR_HEIGHT = { en: 62, te: 68 } as const;
+const BAR_HEIGHT = { en: 68, te: 72 } as const;
 
 /**
  * The label's own line, not the body line-height: at 1.5 / 1.65 the caption's line box

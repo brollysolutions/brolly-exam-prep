@@ -85,15 +85,16 @@ describe('tab bar', () => {
     });
   });
 
-  // 56 px clipped the English labels by a pixel (design review, F-23-25): the label band
-  // needs 62 before the inset is added.
+  // 62 left the label 11 px (icon wrapper 28 + button padding 10 + item padding 12) and cut
+  // "Study" (design review, F-28 fix wave 1, D1): the bar holds the 16 px label line with
+  // 2 px of slack before the inset is added.
   it('adds the bottom inset to its own height rather than sitting inside it', async () => {
     await render(<TabsLayout />);
-    expect(barStyle().height).toBe(62 + BOTTOM_INSET);
+    expect(barStyle().height).toBe(68 + BOTTOM_INSET);
     expect(itemStyle().paddingBottom).toBe(6 + BOTTOM_INSET);
   });
 
-  it.each<[Lang, number]>([['te', 68]])(
+  it.each<[Lang, number]>([['te', 72]])(
     'gives %s a taller bar so its labels are not clipped',
     async (lang, height) => {
       await act(async () => {
