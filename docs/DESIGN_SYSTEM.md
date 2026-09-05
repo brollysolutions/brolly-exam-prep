@@ -55,3 +55,6 @@ Sheet 180 ms cubic-bezier(.2,.8,.3,1) from bottom; overlays fade 140 ms; toast 1
 
 ## Platform adaptation
 Android (primary): edge-to-edge, ripple on pressables, predictive back handled in test (exit dialog). iOS: safe-area aware, SF Symbols where icons exist, sheet uses grabber, large-title header on Home/Library only. Identity (colours, rail, radii) identical on both.
+
+## Ruling 2026-09-05 — hazard rail
+The black/yellow hazard stripe is not rendered at the top of screens any more (user request). `HazardRail` survives as the attempt screen's critical-time warning (`Screen rail critical`), and in the dev gallery.

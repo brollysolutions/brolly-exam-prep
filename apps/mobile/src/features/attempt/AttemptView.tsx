@@ -277,7 +277,12 @@ export function AttemptView({
   const options = question?.options[lang] ?? [];
 
   return (
-    <Screen rail critical={armed && remainingSec <= CRITICAL_SEC} overlay={overlay} testID={testID}>
+    <Screen
+      rail={armed && remainingSec <= CRITICAL_SEC}
+      critical={armed && remainingSec <= CRITICAL_SEC}
+      overlay={overlay}
+      testID={testID}
+    >
       <View className="border-b border-line bg-panel" testID="attempt-header">
         <Row align="center" gap={2} className="px-2 py-1" testID="attempt-header-row">
           <PressBox

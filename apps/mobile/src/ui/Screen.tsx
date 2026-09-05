@@ -6,7 +6,10 @@ import { cx } from './cx';
 import { HazardRail } from './HazardRail';
 
 export type ScreenProps = ViewProps & {
-  /** Hazard rail on top. Default on. */
+  /**
+   * Hazard rail on top. Default OFF since 2026-09-05 (user ruling): the stripe is no longer
+   * screen chrome. The attempt screen still raises it as the critical-time warning.
+   */
   rail?: boolean;
   /** Rail turns flag-red and marquees. */
   critical?: boolean;
@@ -34,7 +37,7 @@ export type ScreenProps = ViewProps & {
  * Body goes in `children`; modal surfaces (Dialog, Toast) go in `overlay`.
  */
 export function Screen({
-  rail = true,
+  rail = false,
   critical = false,
   padded = false,
   scroll = false,

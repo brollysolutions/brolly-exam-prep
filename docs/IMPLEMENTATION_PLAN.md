@@ -70,6 +70,7 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - [ ] FEATURES/PR_TRACKING complete and consistent with `gh pr list` (PRs open after `gh auth login` + repo creation)
 
 ## Deviations / rulings
+- 2026-09-05 — The hazard stripe is no longer screen chrome (user ruling): `Screen` defaults to `rail={false}` on every route; the attempt screen raises it only while the timer is critical.
 - 2026-09-02 — Branches are stacked (main ← F-17 ← F-01 ← F-16 ← …) instead of merged locally, so each feature still gets its own PR once the GitHub repo exists.
 - 2026-09-02 — ESLint pinned to 9.x in apps/mobile: eslint-config-expo 57's react plugin crashes on ESLint 10. `lint` script is `eslint .` (expo lint hard-codes a non-hoisted path).
 - 2026-09-02 — Styling stack decided after checking the official `expo-tailwind-setup` skill; see spec §Styling for the final choice and why.
@@ -82,7 +83,7 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
    `gh repo create <owner>/tslprb --private --source . --remote origin --push` (pushes the current branch); then `git push -u origin main feat/F-17-api-scaffold feat/F-01-design-system feat/F-16-data-layer feat/F-09-11-test-attempt feat/F-03-06-auth-onboarding feat/F-12-13-result-solutions feat/F-02-07-08-14-shell`, and `gh pr create --base <previous-branch> --head <branch> --fill` for each, bottom-up. `@pr-tracker` (or the `track-pr` hook) fills `docs/PR_TRACKING.md`.
 2. Repo secret `ANTHROPIC_API_KEY` (or `/install-github-app`) so `.github/workflows/claude-review.yml` can review PRs.
 3. `services/api/.env.example`: delete the two `JWT_SECRET` lines (+ comment) and set `CORS_ORIGINS=http://localhost:8081,http://localhost:19006,http://localhost:3000`. The project deny rule on `.env*` blocked the session from editing it.
-4. Run on your phone: `pnpm dev:mobile`, scan with Expo Go; check hazard-rail marquee, sheet/dialog motion, Telugu line-heights, tab-bar height (te 68), the Toggle.
+4. Run on your phone: `pnpm dev:mobile`, scan with Expo Go; check the critical-time rail on the attempt screen, sheet/dialog motion, Telugu line-heights, tab-bar height (te 68), the Toggle.
 5. Optional: connect the Claude Chrome extension for in-browser review, install adb + Maestro for `.maestro/` flows, add `context7` API key header in `.mcp.json`.
 6. Delete the leftover folder `..\Tsplrb-w4` (a OneDrive lock stopped the session from removing it).
 
