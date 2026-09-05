@@ -1,5 +1,6 @@
-# syntax=docker/dockerfile:1.7
 # Web build of the Expo app (app.json web.output = "static") served by nginx.
+# Plain Dockerfile syntax only (no RUN --mount): on hosts without the buildx plugin Compose
+# falls back to the legacy builder, and this file must build there too (F-27).
 # Build context is the REPO ROOT (the app depends on the @tslprb/* workspace packages):
 #   docker build -f apps/mobile/Dockerfile .          (or: docker compose build web)
 
@@ -22,8 +23,8 @@ COPY packages/api-contracts/package.json packages/api-contracts/
 COPY packages/design-tokens/package.json packages/design-tokens/
 COPY packages/fixtures/package.json packages/fixtures/
 COPY packages/i18n/package.json packages/i18n/
-RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
-    pnpm install --frozen-lockfile --store-dir /pnpm/store --filter mobile...
+# No BuildKit cache mount (see header): the layer cache still skips this step until a manifest or the lockfile changes.
+RUN pnpm install --frozen-lockfile --store-dir /pnpm/store --filter mobile...
 
 # Sources: the workspace packages the app imports (TS source, no build step) and the app.
 COPY packages ./packages
