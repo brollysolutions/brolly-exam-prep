@@ -48,7 +48,9 @@ export type HttpApiOptions = {
  * analysis still render against a real backend (F-27 runs the web build with
  * `EXPO_PUBLIC_API=http`). The attempt lifecycle (`createAttempt`, `patchAttemptAnswer`,
  * `submitAttempt`, `getResult`) and the OTP calls do go over the wire. Replace the three
- * fixture reads when `GET /v1/tests/{id}/paper` lands.
+ * fixture reads when `GET /v1/tests/{id}/paper` lands. Until then the ids these reads hand
+ * out (`mock-07`, `q-ar-001#n`) are not the API's (`test-pwt-07`, `q-arith-*`), so
+ * `POST /v1/attempts` 404s and the attempt route falls back to its offline start.
  *
  * Category spelling: the app and @tslprb/fixtures use lower-case ids ("oc", "exs"); the
  * wire uses "OC" / "ExS". No /v1 request or response carries a category yet, so there is
