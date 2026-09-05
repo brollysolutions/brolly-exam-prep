@@ -5,7 +5,8 @@ import { initI18n } from '@tslprb/i18n';
 import { Text as RNText } from 'react-native';
 
 import { MarkerRow } from '../MarkerRow';
-import { Num } from '../Num';
+import { Measure } from '../Measure';
+import { iso, Num } from '../Num';
 import { Pill } from '../Pill';
 
 /** The body line-height the mark and the trailing slot are boxed to (design review D4). */
@@ -26,6 +27,45 @@ describe('MarkerRow', () => {
     await render(<MarkerRow title="Indian polity" meta="12 min" testID="row" />);
     expect(screen.getByText('Indian polity').props.className).toMatch(/\btext-ink\b/);
     expect(screen.getByText('12 min').props.className).toMatch(/\btext-ink3\b/);
+  });
+
+  // Study's minutes and Library's "40 questions · 60 min" are digits, and every digit in this
+  // app lives in a `<Num>`, so the meta line has to take a node as well as a string.
+  it('takes a node for its meta line and leaves that node its own typography', async () => {
+    await render(
+      <MarkerRow title="Percentages" meta={<Measure value={8} unit="min" testID="mins" />} />,
+    );
+    expect(screen.getByTestId('mins')).toHaveTextContent(`${iso(8)}min`);
+  });
+
+  // A composed name is built from strings: a node says nothing a label can use, so a row with
+  // one names itself instead of announcing a half-sentence.
+  it('leaves a node meta out of the composed name', async () => {
+    await render(
+      <MarkerRow
+        title="Percentages"
+        meta={<RNText>8 min</RNText>}
+        onPress={jest.fn()}
+        testID="row"
+      />,
+    );
+    expect(screen.getByTestId('row').props.accessibilityLabel).toBe('Percentages');
+  });
+
+  // The affairs row keeps `affair-headline-<id>` and `affair-summary-<id>` where they were:
+  // the pattern owns the typography, the caller owns the names (as on `PageHeader`).
+  it('names its title and its meta line where the caller asks', async () => {
+    await render(
+      <MarkerRow
+        title="Metro corridor opens"
+        titleTestID="headline"
+        meta="Trains now run on the first section"
+        metaTestID="summary"
+        testID="row"
+      />,
+    );
+    expect(screen.getByTestId('headline')).toHaveTextContent('Metro corridor opens');
+    expect(screen.getByTestId('summary')).toHaveTextContent('Trains now run on the first section');
   });
 
   it('marks what is still to do with a gold dot', async () => {

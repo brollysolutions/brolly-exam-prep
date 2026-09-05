@@ -155,7 +155,7 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
               }
             }
             accessible={true}
-            className="justify-center rounded-md min-h-16 border-2 border-accentStrong p-[15px] bg-accentTint"
+            className="justify-center rounded-lg min-h-16 border-2 border-accentStrong p-[15px] bg-accentTint"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -269,7 +269,7 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
               }
             }
             accessible={true}
-            className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
+            className="justify-center rounded-lg min-h-16 border border-line p-4 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}

@@ -27,6 +27,12 @@ export type CardProps = Omit<PressableProps, 'style' | 'children'> & {
   subtitle?: string;
   /** lg = post cards (19 px title), md = category grid (14.5 px title). */
   size?: 'md' | 'lg';
+  /**
+   * Corner. `md` (8 px) is the card radius the whole app rests on; `lg` (12 px) is the
+   * single-choice step card, which the spec draws one step softer. One class slot, never two:
+   * a second `rounded-*` on the same element lets Tailwind's emission order decide the corner.
+   */
+  radius?: 'md' | 'lg';
   /** Rendered after the content in reading order, vertically centred: a check, a pill, a chevron. */
   trailing?: ReactNode;
   /** No shadow: a card inside another surface, or one in a dense list. */
@@ -47,6 +53,7 @@ export function Card({
   title,
   subtitle,
   size = 'lg',
+  radius = 'md',
   trailing,
   flat = false,
   children,
@@ -66,7 +73,8 @@ export function Card({
   // One fill slot: selected tint, pressed fill or the resting surface — never two `bg-*` classes.
   const fill = selected ? 'bg-accentTint' : pressed && !disabled ? pressedClass : 'bg-surface';
   const classes = cx(
-    'justify-center rounded-md',
+    'justify-center',
+    radius === 'lg' ? 'rounded-lg' : 'rounded-md',
     // The grid card is shorter and tighter than the post card, so the box follows `size` too.
     md ? 'min-h-[72px]' : 'min-h-16',
     // Border grows 1 → 2 px when selected; padding gives the pixel back so content never shifts.

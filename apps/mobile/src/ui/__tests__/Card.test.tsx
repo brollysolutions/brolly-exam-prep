@@ -43,6 +43,19 @@ describe('Card', () => {
     expect(screen.getByText('SI / ASI').props.className).toMatch(/\btext-ink\b/);
   });
 
+  // Phase B deviation 2: the post step wanted the 12 px corner and `Card` hard-coded `md`, and
+  // a second radius class on the same element is the "two competing classes" defect the rules
+  // ban. One slot, chosen by the prop.
+  it('emits exactly one radius class, md by default and lg on request', async () => {
+    await render(<Card title="Constable" testID="md" />);
+    expect(screen.getByTestId('md').props.className).toMatch(/\brounded-md\b/);
+    expect(screen.getByTestId('md').props.className).not.toMatch(/\brounded-lg\b/);
+
+    await render(<Card title="Constable" radius="lg" testID="lg" />);
+    expect(screen.getByTestId('lg').props.className).toMatch(/\brounded-lg\b/);
+    expect(screen.getByTestId('lg').props.className).not.toMatch(/\brounded-md\b/);
+  });
+
   // One of a set, not a switch: the post and category steps are single-choice groups, so the
   // card that carries a `selected` reports `radio` with a checked state (design review D18).
   it('is a radio while it is one option of a choice, and a button otherwise', async () => {

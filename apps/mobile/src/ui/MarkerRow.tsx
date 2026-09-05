@@ -19,8 +19,14 @@ export type Marker = 'none' | 'dot' | 'done' | 'locked';
 
 export type MarkerRowProps = {
   title: string;
-  /** The `ink3` line under the title: minutes, a date, a count. */
-  meta?: string;
+  /**
+   * The line under the title: minutes, a date, a count, a sentence of summary.
+   *
+   * A string is drawn by the pattern (`caption` in `ink3`). A node is drawn as it comes, for
+   * the one thing a string cannot carry — digits, which live in `<Num>`/`Measure` so they stay
+   * tabular and LTR-isolated. A node is silent in the composed name (see `accessibilityLabel`).
+   */
+  meta?: ReactNode;
   /**
    * Cap the title at n lines. Left off, it grows — Profile and Study rows carry short labels
    * and a Telugu one has to be allowed to wrap; Home's affair headline takes `titleLines={2}`.
@@ -49,6 +55,14 @@ export type MarkerRowProps = {
   accessibilityLabel?: string;
   className?: string;
   testID?: string;
+  /**
+   * Names for the two lines the pattern draws, where a screen already had one (Affairs keeps
+   * `affair-headline-<id>` / `affair-summary-<id>`). The same split as `PageHeader`: the
+   * pattern owns the typography, the caller owns the name. `metaTestID` reaches a string
+   * `meta` only — a node carries its own.
+   */
+  titleTestID?: string;
+  metaTestID?: string;
 };
 
 const ICON = size.icon;
@@ -102,6 +116,8 @@ export function MarkerRow({
   accessibilityLabel,
   className,
   testID,
+  titleTestID,
+  metaTestID,
 }: MarkerRowProps) {
   const d = useDir();
   const { pressed, handlers } = usePressed();
@@ -121,13 +137,15 @@ export function MarkerRow({
         </View>
       )}
       <Stack gap={1} className="flex-1">
-        <Text variant="body" weight="600" numberOfLines={titleLines}>
+        <Text variant="body" weight="600" numberOfLines={titleLines} testID={titleTestID}>
           {title}
         </Text>
-        {meta !== undefined && (
-          <Text variant="caption" color="ink3">
+        {typeof meta === 'string' ? (
+          <Text variant="caption" color="ink3" testID={metaTestID}>
             {meta}
           </Text>
+        ) : (
+          meta
         )}
       </Stack>
       {end && (
@@ -161,7 +179,11 @@ export function MarkerRow({
       </View>
     );
   }
-  const composed = [title, meta, trailingLabel].filter(Boolean).join(' ');
+  // Only what a label can read: a node `meta` names itself through the row's own
+  // `accessibilityLabel`, because half a rendered tree is not a sentence.
+  const composed = [title, typeof meta === 'string' ? meta : undefined, trailingLabel]
+    .filter(Boolean)
+    .join(' ');
   return (
     <Pressable
       testID={testID}

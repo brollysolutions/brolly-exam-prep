@@ -69,6 +69,9 @@ export function PostView({ initialPost, onSubmit, onBack }: PostViewProps) {
           {POSTS.map((p) => (
             <Card
               key={p.id}
+              // The step's own corner: the spec draws the post cards one radius softer than
+              // the app's 8 px card, which `Card` can now say without a second class (F-30).
+              radius="lg"
               testID={`post-card-${p.id}`}
               title={t(p.titleKey)}
               subtitle={t(p.subKey)}
