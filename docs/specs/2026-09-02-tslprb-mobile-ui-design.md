@@ -2,6 +2,8 @@
 
 Date: 2026-09-02 · Status: approved (planning session) · Owner: product (you) · Implementer: Claude Code workflow
 
+> Ruling 2026-09-03 (F-26): Urdu removed at the user's request — "i want only two languages telugu and english". Every mention of Urdu, `ur`, RTL mirroring per screen and Nastaliq below is historical; the app ships English + Telugu, and the direction helpers are kept but dormant.
+
 ## 1. Purpose
 Build the user-facing flow of a mock-test app for Telangana police recruitment (PWT) as a native mobile app, from the approved Claude Design prototype, with better execution (spacing, hierarchy, motion, platform idioms) and the same identity. This phase ships UI on mock data plus a backend scaffold; real OTP, payments and sync come later.
 

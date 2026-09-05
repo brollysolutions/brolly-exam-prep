@@ -39,7 +39,8 @@ Contrast: chalk on tar 16.5:1, dim on tar 7.06:1 (kickers, captions), mute on ta
 |---|---|---|---|---|
 | en | Archivo 400/500/600/700 | 14.5 | 1.45 | kickers 1.6–2.4 px |
 | te | Noto Sans Telugu 400–700 | 14.5 | 1.6–1.75 | 0 |
-| ur | Noto Nastaliq Urdu 400/700 | 15–17 | 2.0–2.15 | 0 |
+
+Two languages only since 2026-09-03 (F-26): the Urdu row (Noto Nastaliq Urdu, 2.05 line-height) was removed with the language. `useDir()` still resolves direction, currently always LTR.
 
 Scale: kicker 10–11 · caption 11.5–12 · body 13–14.5 · question 16.5–17 · title 19–25 · score 58. Numbers always tabular, LTR.
 

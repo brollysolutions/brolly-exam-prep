@@ -3,15 +3,15 @@
 Mock-test app for Telangana State Level Police Recruitment Board (PWT = Preliminary Written Test).
 Monorepo: Expo SDK 57 mobile app (Android-first, iOS-ready), Next.js placeholder site, FastAPI scaffold.
 Design identity: "hi-vis on tar" — yellow `#FFE01B` on near-black, Archivo type, sharp 3px radii. Never soften it.
-Languages: **English default**, Telugu, Urdu (RTL, mirrored live without restart).
+Languages: **English default**, Telugu. Two languages only (Urdu removed 2026-09-03, F-26); the direction helpers stay wired but RTL is dormant.
 
 ## Layout
 - `apps/mobile` — Expo Router app (`src/app` routes, `src/ui` primitives, `src/features/*`, `src/data` store + mock API). Read `apps/mobile/AGENTS.md` (Expo's own guidance) when working there.
 - `apps/web` — Next.js placeholder (landing only).
 - `packages/design-tokens` (`@tslprb/design-tokens`) — the ONLY source of colors/spacing/type. Tailwind preset + TS.
-- `packages/i18n` (`@tslprb/i18n`) — en/te/ur strings, i18next init, `useDir()` RTL helpers.
+- `packages/i18n` (`@tslprb/i18n`) — en/te strings, i18next init, `useDir()` direction helpers (RTL dormant).
 - `packages/api-contracts` (`@tslprb/api-contracts`) — zod schemas + types shared by app and API.
-- `packages/fixtures` (`@tslprb/fixtures`) — exam pattern config, question bank (3 languages), sample results.
+- `packages/fixtures` (`@tslprb/fixtures`) — exam pattern config, question bank (en/te), sample results.
 - `services/api` — FastAPI + SQLAlchemy 2 + Alembic + arq worker; `docker-compose.yml` profile `dev` (postgres:17, redis:7).
 - `prototype/` — the approved Claude Design prototype. `prototype/extracted/template.html` is the readable source of every screen, state, string and colour. Treat it as the spec for content and behaviour.
 - `docs/` — `IMPLEMENTATION_PLAN.md` (live checklist), `FEATURES.md`, `PR_TRACKING.md`, `WORKFLOW.md`, `DESIGN_SYSTEM.md`, `specs/`.
@@ -36,7 +36,7 @@ Invoke the listed skill(s) BEFORE starting work that matches. Process skills fir
 | Tailwind / NativeWind setup or class issues | `expo-tailwind-setup` |
 | Animation, gesture, bottom sheet, haptics | `expo-animation` |
 | Native controls, SF Symbols, glass/blur | `expo-native-ui`, `expo-liquid-glass` |
-| Telugu / Urdu strings, fonts, RTL, `useDir` | `.claude/rules/i18n-rtl.md` is auto-loaded; run `@i18n-rtl-reviewer` before PR |
+| Telugu strings, fonts, direction helpers, `useDir` | `.claude/rules/i18n-rtl.md` is auto-loaded; run `@i18n-rtl-reviewer` before PR |
 | Lists, FPS, re-renders, startup, bundle size | `react-native-best-practices` |
 | Writing or fixing tests | `superpowers:test-driven-development` + `react-native-testing` (if installed) |
 | Data fetching / API layer | `expo-data-fetching`; contracts live in `packages/api-contracts` |
@@ -51,9 +51,9 @@ Invoke the listed skill(s) BEFORE starting work that matches. Process skills fir
 
 ## Definition of done (every feature PR)
 1. `pnpm typecheck && pnpm lint && pnpm test` green (hooks enforce this on edit/stop).
-2. Screen renders in en, te, ur; Urdu mirrored; no hard-coded hex or strings.
-3. Unit tests for logic (timer, palette counts, OTP countdown, RTL helpers); snapshot in `ur`.
-4. Visually checked in the web preview or Expo Go in en, te and ur.
+2. Screen renders in en and te; no hard-coded hex or strings.
+3. Unit tests for logic (timer, palette counts, OTP countdown, direction helpers); snapshot in `te`.
+4. Visually checked in the web preview or Expo Go in en and te.
 5. `docs/FEATURES.md` + `docs/PR_TRACKING.md` updated (the `track-pr` hook does it on `gh pr create/merge`; verify).
 
 ## Conventions

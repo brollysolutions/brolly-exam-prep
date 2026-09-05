@@ -32,8 +32,8 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 
 ## Phase 3 — Design system (F-01)
 - [x] Tokens (TS + Tailwind theme) from prototype palette
-- [x] Fonts loaded via `useFonts` (Archivo, Noto Sans Telugu, Noto Nastaliq Urdu); `useTypography()`
-- [x] `@tslprb/i18n`: en/te/ur locales (all prototype strings), i18next init, `useDir()`, `dir()`, `<Num>`
+- [x] Fonts loaded via `useFonts` (Archivo, Noto Sans Telugu; Noto Nastaliq Urdu removed in F-26); `useTypography()`
+- [x] `@tslprb/i18n`: en/te locales (all prototype strings; `ur` removed in F-26), i18next init, `useDir()`, `dir()`, `<Num>`
 - [x] Primitives in `apps/mobile/src/ui`
 - [x] Motion helpers (sheet/fade/toast/hazard marquee) with reduced-motion
 - [x] `src/app/dev/states.tsx` primitive gallery + language toggle (the 14 test states arrive with F-11)
@@ -53,6 +53,7 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - [x] F-23 home v3 — the dashboard stops repeating the tab bar: a hazard-framed exam countdown hero (days to `EXAM_INFO.pwtDate`, streak, and a today's-target bar of ten `View` blocks fed by the new `tslprb.activity` store), no Continue card (removed at the user's request 2026-09-03); "Check eligibility" is the only hi-vis action, a horizontal shelf of TSLPRB notices, a PMT/PET eligibility card, three current-affairs rows and three progress tiles (topics read n/N, papers practised, best score) with a guest nudge; `activity.bump()` is wired from the attempt route's answer handler and the topic route's mark-read and `history.record()` from the attempt route after the API scores the paper, so no store imports another; the Study / Previous papers / Mock cards and their strings are removed. the notice and affair rows are the three newest of F-24's fixtures with F-24's own kind and category labels, and `/eligibility` reaches F-25's checker; fix wave 1: best score as a percentage ranked by share of marks, hero not a button with exam-day / held states, isolated streak digit with a singular form, notice cards deep-link to `/updates?open=<id>`, empty shelves hidden, Urdu shelf starts at the newest notice, `useNow` refreshes on focus, dead `lastRead` bookmark removed (main)
 - [x] F-24 TSLPRB updates + current affairs — `/updates` lists the Board's notice board (six seeded notices for a 2026 cycle, kind chip, `<Num>` date, body behind a tap with a mirrored caret and an `expanded` accessibility state, link row to tslprb.in where the notice has one) and `/affairs` the daily digest (ten seeded items grouped by day under a `<Num>` date kicker, `sand` category kicker per card); both free for guests, both fed by INVENTED sample fixtures (`packages/fixtures/src/notices.ts`, `affairs.ts`) that are marked as such and must be replaced by the API before launch; until then a static "Sample data" tag (`common.sampleData`, `Chip tone="label"`) labels the Home rows and both screen headers; fix wave 1: `?open=<id>` deep link, animated disclosure with a turning caret, centred empty states, sand start edge on affairs cards (main)
 - [x] F-25 PMT/PET eligibility checker — `/eligibility` (ungated, free for guests): post x gender x category-group pickers, decimal-pad measurement fields built from `standardEntries()` so a woman is never asked for a chest measurement, and a pure `evaluate()` that returns one row per standard (required vs yours, boundary counts as a pass) plus a verdict — eligible / not yet with the shortfalls listed / incomplete, a confirmed failure outranking a blank field. `packages/fixtures/src/physical-standards.ts` holds the post x gender x group table with per-field `verified` flags and per-post run events (1600 m constable men, 800 m constable women, 100 m + 800 m SI); the Constable PMT + PET figures are confirmed (research 2026-09-03), the ST men's chest and every SI figure are unconfirmed and tagged on their rows, with an SI note under the pickers. Last entry persists in `tslprb.eligibility`. Fix wave 1: the long runs are entered as mm:ss in two fields and stored as seconds (`runTime.ts`), the limit prints as `7:15`, the unconfirmed note is driven by `allVerified`, fields carry their standard as a placeholder, run labels and the disclaimer year are `iso()` interpolations, quiet full-width pickers, columned result rows, scroll-to-verdict
+- [x] F-26 two languages — Urdu removed at the user's request (2026-09-03): `Lang` is `'en' | 'te'` across i18n, tokens, contracts, fixtures and the API; `ur.json`, the Nastaliq font and every `ur` branch are gone; switchers offer EN / తె; `?lang=ur` falls back to English; the six Urdu snapshot tests are Telugu ones now; direction helpers stay wired but dormant (main)
 
 ## Phase 5 — Backend scaffold (F-17)
 - [x] FastAPI app, routers, models, Alembic initial migration, arq worker with 3 cron jobs
@@ -62,8 +63,8 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 ## Phase 6 — Verification
 - [x] `pnpm typecheck && pnpm lint && pnpm test` green on the stack tip (478 mobile tests, 67 suites; i18n 6/6; package typechecks)
 - [ ] `npx expo-doctor` clean; app opens in Expo Go on Android (needs your phone: `pnpm dev:mobile`)
-- [x] Every screen visually reviewed by `@design-critic` in en/te/ur on the web export
-- [x] Urdu snapshot tests for every screen
+- [x] Every screen visually reviewed by `@design-critic` in en/te (and ur, before F-26) on the web export
+- [x] Telugu snapshot tests for every screen (were Urdu until F-26)
 - [x] Timer deadline tests (background/foreground, auto-submit) — countdown + route tests
 - [x] `docker compose --profile dev up` → `/health` 200; worker registers cron jobs (verified by F-17 implementer on ports 5434/8010)
 - [ ] FEATURES/PR_TRACKING complete and consistent with `gh pr list` (PRs open after `gh auth login` + repo creation)
@@ -74,13 +75,14 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - 2026-09-02 — Styling stack decided after checking the official `expo-tailwind-setup` skill; see spec §Styling for the final choice and why.
 - 2026-09-03 — Home's Continue card removed at the user's request; "Check eligibility" is Home's one hi-vis action. Notice/affairs rows carry a "Sample data" chip until the API serves live content.
 - 2026-09-03 — PET restructured per post after research: Constable is three events (1600 m men / 800 m women, long jump, shot put), 100 m is SI-only; unconfirmed figures are tagged on the row.
+- 2026-09-03 — Urdu removed at the user's request; the app ships English + Telugu. Direction helpers kept, dormant.
 
 ## Handoff (2026-09-03) — what needs you
 1. `gh auth login`, then create the repo and push the stack in order (each PR's base is the branch below it):
    `gh repo create <owner>/tslprb --private --source . --remote origin --push` (pushes the current branch); then `git push -u origin main feat/F-17-api-scaffold feat/F-01-design-system feat/F-16-data-layer feat/F-09-11-test-attempt feat/F-03-06-auth-onboarding feat/F-12-13-result-solutions feat/F-02-07-08-14-shell`, and `gh pr create --base <previous-branch> --head <branch> --fill` for each, bottom-up. `@pr-tracker` (or the `track-pr` hook) fills `docs/PR_TRACKING.md`.
 2. Repo secret `ANTHROPIC_API_KEY` (or `/install-github-app`) so `.github/workflows/claude-review.yml` can review PRs.
 3. `services/api/.env.example`: delete the two `JWT_SECRET` lines (+ comment) and set `CORS_ORIGINS=http://localhost:8081,http://localhost:19006,http://localhost:3000`. The project deny rule on `.env*` blocked the session from editing it.
-4. Run on your phone: `pnpm dev:mobile`, scan with Expo Go; check hazard-rail marquee, sheet/dialog motion, Nastaliq line-heights, tab-bar heights (te 68 / ur 76), the Toggle.
+4. Run on your phone: `pnpm dev:mobile`, scan with Expo Go; check hazard-rail marquee, sheet/dialog motion, Telugu line-heights, tab-bar height (te 68), the Toggle.
 5. Optional: connect the Claude Chrome extension for in-browser review, install adb + Maestro for `.maestro/` flows, add `context7` API key header in `.mcp.json`.
 6. Delete the leftover folder `..\Tsplrb-w4` (a OneDrive lock stopped the session from removing it).
 
@@ -90,8 +92,7 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - The unlit target-bar block on Home is `line3` (design review F-23-25, 22); a token-level 3:1 neutral for empty progress states is still to be added to `@tslprb/design-tokens`.
 - `Dialog` `onDismiss` (Android back + scrim) — `TODO(follow-up)` in `src/ui/Dialog.tsx`.
 - Web hydration mismatch (React #418): static HTML is pre-rendered in the default language.
-- Urdu "صاف کریں" wraps in the 92 px Clear button.
-- Per-language line-height is one multiplier per language (te 1.65 / ur 2.05) rather than per role.
+- Per-language line-height is one multiplier per language (te 1.65) rather than per role.
 - API: routers still serve fixtures in-memory; crons read DB tables the routers don't write yet; leaderboard stub.
 - SI exam-pattern section split unverified (`PWT_SI.verified=false`); category qualifying % are prototype values; extra-screen te/ur copy needs a native read.
 - Pre-existing en keys `auth.phoneHint`, `onboarding.welcome1Sub`, `test.warn5`, `test.warn1` bake digits into strings (same rule class as the eligibility `runTime` fix, F-23-25 fix1 review #7) — interpolate the numbers instead.

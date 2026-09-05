@@ -6,8 +6,8 @@
 
 ## Checklist
 - [ ] `pnpm typecheck && pnpm lint && pnpm test` green
-- [ ] All strings via `t()`; en/te/ur keys in parity
-- [ ] Urdu mirrored (`useDir`/`dir()`), numbers in `<Num>`
+- [ ] All strings via `t()`; en/te keys in parity
+- [ ] Directional styles through `useDir`/`dir()`, numbers in `<Num>`
 - [ ] Touch targets ≥ 48 px; reduced motion respected
 - [ ] States added to `src/app/dev/states.tsx`
 - [ ] `@design-critic` and `@i18n-rtl-reviewer` run; findings addressed or noted below

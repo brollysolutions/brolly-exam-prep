@@ -14,7 +14,7 @@ F-xx
 Section of `prototype/extracted/template.html`:
 
 ## Acceptance
-- [ ] Renders in en / te / ur (Urdu mirrored)
+- [ ] Renders in en / te
 - [ ] All states in dev states screen
 - [ ] Tests
 - [ ] Design critic pass

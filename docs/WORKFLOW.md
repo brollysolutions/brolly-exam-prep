@@ -80,4 +80,5 @@ The session could not write `~/.claude/settings.json` (classifier). Add these li
 ## Rulings / deviations log
 - 2026-09-02 — `corepack enable` cannot write to `C:\Program Files\nodejs`; pnpm installed with `npm i -g pnpm` instead.
 - 2026-09-02 — Expo Go only in this phase: MMKV, Unistyles, SMS auto-read, call detection are stubbed. The incoming-call overlay is a dev-only simulated state.
-- 2026-09-02 — Live Urdu mirroring uses explicit `useDir()` helpers; `I18nManager.forceRTL` is deferred (needs restart).
+- 2026-09-02 — Live RTL mirroring uses explicit `useDir()` helpers; `I18nManager.forceRTL` is deferred (needs restart).
+- 2026-09-03 — Urdu removed at the user's request (F-26). The app ships English + Telugu; `Lang` is `'en' | 'te'`, `ur.json` and the Nastaliq font are gone. The direction helpers stay wired but dormant (`isRTL()` is always false).

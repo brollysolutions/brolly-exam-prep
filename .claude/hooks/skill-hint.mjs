@@ -7,7 +7,7 @@ if (!p || p.startsWith('/')) process.exit(0);
 const rules = [
   [/\b(screen|page|component|layout|redesign|ui|button|card|sheet|modal|dialog)\b/, 'expo-router, expo-design-system, frontend-design, apple-hig-designer, material-3'],
   [/\b(animation|animate|gesture|swipe|haptic|transition|bottom sheet)\b/, 'expo-animation'],
-  [/\b(telugu|urdu|rtl|translate|translation|locale|i18n|font)\b/, '.claude/rules/i18n-rtl.md + @i18n-rtl-reviewer'],
+  [/\b(telugu|rtl|translate|translation|locale|i18n|font)\b/, '.claude/rules/i18n-rtl.md + @i18n-rtl-reviewer'],
   [/\b(slow|lag|jank|fps|performance|re-render|bundle size|memory)\b/, 'react-native-best-practices'],
   [/\b(test|spec|jest|maestro|e2e|coverage)\b/, 'superpowers:test-driven-development, react-native-testing, @test-writer'],
   [/\b(bug|broken|fails?|failing|error|crash|not working|unexpected)\b/, 'superpowers:systematic-debugging'],
