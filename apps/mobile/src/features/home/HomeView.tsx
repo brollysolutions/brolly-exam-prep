@@ -294,14 +294,14 @@ export function HomeView({
       </Text>
 
       {/* ------------------------------------------------------- countdown hero */}
-      {/* Hazard, not hi-vis: a date closing in is a warning, and the yellow on this screen
-          belongs to "Check eligibility". A fact, not a button: Tests is a tab already. */}
+      {/* The one gold-edged card on Home (the spec's start-edge gold). A fact, not a button:
+          Tests is a tab already. */}
       <Card
         testID="home-hero"
         accessible
         accessibilityLabel={heroLabel}
         className="mt-4"
-        style={startEdge(d.isRTL, 'hazard')}
+        style={startEdge(d.isRTL, 'accentStrong')}
       >
         {examState === 'ahead' ? (
           <>
@@ -332,7 +332,7 @@ export function HomeView({
           </Text>
         )}
 
-        <View className="mt-4 h-px bg-line2" />
+        <View className="mt-4 h-px bg-line" />
         <Row align="center" justify="between" gap={3} className="mt-3">
           <Kicker>{t('home.todayTarget')}</Kicker>
           <Text variant="caption" color="dim" testID="home-target-count">
@@ -505,17 +505,18 @@ function AffairRow({
   onPress: () => void;
 }) {
   const { t } = useTranslation();
-  const d = useDir();
   const { pressed, handlers } = usePressed();
+  // No start edge: the hero is Home's one gold-edged card (fix wave 1, D9); Phase B folds
+  // these rows into one surface card of marker rows.
   return (
     <View
+      testID="home-affair-card"
       style={{
         borderRadius: radius.md,
         borderWidth: 1,
         borderColor: colors.line,
         backgroundColor: colors.panel2,
         overflow: 'hidden',
-        ...startEdge(d.isRTL, 'sand'),
       }}
     >
       <Pressable

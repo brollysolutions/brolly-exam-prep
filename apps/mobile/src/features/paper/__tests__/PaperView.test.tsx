@@ -70,9 +70,18 @@ describe('PaperView', () => {
           ).toBeNull();
         });
       // The ✓ is decorative; the row's own label is what says "correct answer" out loud.
+      const tick = screen.getByTestId(`paper-tick-${n}-${question.correct}`, {
+        includeHiddenElements: true,
+      });
+      expect(tick).toBeOnTheScreen();
+      // Gold text on the gold tint is 4.14:1 (fix wave 1, C2): the key letter and the tick
+      // are ink; the edge and the tint carry the meaning.
+      expect(tick.props.className).toMatch(/\btext-ink\b/);
+      const option = screen.getByTestId(`paper-option-${n}-${question.correct}`);
       expect(
-        screen.getByTestId(`paper-tick-${n}-${question.correct}`, { includeHiddenElements: true }),
-      ).toBeOnTheScreen();
+        within(option).getByText(KEYS[question.correct], { includeHiddenElements: true }).props
+          .className,
+      ).toMatch(/\btext-ink\b/);
       // Scoped to the card: the seed bank repeats, so the same option text is on screen twice.
       expect(
         within(screen.getByTestId(`paper-card-${n}`)).getByLabelText(

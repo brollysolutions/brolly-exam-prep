@@ -265,7 +265,7 @@ export function ResultView({
               </Row>
             </Row>
 
-            <View className="mt-6 h-px bg-line2" />
+            <View className="mt-6 h-px bg-line" />
 
             <Stack gap={2} className="mt-4">
               <Kicker index="01">{t('result.r1')}</Kicker>

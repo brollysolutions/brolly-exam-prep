@@ -86,7 +86,7 @@ describe('AffairsView', () => {
     );
   });
 
-  it('keeps the category kicker sand — the info accent, never the primary one', async () => {
+  it('tracks the category kicker like every other kicker', async () => {
     await render(<AffairsView {...props()} />);
     const kicker = screen.getByTestId('affair-cat-af-metro-corridor');
     expect(kicker.props.className).toContain('text-sand');
@@ -94,13 +94,23 @@ describe('AffairsView', () => {
     expect(kicker).toHaveStyle({ letterSpacing: tracking.kicker });
   });
 
-  // The same content on Home carries a 3 px sand edge; the rule is "a block with a non-hi-vis
-  // accent carries it on its start edge", so the card here does too (design 18).
-  it('carries the sand start edge the same rows have on Home', async () => {
+  // As built in Phase A, `sand` aliases `#856a22` — the same dark gold as `hivis`/`hazard` —
+  // so the "info accent, never the primary one" distinction is gone until Phase C gives the
+  // category its own tone (F-30 decides which). Fails on purpose until then.
+  it.failing('F-30: the category kicker has a tone of its own, not the primary accent (restored in Phase C)', async () => {
     await render(<AffairsView {...props()} />);
-    expect(screen.getByTestId('affair-card-af-metro-corridor')).toHaveStyle({
+    const kicker = screen.getByTestId('affair-cat-af-metro-corridor');
+    expect(kicker.props.className).toContain('text-sand');
+    expect(colors.sand).not.toBe(colors.accentInk);
+  });
+
+  // Home's affairs rows lost their edge in fix wave 1 (one gold-edged card per screen);
+  // this card drops its own in Phase C, when the affairs list becomes one surface card of
+  // marker rows (F-30). Fails on purpose until then — flip to `it` when Phase C lands.
+  it.failing('F-30: the affairs card carries no start edge (restored in Phase C)', async () => {
+    await render(<AffairsView {...props()} />);
+    expect(screen.getByTestId('affair-card-af-metro-corridor')).not.toHaveStyle({
       borderLeftWidth: 3,
-      borderLeftColor: colors.sand,
     });
   });
 

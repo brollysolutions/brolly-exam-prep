@@ -1,4 +1,5 @@
 import { act, fireEvent, render, screen, userEvent } from '@testing-library/react-native';
+import { colors } from '@tslprb/design-tokens';
 import { latestAffairs, latestNotices } from '@tslprb/fixtures';
 import { initI18n, setLanguage } from '@tslprb/i18n';
 import { ScrollView } from 'react-native';
@@ -224,7 +225,7 @@ describe('HomeView — the three shelves', () => {
     // The selected language chip is a soft gold state, not an ink action.
     const inkFills = screen
       .getAllByRole('button')
-      .filter((node) => String(node.props.className).includes('bg-ink'))
+      .filter((node) => /\bbg-ink\b/.test(String(node.props.className)))
       .filter((node) => !node.props.accessibilityState?.selected);
     expect(inkFills).toHaveLength(1);
   });
@@ -268,6 +269,22 @@ describe('HomeView — the three shelves', () => {
     expect(screen.queryByTestId('home-affairs')).toBeNull();
     expect(screen.getByTestId('home-physical')).toBeOnTheScreen();
     expect(screen.getByTestId('home-progress')).toBeOnTheScreen();
+  });
+
+  // One gold-edged card per screen (design review, F-28 fix wave 1, D9): the hero carries the
+  // spec's start-edge gold; the affairs rows lost their `sand` edge, which was a fourth.
+  it('gives the hero the one gold edge on Home and the affairs rows none', async () => {
+    await render(<HomeView {...props} lang="en" />);
+    expect(screen.getByTestId('home-hero')).toHaveStyle({
+      borderLeftWidth: 3,
+      borderLeftColor: colors.accentStrong,
+    });
+    const cards = screen.getAllByTestId('home-affair-card');
+    expect(cards).toHaveLength(3);
+    for (const card of cards) {
+      expect(card).not.toHaveStyle({ borderLeftWidth: 3 });
+      expect(card).not.toHaveStyle({ borderRightWidth: 3 });
+    }
   });
 
   it("shows today's affairs with their category", async () => {

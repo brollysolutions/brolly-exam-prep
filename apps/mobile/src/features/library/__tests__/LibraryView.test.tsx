@@ -177,8 +177,8 @@ describe('LibraryView — previous papers', () => {
     expect(practise).toHaveStyle({ height: 48 });
     expect(view).toHaveStyle({ height: 48 });
     // Practise leads on fill, not on weight alone; View paper stays an outline.
-    expect(practise.props.className).toContain('bg-ink');
-    expect(view.props.className).not.toContain('bg-ink');
+    expect(practise.props.className).toMatch(/\bbg-ink\b/);
+    expect(view.props.className).not.toMatch(/\bbg-ink\b/);
     expect(within(practise).getByText('Practise').props.style.fontFamily).toContain('700Bold');
     expect(within(view).getByText('View paper').props.style.fontFamily).not.toContain('700Bold');
   });

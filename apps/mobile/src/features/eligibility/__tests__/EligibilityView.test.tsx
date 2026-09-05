@@ -251,6 +251,17 @@ describe('EligibilityView — the verdict', () => {
     expect(screen.queryByLabelText(t('eligibility.fail'))).toBeNull();
   });
 
+  // Green = eligible (status vocabulary): `okInk` text in an ok-tinted box, pulled forward
+  // from Phase C (design review, F-28 fix wave 1, D17).
+  it('colours an eligible verdict green: okInk text in an ok-tinted, okInk-bordered box', async () => {
+    await render(<EligibilityView {...props({ values: PASSING, result: result(PASSING) })} />);
+    const verdict = screen.getByTestId('eligibility-verdict');
+    expect(verdict.props.className).toMatch(/\bborder-okInk\b/);
+    expect(verdict.props.className).toMatch(/\bbg-okTint\b/);
+    expect(verdict.props.className).not.toMatch(/\bborder-hivis\b/);
+    expect(screen.getByText(t('eligibility.eligible')).props.className).toMatch(/\btext-okInk\b/);
+  });
+
   it('prints the required figure beside the entered one on every row', async () => {
     await render(<EligibilityView {...props({ values: PASSING, result: result(PASSING) })} />);
     const height = screen.getByTestId('eligibility-row-height');

@@ -172,13 +172,14 @@ export function AttemptStates({ index }: { index: string }) {
             accessibilityState={{ selected: id === value }}
             onPress={() => setId(value)}
             testID={`attempt-state-${value}`}
+            // Ink on the gold tint (gold text on it is 4.14:1); the gold border says "selected".
             className={
               id === value
                 ? 'rounded-xs border border-hivis bg-hivisTint px-3 py-2'
-                : 'rounded-xs border border-line2 bg-panel4 px-3 py-2'
+                : 'rounded-xs border border-line bg-panel4 px-3 py-2'
             }
           >
-            <Text variant="small" weight="600" color={id === value ? 'hivis' : 'chalk'}>
+            <Text variant="small" weight="600" color="ink">
               {label}
             </Text>
           </Pressable>

@@ -1,6 +1,6 @@
-import { render, screen, userEvent } from '@testing-library/react-native';
+import { render, screen, userEvent, within } from '@testing-library/react-native';
 import { buildPaper, FREE_MOCK_SHORT, SAMPLE_RESULT } from '@tslprb/fixtures';
-import { initI18n } from '@tslprb/i18n';
+import { i18n, initI18n } from '@tslprb/i18n';
 
 import { SolutionsView } from '../SolutionsView';
 import { buildSolutionRows } from '../solutions';
@@ -43,6 +43,22 @@ describe('SolutionsView', () => {
         `${key} · ${row.question.options.en[row.question.correct]}`,
       );
     });
+  });
+
+  // Gold text on the gold tint is 4.14:1 (fix wave 1, C2): both kickers are ink, and the
+  // 3 px edge plus the tint say which block is which.
+  it('sets both answer kickers in ink on their tints', async () => {
+    await render(<SolutionsView rows={ROWS} initialFilter="all" />);
+    for (const block of screen.getAllByTestId('solution-correct-answer')) {
+      const kicker = within(block).getByText(i18n.t('solutions.correctAnswer'));
+      expect(kicker.props.className).toMatch(/\btext-ink\b/);
+      expect(kicker.props.className).not.toMatch(/\btext-hivis\b/);
+    }
+    for (const block of screen.getAllByTestId('solution-your-answer')) {
+      expect(within(block).getByText(i18n.t('solutions.yourAnswer')).props.className).toMatch(
+        /\btext-ink\b/,
+      );
+    }
   });
 
   it('gives the correct card no "your answer" block', async () => {

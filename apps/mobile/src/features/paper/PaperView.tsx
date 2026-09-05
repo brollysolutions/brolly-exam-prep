@@ -77,7 +77,8 @@ function Option({
         <Text
           variant="small"
           weight="700"
-          color={correct ? 'hivis' : 'dim'}
+          // Ink, not gold, on the gold tint (4.14:1 — fix wave 1, C2); the edge carries the mark.
+          color={correct ? 'ink' : 'dim'}
           lang="en"
           accessibilityElementsHidden
           importantForAccessibility="no"
@@ -98,7 +99,7 @@ function Option({
           <Glyph
             variant="small"
             weight="700"
-            color="hivis"
+            color="ink"
             testID={`paper-tick-${questionNo}-${index}`}
             accessibilityElementsHidden
             importantForAccessibility="no"

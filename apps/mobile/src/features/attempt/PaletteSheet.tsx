@@ -97,7 +97,7 @@ export const PaletteSheet = forwardRef<SheetHandle, PaletteSheetProps>(function 
   ];
 
   const footer = (
-    <View className="border-t border-line2 px-3 pb-3 pt-2">
+    <View className="border-t border-line px-3 pb-3 pt-2">
       <Button size="lg" label={t('test.submit')} onPress={onSubmit} testID="palette-submit" />
     </View>
   );
@@ -150,7 +150,7 @@ export const PaletteSheet = forwardRef<SheetHandle, PaletteSheetProps>(function 
                 >
                   {t(section.labelKey)}
                 </Text>
-                <View className="h-px flex-1 bg-line2" />
+                <View className="h-px flex-1 bg-line" />
                 <Num variant="kicker" weight="400" color="dim">
                   {`${done}/${section.questions}`}
                 </Num>

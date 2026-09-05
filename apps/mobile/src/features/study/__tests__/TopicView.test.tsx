@@ -43,11 +43,11 @@ describe('TopicView', () => {
     expect(screen.getByTestId('study-block-tip')).toHaveTextContent(/Exam tip/);
   });
 
-  it('accents the example and the tip with a 3 px gold edge on the reading-start side', async () => {
+  // As built in Phase A: `hivis` and `sand` both alias `#856a22`, so the example's and the
+  // tip's edges are the same dark gold and only the pill labels ("Worked example" /
+  // "Exam tip") tell them apart. Pinned so the collapse is deliberate, not accidental.
+  it('draws both blocks with a 3 px dark-gold start edge until Phase C', async () => {
     await render(<TopicView {...props()} />);
-    // Both edges are the dark brand gold since the rebrand's legacy aliases collapsed `hivis`
-    // and `sand`; the pill labels ("Worked example" / "Exam tip") tell the two apart, and
-    // Phase C gives the tip its own `surface2` block with no edge at all.
     expect(screen.getByTestId('study-block-example')).toHaveStyle({
       borderLeftWidth: 3,
       borderLeftColor: colors.accentInk,
@@ -57,6 +57,18 @@ describe('TopicView', () => {
       borderLeftColor: colors.accentInk,
     });
   });
+
+  // F-30 (Phase C): the worked example is the one gold-edged card on the page and the tip
+  // becomes a `surface2` block with no edge. Fails on purpose until then — flip to `it`
+  // when Phase C lands.
+  it.failing(
+    'F-30: only the worked example carries the gold edge; the tip has none (restored in Phase C)',
+    async () => {
+      await render(<TopicView {...props()} />);
+      expect(screen.getByTestId('study-block-example')).toHaveStyle({ borderLeftWidth: 3 });
+      expect(screen.getByTestId('study-block-tip')).not.toHaveStyle({ borderLeftWidth: 3 });
+    },
+  );
 
   it('reads the formula in the page own script, with the maths isolated', async () => {
     const p = props();
@@ -92,11 +104,11 @@ describe('TopicView', () => {
   it('hands the primary fill to the drills once the topic is read', async () => {
     const p = props();
     const view = await render(<TopicView {...p} />);
-    expect(screen.getByTestId('topic-mark-read').props.className).toContain('bg-ink');
-    expect(screen.getByTestId('topic-practise').props.className).not.toContain('bg-ink');
+    expect(screen.getByTestId('topic-mark-read').props.className).toMatch(/\bbg-ink\b/);
+    expect(screen.getByTestId('topic-practise').props.className).not.toMatch(/\bbg-ink\b/);
 
     await view.rerender(<TopicView {...p} read />);
-    expect(screen.getByTestId('topic-practise').props.className).toContain('bg-ink');
+    expect(screen.getByTestId('topic-practise').props.className).toMatch(/\bbg-ink\b/);
   });
 
   it('switches the reading language from the header', async () => {

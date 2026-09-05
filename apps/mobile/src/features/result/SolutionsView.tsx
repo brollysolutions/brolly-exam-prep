@@ -51,9 +51,9 @@ function Badge({ correct }: { correct: boolean }) {
 /**
  * The tinted answer blocks: a 3 px start bar over a matching tint.
  *
- * The "your answer" kicker is `chalk`, not `flag`: flag on `flagTint` over tar is 4.29:1,
- * under AA for 11 px text. The 3 px bar and the tint already say "this one was wrong", so
- * the label does not have to. Hi-vis on `hivisTint2` is 13.9:1 and stays.
+ * Both kickers are ink. Red text on the red tint is 4.29:1 and gold text on the gold tint
+ * 4.14:1 — under AA for kicker-sized text either way (fix wave 1, C2). The 3 px bar and the
+ * tint already say which block is which, so the label does not have to.
  */
 function AnswerBlock({
   tone,
@@ -78,7 +78,7 @@ function AnswerBlock({
         ...startEdge(d.isRTL, tone),
       }}
     >
-      <Kicker color={tone === 'flag' ? 'chalk' : 'hivis'} tracking="kickerTight">
+      <Kicker color="ink" tracking="kickerTight">
         {label}
       </Kicker>
       <Text variant="body" className="mt-1" testID={`${testID}-text`}>

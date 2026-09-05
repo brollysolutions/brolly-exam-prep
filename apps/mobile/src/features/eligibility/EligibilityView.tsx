@@ -320,7 +320,7 @@ function ResultRow({
       testID={`eligibility-row-${row.key}`}
       gap={2}
       align="center"
-      className={cx('py-3', !last && 'border-b border-line2')}
+      className={cx('py-3', !last && 'border-b border-line')}
     >
       <View testID={`eligibility-mark-${row.key}`} className="w-6 items-center">
         <Glyph variant="question" color={tone} accessibilityLabel={state}>
@@ -367,8 +367,9 @@ function ResultRow({
   );
 }
 
+/** Green = eligible (status vocabulary): `okInk` text in an ok-tinted box, pulled forward from Phase C. */
 const VERDICT: Record<Verdict, { box: string; color: ColorName; glyph: string }> = {
-  eligible: { box: 'border-hivis bg-hivisTint', color: 'hivis', glyph: '✓' },
+  eligible: { box: 'border-okInk bg-okTint', color: 'okInk', glyph: '✓' },
   notYet: { box: 'border-flag bg-flagTint', color: 'flag', glyph: '✕' },
   incomplete: { box: 'border-line bg-panel2', color: 'dim', glyph: '·' },
 };

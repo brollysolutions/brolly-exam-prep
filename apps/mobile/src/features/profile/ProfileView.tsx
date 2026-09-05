@@ -55,7 +55,7 @@ function SettingRow({
       {children}
     </Row>
   );
-  const border = cx(!first && 'border-t border-line2');
+  const border = cx(!first && 'border-t border-line');
   if (!onPress) {
     return (
       <View testID={testID} className={border}>

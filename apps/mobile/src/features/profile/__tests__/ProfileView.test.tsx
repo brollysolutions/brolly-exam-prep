@@ -1,4 +1,4 @@
-import { act, render, screen, userEvent } from '@testing-library/react-native';
+import { act, render, screen, userEvent, within } from '@testing-library/react-native';
 import { colors } from '@tslprb/design-tokens';
 import { initI18n, setLanguage } from '@tslprb/i18n';
 
@@ -74,12 +74,15 @@ describe('ProfileView', () => {
     });
   });
 
-  it('asks in outline and only commits in solid red', async () => {
+  it('deletes through the danger outline — a red border, red text, no fill — and a dialog', async () => {
     await render(<ProfileView {...base} lang="en" {...handlers()} />);
-    // A solid red button sitting on a settings list reads as the screen's primary action.
-    expect(screen.getByTestId('profile-delete').props.className).toContain('border-dangerInk');
-    expect(screen.getByTestId('profile-delete').props.className).not.toContain('bg-danger');
-    await userEvent.press(screen.getByTestId('profile-delete'));
+    // A filled button of any colour on a settings list reads as the screen's primary action;
+    // the outline asks, and the dialog is where the commit happens.
+    const del = screen.getByTestId('profile-delete');
+    expect(del.props.className).toMatch(/\bborder-dangerInk\b/);
+    expect(del.props.className).not.toMatch(/\bbg-/);
+    expect(within(del).getByText(/delete/i).props.className).toMatch(/\btext-dangerInk\b/);
+    await userEvent.press(del);
     expect(screen.getByTestId('profile-delete-dialog')).toBeOnTheScreen();
   });
 
