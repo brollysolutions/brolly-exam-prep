@@ -83,10 +83,11 @@ function Mark({ marker, testID }: { marker: Marker; testID?: string }) {
  * 72, and a Telugu title grows it further instead of being clipped. The hairline sits on top
  * rather than underneath, so the last row never draws a line against the card's own border.
  *
- * The mark and the trailing slot are each boxed to ONE body line and pinned to the top of the
+ * The mark and the trailing slot are each boxed to one body line and pinned to the top of the
  * content, so a wrapped title keeps them on line 1 instead of dragging them to the middle of
- * two (design review D4). The 56 px floor and the vertical centring live on the row's own
- * wrapper, so a one-line row is laid out exactly as it was.
+ * two (design review D4). A MINIMUM, not a height: Profile's language switcher is a 48 px
+ * control in that slot, and a fixed line box would clip it. The 56 px floor and the vertical
+ * centring live on the row's own wrapper, so a one-line row is laid out exactly as it was.
  */
 export function MarkerRow({
   title,
@@ -106,10 +107,10 @@ export function MarkerRow({
   const { pressed, handlers } = usePressed();
   // The language's own body line, so a Telugu row boxes to its taller line rather than clipping.
   const lh = useTypography('body').lineHeight;
-  const slot = { height: lh, alignSelf: 'flex-start' } as const;
+  const slot = { minHeight: lh, alignSelf: 'flex-start' } as const;
   const end = trailing !== undefined || chevron;
   const body = (
-    <Row testID={testID ? `${testID}-row` : undefined} gap={3} align="start">
+    <Row testID={testID ? `${testID}-row` : undefined} gap={3} align="center">
       {marker !== 'none' && (
         <View
           testID={testID ? `${testID}-mark` : undefined}

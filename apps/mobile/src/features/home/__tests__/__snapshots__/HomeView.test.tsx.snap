@@ -1490,7 +1490,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             <View
               style={
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
@@ -1504,7 +1504,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 style={
                   {
                     "alignSelf": "flex-start",
-                    "height": 24.8,
+                    "minHeight": 24.8,
                     "width": 18,
                   }
                 }
@@ -1570,8 +1570,8 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                     "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
-                    "height": 24.8,
                     "justifyContent": undefined,
+                    "minHeight": 24.8,
                   }
                 }
                 testID="home-affair-end"
@@ -1637,7 +1637,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             <View
               style={
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
@@ -1651,7 +1651,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 style={
                   {
                     "alignSelf": "flex-start",
-                    "height": 24.8,
+                    "minHeight": 24.8,
                     "width": 18,
                   }
                 }
@@ -1717,8 +1717,8 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                     "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
-                    "height": 24.8,
                     "justifyContent": undefined,
+                    "minHeight": 24.8,
                   }
                 }
                 testID="home-affair-end"
@@ -1784,7 +1784,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             <View
               style={
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
@@ -1798,7 +1798,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 style={
                   {
                     "alignSelf": "flex-start",
-                    "height": 24.8,
+                    "minHeight": 24.8,
                     "width": 18,
                   }
                 }
@@ -1864,8 +1864,8 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                     "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
-                    "height": 24.8,
                     "justifyContent": undefined,
+                    "minHeight": 24.8,
                   }
                 }
                 testID="home-affair-end"

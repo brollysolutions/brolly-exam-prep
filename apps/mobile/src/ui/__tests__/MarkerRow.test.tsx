@@ -122,13 +122,30 @@ describe('MarkerRow', () => {
       />,
     );
     expect(screen.getByTestId('row-mark').props.style).toMatchObject({
-      height: LINE,
+      minHeight: LINE,
       alignSelf: 'flex-start',
     });
     expect(screen.getByTestId('row-end').props.style).toMatchObject({
-      height: LINE,
+      minHeight: LINE,
       alignSelf: 'flex-start',
     });
+  });
+
+  // A minimum, not a height: Profile's language switcher is a 48 px control in the trailing
+  // slot, and a fixed line box clipped it into the row below.
+  it('lets a tall trailing control grow its slot instead of clipping it', async () => {
+    await render(
+      <MarkerRow
+        title="Language"
+        trailing={<RNText testID="switcher">EN</RNText>}
+        testID="row"
+      />,
+    );
+    const end = screen.getByTestId('row-end');
+    expect(end.props.style.height).toBeUndefined();
+    expect(end.props.style.minHeight).toBe(LINE);
+    // The row centres its parts, so a one-line title sits against the middle of that control.
+    expect(screen.getByTestId('row-row')).toHaveStyle({ alignItems: 'center' });
   });
 
   // Home's affair headline gets two lines; Profile and Study rows grow instead (no cap).
