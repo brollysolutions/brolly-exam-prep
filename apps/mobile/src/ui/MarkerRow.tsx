@@ -36,21 +36,28 @@ export type MarkerRowProps = {
 
 const ICON = 18;
 
-/** The mark itself. Non-text, so the gold dot may be `accentStrong` (3.4:1 on cream). */
+/**
+ * The mark itself, in a fixed slot: an 8 px dot and an 18 px icon would otherwise start their
+ * titles on two different axes down one card. Non-text, so the gold dot may be `accentStrong`
+ * (3.4:1 on cream).
+ */
 function Mark({ marker, testID }: { marker: Marker; testID?: string }) {
   if (marker === 'none') return null;
-  if (marker === 'dot') {
-    return <View testID={testID} className="h-2 w-2 rounded-full bg-accentStrong" />;
-  }
   return (
-    <Ionicons
-      testID={testID}
-      name={marker === 'done' ? 'checkmark-circle' : 'lock-closed-outline'}
-      size={ICON}
-      color={marker === 'done' ? colors.ink : colors.ink3}
-      accessibilityElementsHidden
-      importantForAccessibility="no"
-    />
+    <View className="items-center justify-center" style={{ width: ICON }}>
+      {marker === 'dot' ? (
+        <View testID={testID} className="h-2 w-2 rounded-full bg-accentStrong" />
+      ) : (
+        <Ionicons
+          testID={testID}
+          name={marker === 'done' ? 'checkmark-circle' : 'lock-closed-outline'}
+          size={ICON}
+          color={marker === 'done' ? colors.ink : colors.ink3}
+          accessibilityElementsHidden
+          importantForAccessibility="no"
+        />
+      )}
+    </View>
   );
 }
 

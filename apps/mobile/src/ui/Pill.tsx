@@ -21,6 +21,12 @@ export type PillProps = Omit<ViewProps, 'style' | 'children'> & {
    */
   label?: ReactNode;
   tone?: PillTone;
+  /**
+   * How the capsule sits in the column around it. A pill hugs its label, so it has to opt out
+   * of a `Stack`'s stretch itself: `start` (the default) hugs the reading edge, `center` hugs
+   * the middle of a centred block (a slide, an empty state).
+   */
+  align?: 'start' | 'center';
   /** The 6 px status dot before the label. */
   dot?: boolean;
   /**
@@ -72,6 +78,7 @@ const MIN_HEIGHT = spacing['6'];
 export function Pill({
   label,
   tone = 'quiet',
+  align = 'start',
   dot = false,
   leading,
   className,
@@ -81,7 +88,13 @@ export function Pill({
   return (
     <View
       {...rest}
-      className={cx('self-start rounded-full border px-2 py-0.5', box[tone], className)}
+      className={cx(
+        // One alignment slot: `self-start` and `self-center` would otherwise both be emitted.
+        align === 'center' ? 'self-center' : 'self-start',
+        'rounded-full border px-2 py-0.5',
+        box[tone],
+        className,
+      )}
       // Flattened on purpose: css-interop mutates array styles on web (see Text).
       style={StyleSheet.flatten([{ minHeight: MIN_HEIGHT, justifyContent: 'center' }, style])}
     >

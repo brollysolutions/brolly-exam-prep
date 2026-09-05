@@ -86,11 +86,14 @@ export function WelcomeView({ initialSlide = 1, onDone }: WelcomeViewProps) {
           <Stack
             testID={`welcome-slide-${item}`}
             gap={3}
-            className="items-center justify-center px-4"
+            align="center"
+            justify="center"
+            className="px-4"
             style={{ width, flex: 1 }}
           >
             {/* The counter is the accessible version of the dots below. */}
             <Pill
+              align="center"
               leading={
                 <Num variant="caption" weight="700" tracking={tracking}>
                   {t('onboarding.step', { n: item, total: SLIDES.length })}

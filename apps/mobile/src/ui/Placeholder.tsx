@@ -59,7 +59,7 @@ export function EmptyState({ title, message, action, testID }: EmptyStateProps) 
   const { t } = useTranslation();
   return (
     <Stack gap={3} className="flex-1 items-center justify-center px-8" testID={testID}>
-      <Pill label={title ?? t('common.nothingYet')} />
+      <Pill align="center" label={title ?? t('common.nothingYet')} />
       <Text variant="body" color="ink3" align="center">
         {message}
       </Text>

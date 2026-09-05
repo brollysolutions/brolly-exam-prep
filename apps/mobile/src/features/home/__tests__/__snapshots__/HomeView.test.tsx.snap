@@ -1636,9 +1636,18 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               testID="home-affair-row"
             >
               <View
-                className="h-2 w-2 rounded-full bg-accentStrong"
-                testID="home-affair-marker"
-              />
+                className="items-center justify-center"
+                style={
+                  {
+                    "width": 18,
+                  }
+                }
+              >
+                <View
+                  className="h-2 w-2 rounded-full bg-accentStrong"
+                  testID="home-affair-marker"
+                />
+              </View>
               <View
                 className="flex-1"
                 style={
@@ -1756,9 +1765,18 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               testID="home-affair-row"
             >
               <View
-                className="h-2 w-2 rounded-full bg-accentStrong"
-                testID="home-affair-marker"
-              />
+                className="items-center justify-center"
+                style={
+                  {
+                    "width": 18,
+                  }
+                }
+              >
+                <View
+                  className="h-2 w-2 rounded-full bg-accentStrong"
+                  testID="home-affair-marker"
+                />
+              </View>
               <View
                 className="flex-1"
                 style={
@@ -1876,9 +1894,18 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               testID="home-affair-row"
             >
               <View
-                className="h-2 w-2 rounded-full bg-accentStrong"
-                testID="home-affair-marker"
-              />
+                className="items-center justify-center"
+                style={
+                  {
+                    "width": 18,
+                  }
+                }
+              >
+                <View
+                  className="h-2 w-2 rounded-full bg-accentStrong"
+                  testID="home-affair-marker"
+                />
+              </View>
               <View
                 className="flex-1"
                 style={

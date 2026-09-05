@@ -114,21 +114,21 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
           }
         >
           <View
-            className="items-center justify-center px-4"
+            className="px-4"
             style={
               {
-                "alignItems": undefined,
+                "alignItems": "center",
                 "flex": 1,
                 "flexDirection": "column",
                 "gap": 12,
-                "justifyContent": undefined,
+                "justifyContent": "center",
                 "width": 750,
               }
             }
             testID="welcome-slide-1"
           >
             <View
-              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+              className="self-center rounded-full border px-2 py-0.5 bg-surface2 border-line"
               style={
                 {
                   "justifyContent": "center",
@@ -218,21 +218,21 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
           }
         >
           <View
-            className="items-center justify-center px-4"
+            className="px-4"
             style={
               {
-                "alignItems": undefined,
+                "alignItems": "center",
                 "flex": 1,
                 "flexDirection": "column",
                 "gap": 12,
-                "justifyContent": undefined,
+                "justifyContent": "center",
                 "width": 750,
               }
             }
             testID="welcome-slide-2"
           >
             <View
-              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+              className="self-center rounded-full border px-2 py-0.5 bg-surface2 border-line"
               style={
                 {
                   "justifyContent": "center",
@@ -322,21 +322,21 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
           }
         >
           <View
-            className="items-center justify-center px-4"
+            className="px-4"
             style={
               {
-                "alignItems": undefined,
+                "alignItems": "center",
                 "flex": 1,
                 "flexDirection": "column",
                 "gap": 12,
-                "justifyContent": undefined,
+                "justifyContent": "center",
                 "width": 750,
               }
             }
             testID="welcome-slide-3"
           >
             <View
-              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+              className="self-center rounded-full border px-2 py-0.5 bg-surface2 border-line"
               style={
                 {
                   "justifyContent": "center",

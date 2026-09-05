@@ -51,6 +51,26 @@ Brand (22 px umbrella + live Playfair wordmark in the logo's own structure — i
 
 Pressed feedback on cream is a `surface2` fill (`pressedClass`), never opacity — opacity is invisible between two creams. Filled controls (ink, gold) dim to 85 % instead (`pressedStyle`). A resting fill and the pressed fill share one class slot so two `bg-*` utilities never compete.
 
+## Screen patterns (apps/mobile/src/ui)
+Six compositions of the primitives above. A screen reaches for these before it writes a layout
+of its own; each has a section in the dev gallery (`/dev/states`, section 12). P2 is not new:
+the surface card the patterns sit in is `Card`, listed with the primitives above.
+
+| # | Pattern | Props | What it is |
+|---|---|---|---|
+| P1 | `Pill` | `label?` (a string, or a `<Trans>` that carries a `<Num>`), `tone` `quiet\|gold\|ink`, `align` `start\|center`, `dot`, `leading` | The label that names a block, a state or a step: a capsule with a minimum height (never fixed), a caption-size tracked label and an optional 6 px gold dot. `quiet` is `surface2` under a hairline with `ink3`; `gold` is the gold tint under `accentStrong` with ink; `ink` is the ink fill with cream. Never a control — a pressable filter is `Chip shape="pill"`. |
+| P1 | `PageHeader` | `brand`, `trailing`, `pill`, `title`, `subtitle`, `titleTestID` | The hub opening: the lockup and whatever sits beside it (the language switcher, a sign-in capsule), then a pill, then the screen's name in the display face. 12 px under the lockup, 8 px inside the pill–title–subtitle block. |
+| P1 | `BackHeader` | `title`, `onBack`, `trailing`, `children` | The leaf bar: a 48 px chevron-back target and an Inter 600 one-line title on `surface` under a `line`, with a slot after the title and a second row beneath. |
+| P3 | `StatTile` | `value?`, `label`, `empty`, `align` | One number and what it counts: a `surface2` tile, `<Num variant="stat">` in ink over an `ink3` caption, an em dash in `ink3` when there is nothing yet, read as one node. |
+| P4 | `MarkerRow` | `title`, `meta`, `marker` `none\|dot\|done\|locked`, `trailing`, `chevron`, `onPress`, `first` | The list row inside a card: a gold dot (to do), an ink `checkmark-circle` (done) or an `ink3` `lock-closed-outline`, an ink 600 title over an `ink3` line, a trailing pill or chevron, a hairline on top and a 56 px floor that grows with the label. |
+| P5 | `ActionBar` | `primary`, `secondary`, `children`, `bordered` | The sticky bottom bar: `surface` under a hairline with the sheet shadow cast upward, the one ink `lg` primary and a quiet partner, and a slot above them for the keypad. It sits outside the body's ScrollView. |
+| P6 | `EmptyState` / `Skeleton` / `LoadError` | `message`, `title`/`blocks`/`onRetry` | The three waiting states: a quiet pill over one `ink3` line; static `surface2` blocks in the shape of the content, hidden from screen readers; a red `Chip` over the reason and a 48 px outline retry. |
+
+`startEdge()` (from `features/result/edge.ts`) draws the 3 px gold start edge on the one card
+per screen that carries it. Icons are Ionicons (`checkmark-circle`, `lock-closed-outline`,
+`cloud-offline-outline`); chevrons stay the `Glyph` `‹ ›` so they never depend on the language
+face carrying the character.
+
 ## Status vocabulary
 Gold = the candidate's own input or the active state · ink = a deliberate flag (marked) · red = wrong, unanswered, critical · green = eligible, correct (text `okInk`). Timer (Phase D): normal `surface2`/ink, ≤ 5 min `accentSoft` fill + `accentInk` digits, ≤ 60 s solid `dangerInk` with `onInk` digits — never `danger` with cream text (2.5:1); the last-minute toast is the same `dangerInk` + cream pair. One gold-edged card per screen is the target rule (the hero, the worked example, the score): Home meets it since fix wave 1; the other screens converge in Phases B–D.
 
@@ -65,3 +85,4 @@ Android (primary): edge-to-edge, gold-tinted ripples, predictive back handled in
 - 2026-09-05 — No rail as screen chrome; `Rail` survives as the attempt screen's critical-time warning and in the dev gallery (Phase D replaces it with a static red band).
 - Palette semantics differ from CBT conventions (green/red/purple) on purpose: the legend with counts explains them in place, and a re-tune is a token edit.
 - 2026-09-05 — Fix wave 1 (F-28 review): `outline` (`#938b80`, 3.0:1) is the boundary of every interactive outlined control and `line2` keeps its semantic value as a divider (it is not an alias of `line`); the type ramp climbs to caption 12 · small 13 · body 15 · bodyLg 16 · question 17.5; Telugu display roles are Noto Serif Telugu 700; the header lockup follows the logo (italic "Brolly", tracked roman "Solutions", 22 px umbrella); the last-minute toast is the one red (`dangerInk` + cream); gold text never sits on a tint or on `surface2`; selected chips and segments carry a 2 px `accentStrong` bottom edge; a disabled primary is surface2 in the outline ring with ink3.
+- 2026-09-05 — Phase B (F-29): the six screen patterns above are the vocabulary of every screen from here on. A `Pill` is a label and never a control; a `Chip` is the control. Gold is a fill, an edge or a dot — the section links, the countdown and the resend link are ink. `ink3` at caption size is the floor for a pill label. Blocks on a hub breathe on 28 px.

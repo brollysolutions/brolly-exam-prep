@@ -66,6 +66,17 @@ describe('Pill', () => {
     expect(pill.props.onPress).toBeUndefined();
   });
 
+  // A pill hugs its label, so it opts out of a Stack's stretch itself — and it emits exactly
+  // one alignment class, never both.
+  it('hugs the reading edge, or the middle of a centred block', async () => {
+    await render(<Pill label="Step" testID="pill" />);
+    expect(screen.getByTestId('pill').props.className).toContain('self-start');
+
+    await render(<Pill label="Step" align="center" testID="mid" />);
+    expect(screen.getByTestId('mid').props.className).toContain('self-center');
+    expect(screen.getByTestId('mid').props.className).not.toContain('self-start');
+  });
+
   // `ink3` is 4.7:1 on surface2: the rule is that nothing at that ratio goes below caption.
   it('sets the label at caption size, not the 10.5 px kicker', async () => {
     await render(<Pill label="Sample data" />);
