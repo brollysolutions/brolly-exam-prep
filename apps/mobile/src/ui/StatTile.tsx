@@ -30,7 +30,14 @@ const EM_DASH = '—';
  * stops otherwise. The hairline is what separates the tile from the cream under it: `surface2`
  * sits 1.08:1 from the canvas, so the fill alone is not a boundary.
  */
-export function StatTile({ value, label, empty = false, align = 'start', testID, className }: StatTileProps) {
+export function StatTile({
+  value,
+  label,
+  empty = false,
+  align = 'start',
+  testID,
+  className,
+}: StatTileProps) {
   const nothing = value === undefined;
   const shown = nothing ? EM_DASH : value;
   return (

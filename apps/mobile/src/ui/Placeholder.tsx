@@ -58,7 +58,7 @@ export type EmptyStateProps = {
 export function EmptyState({ title, message, action, testID }: EmptyStateProps) {
   const { t } = useTranslation();
   return (
-    <Stack gap={3} align="center" className="flex-1 justify-center px-8" testID={testID}>
+    <Stack gap={3} className="flex-1 items-center justify-center px-8" testID={testID}>
       <Pill label={title ?? t('common.nothingYet')} />
       <Text variant="body" color="ink3" align="center">
         {message}
@@ -86,7 +86,7 @@ export type LoadErrorProps = {
 export function LoadError({ message, onRetry, testID }: LoadErrorProps) {
   const { t } = useTranslation();
   return (
-    <Stack gap={3} align="center" className="px-8 pt-8" testID={testID}>
+    <Stack gap={3} className="items-center px-8 pt-8" testID={testID}>
       <Chip label={t('result.errorKicker')} tone="danger" active shape="pill" />
       <Text variant="body" color="ink3" align="center">
         {message ?? t('result.loadError')}

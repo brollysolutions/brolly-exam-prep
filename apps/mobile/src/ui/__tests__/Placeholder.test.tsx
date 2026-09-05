@@ -37,9 +37,8 @@ describe('Placeholder — the three waiting states', () => {
   it('error: a red pill, the reason, and a 48 px outline retry', async () => {
     const onRetry = jest.fn();
     await render(<LoadError onRetry={onRetry} testID="error" />);
-    expect(screen.getByText('Could not load')).toBeOnTheScreen();
-    expect(screen.getByText('Could not load').props.className).toContain('text-dangerInk');
-    expect(screen.getByText(/could not be loaded/i)).toBeOnTheScreen();
+    expect(screen.getByText('Problem').props.className).toContain('text-dangerInk');
+    expect(screen.getByText('The result did not load.')).toBeOnTheScreen();
     const retry = screen.getByTestId('error-retry');
     expect(retry.props.className).toMatch(/\bborder-outline\b/);
     expect(retry).toHaveStyle({ height: 48 });

@@ -49,7 +49,12 @@ describe('MarkerRow', () => {
 
   it('takes a trailing pill and an ink3 chevron, in that order', async () => {
     await render(
-      <MarkerRow title="Free mock 1" trailing={<Pill label="Free" testID="tag" />} chevron testID="row" />,
+      <MarkerRow
+        title="Free mock 1"
+        trailing={<Pill label="Free" testID="tag" />}
+        chevron
+        testID="row"
+      />,
     );
     expect(screen.getByTestId('tag')).toBeOnTheScreen();
     const chevron = screen.getByText('›', { includeHiddenElements: true });

@@ -13,7 +13,10 @@ describe('ActionBar', () => {
 
   it('is a surface strip under a hairline, lifted by the sheet shadow', async () => {
     await render(
-      <ActionBar testID="bar" primary={<Button size="lg" label="Continue" onPress={jest.fn()} />} />,
+      <ActionBar
+        testID="bar"
+        primary={<Button size="lg" label="Continue" onPress={jest.fn()} />}
+      />,
     );
     const bar = screen.getByTestId('bar');
     expect(bar.props.className).toMatch(/\bbg-surface\b/);
