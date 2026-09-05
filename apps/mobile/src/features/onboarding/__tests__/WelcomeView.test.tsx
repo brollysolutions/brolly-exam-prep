@@ -43,9 +43,12 @@ describe('WelcomeView', () => {
     expect(onDone).toHaveBeenCalledTimes(1);
   });
 
-  it('shows the brand plate in the Latin face in every language', async () => {
+  it('opens on the full Brolly logo, named in Latin', async () => {
     await render(<WelcomeView onDone={jest.fn()} />);
-    expect(screen.getByText('PWT')).toHaveStyle({ fontFamily: 'Inter_700Bold' });
+    expect(screen.getByTestId('welcome-brand')).toBeOnTheScreen();
+    expect(screen.getByRole('image', { name: 'Brolly Solutions' })).toBeOnTheScreen();
+    // The exam keeps its own name in the copy; the brand never claims it.
+    expect(screen.getByText('Practise the real PWT')).toBeOnTheScreen();
   });
 });
 
@@ -72,8 +75,8 @@ describe('WelcomeView (te)', () => {
     expect(
       screen.getAllByTestId(/^welcome-dot-/, hidden).map((dot) => dot.props.testID),
     ).toEqual(['welcome-dot-1', 'welcome-dot-2', 'welcome-dot-3']);
-    // The brand acronym never leaves the Latin face.
-    expect(screen.getByText('PWT')).toHaveStyle({ fontFamily: 'Inter_700Bold' });
+    // The brand keeps its Latin name in every language; the exam name stays in the Telugu copy.
+    expect(screen.getByRole('image', { name: 'Brolly Solutions' })).toBeOnTheScreen();
     // Telugu is set on a 1.65 line-height: 24 px type on a 39.6 px line, one step to the
     // subtitle — and in Noto 700, since Playfair (the English title face) has no Telugu.
     const title = screen.getByTestId('welcome-title-1');

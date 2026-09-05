@@ -7,6 +7,7 @@ import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { startEdge } from '@/features/result/edge';
 import {
+  Brand,
   Button,
   Card,
   Chip,
@@ -278,9 +279,7 @@ export function HomeView({
   return (
     <Screen scroll padded bottomInset={false} testID="home-screen">
       <Row testID="home-header" align="center" justify="between" gap={2} wrap className="mt-4">
-        <Kicker lang="en" color="hivis" tracking="brand">
-          {t('common.brand')}
-        </Kicker>
+        <Brand testID="home-brand" />
         <Row gap={2} align="center">
           {/* Outlined, not hi-vis: signing in is not what this screen is for. */}
           {!signedIn && (

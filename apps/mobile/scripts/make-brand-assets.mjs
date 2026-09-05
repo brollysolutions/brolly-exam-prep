@@ -1,0 +1,120 @@
+/**
+ * Generates the Brolly brand rasters from the two source files in `assets/brand/`:
+ *
+ *   brolly-logo.png (552×452, black lockup on transparent)
+ *     → assets/brand/umbrella.png      the umbrella glyph alone, cropped to its ink + 4 px
+ *     → assets/brand/splash-logo.png   the full lockup, alpha-trimmed, for the splash screen
+ *   brolly-mark.svg (navy tile, gold "B")
+ *     → assets/images/icon.png                      1024, full-bleed navy (stores mask the corners)
+ *     → assets/images/android-icon-foreground.png   1024, the gold "B" inside the 66 % safe zone
+ *     → assets/images/android-icon-monochrome.png   1024, the "B" in white for themed icons
+ *     → assets/images/favicon.png                   48, the rounded tile
+ *
+ * The umbrella crop is found, not hard-coded: the first band of rows with ink, scanning from
+ * the top, is the glyph; the text starts after the first fully transparent row below it.
+ * `Brand.tsx` hard-codes the resulting aspect ratio (257 × 165) — re-run this and update it
+ * if the source logo changes.
+ *
+ * Run: `node scripts/make-brand-assets.mjs` from `apps/mobile`. Uses `sharp` (a dev tool on
+ * this machine, resolvable from the repo root; not an app dependency).
+ */
+import { Buffer } from 'node:buffer';
+import { readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import sharp from 'sharp';
+
+const here = dirname(fileURLToPath(import.meta.url));
+const brand = join(here, '../assets/brand');
+const images = join(here, '../assets/images');
+
+const LOGO = join(brand, 'brolly-logo.png');
+const MARK = join(brand, 'brolly-mark.svg');
+/** Alpha above this counts as ink when scanning the logo. */
+const INK = 40;
+const MARGIN = 4;
+
+/** Rows with any ink, as [start, end] bands. */
+async function inkBands(file) {
+  const { data, info } = await sharp(file).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const { width, height, channels } = info;
+  const bands = [];
+  let start = null;
+  for (let y = 0; y < height; y += 1) {
+    let ink = false;
+    for (let x = 0; x < width && !ink; x += 1) ink = data[(y * width + x) * channels + 3] > INK;
+    if (ink && start === null) start = y;
+    if (!ink && start !== null) {
+      bands.push([start, y - 1]);
+      start = null;
+    }
+  }
+  if (start !== null) bands.push([start, height - 1]);
+  return { bands, width, height, data, channels };
+}
+
+async function umbrella() {
+  const { bands, width, data, channels } = await inkBands(LOGO);
+  const [y0, y1] = bands[0];
+  let x0 = width;
+  let x1 = 0;
+  for (let y = y0; y <= y1; y += 1)
+    for (let x = 0; x < width; x += 1)
+      if (data[(y * width + x) * channels + 3] > INK) {
+        x0 = Math.min(x0, x);
+        x1 = Math.max(x1, x);
+      }
+  const box = {
+    left: Math.max(0, x0 - MARGIN),
+    top: Math.max(0, y0 - MARGIN),
+    width: x1 - x0 + 1 + 2 * MARGIN,
+    height: y1 - y0 + 1 + 2 * MARGIN,
+  };
+  await sharp(LOGO).extract(box).png().toFile(join(brand, 'umbrella.png'));
+  console.log('umbrella.png', `${box.width}×${box.height}`, `from (${box.left},${box.top})`);
+}
+
+async function splashLogo() {
+  const out = join(brand, 'splash-logo.png');
+  const { info } = await sharp(LOGO).trim().png().toBuffer({ resolveWithObject: true });
+  await sharp(LOGO).trim().png().toFile(out);
+  console.log('splash-logo.png', `${info.width}×${info.height}`);
+}
+
+/** The mark's "B" path, lifted from brolly-mark.svg, in the colour asked for. */
+function glyphSvg(fill) {
+  const svg = readFileSync(MARK, 'utf8');
+  const d = /<path d="([^"]+)"/.exec(svg)?.[1];
+  if (!d) throw new Error('brolly-mark.svg: no <path> found');
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="${d}" fill="${fill}"/></svg>`;
+}
+
+function tileSvg({ rounded }) {
+  const svg = readFileSync(MARK, 'utf8');
+  return rounded ? svg : svg.replace(/rx="14"/, 'rx="0"');
+}
+
+async function icons() {
+  const SIZE = 1024;
+  await sharp(Buffer.from(tileSvg({ rounded: false }))).resize(SIZE, SIZE).png().toFile(join(images, 'icon.png'));
+  await sharp(Buffer.from(tileSvg({ rounded: true }))).resize(48, 48).png().toFile(join(images, 'favicon.png'));
+
+  // Android adaptive layers: the glyph sits inside the central 66 % (the safe zone); the
+  // launcher supplies the navy from `adaptiveIcon.backgroundColor`.
+  const safe = Math.round(SIZE * 0.66);
+  const pad = Math.round((SIZE - safe) / 2);
+  const layer = async (fill, name) =>
+    sharp(Buffer.from(glyphSvg(fill)))
+      .resize(safe, safe)
+      .extend({ top: pad, bottom: SIZE - safe - pad, left: pad, right: SIZE - safe - pad, background: { r: 0, g: 0, b: 0, alpha: 0 } })
+      .png()
+      .toFile(join(images, name));
+  await layer('#c29b38', 'android-icon-foreground.png');
+  await layer('#ffffff', 'android-icon-monochrome.png');
+  console.log('icon.png 1024, favicon.png 48, android-icon-{foreground,monochrome}.png 1024');
+}
+
+await umbrella();
+await splashLogo();
+await icons();

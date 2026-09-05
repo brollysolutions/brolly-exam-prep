@@ -23,24 +23,109 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
       showsVerticalScrollIndicator={false}
     >
       <View>
-        <Text
-          className="text-hivis"
+        <View
+          accessibilityLabel="Brolly Solutions"
+          accessibilityRole="header"
+          accessible={true}
           style={
             {
-              "fontFamily": "Inter_700Bold",
-              "fontSize": 10.5,
-              "fontVariant": undefined,
-              "letterSpacing": 2,
-              "lineHeight": 15.8,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
+              "alignItems": "center",
+              "flexDirection": "row",
+              "flexWrap": undefined,
+              "gap": 8,
+              "justifyContent": undefined,
             }
           }
           testID="login-brand"
         >
-          TSLPRB
-        </Text>
+          <ViewManagerAdapter_ExpoImage
+            accessibilityElementsHidden={true}
+            containerViewRef={"[React.ref]"}
+            contentFit="contain"
+            contentPosition={
+              {
+                "left": "50%",
+                "top": "50%",
+              }
+            }
+            height={28}
+            importantForAccessibility="no-hide-descendants"
+            nativeViewRef={"[React.ref]"}
+            onError={[Function]}
+            onLoad={[Function]}
+            onLoadStart={[Function]}
+            onProgress={[Function]}
+            placeholder={[]}
+            sfEffect={null}
+            source={
+              [
+                {
+                  "testUri": "../../../apps/mobile/assets/brand/umbrella.png",
+                },
+              ]
+            }
+            style={
+              {
+                "height": 28,
+                "width": 44,
+              }
+            }
+            symbolSize={null}
+            symbolWeight={null}
+            testID="login-brand-umbrella"
+            tintColor={4280359959}
+            transition={null}
+            width={44}
+          />
+          <View
+            style={
+              {
+                "alignItems": "baseline",
+                "flexDirection": "row",
+                "flexWrap": undefined,
+                "gap": 4,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              className="text-ink"
+              numberOfLines={1}
+              style={
+                {
+                  "fontFamily": "PlayfairDisplay_400Regular",
+                  "fontSize": 17,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 20.4,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              Brolly
+            </Text>
+            <Text
+              className="text-ink"
+              numberOfLines={1}
+              style={
+                {
+                  "fontFamily": "PlayfairDisplay_400Regular_Italic",
+                  "fontSize": 13,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 15.6,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              Solutions
+            </Text>
+          </View>
+        </View>
         <Text
           className="text-ink mt-3"
           style={

@@ -20,56 +20,48 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
       className="items-center pb-6 pt-8"
     >
       <View
-        style={
-          {
-            "alignItems": "center",
-            "flexDirection": "column",
-            "gap": undefined,
-            "justifyContent": undefined,
-          }
-        }
+        accessibilityLabel="Brolly Solutions"
+        accessibilityRole="image"
+        accessible={true}
         testID="welcome-brand"
       >
-        <View
-          className="h-[34px] w-[84px] items-center justify-center rounded-xs bg-hivis"
-        >
-          <Text
-            className="text-tar"
-            style={
-              {
-                "fontFamily": "Inter_700Bold",
-                "fontSize": 20,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 30,
-                "textAlign": "left",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
-              }
-            }
-          >
-            PWT
-          </Text>
-        </View>
-        <Text
-          className="text-ink mt-2"
-          style={
+        <ViewManagerAdapter_ExpoImage
+          accessibilityElementsHidden={true}
+          containerViewRef={"[React.ref]"}
+          contentFit="contain"
+          contentPosition={
             {
-              "fontFamily": "Inter_600SemiBold",
-              "fontSize": 17,
-              "fontVariant": undefined,
-              "letterSpacing": 2,
-              "lineHeight": 25.5,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
+              "left": "50%",
+              "top": "50%",
             }
           }
-        >
-          TSLPRB
-        </Text>
-        <View
-          className="mt-3 h-1 w-[84px] bg-hazard"
+          height={158}
+          importantForAccessibility="no-hide-descendants"
+          nativeViewRef={"[React.ref]"}
+          onError={[Function]}
+          onLoad={[Function]}
+          onLoadStart={[Function]}
+          onProgress={[Function]}
+          placeholder={[]}
+          sfEffect={null}
+          source={
+            [
+              {
+                "testUri": "../../../apps/mobile/assets/brand/splash-logo.png",
+              },
+            ]
+          }
+          style={
+            {
+              "height": 158,
+              "width": 200,
+            }
+          }
+          symbolSize={null}
+          symbolWeight={null}
+          testID="welcome-brand-logo"
+          transition={null}
+          width={200}
         />
       </View>
     </View>

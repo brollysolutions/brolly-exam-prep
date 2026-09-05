@@ -17,6 +17,7 @@ import { CategoryView } from '@/features/onboarding/CategoryView';
 import { PostView } from '@/features/onboarding/PostView';
 import {
   Banner,
+  Brand,
   Button,
   Card,
   Chip,
@@ -57,6 +58,7 @@ const DEV = {
   entry: 'Keypad + PhoneField + OTP',
   progress: 'ProgressRail 40 % · danger 100 %',
   palette: 'PaletteCell',
+  brand: 'Brand — lockup 28 / 40, splash 160',
   rail: 'Rail',
   railCritical: 'critical (pulse)',
   auth: 'Auth & onboarding',
@@ -158,9 +160,7 @@ export function StatesView() {
   return (
     <Screen scroll padded overlay={dialog} testID="states-screen">
       <Row testID="states-header" align="center" justify="between" className="mt-4">
-        <Kicker lang="en" color="accentInk" tracking="brand">
-          {t('common.brand')}
-        </Kicker>
+        <Brand testID="states-brand" />
         <SegmentedChips
           value={lang}
           onChange={setLang}
@@ -367,6 +367,12 @@ export function StatesView() {
       <NewsStates index="18" />
 
       <EligibilityStates index="19" />
+
+      <Section index="20" title={DEV.brand}>
+        <Brand />
+        <Brand size={40} />
+        <Brand variant="splash" size={160} />
+      </Section>
     </Screen>
   );
 }

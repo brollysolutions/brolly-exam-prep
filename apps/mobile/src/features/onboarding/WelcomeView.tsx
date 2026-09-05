@@ -3,30 +3,11 @@ import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, useWindowDimensions, View } from 'react-native';
 
-import { Button, cx, Num, Row, Screen, Stack, Text, useReducedMotionSafe } from '@/ui';
+import { Brand, Button, cx, Num, Row, Screen, Text, useReducedMotionSafe } from '@/ui';
 
 /** The three things a candidate needs to believe before signing up. */
 const SLIDES = [1, 2, 3] as const;
 type SlideNo = (typeof SLIDES)[number];
-
-/** The brand mark from the prototype: a hi-vis plate, the board's name, a hazard bar. */
-function BrandBlock() {
-  const { t } = useTranslation();
-  return (
-    <Stack align="center" testID="welcome-brand">
-      <View className="h-[34px] w-[84px] items-center justify-center rounded-xs bg-hivis">
-        {/* "PWT" and "TSLPRB" are Latin acronyms in every language: always the Latin face. */}
-        <Text variant="otp" weight="700" color="tar" lang="en">
-          PWT
-        </Text>
-      </View>
-      <Text variant="prefix" weight="600" lang="en" tracking="brand" className="mt-2">
-        {t('common.brand')}
-      </Text>
-      <View className="mt-3 h-1 w-[84px] bg-hazard" />
-    </Stack>
-  );
-}
 
 export type WelcomeViewProps = {
   /** Slide the screen opens on (1-based) — the dev gallery uses it; the app always starts at 1. */
@@ -68,8 +49,9 @@ export function WelcomeView({ initialSlide = 1, onDone }: WelcomeViewProps) {
 
   return (
     <Screen testID="welcome-screen">
+      {/* The full Brolly lockup: this is the one screen with room for it. */}
       <View className="items-center pb-6 pt-8">
-        <BrandBlock />
+        <Brand variant="splash" testID="welcome-brand" />
       </View>
 
       <FlatList

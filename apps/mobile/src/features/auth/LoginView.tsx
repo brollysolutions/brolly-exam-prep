@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, TextInput, View } from 'react-native';
 
-import { BackRow, Button, Keypad, Kicker, PhoneField, Screen, Text, Toast } from '@/ui';
+import { BackRow, Brand, Button, Keypad, PhoneField, Screen, Text, Toast } from '@/ui';
 
 /** Indian mobile numbers are 10 digits; the keypad refuses the eleventh. */
 const PHONE_LENGTH = 10;
@@ -60,9 +60,7 @@ export function LoginView({
         showsVerticalScrollIndicator={false}
       >
         {onBack && <BackRow testID="login-back" label={t('common.back')} onPress={onBack} />}
-        <Kicker lang="en" color="hivis" tracking="brand" testID="login-brand">
-          {t('common.brand')}
-        </Kicker>
+        <Brand testID="login-brand" />
         <Text variant="titleLg" weight="600" className="mt-3">
           {t('auth.loginTitle')}
         </Text>
