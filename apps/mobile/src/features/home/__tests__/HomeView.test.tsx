@@ -40,7 +40,7 @@ const has = (text: string) => new RegExp(text.replace(/[.*+?^${}()|[\]\\]/g, '\\
 const litSegments = () =>
   screen
     .getAllByTestId('home-target-seg')
-    .filter((node) => String(node.props.className).includes('bg-hivis')).length;
+    .filter((node) => String(node.props.className).includes('bg-accentStrong')).length;
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -65,7 +65,9 @@ describe('HomeView — countdown hero', () => {
     await render(<HomeView {...props} lang="en" />);
     expect(screen.getByTestId('home-greeting')).toHaveTextContent(`Ready, ${iso('…1234')}?`);
     expect(screen.getByTestId('home-streak')).toHaveTextContent(`${iso('4')}-day streak`);
+    // A quiet pill, still not a control: a run of practice is a fact about the reader.
     expect(screen.getByTestId('home-streak').props.accessibilityRole).toBeUndefined();
+    expect(screen.getByTestId('home-streak').props.className).toMatch(/\brounded-full\b/);
   });
 
   it('counts a single day in the singular', async () => {
@@ -137,9 +139,10 @@ describe("HomeView — today's target", () => {
     await render(<HomeView {...props} today={{ done: 0, target: 20 }} lang="en" />);
     expect(screen.getAllByTestId('home-target-seg')).toHaveLength(TARGET_SEGMENTS);
     expect(litSegments()).toBe(0);
-    // `line3`, not `panel3`: an unlit block at 1.14:1 against the card was invisible.
+    // `line2`, not `surface2`: an unlit block at 1.05:1 against the card was invisible.
     for (const seg of screen.getAllByTestId('home-target-seg')) {
-      expect(seg.props.className).toContain('bg-line3');
+      expect(seg.props.className).toContain('bg-line2');
+      expect(seg.props.className).toContain('rounded-full');
     }
     expect(screen.getByTestId('home-target-count')).toHaveTextContent(
       `${iso('0')} of ${iso('20')} done`,
@@ -254,12 +257,16 @@ describe('HomeView — the three shelves', () => {
     expect(props.onOpenAffairs).toHaveBeenCalledTimes(1);
   });
 
-  it('gives the section links a 48 px target and keeps the yellow for the chevron', async () => {
+  // Gold is a fill on cream, never a word: the link and its chevron are both ink, and the
+  // screen's gold is the hero's edge and the dots on its pills.
+  it('gives the section links a 48 px target and keeps them ink', async () => {
     await render(<HomeView {...props} lang="en" />);
     const link = screen.getByTestId('home-updates-all');
     expect(link.props.hitSlop).toEqual({ top: 16, bottom: 16, left: 12, right: 12 });
-    expect(screen.getByText('All updates').props.className).toContain('text-chalk2');
+    expect(screen.getByText('All updates').props.className).toContain('text-ink');
     expect(screen.getByText('All updates').props.className).not.toContain('text-hivis');
+    const chevron = screen.getAllByText('›', { includeHiddenElements: true })[0];
+    expect(chevron.props.className).toContain('text-ink');
   });
 
   // Nothing from the Board yet is nothing to show: no heading over an empty shelf (design 14).
@@ -272,19 +279,19 @@ describe('HomeView — the three shelves', () => {
   });
 
   // One gold-edged card per screen (design review, F-28 fix wave 1, D9): the hero carries the
-  // spec's start-edge gold; the affairs rows lost their `sand` edge, which was a fourth.
-  it('gives the hero the one gold edge on Home and the affairs rows none', async () => {
+  // spec's start-edge gold. F-29 folded the three affairs boxes into one card of marker rows,
+  // so there is one surface under the news instead of three competing with the hero.
+  it('gives the hero the one gold edge on Home and the affairs card none', async () => {
     await render(<HomeView {...props} lang="en" />);
     expect(screen.getByTestId('home-hero')).toHaveStyle({
       borderLeftWidth: 3,
       borderLeftColor: colors.accentStrong,
     });
     const cards = screen.getAllByTestId('home-affair-card');
-    expect(cards).toHaveLength(3);
-    for (const card of cards) {
-      expect(card).not.toHaveStyle({ borderLeftWidth: 3 });
-      expect(card).not.toHaveStyle({ borderRightWidth: 3 });
-    }
+    expect(cards).toHaveLength(1);
+    expect(cards[0]).not.toHaveStyle({ borderLeftWidth: 3 });
+    expect(cards[0]).not.toHaveStyle({ borderRightWidth: 3 });
+    expect(screen.getAllByTestId('home-affair')).toHaveLength(3);
   });
 
   it("shows today's affairs with their category", async () => {
@@ -446,7 +453,7 @@ describe('HomeView (te)', () => {
 
   it('renders the Telugu copy, keeps the counts Latin, and matches the snapshot', async () => {
     await render(<HomeView {...props} lang="te" />);
-    expect(screen.getByTestId('home-header')).toHaveStyle({ flexDirection: 'row' });
+    expect(screen.getByTestId('home-header-top')).toHaveStyle({ flexDirection: 'row' });
     expect(screen.getByTestId('home-target')).toHaveStyle({ flexDirection: 'row' });
     expect(screen.getByTestId('home-days')).toHaveStyle({ fontFamily: 'Inter_700Bold' });
     expect(screen.getByTestId('sample-data-updates')).toHaveTextContent('నమూనా డేటా');

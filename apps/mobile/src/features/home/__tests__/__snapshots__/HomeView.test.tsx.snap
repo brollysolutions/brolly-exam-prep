@@ -24,268 +24,291 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         className="mt-4"
         style={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "flexWrap": "wrap",
-            "gap": 8,
-            "justifyContent": "space-between",
+            "alignItems": undefined,
+            "flexDirection": "column",
+            "gap": 12,
+            "justifyContent": undefined,
           }
         }
         testID="home-header"
       >
         <View
-          accessibilityLabel="Brolly Solutions"
-          accessibilityRole="header"
-          accessible={true}
           style={
             {
               "alignItems": "center",
               "flexDirection": "row",
-              "flexWrap": undefined,
+              "flexWrap": "wrap",
               "gap": 8,
-              "justifyContent": undefined,
+              "justifyContent": "space-between",
             }
           }
-          testID="home-brand"
+          testID="home-header-top"
         >
-          <ViewManagerAdapter_ExpoImage
-            accessibilityElementsHidden={true}
-            containerViewRef={"[React.ref]"}
-            contentFit="contain"
-            contentPosition={
-              {
-                "left": "50%",
-                "top": "50%",
-              }
-            }
-            height={22}
-            importantForAccessibility="no-hide-descendants"
-            nativeViewRef={"[React.ref]"}
-            onError={[Function]}
-            onLoad={[Function]}
-            onLoadStart={[Function]}
-            onProgress={[Function]}
-            placeholder={[]}
-            sfEffect={null}
-            source={
-              [
-                {
-                  "testUri": "../../../apps/mobile/assets/brand/umbrella.png",
-                },
-              ]
-            }
+          <View
+            accessibilityLabel="Brolly Solutions"
+            accessibilityRole="header"
+            accessible={true}
             style={
               {
-                "height": 22,
-                "width": 34,
+                "alignItems": "center",
+                "flexDirection": "row",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
               }
             }
-            symbolSize={null}
-            symbolWeight={null}
-            testID="home-brand-umbrella"
-            tintColor={4280359959}
-            transition={null}
-            width={34}
-          />
+            testID="home-brand"
+          >
+            <ViewManagerAdapter_ExpoImage
+              accessibilityElementsHidden={true}
+              containerViewRef={"[React.ref]"}
+              contentFit="contain"
+              contentPosition={
+                {
+                  "left": "50%",
+                  "top": "50%",
+                }
+              }
+              height={22}
+              importantForAccessibility="no-hide-descendants"
+              nativeViewRef={"[React.ref]"}
+              onError={[Function]}
+              onLoad={[Function]}
+              onLoadStart={[Function]}
+              onProgress={[Function]}
+              placeholder={[]}
+              sfEffect={null}
+              source={
+                [
+                  {
+                    "testUri": "../../../apps/mobile/assets/brand/umbrella.png",
+                  },
+                ]
+              }
+              style={
+                {
+                  "height": 22,
+                  "width": 34,
+                }
+              }
+              symbolSize={null}
+              symbolWeight={null}
+              testID="home-brand-umbrella"
+              tintColor={4280359959}
+              transition={null}
+              width={34}
+            />
+            <View
+              style={
+                {
+                  "alignItems": "baseline",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-ink"
+                numberOfLines={1}
+                style={
+                  {
+                    "fontFamily": "PlayfairDisplay_400Regular_Italic",
+                    "fontSize": 17,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 20.4,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                Brolly
+              </Text>
+              <Text
+                className="text-ink"
+                numberOfLines={1}
+                style={
+                  {
+                    "fontFamily": "PlayfairDisplay_400Regular",
+                    "fontSize": 13,
+                    "fontVariant": undefined,
+                    "letterSpacing": 2,
+                    "lineHeight": 15.6,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                Solutions
+              </Text>
+            </View>
+          </View>
           <View
             style={
               {
-                "alignItems": "baseline",
+                "alignItems": "center",
                 "flexDirection": "row",
                 "flexWrap": undefined,
-                "gap": 4,
+                "gap": 8,
                 "justifyContent": undefined,
               }
             }
           >
-            <Text
-              className="text-ink"
-              numberOfLines={1}
+            <View
+              accessibilityRole="radiogroup"
+              className="h-touch overflow-hidden rounded-sm border border-outline self-start"
               style={
                 {
-                  "fontFamily": "PlayfairDisplay_400Regular_Italic",
-                  "fontSize": 17,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 20.4,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": undefined,
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": undefined,
+                  "justifyContent": undefined,
                 }
               }
+              testID="home-lang"
             >
-              Brolly
-            </Text>
-            <Text
-              className="text-ink"
-              numberOfLines={1}
-              style={
-                {
-                  "fontFamily": "PlayfairDisplay_400Regular",
-                  "fontSize": 13,
-                  "fontVariant": undefined,
-                  "letterSpacing": 2,
-                  "lineHeight": 15.6,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+              <View
+                accessibilityLabel="EN"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
                 }
-              }
-            >
-              Solutions
-            </Text>
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                className="h-full min-w-touch items-center justify-center px-3 border-line2 border-r"
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "Inter_700Bold",
+                      "fontSize": 15,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 22.5,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  EN
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="తె"
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": true,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  className="text-ink"
+                  style={
+                    {
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 15,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 24.8,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  తె
+                </Text>
+              </View>
+            </View>
           </View>
         </View>
         <View
           style={
             {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "flexWrap": undefined,
+              "alignItems": undefined,
+              "flexDirection": "column",
               "gap": 8,
               "justifyContent": undefined,
             }
           }
         >
-          <View
-            accessibilityRole="radiogroup"
-            className="h-touch overflow-hidden rounded-sm border border-outline self-start"
+          <Text
+            className="text-ink"
             style={
               {
-                "alignItems": undefined,
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": undefined,
-                "justifyContent": undefined,
+                "fontFamily": "NotoSerifTelugu_700Bold",
+                "fontSize": 26,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 39,
+                "textAlign": "left",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
               }
             }
-            testID="home-lang"
+            testID="home-greeting"
           >
-            <View
-              accessibilityLabel="EN"
-              accessibilityRole="radio"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              className="h-full min-w-touch items-center justify-center px-3 border-line2 border-r"
-              collapsable={false}
-              focusable={true}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-            >
-              <Text
-                className="text-ink3"
-                style={
-                  {
-                    "fontFamily": "Inter_700Bold",
-                    "fontSize": 15,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 22.5,
-                    "textAlign": "center",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                EN
-              </Text>
-            </View>
-            <View
-              accessibilityLabel="తె"
-              accessibilityRole="radio"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": true,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
-              collapsable={false}
-              focusable={true}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-            >
-              <Text
-                className="text-ink"
-                style={
-                  {
-                    "fontFamily": "NotoSansTelugu_700Bold",
-                    "fontSize": 15,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 24.8,
-                    "textAlign": "center",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                తె
-              </Text>
-            </View>
-          </View>
+            సిద్ధమా, ⁦…1234⁩?
+          </Text>
         </View>
       </View>
-      <Text
-        className="text-ink mt-4"
-        style={
-          {
-            "fontFamily": "NotoSerifTelugu_700Bold",
-            "fontSize": 24,
-            "fontVariant": undefined,
-            "letterSpacing": 0,
-            "lineHeight": 36,
-            "textAlign": "left",
-            "textTransform": undefined,
-            "writingDirection": "ltr",
-          }
-        }
-        testID="home-greeting"
-      >
-        సిద్ధమా, ⁦…1234⁩?
-      </Text>
       <View
         accessibilityLabel="PWTకి ⁦45⁩ రోజులు · Preliminary Written Test · ⁦18-10-2026⁩ · ⁦4⁩ రోజుల స్ట్రీక్ · ⁦20⁩లో ⁦12⁩ పూర్తి"
         accessibilityState={
@@ -294,7 +317,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           }
         }
         accessible={true}
-        className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface mt-4"
+        className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface mt-7"
         style={
           {
             "borderLeftColor": "#a17f2a",
@@ -304,23 +327,48 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         }
         testID="home-hero"
       >
-        <Text
-          className="text-hazard"
+        <View
+          className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
           style={
             {
-              "fontFamily": "NotoSansTelugu_700Bold",
-              "fontSize": 12,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 19.8,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
+              "justifyContent": "center",
+              "minHeight": 24,
             }
           }
         >
-          PWT పరీక్షకు ఇంకా
-        </Text>
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "flexWrap": undefined,
+                "gap": 4,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <View
+              className="h-1.5 w-1.5 rounded-full bg-accentStrong"
+            />
+            <Text
+              className="text-ink3"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 19.8,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              PWT పరీక్షకు ఇంకా
+            </Text>
+          </View>
+        </View>
         <View
           className="mt-2"
           style={
@@ -335,7 +383,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         >
           <Text
             accessibilityLanguage="en"
-            className="text-hivis"
+            className="text-ink"
             style={
               {
                 "fontFamily": "Inter_700Bold",
@@ -355,7 +403,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             ⁦45⁩
           </Text>
           <Text
-            className="text-dim"
+            className="text-ink3"
             style={
               {
                 "fontFamily": "NotoSansTelugu_400Regular",
@@ -373,7 +421,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           </Text>
         </View>
         <Text
-          className="text-dim mt-1"
+          className="text-ink3 mt-1"
           style={
             {
               "fontFamily": "NotoSansTelugu_400Regular",
@@ -390,24 +438,46 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         >
           Preliminary Written Test · ⁦18-10-2026⁩
         </Text>
-        <Text
-          className="text-dim mt-1"
+        <View
+          className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line mt-3"
           style={
             {
-              "fontFamily": "NotoSansTelugu_400Regular",
-              "fontSize": 12,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 19.8,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
+              "justifyContent": "center",
+              "minHeight": 24,
             }
           }
           testID="home-streak"
         >
-          ⁦4⁩ రోజుల స్ట్రీక్
-        </Text>
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "flexWrap": undefined,
+                "gap": 4,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              className="text-ink3"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 19.8,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦4⁩ రోజుల స్ట్రీక్
+            </Text>
+          </View>
+        </View>
         <View
           className="mt-4 h-px bg-line"
         />
@@ -423,25 +493,47 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             }
           }
         >
-          <Text
-            className="text-ink3"
+          <View
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
             style={
               {
-                "fontFamily": "NotoSansTelugu_700Bold",
-                "fontSize": 12,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 19.8,
-                "textAlign": "left",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
+                "justifyContent": "center",
+                "minHeight": 24,
               }
             }
           >
-            ఈరోజు లక్ష్యం
-          </Text>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ఈరోజు లక్ష్యం
+              </Text>
+            </View>
+          </View>
           <Text
-            className="text-dim"
+            className="text-ink3"
             style={
               {
                 "fontFamily": "NotoSansTelugu_400Regular",
@@ -483,50 +575,50 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             testID="home-target"
           >
             <View
-              className="h-progress flex-1 rounded-xs bg-hivis"
+              className="h-progress flex-1 rounded-full bg-accentStrong"
               testID="home-target-seg"
             />
             <View
-              className="h-progress flex-1 rounded-xs bg-hivis"
+              className="h-progress flex-1 rounded-full bg-accentStrong"
               testID="home-target-seg"
             />
             <View
-              className="h-progress flex-1 rounded-xs bg-hivis"
+              className="h-progress flex-1 rounded-full bg-accentStrong"
               testID="home-target-seg"
             />
             <View
-              className="h-progress flex-1 rounded-xs bg-hivis"
+              className="h-progress flex-1 rounded-full bg-accentStrong"
               testID="home-target-seg"
             />
             <View
-              className="h-progress flex-1 rounded-xs bg-hivis"
+              className="h-progress flex-1 rounded-full bg-accentStrong"
               testID="home-target-seg"
             />
             <View
-              className="h-progress flex-1 rounded-xs bg-hivis"
+              className="h-progress flex-1 rounded-full bg-accentStrong"
               testID="home-target-seg"
             />
             <View
-              className="h-progress flex-1 rounded-xs bg-line3"
+              className="h-progress flex-1 rounded-full bg-line2"
               testID="home-target-seg"
             />
             <View
-              className="h-progress flex-1 rounded-xs bg-line3"
+              className="h-progress flex-1 rounded-full bg-line2"
               testID="home-target-seg"
             />
             <View
-              className="h-progress flex-1 rounded-xs bg-line3"
+              className="h-progress flex-1 rounded-full bg-line2"
               testID="home-target-seg"
             />
             <View
-              className="h-progress flex-1 rounded-xs bg-line3"
+              className="h-progress flex-1 rounded-full bg-line2"
               testID="home-target-seg"
             />
           </View>
         </View>
       </View>
       <View
-        className="mt-6"
+        className="mt-7"
         testID="home-updates"
       >
         <View
@@ -552,44 +644,87 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               }
             }
           >
-            <Text
-              className="text-ink3"
+            <View
+              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "justifyContent": "center",
+                  "minHeight": 24,
                 }
               }
             >
-              TSLPRB అప్‌డేట్‌లు
-            </Text>
-            <View
-              className="rounded-xs bg-surface2 px-2 py-0.5"
-              testID="sample-data-updates"
-            >
-              <Text
-                className="text-ink3"
+              <View
                 style={
                   {
-                    "fontFamily": "NotoSansTelugu_600SemiBold",
-                    "fontSize": 12,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 19.8,
-                    "textAlign": "center",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 4,
+                    "justifyContent": undefined,
                   }
                 }
               >
-                నమూనా డేటా
-              </Text>
+                <View
+                  className="h-1.5 w-1.5 rounded-full bg-accentStrong"
+                />
+                <Text
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 12,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 19.8,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  TSLPRB అప్‌డేట్‌లు
+                </Text>
+              </View>
+            </View>
+            <View
+              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+              style={
+                {
+                  "justifyContent": "center",
+                  "minHeight": 24,
+                }
+              }
+              testID="sample-data-updates"
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 12,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 19.8,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  నమూనా డేటా
+                </Text>
+              </View>
             </View>
           </View>
           <View
@@ -646,7 +781,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               }
             >
               <Text
-                className="text-chalk2"
+                className="text-ink"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -664,7 +799,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               </Text>
               <Text
                 accessibilityElementsHidden={true}
-                className="text-hivis"
+                className="text-ink"
                 importantForAccessibility="no"
                 style={
                   {
@@ -709,9 +844,9 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   {
                     "busy": undefined,
                     "checked": undefined,
-                    "disabled": undefined,
+                    "disabled": false,
                     "expanded": undefined,
-                    "selected": undefined,
+                    "selected": false,
                   }
                 }
                 accessibilityValue={
@@ -723,7 +858,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   }
                 }
                 accessible={true}
-                className="justify-start rounded-md border border-line bg-panel2 p-3"
+                className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -737,7 +872,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "borderRadius": 8,
+                    "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
                     "width": 236,
                   }
                 }
@@ -755,29 +890,47 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   }
                 >
                   <View
-                    className="rounded-xs bg-surface2 px-2 py-0.5"
+                    className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+                    style={
+                      {
+                        "justifyContent": "center",
+                        "minHeight": 24,
+                      }
+                    }
                   >
-                    <Text
-                      className="text-ink3"
+                    <View
                       style={
                         {
-                          "fontFamily": "NotoSansTelugu_600SemiBold",
-                          "fontSize": 12,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 19.8,
-                          "textAlign": "center",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "flexWrap": undefined,
+                          "gap": 4,
+                          "justifyContent": undefined,
                         }
                       }
                     >
-                      PMT / PET
-                    </Text>
+                      <Text
+                        className="text-ink3"
+                        style={
+                          {
+                            "fontFamily": "NotoSansTelugu_700Bold",
+                            "fontSize": 12,
+                            "fontVariant": undefined,
+                            "letterSpacing": 0,
+                            "lineHeight": 19.8,
+                            "textAlign": "left",
+                            "textTransform": undefined,
+                            "writingDirection": "ltr",
+                          }
+                        }
+                      >
+                        PMT / PET
+                      </Text>
+                    </View>
                   </View>
                   <Text
                     accessibilityLanguage="en"
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "Inter_600SemiBold",
@@ -821,9 +974,9 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   {
                     "busy": undefined,
                     "checked": undefined,
-                    "disabled": undefined,
+                    "disabled": false,
                     "expanded": undefined,
-                    "selected": undefined,
+                    "selected": false,
                   }
                 }
                 accessibilityValue={
@@ -835,7 +988,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   }
                 }
                 accessible={true}
-                className="justify-start rounded-md border border-line bg-panel2 p-3"
+                className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -849,7 +1002,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "borderRadius": 8,
+                    "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
                     "width": 236,
                   }
                 }
@@ -867,29 +1020,47 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   }
                 >
                   <View
-                    className="rounded-xs bg-surface2 px-2 py-0.5"
+                    className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+                    style={
+                      {
+                        "justifyContent": "center",
+                        "minHeight": 24,
+                      }
+                    }
                   >
-                    <Text
-                      className="text-ink3"
+                    <View
                       style={
                         {
-                          "fontFamily": "NotoSansTelugu_600SemiBold",
-                          "fontSize": 12,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 19.8,
-                          "textAlign": "center",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "flexWrap": undefined,
+                          "gap": 4,
+                          "justifyContent": undefined,
                         }
                       }
                     >
-                      హాల్ టికెట్
-                    </Text>
+                      <Text
+                        className="text-ink3"
+                        style={
+                          {
+                            "fontFamily": "NotoSansTelugu_700Bold",
+                            "fontSize": 12,
+                            "fontVariant": undefined,
+                            "letterSpacing": 0,
+                            "lineHeight": 19.8,
+                            "textAlign": "left",
+                            "textTransform": undefined,
+                            "writingDirection": "ltr",
+                          }
+                        }
+                      >
+                        హాల్ టికెట్
+                      </Text>
+                    </View>
                   </View>
                   <Text
                     accessibilityLanguage="en"
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "Inter_600SemiBold",
@@ -933,9 +1104,9 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   {
                     "busy": undefined,
                     "checked": undefined,
-                    "disabled": undefined,
+                    "disabled": false,
                     "expanded": undefined,
-                    "selected": undefined,
+                    "selected": false,
                   }
                 }
                 accessibilityValue={
@@ -947,7 +1118,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   }
                 }
                 accessible={true}
-                className="justify-start rounded-md border border-line bg-panel2 p-3"
+                className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -961,7 +1132,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "borderRadius": 8,
+                    "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
                     "width": 236,
                   }
                 }
@@ -979,29 +1150,47 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   }
                 >
                   <View
-                    className="rounded-xs bg-surface2 px-2 py-0.5"
+                    className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+                    style={
+                      {
+                        "justifyContent": "center",
+                        "minHeight": 24,
+                      }
+                    }
                   >
-                    <Text
-                      className="text-ink3"
+                    <View
                       style={
                         {
-                          "fontFamily": "NotoSansTelugu_600SemiBold",
-                          "fontSize": 12,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 19.8,
-                          "textAlign": "center",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "flexWrap": undefined,
+                          "gap": 4,
+                          "justifyContent": undefined,
                         }
                       }
                     >
-                      పరీక్ష తేదీ
-                    </Text>
+                      <Text
+                        className="text-ink3"
+                        style={
+                          {
+                            "fontFamily": "NotoSansTelugu_700Bold",
+                            "fontSize": 12,
+                            "fontVariant": undefined,
+                            "letterSpacing": 0,
+                            "lineHeight": 19.8,
+                            "textAlign": "left",
+                            "textTransform": undefined,
+                            "writingDirection": "ltr",
+                          }
+                        }
+                      >
+                        పరీక్ష తేదీ
+                      </Text>
+                    </View>
                   </View>
                   <Text
                     accessibilityLanguage="en"
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "Inter_600SemiBold",
@@ -1049,7 +1238,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             "selected": false,
           }
         }
-        className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface mt-6"
+        className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface mt-7"
         style={
           {
             "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
@@ -1057,23 +1246,45 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         }
         testID="home-physical"
       >
-        <Text
-          className="text-ink3"
+        <View
+          className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
           style={
             {
-              "fontFamily": "NotoSansTelugu_700Bold",
-              "fontSize": 12,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 19.8,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
+              "justifyContent": "center",
+              "minHeight": 24,
             }
           }
         >
-          PMT / PET
-        </Text>
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "flexWrap": undefined,
+                "gap": 4,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              className="text-ink3"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 19.8,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              PMT / PET
+            </Text>
+          </View>
+        </View>
         <Text
           className="text-ink mt-2"
           style={
@@ -1162,7 +1373,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         </View>
       </View>
       <View
-        className="mt-6"
+        className="mt-7"
         testID="home-affairs"
       >
         <View
@@ -1188,44 +1399,87 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               }
             }
           >
-            <Text
-              className="text-ink3"
+            <View
+              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "justifyContent": "center",
+                  "minHeight": 24,
                 }
               }
             >
-              నేటి కరెంట్ అఫైర్స్
-            </Text>
-            <View
-              className="rounded-xs bg-surface2 px-2 py-0.5"
-              testID="sample-data-affairs"
-            >
-              <Text
-                className="text-ink3"
+              <View
                 style={
                   {
-                    "fontFamily": "NotoSansTelugu_600SemiBold",
-                    "fontSize": 12,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 19.8,
-                    "textAlign": "center",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 4,
+                    "justifyContent": undefined,
                   }
                 }
               >
-                నమూనా డేటా
-              </Text>
+                <View
+                  className="h-1.5 w-1.5 rounded-full bg-accentStrong"
+                />
+                <Text
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 12,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 19.8,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  నేటి కరెంట్ అఫైర్స్
+                </Text>
+              </View>
+            </View>
+            <View
+              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+              style={
+                {
+                  "justifyContent": "center",
+                  "minHeight": 24,
+                }
+              }
+              testID="sample-data-affairs"
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 12,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 19.8,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  నమూనా డేటా
+                </Text>
+              </View>
             </View>
           </View>
           <View
@@ -1282,7 +1536,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               }
             >
               <Text
-                className="text-chalk2"
+                className="text-ink"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1300,7 +1554,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               </Text>
               <Text
                 accessibilityElementsHidden={true}
-                className="text-hivis"
+                className="text-ink"
                 importantForAccessibility="no"
                 style={
                   {
@@ -1321,78 +1575,103 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           </View>
         </View>
         <View
-          className="mt-3"
-          style={
+          accessibilityState={
             {
-              "alignItems": undefined,
-              "flexDirection": "column",
-              "gap": 8,
-              "justifyContent": undefined,
+              "selected": false,
             }
           }
+          className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface mt-3"
+          style={
+            {
+              "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+            }
+          }
+          testID="home-affair-card"
         >
           <View
-            style={
+            accessibilityLabel="ఎయిర్‌పోర్ట్ మెట్రో కారిడార్ తొలి దశ ప్రారంభం తెలంగాణ"
+            accessibilityRole="button"
+            accessibilityState={
               {
-                "backgroundColor": "#faf6ec",
-                "borderColor": "#e9e2d3",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "overflow": "hidden",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
-            testID="home-affair-card"
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            testID="home-affair"
           >
             <View
-              accessibilityRole="button"
-              accessibilityState={
+              className="min-h-touchLg py-2"
+              style={
                 {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 12,
+                  "justifyContent": undefined,
                 }
               }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              className="min-h-touch justify-center p-3"
-              collapsable={false}
-              focusable={true}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              testID="home-affair"
+              testID="home-affair-row"
             >
               <View
+                className="h-2 w-2 rounded-full bg-accentStrong"
+                testID="home-affair-marker"
+              />
+              <View
+                className="flex-1"
                 style={
                   {
-                    "alignItems": "baseline",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 8,
-                    "justifyContent": "space-between",
+                    "alignItems": undefined,
+                    "flexDirection": "column",
+                    "gap": 4,
+                    "justifyContent": undefined,
                   }
                 }
               >
                 <Text
-                  className="text-sand"
+                  className="text-ink"
                   style={
                     {
-                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontFamily": "NotoSansTelugu_600SemiBold",
+                      "fontSize": 15,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 24.8,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ఎయిర్‌పోర్ట్ మెట్రో కారిడార్ తొలి దశ ప్రారంభం
+                </Text>
+                <Text
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "NotoSansTelugu_400Regular",
                       "fontSize": 12,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
@@ -1405,109 +1684,114 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 >
                   తెలంగాణ
                 </Text>
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "Inter_600SemiBold",
-                      "fontSize": 12,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 18,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  ⁦02-09⁩
-                </Text>
               </View>
               <Text
-                className="text-chalk2 mt-1"
-                numberOfLines={2}
+                accessibilityLanguage="en"
+                className="text-ink3"
                 style={
                   {
-                    "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 15,
-                    "fontVariant": undefined,
+                    "fontFamily": "Inter_600SemiBold",
+                    "fontSize": 12,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
                     "letterSpacing": 0,
-                    "lineHeight": 24.8,
+                    "lineHeight": 18,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
                   }
                 }
               >
-                ఎయిర్‌పోర్ట్ మెట్రో కారిడార్ తొలి దశ ప్రారంభం
+                ⁦02-09⁩
               </Text>
             </View>
           </View>
           <View
-            style={
+            accessibilityLabel="గ్రామీణ రహదారుల పథకానికి కేబినెట్ పొడిగింపు భారత్"
+            accessibilityRole="button"
+            accessibilityState={
               {
-                "backgroundColor": "#faf6ec",
-                "borderColor": "#e9e2d3",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "overflow": "hidden",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
-            testID="home-affair-card"
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="border-t border-line"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            testID="home-affair"
           >
             <View
-              accessibilityRole="button"
-              accessibilityState={
+              className="min-h-touchLg py-2"
+              style={
                 {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 12,
+                  "justifyContent": undefined,
                 }
               }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              className="min-h-touch justify-center p-3"
-              collapsable={false}
-              focusable={true}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              testID="home-affair"
+              testID="home-affair-row"
             >
               <View
+                className="h-2 w-2 rounded-full bg-accentStrong"
+                testID="home-affair-marker"
+              />
+              <View
+                className="flex-1"
                 style={
                   {
-                    "alignItems": "baseline",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 8,
-                    "justifyContent": "space-between",
+                    "alignItems": undefined,
+                    "flexDirection": "column",
+                    "gap": 4,
+                    "justifyContent": undefined,
                   }
                 }
               >
                 <Text
-                  className="text-sand"
+                  className="text-ink"
                   style={
                     {
-                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontFamily": "NotoSansTelugu_600SemiBold",
+                      "fontSize": 15,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 24.8,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  గ్రామీణ రహదారుల పథకానికి కేబినెట్ పొడిగింపు
+                </Text>
+                <Text
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "NotoSansTelugu_400Regular",
                       "fontSize": 12,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
@@ -1520,109 +1804,114 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 >
                   భారత్
                 </Text>
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "Inter_600SemiBold",
-                      "fontSize": 12,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 18,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  ⁦02-09⁩
-                </Text>
               </View>
               <Text
-                className="text-chalk2 mt-1"
-                numberOfLines={2}
+                accessibilityLanguage="en"
+                className="text-ink3"
                 style={
                   {
-                    "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 15,
-                    "fontVariant": undefined,
+                    "fontFamily": "Inter_600SemiBold",
+                    "fontSize": 12,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
                     "letterSpacing": 0,
-                    "lineHeight": 24.8,
+                    "lineHeight": 18,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
                   }
                 }
               >
-                గ్రామీణ రహదారుల పథకానికి కేబినెట్ పొడిగింపు
+                ⁦02-09⁩
               </Text>
             </View>
           </View>
           <View
-            style={
+            accessibilityLabel="వరంగల్‌లో అంతర్ జిల్లా క్రికెట్ టోర్నీ ముగింపు క్రీడలు"
+            accessibilityRole="button"
+            accessibilityState={
               {
-                "backgroundColor": "#faf6ec",
-                "borderColor": "#e9e2d3",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "overflow": "hidden",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
-            testID="home-affair-card"
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="border-t border-line"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            testID="home-affair"
           >
             <View
-              accessibilityRole="button"
-              accessibilityState={
+              className="min-h-touchLg py-2"
+              style={
                 {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 12,
+                  "justifyContent": undefined,
                 }
               }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              className="min-h-touch justify-center p-3"
-              collapsable={false}
-              focusable={true}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              testID="home-affair"
+              testID="home-affair-row"
             >
               <View
+                className="h-2 w-2 rounded-full bg-accentStrong"
+                testID="home-affair-marker"
+              />
+              <View
+                className="flex-1"
                 style={
                   {
-                    "alignItems": "baseline",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 8,
-                    "justifyContent": "space-between",
+                    "alignItems": undefined,
+                    "flexDirection": "column",
+                    "gap": 4,
+                    "justifyContent": undefined,
                   }
                 }
               >
                 <Text
-                  className="text-sand"
+                  className="text-ink"
                   style={
                     {
-                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontFamily": "NotoSansTelugu_600SemiBold",
+                      "fontSize": 15,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 24.8,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  వరంగల్‌లో అంతర్ జిల్లా క్రికెట్ టోర్నీ ముగింపు
+                </Text>
+                <Text
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "NotoSansTelugu_400Regular",
                       "fontSize": 12,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
@@ -1635,70 +1924,74 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 >
                   క్రీడలు
                 </Text>
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "Inter_600SemiBold",
-                      "fontSize": 12,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 18,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  ⁦02-09⁩
-                </Text>
               </View>
               <Text
-                className="text-chalk2 mt-1"
-                numberOfLines={2}
+                accessibilityLanguage="en"
+                className="text-ink3"
                 style={
                   {
-                    "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 15,
-                    "fontVariant": undefined,
+                    "fontFamily": "Inter_600SemiBold",
+                    "fontSize": 12,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
                     "letterSpacing": 0,
-                    "lineHeight": 24.8,
+                    "lineHeight": 18,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
                   }
                 }
               >
-                వరంగల్‌లో అంతర్ జిల్లా క్రికెట్ టోర్నీ ముగింపు
+                ⁦02-09⁩
               </Text>
             </View>
           </View>
         </View>
       </View>
       <View
-        className="mt-6"
+        className="mt-7"
         testID="home-progress"
       >
-        <Text
-          className="text-ink3"
+        <View
+          className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
           style={
             {
-              "fontFamily": "NotoSansTelugu_700Bold",
-              "fontSize": 12,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 19.8,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
+              "justifyContent": "center",
+              "minHeight": 24,
             }
           }
         >
-          మీ పురోగతి
-        </Text>
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "flexWrap": undefined,
+                "gap": 4,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              className="text-ink3"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 19.8,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              మీ పురోగతి
+            </Text>
+          </View>
+        </View>
         <View
           className="mt-3"
           style={
@@ -1714,7 +2007,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           <View
             accessibilityLabel="చదివిన అంశాలు 5/11"
             accessible={true}
-            className="flex-1 rounded-md border border-line bg-panel2 p-3"
+            className="flex-1 rounded-md border border-line bg-surface2 p-3"
             style={
               {
                 "alignItems": undefined,
@@ -1727,7 +2020,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           >
             <Text
               accessibilityLanguage="en"
-              className="text-hivis"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_700Bold",
@@ -1746,7 +2039,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               ⁦5/11⁩
             </Text>
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
@@ -1766,7 +2059,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           <View
             accessibilityLabel="సాధన చేసిన పేపర్లు 3"
             accessible={true}
-            className="flex-1 rounded-md border border-line bg-panel2 p-3"
+            className="flex-1 rounded-md border border-line bg-surface2 p-3"
             style={
               {
                 "alignItems": undefined,
@@ -1779,7 +2072,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           >
             <Text
               accessibilityLanguage="en"
-              className="text-hivis"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_700Bold",
@@ -1798,7 +2091,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               ⁦3⁩
             </Text>
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
@@ -1818,7 +2111,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           <View
             accessibilityLabel="అత్యుత్తమ స్కోరు 62%"
             accessible={true}
-            className="flex-1 rounded-md border border-line bg-panel2 p-3"
+            className="flex-1 rounded-md border border-line bg-surface2 p-3"
             style={
               {
                 "alignItems": undefined,
@@ -1831,7 +2124,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           >
             <Text
               accessibilityLanguage="en"
-              className="text-hivis"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_700Bold",
@@ -1850,7 +2143,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               ⁦62%⁩
             </Text>
             <Text
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",

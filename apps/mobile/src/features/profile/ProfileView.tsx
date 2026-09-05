@@ -1,24 +1,20 @@
-import { colors } from '@tslprb/design-tokens';
 import { CATEGORIES, type CategoryId, type Post } from '@tslprb/fixtures';
-import { LANGS, useDir, type Lang } from '@tslprb/i18n';
+import { LANGS, type Lang } from '@tslprb/i18n';
 import { type ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable, View } from 'react-native';
 
 import {
   Button,
   Card,
-  cx,
   Dialog,
-  Glyph,
-  Kicker,
-  Row,
+  MarkerRow,
+  PageHeader,
+  Pill,
   Screen,
   SegmentedChips,
   Stack,
   Text,
   Toggle,
-  usePressed,
 } from '@/ui';
 
 const POST_TITLE: Record<Post, string> = {
@@ -26,63 +22,11 @@ const POST_TITLE: Record<Post, string> = {
   si: 'onboarding.siTitle',
 };
 
-/** 56 px settings row: label at the start, value/control at the end, hairline underneath. */
-function SettingRow({
-  label,
-  children,
-  onPress,
-  testID,
-  first = false,
-}: {
-  label: string;
-  children: ReactNode;
-  onPress?: () => void;
-  testID?: string;
-  first?: boolean;
-}) {
-  const { pressed, handlers } = usePressed();
-  const body = (
-    <Row
-      testID={testID ? `${testID}-row` : undefined}
-      gap={3}
-      align="center"
-      justify="between"
-      className="h-touchLg"
-    >
-      <Text variant="body" weight="600" className="flex-1">
-        {label}
-      </Text>
-      {children}
-    </Row>
-  );
-  const border = cx(!first && 'border-t border-line');
-  if (!onPress) {
-    return (
-      <View testID={testID} className={border}>
-        {body}
-      </View>
-    );
-  }
-  return (
-    <Pressable
-      testID={testID}
-      accessibilityRole="button"
-      accessibilityLabel={label}
-      android_ripple={{ color: colors.hivisTint3 }}
-      onPress={onPress}
-      {...handlers}
-      className={border}
-      style={pressed ? { opacity: 0.85 } : undefined}
-    >
-      {body}
-    </Pressable>
-  );
-}
-
+/** A pill heading over one card of rows: the group is the card, not a run of boxes. */
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <Stack gap={2} className="mt-6">
-      <Kicker>{title}</Kicker>
+    <Stack gap={2} className="mt-7">
+      <Pill label={title} />
       <Card>{children}</Card>
     </Stack>
   );
@@ -133,16 +77,11 @@ export function ProfileView({
   onDelete,
 }: ProfileViewProps) {
   const { t } = useTranslation();
-  const d = useDir();
   const [confirming, setConfirming] = useState(false);
   const langOptions = LANGS.map((l: Lang) => ({ value: l, label: t(`lang.${l}Short`), lang: l }));
   const categoryLabel = CATEGORIES.find((c) => c.id === category)?.labelKey;
-
-  const chevron = (
-    <Glyph color="dim" accessibilityElementsHidden importantForAccessibility="no">
-      {d.chevronNext}
-    </Glyph>
-  );
+  /** An answer the app has not been given yet, drawn rather than guessed. */
+  const EM_DASH = '—';
 
   return (
     <Screen
@@ -152,72 +91,82 @@ export function ProfileView({
       testID="profile-screen"
       overlay={
         !signedIn ? undefined : (
-        <Dialog
-          testID="profile-delete-dialog"
-          visible={confirming}
-          tone="flag"
-          kicker={t('profile.deleteAccount')}
-          title={t('profile.deleteTitle')}
-          body={t('profile.deleteConfirm')}
-          primary={{
-            label: t('profile.deleteYes'),
-            onPress: () => {
-              setConfirming(false);
-              onDelete();
-            },
-          }}
-          secondary={{ label: t('common.cancel'), onPress: () => setConfirming(false) }}
-        />
+          <Dialog
+            testID="profile-delete-dialog"
+            visible={confirming}
+            tone="danger"
+            kicker={t('profile.deleteAccount')}
+            title={t('profile.deleteTitle')}
+            body={t('profile.deleteConfirm')}
+            primary={{
+              label: t('profile.deleteYes'),
+              onPress: () => {
+                setConfirming(false);
+                onDelete();
+              },
+            }}
+            secondary={{ label: t('common.cancel'), onPress: () => setConfirming(false) }}
+          />
         )
       }
     >
-      <Text variant="titleLg" weight="600" className="mt-5">
-        {t('profile.title')}
-      </Text>
+      <PageHeader testID="profile-header" title={t('profile.title')} className="mt-5" />
 
       <Section title={t('profile.sectionExam')}>
-        <SettingRow
+        <MarkerRow
           first
           testID="profile-post"
-          label={t('profile.post')}
+          title={t('profile.post')}
           onPress={onEditPost}
-        >
-          <Row gap={2} align="center">
-            <Text variant="body" color="dim">
-              {post ? t(POST_TITLE[post]) : '—'}
+          chevron
+          accessibilityLabel={t('profile.post')}
+          trailing={
+            <Text variant="body" color="ink3">
+              {post ? t(POST_TITLE[post]) : EM_DASH}
             </Text>
-            {chevron}
-          </Row>
-        </SettingRow>
-        <SettingRow testID="profile-category" label={t('profile.category')} onPress={onEditCategory}>
-          <Row gap={2} align="center">
-            <Text variant="body" color="dim">
-              {categoryLabel ? t(categoryLabel) : '—'}
+          }
+        />
+        <MarkerRow
+          testID="profile-category"
+          title={t('profile.category')}
+          onPress={onEditCategory}
+          chevron
+          accessibilityLabel={t('profile.category')}
+          trailing={
+            <Text variant="body" color="ink3">
+              {categoryLabel ? t(categoryLabel) : EM_DASH}
             </Text>
-            {chevron}
-          </Row>
-        </SettingRow>
+          }
+        />
       </Section>
 
       <Section title={t('profile.sectionApp')}>
-        <SettingRow first testID="profile-language" label={t('profile.language')}>
-          <SegmentedChips
-            value={lang}
-            onChange={onLang}
-            options={langOptions}
-            testID="profile-lang"
-          />
-        </SettingRow>
+        <MarkerRow
+          first
+          testID="profile-language"
+          title={t('profile.language')}
+          trailing={
+            <SegmentedChips
+              value={lang}
+              onChange={onLang}
+              options={langOptions}
+              testID="profile-lang"
+            />
+          }
+        />
         {/* One control, one accessibility node: the `Toggle` carries the switch role and its
             own hit slop, so the row around it stays a plain label. */}
-        <SettingRow label={t('profile.notifications')}>
-          <Toggle
-            testID="profile-notifications"
-            value={notifications}
-            onValueChange={onNotifications}
-            accessibilityLabel={t('profile.notifications')}
-          />
-        </SettingRow>
+        <MarkerRow
+          title={t('profile.notifications')}
+          trailing={
+            <Toggle
+              testID="profile-notifications"
+              value={notifications}
+              onValueChange={onNotifications}
+              accessibilityLabel={t('profile.notifications')}
+            />
+          }
+        />
       </Section>
 
       <Section title={t('profile.sectionAccount')}>
@@ -229,10 +178,10 @@ export function ProfileView({
               label={t('profile.logout')}
               onPress={onLogout}
             />
-            {/* Solid flag lives inside the dialog, where the press actually destroys something. */}
+            {/* Solid red lives inside the dialog, where the press actually destroys something. */}
             <Button
               testID="profile-delete"
-              variant="dangerOutline"
+              variant="danger"
               label={t('profile.deleteAccount')}
               onPress={() => setConfirming(true)}
             />
@@ -244,7 +193,7 @@ export function ProfileView({
             <Text variant="subtitle" weight="700">
               {t('profile.signedOutTitle')}
             </Text>
-            <Text variant="caption" color="dim">
+            <Text variant="caption" color="ink3">
               {t('profile.signedOutBody')}
             </Text>
             <Button
@@ -257,7 +206,7 @@ export function ProfileView({
         )}
       </Section>
 
-      <Text variant="caption" color="dim" testID="profile-version" className="mt-6">
+      <Text variant="caption" color="ink3" testID="profile-version" className="mt-7">
         {t('profile.version', { v: version })}
       </Text>
     </Screen>

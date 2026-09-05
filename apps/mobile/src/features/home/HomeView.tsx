@@ -1,24 +1,24 @@
-import { colors, radius } from '@tslprb/design-tokens';
 import type { Affair, Notice } from '@tslprb/fixtures';
 import { LANGS, useDir, type Lang } from '@tslprb/i18n';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Pressable, ScrollView, View } from 'react-native';
 
 import { startEdge } from '@/features/result/edge';
 import {
-  Brand,
   Button,
   Card,
   Chip,
   Glyph,
   iso,
-  Kicker,
+  MarkerRow,
   Num,
+  PageHeader,
+  Pill,
   Row,
   Screen,
   SegmentedChips,
-  Stack,
+  StatTile,
   Text,
   usePressed,
 } from '@/ui';
@@ -54,12 +54,12 @@ export function targetFill(done: number, target: number): number {
 /**
  * The day's target as a row of blocks.
  *
- * Views, not SVG and not an arc: the shape is a hazard-tape run of segments, which is what
- * the identity already draws at the top of every screen, and it needs no dependency Expo Go
- * would have to be left for. Nothing animates, so there is nothing to gate under reduced
- * motion — the bar is simply drawn at the value it has.
+ * Views, not SVG and not an arc: ten rounded blocks, which needs no dependency Expo Go would
+ * have to be left for. Nothing animates, so there is nothing to gate under reduced motion —
+ * the bar is simply drawn at the value it has.
  *
- * An unlit block is `line3`: `panel3` on the card was 1.14:1 and read as nothing at all.
+ * A lit block is `accentStrong` (3.4:1, the non-text gold); an unlit one is `line2`, because
+ * `surface2` on the card was 1.05:1 and read as nothing at all.
  */
 function TargetBar({ done, target }: { done: number; target: number }) {
   const filled = targetFill(done, target);
@@ -74,7 +74,7 @@ function TargetBar({ done, target }: { done: number; target: number }) {
         <View
           key={i}
           testID="home-target-seg"
-          className={`h-progress flex-1 rounded-xs ${i < filled ? 'bg-hivis' : 'bg-line3'}`}
+          className={`h-progress flex-1 rounded-full ${i < filled ? 'bg-accentStrong' : 'bg-line2'}`}
         />
       ))}
     </Row>
@@ -85,11 +85,11 @@ function TargetBar({ done, target }: { done: number; target: number }) {
  * A block's heading and the way past it: "Updates · Sample data … All updates ›".
  *
  * The link is 20 px of text with 16 px of hit slop above and below rather than a 48 px box:
- * a half-height control beside a kicker would push the heading off its own baseline, and
- * the slop is what the finger actually lands in. Its label is `chalk2`, not yellow: the
- * screen has one yellow action and the chevron is enough to say "this goes somewhere".
+ * a half-height control beside a heading would push it off its own baseline, and the slop is
+ * what the finger actually lands in. Its label and chevron are ink, not gold: the screen has
+ * one gold-edged card and one ink action, and gold is a fill here, never a word.
  *
- * `badge` is a static tag after the title — "Sample data" while the shelf is seeded from
+ * `badge` is a static pill after the title — "Sample data" while the shelf is seeded from
  * fixtures. It sits inside the heading `Row`, so it follows the reading direction and lands
  * at the reading end without a mirrored class of its own.
  */
@@ -113,8 +113,8 @@ function SectionHead({
   return (
     <Row align="center" justify="between" gap={3}>
       <Row align="center" gap={2} className="flex-1" wrap>
-        <Kicker>{title}</Kicker>
-        {badge !== undefined && <Chip label={badge} tone="label" testID={badgeTestID} />}
+        <Pill label={title} dot />
+        {badge !== undefined && <Pill label={badge} testID={badgeTestID} />}
       </Row>
       <Pressable
         testID={testID}
@@ -126,52 +126,15 @@ function SectionHead({
         style={pressed ? { opacity: 0.85 } : undefined}
       >
         <Row gap={1} align="center">
-          <Text variant="caption" weight="600" color="chalk2">
+          <Text variant="caption" weight="600">
             {link}
           </Text>
-          <Glyph
-            variant="caption"
-            color="hivis"
-            accessibilityElementsHidden
-            importantForAccessibility="no"
-          >
+          <Glyph variant="caption" accessibilityElementsHidden importantForAccessibility="no">
             {d.chevronNext}
           </Glyph>
         </Row>
       </Pressable>
     </Row>
-  );
-}
-
-/** One number and what it counts. Three of these are the whole progress block. */
-function StatTile({
-  testID,
-  value,
-  label,
-  empty = false,
-}: {
-  testID: string;
-  value: string;
-  label: string;
-  empty?: boolean;
-}) {
-  return (
-    <Stack
-      gap={1}
-      testID={testID}
-      accessible
-      accessibilityLabel={`${label} ${value}`}
-      className="flex-1 rounded-md border border-line bg-panel2 p-3"
-    >
-      {/* `dim`, not `mute`, when there is nothing yet: the number is still text a candidate
-          has to read, and `mute` is 3.97:1 — decorative only. */}
-      <Num variant="stat" color={empty ? 'dim' : 'hivis'}>
-        {value}
-      </Num>
-      <Text variant="caption" color="dim">
-        {label}
-      </Text>
-    </Stack>
   );
 }
 
@@ -278,20 +241,34 @@ export function HomeView({
 
   return (
     <Screen scroll padded bottomInset={false} testID="home-screen">
-      <Row testID="home-header" align="center" justify="between" gap={2} wrap className="mt-4">
-        <Brand testID="home-brand" />
-        <Row gap={2} align="center">
-          {/* Outlined, not hi-vis: signing in is not what this screen is for. */}
-          {!signedIn && (
-            <Chip testID="home-signin" label={t('common.signIn')} size="lg" onPress={onSignIn} />
-          )}
-          <SegmentedChips value={lang} onChange={onLang} options={langOptions} testID="home-lang" />
-        </Row>
-      </Row>
-
-      <Text variant="title" weight="600" testID="home-greeting" className="mt-4">
-        {name ? t('home.greeting', { name: iso(name) }) : t('home.greetingPlain')}
-      </Text>
+      <PageHeader
+        brand
+        brandTestID="home-brand"
+        testID="home-header"
+        className="mt-4"
+        titleTestID="home-greeting"
+        title={name ? t('home.greeting', { name: iso(name) }) : t('home.greetingPlain')}
+        trailing={
+          <Row gap={2} align="center">
+            {/* An outlined capsule, not a fill: signing in is not what this screen is for. */}
+            {!signedIn && (
+              <Chip
+                testID="home-signin"
+                label={t('common.signIn')}
+                size="lg"
+                shape="pill"
+                onPress={onSignIn}
+              />
+            )}
+            <SegmentedChips
+              value={lang}
+              onChange={onLang}
+              options={langOptions}
+              testID="home-lang"
+            />
+          </Row>
+        }
+      />
 
       {/* ------------------------------------------------------- countdown hero */}
       {/* The one gold-edged card on Home (the spec's start-edge gold). A fact, not a button:
@@ -300,42 +277,39 @@ export function HomeView({
         testID="home-hero"
         accessible
         accessibilityLabel={heroLabel}
-        className="mt-4"
+        className="mt-7"
         style={startEdge(d.isRTL, 'accentStrong')}
       >
         {examState === 'ahead' ? (
           <>
-            <Kicker color="hazard">{t('home.examIn')}</Kicker>
+            <Pill label={t('home.examIn')} dot />
             <Row gap={2} align="baseline" className="mt-2">
-              <Num variant="display" color="hivis" testID="home-days">
+              {/* Ink, not gold: gold is a fill on cream, and the card's own edge is the gold. */}
+              <Num variant="display" testID="home-days">
                 {daysToExam}
               </Num>
-              <Text variant="bodyLg" color="dim">
+              <Text variant="bodyLg" color="ink3">
                 {t('home.days')}
               </Text>
             </Row>
           </>
         ) : (
           // No number on or after the day: "0 days" next to a past date reads as a stuck clock.
-          <Text variant="subtitle" weight="700" color="hivis" testID="home-exam-state">
+          <Text variant="subtitle" weight="700" testID="home-exam-state">
             {examLine}
           </Text>
         )}
-        <Text variant="caption" color="dim" testID="home-exam-date" className="mt-1">
+        <Text variant="caption" color="ink3" testID="home-exam-date" className="mt-1">
           {examState === 'held' ? examLabel : dateLine}
         </Text>
         {/* Not a control: a run of practice is a fact about the reader. Hidden at zero — a
             "0-day streak" is a scold, not a fact worth a line. */}
-        {streakDays > 0 && (
-          <Text variant="caption" color="dim" testID="home-streak" className="mt-1">
-            {streakLine}
-          </Text>
-        )}
+        {streakDays > 0 && <Pill testID="home-streak" label={streakLine} className="mt-3" />}
 
         <View className="mt-4 h-px bg-line" />
         <Row align="center" justify="between" gap={3} className="mt-3">
-          <Kicker>{t('home.todayTarget')}</Kicker>
-          <Text variant="caption" color="dim" testID="home-target-count">
+          <Pill label={t('home.todayTarget')} />
+          <Text variant="caption" color="ink3" testID="home-target-count">
             {targetLine}
           </Text>
         </Row>
@@ -346,7 +320,7 @@ export function HomeView({
 
       {/* -------------------------------------------------------------- updates */}
       {notices.length > 0 && (
-        <View testID="home-updates" className="mt-6">
+        <View testID="home-updates" className="mt-7">
           <SectionHead
             title={t('home.updates')}
             badge={t('common.sampleData')}
@@ -382,8 +356,8 @@ export function HomeView({
       )}
 
       {/* --------------------------------------------------------- physical test */}
-      <Card testID="home-physical" className="mt-6">
-        <Kicker>{t('home.physical')}</Kicker>
+      <Card testID="home-physical" className="mt-7">
+        <Pill label={t('home.physical')} />
         <Text variant="bodyLg" weight="600" className="mt-2">
           {t('home.physicalSub')}
         </Text>
@@ -400,7 +374,7 @@ export function HomeView({
 
       {/* --------------------------------------------------------------- affairs */}
       {affairs.length > 0 && (
-        <View testID="home-affairs" className="mt-6">
+        <View testID="home-affairs" className="mt-7">
           <SectionHead
             title={t('home.affairs')}
             badge={t('common.sampleData')}
@@ -409,17 +383,25 @@ export function HomeView({
             onPress={onOpenAffairs}
             testID="home-affairs-more"
           />
-          <Stack gap={2} className="mt-3">
-            {affairs.map((affair) => (
-              <AffairRow key={affair.id} affair={affair} lang={lang} onPress={onOpenAffairs} />
+          {/* One card of rows, not three cards: the hero is Home's single gold-edged
+              surface, and a stack of bordered boxes competed with it. */}
+          <Card testID="home-affair-card" className="mt-3">
+            {affairs.map((affair, i) => (
+              <AffairRow
+                key={affair.id}
+                affair={affair}
+                lang={lang}
+                first={i === 0}
+                onPress={onOpenAffairs}
+              />
             ))}
-          </Stack>
+          </Card>
         </View>
       )}
 
       {/* -------------------------------------------------------------- progress */}
-      <View testID="home-progress" className="mt-6">
-        <Kicker>{t('home.progress')}</Kicker>
+      <View testID="home-progress" className="mt-7">
+        <Pill label={t('home.progress')} />
         <Row gap={2} align="stretch" className="mt-3">
           <StatTile
             testID="home-progress-topics"
@@ -429,21 +411,21 @@ export function HomeView({
           />
           <StatTile
             testID="home-progress-papers"
-            value={String(progress.papers)}
+            value={progress.papers}
             label={t('home.papersPractised')}
             empty={progress.papers === 0}
           />
+          {/* No value at all, not a zero: the tile draws its own dash in ink3. */}
           <StatTile
             testID="home-progress-best"
-            value={progress.bestPct === undefined ? '—' : `${progress.bestPct}%`}
+            value={progress.bestPct === undefined ? undefined : `${progress.bestPct}%`}
             label={t('home.bestScore')}
-            empty={progress.bestPct === undefined}
           />
         </Row>
         {/* The tiles are the same for a guest; only the warning that they live on this one
             handset is added. Nothing here is withheld. */}
         {!signedIn && (
-          <Text variant="caption" color="dim" testID="home-progress-nudge" className="mt-2">
+          <Text variant="caption" color="ink3" testID="home-progress-nudge" className="mt-2">
             {t('home.signInToKeep')}
           </Text>
         )}
@@ -463,81 +445,55 @@ function NoticeCard({
   onPress: () => void;
 }) {
   const { t } = useTranslation();
-  const { pressed, handlers } = usePressed();
   return (
-    <Pressable
+    <Card
       testID="home-notice"
-      accessibilityRole="button"
-      android_ripple={{ color: colors.hivisTint3 }}
       onPress={onPress}
-      {...handlers}
-      className="justify-start rounded-md border border-line bg-panel2 p-3"
-      // Width and radius live in the flattened object so css-interop cannot drop them; the
-      // press delta comes from state, never a `style` callback (see `usePressed`).
-      style={StyleSheet.flatten([
-        { width: NOTICE_W, borderRadius: radius.md },
-        pressed ? { opacity: 0.85 } : null,
-      ])}
+      // The width lives in the flattened object so css-interop cannot drop it (`Card` merges
+      // it after its own shadow).
+      style={{ width: NOTICE_W }}
     >
       <Row gap={2} align="center" justify="between">
-        {/* A tag, not a chip: the kind is a label to read, and it must not out-shout the
-            title under it. */}
-        <Chip label={t(`updates.kind.${notice.kind}`)} tone="label" />
-        <Num variant="caption" weight="600" color="dim">
+        {/* A label to read, not a control: the kind must not out-shout the title under it. */}
+        <Pill label={t(`updates.kind.${notice.kind}`)} />
+        <Num variant="caption" weight="600" color="ink3">
           {shortDate(notice.date)}
         </Num>
       </Row>
       <Text variant="body" weight="600" numberOfLines={3} className="mt-2">
         {notice.title[lang]}
       </Text>
-    </Pressable>
+    </Card>
   );
 }
 
-/** One line of today's news: where it happened, what happened, when. */
+/** One line of today's news: what happened, where, and when. */
 function AffairRow({
   affair,
   lang,
+  first,
   onPress,
 }: {
   affair: Affair;
   lang: Lang;
+  first: boolean;
   onPress: () => void;
 }) {
   const { t } = useTranslation();
-  const { pressed, handlers } = usePressed();
-  // No start edge: the hero is Home's one gold-edged card (fix wave 1, D9); Phase B folds
-  // these rows into one surface card of marker rows.
+  // The headline leads: the category and the date are what it was, not what it says.
   return (
-    <View
-      testID="home-affair-card"
-      style={{
-        borderRadius: radius.md,
-        borderWidth: 1,
-        borderColor: colors.line,
-        backgroundColor: colors.panel2,
-        overflow: 'hidden',
-      }}
-    >
-      <Pressable
-        testID="home-affair"
-        accessibilityRole="button"
-        android_ripple={{ color: colors.hivisTint3 }}
-        onPress={onPress}
-        {...handlers}
-        className="min-h-touch justify-center p-3"
-        style={pressed ? { opacity: 0.85 } : undefined}
-      >
-        <Row gap={2} align="baseline" justify="between">
-          <Kicker color="sand">{t(`affairs.cat.${affair.category}`)}</Kicker>
-          <Num variant="caption" weight="600" color="dim">
-            {shortDate(affair.date)}
-          </Num>
-        </Row>
-        <Text variant="body" color="chalk2" numberOfLines={2} className="mt-1">
-          {affair.headline[lang]}
-        </Text>
-      </Pressable>
-    </View>
+    <MarkerRow
+      testID="home-affair"
+      marker="dot"
+      first={first}
+      title={affair.headline[lang]}
+      meta={t(`affairs.cat.${affair.category}`)}
+      trailing={
+        <Num variant="caption" weight="600" color="ink3">
+          {shortDate(affair.date)}
+        </Num>
+      }
+      onPress={onPress}
+    />
   );
 }
