@@ -51,6 +51,9 @@ export function PaletteCell({
   const { t } = useTranslation();
   const { pressed, handlers } = usePressed(onPressIn, onPressOut);
   const s = paletteState[state];
+  // A transparent cell (not answered) has nothing to dim: it takes the `surface2` press fill
+  // every outlined control uses (`pressedClass`); the filled cells dim like filled controls.
+  const outlined = s.bg === 'transparent';
   return (
     <Pressable
       accessibilityRole="button"
@@ -72,12 +75,12 @@ export function PaletteCell({
           width: sizes.cell,
           height: sizes.cell,
           borderRadius: radius.sm,
-          backgroundColor: s.bg,
+          backgroundColor: pressed && outlined ? colors.surface2 : s.bg,
           borderColor: s.border,
           borderWidth: s.borderWidth,
         },
         style,
-        pressed ? pressedStyle : null,
+        pressed && !outlined ? pressedStyle : null,
       ])}
     >
       <Num variant="cell" align="center" style={{ color: s.fg }}>

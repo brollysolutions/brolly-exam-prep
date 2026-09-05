@@ -245,6 +245,7 @@ export function StatesView() {
             <Chip key={tone} label={tone} tone={tone} active onPress={() => {}} />
           ))}
           <Chip label={t('common.free')} onPress={() => {}} />
+          <Chip label={t('common.locked')} muted onPress={() => {}} />
           <Chip label={t('common.locked')} disabled />
         </Row>
         <Row gap={2} wrap align="center">
@@ -252,6 +253,7 @@ export function StatesView() {
           <Chip label="md 40" active size="md" />
           <Chip label="lg 48" active size="lg" />
           <Chip label={t('result.qualified')} active shape="pill" size="md" />
+          <Chip label={t('common.free')} shape="pill" size="md" onPress={() => {}} />
           <Chip label={t('common.sampleData')} tone="label" />
         </Row>
       </Section>

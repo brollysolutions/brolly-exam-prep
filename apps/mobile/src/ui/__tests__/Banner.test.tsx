@@ -23,9 +23,12 @@ describe('Banner', () => {
   // the icon names the condition, in ink3 so it reads as information rather than a warning.
   it('draws the cloud-offline icon in ink3, hidden from the accessibility tree', async () => {
     await render(<Banner testID="banner" />);
-    const icon = screen.UNSAFE_getByType(Ionicons);
-    expect(icon.props.name).toBe('cloud-offline-outline');
-    expect(icon.props.color).toBe(colors.ink3);
+    const icon = screen.getByTestId('banner-icon', { includeHiddenElements: true });
+    // The icon host is the glyph's Text: the name resolves to a code point in the icon font.
+    const code = Ionicons.glyphMap['cloud-offline-outline'];
+    const glyph = typeof code === 'number' ? String.fromCodePoint(code) : code;
+    expect(icon).toHaveTextContent(glyph);
+    expect(icon).toHaveStyle({ color: colors.ink3, fontSize: 16 });
     expect(icon.props.accessibilityElementsHidden).toBe(true);
     expect(screen.queryByText('■')).toBeNull();
   });

@@ -32,9 +32,13 @@ export type SegmentedChipsProps<V extends string> = Omit<ViewProps, 'children'> 
   block?: boolean;
 };
 
+/**
+ * Soft gold is 1.38:1 from the canvas and surface2 1.08:1: neither fill alone marks the
+ * selected cell on every cream, so it also carries a 2 px inner bottom edge in the 3.4:1 gold.
+ */
 const selectedFill: Record<'accent' | 'quiet', string> = {
-  accent: 'bg-accentSoft',
-  quiet: 'bg-surface2',
+  accent: 'bg-accentSoft border-b-2 border-b-accentStrong',
+  quiet: 'bg-surface2 border-b-2 border-b-accentStrong',
 };
 
 /**
@@ -98,8 +102,9 @@ export function SegmentedChips<V extends string>({
     <Row
       accessibilityRole="radiogroup"
       {...rest}
+      // The frame is the 3:1 `outline` (a control); the dividers between cells stay `line2`.
       className={cx(
-        'h-touch overflow-hidden rounded-sm border border-line2',
+        'h-touch overflow-hidden rounded-sm border border-outline',
         block ? 'self-stretch' : 'self-start',
         className,
       )}

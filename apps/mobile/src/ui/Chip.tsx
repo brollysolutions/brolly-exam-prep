@@ -46,8 +46,10 @@ export type ChipProps = Omit<PressableProps, 'style' | 'children'> & {
   /** sm ≥ 34, md ≥ 40, lg ≥ 48 px. */
   size?: ChipSize;
   /**
-   * Present but not yet available (a locked section tab): `ink4` label instead of `ink3`.
-   * Unlike `disabled` it stays pressable, because the tap is what raises the locked toast.
+   * Present but not yet available (a locked section tab): the label steps down a weight
+   * (600 → 500) and stays `ink3` — `ink4` is 2.8:1 and a locked tab still has to be read to be
+   * understood as locked. Unlike `disabled` it stays pressable, because the tap is what raises
+   * the locked toast.
    */
   muted?: boolean;
   shape?: 'rect' | 'pill';
@@ -58,11 +60,19 @@ export type ChipProps = Omit<PressableProps, 'style' | 'children'> & {
 const canonical = (t: Exclude<ChipTone, 'label'>): Tone =>
   t === 'hivis' || t === 'hazard' || t === 'sand' ? 'accent' : t === 'flag' ? 'danger' : t;
 
+/**
+ * Active fills. Soft gold sits 1.38:1 from the canvas, so the selected accent chip also
+ * carries a 2 px inner bottom edge in the 3.4:1 gold; the red and green tones already have a
+ * boundary that reads (a 5.8:1 outline, a solid fill).
+ */
 const fill: Record<Tone, string> = {
-  accent: 'bg-accentSoft border-accent',
+  accent: 'bg-accentSoft border-accent border-b-2 border-b-accentStrong',
   danger: 'bg-dangerTint border-dangerInk',
   ok: 'bg-ok border-ok',
 };
+
+/** The rest boundary: `outline` (3.0:1) so a tappable filter reads as a control; `line2` is for dividers. */
+const restBorder = 'border-outline';
 
 /** Label colour on each active fill; ink reads on gold and green, red text on the red tint. */
 const activeColor: Record<Tone, ColorName> = { accent: 'ink', danger: 'dangerInk', ok: 'ink' };
@@ -126,8 +136,8 @@ export function Chip({
   const surface = active
     ? fill[tone]
     : pressed && !disabled
-      ? cx(pressedClass, 'border-line2')
-      : 'border-line2';
+      ? cx(pressedClass, restBorder)
+      : restBorder;
   const classes = cx(
     'items-center justify-center border',
     shape === 'pill' ? 'rounded-full' : 'rounded-xs',
@@ -136,8 +146,8 @@ export function Chip({
     disabled && 'opacity-40',
     className,
   );
-  const weight = active ? '700' : '600';
-  const color: ColorName = active ? activeColor[tone] : muted ? 'ink4' : 'ink3';
+  const weight = active ? '700' : muted ? '500' : '600';
+  const color: ColorName = active ? activeColor[tone] : 'ink3';
   const caption = (
     <Text variant="small" weight={weight} color={color} align="center">
       {label}

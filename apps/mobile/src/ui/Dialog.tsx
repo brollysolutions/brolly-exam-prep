@@ -63,6 +63,7 @@ export function Dialog({
       <View className="flex-1 justify-end bg-scrimHeavy p-4">
         {/* The top edge is always gold; the kicker carries the tone. */}
         <View
+          testID={testID ? `${testID}-card` : undefined}
           className="rounded-lg border border-line border-t-3 border-t-accentStrong bg-surface p-4"
           style={shadowStyle('sheet')}
         >

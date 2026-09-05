@@ -51,9 +51,10 @@ function Key({
       android_ripple={{ color: colors.accentTint }}
       onPress={onPress}
       {...handlers}
-      // A surface key on the cream canvas; pressed swaps the fill (one `bg-*` class at a time).
+      // A surface key in the 3:1 outline on the cream canvas; pressed swaps the fill (one
+      // `bg-*` class at a time).
       className={cx(
-        'h-key flex-1 items-center justify-center rounded-sm border border-line2',
+        'h-key flex-1 items-center justify-center rounded-sm border border-outline',
         pressed ? pressedClass : 'bg-surface',
       )}
     >

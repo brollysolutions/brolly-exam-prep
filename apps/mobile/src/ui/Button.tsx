@@ -53,13 +53,21 @@ export type ButtonProps = Omit<PressableProps, 'style' | 'children'> & {
 const canonical = (v: ButtonVariant): Variant =>
   v === 'dangerOutline' ? 'danger' : v === 'hazard' ? 'accent' : v;
 
+/** Rest boundaries clear 3:1 on cream: `outline` for the quiet pair, the red and gold inks for the rest. */
 const box: Record<Variant, string> = {
   primary: 'bg-ink',
-  secondary: 'border border-line2',
+  secondary: 'border border-outline',
   ghost: '',
   danger: 'border border-dangerInk',
   accent: 'border border-accentStrong',
 };
+
+/**
+ * The disabled primary is still the screen's main move, waiting: `surface2` in the outline
+ * ring with an `ink3` label (4.7:1). Not the 40 % dim the other variants take — that put ink4
+ * on surface2 at 2.6:1 (design review, F-28 fix wave 1, D8).
+ */
+const primaryDisabledBox = 'bg-surface2 border border-outline';
 
 const fg: Record<Variant, ColorName> = {
   primary: 'onInk',
@@ -97,10 +105,10 @@ export function Button({
   const filledAccent = variant === 'accent' && active;
   const filled = variant === 'primary' || filledAccent;
   const primaryDisabled = disabled && variant === 'primary';
-  const color: ColorName = primaryDisabled ? 'ink4' : filledAccent ? 'ink' : fg[variant];
+  const color: ColorName = primaryDisabled ? 'ink3' : filledAccent ? 'ink' : fg[variant];
   // The resting fill and the pressed fill are one slot: never two `bg-*` classes at once.
   const surface = primaryDisabled
-    ? 'bg-surface2'
+    ? primaryDisabledBox
     : filledAccent
       ? 'bg-accent border border-accent'
       : pressed && !disabled && !filled

@@ -12,7 +12,7 @@ import {
 
 import { cx } from './cx';
 import * as haptics from './haptics';
-import { pressedClass, usePressed } from './pressable';
+import { pressedClass, pressedStyle, usePressed } from './pressable';
 import { Row } from './Row';
 import { Text } from './Text';
 
@@ -33,7 +33,9 @@ export type CardProps = Omit<PressableProps, 'style' | 'children'> & {
 
 /**
  * The surface card: 1 px `line` on `surface` with the warm `card` shadow; selected = 2 px gold
- * border on a gold tint, title still ink. Pressed = `surface2` fill (see `pressedClass`).
+ * border on a gold tint, title still ink. Pressed = `surface2` fill (see `pressedClass`) — or,
+ * when selected, the filled-control dim (`pressedStyle`), since swapping the tint for surface2
+ * would erase the state the press is confirming.
  */
 export function Card({
   selected = false,
@@ -96,7 +98,11 @@ export function Card({
       </Row>
     );
   // Flattened on purpose: css-interop mutates array styles on web (see Text).
-  const surface = StyleSheet.flatten([flat ? null : shadowStyle('card'), style]);
+  const surface = StyleSheet.flatten([
+    flat ? null : shadowStyle('card'),
+    style,
+    selected && pressed && !disabled ? pressedStyle : null,
+  ]);
   // Static card (no onPress): a plain View, so it never reports a button/disabled state.
   if (!onPress) {
     return (

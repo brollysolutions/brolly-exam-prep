@@ -13,7 +13,7 @@ const hidden = { includeHiddenElements: true };
  * factory captures.
  */
 const mockReduced = jest.fn(() => false);
-const mockWithRepeat = jest.fn((animation: unknown) => animation);
+const mockWithRepeat = jest.fn((...args: unknown[]) => args[0]);
 jest.mock('react-native-reanimated', () => ({
   ...jest.requireActual('react-native-reanimated/mock'),
   useReducedMotion: () => mockReduced(),
