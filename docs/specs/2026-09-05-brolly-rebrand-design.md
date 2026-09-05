@@ -1,0 +1,149 @@
+# Brolly rebrand — full UI/UX redesign of the TSLPRB app (F-28 … F-30)
+
+## Context
+The app was built to the approved prototype's "hi-vis yellow on tar" identity. The company (Brolly Solutions, https://brollysolutions.in) has a very different brand: cream surfaces, charcoal ink, restrained gold, Inter + Playfair Display, soft radii and warm shadows. The user wants the app to read as one product with the website and asked for a **full UI/UX redesign** around the logo. Decisions taken with the user (2026-09-05):
+
+| Decision | Choice |
+|---|---|
+| Theme | Light, like the website (tokens shaped so a dark palette can be added later) |
+| Brand source | Live site CSS/fonts (extracted below), logo PNG/SVG from the site |
+| Scope | Full redesign, delivered in phases (each phase shippable) |
+| Identity in-app | Brolly logo in the header and splash; "TSLPRB"/"PWT" stay in copy as the exam name |
+| Primary buttons | Solid ink `#211c17` with cream text; gold marks active/selected/progress/badges |
+| Fonts | Inter for text; Playfair Display for screen titles and hero lines; Noto Sans Telugu for te; numbers in Inter (tabular) |
+| Brand mark | Umbrella glyph + "Brolly Solutions" in the header, full logo on splash/welcome; the navy/gold "B" tile only as the phone app icon |
+| Palette colours | Brand semantics: gold = answered, ink = marked, red outline = unanswered, plain = unvisited |
+| Delivery | Phases A → B → C → D → E run back to back, each reviewed and pushed on its own |
+
+## Brand kit (from brollysolutions.in, Tailwind v4 theme)
+- Fonts: `Inter` 400/500/600/700/800 (`--font-sans`, `--font-heading`), `Playfair Display` regular + italic (wordmark), `DM Mono` 400/500 (site code only — not used in the app).
+- Colours: cream `#f7f2e6`, cream-deep `#f0e9d8`, surface `#faf6ec`, line `#e9e2d3`; ink-900 `#211c17`, ink-700 `#4a423a`, ink-500 `#6f665b`, navy-700 `#3d352c`; gold 300 `#e8cf7a`, 400 `#d4b04a`, **500 `#c29b38` (brand gold)**, 600 `#a17f2a`, 700 `#856a22`; green `#22c55e`, red `#f87171`.
+- Shape: radii 6 / 8 / 12 px; shadows are ink-900 at 15–45 % alpha (`0 8px 32px -16px #211c1733`, `0 6px 20px #211c172e`), gold glow `0 6px 20px #c29b3847` on the CTA.
+- Pattern: pill badge with a gold dot + tracked uppercase label ("● DIGITAL TRANSFORMATION PARTNER"); gold underline on the active nav item; heavy Inter headline on cream.
+- Assets (downloaded to the session scratchpad, to be copied into `apps/mobile/assets/brand/`): `logo_black.png` 552×452 (umbrella + "Brolly" + italic "Solutions", black), `logo.png` (yellow variant), `favicon.svg` (navy `#0a1e3a` rounded square, gold "B").
+- Contrast facts: gold 500 on cream is ~2.6:1 → gold is for fills/markers only; gold **text** uses 700 `#856a22` (≈5:1 on cream). Ink-900 on cream ≈ 14:1; ink-500 `#6f665b` on cream ≈ 5.2:1 (captions OK); anything lighter is decorative.
+
+## Where the current identity lives (from the codebase map)
+- Single token source `packages/design-tokens/tokens.json` (34 colours, radii 2–6, `font.en/te`, 21 type roles, tracking, motion, hazard) → `src/index.ts` (`typography()`, `paletteState` hard-codes hivis/hazard) → `tailwind.preset.cjs`.
+- Fonts: `apps/mobile/src/app/_layout.tsx:3-52` (`FONTS` map + `useFonts`), packages `@expo-google-fonts/archivo`, `noto-sans-telugu`.
+- ~13 primitives whose variant names are colour names: `Button` (`primary` = `bg-hivis`, `hazard`, `danger`), `Chip` tones, `SegmentedChips` `hivis|quiet`, `Dialog` tones, `Toast`, `Card` selected state, `ProgressRail`, `PaletteCell` (`paletteState`), `Toggle`, `OtpCells`/`PhoneField` focus, `Sheet` top border, `Kicker` defaults, `HazardRail`, `Screen` `bg-tar`; tab bar colours in `src/app/(tabs)/_layout.tsx:48-53`.
+- Brand lockups: `HomeView.tsx:281`, `LoginView.tsx:63`, `WelcomeView.tsx:13-27` (`BrandBlock` plate), `StatesView.tsx:168`; `common.brand` = "TSLPRB".
+- `app.json`: `userInterfaceStyle: dark`, three `#0D0D0E` literals (adaptive icon, splash, root background); `_layout.tsx:65` `StatusBar style="light"`; `scripts/make-splash-icon.mjs` draws the old plate.
+- No theming layer, zero raw hex in `src`; `apps/web` inlines token colours with three magic numbers.
+- Tests: 16 snapshots (hexes serialised, `#FFE01B` ×16), 20 tests asserting `colors.X`/class names symbolically (survive a retokenise, break on renames), `Text.test.tsx` and `EligibilityView.test.tsx` assert the "TSLPRB" string.
+
+## Contrast rules (computed WCAG, govern every choice below)
+| pair | ratio | use |
+|---|---|---|
+| ink-900 / ink-700 / ink-500 on cream | 15.1 / 8.8 / 5.0 | text (ink-500 = captions, kickers, inactive tab) |
+| gold-500 `#c29b38` on cream | 2.3 | **fills only** (carries ink text, 6.5:1) |
+| gold-600 `#a17f2a` on cream | 3.4 | non-text: progress fill, rings, 3 px rules, start edges |
+| gold-700 `#856a22` on cream / surface | 4.6 / 4.8 | **gold text**: kickers, active tab, links, stat numbers |
+| cream on ink-900 | 15.1 | primary button |
+| red text `#b91c1c`, green text `#166534` on cream | 5.8 / 6.4 | danger / ok text; `#f87171` / `#22c55e` are fills only |
+
+## Phase A — Foundation (F-28): tokens, fonts, primitives, chrome, brand
+Owner: ui-builder in the main checkout. Six commits, each green on `pnpm typecheck && pnpm lint && pnpm test`.
+
+**A1 Tokens** (`packages/design-tokens/tokens.json`, `src/index.ts`, `tailwind.preset.cjs`, `apps/mobile/tailwind.config.js:5`)
+- New semantic `colors`: `canvas #f7f2e6`, `surface #faf6ec`, `surface2 #f0e9d8`, `line #e9e2d3`, `line2 #ccc7bd`, `ink #211c17`, `ink2 #4a423a`, `ink3 #6f665b`, `ink4 #989085` (decorative only), `onInk #f7f2e6`, `accent #c29b38`, `accentSoft #e8cf7a`, `accentStrong #a17f2a`, `accentInk #856a22`, `accentTint rgba(194,155,56,.14)`, `ok #22c55e`, `okInk #166534`, `danger #f87171`, `dangerInk #b91c1c`, `dangerTint`, `navy #0a1e3a`, `white`, `scrim`, `scrimHeavy`, `pressTint rgba(33,28,23,.10)`, `pressTintOnDark`. Raw scale kept in a `palette` block (tests only).
+- `legacyColors` block: every old name aliased to a brand value so the 69 screen files keep compiling — `tar→canvas`, `panel/panel2→surface`, `panel3/panel4→surface2`, `line2→line`, `line3→line2`, `chalk→ink`, `chalk2→ink2`, `dim/steel→ink3`, `mute/ghost→ink4`, `hivis/hazard/sand→#856a22` (dark gold, AA as text and as a fill under `text-tar`), `flag→#b91c1c`, `success→okInk`, `hivisTint*→accentTint`, `flagTint→dangerTint`, `offline*→surface2/line/ink2`. Old `ink` (a background) is the one name that cannot alias: fix `_layout.tsx:62` (→ `canvas`) and `AttemptOverlays.tsx:182` (dark call overlay keeps `bg-ink`, its text → `onInk`).
+- Radii keep names, new values `xs 4 / sm 6 / md 8 / lg 12 / xl 16`; `shadow` block (`card`, `raised`, `sheet` as `boxShadow` strings, RN 0.86 supports them) + `shadowStyle()` helper; `size.rail 5→3`; drop `hazard` block and `motion.marquee`, add `motion.pulse 700`.
+- `app.json`: `userInterfaceStyle: "light"`, root background `#f7f2e6`; `_layout.tsx:65` `StatusBar style="dark"`, `contentStyle` canvas. `apps/web` layout/page: canvas/ink, Inter, 3 px accent rule instead of the hazard gradient.
+- New `packages/design-tokens/test/contrast.test.mjs` (node `--test`, wired via a `test` script so root `pnpm test` runs it): asserts the table above plus "every colour equals a palette value". New `test/legacy.test.mjs`: fails if `apps/mobile/src/ui/**` uses a legacy name (scan root flips to all of `src` in Phase D).
+- Docs: `CLAUDE.md:5` identity line, `.claude/rules/mobile-ui.md` hazard/hi-vis lines.
+
+**A2 Fonts** (`apps/mobile/package.json`, `_layout.tsx:3-52`, tokens `font`/`face`/`text`/`tracking`, `index.ts` `typography()`, `ui/Text.tsx`, `packages/i18n/src/direction.ts:55`)
+- Add `@expo-google-fonts/inter` (400–800) and `@expo-google-fonts/playfair-display` (400 + 400 italic); remove `archivo`. Telugu gains `NotoSansTelugu_800ExtraBold`.
+- `font.en.display = PlayfairDisplay` (all weights → Regular, italic map, lineHeight 1.2); `face` map routes `display`, `titleLg`, `title`, new `wordmark` (17) roles to the display face in en; te keeps Noto 700 for titles. `typography(lang, role, weight, italic)`; `Text` gains `italic`. Sizes: title 24, titleLg 26, display 30; tracking kicker 1.2, display −0.3, brand 2. en line-height 1.5, te 1.65 unchanged.
+- `<Num>` keeps aligning: `Text.tsx:81` already sets `fontVariant: ['tabular-nums']` and Inter ships `tnum`; DM Mono not adopted (escape hatch: add `"mono"` to the `face` map). Verify the attempt timer crossing 9:59→10:00 in Expo Go.
+- Tests: `Archivo_`→`Inter_` in 7 ui + 8 feature tests; `typography.test.ts` gains display/italic/800 cases; all 16 snapshots refreshed (fontFamily only). `.claude/rules/i18n-rtl.md:11` font line.
+
+**A3 Primitives on semantic tokens** (`apps/mobile/src/ui/*`, tests, dev gallery)
+- `Text` default colour `ink`. `Button`: `primary bg-ink/onInk`, `secondary border-line2/ink`, `ghost ink2`, `danger border-dangerInk` (no solid red; `dangerOutline` kept as alias one cycle), `accent border-accentStrong` (was `hazard`; active `bg-accent` + ink), disabled `surface2/ink4`, ripples `pressTintOnDark` on ink, `accentTint` elsewhere. `Card`: `rounded-md border-line bg-surface` + `shadow.card` (`flat` prop to drop), selected `border-2 border-accent bg-accentTint`, title stays ink. `Chip` tones → `accent | danger | ok | label` (old names mapped): `accent bg-accentSoft border-accent`, label `bg-surface2 text-ink3`. `SegmentedChips` `accent | quiet` (selected `bg-accentSoft` / `bg-surface2`, label ink, inactive ink3). `Kicker` defaults `ink3`, index `accentInk`. `Screen bg-canvas`. `Keypad/OtpCells/PhoneField`: surface fills, `line2` idle, `accentStrong` focus, placeholder ink3.
+- `HazardRail → Rail`: 3 px solid rule, `tone accent | danger` (`bg-accentStrong` / `bg-dangerInk`), `critical` = opacity pulse (Reanimated, reduced-motion safe); attempt screen props unchanged; `HazardRail` name re-exported until Phase D. `ProgressRail` track `surface2`, fill `accentStrong`, `rounded-full`. `paletteState`: unvisited `surface2/ink3/line2`, not-answered outline `dangerInk`, answered `ink/onInk`, marked `accent/ink`, current ring `border-ink` with a 2 px canvas gap, dot `ink/surface`. `Toggle` fully round: on `accent` track + ink thumb, off `surface2/line2/ink3`. `Banner surface2/line/ink2 + accentInk glyph`; `Toast accent | danger` with ink text, `rounded-md mx-4` + `shadow.raised`; `Dialog` `rounded-lg border-line border-t-[3px] border-t-accentStrong bg-surface` + `shadow.sheet`, tiles `surface2`; `Sheet` surface, `radius.xl` top corners, 3 px `accentStrong` top edge, `line2` grabber.
+- Tab bar (`(tabs)/_layout.tsx:46-78`): scene canvas, bar `surface` with `line` top border, active `accentInk`, inactive `ink3`, ripple `accentTint`; keep the JS `Tabs`.
+- Tests updated where they assert primitive output (Button/Card/Chip/Kicker/PaletteCell/SegmentedChips/Text/Toggle/tabsLayout + Home/Library/Eligibility/Profile/Topic lines that assert `bg-hivis`/`bg-panel3` on primitives); `Rail.test.tsx` replaces `HazardRail.test.tsx`; dev gallery lists new variants.
+
+**A4 Brand lockup and header sites** (user decision: the **umbrella** is the in-app mark; the navy/gold "B" tile is the phone app icon only)
+- `src/ui/Brand.tsx`: `variant="lockup"` (header, default 28 px tall) = the umbrella glyph + live text "Brolly" (Playfair `wordmark`) and "Solutions" (Playfair italic, smaller), `accessibilityRole="header"`, label "Brolly Solutions". The umbrella comes from `assets/brand/umbrella.png`, cropped from the top third of `logo_black.png` (transparent, ~552×170) and shown with `expo-image` at 28 px (`tintColor` ink); tracing it to an SVG path (`react-native-svg`, in Expo Go 57) is a listed follow-up that swaps only this file. `variant="splash"` = `expo-image` of the full `brolly-logo.png` for Welcome and the splash. Live text rather than the full PNG in the header because the lockup is near-square and the name would be ~6 px at header height. `BrandMark` (the "B" tile SVG) exists only for the icon-generation script and the dev gallery.
+- Replace the three "TSLPRB" lockups: `HomeView.tsx:281`, `LoginView.tsx:63`, `WelcomeView.tsx:13-27` (`BrandBlock` plate), `StatesView.tsx:168`; `common.brand` → "Brolly Solutions" in en + te (Latin, like "PWT"). `Brand.test.tsx`; Home/Login/Welcome snapshots.
+
+**A5 Splash, icons, docs**
+- `assets/brand/`: `brolly-logo.png`, `brolly-mark.svg`, `splash-logo.png`; `app.json` splash `backgroundColor #f7f2e6`, `image` = logo, `imageWidth 200`; adaptive icon background `#0a1e3a` with the mark as foreground/monochrome, `icon.png` 1024 rendered from the favicon SVG (one-off script with `@resvg/resvg-js`; if that is not feasible in-session the old icon files stay and the icon set is a listed follow-up). Delete `scripts/make-splash-icon.mjs` and the unused template images. `pnpm doctor` green.
+- `docs/DESIGN_SYSTEM.md` full rewrite ("Brolly on cream": identity, token table with ratios, type table, shape, components, motion, platform), `docs/FEATURES.md` F-28 row, `docs/IMPLEMENTATION_PLAN.md` Phase 4 line + dated ruling, spec addendum.
+
+**A6 additions the screen phases depend on** (land in A3/A4): `Card` gets a `trailing` slot and a `flat` prop; `usePressed` callers get a documented pressed fill (`bg-surface2`) because `opacity: 0.85` is invisible on cream (`pressable.ts` exposes `pressedClass`); `ProgressRail` gets `tone: 'accent' | 'danger'`; `Toast` gains `tone="info"` (ink fill, cream text); `Chip` keeps `shape="pill"` for pressable filters; status vocabulary for the whole app: **gold = the candidate's own input / active**, **ink = deliberate flag (marked)**, **red = wrong / unanswered / critical**, **green = eligible / correct (text `okInk`)**; warning (timer ≤ 5 min) = `accentSoft` fill + `accentInk` digits, critical (≤ 60 s) = solid `dangerInk` with `onInk` digits (never `#f87171` with cream text, 2.5:1).
+
+## Screen patterns (six new `src/ui` pieces, each with tests + a dev-gallery section)
+| Pattern | What it is | Replaces |
+|---|---|---|
+| **P1 PageHeader / BackHeader / Pill** | Hub header: `Brand` lockup + language switcher, then a **Pill** (rounded-full `surface2`, 1 px `line`, 6 px gold dot, tracked kicker label; tones `quiet`/`gold`/`ink`; optional `<Num>` leading) and a Playfair `titleLg`. Leaf header: today's `BackHeader` moved to `src/ui`, `surface` bar with a `line` under it, Inter 600 one-line title, `trailing` + `children` slots | `Kicker` rows, `Chip tone="label"`, `features/result/Header.tsx` |
+| **P2 SurfaceCard** | `Card`: surface, 1 px line, `rounded-md`, `shadow.card`, padding 16; selected = 2 px gold + `accentTint`; exactly one card per screen carries a 3 px gold start edge (`startEdge()` from `features/result/edge.ts`) | all coloured start edges except that one; `sand`/`hazard` edges |
+| **P3 StatTile** | `surface2` tile, `<Num variant="stat">` ink, caption ink3 | `HomeView` tiles, `Dialog` stat tiles, Category grid tiles |
+| **P4 MarkerRow** | 56/72 px row: leading marker (gold dot = available, ink check-circle = done, ink3 lock = locked), ink 600 title, ink3 meta, trailing pill or chevron, hairline | Study/Library/Profile/Result/Affairs rows |
+| **P5 ActionBar** | Sticky bottom bar: surface, 1 px line, `shadow.sheet` upward, one `Button size="lg"` primary + optional secondary; hosts the Keypad on Login/OTP | ad-hoc footers on Login, OTP, Post, Category, Result, Attempt, Palette |
+| **P6 EmptyState / Skeleton / LoadError** | Centred pill kicker + one ink3 line + optional secondary; skeleton blocks `surface2` | `news/Empty.tsx`, `result/Placeholder.tsx`, Topic not-found, Solutions all-correct |
+Icons: Ionicons (already used by the tab bar) for `close`, `lock-closed-outline`, `bookmark(-outline)`, `time-outline`, `cloud-offline-outline`, `checkmark-circle`; chevrons stay the `Glyph` `‹ ›` (tests pin their face).
+
+## Phase B — Shell screens (F-29)
+Welcome, Login, OTP, Post, Category, Home, Profile + the six patterns above + gallery sections. No logic, route, store or string changes; 0 new locale keys.
+- **Welcome**: `Brand variant="splash"` centred over a brand pill; step counter → pill with `<Num>` "1 / 3"; Playfair title (max two lines); dots 8 px round, active stretches to a 20 px pill; footer = P5 without the top line (Skip ghost, Next/Get started ink `lg`); 140 ms fade per slide under `useMotion()`.
+- **Login / OTP**: small `Brand` lockup, Playfair `titleLg`, `PhoneField`/`OtpCells` surface boxes with 2 px gold focus, keypad + Continue/Verify inside a P5 bar; error toast floats 12 px inset; OTP dev-code hint → pill; resend link ink 600 with a gold dot.
+- **Post / Category**: step pill, Playfair title; Post cards are P2 `rounded-lg` with a gold `checkmark-circle` when selected (uses the new `Card trailing`); Category tiles become selectable P3 tiles (label, `<Num>` %, "PWT qualifying"); Continue/Start in a P5 bar.
+- **Home**: `Brand` lockup + Sign-in outline pill + language switcher; Playfair greeting; hero = the one gold-edged P2 (kicker pill, `<Num>` days in ink, streak as a pill, target bar segments round gold/line); section heads = pill + ink 600 link with ink chevron; notice shelf cards P2 with kind pills; physical card keeps the only ink primary (`lg`); affairs = one P2 of P4 rows (gold dot, `accentInk` category, ink3 date); progress = shared P3; block rhythm 28 px. All testIDs, `heroLabel`, RTL `scrollToEnd`, one-primary rule unchanged.
+- **Profile**: Playfair `titleLg`; sections = P2 groups of 56 px P4 rows; `Toggle` gold/ink; Log out outline, Delete `dangerInk` outline; guest card Playfair subtitle + ink Sign in.
+- Tests: 7 snapshots refreshed; font literals in `WelcomeView.test` / `HomeView.test` follow A2; design critic on en + te captures of the 7 screens (+ Home guest / exam-day / held states from `ShellStates`).
+
+## Phase C — Content screens (F-30)
+Study, Topic, Library, Paper, Updates, Affairs, Eligibility.
+- **Study**: hub header; section index digits `accentInk`; each section = one P2 of P4 rows (gold dot unread / ink check read, minutes ink3, quiet "Read" pill, ink3 chevron).
+- **Topic**: section pill, Playfair title; paragraphs ink2, bullets get a 6 px gold dot instead of `■`, formula = `surface2` inset, example = the one gold-edged P2 with a "Worked example" pill, tip = `surface2` block with an "Exam tip" pill; footer stays in flow (Mark as read ink primary; read badge = quiet pill).
+- **Library**: filter chips = `Chip shape="pill" size="lg"` (active gold fill + ink 700); shelves = P2 of P4 rows; Free/Locked/Best as quiet pills (Locked gets a leading `lock-closed-outline` and `testID="library-lock-<id>"`, replacing the `⛌` glyph); Practise ink `md` + View paper outline; locked toast `info`.
+- **Paper**: leaf header + section pills; question cards P2 with a "Q n" pill; correct option = `accentTint` fill + 3 px gold edge + a 20 px gold circle with an ink check (a bare gold ✓ fails 3:1); Why pill.
+- **Updates / Affairs**: leaf header with the Sample-data tag pill; notice cards P2 with kind pill, ink3 date, ink3 caret (face + rotation tests unchanged), gold start edge only while expanded; affairs = day pill with `<Num>` date + one P2 of P4 rows (the `sand` edge goes, and its two assertions with it).
+- **Eligibility**: quiet `SegmentedChips`, "Your measurements" pill, inputs surface `rounded-md` with a padding-compensated 2 px gold focus and ink3 placeholder, ink Check in flow (it scrolls to the verdict), verdict banner `okInk`/`dangerInk`/`ink3` tones with Playfair subtitle, result rows in a P2 with `okInk` ✓ / `dangerInk` ✕.
+- Tests: 6 snapshots; assertion rewrites at `LibraryView.test.tsx:74`, `PaperView.te.test.tsx:31`, `AffairsView(.te).test.tsx` edge lines; critic captures 7 screens × en/te plus empty/not-found states.
+
+## Phase D — Attempt, palette, result, solutions (F-31)
+- **Attempt header**: surface bar with `line` + `shadow.card`; exit → Ionicons `close`; `TimerBox` normal `surface2`/ink, ≤ 5 min `accentSoft`/`accentInk`, ≤ 60 s solid `dangerInk`/`onInk`; section tabs = pills (active gold; locked = ink3 with a lock icon via `Chip leading`, `LOCK_GLYPH` concat removed); `ProgressRail tone="danger"` when critical.
+- **Critical-time signal replaces the hazard rail** (`Screen rail critical` removed from `AttemptView.tsx:281`): solid red timer box + red progress fill + a static 4 px `dangerInk` `HeaderBand` above the header + the existing pinned 1-minute toast and haptic. Fully static, so reduced motion needs no branch. `Rail` stays for the dev gallery.
+- **Body**: Q badge pill with `<Num>`; marks pill (`+1` `accentInk`, `−0.25` `dangerInk`); Marked = ink pill with a filled bookmark; options = surface rows, 1 px line, `rounded-md`, no shadow; selected = 2 px gold + `accentTint`, key box gold with ink letter; time-on-question `time-outline` ink3.
+- **Footer** = P5: Clear ghost (keeps `size.clearBtn`), Mark outline with bookmark icon fill toggle (no second filled control), Prev outline square, Questions outline with `<Num>` "12 / 40", Next ink `lg` (`size.nextBtn`). `Button variant="hazard"` retires.
+- **Palette sheet**: surface sheet, `radius.xl` corners, ink4 grabber, warm scrim; `paletteState` = unvisited surface/line/ink3 · unanswered `dangerTint` + 2 px `dangerInk` · answered gold + ink numeral · marked ink + cream numeral · marked+answered ink with a gold dot in a cream ring · current = 2 px ink ring offset 2 px; locked group opacity stays; Submit ink in a P5 strip.
+- **Dialogs**: surface card `rounded-lg` top corners, `shadow.sheet`, tone pill (gold / `accentInk` exit / `dangerInk` auto-submit), Playfair title, ink2 body, P3 stat tiles, ink `lg` primary + outline; scrim fade 140 + card slide 180 through `useMotion()`. Banner = `surface2` with `cloud-offline-outline`; toasts `accent` (5 min) / `danger` (1 min) / `info` (locked). Call overlay stays dark (`bg-ink`, cream text) on purpose.
+- **Result**: leaf header; score = the one gold-edged P2 ("Your score" pill, `<Num variant="score">` ink, "/ 100" ink3); Qualified = gold pill, Below cut-off = `dangerTint` pill with `dangerInk` text; section index digits `accentInk`; cost values `accentInk` 700; action cards P2; CTA in a P5 bar. **Solutions**: filter pills with counts; badge = 28 px circle (gold + ink ✓ / `dangerInk` + cream ✕); your answer = `dangerTint` + red edge, correct = `accentTint` + gold edge; all-correct → P6.
+- All 14 gallery states keep their buttons; tests: 3 snapshots; rewrites at `AttemptView.test.tsx:91-123` (timer colours) and `PaletteCell.test.tsx:22-44`; critic captures all 14 states in en and te (28) plus Result/Solutions variants; one Expo Go pass on Android for the timer digits and shadows.
+
+## Phase E — Rename legacy tokens (chore, after D)
+Codemod the unambiguous names (`tar→canvas`, `panel*→surface/surface2`, `line2/3`, `chalk*→ink/ink2`, `dim/steel→ink3`, `mute/ghost→ink4`, tints), manual pass for `hivis/hazard/flag/sand/success` (fill vs text), delete `legacyColors` and the aliases (`HazardRail`, `dangerOutline`, `hazard` variant), flip `legacy.test.mjs` to scan all of `src`, full snapshot refresh, `DESIGN_SYSTEM.md` final.
+
+## Docs and tracking
+`docs/FEATURES.md` rows F-28..F-31 (+ chore), `docs/IMPLEMENTATION_PLAN.md` Phase 4 lines + dated rulings (theme, buttons, fonts, brand lockup, hazard rail replacement, palette semantics), `docs/DESIGN_SYSTEM.md` rewrite in A5 + a "Screen patterns" section in B, `docs/specs/2026-09-05-brolly-rebrand-design.md` (this plan's design content as the spec), `CLAUDE.md` identity line, `.claude/rules/mobile-ui.md` (no hazard rail, one gold-edged card per screen, gold never as text below the 700 shade, pressed fill not opacity).
+
+## Execution
+Sequential, one implementer per phase in the main checkout (worktrees are not worth it: every phase touches the same primitives/snapshots), each phase = commits on `main` reviewed by code review + i18n reviewer (parity, `<Num>`, te faces) + design critic on en/te captures, one fix wave, scoped re-review, then push to `origin` (brollysolutions). The Docker web image is rebuilt at the end of each phase so http://localhost:3201 shows it. Estimated size: A ≈ 100 files (mostly tests/snapshots), B ≈ 25, C ≈ 20, D ≈ 15, E ≈ 55.
+
+## Verification (per phase)
+- `pnpm typecheck && pnpm lint && pnpm test` (mobile jest, i18n parity, the new tokens contrast + legacy tests), `pnpm doctor` after A5.
+- Playwright captures at 390 px of every changed screen in `?lang=en` and `?lang=te` against `expo start --web` (scratchpad only), reviewed by the design critic against this plan and the site; measured checks: no text below 4.5:1, one filled primary per screen, Playfair titles wrap ≤ 2 lines, Telugu pills not clipped, tab-bar labels clear.
+- Expo Go on the Android emulator once per phase: fonts loaded (no fallback), `<Num>` timer digits steady across 9:59 → 10:00, shadows and pressed fills visible, splash cream with the logo.
+- Docker: `pnpm docker:up` (with the port overrides on this laptop) and the login → OTP → paper → result flow still passes in the containers.
+
+## Risks
+- **Contrast**: `ink3` is only 5.0:1, so nothing smaller than `caption` may use it; gold is never text except `accentInk`; the contrast test enforces the pairs. Telugu kickers floor at 12 px.
+- **Playfair has no Telugu**: te titles use Noto 700 at the same size; Playfair is wider than Inter, so every title gets a two-line allowance.
+- **Snapshot churn**: the foundation refreshes all 16 once; each phase refreshes only its own set after the critic's yes, so reviews judge captures, not `.snap` diffs.
+- **Palette semantics** differ from CBT conventions (green/red/purple); the legend with counts explains them in place, and a re-tune later is a token edit.
+- **Shadows** render as CSS on web, `boxShadow` on RN 0.86 native; Android below API 28 approximates the warm tint. Tab bar keeps `elevation: 0`.
+- **Icon set**: a 1024 px app icon needs a raster of the favicon SVG (`@resvg/resvg-js` one-off) — if not feasible in-session the old icon files stay and it is listed as a follow-up; the splash can ship from the 552 px PNG immediately.
+
+## Addendum — Phase A as built (2026-09-05)
+- Six commits on `main`: A1 tokens + aliases (`ee6cacb`), A2 fonts (`4249118`), A3a primitives (`877d15d`), A3b primitives + Rail (`fa440f3`), A4 Brand (`dc6524b`), A5 splash/icons/docs.
+- **Palette semantics** follow the decision table and Phase D, not the A3 line: answered = `accent`/ink, marked = `ink`/`onInk`, not-answered = transparent + `dangerInk` outline (the `dangerTint` fill waits for Phase D), current ring = 2 px ink at −4 px inset (a 2 px canvas gap), a+m dot = `accent` in a `surface` ring.
+- `hazard` token block and `motion.marquee` were dropped in A3b (with `HazardRail`), not A1, so every commit stayed green; `legacy.test.mjs` shipped skipped in A1 and went live in A3b for the same reason.
+- `typography()` takes an options object (`{ italic, numeric }`) rather than a bare `italic` flag: `numeric` pins `<Num>` to Inter at display sizes (the decision says numbers are always Inter). A `wordmarkSub` (13) role joins `wordmark` (17) for the italic "Solutions".
+- Chip `sand` maps to `accent` (with `hivis`/`hazard`); `flag` to `danger`. Segmented dividers are always `line2` (the quiet-selection edge logic went with `line3`).
+- Icons were rasterised with `sharp` (already resolvable on the machine), not `@resvg/resvg-js`; the iOS `expo.icon` template bundle was removed in favour of the 1024 `icon.png`. `brolly-logo-yellow.png` was not committed (reference only).
+- Welcome's brand-plate assertions (`WelcomeView.test.tsx:48,76`) now assert the labelled logo image plus the "Practise the real PWT" title rather than a Latin-faced "PWT" plate; no tagline key was added.
+- Card shadows add `boxShadow` lines to the snapshots beyond the promised fontFamily/class/hex lines.

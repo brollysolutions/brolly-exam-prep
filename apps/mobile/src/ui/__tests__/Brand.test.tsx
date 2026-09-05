@@ -35,7 +35,7 @@ describe('Brand', () => {
     await render(<Brand size={40} testID="brand" />);
     const { width, height } = screen.getByTestId('brand-umbrella', hidden).props.style;
     expect(height).toBe(40);
-    expect(width / height).toBeCloseTo(257 / 165, 1);
+    expect(width / height).toBeCloseTo(257 / 162, 1);
   });
 
   it('never leaves the Latin display face, whatever the UI language', async () => {

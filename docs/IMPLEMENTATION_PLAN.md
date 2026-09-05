@@ -32,7 +32,7 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 
 ## Phase 3 — Design system (F-01)
 - [x] Tokens (TS + Tailwind theme) from prototype palette
-- [x] Fonts loaded via `useFonts` (Archivo, Noto Sans Telugu; Noto Nastaliq Urdu removed in F-26); `useTypography()`
+- [x] Fonts loaded via `useFonts` (Inter + Playfair Display since F-28, Noto Sans Telugu; Archivo retired, Noto Nastaliq Urdu removed in F-26); `useTypography()`
 - [x] `@tslprb/i18n`: en/te locales (all prototype strings; `ur` removed in F-26), i18next init, `useDir()`, `dir()`, `<Num>`
 - [x] Primitives in `apps/mobile/src/ui`
 - [x] Motion helpers (sheet/fade/toast/hazard marquee) with reduced-motion
@@ -55,6 +55,8 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - [x] F-25 PMT/PET eligibility checker — `/eligibility` (ungated, free for guests): post x gender x category-group pickers, decimal-pad measurement fields built from `standardEntries()` so a woman is never asked for a chest measurement, and a pure `evaluate()` that returns one row per standard (required vs yours, boundary counts as a pass) plus a verdict — eligible / not yet with the shortfalls listed / incomplete, a confirmed failure outranking a blank field. `packages/fixtures/src/physical-standards.ts` holds the post x gender x group table with per-field `verified` flags and per-post run events (1600 m constable men, 800 m constable women, 100 m + 800 m SI); the Constable PMT + PET figures are confirmed (research 2026-09-03), the ST men's chest and every SI figure are unconfirmed and tagged on their rows, with an SI note under the pickers. Last entry persists in `tslprb.eligibility`. Fix wave 1: the long runs are entered as mm:ss in two fields and stored as seconds (`runTime.ts`), the limit prints as `7:15`, the unconfirmed note is driven by `allVerified`, fields carry their standard as a placeholder, run labels and the disclaimer year are `iso()` interpolations, quiet full-width pickers, columned result rows, scroll-to-verdict
 - [x] F-26 two languages — Urdu removed at the user's request (2026-09-03): `Lang` is `'en' | 'te'` across i18n, tokens, contracts, fixtures and the API; `ur.json`, the Nastaliq font and every `ur` branch are gone; switchers offer EN / తె; `?lang=ur` falls back to English; the six Urdu snapshot tests are Telugu ones now; direction helpers stay wired but dormant (main)
 
+- [x] F-28 Brolly rebrand, Phase A (foundation) — semantic tokens on cream with `legacyColors` aliases and contrast/legacy tests; Inter + Playfair Display; every `src/ui` primitive on semantic names (ink primary, gold marks, red outlines, `Rail` for the critical clock, brand palette semantics); the `Brand` lockup on Home/Login/gallery and the full logo on Welcome; light splash, navy/gold app icon, `make-brand-assets.mjs`; docs rewritten. Six commits on main (A1 tokens → A2 fonts → A3a/A3b primitives → A4 brand → A5 splash/icons/docs), each green. Phases B (shell screens, F-29), C (content, F-30), D (attempt/result, F-31), E (legacy rename) follow
+
 ## Phase 5 — Backend scaffold (F-17)
 - [x] FastAPI app, routers, models, Alembic initial migration, arq worker with 3 cron jobs
 - [x] `docker-compose.yml`: postgres:17, redis:7, api, worker (the `dev` profile was removed in F-27)
@@ -71,6 +73,7 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - [ ] FEATURES/PR_TRACKING complete and consistent with `gh pr list` (PRs open after `gh auth login` + repo creation)
 
 ## Deviations / rulings
+- 2026-09-05 — Brolly rebrand: light cream theme, ink primaries, gold accents, Inter + Playfair; hi-vis/hazard identity retired. Palette semantics are the brand's (gold = answered, ink = marked, red outline = unanswered, plain = unvisited). Legacy colour names stay as aliases until Phase E; `src/ui` is semantic-only from Phase A. Pressed feedback is a `surface2` fill, not opacity.
 - 2026-09-05 — Whole-app Docker stack: web (Expo static export behind nginx) on 3201, API on 8200, no compose profiles; the web image is built with `EXPO_PUBLIC_API=http` against `http://localhost:8200`. `HttpApi` reads the catalogue/paper/analysis from the in-app fixture bank rather than rejecting 501, so the Dockerised app is playable; the API's fixture ids still differ from the app's (`test-pwt-07` vs `mock-07`), so attempts run on the local clock until F-17 aligns them.
 - 2026-09-05 — The hazard stripe is no longer screen chrome (user ruling): `Screen` defaults to `rail={false}` on every route; the attempt screen raises it only while the timer is critical.
 - 2026-09-02 — Branches are stacked (main ← F-17 ← F-01 ← F-16 ← …) instead of merged locally, so each feature still gets its own PR once the GitHub repo exists.

@@ -31,7 +31,7 @@ const WORD_SUB = 'Solutions';
 const UMBRELLA = require('../../assets/brand/umbrella.png');
 const LOGO = require('../../assets/brand/splash-logo.png');
 /** Pixel ratios of the two rasters (see `scripts/make-brand-assets.mjs`). */
-const UMBRELLA_RATIO = 257 / 165;
+const UMBRELLA_RATIO = 257 / 162;
 const LOGO_RATIO = 541 / 428;
 
 export function Brand({ variant = 'lockup', size, testID, className, style }: BrandProps) {

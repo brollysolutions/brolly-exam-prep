@@ -12,7 +12,7 @@
  *
  * The umbrella crop is found, not hard-coded: the first band of rows with ink, scanning from
  * the top, is the glyph; the text starts after the first fully transparent row below it.
- * `Brand.tsx` hard-codes the resulting aspect ratio (257 × 165) — re-run this and update it
+ * `Brand.tsx` hard-codes the resulting aspect ratio (257 × 162) — re-run this and update it
  * if the source logo changes.
  *
  * Run: `node scripts/make-brand-assets.mjs` from `apps/mobile`. Uses `sharp` (a dev tool on
@@ -31,7 +31,7 @@ const images = join(here, '../assets/images');
 
 const LOGO = join(brand, 'brolly-logo.png');
 const MARK = join(brand, 'brolly-mark.svg');
-/** Alpha above this counts as ink when scanning the logo. */
+/** Alpha above this counts as ink when scanning the logo for its bands. */
 const INK = 40;
 const MARGIN = 4;
 
@@ -57,19 +57,34 @@ async function inkBands(file) {
 async function umbrella() {
   const { bands, width, data, channels } = await inkBands(LOGO);
   const [y0, y1] = bands[0];
+  const alpha = (x, y) => data[(y * width + x) * channels + 3];
   let x0 = width;
   let x1 = 0;
   for (let y = y0; y <= y1; y += 1)
     for (let x = 0; x < width; x += 1)
-      if (data[(y * width + x) * channels + 3] > INK) {
+      if (alpha(x, y) > INK) {
         x0 = Math.min(x0, x);
         x1 = Math.max(x1, x);
       }
+  // The margin below must stop short of the wordmark. The gap rows carry anti-aliasing from
+  // both sides: the umbrella's tail stays inside its own columns, the ascenders' tops do not,
+  // so the first gap row with a faint pixel outside [x0, x1] belongs to the wordmark.
+  const next = bands[1]?.[0];
+  let bottom = next === undefined ? y1 + MARGIN : Math.min(y1 + MARGIN, next - 1);
+  for (let y = y1 + 1; y <= bottom; y += 1) {
+    let foreign = false;
+    for (let x = 0; x < width && !foreign; x += 1) foreign = alpha(x, y) > 0 && (x < x0 || x > x1);
+    if (foreign) {
+      bottom = y - 1;
+      break;
+    }
+  }
+  const top = Math.max(0, y0 - MARGIN);
   const box = {
     left: Math.max(0, x0 - MARGIN),
-    top: Math.max(0, y0 - MARGIN),
+    top,
     width: x1 - x0 + 1 + 2 * MARGIN,
-    height: y1 - y0 + 1 + 2 * MARGIN,
+    height: bottom - top + 1,
   };
   await sharp(LOGO).extract(box).png().toFile(join(brand, 'umbrella.png'));
   console.log('umbrella.png', `${box.width}×${box.height}`, `from (${box.left},${box.top})`);
