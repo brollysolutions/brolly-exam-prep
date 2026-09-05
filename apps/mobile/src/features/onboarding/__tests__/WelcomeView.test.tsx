@@ -1,4 +1,4 @@
-import { act, render, screen, userEvent } from '@testing-library/react-native';
+import { act, fireEvent, render, screen, userEvent } from '@testing-library/react-native';
 import { initI18n, setLanguage } from '@tslprb/i18n';
 
 import { iso } from '@/ui';
@@ -41,6 +41,27 @@ describe('WelcomeView', () => {
     await render(<WelcomeView onDone={onDone} />);
     await userEvent.press(screen.getByTestId('welcome-skip'));
     expect(onDone).toHaveBeenCalledTimes(1);
+  });
+
+  // The copy sat at the top of a 506 px pager with 384 px of cream under it, because RN Web
+  // wraps a horizontal list item in a content-height row and no `flexGrow` reaches through it
+  // (design review D1). The pager measures itself and each slide takes that as a MINIMUM — a
+  // fixed height would clip a Telugu slide that outgrows the box.
+  it('gives each slide the pager’s own height, and centres the copy in it', async () => {
+    await render(<WelcomeView onDone={jest.fn()} />);
+    const slide = () => screen.getByTestId('welcome-slide-1');
+    expect(slide()).toHaveStyle({ justifyContent: 'center', alignItems: 'center' });
+    expect(slide().props.style.minHeight).toBe(0);
+
+    await act(async () => {
+      fireEvent(screen.getByTestId('welcome-pager'), 'layout', {
+        nativeEvent: { layout: { width: 390, height: 506, x: 0, y: 0 } },
+      });
+    });
+    for (const n of [1, 2, 3]) {
+      expect(screen.getByTestId(`welcome-slide-${n}`).props.style.minHeight).toBe(506);
+    }
+    expect(slide().props.style.height).toBeUndefined();
   });
 
   it('opens on the full Brolly logo, named in Latin', async () => {

@@ -69,8 +69,13 @@ function Dot({ active, testID }: { active: boolean; testID: string }) {
  *
  * A `ScrollView`, not a `FlatList`: three slides is not a virtualization case, and RN Web wraps
  * every horizontal list item in a content-height row, which left the copy pinned to the top of
- * a 505 px pager with 372 px of empty cream under it (design review D1). A plain paging
- * scroller stretches its children to the pager's own height, so a slide can centre in it.
+ * a 506 px pager with 384 px of empty cream under it (design review D1).
+ *
+ * The scroller alone was not enough — measured, its content row was still 122 px tall inside a
+ * 506 px box, because neither `flexGrow` on the content container nor the default stretch
+ * reaches a child of a horizontal scroller on web. So the pager reports its own height and each
+ * slide takes it as a `minHeight`: a minimum, not a height, so a Telugu slide that outgrows the
+ * pager scrolls rather than clipping.
  *
  * Under RTL (dormant) the pages are laid out physically right-to-left, so "next" is a swipe to
  * the *right* and slide 1 sits on the right edge. The data array is reversed rather than the
@@ -92,6 +97,9 @@ export function WelcomeView({ initialSlide = 1, onDone }: WelcomeViewProps) {
   const last = slide === SLIDES.length;
   // Digits are always Latin-faced; their tracking still follows the UI language.
   const tracking = d.lang === 'en' ? 'kicker' : 'none';
+
+  // What a slide has to fill to centre its copy. 0 until the pager has been laid out.
+  const [pagerHeight, setPagerHeight] = useState(0);
 
   // A scroller has no `initialScrollIndex`: the opening page is jumped to once, after layout.
   const opened = useRef(false);
@@ -126,6 +134,7 @@ export function WelcomeView({ initialSlide = 1, onDone }: WelcomeViewProps) {
         // Without `flexGrow` the row of pages collapses to its tallest child, and a slide that
         // stretches to the container has nothing to stretch to.
         contentContainerStyle={{ flexGrow: 1 }}
+        onLayout={(e) => setPagerHeight(e.nativeEvent.layout.height)}
         onMomentumScrollEnd={(e) =>
           setPage(Math.round(e.nativeEvent.contentOffset.x / Math.max(width, 1)))
         }
@@ -138,7 +147,7 @@ export function WelcomeView({ initialSlide = 1, onDone }: WelcomeViewProps) {
             align="center"
             justify="center"
             className="px-4"
-            style={{ width }}
+            style={{ width, minHeight: pagerHeight }}
           >
             {/* The counter is the accessible version of the dots below. */}
             <Pill

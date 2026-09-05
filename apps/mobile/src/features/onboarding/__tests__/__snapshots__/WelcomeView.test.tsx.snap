@@ -73,6 +73,7 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
         }
       }
       horizontal={true}
+      onLayout={[Function]}
       onMomentumScrollEnd={[Function]}
       pagingEnabled={true}
       showsHorizontalScrollIndicator={false}
@@ -87,6 +88,7 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
               "flexDirection": "column",
               "gap": 12,
               "justifyContent": "center",
+              "minHeight": 0,
               "width": 750,
             }
           }
@@ -178,6 +180,7 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
               "flexDirection": "column",
               "gap": 12,
               "justifyContent": "center",
+              "minHeight": 0,
               "width": 750,
             }
           }
@@ -269,6 +272,7 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
               "flexDirection": "column",
               "gap": 12,
               "justifyContent": "center",
+              "minHeight": 0,
               "width": 750,
             }
           }
