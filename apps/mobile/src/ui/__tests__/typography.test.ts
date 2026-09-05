@@ -74,15 +74,29 @@ describe('typography()', () => {
     expect(typography('te', 'body', '800').fontFamily).toBe('NotoSansTelugu_800ExtraBold');
   });
 
-  // Playfair has no Telugu: the display roles fall back to Noto at 700 on the usual
-  // 1.65 line-height, so a Telugu title never reads lighter than its English twin.
-  it('sets Telugu display roles in Noto 700 (or the 800 asked for)', () => {
+  // Playfair has no Telugu: the display roles are set in Noto Serif Telugu (one weight, 700)
+  // on a 1.5 line-height, so a Telugu title carries the same serif voice as its English twin.
+  it('sets Telugu display roles in Noto Serif Telugu 700 on a 1.5 line-height, no tracking', () => {
     expect(typography('te', 'title', '600')).toEqual({
-      fontFamily: 'NotoSansTelugu_700Bold',
+      fontFamily: 'NotoSerifTelugu_700Bold',
       fontSize: text.title,
-      lineHeight: 39.6,
+      lineHeight: 36,
       letterSpacing: 0,
     });
-    expect(typography('te', 'title', '800').fontFamily).toBe('NotoSansTelugu_800ExtraBold');
+    // The serif ships one weight here: an 800 ask still lands on it.
+    expect(typography('te', 'title', '800').fontFamily).toBe('NotoSerifTelugu_700Bold');
+    expect(typography('te', 'titleLg').fontFamily).toBe('NotoSerifTelugu_700Bold');
+    expect(typography('te', 'display').fontFamily).toBe('NotoSerifTelugu_700Bold');
+    // The wordmark is always Latin (`Brand` sets `lang="en"`), but the role resolves either way.
+    expect(typography('te', 'wordmark').fontFamily).toBe('NotoSerifTelugu_700Bold');
+  });
+
+  // The cream theme's ramp (design review, F-28 fix wave 1): body 15 on a 22.5 line.
+  it('carries the fix-wave ramp', () => {
+    expect(typography('en', 'body')).toMatchObject({ fontSize: 15, lineHeight: 22.5 });
+    expect(typography('en', 'caption').fontSize).toBe(12);
+    expect(typography('en', 'small').fontSize).toBe(13);
+    expect(typography('en', 'bodyLg').fontSize).toBe(16);
+    expect(typography('en', 'question').fontSize).toBe(17.5);
   });
 });

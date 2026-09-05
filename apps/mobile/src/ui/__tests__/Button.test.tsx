@@ -31,11 +31,17 @@ describe('Button', () => {
     expect(screen.getByRole('button')).toBeDisabled();
   });
 
-  it('greys out a disabled primary with surface2 / ink4', async () => {
+  // A disabled primary is still the screen's main move, waiting: surface2 in the 3:1 outline
+  // ring with an ink3 label (4.7:1), never ink4 at 2.6:1 (design review, F-28 fix wave 1, D8).
+  it('greys out a disabled primary as surface2 in an outline ring with an ink3 label', async () => {
     await render(<Button label="Continue" disabled testID="btn" />);
-    expect(screen.getByTestId('btn').props.className).toContain('bg-surface2');
-    expect(screen.getByTestId('btn').props.className).not.toContain('bg-ink');
-    expect(screen.getByText('Continue').props.className).toContain('text-ink4');
+    const btn = screen.getByTestId('btn');
+    expect(btn.props.className).toMatch(/\bbg-surface2\b/);
+    expect(btn.props.className).toMatch(/\bborder-outline\b/);
+    expect(btn.props.className).not.toMatch(/\bbg-ink\b/);
+    expect(btn.props.className).not.toMatch(/\bopacity-40\b/);
+    expect(screen.getByText('Continue').props.className).toMatch(/\btext-ink3\b/);
+    expect(screen.getByText('Continue').props.className).not.toMatch(/\btext-ink4\b/);
   });
 
   it('fills ink with cream text as primary; the rest are outlines or bare', async () => {
@@ -43,13 +49,20 @@ describe('Button', () => {
     expect(screen.getByTestId('btn').props.className).toContain('bg-ink');
     expect(screen.getByText('Go').props.className).toContain('text-onInk');
     await screen.rerender(<Button label="Go" variant="secondary" testID="btn" />);
-    expect(screen.getByTestId('btn').props.className).toContain('border-line2');
-    expect(screen.getByText('Go').props.className).toContain('text-ink');
-    await screen.rerender(<Button label="Go" variant="danger" testID="btn" />);
-    // Never a solid red: the outline asks, and nothing on a settings list reads as primary.
-    expect(screen.getByTestId('btn').props.className).toContain('border-dangerInk');
-    expect(screen.getByTestId('btn').props.className).not.toContain('bg-danger');
-    expect(screen.getByText('Go').props.className).toContain('text-dangerInk');
+    // The outline is `outline` (3.0:1), not `line2` (1.5:1): a button has to read as one (D3).
+    expect(screen.getByTestId('btn').props.className).toMatch(/\bborder-outline\b/);
+    expect(screen.getByTestId('btn').props.className).not.toMatch(/\bbg-/);
+    expect(screen.getByText('Go').props.className).toMatch(/\btext-ink\b/);
+  });
+
+  it('danger is a red outline with red text and no fill of any colour', async () => {
+    await render(<Button label="Delete" variant="danger" testID="btn" />);
+    const btn = screen.getByTestId('btn');
+    // The outline asks; the app never commits in solid red, so no `bg-*` at all — not just no
+    // `bg-danger` — is the property that keeps a settings list from growing a second primary.
+    expect(btn.props.className).toMatch(/\bborder-dangerInk\b/);
+    expect(btn.props.className).not.toMatch(/\bbg-/);
+    expect(screen.getByText('Delete').props.className).toMatch(/\btext-dangerInk\b/);
   });
 
   it('accent is a gold outline that fills gold with ink text when active', async () => {

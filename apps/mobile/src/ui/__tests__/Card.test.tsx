@@ -1,4 +1,4 @@
-import { render, screen, userEvent } from '@testing-library/react-native';
+import { act, fireEvent, render, screen, userEvent } from '@testing-library/react-native';
 import { shadow } from '@tslprb/design-tokens';
 import { initI18n } from '@tslprb/i18n';
 import { Text } from 'react-native';
@@ -21,8 +21,10 @@ describe('Card', () => {
   it('rests on surface with a 1 px line and the card shadow', async () => {
     await render(<Card title="Constable" testID="card" />);
     const el = screen.getByTestId('card');
-    expect(el.props.className).toContain('border border-line');
-    expect(el.props.className).toContain('bg-surface');
+    expect(el.props.className).toMatch(/\bborder\b/);
+    expect(el.props.className).toMatch(/\bborder-line\b/);
+    expect(el.props.className).toMatch(/\bbg-surface\b/);
+    expect(el.props.style).toBeDefined();
     expect(el.props.style.boxShadow).toBe(shadow.card);
     expect(screen.getByText('Constable').props.className).toContain('text-ink');
   });
@@ -40,8 +42,45 @@ describe('Card', () => {
     await render(
       <Card title="Constable" flat trailing={<Text testID="trail">✓</Text>} testID="card" />,
     );
-    expect(screen.getByTestId('card').props.style?.boxShadow).toBeUndefined();
+    const style = screen.getByTestId('card').props.style;
+    expect(style).toBeDefined();
+    expect(style.boxShadow).toBeUndefined();
     expect(screen.getByTestId('trail')).toBeOnTheScreen();
+  });
+
+  it('fills surface2 while held — press feedback is state, not a `style` callback', async () => {
+    await render(<Card title="Constable" onPress={jest.fn()} testID="card" />);
+    const card = screen.getByTestId('card');
+    expect(card.props.className).not.toMatch(/\bbg-surface2\b/);
+    await act(async () => {
+      fireEvent(card, 'pressIn');
+    });
+    expect(screen.getByTestId('card').props.className).toMatch(/\bbg-surface2\b/);
+    expect(screen.getByTestId('card').props.className).not.toMatch(/\bbg-surface\b/);
+    expect(typeof screen.getByTestId('card').props.style).not.toBe('function');
+    await act(async () => {
+      fireEvent(card, 'pressOut');
+    });
+    expect(screen.getByTestId('card').props.className).toMatch(/\bbg-surface\b/);
+  });
+
+  // A selected card keeps the tint that says "selected" and dims like a filled control
+  // instead — otherwise a tap on the chosen post gave nothing back (code review, F-28 fix
+  // wave 1, I2).
+  it('keeps press feedback when selected: the tint stays and the card dims', async () => {
+    await render(<Card title="SI / ASI" selected onPress={jest.fn()} testID="card" />);
+    const card = screen.getByTestId('card');
+    expect(card).not.toHaveStyle({ opacity: 0.85 });
+    await act(async () => {
+      fireEvent(card, 'pressIn');
+    });
+    expect(screen.getByTestId('card')).toHaveStyle({ opacity: 0.85 });
+    expect(screen.getByTestId('card').props.className).toMatch(/\bbg-accentTint\b/);
+    expect(screen.getByTestId('card').props.className).not.toMatch(/\bbg-surface2\b/);
+    await act(async () => {
+      fireEvent(card, 'pressOut');
+    });
+    expect(screen.getByTestId('card')).not.toHaveStyle({ opacity: 0.85 });
   });
 
   it('reports presses and the selected state as a button', async () => {

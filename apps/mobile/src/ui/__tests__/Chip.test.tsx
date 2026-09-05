@@ -30,12 +30,44 @@ describe('Chip', () => {
     expect(screen.getByTestId('chip').props.className).toContain('bg-dangerTint');
   });
 
-  it('rests as a line2 outline with an ink3 label, ink4 when muted', async () => {
+  // The rest border is `outline` (3.0:1, WCAG 1.4.11), not `line2` (1.5:1): a filter the
+  // candidate can tap has to read as a control. (Design review, F-28 fix wave 1, D3.)
+  it('rests as an outline with an ink3 label', async () => {
     await render(<Chip label="Free" testID="chip" />);
-    expect(screen.getByTestId('chip').props.className).toContain('border-line2');
-    expect(screen.getByText('Free').props.className).toContain('text-ink3');
-    await screen.rerender(<Chip label="Free" muted testID="chip" />);
-    expect(screen.getByText('Free').props.className).toContain('text-ink4');
+    expect(screen.getByTestId('chip').props.className).toMatch(/\bborder-outline\b/);
+    expect(screen.getByTestId('chip').props.className).not.toMatch(/\bborder-line2\b/);
+    expect(screen.getByText('Free').props.className).toMatch(/\btext-ink3\b/);
+  });
+
+  // `ink4` was 2.8:1 (D2): a locked tab still has to be read to be understood as locked.
+  // The step-down is the weight (600 → 500), and the colour stays at the ink3 floor.
+  it('muted steps the weight down, never the colour below ink3', async () => {
+    await render(<Chip label="Free" muted testID="chip" />);
+    const label = screen.getByText('Free');
+    expect(label.props.className).toMatch(/\btext-ink3\b/);
+    expect(label.props.className).not.toMatch(/\btext-ink4\b/);
+    expect(label).toHaveStyle({ fontFamily: 'Inter_500Medium' });
+    await screen.rerender(<Chip label="Free" testID="chip" />);
+    expect(screen.getByText('Free')).toHaveStyle({ fontFamily: 'Inter_600SemiBold' });
+  });
+
+  // Soft gold sits 1.38:1 from the canvas (D4): the selected chip carries a 2 px inner bottom
+  // edge in the 3.4:1 gold so the state survives on any cream.
+  it('selected carries a 2 px accentStrong bottom edge; resting does not', async () => {
+    await render(<Chip label="Previous" active testID="chip" />);
+    expect(screen.getByTestId('chip').props.className).toMatch(/\bborder-b-2\b/);
+    expect(screen.getByTestId('chip').props.className).toMatch(/\bborder-b-accentStrong\b/);
+    await screen.rerender(<Chip label="Previous" testID="chip" />);
+    expect(screen.getByTestId('chip').props.className).not.toMatch(/\bborder-b-2\b/);
+    expect(screen.getByTestId('chip').props.className).not.toMatch(/\bborder-b-accentStrong\b/);
+  });
+
+  it('shape="pill" is fully round; the default is the 4 px tag corner', async () => {
+    await render(<Chip label="Previous" shape="pill" testID="chip" />);
+    expect(screen.getByTestId('chip').props.className).toMatch(/\brounded-full\b/);
+    expect(screen.getByTestId('chip').props.className).not.toMatch(/\brounded-xs\b/);
+    await screen.rerender(<Chip label="Previous" testID="chip" />);
+    expect(screen.getByTestId('chip').props.className).toMatch(/\brounded-xs\b/);
   });
 
   it('is a button that reports presses when interactive', async () => {

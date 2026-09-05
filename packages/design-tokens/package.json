@@ -12,7 +12,7 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "node --test test/contrast.test.mjs test/legacy.test.mjs"
+    "test": "node --test test/contrast.test.mjs test/scale.test.mjs test/legacy.test.mjs"
   },
   "devDependencies": {
     "typescript": "~6.0.3"

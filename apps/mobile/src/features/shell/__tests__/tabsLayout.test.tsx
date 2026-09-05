@@ -105,4 +105,22 @@ describe('tab bar', () => {
       expect(options.tabBarLabelStyle).toMatchObject({ letterSpacing: 0 });
     },
   );
+
+  // The body line-height (1.5 / 1.65) inside the label slot clipped "Study" at its descender
+  // (design review, F-28 fix wave 1, D1): the label gets its own line, 16 in Latin, 19 in Telugu.
+  it.each<[Lang, number, string]>([
+    ['en', 16, 'Inter_600SemiBold'],
+    ['te', 19, 'NotoSansTelugu_600SemiBold'],
+  ])('sets the %s label on its own %s px line, never the body line-height', async (lang, line, family) => {
+    await act(async () => {
+      await setLanguage(lang);
+    });
+    await render(<TabsLayout />);
+    expect(options.tabBarLabelStyle).toEqual({
+      fontFamily: family,
+      fontSize: 12,
+      lineHeight: line,
+      letterSpacing: 0,
+    });
+  });
 });

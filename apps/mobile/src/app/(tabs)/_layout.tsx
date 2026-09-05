@@ -34,6 +34,13 @@ const TABS = [
  */
 const BAR_HEIGHT = { en: 62, te: 68 } as const;
 
+/**
+ * The label's own line, not the body line-height: at 1.5 / 1.65 the caption's line box
+ * outgrew the slot React Navigation gives it and "Study" lost its descender (design review,
+ * F-28 fix wave 1, D1). 16 clears Inter's descender at 12 px; Telugu's stacked marks need 19.
+ */
+const LABEL_LINE_HEIGHT = { en: 16, te: 19 } as const;
+
 export default function TabsLayout() {
   const { t } = useTranslation();
   const lang = useLang();
@@ -60,8 +67,13 @@ export default function TabsLayout() {
           height: BAR_HEIGHT[lang] + insets.bottom,
         },
         tabBarItemStyle: { paddingVertical: 6, paddingBottom: 6 + insets.bottom },
-        // Tracking is Latin-only; the tab label follows the UI language's face.
-        tabBarLabelStyle: { ...label, letterSpacing: 0 },
+        // Tracking is Latin-only; the tab label follows the UI language's face on its own line.
+        tabBarLabelStyle: {
+          fontFamily: label.fontFamily,
+          fontSize: label.fontSize,
+          lineHeight: LABEL_LINE_HEIGHT[lang],
+          letterSpacing: 0,
+        },
         // The stock button ripples plain white; this one carries the gold tint and a
         // selection tick, like every other pressable in the app.
         tabBarButton: ({ children, style, onPress, ref: _ref, ...rest }) => (

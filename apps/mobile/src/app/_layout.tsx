@@ -10,6 +10,7 @@ import { NotoSansTelugu_500Medium } from '@expo-google-fonts/noto-sans-telugu/50
 import { NotoSansTelugu_600SemiBold } from '@expo-google-fonts/noto-sans-telugu/600SemiBold';
 import { NotoSansTelugu_700Bold } from '@expo-google-fonts/noto-sans-telugu/700Bold';
 import { NotoSansTelugu_800ExtraBold } from '@expo-google-fonts/noto-sans-telugu/800ExtraBold';
+import { NotoSerifTelugu_700Bold } from '@expo-google-fonts/noto-serif-telugu/700Bold';
 import { PlayfairDisplay_400Regular } from '@expo-google-fonts/playfair-display/400Regular';
 import { PlayfairDisplay_400Regular_Italic } from '@expo-google-fonts/playfair-display/400Regular_Italic';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
@@ -37,9 +38,9 @@ initI18n(override ?? useLangStore.getState().lang);
 if (override) useLangStore.getState().setLang(override);
 
 /**
- * Keys must equal `tokens.json → font.<lang>.weights` and `font.en.display.{regular,italic}` —
+ * Keys must equal `tokens.json → font.<lang>.weights` and `font.<lang>.display.{regular,italic}` —
  * `useTypography()` resolves families by these names. Per-weight subpath imports, so the
- * bundle carries five Inter files rather than the family's eighteen.
+ * bundle carries five Inter files rather than the family's eighteen (thirteen files in all).
  */
 const FONTS = {
   Inter_400Regular,
@@ -54,6 +55,7 @@ const FONTS = {
   NotoSansTelugu_600SemiBold,
   NotoSansTelugu_700Bold,
   NotoSansTelugu_800ExtraBold,
+  NotoSerifTelugu_700Bold,
 };
 
 export default function RootLayout() {

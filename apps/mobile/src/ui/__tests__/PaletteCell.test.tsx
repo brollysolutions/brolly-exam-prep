@@ -1,4 +1,4 @@
-import { render, screen, userEvent } from '@testing-library/react-native';
+import { act, fireEvent, render, screen, userEvent } from '@testing-library/react-native';
 import { colors, paletteState, size, type PaletteState } from '@tslprb/design-tokens';
 import { initI18n } from '@tslprb/i18n';
 
@@ -67,6 +67,29 @@ describe('PaletteCell', () => {
     expect(cell.props.accessibilityRole).toBe('button');
     await userEvent.press(cell);
     expect(onPress).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('PaletteCell pressed', () => {
+  // A transparent cell (not answered) has no fill to dim: opacity on nothing is nothing, so
+  // it takes the `surface2` press fill every outlined control uses (code review, fix wave 1).
+  it('fills the not-answered cell surface2 while held, and dims the filled ones', async () => {
+    await render(<PaletteCell n={4} state="na" onPress={jest.fn()} testID="cell" />);
+    await act(async () => {
+      fireEvent(screen.getByTestId('cell'), 'pressIn');
+    });
+    expect(screen.getByTestId('cell')).toHaveStyle({ backgroundColor: colors.surface2 });
+    expect(screen.getByTestId('cell')).not.toHaveStyle({ opacity: 0.85 });
+    await act(async () => {
+      fireEvent(screen.getByTestId('cell'), 'pressOut');
+    });
+    expect(screen.getByTestId('cell')).toHaveStyle({ backgroundColor: 'transparent' });
+
+    await screen.rerender(<PaletteCell n={4} state="a" onPress={jest.fn()} testID="cell" />);
+    await act(async () => {
+      fireEvent(screen.getByTestId('cell'), 'pressIn');
+    });
+    expect(screen.getByTestId('cell')).toHaveStyle({ opacity: 0.85, backgroundColor: colors.accent });
   });
 });
 

@@ -42,7 +42,11 @@ export function shadowStyle(name: ShadowName): { boxShadow: string } {
 
 type DisplayFace = {
   family: string;
-  /** Playfair ships one weight here: every `weight` maps to Regular; `italic` picks the italic file. */
+  /**
+   * One weight per face: every `weight` maps to `regular` (Playfair Regular in en, Noto Serif
+   * Telugu Bold in te); `italic` picks the italic file where the face has one (Telugu has none,
+   * so it names the same file).
+   */
   regular: string;
   italic: string;
   lineHeight: number;
@@ -54,7 +58,7 @@ export const fonts = raw.font as Record<
   {
     family: string;
     weights: Record<FontWeight, string>;
-    /** The serif display face (titles, hero lines, the wordmark). Latin only. */
+    /** The serif display face (titles, hero lines, the wordmark): Playfair in en, Noto Serif Telugu in te. */
     display?: DisplayFace;
     lineHeight: number;
     /** Added to every role's size (0 for both shipped faces; kept for a face that runs small). */
@@ -86,9 +90,10 @@ export type TypographyOptions = {
 /**
  * Resolve the font family, size, line-height and tracking for a language + role + weight.
  *
- * Display roles (`face` map) render in Playfair for `en`: one weight, 1.2 line-height, the
- * `display` tracking. Telugu has no Playfair, so those roles fall back to Noto at 700 (or the
- * 800 asked for) on the usual 1.65 line-height.
+ * Display roles (`face` map) render in the language's serif: Playfair for `en` (one weight,
+ * 1.2 line-height, the `display` tracking), Noto Serif Telugu 700 for `te` (1.5 line-height,
+ * no tracking — letter-spacing is Latin-only). A language without a serif would fall back to
+ * its text face at 700.
  */
 export function typography(
   lang: Lang,
@@ -107,7 +112,7 @@ export function typography(
       fontFamily: italic ? display.italic : display.regular,
       fontSize: base,
       lineHeight: Math.round(base * display.lineHeight * 10) / 10,
-      letterSpacing: wordmark ? 0 : raw.tracking.display,
+      letterSpacing: wordmark || lang !== 'en' ? 0 : raw.tracking.display,
     };
   }
   const w: FontWeight = isDisplay && weight !== '800' ? '700' : weight;

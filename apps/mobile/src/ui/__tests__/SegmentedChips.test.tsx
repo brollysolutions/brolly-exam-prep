@@ -53,7 +53,12 @@ describe('SegmentedChips (form pickers)', () => {
   it('is soft gold, self-sized and 8 px-padded by default — the header switcher', async () => {
     await render(<SegmentedChips value="pc" onChange={() => {}} options={posts} testID="seg" />);
     expect(screen.getByTestId('seg').props.className).toContain('self-start');
-    expect(screen.getByTestId('seg').props.className).toContain('border-line2');
+    // The frame is the 3:1 `outline`; the dividers between cells stay `line2` (D3).
+    expect(screen.getByTestId('seg').props.className).toMatch(/\bborder-outline\b/);
+    expect(screen.getByTestId('seg').props.className).not.toMatch(/\bborder-line2\b/);
+    expect(screen.getByRole('radio', { name: 'Constable' }).props.className).toMatch(
+      /\bborder-line2\b/,
+    );
     const active = screen.getByRole('radio', { name: 'Constable' });
     expect(active.props.className).toContain('bg-accentSoft');
     expect(active.props.className).toContain('px-3');
@@ -75,6 +80,23 @@ describe('SegmentedChips (form pickers)', () => {
     expect(screen.getByText('Constable')).toHaveStyle({ fontFamily: 'Inter_700Bold' });
     expect(screen.getByText('Sub-Inspector').props.className).toContain('text-ink3');
   });
+
+  // Soft gold is 1.38:1 from the canvas and surface2 1.08:1 (D4): the selected cell carries
+  // a 2 px inner bottom edge in the 3.4:1 gold in both tones, so the state reads on any cream.
+  it.each(['accent', 'quiet'] as const)(
+    'marks the selected cell with a 2 px accentStrong bottom edge in the %s tone',
+    async (tone) => {
+      await render(
+        <SegmentedChips value="pc" onChange={() => {}} options={posts} tone={tone} testID="seg" />,
+      );
+      const active = screen.getByRole('radio', { name: 'Constable' });
+      expect(active.props.className).toMatch(/\bborder-b-2\b/);
+      expect(active.props.className).toMatch(/\bborder-b-accentStrong\b/);
+      const idle = screen.getByRole('radio', { name: 'Sub-Inspector' });
+      expect(idle.props.className).not.toMatch(/\bborder-b-2\b/);
+      expect(idle.props.className).not.toMatch(/\bborder-b-accentStrong\b/);
+    },
+  );
 
   it('keeps `hivis` as the old name of the accent tone', async () => {
     await render(
