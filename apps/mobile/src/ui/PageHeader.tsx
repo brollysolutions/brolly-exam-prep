@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 
 import { Brand } from './Brand';
-import { cx } from './cx';
 import { Row } from './Row';
 import { Stack } from './Stack';
 import { Text } from './Text';
@@ -31,9 +30,11 @@ export type PageHeaderProps = {
  * The hub header: the brand lockup and whatever sits beside it, then a pill, then the screen's
  * name in the display face (Playfair in English, Noto Serif Telugu in Telugu).
  *
- * The title is `titleLg`, a display role, so it is set in the serif: Playfair runs wider than
- * Inter, and every title is given a two-line allowance rather than being truncated.
- * A leaf screen uses `BackHeader` instead — a bar with a way back, not a page opening.
+ * Two stacks, not one: 12 px under the lockup and 8 px inside the pill–title–subtitle block, so
+ * the three lines that belong together sit closer than the row that does not (proximity).
+ * The title is `titleLg`, a display role: Playfair runs wider than Inter, so it is given a
+ * two-line allowance rather than being truncated. A leaf screen uses `BackHeader` instead — a
+ * bar with a way back, not a page opening.
  */
 export function PageHeader({
   brand = false,
@@ -49,7 +50,7 @@ export function PageHeader({
 }: PageHeaderProps) {
   const top = brand || trailing !== undefined;
   return (
-    <Stack testID={testID} gap={3} className={cx('items-start', className)}>
+    <Stack testID={testID} gap={3} className={className}>
       {top && (
         <Row
           testID={testID ? `${testID}-top` : undefined}
@@ -57,21 +58,22 @@ export function PageHeader({
           justify={brand ? 'between' : 'end'}
           gap={2}
           wrap
-          className="w-full"
         >
           {brand && <Brand testID={brandTestID} />}
           {trailing}
         </Row>
       )}
-      {pill}
-      <Text testID={titleTestID} variant="titleLg" weight="600">
-        {title}
-      </Text>
-      {subtitle !== undefined && (
-        <Text testID={subtitleTestID} variant="body" color="ink3">
-          {subtitle}
+      <Stack gap={2}>
+        {pill}
+        <Text testID={titleTestID} variant="titleLg" weight="600">
+          {title}
         </Text>
-      )}
+        {subtitle !== undefined && (
+          <Text testID={subtitleTestID} variant="body" color="ink3">
+            {subtitle}
+          </Text>
+        )}
+      </Stack>
     </Stack>
   );
 }

@@ -7,9 +7,8 @@ import { FlatList, ScrollView, View, type ListRenderItemInfo } from 'react-nativ
 
 import type { PaperQuestion } from '@/data/api';
 import { startEdge } from '@/features/result/edge';
-import { BackHeader } from '@/features/result/Header';
 import { LoadError, Skeleton } from '@/features/result/Placeholder';
-import { Chip, Glyph, Kicker, Measure, Num, Row, Screen, Stack, Text } from '@/ui';
+import { BackHeader, Chip, Glyph, Kicker, Measure, Num, Row, Screen, Stack, Text } from '@/ui';
 
 export type PaperViewProps = {
   /** The paper's own title, from `TESTS`. Falls back to the generic screen title. */

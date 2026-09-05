@@ -20,7 +20,7 @@ const api = new MockApi();
 
 describe('MockApi — OTP', () => {
   it('issues a request id and exposes the dev code', async () => {
-    const res = await api.requestOtp({ phone: '9876543210' });
+    const res = await api.requestOtp({ phone: '9876544210' });
     expect(OtpRequestResponseSchema.parse(res)).toBeTruthy();
     expect(res.dev_code).toBe('123456');
   });

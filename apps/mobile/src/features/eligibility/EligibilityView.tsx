@@ -16,8 +16,8 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, TextInput, View, type LayoutChangeEvent } from 'react-native';
 import Animated, { LinearTransition } from 'react-native-reanimated';
 
-import { BackHeader } from '@/features/result/Header';
 import {
+  BackHeader,
   Button,
   Chip,
   cx,

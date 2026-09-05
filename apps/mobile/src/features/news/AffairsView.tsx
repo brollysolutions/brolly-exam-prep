@@ -4,8 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 
 import { startEdge } from '@/features/result/edge';
-import { BackHeader } from '@/features/result/Header';
-import { Chip, Kicker, Num, Screen, Stack, Text } from '@/ui';
+import { BackHeader, Chip, Kicker, Num, Screen, Stack, Text } from '@/ui';
 
 import { NewsEmpty } from './Empty';
 import { formatDay } from './format';

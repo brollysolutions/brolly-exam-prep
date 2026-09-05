@@ -1,4 +1,5 @@
 export { Banner, type BannerProps } from './Banner';
+export { BackHeader, type BackHeaderProps } from './BackHeader';
 export { BackRow, type BackRowProps } from './BackRow';
 export { Brand, type BrandProps, type BrandVariant } from './Brand';
 export { Button, type ButtonProps, type ButtonSize, type ButtonVariant } from './Button';
@@ -40,9 +41,11 @@ export {
 } from './motion';
 export { iso, Num } from './Num';
 export { OtpCells, type OtpCellsProps } from './OtpCells';
+export { PageHeader, type PageHeaderProps } from './PageHeader';
 export { PaletteCell, type PaletteCellProps } from './PaletteCell';
 export { pressedClass, pressedStyle, usePressed, type PressHandlers } from './pressable';
 export { PhoneField, type PhoneFieldProps } from './PhoneField';
+export { Pill, type PillProps, type PillTone } from './Pill';
 export { ProgressRail, type ProgressRailProps } from './ProgressRail';
 export { Rail, Rail as HazardRail, type RailProps, type RailTone } from './Rail';
 export { Row, type RowProps } from './Row';

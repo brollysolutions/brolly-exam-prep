@@ -6,7 +6,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-tslprb}
       POSTGRES_DB: ${POSTGRES_DB:-tslprb}
     ports:
-      - "127.0.0.1:${POSTGRES_HOST_PORT:-5432}:5432"
+      - "127.0.0.1:${POSTGRES_HOST_PORT:-5442}:5442"
     volumes:
       - tslprb_pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -33,7 +33,7 @@ services:
       - path: services/api/.env
         required: false
     environment:
-      DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://tslprb:tslprb@postgres:5432/tslprb}
+      DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://tslprb:tslprb@postgres:5442/tslprb}
       REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
       OTP_DEV_MODE: ${OTP_DEV_MODE:-true}
       # The web image is opened on WEB_HOST_PORT, so the default origin list follows it.
@@ -64,7 +64,7 @@ services:
       - path: services/api/.env
         required: false
     environment:
-      DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://tslprb:tslprb@postgres:5432/tslprb}
+      DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://tslprb:tslprb@postgres:5442/tslprb}
       REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
       OTP_DEV_MODE: ${OTP_DEV_MODE:-true}
     volumes:

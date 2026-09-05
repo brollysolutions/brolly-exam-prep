@@ -7,6 +7,7 @@ import { Pressable, ScrollView, View } from 'react-native';
 
 import type { ResultAction, ResultDetail } from '@/data/api';
 import {
+  BackHeader,
   Button,
   Chip,
   Duration,
@@ -25,7 +26,6 @@ import {
 } from '@/ui';
 
 import { startEdge } from './edge';
-import { BackHeader } from './Header';
 import { LoadError, Skeleton } from './Placeholder';
 
 export type ResultViewProps = {

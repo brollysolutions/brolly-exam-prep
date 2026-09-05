@@ -6,8 +6,18 @@ import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import Animated, { LinearTransition } from 'react-native-reanimated';
 
-import { BackHeader } from '@/features/result/Header';
-import { Chip, Glyph, Num, Row, Screen, Stack, Text, useMotion, usePressed } from '@/ui';
+import {
+  BackHeader,
+  Chip,
+  Glyph,
+  Num,
+  Row,
+  Screen,
+  Stack,
+  Text,
+  useMotion,
+  usePressed,
+} from '@/ui';
 
 import { NewsEmpty } from './Empty';
 import { formatDay } from './format';
