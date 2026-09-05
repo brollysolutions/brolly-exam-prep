@@ -12,7 +12,7 @@
     "typecheck": "pnpm -r --if-present typecheck",
     "lint": "pnpm -r --if-present lint",
     "test": "pnpm -r --if-present test",
-    "doctor": "pnpm --filter mobile exec expo-doctor",
+    "doctor": "pnpm --filter mobile exec npx --yes expo-doctor",
     "docker:up": "docker compose up -d --build",
     "docker:down": "docker compose down",
     "docker:logs": "docker compose logs -f web api worker",

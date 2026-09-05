@@ -6,9 +6,9 @@ paths:
 # Mobile UI rules (auto-loaded for apps/mobile)
 
 - Colours, spacing, radii and type come ONLY from `@tslprb/design-tokens` (via Tailwind classes or the `tokens` object). A raw hex in a component is a defect.
-- Primitives live in `apps/mobile/src/ui/`. Reuse `Screen`, `Brand`, `Text`, `Button`, `Card`, `Chip`, `SegmentedChips`, `Kicker`, `Sheet`, `Dialog`, `Toast`, `Banner`, `Keypad`, `OtpCells`, `PhoneField`, `ProgressRail`, `Rail`, `PaletteCell`, `Toggle`, `Row`, `Stack` before writing new ones.
+- Primitives live in `apps/mobile/src/ui/`. Reuse `Screen`, `Brand`, `BackRow`, `Text`, `Button`, `Card`, `Chip`, `SegmentedChips`, `Kicker`, `Sheet`, `Dialog`, `Toast`, `Banner`, `Keypad`, `OtpCells`, `PhoneField`, `ProgressRail`, `Rail`, `PaletteCell`, `Toggle`, `Row`, `Stack` before writing new ones.
 - Every pressable: `Pressable` from RN (or `Button`), min 48×48, `accessibilityRole`, `accessibilityLabel` when icon-only, haptic on primary actions (`expo-haptics` selection/impact).
-- Motion via `react-native-reanimated` only; durations 140–220 ms; honour `useReducedMotion()`.
+- Motion via `react-native-reanimated` only; durations 140–220 ms (the one exception is `motion.pulse`, 700 ms, the critical rail's breathing loop); honour `useReducedMotion()`.
 - Bottom sheets: `@gorhom/bottom-sheet` on `surface` with the 3 px gold (`accentStrong`) top edge. Dialogs are bottom-anchored `surface` cards, not centred alerts.
 - Timer logic uses a persisted `endsAt` timestamp, never a decrementing counter; recompute on `AppState` active.
 - Images via `expo-image`. Lists > 20 items via `FlatList`/`FlashList` with stable keys.
@@ -19,7 +19,8 @@ paths:
 - Web gotcha 2: a `style` FUNCTION on a `Pressable` that also has `className` loses its static values under css-interop. Use `usePressed()`; no style callbacks at all. Keep static sizes/colours in `className` or a flattened object `style`, and drive the `pressed` delta from the hook's `onPressIn`/`onPressOut` handlers.
 - `FlatList` slots (`ListEmptyComponent`, `ListHeaderComponent`, …) take a COMPONENT, not an element: passing `<Empty />` drags the owner fiber into serialised props and RNTL snapshots blow up with `RangeError: Invalid string length`.
 - Colour names in `src/ui` are semantic only (`canvas`, `surface`, `ink`, `accent`, …; `packages/design-tokens/test/legacy.test.mjs` enforces it). Screens may still use the legacy aliases (`tar`, `dim`, `hivis`, …) until Phase E renames them.
-- Gold is never text except `accentInk` (`#856a22`, 4.6:1 on cream); `accent` and `accentSoft` are fills, `accentStrong` is for rails, rings and edges. `ink3` (5.0:1) is the floor for text and never below `caption`; `ink4` is decorative only.
-- Exactly one ink-filled `Button variant="primary"` and exactly one gold-edged card per screen. No rail as screen chrome; `Rail` is the attempt screen's critical-time warning only.
+- Gold is never text except `accentInk` (`#856a22`, 4.6:1 on cream), and only on `canvas`/`surface`: gold text never sits on `surface2` (4.25:1) or on `accentTint` (4.14:1) — ink carries the text on a tint, the edge and the tint carry the meaning. `accent` and `accentSoft` are fills, `accentStrong` is for rails, rings and edges. `ink3` (5.0:1) is the floor for text and never below `caption`; `ink4` is decorative only.
+- `outline` (`#938b80`, 3.0:1) is the rest border of every interactive outlined control: secondary buttons, inactive chips, the segmented frame, idle keypad/OTP/phone boxes, the disabled primary's ring. `line` and `line2` are structure only (hairlines, dividers, the sheet grabber), never a control's boundary; `packages/design-tokens/test/contrast.test.mjs` pins the 3:1 floor.
+- Exactly one ink-filled `Button variant="primary"` per screen. One gold-edged card per screen is the target rule (the hero, the worked example, the score): Home meets it since fix wave 1, and every other screen converges on it in Phases B–D — until then a legacy screen may still carry more than one. No rail as screen chrome; `Rail` is the attempt screen's critical-time warning only.
 - Pressed feedback on cream is a `surface2` fill (`pressedClass` from `pressable.ts`), not opacity — opacity is invisible between two creams. Filled controls (ink, gold) dim with `pressedStyle`. Never emit two `bg-*` classes on one element.
 - Status vocabulary: gold = the candidate's own input / active; ink = a deliberate flag (marked); red = wrong, unanswered, critical; green = eligible, correct (text `okInk`).

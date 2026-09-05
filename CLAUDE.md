@@ -2,7 +2,7 @@
 
 Mock-test app for Telangana State Level Police Recruitment Board (PWT = Preliminary Written Test).
 Monorepo: Expo SDK 57 mobile app (Android-first, iOS-ready), Next.js placeholder site, FastAPI scaffold.
-Design identity: "Brolly on cream" (since 2026-09-05, F-28) — charcoal ink `#211c17` on cream `#f7f2e6`, brand gold `#c29b38` for fills and marks only (gold text is `accentInk` `#856a22`), Inter + Playfair Display, soft 6–12 px radii, warm ink shadows. One ink-filled primary per screen. The hi-vis/hazard identity is retired; see `docs/DESIGN_SYSTEM.md`.
+Design identity: "Brolly on cream" (since 2026-09-05, F-28) — charcoal ink `#211c17` on cream `#f7f2e6`, brand gold `#c29b38` for fills and marks only (gold text is `accentInk` `#856a22`), Inter + Playfair Display, soft 4–16 px radii, warm ink shadows. One ink-filled primary per screen. The hi-vis/hazard identity is retired; see `docs/DESIGN_SYSTEM.md`.
 Languages: **English default**, Telugu. Two languages only (Urdu removed 2026-09-03, F-26); the direction helpers stay wired but RTL is dormant.
 
 ## Layout
@@ -21,7 +21,7 @@ Languages: **English default**, Telugu. Two languages only (Urdu removed 2026-09
 pnpm dev:mobile          # expo start (scan QR with Expo Go on Android)
 pnpm web:mobile          # expo web preview in the browser
 pnpm typecheck | lint | test
-pnpm doctor              # expo-doctor
+pnpm run doctor          # expo-doctor via npx (bare `pnpm doctor` is pnpm's own command and shadows the script)
 pnpm docker:up | docker:down | docker:logs | docker:build   # whole app in Docker: web http://localhost:3201, API http://localhost:8200
 pnpm api:up | api:down | api:logs | api:migrate               # backend only (postgres redis api worker); migrate = alembic upgrade head
 ```
@@ -60,7 +60,7 @@ Invoke the listed skill(s) BEFORE starting work that matches. Process skills fir
 ## Conventions
 - Branch `feat/F-xx-slug`, `fix/…`, `chore/…`. Conventional commits. One feature ID per PR.
 - TypeScript strict; no `any`. Components are function components with explicit prop types.
-- Styling: NativeWind classes bound to tokens (`bg-tar`, `text-hivis`, `border-line`). No inline hex. Use `dir()` / `useDir()` for anything directional.
+- Styling: NativeWind classes bound to tokens (`bg-canvas`, `text-ink`, `border-line`). No inline hex. Use `dir()` / `useDir()` for anything directional.
 - Touch targets ≥ 48px. Respect reduced motion. Numbers always tabular and LTR (`<Num>`).
 - Never use `I18nManager.forceRTL` in this phase.
 - Expo Go only: do not add native modules outside the Expo Go allowlist without a documented ruling in `docs/WORKFLOW.md`.
