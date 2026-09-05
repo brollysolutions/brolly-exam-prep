@@ -55,7 +55,7 @@ describe('PageHeader', () => {
       />,
     );
     expect(screen.getByTestId('step')).toBeOnTheScreen();
-    expect(screen.getByTestId('sub').props.className).toContain('text-ink3');
+    expect(screen.getByTestId('sub').props.className).toMatch(/\btext-ink3\b/);
   });
 });
 

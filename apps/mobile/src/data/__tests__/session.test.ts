@@ -20,13 +20,13 @@ describe('session store', () => {
   });
 
   it('records the onboarding answers', () => {
-    read().setPhone('9876544210');
+    read().setPhone('9876543210');
     read().setToken('tok-1');
     read().setPost('si');
     read().setCategory('bc');
     read().completeOnboarding();
     expect(read()).toMatchObject({
-      phone: '9876544210',
+      phone: '9876543210',
       token: 'tok-1',
       post: 'si',
       category: 'bc',
@@ -41,7 +41,7 @@ describe('session store', () => {
   });
 
   it('logout resets identity and onboarding answers', () => {
-    read().setPhone('9876544210');
+    read().setPhone('9876543210');
     read().setToken('tok-1');
     read().setPost('pc');
     read().setCategory('sc');

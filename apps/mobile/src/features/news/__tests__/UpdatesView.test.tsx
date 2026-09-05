@@ -92,7 +92,7 @@ describe('UpdatesView', () => {
   it('keeps the link row quiet, with the yellow on its chevron alone', async () => {
     await render(<UpdatesView {...props()} />);
     await userEvent.press(screen.getByTestId('update-row-nt-2026-notification'));
-    expect(screen.getByText('Read the full notice').props.className).toContain('text-chalk2');
+    expect(screen.getByText('Read the full notice').props.className).toMatch(/\btext-chalk2\b/);
     expect(screen.getByText('›', { includeHiddenElements: true }).props.className).toContain(
       'text-hivis',
     );
@@ -132,8 +132,8 @@ describe('UpdatesView', () => {
     const empty = screen.getByTestId('updates-empty');
     expect(empty).toHaveTextContent(/Nothing yet/);
     expect(empty).toHaveTextContent(/No updates from the Board yet\./);
-    expect(empty.props.className).toContain('items-center');
-    expect(empty.props.className).toContain('justify-center');
+    expect(empty.props.className).toMatch(/\bitems-center\b/);
+    expect(empty.props.className).toMatch(/\bjustify-center\b/);
     expect(screen.queryByTestId('updates-list')).toBeNull();
   });
 
@@ -150,7 +150,7 @@ describe('UpdatesView', () => {
     const chip = within(screen.getByTestId('updates-header')).getByTestId('sample-data');
     expect(chip).toHaveTextContent('Sample data');
     expect(chip.props.accessibilityRole).toBeUndefined();
-    expect(chip.props.className).not.toContain('bg-hivis');
+    expect(chip.props.className).not.toMatch(/\bbg-hivis\b/);
   });
 });
 

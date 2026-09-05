@@ -19,21 +19,21 @@ describe('BackRow', () => {
     await render(<BackRow label="Back" onPress={jest.fn()} testID="back" />);
     const row = screen.getByTestId('back');
     // Opacity is invisible on cream (see `pressedClass`): the row swaps its fill instead.
-    expect(row.props.className).not.toContain('bg-surface2');
+    expect(row.props.className).not.toMatch(/\bbg-surface2\b/);
     await act(async () => {
       fireEvent(row, 'pressIn');
     });
-    expect(screen.getByTestId('back').props.className).toContain('bg-surface2');
+    expect(screen.getByTestId('back').props.className).toMatch(/\bbg-surface2\b/);
     expect(typeof screen.getByTestId('back').props.style).not.toBe('function');
     await act(async () => {
       fireEvent(row, 'pressOut');
     });
-    expect(screen.getByTestId('back').props.className).not.toContain('bg-surface2');
+    expect(screen.getByTestId('back').props.className).not.toMatch(/\bbg-surface2\b/);
   });
 
   it('is a 48 px target', async () => {
     await render(<BackRow label="Back" onPress={jest.fn()} testID="back" />);
-    expect(screen.getByTestId('back').props.className).toContain('h-touch');
+    expect(screen.getByTestId('back').props.className).toMatch(/\bh-touch\b/);
   });
 });
 

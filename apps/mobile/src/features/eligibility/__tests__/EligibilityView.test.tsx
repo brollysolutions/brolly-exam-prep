@@ -174,9 +174,9 @@ describe('EligibilityView — the form', () => {
   it('draws the pickers quiet and full-width', async () => {
     await render(<EligibilityView {...props()} />);
     const cell = screen.getByRole('radio', { name: t('onboarding.pcTitle') });
-    expect(cell.props.className).toContain('bg-surface2');
-    expect(cell.props.className).toContain('flex-1');
-    expect(cell.props.className).not.toContain('bg-accentSoft');
+    expect(cell.props.className).toMatch(/\bbg-surface2\b/);
+    expect(cell.props.className).toMatch(/\bflex-1\b/);
+    expect(cell.props.className).not.toMatch(/\bbg-accentSoft\b/);
   });
 
   it('moves the three pickers', async () => {
@@ -279,11 +279,11 @@ describe('EligibilityView — the verdict', () => {
 
   it('rules between the rows and gives the marks their own column', async () => {
     await render(<EligibilityView {...props({ values: PASSING, result: result(PASSING) })} />);
-    expect(screen.getByTestId('eligibility-row-height').props.className).toContain('border-b');
+    expect(screen.getByTestId('eligibility-row-height').props.className).toMatch(/\bborder-b\b/);
     expect(screen.getByTestId('eligibility-row-shotPut').props.className).not.toContain(
       'border-b',
     );
-    expect(screen.getByTestId('eligibility-mark-height').props.className).toContain('w-6');
+    expect(screen.getByTestId('eligibility-mark-height').props.className).toMatch(/\bw-6\b/);
   });
 
   // The verdict lands below the fold, under the button (design 10): once it is laid out,

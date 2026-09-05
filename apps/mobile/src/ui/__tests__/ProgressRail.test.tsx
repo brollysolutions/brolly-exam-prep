@@ -35,12 +35,12 @@ describe('ProgressRail', () => {
 
   it('is a rounded surface2 track with a gold fill, red for the danger tone', async () => {
     await render(<ProgressRail fraction={0.4} testID="rail" />);
-    expect(screen.getByTestId('rail').props.className).toContain('rounded-full');
-    expect(screen.getByTestId('rail').props.className).toContain('bg-surface2');
-    expect(screen.getByTestId('progress-fill').props.className).toContain('bg-accentStrong');
+    expect(screen.getByTestId('rail').props.className).toMatch(/\brounded-full\b/);
+    expect(screen.getByTestId('rail').props.className).toMatch(/\bbg-surface2\b/);
+    expect(screen.getByTestId('progress-fill').props.className).toMatch(/\bbg-accentStrong\b/);
     await screen.rerender(<ProgressRail fraction={0.4} tone="danger" testID="rail" />);
-    expect(screen.getByTestId('progress-fill').props.className).toContain('bg-dangerInk');
-    expect(screen.getByTestId('progress-fill').props.className).not.toContain('bg-accentStrong');
+    expect(screen.getByTestId('progress-fill').props.className).toMatch(/\bbg-dangerInk\b/);
+    expect(screen.getByTestId('progress-fill').props.className).not.toMatch(/\bbg-accentStrong\b/);
   });
 
   it('clamps the fraction and reports progress for accessibility', async () => {

@@ -97,14 +97,14 @@ describe('PaletteCell current outline', () => {
   it('is a 2 px ink ring with a 2 px canvas gap (2 px border at -4 px inset)', async () => {
     await render(<PaletteCell n={3} state="a" current />);
     const outline = screen.getByTestId('palette-current');
-    expect(outline.props.className).toContain('-inset-[4px]');
-    expect(outline.props.className).toContain('border-2 border-ink');
+    expect(outline.props.className).toMatch(/(^|\s)-inset-\[4px\](\s|$)/);
+    expect(outline.props.className).toMatch(/\bborder-2 border-ink\b/);
   });
 
   it('draws the answered+marked dot gold in a cream ring', async () => {
     await render(<PaletteCell n={5} state="am" dot />);
     const dot = screen.getByTestId('palette-dot');
-    expect(dot.props.className).toContain('bg-accent');
-    expect(dot.props.className).toContain('border-surface');
+    expect(dot.props.className).toMatch(/\bbg-accent\b/);
+    expect(dot.props.className).toMatch(/\bborder-surface\b/);
   });
 });

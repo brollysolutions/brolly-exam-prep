@@ -60,7 +60,7 @@ describe('LibraryView', () => {
   it('spends the gold fill on the chosen filter and nothing else', async () => {
     await render(<LibraryView {...handlers()} />);
     // A shelf of solid-gold Free badges next to three filters is six primary actions.
-    expect(screen.getByTestId('library-filter-full').props.className).toContain('bg-accentSoft');
+    expect(screen.getByTestId('library-filter-full').props.className).toMatch(/\bbg-accentSoft\b/);
     expect(screen.getByTestId('library-filter-sectional').props.className).not.toContain(
       'bg-accentSoft',
     );
@@ -71,14 +71,14 @@ describe('LibraryView', () => {
 
   it('lets a locked paper recede instead of shouting like one you can sit', async () => {
     await render(<LibraryView {...handlers()} />);
-    expect(screen.getByText('PWT Full Mock 08').props.className).toContain('text-dim');
-    expect(screen.getByText('PWT Full Mock 07').props.className).toContain('text-chalk');
+    expect(screen.getByText('PWT Full Mock 08').props.className).toMatch(/\btext-dim\b/);
+    expect(screen.getByText('PWT Full Mock 07').props.className).toMatch(/\btext-chalk\b/);
     expect(screen.getByTestId('library-badge-mock-08')).toHaveTextContent(/⛌/);
   });
 
   it('gives every filter a full 48 px target', async () => {
     await render(<LibraryView {...handlers()} />);
-    expect(screen.getByTestId('library-filter-full').props.className).toContain('h-touch');
+    expect(screen.getByTestId('library-filter-full').props.className).toMatch(/\bh-touch\b/);
   });
 
   it('opens on the shelf it is asked for', async () => {

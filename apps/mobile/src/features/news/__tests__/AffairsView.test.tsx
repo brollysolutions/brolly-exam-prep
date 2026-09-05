@@ -89,7 +89,7 @@ describe('AffairsView', () => {
   it('tracks the category kicker like every other kicker', async () => {
     await render(<AffairsView {...props()} />);
     const kicker = screen.getByTestId('affair-cat-af-metro-corridor');
-    expect(kicker.props.className).toContain('text-sand');
+    expect(kicker.props.className).toMatch(/\btext-sand\b/);
     // The same tracking as every other kicker, Home's affairs rows included (design 23d).
     expect(kicker).toHaveStyle({ letterSpacing: tracking.kicker });
   });
@@ -100,7 +100,7 @@ describe('AffairsView', () => {
   it.failing('F-30: the category kicker has a tone of its own, not the primary accent (restored in Phase C)', async () => {
     await render(<AffairsView {...props()} />);
     const kicker = screen.getByTestId('affair-cat-af-metro-corridor');
-    expect(kicker.props.className).toContain('text-sand');
+    expect(kicker.props.className).toMatch(/\btext-sand\b/);
     expect(colors.sand).not.toBe(colors.accentInk);
   });
 
@@ -126,7 +126,7 @@ describe('AffairsView', () => {
     const empty = screen.getByTestId('affairs-empty');
     expect(empty).toHaveTextContent(/Nothing yet/);
     expect(empty).toHaveTextContent(/No current affairs yet\./);
-    expect(empty.props.className).toContain('justify-center');
+    expect(empty.props.className).toMatch(/\bjustify-center\b/);
     expect(screen.queryByTestId('affairs-list')).toBeNull();
   });
 
@@ -143,7 +143,7 @@ describe('AffairsView', () => {
     const chip = within(screen.getByTestId('affairs-header')).getByTestId('sample-data');
     expect(chip).toHaveTextContent('Sample data');
     expect(chip.props.accessibilityRole).toBeUndefined();
-    expect(chip.props.className).not.toContain('bg-hivis');
+    expect(chip.props.className).not.toMatch(/\bbg-hivis\b/);
   });
 });
 

@@ -33,14 +33,14 @@ describe('Rail', () => {
     await render(<Rail />);
     expect(screen.getByTestId('rail', hidden)).toHaveStyle({ height: size.rail });
     // Animated.View is not NativeWind-wrapped: the colour lives on a plain child.
-    expect(screen.getByTestId('rail-fill', hidden).props.className).toContain('bg-accentStrong');
+    expect(screen.getByTestId('rail-fill', hidden).props.className).toMatch(/\bbg-accentStrong\b/);
   });
 
   it('turns red for the danger tone, and critical alone implies danger', async () => {
     await render(<Rail tone="danger" />);
-    expect(screen.getByTestId('rail-fill', hidden).props.className).toContain('bg-dangerInk');
+    expect(screen.getByTestId('rail-fill', hidden).props.className).toMatch(/\bbg-dangerInk\b/);
     await screen.rerender(<Rail critical />);
-    expect(screen.getByTestId('rail-fill', hidden).props.className).toContain('bg-dangerInk');
+    expect(screen.getByTestId('rail-fill', hidden).props.className).toMatch(/\bbg-dangerInk\b/);
     expect(screen.getByTestId('rail-fill', hidden).props.className).not.toContain(
       'bg-accentStrong',
     );
@@ -63,7 +63,7 @@ describe('Rail', () => {
     mockReduced.mockReturnValue(true);
     await render(<Rail critical />);
     expect(mockWithRepeat).not.toHaveBeenCalled();
-    expect(screen.getByTestId('rail-fill', hidden).props.className).toContain('bg-dangerInk');
+    expect(screen.getByTestId('rail-fill', hidden).props.className).toMatch(/\bbg-dangerInk\b/);
   });
 
   it('is hidden from the accessibility tree', async () => {

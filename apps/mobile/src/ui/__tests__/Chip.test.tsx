@@ -98,7 +98,7 @@ describe('Chip', () => {
     await render(<Chip label="Notification" testID="chip" />);
     const el = screen.getByTestId('chip');
     expect(el.props.className).toMatch(/\bmin-h-chip\b/);
-    expect(el.props.className).toContain('py-1');
+    expect(el.props.className).toMatch(/\bpy-1\b/);
     expect(el.props.className).not.toMatch(/(^|\s)h-chip(\s|$)/);
   });
 

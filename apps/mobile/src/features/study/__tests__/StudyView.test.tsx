@@ -57,11 +57,11 @@ describe('StudyView', () => {
     const chevron = screen.getByTestId('study-chevron-st-re-coding', {
       includeHiddenElements: true,
     });
-    expect(chevron.props.className).toContain('text-hivis');
+    expect(chevron.props.className).toMatch(/\btext-hivis\b/);
     const chip = screen.getByTestId('study-read-st-re-coding');
-    expect(chip.props.className).not.toContain('bg-hivis');
+    expect(chip.props.className).not.toMatch(/\bbg-hivis\b/);
     // The same tick the topic page uses once you mark it read.
-    expect(within(chip).getByText('✓').props.className).toContain('text-hivis');
+    expect(within(chip).getByText('✓').props.className).toMatch(/\btext-hivis\b/);
   });
 
   it('gives every row a 48 px-plus target', async () => {

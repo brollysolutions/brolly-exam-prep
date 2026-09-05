@@ -57,6 +57,6 @@ describe('BackHeader', () => {
     await render(<BackHeader title="Updates" onBack={jest.fn()} testID="header" />);
     const chevron = screen.getByText('‹', { includeHiddenElements: true });
     expect(chevron).toHaveStyle({ fontFamily: 'Inter_400Regular' });
-    expect(chevron.props.className).toContain('text-ink2');
+    expect(chevron.props.className).toMatch(/\btext-ink2\b/);
   });
 });

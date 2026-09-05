@@ -16,7 +16,7 @@ describe('Text', () => {
 
   it('is ink by default', async () => {
     await render(<Text testID="t">EN</Text>);
-    expect(screen.getByTestId('t').props.className).toContain('text-ink');
+    expect(screen.getByTestId('t').props.className).toMatch(/\btext-ink\b/);
   });
 
   it('swaps the colour class cleanly on re-render (no stale class, plain object style)', async () => {
@@ -31,8 +31,8 @@ describe('Text', () => {
       </Text>,
     );
     const el = screen.getByTestId('t');
-    expect(el.props.className).toContain('text-ink3');
-    expect(el.props.className).not.toContain('text-canvas');
+    expect(el.props.className).toMatch(/\btext-ink3\b/);
+    expect(el.props.className).not.toMatch(/\btext-canvas\b/);
     // css-interop pushes into array styles in place on web; Text must hand it an object.
     expect(Array.isArray(el.props.style)).toBe(false);
   });

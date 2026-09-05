@@ -14,8 +14,8 @@ describe('StatTile', () => {
     const tile = screen.getByTestId('tile');
     expect(tile.props.className).toMatch(/\bbg-surface2\b/);
     expect(tile.props.className).toMatch(/\bborder-line\b/);
-    expect(screen.getByText(iso('62%')).props.className).toContain('text-ink');
-    expect(screen.getByText('Best score').props.className).toContain('text-ink3');
+    expect(screen.getByText(iso('62%')).props.className).toMatch(/\btext-ink\b/);
+    expect(screen.getByText('Best score').props.className).toMatch(/\btext-ink3\b/);
   });
 
   // No paper sat is not a score of zero: the dash is the honest value, and it steps back to
@@ -23,12 +23,12 @@ describe('StatTile', () => {
   it('draws an em dash in ink3 when there is nothing to count yet', async () => {
     await render(<StatTile label="Best score" testID="tile" />);
     expect(screen.getByText(iso('—'))).toBeOnTheScreen();
-    expect(screen.getByText(iso('—')).props.className).toContain('text-ink3');
+    expect(screen.getByText(iso('—')).props.className).toMatch(/\btext-ink3\b/);
   });
 
   it('keeps a real zero and quiets it', async () => {
     await render(<StatTile value={0} label="Papers practised" empty testID="tile" />);
-    expect(screen.getByText(iso(0)).props.className).toContain('text-ink3');
+    expect(screen.getByText(iso(0)).props.className).toMatch(/\btext-ink3\b/);
   });
 
   // "62%" and "Best score" are one fact to a screen reader, and two stops otherwise.

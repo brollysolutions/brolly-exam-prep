@@ -17,20 +17,20 @@ describe('Kicker', () => {
       </Kicker>,
     );
     const el = screen.getByTestId('kicker');
-    expect(el.props.className).toContain('mt-3');
-    expect(el.props.className).toContain('text-ink3');
+    expect(el.props.className).toMatch(/\bmt-3\b/);
+    expect(el.props.className).toMatch(/\btext-ink3\b/);
   });
 
   it('counts are dark gold by default and take a colour when the section is the primary one', async () => {
     const digits = String.fromCharCode(0x2066) + '03' + String.fromCharCode(0x2069);
     await render(<Kicker index="03">Do these three next</Kicker>);
-    expect(screen.getByText(digits).props.className).toContain('text-accentInk');
+    expect(screen.getByText(digits).props.className).toMatch(/\btext-accentInk\b/);
     await render(
       <Kicker index="03" indexColor="ink" color="ink">
         Do these three next
       </Kicker>,
     );
-    expect(screen.getByText(digits).props.className).toContain('text-ink');
+    expect(screen.getByText(digits).props.className).toMatch(/\btext-ink\b/);
   });
 
   it('puts className on the wrapping row when an index is given', async () => {
@@ -40,15 +40,15 @@ describe('Kicker', () => {
       </Kicker>,
     );
     expect(screen.getByText('⁦01⁩')).toBeOnTheScreen();
-    expect(screen.getByTestId('kicker').props.className).not.toContain('mt-3');
+    expect(screen.getByTestId('kicker').props.className).not.toMatch(/\bmt-3\b/);
   });
 });
 
 describe('Kicker contrast and tracking', () => {
   it('defaults to ink3 (5.0:1), never ink4', async () => {
     await render(<Kicker testID="k">Section</Kicker>);
-    expect(screen.getByTestId('k').props.className).toContain('text-ink3');
-    expect(screen.getByTestId('k').props.className).not.toContain('text-ink4');
+    expect(screen.getByTestId('k').props.className).toMatch(/\btext-ink3\b/);
+    expect(screen.getByTestId('k').props.className).not.toMatch(/\btext-ink4\b/);
   });
 
   it('index digits share the label tracking: the kicker token in English, 0 in Telugu', async () => {

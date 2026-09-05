@@ -46,8 +46,8 @@ describe('Button', () => {
 
   it('fills ink with cream text as primary; the rest are outlines or bare', async () => {
     await render(<Button label="Go" testID="btn" />);
-    expect(screen.getByTestId('btn').props.className).toContain('bg-ink');
-    expect(screen.getByText('Go').props.className).toContain('text-onInk');
+    expect(screen.getByTestId('btn').props.className).toMatch(/\bbg-ink\b/);
+    expect(screen.getByText('Go').props.className).toMatch(/\btext-onInk\b/);
     await screen.rerender(<Button label="Go" variant="secondary" testID="btn" />);
     // The outline is `outline` (3.0:1), not `line2` (1.5:1): a button has to read as one (D3).
     expect(screen.getByTestId('btn').props.className).toMatch(/\bborder-outline\b/);
@@ -67,18 +67,18 @@ describe('Button', () => {
 
   it('accent is a gold outline that fills gold with ink text when active', async () => {
     await render(<Button label="Mark" variant="accent" testID="btn" />);
-    expect(screen.getByTestId('btn').props.className).toContain('border-accentStrong');
-    expect(screen.getByText('Mark').props.className).toContain('text-accentInk');
+    expect(screen.getByTestId('btn').props.className).toMatch(/\bborder-accentStrong\b/);
+    expect(screen.getByText('Mark').props.className).toMatch(/\btext-accentInk\b/);
     await screen.rerender(<Button label="Mark" variant="accent" active testID="btn" />);
-    expect(screen.getByTestId('btn').props.className).toContain('bg-accent');
-    expect(screen.getByText('Mark').props.className).toContain('text-ink');
+    expect(screen.getByTestId('btn').props.className).toMatch(/\bbg-accent\b/);
+    expect(screen.getByText('Mark').props.className).toMatch(/\btext-ink\b/);
   });
 
   it('keeps the old variant names as aliases for one cycle', async () => {
     await render(<Button label="Old" variant="hazard" testID="btn" />);
-    expect(screen.getByTestId('btn').props.className).toContain('border-accentStrong');
+    expect(screen.getByTestId('btn').props.className).toMatch(/\bborder-accentStrong\b/);
     await screen.rerender(<Button label="Old" variant="dangerOutline" testID="btn" />);
-    expect(screen.getByTestId('btn').props.className).toContain('border-dangerInk');
+    expect(screen.getByTestId('btn').props.className).toMatch(/\bborder-dangerInk\b/);
   });
 
   it('uses the 56 px height for lg and 48 for md, as an object style', async () => {

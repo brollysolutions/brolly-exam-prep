@@ -34,7 +34,7 @@ describe('SegmentedChips (language switcher)', () => {
     await render(<SegmentedChips value="te" onChange={onChange} options={options} />);
     expect(screen.getByRole('radio', { name: 'తె' })).toBeChecked();
     expect(screen.getAllByRole('radio')).toHaveLength(2);
-    expect(screen.getByRole('radio', { name: 'EN' }).props.className).toContain('min-w-touch ');
+    expect(screen.getByRole('radio', { name: 'EN' }).props.className).toMatch(/\bmin-w-touch\b/);
     await userEvent.press(screen.getByRole('radio', { name: 'EN' }));
     expect(onChange).toHaveBeenCalledWith('en');
   });
@@ -52,7 +52,7 @@ describe('SegmentedChips (form pickers)', () => {
 
   it('is soft gold, self-sized and 8 px-padded by default — the header switcher', async () => {
     await render(<SegmentedChips value="pc" onChange={() => {}} options={posts} testID="seg" />);
-    expect(screen.getByTestId('seg').props.className).toContain('self-start');
+    expect(screen.getByTestId('seg').props.className).toMatch(/\bself-start\b/);
     // The frame is the 3:1 `outline`; the dividers between cells stay `line2` (D3).
     expect(screen.getByTestId('seg').props.className).toMatch(/\bborder-outline\b/);
     expect(screen.getByTestId('seg').props.className).not.toMatch(/\bborder-line2\b/);
@@ -60,11 +60,11 @@ describe('SegmentedChips (form pickers)', () => {
       /\bborder-line2\b/,
     );
     const active = screen.getByRole('radio', { name: 'Constable' });
-    expect(active.props.className).toContain('bg-accentSoft');
-    expect(active.props.className).toContain('px-3');
-    expect(active.props.className).not.toContain('flex-1');
-    expect(screen.getByText('Constable').props.className).toContain('text-ink');
-    expect(screen.getByText('Sub-Inspector').props.className).toContain('text-ink3');
+    expect(active.props.className).toMatch(/\bbg-accentSoft\b/);
+    expect(active.props.className).toMatch(/\bpx-3\b/);
+    expect(active.props.className).not.toMatch(/\bflex-1\b/);
+    expect(screen.getByText('Constable').props.className).toMatch(/\btext-ink\b/);
+    expect(screen.getByText('Sub-Inspector').props.className).toMatch(/\btext-ink3\b/);
   });
 
   // Three stacked pickers on one screen cannot each carry a gold block: the selected cell
@@ -74,11 +74,11 @@ describe('SegmentedChips (form pickers)', () => {
       <SegmentedChips value="pc" onChange={() => {}} options={posts} tone="quiet" testID="seg" />,
     );
     const active = screen.getByRole('radio', { name: 'Constable' });
-    expect(active.props.className).toContain('bg-surface2');
-    expect(active.props.className).not.toContain('bg-accentSoft');
-    expect(screen.getByText('Constable').props.className).toContain('text-ink');
+    expect(active.props.className).toMatch(/\bbg-surface2\b/);
+    expect(active.props.className).not.toMatch(/\bbg-accentSoft\b/);
+    expect(screen.getByText('Constable').props.className).toMatch(/\btext-ink\b/);
     expect(screen.getByText('Constable')).toHaveStyle({ fontFamily: 'Inter_700Bold' });
-    expect(screen.getByText('Sub-Inspector').props.className).toContain('text-ink3');
+    expect(screen.getByText('Sub-Inspector').props.className).toMatch(/\btext-ink3\b/);
   });
 
   // Soft gold is 1.38:1 from the canvas and surface2 1.08:1 (D4): the selected cell carries
@@ -111,10 +111,10 @@ describe('SegmentedChips (form pickers)', () => {
     await render(
       <SegmentedChips value="pc" onChange={() => {}} options={posts} block testID="seg" />,
     );
-    expect(screen.getByTestId('seg').props.className).toContain('self-stretch');
-    expect(screen.getByTestId('seg').props.className).not.toContain('self-start');
+    expect(screen.getByTestId('seg').props.className).toMatch(/\bself-stretch\b/);
+    expect(screen.getByTestId('seg').props.className).not.toMatch(/\bself-start\b/);
     for (const name of ['Constable', 'Sub-Inspector']) {
-      expect(screen.getByRole('radio', { name }).props.className).toContain('flex-1');
+      expect(screen.getByRole('radio', { name }).props.className).toMatch(/\bflex-1\b/);
     }
   });
 });

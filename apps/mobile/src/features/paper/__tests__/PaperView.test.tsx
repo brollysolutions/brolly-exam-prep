@@ -104,7 +104,7 @@ describe('PaperView', () => {
   it('offers a full-height chip per section and jumps to its first question', async () => {
     const scrollToIndex = jest.spyOn(FlatList.prototype, 'scrollToIndex').mockImplementation();
     await render(<PaperView {...props()} />);
-    expect(screen.getByTestId('paper-section-0').props.className).toContain('h-touch');
+    expect(screen.getByTestId('paper-section-0').props.className).toMatch(/\bh-touch\b/);
     await userEvent.press(screen.getByTestId('paper-section-1'));
     // Section 2 starts at question 4, which is index 3.
     expect(scrollToIndex).toHaveBeenCalledWith({ index: 3, animated: false });
