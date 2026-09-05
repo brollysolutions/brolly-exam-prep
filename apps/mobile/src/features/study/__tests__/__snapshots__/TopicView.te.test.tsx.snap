@@ -286,7 +286,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
       >
         <Text
           accessibilityLanguage="en"
-          className="text-dim"
+          className="text-ink3"
           style={
             {
               "fontFamily": "Inter_600SemiBold",
@@ -305,7 +305,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
           ⁦10⁩
         </Text>
         <Text
-          className="text-dim"
+          className="text-ink3"
           style={
             {
               "fontFamily": "NotoSansTelugu_400Regular",

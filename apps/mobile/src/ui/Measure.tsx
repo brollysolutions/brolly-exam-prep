@@ -29,7 +29,7 @@ export function Measure({
   value,
   unit,
   variant = 'caption',
-  color = 'dim',
+  color = 'ink3',
   weight = '600',
   className,
   testID,

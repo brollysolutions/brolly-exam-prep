@@ -73,12 +73,16 @@ describe('the tabs themselves', () => {
 });
 
 describe('tab bar', () => {
-  it('sits on panel with a 1 px line and no shadow', async () => {
+  it('sits on surface with a 1 px line and no shadow; dark-gold active, ink3 inactive', async () => {
     await render(<TabsLayout />);
-    expect(barStyle().backgroundColor).toBe(colors.panel);
-    expect(options.tabBarActiveTintColor).toBe(colors.hivis);
-    expect(options.tabBarInactiveTintColor).toBe(colors.dim);
-    expect(options.tabBarStyle).toMatchObject({ borderTopWidth: 1, elevation: 0 });
+    expect(barStyle().backgroundColor).toBe(colors.surface);
+    expect(options.tabBarActiveTintColor).toBe(colors.accentInk);
+    expect(options.tabBarInactiveTintColor).toBe(colors.ink3);
+    expect(options.tabBarStyle).toMatchObject({
+      borderTopWidth: 1,
+      borderTopColor: colors.line,
+      elevation: 0,
+    });
   });
 
   // 56 px clipped the English labels by a pixel (design review, F-23-25): the label band

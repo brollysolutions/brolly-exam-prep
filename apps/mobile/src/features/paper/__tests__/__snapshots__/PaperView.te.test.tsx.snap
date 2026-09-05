@@ -121,7 +121,7 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
       >
         <Text
           accessibilityLanguage="en"
-          className="text-dim"
+          className="text-ink3"
           style={
             {
               "fontFamily": "Inter_600SemiBold",
@@ -140,7 +140,7 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
           ⁦2⁩
         </Text>
         <Text
-          className="text-dim"
+          className="text-ink3"
           style={
             {
               "fontFamily": "NotoSansTelugu_400Regular",

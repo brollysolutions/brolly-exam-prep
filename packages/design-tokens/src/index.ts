@@ -30,7 +30,6 @@ export const size = raw.size;
 export const text = raw.text;
 export const tracking = raw.tracking;
 export const motion = raw.motion;
-export const hazard = raw.hazard;
 export const shadow = raw.shadow;
 
 /**
@@ -120,12 +119,15 @@ export function typography(
   };
 }
 
-/** Palette cell states (see prototype `CS` map). */
+/**
+ * Palette cell states. Brand semantics (decision 2026-09-05): plain = unvisited, red outline =
+ * not answered, gold = answered (the candidate's own input), ink = marked (a deliberate flag).
+ */
 export const paletteState = {
-  nv: { bg: colors.panel3, fg: colors.steel, border: colors.line, borderWidth: 1 },
-  na: { bg: 'transparent', fg: colors.flag, border: colors.flag, borderWidth: 2 },
-  a: { bg: colors.hivis, fg: colors.tar, border: colors.hivis, borderWidth: 2 },
-  m: { bg: colors.hazard, fg: colors.tar, border: colors.hazard, borderWidth: 2 },
-  am: { bg: colors.hazard, fg: colors.tar, border: colors.hazard, borderWidth: 2 },
+  nv: { bg: colors.surface2, fg: colors.ink3, border: colors.line2, borderWidth: 1 },
+  na: { bg: 'transparent', fg: colors.dangerInk, border: colors.dangerInk, borderWidth: 2 },
+  a: { bg: colors.accent, fg: colors.ink, border: colors.accent, borderWidth: 2 },
+  m: { bg: colors.ink, fg: colors.onInk, border: colors.ink, borderWidth: 2 },
+  am: { bg: colors.ink, fg: colors.onInk, border: colors.ink, borderWidth: 2 },
 } as const;
 export type PaletteState = keyof typeof paletteState;

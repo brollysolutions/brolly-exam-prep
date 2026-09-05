@@ -12,9 +12,6 @@ import { fileURLToPath } from 'node:url';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const tokens = JSON.parse(readFileSync(path.join(here, '..', 'tokens.json'), 'utf8'));
 const SCAN_ROOT = path.join(here, '..', '..', '..', 'apps', 'mobile', 'src', 'ui');
-/** Flipped to `false` once the primitives are rewritten (Phase A, commit A3). */
-const PENDING = 'primitives migrate to semantic names in A3';
-
 const legacy = Object.keys(tokens.legacyColors).join('|');
 const PATTERNS = [
   // Tailwind colour utilities: bg-tar, text-dim, border-t-hivis …
@@ -33,7 +30,7 @@ function walk(dir) {
   });
 }
 
-test('src/ui uses semantic colour names only', { skip: PENDING }, () => {
+test('src/ui uses semantic colour names only', () => {
   const offenders = [];
   for (const file of walk(SCAN_ROOT)) {
     const lines = readFileSync(file, 'utf8').split('\n');

@@ -12,7 +12,7 @@ import { haptics } from '@/ui';
  * F-07 — the app shell.
  *
  * JS `Tabs`, not `NativeTabs`: the native bar draws itself with system materials (liquid glass
- * on iOS 26, Material You on Android) and cannot be made hi-vis-on-tar, which is the one thing
+ * on iOS 26, Material You on Android) and cannot be made Brolly-on-cream, which is the one thing
  * this app's chrome has to be. The bar below is identical on both platforms by design.
  */
 const TABS = [
@@ -45,11 +45,12 @@ export default function TabsLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        sceneStyle: { backgroundColor: colors.tar },
-        tabBarActiveTintColor: colors.hivis,
-        tabBarInactiveTintColor: colors.dim,
+        sceneStyle: { backgroundColor: colors.canvas },
+        // Gold text is the 700 shade only (4.6:1); inactive labels are ink3 (5.0:1).
+        tabBarActiveTintColor: colors.accentInk,
+        tabBarInactiveTintColor: colors.ink3,
         tabBarStyle: {
-          backgroundColor: colors.panel,
+          backgroundColor: colors.surface,
           borderTopColor: colors.line,
           borderTopWidth: 1,
           // Elevation by a 1 px line, never a shadow.
@@ -61,12 +62,12 @@ export default function TabsLayout() {
         tabBarItemStyle: { paddingVertical: 6, paddingBottom: 6 + insets.bottom },
         // Tracking is Latin-only; the tab label follows the UI language's face.
         tabBarLabelStyle: { ...label, letterSpacing: 0 },
-        // The stock button ripples plain white; this one carries the hi-vis tint and a
+        // The stock button ripples plain white; this one carries the gold tint and a
         // selection tick, like every other pressable in the app.
         tabBarButton: ({ children, style, onPress, ref: _ref, ...rest }) => (
           <Pressable
             {...rest}
-            android_ripple={{ color: colors.hivisTint3, borderless: false }}
+            android_ripple={{ color: colors.accentTint, borderless: false }}
             onPress={(e) => {
               haptics.select();
               onPress?.(e);

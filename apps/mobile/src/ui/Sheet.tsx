@@ -5,12 +5,13 @@ import {
   BottomSheetView,
   type BottomSheetBackdropProps,
 } from '@gorhom/bottom-sheet';
-import { colors } from '@tslprb/design-tokens';
+import { colors, radius } from '@tslprb/design-tokens';
 import { forwardRef, useCallback, useImperativeHandle, useRef, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Platform, Pressable } from 'react-native';
 
-import { usePressed } from './pressable';
+import { cx } from './cx';
+import { pressedClass, usePressed } from './pressable';
 import { Row } from './Row';
 import { Text } from './Text';
 
@@ -32,8 +33,8 @@ export type SheetProps = {
 };
 
 /**
- * `@gorhom/bottom-sheet` modal in house style: `panel2`, 3 px hi-vis top edge, scrim backdrop.
- * Grabber: iOS only (HIG), tinted `line3`; none on Android (ruling 2026-09-02).
+ * `@gorhom/bottom-sheet` modal in house style: `surface`, `xl` top corners, 3 px gold top edge,
+ * warm scrim backdrop. Grabber: iOS only (HIG), tinted `line2`; none on Android (ruling 2026-09-02).
  */
 export const Sheet = forwardRef<SheetHandle, SheetProps>(function Sheet(
   { title, snapPoints, scroll = false, footer, onClose, children },
@@ -69,14 +70,15 @@ export const Sheet = forwardRef<SheetHandle, SheetProps>(function Sheet(
       enableDynamicSizing={!snapPoints}
       onDismiss={onClose}
       handleComponent={Platform.OS === 'ios' ? undefined : null}
-      handleIndicatorStyle={{ backgroundColor: colors.line3 }}
-      handleStyle={{ backgroundColor: colors.panel2 }}
+      handleIndicatorStyle={{ backgroundColor: colors.line2 }}
+      handleStyle={{ backgroundColor: colors.surface }}
       backdropComponent={renderBackdrop}
       backgroundStyle={{
-        backgroundColor: colors.panel2,
-        borderRadius: 0,
+        backgroundColor: colors.surface,
+        borderTopLeftRadius: radius.xl,
+        borderTopRightRadius: radius.xl,
         borderTopWidth: 3,
-        borderTopColor: colors.hivis,
+        borderTopColor: colors.accentStrong,
       }}
     >
       {title !== undefined && (
@@ -89,11 +91,13 @@ export const Sheet = forwardRef<SheetHandle, SheetProps>(function Sheet(
             accessibilityLabel={t('common.close')}
             onPress={() => modal.current?.dismiss()}
             {...handlers}
-            className="h-touch w-touch items-center justify-center"
-            // One flattened object, never a callback: see `usePressed`.
-            style={pressed ? { opacity: 0.7 } : undefined}
+            // Pressed = a `surface2` fill (see `pressedClass`); never a `style` callback.
+            className={cx(
+              'h-touch w-touch items-center justify-center rounded-sm',
+              pressed && pressedClass,
+            )}
           >
-            <Text variant="subtitle" color="dim">
+            <Text variant="subtitle" color="ink3">
               ✕
             </Text>
           </Pressable>

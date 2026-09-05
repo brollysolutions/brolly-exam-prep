@@ -38,10 +38,14 @@ describe('PaletteCell', () => {
     expect(screen.getByTestId('cell')).toHaveStyle({ width: 51, height: size.cell });
   });
 
-  it('answered is hi-vis on tar, not-answered is a flag outline', () => {
-    expect(paletteState.a.bg).toBe(colors.hivis);
+  // Brand semantics: gold = the candidate's own input, ink = a deliberate flag, red = missing.
+  it('answered is gold with ink, marked is ink with cream, not-answered a red outline', () => {
+    expect(paletteState.a).toMatchObject({ bg: colors.accent, fg: colors.ink });
+    expect(paletteState.m).toMatchObject({ bg: colors.ink, fg: colors.onInk });
+    expect(paletteState.am).toMatchObject({ bg: colors.ink, fg: colors.onInk });
     expect(paletteState.na.bg).toBe('transparent');
-    expect(paletteState.na.border).toBe(colors.flag);
+    expect(paletteState.na.border).toBe(colors.dangerInk);
+    expect(paletteState.nv).toMatchObject({ bg: colors.surface2, fg: colors.ink3, border: colors.line2 });
   });
 
   it('draws the current outline and the answered+marked dot', async () => {
@@ -67,10 +71,17 @@ describe('PaletteCell', () => {
 });
 
 describe('PaletteCell current outline', () => {
-  it('sits 2 px outside the cell (2 px border at -2 px inset)', async () => {
+  it('is a 2 px ink ring with a 2 px canvas gap (2 px border at -4 px inset)', async () => {
     await render(<PaletteCell n={3} state="a" current />);
     const outline = screen.getByTestId('palette-current');
-    expect(outline.props.className).toContain('-inset-[2px]');
-    expect(outline.props.className).toContain('border-2 border-chalk');
+    expect(outline.props.className).toContain('-inset-[4px]');
+    expect(outline.props.className).toContain('border-2 border-ink');
+  });
+
+  it('draws the answered+marked dot gold in a cream ring', async () => {
+    await render(<PaletteCell n={5} state="am" dot />);
+    const dot = screen.getByTestId('palette-dot');
+    expect(dot.props.className).toContain('bg-accent');
+    expect(dot.props.className).toContain('border-surface');
   });
 });

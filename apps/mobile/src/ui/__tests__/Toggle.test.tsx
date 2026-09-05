@@ -1,4 +1,4 @@
-import { colors } from '@tslprb/design-tokens';
+import { colors, radius } from '@tslprb/design-tokens';
 import { act, render, screen, userEvent } from '@testing-library/react-native';
 import { initI18n } from '@tslprb/i18n';
 
@@ -22,13 +22,17 @@ describe('Toggle', () => {
     expect(onValueChange).toHaveBeenCalledWith(true);
   });
 
-  it('fills hi-vis when on and stays panel-dark when off', async () => {
+  it('fills gold with an ink thumb when on, surface2 in a line2 ring with an ink3 thumb when off', async () => {
     const { rerender } = await render(<Toggle value={false} onValueChange={jest.fn()} testID="t" />);
-    expect(screen.getByTestId('t')).toHaveStyle({ backgroundColor: colors.panel3 });
-    expect(screen.getByTestId('t-thumb')).toHaveStyle({ backgroundColor: colors.dim });
+    expect(screen.getByTestId('t')).toHaveStyle({
+      backgroundColor: colors.surface2,
+      borderColor: colors.line2,
+      borderRadius: radius.full,
+    });
+    expect(screen.getByTestId('t-thumb')).toHaveStyle({ backgroundColor: colors.ink3 });
     await act(async () => rerender(<Toggle value onValueChange={jest.fn()} testID="t" />));
-    expect(screen.getByTestId('t')).toHaveStyle({ backgroundColor: colors.hivis });
-    expect(screen.getByTestId('t-thumb')).toHaveStyle({ backgroundColor: colors.tar });
+    expect(screen.getByTestId('t')).toHaveStyle({ backgroundColor: colors.accent });
+    expect(screen.getByTestId('t-thumb')).toHaveStyle({ backgroundColor: colors.ink });
   });
 
   it('does not call back while disabled', async () => {

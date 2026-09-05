@@ -21,13 +21,13 @@ import {
   Card,
   Chip,
   Dialog,
-  HazardRail,
   Keypad,
   Kicker,
   OtpCells,
   PaletteCell,
   PhoneField,
   ProgressRail,
+  Rail,
   Row,
   Screen,
   SegmentedChips,
@@ -55,10 +55,10 @@ const DEV = {
   dialogOpen: 'Open dialog',
   sheetBody: 'Sheet body — surface, 3 px gold edge, warm scrim.',
   entry: 'Keypad + PhoneField + OTP',
-  progress: 'ProgressRail 40 %',
+  progress: 'ProgressRail 40 % · danger 100 %',
   palette: 'PaletteCell',
-  rail: 'HazardRail',
-  railCritical: 'critical (marquee)',
+  rail: 'Rail',
+  railCritical: 'critical (pulse)',
   auth: 'Auth & onboarding',
   login: 'LoginView — filled + error toast',
   otp: 'OtpView — partial code, resend ready, dev code hint',
@@ -140,7 +140,7 @@ export function StatesView() {
   const dialog = (
     <Dialog
       visible={dialogOpen}
-      tone="hivis"
+      tone="accent"
       kicker={t('test.submitKicker')}
       title={t('test.submitTitle')}
       body={t('test.submitBody')}
@@ -268,8 +268,9 @@ export function StatesView() {
       </Section>
 
       <Section index="06" title={DEV.toasts}>
-        <Toast text={t('test.warn5')} tone="hazard" />
-        <Toast text={t('test.warn1')} tone="flag" />
+        <Toast text={t('test.warn5')} tone="accent" />
+        <Toast text={t('test.warn1')} tone="danger" />
+        <Toast text={t('library.lockedToast')} tone="info" />
         <Banner />
       </Section>
 
@@ -304,7 +305,7 @@ export function StatesView() {
 
       <Section index="09" title={DEV.progress}>
         <ProgressRail fraction={0.4} />
-        <ProgressRail fraction={1} ticks={5} />
+        <ProgressRail fraction={1} ticks={5} tone="danger" />
       </Section>
 
       <Section index="10" title={DEV.palette}>
@@ -321,9 +322,9 @@ export function StatesView() {
       </Section>
 
       <Section index="11" title={DEV.rail}>
-        <HazardRail />
+        <Rail />
         <Label>{DEV.railCritical}</Label>
-        <HazardRail critical />
+        <Rail critical />
       </Section>
 
       <AttemptStates index="12" />

@@ -429,7 +429,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                   >
                     <Text
                       accessibilityLanguage="en"
-                      className="text-dim"
+                      className="text-ink3"
                       style={
                         {
                           "fontFamily": "Inter_600SemiBold",
@@ -448,7 +448,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       ⁦40⁩
                     </Text>
                     <Text
-                      className="text-dim"
+                      className="text-ink3"
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_400Regular",
@@ -495,7 +495,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                   >
                     <Text
                       accessibilityLanguage="en"
-                      className="text-dim"
+                      className="text-ink3"
                       style={
                         {
                           "fontFamily": "Inter_600SemiBold",
@@ -514,7 +514,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       ⁦60⁩
                     </Text>
                     <Text
-                      className="text-dim"
+                      className="text-ink3"
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_400Regular",
@@ -737,7 +737,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                   >
                     <Text
                       accessibilityLanguage="en"
-                      className="text-dim"
+                      className="text-ink3"
                       style={
                         {
                           "fontFamily": "Inter_600SemiBold",
@@ -756,7 +756,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       ⁦200⁩
                     </Text>
                     <Text
-                      className="text-dim"
+                      className="text-ink3"
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_400Regular",
@@ -803,7 +803,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                   >
                     <Text
                       accessibilityLanguage="en"
-                      className="text-dim"
+                      className="text-ink3"
                       style={
                         {
                           "fontFamily": "Inter_600SemiBold",
@@ -822,7 +822,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       ⁦180⁩
                     </Text>
                     <Text
-                      className="text-dim"
+                      className="text-ink3"
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_400Regular",

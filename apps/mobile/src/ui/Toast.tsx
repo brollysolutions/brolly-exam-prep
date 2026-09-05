@@ -1,3 +1,4 @@
+import { shadowStyle } from '@tslprb/design-tokens';
 import { View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
@@ -5,16 +6,31 @@ import { cx } from './cx';
 import { useMotion } from './motion';
 import { Text } from './Text';
 
+/**
+ * `accent` = 5-minute notice, `danger` = last-minute warning, `info` = a locked section (ink
+ * fill, cream text). `hazard` and `flag` are the old names of `accent` and `danger`.
+ */
+export type ToastTone = 'accent' | 'danger' | 'info' | 'hazard' | 'flag';
+type Tone = 'accent' | 'danger' | 'info';
+
 export type ToastProps = {
   text: string;
-  /** hazard = 5-minute / locked-section notices, flag = last-minute warning. */
-  tone?: 'hazard' | 'flag';
+  tone?: ToastTone;
   testID?: string;
 };
 
-/** Full-width banner directly under the header. Slides down 180 ms. */
-export function Toast({ text, tone = 'hazard', testID }: ToastProps) {
+const canonical = (t: ToastTone): Tone => (t === 'hazard' ? 'accent' : t === 'flag' ? 'danger' : t);
+
+const fill: Record<Tone, string> = {
+  accent: 'bg-accentSoft',
+  danger: 'bg-danger',
+  info: 'bg-ink',
+};
+
+/** Floating card directly under the header, 16 px inset, raised on the warm shadow. Slides down 180 ms. */
+export function Toast({ text, tone: toneProp = 'accent', testID }: ToastProps) {
   const m = useMotion();
+  const tone = canonical(toneProp);
   return (
     <Animated.View
       testID={testID}
@@ -24,8 +40,8 @@ export function Toast({ text, tone = 'hazard', testID }: ToastProps) {
       accessibilityLiveRegion="polite"
     >
       {/* NativeWind does not style Animated.View; the surface is a plain View. */}
-      <View className={cx('px-3 py-2', tone === 'flag' ? 'bg-flag' : 'bg-hazard')}>
-        <Text variant="small" weight="600" color="tar">
+      <View className={cx('mx-4 rounded-md px-3 py-2', fill[tone])} style={shadowStyle('raised')}>
+        <Text variant="small" weight="600" color={tone === 'info' ? 'onInk' : 'ink'}>
           {text}
         </Text>
       </View>

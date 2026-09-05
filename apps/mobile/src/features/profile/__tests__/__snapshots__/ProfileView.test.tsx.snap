@@ -578,9 +578,9 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "backgroundColor": "#856a22",
-                    "borderColor": "#856a22",
-                    "borderRadius": 6,
+                    "backgroundColor": "#c29b38",
+                    "borderColor": "#c29b38",
+                    "borderRadius": 999,
                     "borderWidth": 1,
                     "height": 32,
                     "justifyContent": "center",
@@ -593,8 +593,8 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                 <View
                   style={
                     {
-                      "backgroundColor": "#f7f2e6",
-                      "borderRadius": 5,
+                      "backgroundColor": "#211c17",
+                      "borderRadius": 999,
                       "height": 26,
                       "left": 23,
                       "position": "absolute",

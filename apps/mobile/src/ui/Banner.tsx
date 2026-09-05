@@ -10,7 +10,7 @@ export type BannerProps = {
   testID?: string;
 };
 
-/** The offline banner: sand square glyph on the dim gold surface. */
+/** The offline banner: dark-gold square glyph on a `surface2` strip under a hairline. */
 export function Banner({ text, testID }: BannerProps) {
   const { t } = useTranslation();
   return (
@@ -19,12 +19,17 @@ export function Banner({ text, testID }: BannerProps) {
       gap={2}
       align="start"
       accessibilityLiveRegion="polite"
-      className="border-b border-offlineLine bg-offlineBg px-3 py-2"
+      className="border-b border-line bg-surface2 px-3 py-2"
     >
-      <Glyph variant="body" color="sand" accessibilityElementsHidden importantForAccessibility="no">
+      <Glyph
+        variant="body"
+        color="accentInk"
+        accessibilityElementsHidden
+        importantForAccessibility="no"
+      >
         ■
       </Glyph>
-      <Text variant="caption" color="offlineText" className="flex-1">
+      <Text variant="caption" color="ink2" className="flex-1">
         {text ?? t('test.offline')}
       </Text>
     </Row>

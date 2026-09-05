@@ -64,13 +64,13 @@ describe('ProfileView', () => {
   it('draws the reminder switch from the palette, not the platform', async () => {
     const { rerender } = await render(<ProfileView {...base} lang="en" {...handlers()} />);
     expect(screen.getByTestId('profile-notifications')).toHaveStyle({
-      backgroundColor: colors.hivis,
+      backgroundColor: colors.accent,
     });
     await act(async () =>
       rerender(<ProfileView {...base} notifications={false} lang="en" {...handlers()} />),
     );
     expect(screen.getByTestId('profile-notifications')).toHaveStyle({
-      backgroundColor: colors.panel3,
+      backgroundColor: colors.surface2,
     });
   });
 

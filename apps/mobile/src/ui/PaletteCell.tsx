@@ -17,21 +17,24 @@ import {
 } from 'react-native';
 
 import * as haptics from './haptics';
-import { usePressed } from './pressable';
 import { Num } from './Num';
+import { pressedStyle, usePressed } from './pressable';
 
 export type PaletteCellProps = Omit<PressableProps, 'style' | 'children'> & {
   n: number;
   state: PaletteState;
-  /** The question on screen: 2 px chalk outline, 2 px outside the cell. */
+  /** The question on screen: 2 px ink ring with a 2 px canvas gap around the cell. */
   current?: boolean;
-  /** Answered + marked: hi-vis dot in the top-end corner. */
+  /** Answered + marked: gold dot in a cream ring, top-end corner. */
   dot?: boolean;
   /** Layout override, e.g. the palette grid's computed column width. Merged over the defaults. */
   style?: StyleProp<ViewStyle>;
 };
 
-/** 48 × 48 question cell in one of five states (nv / na / a / m / am). */
+/**
+ * 48 × 48 question cell in one of five states (nv / na / a / m / am):
+ * plain = unvisited, red outline = not answered, gold = answered, ink = marked.
+ */
 export function PaletteCell({
   n,
   state,
@@ -53,7 +56,7 @@ export function PaletteCell({
       accessibilityRole="button"
       accessibilityLabel={`${t('test.qLabel')} ${n}`}
       accessibilityState={{ selected: current, disabled: !!disabled }}
-      android_ripple={{ color: colors.hivisTint3 }}
+      android_ripple={{ color: colors.accentTint }}
       {...rest}
       {...handlers}
       disabled={disabled}
@@ -74,7 +77,7 @@ export function PaletteCell({
           borderWidth: s.borderWidth,
         },
         style,
-        pressed ? { opacity: 0.85 } : null,
+        pressed ? pressedStyle : null,
       ])}
     >
       <Num variant="cell" align="center" style={{ color: s.fg }}>
@@ -84,13 +87,13 @@ export function PaletteCell({
         <View
           pointerEvents="none"
           testID="palette-current"
-          className="absolute -inset-[2px] rounded-md border-2 border-chalk"
+          className="absolute -inset-[4px] rounded-md border-2 border-ink"
         />
       )}
       {dot && (
         <View
           testID="palette-dot"
-          className="absolute h-dot w-dot rounded-full border-1.5 border-panel2 bg-hivis"
+          className="absolute h-dot w-dot rounded-full border-1.5 border-surface bg-accent"
           style={{ top: 2, [d.end]: 2 }}
         />
       )}

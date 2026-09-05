@@ -3,15 +3,15 @@ import { ScrollView, StyleSheet, View, type ViewProps } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { cx } from './cx';
-import { HazardRail } from './HazardRail';
+import { Rail } from './Rail';
 
 export type ScreenProps = ViewProps & {
   /**
-   * Hazard rail on top. Default OFF since 2026-09-05 (user ruling): the stripe is no longer
-   * screen chrome. The attempt screen still raises it as the critical-time warning.
+   * Brand rule on top. Default OFF since 2026-09-05 (user ruling): a rail is no longer screen
+   * chrome. The attempt screen still raises it as the critical-time warning.
    */
   rail?: boolean;
-  /** Rail turns flag-red and marquees. */
+  /** Rail turns red and pulses. */
   critical?: boolean;
   /** 16 px horizontal padding on the body. */
   padded?: boolean;
@@ -64,7 +64,7 @@ export function Screen({
         style,
       ])}
     >
-      {rail && <HazardRail critical={critical} />}
+      {rail && <Rail critical={critical} />}
       {scroll ? (
         <ScrollView
           className="flex-1"

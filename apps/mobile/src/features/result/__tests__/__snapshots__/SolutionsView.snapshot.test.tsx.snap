@@ -722,7 +722,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 >
                   <Text
                     accessibilityLanguage="en"
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "Inter_600SemiBold",
@@ -741,7 +741,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     ⁦1⁩
                   </Text>
                   <Text
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -771,7 +771,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 >
                   <Text
                     accessibilityLanguage="en"
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "Inter_600SemiBold",
@@ -790,7 +790,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     ⁦47⁩
                   </Text>
                   <Text
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -869,7 +869,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 >
                   <Text
                     accessibilityLanguage="en"
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "Inter_600SemiBold",
@@ -888,7 +888,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     ⁦52⁩
                   </Text>
                   <Text
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1210,7 +1210,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 >
                   <Text
                     accessibilityLanguage="en"
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "Inter_600SemiBold",
@@ -1229,7 +1229,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     ⁦2⁩
                   </Text>
                   <Text
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1259,7 +1259,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 >
                   <Text
                     accessibilityLanguage="en"
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "Inter_600SemiBold",
@@ -1278,7 +1278,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     ⁦04⁩
                   </Text>
                   <Text
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1357,7 +1357,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 >
                   <Text
                     accessibilityLanguage="en"
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "Inter_600SemiBold",
@@ -1376,7 +1376,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     ⁦55⁩
                   </Text>
                   <Text
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1698,7 +1698,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 >
                   <Text
                     accessibilityLanguage="en"
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "Inter_600SemiBold",
@@ -1717,7 +1717,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     ⁦19⁩
                   </Text>
                   <Text
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_600SemiBold",
@@ -1796,7 +1796,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 >
                   <Text
                     accessibilityLanguage="en"
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "Inter_600SemiBold",
@@ -1815,7 +1815,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     ⁦48⁩
                   </Text>
                   <Text
-                    className="text-dim"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_600SemiBold",

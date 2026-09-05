@@ -512,11 +512,11 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             "now": 20,
           }
         }
-        className="h-progress overflow-hidden bg-panel3"
+        className="h-progress overflow-hidden rounded-full bg-surface2"
         testID="attempt-progress"
       >
         <View
-          className="absolute bottom-0 top-0 bg-hivis"
+          className="absolute bottom-0 top-0 rounded-full bg-accentStrong"
           style={
             {
               "left": 0,
@@ -526,7 +526,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
           testID="progress-fill"
         />
         <View
-          className="absolute bottom-0 top-0 w-px bg-tar"
+          className="absolute bottom-0 top-0 w-px bg-canvas"
           style={
             {
               "left": "25%",
@@ -535,7 +535,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
           testID="progress-tick"
         />
         <View
-          className="absolute bottom-0 top-0 w-px bg-tar"
+          className="absolute bottom-0 top-0 w-px bg-canvas"
           style={
             {
               "left": "50%",
@@ -544,7 +544,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
           testID="progress-tick"
         />
         <View
-          className="absolute bottom-0 top-0 w-px bg-tar"
+          className="absolute bottom-0 top-0 w-px bg-canvas"
           style={
             {
               "left": "75%",
@@ -556,7 +556,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
     </View>
     <View
       accessibilityLiveRegion="polite"
-      className="border-b border-offlineLine bg-offlineBg px-3 py-2"
+      className="border-b border-line bg-surface2 px-3 py-2"
       style={
         {
           "alignItems": "flex-start",
@@ -570,7 +570,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
     >
       <Text
         accessibilityElementsHidden={true}
-        className="text-sand"
+        className="text-accentInk"
         importantForAccessibility="no"
         style={
           {
@@ -588,7 +588,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
         ■
       </Text>
       <Text
-        className="text-offlineText flex-1"
+        className="text-ink2 flex-1"
         style={
           {
             "fontFamily": "NotoSansTelugu_400Regular",

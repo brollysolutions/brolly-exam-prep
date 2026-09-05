@@ -1,3 +1,4 @@
+import { shadowStyle, type ColorName } from '@tslprb/design-tokens';
 import { StyleSheet, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
@@ -9,7 +10,8 @@ import { Row } from './Row';
 import { Stack } from './Stack';
 import { Text } from './Text';
 
-export type DialogTone = 'hivis' | 'hazard' | 'flag';
+/** `accent` asks (submit, resume), `danger` reports (auto-submit). `hivis`/`hazard`/`flag` are the old names. */
+export type DialogTone = 'accent' | 'danger' | 'hivis' | 'hazard' | 'flag';
 export type DialogAction = { label: string; onPress: () => void };
 export type DialogStat = { num: string | number; label: string };
 
@@ -26,8 +28,11 @@ export type DialogProps = {
   testID?: string;
 };
 
+const kickerColor = (tone: DialogTone): ColorName => (tone === 'flag' || tone === 'danger' ? 'dangerInk' : 'accentInk');
+
 /**
- * Bottom-anchored confirmation card over a heavy scrim. Render it last inside a `Screen`.
+ * Bottom-anchored confirmation card over a warm scrim: `surface`, `lg` corners, 3 px gold top
+ * edge, cast on the sheet shadow. Render it last inside a `Screen`.
  */
 // TODO(follow-up): `onDismiss` — hardware back (BackHandler) and a scrim tap should close the
 // card. Today every caller wires its own `BackHandler` listener and the scrim is inert, so the
@@ -35,7 +40,7 @@ export type DialogProps = {
 
 export function Dialog({
   visible,
-  tone = 'hivis',
+  tone = 'accent',
   kicker,
   title,
   body,
@@ -56,23 +61,26 @@ export function Dialog({
       style={StyleSheet.absoluteFill}
     >
       <View className="flex-1 justify-end bg-scrimHeavy p-4">
-        {/* The top edge is always hi-vis (prototype template.html:492); the kicker carries the tone. */}
-        <View className="border border-line border-t-4 border-t-hivis bg-panel2 p-4">
-          <Kicker color={tone}>{kicker}</Kicker>
+        {/* The top edge is always gold; the kicker carries the tone. */}
+        <View
+          className="rounded-lg border border-line border-t-3 border-t-accentStrong bg-surface p-4"
+          style={shadowStyle('sheet')}
+        >
+          <Kicker color={kickerColor(tone)}>{kicker}</Kicker>
           <Text variant="subtitle" weight="600" className="mt-2">
             {title}
           </Text>
-          <Text variant="body" color="chalk2" className="mt-2">
+          <Text variant="body" color="ink2" className="mt-2">
             {body}
           </Text>
           {stats && stats.length > 0 && (
             <Row gap={2} className="mt-3">
               {stats.map((s) => (
-                <View key={s.label} className="flex-1 items-center border border-line px-1 py-2">
+                <View key={s.label} className="flex-1 items-center rounded-sm bg-surface2 px-1 py-2">
                   <Num variant="stat" align="center">
                     {s.num}
                   </Num>
-                  <Text variant="caption" color="steel" align="center" className="mt-1">
+                  <Text variant="caption" color="ink3" align="center" className="mt-1">
                     {s.label}
                   </Text>
                 </View>

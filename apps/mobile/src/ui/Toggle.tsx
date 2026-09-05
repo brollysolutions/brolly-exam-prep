@@ -3,7 +3,7 @@ import { useDir } from '@tslprb/i18n';
 import { Pressable, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 
 import * as haptics from './haptics';
-import { usePressed } from './pressable';
+import { pressedStyle, usePressed } from './pressable';
 
 export type ToggleProps = {
   value: boolean;
@@ -21,12 +21,12 @@ const THUMB = 26;
 const INSET = (TRACK_H - THUMB) / 2;
 
 /**
- * The on/off switch, in the app's own vocabulary.
+ * The on/off switch, in the app's own vocabulary: a round gold track with an ink thumb when
+ * on, a `surface2` track in a `line2` ring with an ink3 thumb when off.
  *
- * RN's `Switch` draws a fully round track and, on Android, a thumb tinted by the platform's
- * Material palette — a teal pill in the middle of a sharp, hi-vis-on-tar screen (design review
- * round 1). Every value here comes from the tokens, and the thumb travels toward the reading
- * end (under RTL "on" would be on the left).
+ * RN's `Switch` draws its thumb in the platform's Material palette — a teal pill on a cream
+ * screen (design review round 1). Every value here comes from the tokens, and the thumb
+ * travels toward the reading end (under RTL "on" would be on the left).
  *
  * Colours live in a flattened style object rather than `className`: they change with `value`,
  * and a class list that changes between renders accumulates on web (see `Text`).
@@ -50,7 +50,7 @@ export function Toggle({
       accessibilityRole="switch"
       accessibilityLabel={accessibilityLabel}
       accessibilityState={{ checked: value, disabled }}
-      android_ripple={{ color: colors.hivisTint3, borderless: true, radius: size.touch / 2 }}
+      android_ripple={{ color: colors.accentTint, borderless: true, radius: size.touch / 2 }}
       // The track is 32 px tall; the slop brings the target to the 48 px minimum without
       // making the switch itself look like a button.
       hitSlop={{ top: 8, bottom: 8, left: 0, right: 0 }}
@@ -65,11 +65,11 @@ export function Toggle({
         {
           width: TRACK_W,
           height: TRACK_H,
-          borderRadius: radius.sm,
+          borderRadius: radius.full,
           borderWidth: 1,
-          borderColor: value ? colors.hivis : colors.line3,
-          backgroundColor: value ? colors.hivis : colors.panel3,
-          opacity: disabled ? 0.4 : pressed ? 0.85 : 1,
+          borderColor: value ? colors.accent : colors.line2,
+          backgroundColor: value ? colors.accent : colors.surface2,
+          opacity: disabled ? 0.4 : pressed ? pressedStyle.opacity : 1,
           justifyContent: 'center',
         },
         style,
@@ -82,8 +82,8 @@ export function Toggle({
           [d.pick('left', 'right')]: offset,
           width: THUMB,
           height: THUMB,
-          borderRadius: radius.sm - 1,
-          backgroundColor: value ? colors.tar : colors.dim,
+          borderRadius: radius.full,
+          backgroundColor: value ? colors.ink : colors.ink3,
         }}
       />
     </Pressable>

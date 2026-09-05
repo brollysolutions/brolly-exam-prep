@@ -40,7 +40,7 @@ export type DurationProps = {
 export function Duration({
   seconds,
   variant = 'caption',
-  color = 'dim',
+  color = 'ink3',
   weight = '600',
   className,
   testID,
