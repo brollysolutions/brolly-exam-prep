@@ -73,11 +73,11 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
             importantForAccessibility="no"
             style={
               {
-                "fontFamily": "Archivo_400Regular",
+                "fontFamily": "Inter_400Regular",
                 "fontSize": 20,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 29,
+                "lineHeight": 30,
                 "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
@@ -242,13 +242,13 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "Archivo_600SemiBold",
+                          "fontFamily": "Inter_600SemiBold",
                           "fontSize": 11.5,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 16.7,
+                          "lineHeight": 17.3,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -279,11 +279,11 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                       importantForAccessibility="no"
                       style={
                         {
-                          "fontFamily": "Archivo_400Regular",
+                          "fontFamily": "Inter_400Regular",
                           "fontSize": 13.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 19.6,
+                          "lineHeight": 20.3,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -408,11 +408,11 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                         importantForAccessibility="no"
                         style={
                           {
-                            "fontFamily": "Archivo_400Regular",
+                            "fontFamily": "Inter_400Regular",
                             "fontSize": 11.5,
                             "fontVariant": undefined,
                             "letterSpacing": 0,
-                            "lineHeight": 16.7,
+                            "lineHeight": 17.3,
                             "textAlign": "left",
                             "textTransform": undefined,
                             "writingDirection": "ltr",
@@ -519,13 +519,13 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "Archivo_600SemiBold",
+                          "fontFamily": "Inter_600SemiBold",
                           "fontSize": 11.5,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 16.7,
+                          "lineHeight": 17.3,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -556,11 +556,11 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                       importantForAccessibility="no"
                       style={
                         {
-                          "fontFamily": "Archivo_400Regular",
+                          "fontFamily": "Inter_400Regular",
                           "fontSize": 13.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 19.6,
+                          "lineHeight": 20.3,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",

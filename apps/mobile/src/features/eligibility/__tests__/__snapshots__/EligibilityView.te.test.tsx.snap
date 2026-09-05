@@ -73,11 +73,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
             importantForAccessibility="no"
             style={
               {
-                "fontFamily": "Archivo_400Regular",
+                "fontFamily": "Inter_400Regular",
                 "fontSize": 20,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 29,
+                "lineHeight": 30,
                 "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
@@ -698,11 +698,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   style={
                     {
                       "color": "#211c17",
-                      "fontFamily": "Archivo_600SemiBold",
+                      "fontFamily": "Inter_600SemiBold",
                       "fontSize": 22,
                       "height": 56,
                       "letterSpacing": 0,
-                      "lineHeight": 31.9,
+                      "lineHeight": 33,
                       "padding": 0,
                       "textAlign": "left",
                       "textAlignVertical": "center",
@@ -781,11 +781,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                     style={
                       {
                         "color": "#211c17",
-                        "fontFamily": "Archivo_600SemiBold",
+                        "fontFamily": "Inter_600SemiBold",
                         "fontSize": 22,
                         "height": 56,
                         "letterSpacing": 0,
-                        "lineHeight": 31.9,
+                        "lineHeight": 33,
                         "padding": 0,
                         "textAlign": "left",
                         "textAlignVertical": "center",
@@ -842,11 +842,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                     style={
                       {
                         "color": "#211c17",
-                        "fontFamily": "Archivo_600SemiBold",
+                        "fontFamily": "Inter_600SemiBold",
                         "fontSize": 22,
                         "height": 56,
                         "letterSpacing": 0,
-                        "lineHeight": 31.9,
+                        "lineHeight": 33,
                         "padding": 0,
                         "textAlign": "left",
                         "textAlignVertical": "center",
@@ -961,11 +961,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   style={
                     {
                       "color": "#211c17",
-                      "fontFamily": "Archivo_600SemiBold",
+                      "fontFamily": "Inter_600SemiBold",
                       "fontSize": 22,
                       "height": 56,
                       "letterSpacing": 0,
-                      "lineHeight": 31.9,
+                      "lineHeight": 33,
                       "padding": 0,
                       "textAlign": "left",
                       "textAlignVertical": "center",
@@ -1062,11 +1062,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   style={
                     {
                       "color": "#211c17",
-                      "fontFamily": "Archivo_600SemiBold",
+                      "fontFamily": "Inter_600SemiBold",
                       "fontSize": 22,
                       "height": 56,
                       "letterSpacing": 0,
-                      "lineHeight": 31.9,
+                      "lineHeight": 33,
                       "padding": 0,
                       "textAlign": "left",
                       "textAlignVertical": "center",
@@ -1196,11 +1196,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   importantForAccessibility="no"
                   style={
                     {
-                      "fontFamily": "Archivo_400Regular",
+                      "fontFamily": "Inter_400Regular",
                       "fontSize": 20,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29,
+                      "lineHeight": 30,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -1272,11 +1272,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                     importantForAccessibility="no"
                     style={
                       {
-                        "fontFamily": "Archivo_400Regular",
+                        "fontFamily": "Inter_400Regular",
                         "fontSize": 11.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -1339,11 +1339,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                     className="text-flag"
                     style={
                       {
-                        "fontFamily": "Archivo_400Regular",
+                        "fontFamily": "Inter_400Regular",
                         "fontSize": 16.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 23.9,
+                        "lineHeight": 24.8,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -1427,13 +1427,13 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "Archivo_600SemiBold",
+                          "fontFamily": "Inter_600SemiBold",
                           "fontSize": 11.5,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 16.7,
+                          "lineHeight": 17.3,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -1506,13 +1506,13 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                       className="text-flag"
                       style={
                         {
-                          "fontFamily": "Archivo_600SemiBold",
+                          "fontFamily": "Inter_600SemiBold",
                           "fontSize": 11.5,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 16.7,
+                          "lineHeight": 17.3,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -1563,11 +1563,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                     className="text-hivis"
                     style={
                       {
-                        "fontFamily": "Archivo_400Regular",
+                        "fontFamily": "Inter_400Regular",
                         "fontSize": 16.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 23.9,
+                        "lineHeight": 24.8,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -1640,13 +1640,13 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
+                        "fontFamily": "Inter_600SemiBold",
                         "fontSize": 11.5,
                         "fontVariant": [
                           "tabular-nums",
                         ],
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -1689,13 +1689,13 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                     className="text-hivis"
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
+                        "fontFamily": "Inter_600SemiBold",
                         "fontSize": 11.5,
                         "fontVariant": [
                           "tabular-nums",
                         ],
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -1729,11 +1729,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                     className="text-hivis"
                     style={
                       {
-                        "fontFamily": "Archivo_400Regular",
+                        "fontFamily": "Inter_400Regular",
                         "fontSize": 16.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 23.9,
+                        "lineHeight": 24.8,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -1817,13 +1817,13 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "Archivo_600SemiBold",
+                          "fontFamily": "Inter_600SemiBold",
                           "fontSize": 11.5,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 16.7,
+                          "lineHeight": 17.3,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -1896,13 +1896,13 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                       className="text-hivis"
                       style={
                         {
-                          "fontFamily": "Archivo_600SemiBold",
+                          "fontFamily": "Inter_600SemiBold",
                           "fontSize": 11.5,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 16.7,
+                          "lineHeight": 17.3,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -1953,11 +1953,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                     className="text-hivis"
                     style={
                       {
-                        "fontFamily": "Archivo_400Regular",
+                        "fontFamily": "Inter_400Regular",
                         "fontSize": 16.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 23.9,
+                        "lineHeight": 24.8,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -2041,13 +2041,13 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "Archivo_600SemiBold",
+                          "fontFamily": "Inter_600SemiBold",
                           "fontSize": 11.5,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 16.7,
+                          "lineHeight": 17.3,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -2120,13 +2120,13 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                       className="text-hivis"
                       style={
                         {
-                          "fontFamily": "Archivo_600SemiBold",
+                          "fontFamily": "Inter_600SemiBold",
                           "fontSize": 11.5,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 16.7,
+                          "lineHeight": 17.3,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",

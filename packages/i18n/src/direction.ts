@@ -1,5 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { typography, type FontWeight, type TextName } from '@tslprb/design-tokens';
+import {
+  typography,
+  type FontWeight,
+  type TextName,
+  type TypographyOptions,
+} from '@tslprb/design-tokens';
 import { isRTL, type Lang } from './i18n';
 
 /**
@@ -52,7 +57,11 @@ export function dir(d: Pick<Dir, 'isRTL'>, ltrClass: string, rtlClass: string): 
 }
 
 /** Font family / size / line-height for the current language and role. */
-export function useTypography(role: TextName, weight: FontWeight = '400') {
+export function useTypography(
+  role: TextName,
+  weight: FontWeight = '400',
+  options: TypographyOptions = {},
+) {
   const lang = useLang();
-  return typography(lang, role, weight);
+  return typography(lang, role, weight, options);
 }

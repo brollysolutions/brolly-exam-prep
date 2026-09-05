@@ -27,11 +27,11 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
           className="text-hivis"
           style={
             {
-              "fontFamily": "Archivo_700Bold",
+              "fontFamily": "Inter_700Bold",
               "fontSize": 10.5,
               "fontVariant": undefined,
-              "letterSpacing": 3.4,
-              "lineHeight": 15.2,
+              "letterSpacing": 2,
+              "lineHeight": 15.8,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -45,11 +45,11 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
           className="text-chalk mt-3"
           style={
             {
-              "fontFamily": "NotoSansTelugu_600SemiBold",
-              "fontSize": 25,
+              "fontFamily": "NotoSansTelugu_700Bold",
+              "fontSize": 26,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 41.3,
+              "lineHeight": 42.9,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -137,13 +137,13 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
                 className="text-dim"
                 style={
                   {
-                    "fontFamily": "Archivo_600SemiBold",
+                    "fontFamily": "Inter_600SemiBold",
                     "fontSize": 17,
                     "fontVariant": [
                       "tabular-nums",
                     ],
                     "letterSpacing": 0,
-                    "lineHeight": 24.7,
+                    "lineHeight": 25.5,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -161,13 +161,13 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
                 className="text-chalk"
                 style={
                   {
-                    "fontFamily": "Archivo_600SemiBold",
+                    "fontFamily": "Inter_600SemiBold",
                     "fontSize": 22,
                     "fontVariant": [
                       "tabular-nums",
                     ],
                     "letterSpacing": 2,
-                    "lineHeight": 31.9,
+                    "lineHeight": 33,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -262,13 +262,13 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "Archivo_600SemiBold",
+                  "fontFamily": "Inter_600SemiBold",
                   "fontSize": 24,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 34.8,
+                  "lineHeight": 36,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -317,13 +317,13 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "Archivo_600SemiBold",
+                  "fontFamily": "Inter_600SemiBold",
                   "fontSize": 24,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 34.8,
+                  "lineHeight": 36,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -372,13 +372,13 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "Archivo_600SemiBold",
+                  "fontFamily": "Inter_600SemiBold",
                   "fontSize": 24,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 34.8,
+                  "lineHeight": 36,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -440,13 +440,13 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "Archivo_600SemiBold",
+                  "fontFamily": "Inter_600SemiBold",
                   "fontSize": 24,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 34.8,
+                  "lineHeight": 36,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -495,13 +495,13 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "Archivo_600SemiBold",
+                  "fontFamily": "Inter_600SemiBold",
                   "fontSize": 24,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 34.8,
+                  "lineHeight": 36,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -550,13 +550,13 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "Archivo_600SemiBold",
+                  "fontFamily": "Inter_600SemiBold",
                   "fontSize": 24,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 34.8,
+                  "lineHeight": 36,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -618,13 +618,13 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "Archivo_600SemiBold",
+                  "fontFamily": "Inter_600SemiBold",
                   "fontSize": 24,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 34.8,
+                  "lineHeight": 36,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -673,13 +673,13 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "Archivo_600SemiBold",
+                  "fontFamily": "Inter_600SemiBold",
                   "fontSize": 24,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 34.8,
+                  "lineHeight": 36,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -728,13 +728,13 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "Archivo_600SemiBold",
+                  "fontFamily": "Inter_600SemiBold",
                   "fontSize": 24,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 34.8,
+                  "lineHeight": 36,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -799,13 +799,13 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "Archivo_600SemiBold",
+                  "fontFamily": "Inter_600SemiBold",
                   "fontSize": 24,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 34.8,
+                  "lineHeight": 36,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -853,11 +853,11 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "Archivo_600SemiBold",
+                  "fontFamily": "Inter_600SemiBold",
                   "fontSize": 20,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29,
+                  "lineHeight": 30,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",

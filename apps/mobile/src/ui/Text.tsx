@@ -29,8 +29,10 @@ export type TextProps = Omit<RNTextProps, 'style'> & {
   align?: TextAlign;
   /** Letter-spacing token, applied when the *face* is Latin (the Telugu face gets 0); `none` forces 0. */
   tracking?: keyof typeof trackingTokens | 'none';
-  /** Tabular figures. */
+  /** Tabular figures, always in the text face (Inter), never the display face. */
   numeric?: boolean;
+  /** Italic display face (the wordmark's "Solutions"). The text face ignores it. */
+  italic?: boolean;
   /** Render in another language's face (e.g. a Telugu label inside an English UI). */
   lang?: Lang;
   uppercase?: boolean;
@@ -46,6 +48,7 @@ export function Text({
   align = 'start',
   tracking,
   numeric,
+  italic,
   lang,
   uppercase,
   className,
@@ -54,7 +57,7 @@ export function Text({
 }: TextProps) {
   const d = useDir();
   const face = lang ?? d.lang;
-  const type = typography(face, variant, weight);
+  const type = typography(face, variant, weight, { italic, numeric });
   const letterSpacing =
     tracking === 'none'
       ? 0

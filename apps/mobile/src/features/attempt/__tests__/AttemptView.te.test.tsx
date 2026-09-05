@@ -56,20 +56,20 @@ describe('AttemptView (te)', () => {
     expect(screen.getByTestId('btn-prev')).toHaveTextContent('‹');
     expect(screen.getByTestId('btn-next')).toHaveTextContent(`${te.test.next}›`);
     // …and are drawn with the Latin face, whatever the UI language.
-    expect(screen.getByTestId('chevron-prev')).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
-    expect(screen.getByTestId('chevron-next')).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
+    expect(screen.getByTestId('chevron-prev')).toHaveStyle({ fontFamily: 'Inter_400Regular' });
+    expect(screen.getByTestId('chevron-next')).toHaveStyle({ fontFamily: 'Inter_400Regular' });
 
     expect(screen.toJSON()).toMatchSnapshot();
   });
 
   // The line used to be `<Num>{t('common.seconds', { count })}</Num>`, which forced the whole
-  // string — Telugu unit included — through Archivo and drew the unit as tofu boxes.
-  it('splits the time-on-question line: digits in Archivo, the unit in the Telugu face', async () => {
+  // string — Telugu unit included — through Inter and drew the unit as tofu boxes.
+  it('splits the time-on-question line: digits in Inter, the unit in the Telugu face', async () => {
     await render(<AttemptView {...props} />);
     const line = within(screen.getByTestId('time-on-question'));
 
     expect(line.getByText(iso(String(DEMO_ELAPSED_SEC)))).toHaveStyle({
-      fontFamily: 'Archivo_400Regular',
+      fontFamily: 'Inter_400Regular',
     });
     expect(line.getByText(` ${te.common.unitS}`)).toHaveStyle({
       fontFamily: 'NotoSansTelugu_400Regular',

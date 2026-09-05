@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react-native';
+import { tracking } from '@tslprb/design-tokens';
 import { initI18n, setLanguage } from '@tslprb/i18n';
 import { act } from 'react';
 
@@ -50,14 +51,14 @@ describe('Kicker contrast and tracking', () => {
     expect(screen.getByTestId('k').props.className).not.toContain('text-mute');
   });
 
-  it('index digits share the label tracking: 2 px in English, 0 in Telugu', async () => {
+  it('index digits share the label tracking: the kicker token in English, 0 in Telugu', async () => {
     await render(
       <Kicker index="01" testID="k">
         Where you stand
       </Kicker>,
     );
-    expect(screen.getByText('⁦01⁩')).toHaveStyle({ letterSpacing: 2 });
-    expect(screen.getByTestId('k')).toHaveStyle({ letterSpacing: 2 });
+    expect(screen.getByText('⁦01⁩')).toHaveStyle({ letterSpacing: tracking.kicker });
+    expect(screen.getByTestId('k')).toHaveStyle({ letterSpacing: tracking.kicker });
     await act(async () => {
       await setLanguage('te');
     });

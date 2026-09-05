@@ -1,17 +1,17 @@
 import '../global.css';
 
-import {
-  Archivo_400Regular,
-  Archivo_500Medium,
-  Archivo_600SemiBold,
-  Archivo_700Bold,
-} from '@expo-google-fonts/archivo';
-import {
-  NotoSansTelugu_400Regular,
-  NotoSansTelugu_500Medium,
-  NotoSansTelugu_600SemiBold,
-  NotoSansTelugu_700Bold,
-} from '@expo-google-fonts/noto-sans-telugu';
+import { Inter_400Regular } from '@expo-google-fonts/inter/400Regular';
+import { Inter_500Medium } from '@expo-google-fonts/inter/500Medium';
+import { Inter_600SemiBold } from '@expo-google-fonts/inter/600SemiBold';
+import { Inter_700Bold } from '@expo-google-fonts/inter/700Bold';
+import { Inter_800ExtraBold } from '@expo-google-fonts/inter/800ExtraBold';
+import { NotoSansTelugu_400Regular } from '@expo-google-fonts/noto-sans-telugu/400Regular';
+import { NotoSansTelugu_500Medium } from '@expo-google-fonts/noto-sans-telugu/500Medium';
+import { NotoSansTelugu_600SemiBold } from '@expo-google-fonts/noto-sans-telugu/600SemiBold';
+import { NotoSansTelugu_700Bold } from '@expo-google-fonts/noto-sans-telugu/700Bold';
+import { NotoSansTelugu_800ExtraBold } from '@expo-google-fonts/noto-sans-telugu/800ExtraBold';
+import { PlayfairDisplay_400Regular } from '@expo-google-fonts/playfair-display/400Regular';
+import { PlayfairDisplay_400Regular_Italic } from '@expo-google-fonts/playfair-display/400Regular_Italic';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { colors } from '@tslprb/design-tokens';
 import { initI18n } from '@tslprb/i18n';
@@ -36,16 +36,24 @@ initI18n(override ?? useLangStore.getState().lang);
 // so a language-aware screen shows the override as the selected chip.
 if (override) useLangStore.getState().setLang(override);
 
-/** Keys must equal `tokens.json → font.<lang>.weights` — `useTypography()` resolves families by these names. */
+/**
+ * Keys must equal `tokens.json → font.<lang>.weights` and `font.en.display.{regular,italic}` —
+ * `useTypography()` resolves families by these names. Per-weight subpath imports, so the
+ * bundle carries five Inter files rather than the family's eighteen.
+ */
 const FONTS = {
-  Archivo_400Regular,
-  Archivo_500Medium,
-  Archivo_600SemiBold,
-  Archivo_700Bold,
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  Inter_800ExtraBold,
+  PlayfairDisplay_400Regular,
+  PlayfairDisplay_400Regular_Italic,
   NotoSansTelugu_400Regular,
   NotoSansTelugu_500Medium,
   NotoSansTelugu_600SemiBold,
   NotoSansTelugu_700Bold,
+  NotoSansTelugu_800ExtraBold,
 };
 
 export default function RootLayout() {

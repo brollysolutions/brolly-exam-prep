@@ -78,7 +78,7 @@ describe('CategoryView (te)', () => {
     expect(screen.getByTestId('category-step')).toHaveStyle({ letterSpacing: 0 });
     expect(
       screen.getByTestId('category-back-chevron', { includeHiddenElements: true }),
-    ).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
+    ).toHaveStyle({ fontFamily: 'Inter_400Regular' });
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });

@@ -73,11 +73,11 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
             importantForAccessibility="no"
             style={
               {
-                "fontFamily": "Archivo_400Regular",
+                "fontFamily": "Inter_400Regular",
                 "fontSize": 20,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 29,
+                "lineHeight": 30,
                 "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
@@ -156,13 +156,13 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
             className="text-chalk2"
             style={
               {
-                "fontFamily": "Archivo_700Bold",
+                "fontFamily": "Inter_700Bold",
                 "fontSize": 10.5,
                 "fontVariant": [
                   "tabular-nums",
                 ],
                 "letterSpacing": 0,
-                "lineHeight": 15.2,
+                "lineHeight": 15.8,
                 "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
@@ -320,13 +320,13 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
             className="text-chalk2"
             style={
               {
-                "fontFamily": "Archivo_700Bold",
+                "fontFamily": "Inter_700Bold",
                 "fontSize": 10.5,
                 "fontVariant": [
                   "tabular-nums",
                 ],
                 "letterSpacing": 0,
-                "lineHeight": 15.2,
+                "lineHeight": 15.8,
                 "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",

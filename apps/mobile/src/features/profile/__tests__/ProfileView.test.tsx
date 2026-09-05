@@ -185,7 +185,7 @@ describe('ProfileView (te)', () => {
     expect(screen.getByTestId('profile-notifications').props.accessibilityState.checked).toBe(true);
     // Chevrons stay Latin-faced whatever the UI language.
     expect(screen.getAllByText('›', { includeHiddenElements: true })[0]).toHaveStyle({
-      fontFamily: 'Archivo_400Regular',
+      fontFamily: 'Inter_400Regular',
     });
     expect(screen.toJSON()).toMatchSnapshot();
   });

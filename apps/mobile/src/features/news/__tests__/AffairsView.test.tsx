@@ -1,5 +1,5 @@
 import { render, screen, userEvent, within } from '@testing-library/react-native';
-import { colors } from '@tslprb/design-tokens';
+import { colors, tracking } from '@tslprb/design-tokens';
 import { AFFAIRS, latestAffairs, type Affair } from '@tslprb/fixtures';
 import { initI18n } from '@tslprb/i18n';
 
@@ -91,7 +91,7 @@ describe('AffairsView', () => {
     const kicker = screen.getByTestId('affair-cat-af-metro-corridor');
     expect(kicker.props.className).toContain('text-sand');
     // The same tracking as every other kicker, Home's affairs rows included (design 23d).
-    expect(kicker).toHaveStyle({ letterSpacing: 2 });
+    expect(kicker).toHaveStyle({ letterSpacing: tracking.kicker });
   });
 
   // The same content on Home carries a 3 px sand edge; the rule is "a block with a non-hi-vis

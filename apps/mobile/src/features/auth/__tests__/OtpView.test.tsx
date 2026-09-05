@@ -183,7 +183,7 @@ describe('OtpView (te)', () => {
     // The chevron stays in the Latin face whatever the UI language.
     expect(
       screen.getByTestId('otp-change-number-chevron', { includeHiddenElements: true }),
-    ).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
+    ).toHaveStyle({ fontFamily: 'Inter_400Regular' });
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });

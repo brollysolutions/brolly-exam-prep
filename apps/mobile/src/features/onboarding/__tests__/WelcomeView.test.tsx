@@ -45,7 +45,7 @@ describe('WelcomeView', () => {
 
   it('shows the brand plate in the Latin face in every language', async () => {
     await render(<WelcomeView onDone={jest.fn()} />);
-    expect(screen.getByText('PWT')).toHaveStyle({ fontFamily: 'Archivo_700Bold' });
+    expect(screen.getByText('PWT')).toHaveStyle({ fontFamily: 'Inter_700Bold' });
   });
 });
 
@@ -73,13 +73,14 @@ describe('WelcomeView (te)', () => {
       screen.getAllByTestId(/^welcome-dot-/, hidden).map((dot) => dot.props.testID),
     ).toEqual(['welcome-dot-1', 'welcome-dot-2', 'welcome-dot-3']);
     // The brand acronym never leaves the Latin face.
-    expect(screen.getByText('PWT')).toHaveStyle({ fontFamily: 'Archivo_700Bold' });
-    // Telugu is set on a 1.65 line-height: 23 px type on a 37.9 px line, one step to the subtitle.
+    expect(screen.getByText('PWT')).toHaveStyle({ fontFamily: 'Inter_700Bold' });
+    // Telugu is set on a 1.65 line-height: 24 px type on a 39.6 px line, one step to the
+    // subtitle — and in Noto 700, since Playfair (the English title face) has no Telugu.
     const title = screen.getByTestId('welcome-title-1');
     expect(title).toHaveStyle({
-      fontSize: 23,
-      lineHeight: 37.9,
-      fontFamily: 'NotoSansTelugu_600SemiBold',
+      fontSize: 24,
+      lineHeight: 39.6,
+      fontFamily: 'NotoSansTelugu_700Bold',
     });
     expect(title.props.className).toContain('mt-3');
     expect(screen.toJSON()).toMatchSnapshot();

@@ -20,11 +20,11 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
       className="text-chalk mt-5"
       style={
         {
-          "fontFamily": "NotoSansTelugu_600SemiBold",
-          "fontSize": 25,
+          "fontFamily": "NotoSansTelugu_700Bold",
+          "fontSize": 26,
           "fontVariant": undefined,
           "letterSpacing": 0,
-          "lineHeight": 41.3,
+          "lineHeight": 42.9,
           "textAlign": "left",
           "textTransform": undefined,
           "writingDirection": "ltr",
@@ -432,13 +432,13 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "Archivo_600SemiBold",
+                          "fontFamily": "Inter_600SemiBold",
                           "fontSize": 11.5,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 16.7,
+                          "lineHeight": 17.3,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -469,11 +469,11 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                     className="text-mute"
                     style={
                       {
-                        "fontFamily": "Archivo_400Regular",
+                        "fontFamily": "Inter_400Regular",
                         "fontSize": 11.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -498,13 +498,13 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "Archivo_600SemiBold",
+                          "fontFamily": "Inter_600SemiBold",
                           "fontSize": 11.5,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 16.7,
+                          "lineHeight": 17.3,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -569,13 +569,13 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "Archivo_700Bold",
+                          "fontFamily": "Inter_700Bold",
                           "fontSize": 12.5,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 18.1,
+                          "lineHeight": 18.8,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -740,13 +740,13 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "Archivo_600SemiBold",
+                          "fontFamily": "Inter_600SemiBold",
                           "fontSize": 11.5,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 16.7,
+                          "lineHeight": 17.3,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -777,11 +777,11 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                     className="text-mute"
                     style={
                       {
-                        "fontFamily": "Archivo_400Regular",
+                        "fontFamily": "Inter_400Regular",
                         "fontSize": 11.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -806,13 +806,13 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "Archivo_600SemiBold",
+                          "fontFamily": "Inter_600SemiBold",
                           "fontSize": 11.5,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 16.7,
+                          "lineHeight": 17.3,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -876,11 +876,11 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       className="text-mute"
                       style={
                         {
-                          "fontFamily": "Archivo_400Regular",
+                          "fontFamily": "Inter_400Regular",
                           "fontSize": 12.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 18.1,
+                          "lineHeight": 18.8,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",

@@ -51,7 +51,7 @@ describe('formatCount / formatRank', () => {
 });
 
 describe('isLatinValue', () => {
-  it('accepts the values Archivo can draw', () => {
+  it('accepts the values Inter can draw', () => {
     expect(isLatinValue('54%')).toBe(true);
     expect(isLatinValue(COST_ROWS.en[2][1])).toBe(true); // the U+2212 minus
   });

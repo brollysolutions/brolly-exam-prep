@@ -70,7 +70,7 @@ describe('Chip', () => {
     // Fix1 review #5: a "Sample data" tag read at parity with the heading beside it (same
     // kicker weight as a 700 title) — step it to 600 while keeping the panel3 fill.
     const text = screen.getByText('Sample data');
-    expect(text).toHaveStyle({ fontSize: 10.5, fontFamily: 'Archivo_600SemiBold' });
+    expect(text).toHaveStyle({ fontSize: 10.5, fontFamily: 'Inter_600SemiBold' });
     expect(text.props.className).toContain('text-dim');
   });
 });

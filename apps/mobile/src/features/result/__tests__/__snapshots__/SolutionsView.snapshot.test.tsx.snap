@@ -73,11 +73,11 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
             importantForAccessibility="no"
             style={
               {
-                "fontFamily": "Archivo_400Regular",
+                "fontFamily": "Inter_400Regular",
                 "fontSize": 20,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 29,
+                "lineHeight": 30,
                 "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
@@ -188,13 +188,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               className="text-tar"
               style={
                 {
-                  "fontFamily": "Archivo_700Bold",
+                  "fontFamily": "Inter_700Bold",
                   "fontSize": 12.5,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 18.1,
+                  "lineHeight": 18.8,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -274,13 +274,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               className="text-dim"
               style={
                 {
-                  "fontFamily": "Archivo_600SemiBold",
+                  "fontFamily": "Inter_600SemiBold",
                   "fontSize": 12.5,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 18.1,
+                  "lineHeight": 18.8,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -453,11 +453,11 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                   importantForAccessibility="no"
                   style={
                     {
-                      "fontFamily": "Archivo_700Bold",
+                      "fontFamily": "Inter_700Bold",
                       "fontSize": 12.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 18.1,
+                      "lineHeight": 18.8,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -500,13 +500,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "Archivo_700Bold",
+                      "fontFamily": "Inter_700Bold",
                       "fontSize": 10.5,
                       "fontVariant": [
                         "tabular-nums",
                       ],
                       "letterSpacing": 0,
-                      "lineHeight": 15.2,
+                      "lineHeight": 15.8,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -725,13 +725,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
+                        "fontFamily": "Inter_600SemiBold",
                         "fontSize": 11.5,
                         "fontVariant": [
                           "tabular-nums",
                         ],
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -774,13 +774,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
+                        "fontFamily": "Inter_600SemiBold",
                         "fontSize": 11.5,
                         "fontVariant": [
                           "tabular-nums",
                         ],
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -812,11 +812,11 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 className="text-dim"
                 style={
                   {
-                    "fontFamily": "Archivo_400Regular",
+                    "fontFamily": "Inter_400Regular",
                     "fontSize": 11.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 16.7,
+                    "lineHeight": 17.3,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -872,13 +872,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
+                        "fontFamily": "Inter_600SemiBold",
                         "fontSize": 11.5,
                         "fontVariant": [
                           "tabular-nums",
                         ],
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -941,11 +941,11 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                   importantForAccessibility="no"
                   style={
                     {
-                      "fontFamily": "Archivo_700Bold",
+                      "fontFamily": "Inter_700Bold",
                       "fontSize": 12.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 18.1,
+                      "lineHeight": 18.8,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -988,13 +988,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "Archivo_700Bold",
+                      "fontFamily": "Inter_700Bold",
                       "fontSize": 10.5,
                       "fontVariant": [
                         "tabular-nums",
                       ],
                       "letterSpacing": 0,
-                      "lineHeight": 15.2,
+                      "lineHeight": 15.8,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -1213,13 +1213,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
+                        "fontFamily": "Inter_600SemiBold",
                         "fontSize": 11.5,
                         "fontVariant": [
                           "tabular-nums",
                         ],
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -1262,13 +1262,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
+                        "fontFamily": "Inter_600SemiBold",
                         "fontSize": 11.5,
                         "fontVariant": [
                           "tabular-nums",
                         ],
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -1300,11 +1300,11 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 className="text-dim"
                 style={
                   {
-                    "fontFamily": "Archivo_400Regular",
+                    "fontFamily": "Inter_400Regular",
                     "fontSize": 11.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 16.7,
+                    "lineHeight": 17.3,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -1360,13 +1360,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
+                        "fontFamily": "Inter_600SemiBold",
                         "fontSize": 11.5,
                         "fontVariant": [
                           "tabular-nums",
                         ],
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -1429,11 +1429,11 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                   importantForAccessibility="no"
                   style={
                     {
-                      "fontFamily": "Archivo_700Bold",
+                      "fontFamily": "Inter_700Bold",
                       "fontSize": 12.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 18.1,
+                      "lineHeight": 18.8,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -1476,13 +1476,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "Archivo_700Bold",
+                      "fontFamily": "Inter_700Bold",
                       "fontSize": 10.5,
                       "fontVariant": [
                         "tabular-nums",
                       ],
                       "letterSpacing": 0,
-                      "lineHeight": 15.2,
+                      "lineHeight": 15.8,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -1701,13 +1701,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
+                        "fontFamily": "Inter_600SemiBold",
                         "fontSize": 11.5,
                         "fontVariant": [
                           "tabular-nums",
                         ],
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -1739,11 +1739,11 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 className="text-dim"
                 style={
                   {
-                    "fontFamily": "Archivo_400Regular",
+                    "fontFamily": "Inter_400Regular",
                     "fontSize": 11.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 16.7,
+                    "lineHeight": 17.3,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -1799,13 +1799,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
+                        "fontFamily": "Inter_600SemiBold",
                         "fontSize": 11.5,
                         "fontVariant": [
                           "tabular-nums",
                         ],
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",

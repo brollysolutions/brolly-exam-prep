@@ -58,7 +58,7 @@ export function formatCount(value: number): string {
 export const formatRank = (rank: number, total: number): string =>
   `${formatCount(rank)} / ${formatCount(total)}`;
 
-/** Basic Latin through Latin Extended-B: everything Archivo can draw. */
+/** Basic Latin through Latin Extended-B: everything Inter can draw. */
 const LATIN_END = 0x024f;
 /** General punctuation, currency, arrows and maths - where the fixtures' minus sign lives. */
 const SYMBOL_START = 0x2000;
@@ -66,7 +66,7 @@ const SYMBOL_END = 0x22ff;
 
 /**
  * True when a value can render in the Latin face, i.e. inside `<Num>`. The localised
- * "what cost you marks" values carry their units in Telugu, and Archivo has no
+ * "what cost you marks" values carry their units in Telugu, and Inter has no
  * glyphs for those - such values must stay in the language's own face.
  */
 export function isLatinValue(value: string): boolean {

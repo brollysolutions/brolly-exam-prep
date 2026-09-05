@@ -55,6 +55,6 @@ describe('BackRow (te)', () => {
     // The chevron is decorative, so it is hidden from the a11y tree and from default queries.
     expect(
       screen.getByTestId('back-chevron', { includeHiddenElements: true }),
-    ).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
+    ).toHaveStyle({ fontFamily: 'Inter_400Regular' });
   });
 });

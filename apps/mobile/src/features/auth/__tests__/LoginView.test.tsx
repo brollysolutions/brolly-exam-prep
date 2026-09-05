@@ -89,8 +89,9 @@ describe('LoginView (te)', () => {
 
   it('renders the Telugu copy and keeps the phone row physical', async () => {
     await render(<LoginView initialPhone="9000012345" onSubmit={jest.fn()} />);
+    // A title role: Noto 700 in Telugu (Playfair, the English title face, has no Telugu).
     expect(screen.getByText('మీ ఫోన్ నంబర్')).toHaveStyle({
-      fontFamily: 'NotoSansTelugu_600SemiBold',
+      fontFamily: 'NotoSansTelugu_700Bold',
     });
     // The screen's own rows are all numeric, so they stay physically LTR in every language.
     expect(screen.getByTestId('login-phone')).toHaveStyle({ flexDirection: 'row' });

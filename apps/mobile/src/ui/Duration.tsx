@@ -33,7 +33,7 @@ export type DurationProps = {
 
 /**
  * A duration with its unit localised. The digits stay in `<Num>` - Latin face, tabular,
- * LTR-isolated - while the unit renders in the language's own face, because Archivo has no
+ * LTR-isolated - while the unit renders in the language's own face, because Inter has no
  * Telugu glyphs. Both rows follow the reading direction (RTL would read right-to-left
  * with the minutes leading); the flat string goes to the screen reader.
  */

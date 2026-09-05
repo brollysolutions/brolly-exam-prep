@@ -1,4 +1,5 @@
 import { act, render, screen } from '@testing-library/react-native';
+import { tracking } from '@tslprb/design-tokens';
 import { initI18n, setLanguage } from '@tslprb/i18n';
 
 import { Text } from '../Text';
@@ -41,8 +42,8 @@ describe('Text', () => {
       </Text>,
     );
     expect(screen.getByTestId('t')).toHaveStyle({
-      letterSpacing: 3.4,
-      fontFamily: 'Archivo_400Regular',
+      letterSpacing: tracking.brand,
+      fontFamily: 'Inter_400Regular',
     });
     await render(
       <Text variant="kicker" tracking="brand" testID="u">

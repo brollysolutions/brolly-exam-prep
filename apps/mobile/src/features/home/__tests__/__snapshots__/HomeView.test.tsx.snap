@@ -37,11 +37,11 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           className="text-hivis"
           style={
             {
-              "fontFamily": "Archivo_700Bold",
+              "fontFamily": "Inter_700Bold",
               "fontSize": 10.5,
               "fontVariant": undefined,
-              "letterSpacing": 3.4,
-              "lineHeight": 15.2,
+              "letterSpacing": 2,
+              "lineHeight": 15.8,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -113,11 +113,11 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 className="text-dim"
                 style={
                   {
-                    "fontFamily": "Archivo_700Bold",
+                    "fontFamily": "Inter_700Bold",
                     "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 19.6,
+                    "lineHeight": 20.3,
                     "textAlign": "center",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -186,11 +186,11 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         className="text-chalk mt-4"
         style={
           {
-            "fontFamily": "NotoSansTelugu_600SemiBold",
-            "fontSize": 23,
+            "fontFamily": "NotoSansTelugu_700Bold",
+            "fontSize": 24,
             "fontVariant": undefined,
             "letterSpacing": 0,
-            "lineHeight": 37.9,
+            "lineHeight": 39.6,
             "textAlign": "left",
             "textTransform": undefined,
             "writingDirection": "ltr",
@@ -251,13 +251,13 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             className="text-hivis"
             style={
               {
-                "fontFamily": "Archivo_700Bold",
-                "fontSize": 28,
+                "fontFamily": "Inter_700Bold",
+                "fontSize": 30,
                 "fontVariant": [
                   "tabular-nums",
                 ],
                 "letterSpacing": 0,
-                "lineHeight": 40.6,
+                "lineHeight": 45,
                 "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
@@ -581,11 +581,11 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 importantForAccessibility="no"
                 style={
                   {
-                    "fontFamily": "Archivo_400Regular",
+                    "fontFamily": "Inter_400Regular",
                     "fontSize": 11.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 16.7,
+                    "lineHeight": 17.3,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -693,13 +693,13 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
+                        "fontFamily": "Inter_600SemiBold",
                         "fontSize": 11.5,
                         "fontVariant": [
                           "tabular-nums",
                         ],
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -805,13 +805,13 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
+                        "fontFamily": "Inter_600SemiBold",
                         "fontSize": 11.5,
                         "fontVariant": [
                           "tabular-nums",
                         ],
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -917,13 +917,13 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "Archivo_600SemiBold",
+                        "fontFamily": "Inter_600SemiBold",
                         "fontSize": 11.5,
                         "fontVariant": [
                           "tabular-nums",
                         ],
                         "letterSpacing": 0,
-                        "lineHeight": 16.7,
+                        "lineHeight": 17.3,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -1212,11 +1212,11 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 importantForAccessibility="no"
                 style={
                   {
-                    "fontFamily": "Archivo_400Regular",
+                    "fontFamily": "Inter_400Regular",
                     "fontSize": 11.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 16.7,
+                    "lineHeight": 17.3,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -1319,13 +1319,13 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "Archivo_600SemiBold",
+                      "fontFamily": "Inter_600SemiBold",
                       "fontSize": 11.5,
                       "fontVariant": [
                         "tabular-nums",
                       ],
                       "letterSpacing": 0,
-                      "lineHeight": 16.7,
+                      "lineHeight": 17.3,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -1435,13 +1435,13 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "Archivo_600SemiBold",
+                      "fontFamily": "Inter_600SemiBold",
                       "fontSize": 11.5,
                       "fontVariant": [
                         "tabular-nums",
                       ],
                       "letterSpacing": 0,
-                      "lineHeight": 16.7,
+                      "lineHeight": 17.3,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -1551,13 +1551,13 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "Archivo_600SemiBold",
+                      "fontFamily": "Inter_600SemiBold",
                       "fontSize": 11.5,
                       "fontVariant": [
                         "tabular-nums",
                       ],
                       "letterSpacing": 0,
-                      "lineHeight": 16.7,
+                      "lineHeight": 17.3,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -1641,13 +1641,13 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               className="text-hivis"
               style={
                 {
-                  "fontFamily": "Archivo_700Bold",
+                  "fontFamily": "Inter_700Bold",
                   "fontSize": 22,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 31.9,
+                  "lineHeight": 33,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -1693,13 +1693,13 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               className="text-hivis"
               style={
                 {
-                  "fontFamily": "Archivo_700Bold",
+                  "fontFamily": "Inter_700Bold",
                   "fontSize": 22,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 31.9,
+                  "lineHeight": 33,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -1745,13 +1745,13 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               className="text-hivis"
               style={
                 {
-                  "fontFamily": "Archivo_700Bold",
+                  "fontFamily": "Inter_700Bold",
                   "fontSize": 22,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 31.9,
+                  "lineHeight": 33,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",

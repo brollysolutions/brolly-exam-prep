@@ -27,13 +27,13 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
           className="text-hazard"
           style={
             {
-              "fontFamily": "Archivo_700Bold",
+              "fontFamily": "Inter_700Bold",
               "fontSize": 10.5,
               "fontVariant": [
                 "tabular-nums",
               ],
               "letterSpacing": 0,
-              "lineHeight": 15.2,
+              "lineHeight": 15.8,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -47,11 +47,11 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
           className="text-chalk mt-3"
           style={
             {
-              "fontFamily": "NotoSansTelugu_600SemiBold",
-              "fontSize": 23,
+              "fontFamily": "NotoSansTelugu_700Bold",
+              "fontSize": 24,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 37.9,
+              "lineHeight": 39.6,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",

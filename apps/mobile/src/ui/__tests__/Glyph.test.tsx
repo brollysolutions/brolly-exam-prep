@@ -16,7 +16,7 @@ describe('Glyph', () => {
 
   it('keeps the Latin face when the UI language is Telugu', async () => {
     await render(<Glyph testID="glyph">{'‹'}</Glyph>);
-    expect(screen.getByTestId('glyph')).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
+    expect(screen.getByTestId('glyph')).toHaveStyle({ fontFamily: 'Inter_400Regular' });
   });
 
   it('honours weight and variant while staying Latin', async () => {
@@ -25,6 +25,6 @@ describe('Glyph', () => {
         ■
       </Glyph>,
     );
-    expect(screen.getByTestId('glyph')).toHaveStyle({ fontFamily: 'Archivo_600SemiBold' });
+    expect(screen.getByTestId('glyph')).toHaveStyle({ fontFamily: 'Inter_600SemiBold' });
   });
 });

@@ -13,7 +13,7 @@ export const iso = (value: number | string): string => `${LRI}${value}${PDI}`;
 
 /**
  * Numbers, timers, phone numbers and scores: always tabular, always LTR, always the Latin face
- * (Archivo) so digits line up identically in every language. Content is wrapped in
+ * (Inter, never Playfair) so digits line up identically in every language. Content is wrapped in
  * LRI…PDI isolation so it never re-orders inside a bidi sentence.
  */
 export function Num({ children, weight = '700', ...rest }: TextProps) {

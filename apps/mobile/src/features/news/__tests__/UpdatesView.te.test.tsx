@@ -31,7 +31,7 @@ describe('UpdatesView (te)', () => {
     const box = () =>
       screen.getByTestId('update-caret-box-nt-2026-hall-ticket', { includeHiddenElements: true });
     expect(caret()).toHaveTextContent('▸');
-    expect(caret()).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
+    expect(caret()).toHaveStyle({ fontFamily: 'Inter_400Regular' });
 
     await userEvent.press(screen.getByTestId('update-row-nt-2026-hall-ticket'));
     expect(caret()).toHaveTextContent('▸');

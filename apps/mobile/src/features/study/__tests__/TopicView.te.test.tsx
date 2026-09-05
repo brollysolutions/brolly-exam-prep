@@ -36,7 +36,8 @@ describe('TopicView (te)', () => {
     // Telugu copy from the fixture, not a fallback to English.
     const title = FOUND!.topic.title;
     expect(title.te).not.toBe(title.en);
-    expect(screen.getByText(title.te)).toHaveStyle({ fontFamily: 'NotoSansTelugu_600SemiBold' });
+    // A title role: Noto 700 in Telugu (Playfair, the English title face, has no Telugu).
+    expect(screen.getByText(title.te)).toHaveStyle({ fontFamily: 'NotoSansTelugu_700Bold' });
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });

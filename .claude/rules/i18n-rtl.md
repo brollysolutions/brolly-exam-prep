@@ -8,7 +8,7 @@ paths:
 
 - Two languages: English (default) and Telugu. Urdu was removed at the user's request on 2026-09-03 (F-26); do not add a third language or any `ur` key, font or branch.
 - Every user-visible string goes through `t('key')` from `@tslprb/i18n`. Keys are added to `en.json` and `te.json` in the same commit; a key present in one language only fails `pnpm test` (parity test).
-- Fonts: `Archivo` (en), `NotoSansTelugu` (te). Use `useTypography()`; never set `fontFamily` directly.
+- Fonts: `Inter` (en, with `PlayfairDisplay` for the display roles `title`/`titleLg`/`display`/`wordmark`), `NotoSansTelugu` (te; display roles fall back to Noto 700). Numbers (`<Num>`) are always Inter. Use `useTypography()`; never set `fontFamily` directly.
 - Line-height: en ≥ 1.45, te ≥ 1.6.
 - Direction: `const d = useDir()` → `d.isRTL`, `d.row` (flexDirection), `d.textAlign`, `d.chevronNext/Prev`. Tailwind: `dir('ml-2','mr-2')`. Never use RN `start/end` style props or `I18nManager` — they don't follow the in-app language. RTL is currently dormant (both languages are LTR, `isRTL()` is always false); keep routing anything directional through these helpers so an RTL language can be added without touching screens.
 - Numbers, phone numbers, timers, scores: wrap in `<Num>` (forced LTR, tabular). Mixed strings use `⁨…⁩` isolation.

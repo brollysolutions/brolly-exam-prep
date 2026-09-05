@@ -396,7 +396,7 @@ export function AttemptView({
           <Text variant="caption" color="dim">
             {`${t('test.timeOnQ')} ·`}
           </Text>
-          {/* Digits in Archivo, the unit in the language's own face: `common.seconds`
+          {/* Digits in Inter, the unit in the language's own face: `common.seconds`
               inside `<Num>` drew the Telugu unit as tofu. */}
           <Duration seconds={elapsedSec} variant="caption" weight="400" color="dim" />
         </Row>

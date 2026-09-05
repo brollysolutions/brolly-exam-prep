@@ -8,7 +8,7 @@
  *
  * The month is abbreviated in Latin because the whole string renders inside `<Num>`: Latin
  * face, tabular figures, LTR-isolated, so a date never re-orders inside a bidi line and the
- * day columns line up down the list. Archivo has no Telugu glyphs, so a
+ * day columns line up down the list. Inter has no Telugu glyphs, so a
  * translated month name in that face would be tofu.
  */
 

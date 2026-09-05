@@ -72,11 +72,11 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             className="text-dim"
             style={
               {
-                "fontFamily": "Archivo_400Regular",
+                "fontFamily": "Inter_400Regular",
                 "fontSize": 20,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 29,
+                "lineHeight": 30,
                 "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
@@ -138,11 +138,11 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               className="text-dim"
               style={
                 {
-                  "fontFamily": "Archivo_700Bold",
+                  "fontFamily": "Inter_700Bold",
                   "fontSize": 13.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 19.6,
+                  "lineHeight": 20.3,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -246,7 +246,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             className="text-chalk"
             style={
               {
-                "fontFamily": "Archivo_700Bold",
+                "fontFamily": "Inter_700Bold",
                 "fontSize": 23,
                 "fontVariant": [
                   "tabular-nums",
@@ -574,11 +574,11 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
         importantForAccessibility="no"
         style={
           {
-            "fontFamily": "Archivo_400Regular",
+            "fontFamily": "Inter_400Regular",
             "fontSize": 13.5,
             "fontVariant": undefined,
             "letterSpacing": 0,
-            "lineHeight": 19.6,
+            "lineHeight": 20.3,
             "textAlign": "left",
             "textTransform": undefined,
             "writingDirection": "ltr",
@@ -663,13 +663,13 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               className="text-hivis"
               style={
                 {
-                  "fontFamily": "Archivo_700Bold",
+                  "fontFamily": "Inter_700Bold",
                   "fontSize": 12.5,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 1.2,
-                  "lineHeight": 18.1,
+                  "lineHeight": 18.8,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -1185,13 +1185,13 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 className="text-dim"
                 style={
                   {
-                    "fontFamily": "Archivo_400Regular",
+                    "fontFamily": "Inter_400Regular",
                     "fontSize": 11.5,
                     "fontVariant": [
                       "tabular-nums",
                     ],
                     "letterSpacing": 0,
-                    "lineHeight": 16.7,
+                    "lineHeight": 17.3,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -1437,11 +1437,11 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "Archivo_400Regular",
+                  "fontFamily": "Inter_400Regular",
                   "fontSize": 20,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29,
+                  "lineHeight": 30,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -1509,13 +1509,13 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               className="text-dim"
               style={
                 {
-                  "fontFamily": "Archivo_400Regular",
+                  "fontFamily": "Inter_400Regular",
                   "fontSize": 11.5,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 16.7,
+                  "lineHeight": 17.3,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -1597,11 +1597,11 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 className="text-tar"
                 style={
                   {
-                    "fontFamily": "Archivo_400Regular",
+                    "fontFamily": "Inter_400Regular",
                     "fontSize": 20,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29,
+                    "lineHeight": 30,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",

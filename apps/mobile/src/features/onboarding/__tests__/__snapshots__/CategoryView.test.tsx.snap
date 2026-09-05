@@ -74,11 +74,11 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               importantForAccessibility="no"
               style={
                 {
-                  "fontFamily": "Archivo_400Regular",
+                  "fontFamily": "Inter_400Regular",
                   "fontSize": 20,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29,
+                  "lineHeight": 30,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -112,13 +112,13 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
           className="text-hazard mt-1"
           style={
             {
-              "fontFamily": "Archivo_700Bold",
+              "fontFamily": "Inter_700Bold",
               "fontSize": 10.5,
               "fontVariant": [
                 "tabular-nums",
               ],
               "letterSpacing": 0,
-              "lineHeight": 15.2,
+              "lineHeight": 15.8,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -132,11 +132,11 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
           className="text-chalk mt-2"
           style={
             {
-              "fontFamily": "NotoSansTelugu_600SemiBold",
-              "fontSize": 23,
+              "fontFamily": "NotoSansTelugu_700Bold",
+              "fontSize": 24,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 37.9,
+              "lineHeight": 39.6,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -272,13 +272,13 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "Archivo_400Regular",
+                      "fontFamily": "Inter_400Regular",
                       "fontSize": 11.5,
                       "fontVariant": [
                         "tabular-nums",
                       ],
                       "letterSpacing": 0,
-                      "lineHeight": 16.7,
+                      "lineHeight": 17.3,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -375,13 +375,13 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "Archivo_400Regular",
+                      "fontFamily": "Inter_400Regular",
                       "fontSize": 11.5,
                       "fontVariant": [
                         "tabular-nums",
                       ],
                       "letterSpacing": 0,
-                      "lineHeight": 16.7,
+                      "lineHeight": 17.3,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -491,13 +491,13 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "Archivo_400Regular",
+                      "fontFamily": "Inter_400Regular",
                       "fontSize": 11.5,
                       "fontVariant": [
                         "tabular-nums",
                       ],
                       "letterSpacing": 0,
-                      "lineHeight": 16.7,
+                      "lineHeight": 17.3,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -594,13 +594,13 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "Archivo_400Regular",
+                      "fontFamily": "Inter_400Regular",
                       "fontSize": 11.5,
                       "fontVariant": [
                         "tabular-nums",
                       ],
                       "letterSpacing": 0,
-                      "lineHeight": 16.7,
+                      "lineHeight": 17.3,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -710,13 +710,13 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "Archivo_400Regular",
+                      "fontFamily": "Inter_400Regular",
                       "fontSize": 11.5,
                       "fontVariant": [
                         "tabular-nums",
                       ],
                       "letterSpacing": 0,
-                      "lineHeight": 16.7,
+                      "lineHeight": 17.3,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -813,13 +813,13 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "Archivo_400Regular",
+                      "fontFamily": "Inter_400Regular",
                       "fontSize": 11.5,
                       "fontVariant": [
                         "tabular-nums",
                       ],
                       "letterSpacing": 0,
-                      "lineHeight": 16.7,
+                      "lineHeight": 17.3,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",

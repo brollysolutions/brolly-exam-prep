@@ -25,7 +25,7 @@ describe('SegmentedChips (language switcher)', () => {
       });
       await render(<SegmentedChips value={ui} onChange={() => {}} options={options} />);
       for (const l of LANGS) expect(screen.getByText(LABEL[l])).toBeOnTheScreen();
-      expect(screen.getByText('EN')).toHaveStyle({ fontFamily: 'Archivo_700Bold' });
+      expect(screen.getByText('EN')).toHaveStyle({ fontFamily: 'Inter_700Bold' });
     },
   );
 
@@ -71,7 +71,7 @@ describe('SegmentedChips (form pickers)', () => {
     expect(active.props.className).toContain('border-line3');
     expect(active.props.className).not.toContain('bg-hivis');
     expect(screen.getByText('Constable').props.className).toContain('text-chalk');
-    expect(screen.getByText('Constable')).toHaveStyle({ fontFamily: 'Archivo_700Bold' });
+    expect(screen.getByText('Constable')).toHaveStyle({ fontFamily: 'Inter_700Bold' });
     expect(screen.getByText('Sub-Inspector').props.className).toContain('text-dim');
   });
 

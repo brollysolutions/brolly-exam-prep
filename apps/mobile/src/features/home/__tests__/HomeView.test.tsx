@@ -431,7 +431,7 @@ describe('HomeView (te)', () => {
     await render(<HomeView {...props} lang="te" />);
     expect(screen.getByTestId('home-header')).toHaveStyle({ flexDirection: 'row' });
     expect(screen.getByTestId('home-target')).toHaveStyle({ flexDirection: 'row' });
-    expect(screen.getByTestId('home-days')).toHaveStyle({ fontFamily: 'Archivo_700Bold' });
+    expect(screen.getByTestId('home-days')).toHaveStyle({ fontFamily: 'Inter_700Bold' });
     expect(screen.getByTestId('sample-data-updates')).toHaveTextContent('నమూనా డేటా');
     // The streak digit is isolated, so it stays a Latin figure inside the Telugu line.
     expect(screen.getByTestId('home-streak')).toHaveTextContent(has(iso('4')));
@@ -441,9 +441,9 @@ describe('HomeView (te)', () => {
   it('keeps the shelf links in the Latin face, where the chevron has a glyph', async () => {
     await render(<HomeView {...props} lang="te" />);
     expect(screen.getByTestId('home-updates-all')).toHaveTextContent(has('అన్ని అప్‌డేట్‌లు'));
-    // The chevron renders in Archivo whatever the UI face, or a missing glyph is tofu.
+    // The chevron renders in Inter whatever the UI face, or a missing glyph is tofu.
     const chevrons = screen.getAllByText('›', { includeHiddenElements: true });
     expect(chevrons.length).toBe(2);
-    expect(chevrons[0]).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
+    expect(chevrons[0]).toHaveStyle({ fontFamily: 'Inter_400Regular' });
   });
 });

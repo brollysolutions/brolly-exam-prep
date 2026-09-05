@@ -24,11 +24,11 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
         className="text-chalk mt-5"
         style={
           {
-            "fontFamily": "NotoSansTelugu_600SemiBold",
-            "fontSize": 25,
+            "fontFamily": "NotoSansTelugu_700Bold",
+            "fontSize": 26,
             "fontVariant": undefined,
             "letterSpacing": 0,
-            "lineHeight": 41.3,
+            "lineHeight": 42.9,
             "textAlign": "left",
             "textTransform": undefined,
             "writingDirection": "ltr",
@@ -171,11 +171,11 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                   importantForAccessibility="no"
                   style={
                     {
-                      "fontFamily": "Archivo_400Regular",
+                      "fontFamily": "Inter_400Regular",
                       "fontSize": 20,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29,
+                      "lineHeight": 30,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -286,11 +286,11 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                   importantForAccessibility="no"
                   style={
                     {
-                      "fontFamily": "Archivo_400Regular",
+                      "fontFamily": "Inter_400Regular",
                       "fontSize": 20,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29,
+                      "lineHeight": 30,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -425,11 +425,11 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "Archivo_700Bold",
+                        "fontFamily": "Inter_700Bold",
                         "fontSize": 13.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 19.6,
+                        "lineHeight": 20.3,
                         "textAlign": "center",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
