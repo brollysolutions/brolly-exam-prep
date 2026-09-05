@@ -1,10 +1,19 @@
 import { render, screen } from '@testing-library/react-native';
-import { shadow } from '@tslprb/design-tokens';
+import { shadow, spacing } from '@tslprb/design-tokens';
 import { initI18n } from '@tslprb/i18n';
+import type { ReactNode } from 'react';
 import { Text as RNText } from 'react-native';
+import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 
 import { ActionBar } from '../ActionBar';
 import { Button } from '../Button';
+
+/** A handset with a home indicator: 34 px of bottom inset under the bar. */
+const withInset = (bottom: number, node: ReactNode) => (
+  <SafeAreaInsetsContext.Provider value={{ top: 0, bottom, left: 0, right: 0 }}>
+    {node}
+  </SafeAreaInsetsContext.Provider>
+);
 
 describe('ActionBar', () => {
   beforeAll(() => {
@@ -25,7 +34,7 @@ describe('ActionBar', () => {
     expect(bar.props.style.boxShadow).toBe(shadow.sheet);
   });
 
-  it('drops the line for a footer that ends a full-bleed pager', async () => {
+  it('drops the line AND the shadow for a footer that ends a full-bleed pager', async () => {
     await render(
       <ActionBar
         testID="bar"
@@ -33,7 +42,30 @@ describe('ActionBar', () => {
         primary={<Button size="lg" label="Next" onPress={jest.fn()} />}
       />,
     );
-    expect(String(screen.getByTestId('bar').props.className)).not.toMatch(/border-t/);
+    const bar = screen.getByTestId('bar');
+    expect(String(bar.props.className)).not.toMatch(/border-t/);
+    // A shadow with no line to cast it reads as a smudge: both belong to `bordered`.
+    expect(bar.props.style.boxShadow).toBeUndefined();
+  });
+
+  // The bar sits on the screen's bottom edge, so it owns the home-indicator inset rather than
+  // floating above a strip of canvas the `Screen` padded for it.
+  it('grows its bottom padding by the home-indicator inset', async () => {
+    await render(
+      withInset(
+        0,
+        <ActionBar testID="flat" primary={<Button size="lg" label="Go" onPress={jest.fn()} />} />,
+      ),
+    );
+    expect(screen.getByTestId('flat').props.style.paddingBottom).toBe(spacing['4']);
+
+    await render(
+      withInset(
+        34,
+        <ActionBar testID="inset" primary={<Button size="lg" label="Go" onPress={jest.fn()} />} />,
+      ),
+    );
+    expect(screen.getByTestId('inset').props.style.paddingBottom).toBe(spacing['4'] + 34);
   });
 
   // One filled control per screen: the bar's partner is an outline or a ghost, never a
@@ -56,14 +88,18 @@ describe('ActionBar', () => {
 
   // The actions follow the reading direction, so the quiet partner leads and the primary
   // lands at the reading end without a mirrored class of its own.
-  it('lays the actions out in reading order', async () => {
+  it('lays the actions out in reading order, quiet partner first', async () => {
     await render(
       <ActionBar
         testID="bar"
+        secondary={<Button variant="ghost" label="Skip" onPress={jest.fn()} />}
         primary={<Button size="lg" label="Continue" onPress={jest.fn()} />}
       />,
     );
     expect(screen.getByTestId('bar-row')).toHaveStyle({ flexDirection: 'row' });
+    const [first, second] = screen.getAllByRole('button');
+    expect(first).toHaveTextContent('Skip');
+    expect(second).toHaveTextContent('Continue');
   });
 
   it('hosts the keypad above the actions', async () => {

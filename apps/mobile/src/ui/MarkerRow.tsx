@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
-import { colors } from '@tslprb/design-tokens';
-import { useDir } from '@tslprb/i18n';
+import { colors, size } from '@tslprb/design-tokens';
+import { useDir, useTypography } from '@tslprb/i18n';
 import type { ReactNode } from 'react';
 import { Pressable, View } from 'react-native';
 
@@ -21,20 +21,37 @@ export type MarkerRowProps = {
   title: string;
   /** The `ink3` line under the title: minutes, a date, a count. */
   meta?: string;
+  /**
+   * Cap the title at n lines. Left off, it grows — Profile and Study rows carry short labels
+   * and a Telugu one has to be allowed to wrap; Home's affair headline takes `titleLines={2}`.
+   */
+  titleLines?: number;
   marker?: Marker;
-  /** At the reading end: a `Pill`, a `Chip`, a button. Drawn before the chevron. */
+  /**
+   * At the reading end: a `Pill`, a `Chip`, a `<Num>`. Drawn before the chevron.
+   *
+   * Decoration, not a control: once `onPress` is set the whole row is one button, so anything
+   * pressable in here is unreachable — a screen reader never gets to it and a tap on it fires
+   * the row. A row with two destinations needs two rows.
+   */
   trailing?: ReactNode;
+  /**
+   * What `trailing` says, for the composed name — an explicit `accessibilityLabel` (this one,
+   * or the caller's) stops children being read, so a trailing date is silent without it.
+   */
+  trailingLabel?: string;
   /** The `ink3` "goes somewhere" chevron at the reading end. */
   chevron?: boolean;
   onPress?: () => void;
   /** The first row inside a card: no hairline above it. */
   first?: boolean;
-  /** Overrides the composed label (title + meta) a screen reader would otherwise hear. */
+  /** Overrides the composed label (title + meta + trailingLabel) a screen reader would hear. */
   accessibilityLabel?: string;
+  className?: string;
   testID?: string;
 };
 
-const ICON = 18;
+const ICON = size.icon;
 
 /**
  * The mark itself, in a fixed slot: an 8 px dot and an 18 px icon would otherwise start their
@@ -43,21 +60,17 @@ const ICON = 18;
  */
 function Mark({ marker, testID }: { marker: Marker; testID?: string }) {
   if (marker === 'none') return null;
-  return (
-    <View className="items-center justify-center" style={{ width: ICON }}>
-      {marker === 'dot' ? (
-        <View testID={testID} className="h-2 w-2 rounded-full bg-accentStrong" />
-      ) : (
-        <Ionicons
-          testID={testID}
-          name={marker === 'done' ? 'checkmark-circle' : 'lock-closed-outline'}
-          size={ICON}
-          color={marker === 'done' ? colors.ink : colors.ink3}
-          accessibilityElementsHidden
-          importantForAccessibility="no"
-        />
-      )}
-    </View>
+  return marker === 'dot' ? (
+    <View testID={testID} className="h-2 w-2 rounded-full bg-accentStrong" />
+  ) : (
+    <Ionicons
+      testID={testID}
+      name={marker === 'done' ? 'checkmark-circle' : 'lock-closed-outline'}
+      size={ICON}
+      color={marker === 'done' ? colors.ink : colors.ink3}
+      accessibilityElementsHidden
+      importantForAccessibility="no"
+    />
   );
 }
 
@@ -69,30 +82,45 @@ function Mark({ marker, testID }: { marker: Marker; testID?: string }) {
  * A minimum height of 56 px, never a fixed one: a title over its meta grows the row to about
  * 72, and a Telugu title grows it further instead of being clipped. The hairline sits on top
  * rather than underneath, so the last row never draws a line against the card's own border.
+ *
+ * The mark and the trailing slot are each boxed to ONE body line and pinned to the top of the
+ * content, so a wrapped title keeps them on line 1 instead of dragging them to the middle of
+ * two (design review D4). The 56 px floor and the vertical centring live on the row's own
+ * wrapper, so a one-line row is laid out exactly as it was.
  */
 export function MarkerRow({
   title,
   meta,
+  titleLines,
   marker = 'none',
   trailing,
+  trailingLabel,
   chevron = false,
   onPress,
   first = false,
   accessibilityLabel,
+  className,
   testID,
 }: MarkerRowProps) {
   const d = useDir();
   const { pressed, handlers } = usePressed();
+  // The language's own body line, so a Telugu row boxes to its taller line rather than clipping.
+  const lh = useTypography('body').lineHeight;
+  const slot = { height: lh, alignSelf: 'flex-start' } as const;
+  const end = trailing !== undefined || chevron;
   const body = (
-    <Row
-      testID={testID ? `${testID}-row` : undefined}
-      gap={3}
-      align="center"
-      className="min-h-touchLg py-2"
-    >
-      <Mark marker={marker} testID={testID ? `${testID}-marker` : undefined} />
+    <Row testID={testID ? `${testID}-row` : undefined} gap={3} align="start">
+      {marker !== 'none' && (
+        <View
+          testID={testID ? `${testID}-mark` : undefined}
+          className="items-center justify-center"
+          style={{ ...slot, width: ICON }}
+        >
+          <Mark marker={marker} testID={testID ? `${testID}-marker` : undefined} />
+        </View>
+      )}
       <Stack gap={1} className="flex-1">
-        <Text variant="body" weight="600">
+        <Text variant="body" weight="600" numberOfLines={titleLines}>
           {title}
         </Text>
         {meta !== undefined && (
@@ -101,32 +129,48 @@ export function MarkerRow({
           </Text>
         )}
       </Stack>
-      {trailing}
-      {chevron && (
-        <Glyph color="ink3" accessibilityElementsHidden importantForAccessibility="no">
-          {d.chevronNext}
-        </Glyph>
+      {end && (
+        <Row
+          testID={testID ? `${testID}-end` : undefined}
+          gap={2}
+          align="center"
+          style={slot}
+        >
+          {trailing}
+          {chevron && (
+            <Glyph color="ink3" accessibilityElementsHidden importantForAccessibility="no">
+              {d.chevronNext}
+            </Glyph>
+          )}
+        </Row>
       )}
     </Row>
   );
-  const border = first ? undefined : 'border-t border-line';
+  // The floor and the vertical centring belong to the wrapper: the inner row tops its children
+  // out, and the wrapper centres that whole block inside the 56 px.
+  const box = cx(
+    'min-h-touchLg justify-center py-2',
+    first ? undefined : 'border-t border-line',
+    className,
+  );
   if (!onPress) {
     return (
-      <View testID={testID} className={border}>
+      <View testID={testID} className={box}>
         {body}
       </View>
     );
   }
+  const composed = [title, meta, trailingLabel].filter(Boolean).join(' ');
   return (
     <Pressable
       testID={testID}
       accessibilityRole="button"
-      accessibilityLabel={accessibilityLabel ?? (meta ? `${title} ${meta}` : title)}
+      accessibilityLabel={accessibilityLabel ?? composed}
       android_ripple={{ color: colors.accentTint }}
       onPress={onPress}
       {...handlers}
       // Pressed = a `surface2` fill, the only feedback that shows on cream (`pressedClass`).
-      className={cx(border, pressed && pressedClass)}
+      className={cx(box, pressed && pressedClass)}
     >
       {body}
     </Pressable>

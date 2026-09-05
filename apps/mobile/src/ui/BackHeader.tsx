@@ -20,6 +20,7 @@ export type BackHeaderProps = {
   trailing?: ReactNode;
   /** Second row inside the header bar (the solutions filter chips, the paper's sections). */
   children?: ReactNode;
+  className?: string;
   testID?: string;
 };
 
@@ -32,12 +33,19 @@ export type BackHeaderProps = {
  * U+2039/U+203A, and the back target fills `surface2` while held: an opacity dim is invisible
  * between two creams (`pressedClass`).
  */
-export function BackHeader({ title, onBack, trailing, children, testID }: BackHeaderProps) {
+export function BackHeader({
+  title,
+  onBack,
+  trailing,
+  children,
+  className,
+  testID,
+}: BackHeaderProps) {
   const d = useDir();
   const { t } = useTranslation();
   const { pressed, handlers } = usePressed();
   return (
-    <View className="border-b border-line bg-surface">
+    <View className={cx('border-b border-line bg-surface', className)}>
       <Row align="center" gap={1} className="px-2 py-1" testID={testID}>
         <Pressable
           accessibilityRole="button"

@@ -16,18 +16,18 @@ describe('Pill', () => {
     expect(pill.props.className).toMatch(/\brounded-full\b/);
     expect(pill.props.className).toMatch(/\bbg-surface2\b/);
     expect(pill.props.className).toMatch(/\bborder-line\b/);
-    expect(screen.getByText('Sample data').props.className).toContain('text-ink3');
+    expect(screen.getByText('Sample data').props.className).toMatch(/\btext-ink3\b/);
   });
 
   it('carries ink on the gold tint and cream on ink — gold is never the label', async () => {
     await render(<Pill label="Answered" tone="gold" testID="gold" />);
     expect(screen.getByTestId('gold').props.className).toMatch(/\bbg-accentTint\b/);
     expect(screen.getByTestId('gold').props.className).toMatch(/\bborder-accentStrong\b/);
-    expect(screen.getByText('Answered').props.className).toContain('text-ink');
+    expect(screen.getByText('Answered').props.className).toMatch(/\btext-ink\b/);
 
     await render(<Pill label="Marked" tone="ink" testID="ink" />);
     expect(screen.getByTestId('ink').props.className).toMatch(/\bbg-ink\b/);
-    expect(screen.getByText('Marked').props.className).toContain('text-onInk');
+    expect(screen.getByText('Marked').props.className).toMatch(/\btext-onInk\b/);
   });
 
   it('draws a 6 px dot in the tone’s own gold, and none unless asked', async () => {
@@ -67,14 +67,32 @@ describe('Pill', () => {
   });
 
   // A pill hugs its label, so it opts out of a Stack's stretch itself — and it emits exactly
-  // one alignment class, never both.
+  // one alignment class, never both. `self-start` is physical, so the reading edge goes
+  // through `dir()` and an RTL language gets `self-end` without the pill knowing (M3/D12).
   it('hugs the reading edge, or the middle of a centred block', async () => {
     await render(<Pill label="Step" testID="pill" />);
-    expect(screen.getByTestId('pill').props.className).toContain('self-start');
+    expect(screen.getByTestId('pill').props.className).toMatch(/\bself-start\b/);
 
     await render(<Pill label="Step" align="center" testID="mid" />);
-    expect(screen.getByTestId('mid').props.className).toContain('self-center');
-    expect(screen.getByTestId('mid').props.className).not.toContain('self-start');
+    expect(screen.getByTestId('mid').props.className).toMatch(/\bself-center\b/);
+    expect(screen.getByTestId('mid').props.className).not.toMatch(/\bself-start\b/);
+  });
+
+  // The dot is the status, not decoration: a heading that is not a state asks for `none`, a
+  // failure asks for `danger`. Fills never move — only the dot changes colour (M9 / D7).
+  it('takes the dot’s tone without touching the fill', async () => {
+    await render(<Pill label="Could not load" dot dotTone="danger" testID="bad" />);
+    expect(screen.getByTestId('bad').props.className).toMatch(/\bbg-surface2\b/);
+    expect(screen.getByTestId('bad-dot').props.className).toMatch(/\bbg-dangerInk\b/);
+
+    await render(<Pill label="Eligible" dot dotTone="ok" testID="good" />);
+    expect(screen.getByTestId('good-dot').props.className).toMatch(/\bbg-okInk\b/);
+  });
+
+  // Section headings are not status (ruling M14): the pill names a block and carries no dot.
+  it('draws no dot at all for `none`, even when one was asked for', async () => {
+    await render(<Pill label="Updates" dot dotTone="none" testID="head" />);
+    expect(screen.queryByTestId('head-dot')).toBeNull();
   });
 
   // `ink3` is 4.7:1 on surface2: the rule is that nothing at that ratio goes below caption.

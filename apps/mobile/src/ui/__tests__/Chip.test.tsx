@@ -8,26 +8,28 @@ describe('Chip', () => {
     initI18n('en');
   });
 
-  it('is a plain, non-disabled view when static (no onPress)', async () => {
+  it('is a plain view when static: no role, no selection to announce', async () => {
     await render(<Chip label="Marked" active tone="accent" testID="chip" />);
     const el = screen.getByTestId('chip');
     expect(el.props.accessibilityRole).toBeUndefined();
-    expect(el.props.accessibilityState).toEqual({ selected: true });
-    expect(el.props.className).toContain('bg-accentSoft');
-    expect(screen.getByText('Marked').props.className).toContain('text-ink');
+    // A badge nobody can choose must not announce "selected" (design review D8): the word is
+    // the state, and a reader that hears "Marked, selected" hears a control that is not there.
+    expect(el.props.accessibilityState).toBeUndefined();
+    expect(el.props.className).toMatch(/\bbg-accentSoft\b/);
+    expect(screen.getByText('Marked').props.className).toMatch(/\btext-ink\b/);
   });
 
   it('tones: danger is a red tint with red text, ok a green fill with ink, old names map', async () => {
     await render(<Chip label="Wrong" active tone="danger" testID="chip" />);
-    expect(screen.getByTestId('chip').props.className).toContain('bg-dangerTint border-dangerInk');
-    expect(screen.getByText('Wrong').props.className).toContain('text-dangerInk');
+    expect(screen.getByTestId('chip').props.className).toMatch(/\bbg-dangerTint border-dangerInk\b/);
+    expect(screen.getByText('Wrong').props.className).toMatch(/\btext-dangerInk\b/);
     await screen.rerender(<Chip label="Eligible" active tone="ok" testID="chip" />);
-    expect(screen.getByTestId('chip').props.className).toContain('bg-ok');
-    expect(screen.getByText('Eligible').props.className).toContain('text-ink');
+    expect(screen.getByTestId('chip').props.className).toMatch(/\bbg-ok\b/);
+    expect(screen.getByText('Eligible').props.className).toMatch(/\btext-ink\b/);
     await screen.rerender(<Chip label="Old" active tone="hazard" testID="chip" />);
-    expect(screen.getByTestId('chip').props.className).toContain('bg-accentSoft');
+    expect(screen.getByTestId('chip').props.className).toMatch(/\bbg-accentSoft\b/);
     await screen.rerender(<Chip label="Old" active tone="flag" testID="chip" />);
-    expect(screen.getByTestId('chip').props.className).toContain('bg-dangerTint');
+    expect(screen.getByTestId('chip').props.className).toMatch(/\bbg-dangerTint\b/);
   });
 
   // The rest border is `outline` (3.0:1, WCAG 1.4.11), not `line2` (1.5:1): a filter the
@@ -95,7 +97,7 @@ describe('Chip', () => {
   it('sizes by a minimum height with vertical padding, never a fixed box', async () => {
     await render(<Chip label="Notification" testID="chip" />);
     const el = screen.getByTestId('chip');
-    expect(el.props.className).toContain('min-h-chip');
+    expect(el.props.className).toMatch(/\bmin-h-chip\b/);
     expect(el.props.className).toContain('py-1');
     expect(el.props.className).not.toMatch(/(^|\s)h-chip(\s|$)/);
   });
@@ -116,15 +118,15 @@ describe('Chip', () => {
     const el = screen.getByTestId('chip');
     expect(el.props.accessibilityRole).toBeUndefined();
     expect(screen.queryByRole('button')).toBeNull();
-    expect(el.props.className).toContain('bg-surface2');
-    expect(el.props.className).toContain('rounded-xs');
-    expect(el.props.className).not.toContain('bg-accentSoft');
-    expect(el.props.className).not.toContain('border-line');
-    expect(el.props.className).not.toContain('min-h-chip');
+    expect(el.props.className).toMatch(/\bbg-surface2\b/);
+    expect(el.props.className).toMatch(/\brounded-xs\b/);
+    expect(el.props.className).not.toMatch(/\bbg-accentSoft\b/);
+    expect(el.props.className).not.toMatch(/\bborder-line\b/);
+    expect(el.props.className).not.toMatch(/\bmin-h-chip\b/);
     // Fix1 review #5: a "Sample data" tag read at parity with the heading beside it (same
     // kicker weight as a 700 title) — step it to 600 while keeping the surface2 fill.
     const text = screen.getByText('Sample data');
     expect(text).toHaveStyle({ fontSize: 10.5, fontFamily: 'Inter_600SemiBold' });
-    expect(text.props.className).toContain('text-ink3');
+    expect(text.props.className).toMatch(/\btext-ink3\b/);
   });
 });

@@ -110,7 +110,7 @@ export function ProfileView({
         )
       }
     >
-      <PageHeader testID="profile-header" title={t('profile.title')} className="mt-5" />
+      <PageHeader testID="profile-header" title={t('profile.title')} />
 
       <Section title={t('profile.sectionExam')}>
         <MarkerRow
@@ -193,7 +193,9 @@ export function ProfileView({
             <Text variant="subtitle" weight="700">
               {t('profile.signedOutTitle')}
             </Text>
-            <Text variant="caption" color="ink3">
+            {/* Body, not caption: this is the one paragraph on the screen, and 12 px
+                under a 19 px title read as small print (design review D13). */}
+            <Text variant="body" color="ink3">
               {t('profile.signedOutBody')}
             </Text>
             <Button

@@ -171,15 +171,12 @@ export function Chip({
     ) : (
       caption
     );
-  // Static badge (e.g. "Marked"): a plain View, so it never reports a button/disabled state.
+  // Static badge (e.g. "Marked"): a plain View, so it never reports a button, a disabled state
+  // or a selection — a badge nobody can choose announcing "selected" is a lie (design review
+  // D8). The word itself carries the meaning.
   if (!onPress) {
     return (
-      <View
-        accessibilityState={{ selected: active }}
-        {...(rest as ViewProps)}
-        className={classes}
-        style={style}
-      >
+      <View {...(rest as ViewProps)} className={classes} style={style}>
         {text}
       </View>
     );

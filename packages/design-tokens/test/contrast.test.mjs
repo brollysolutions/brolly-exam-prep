@@ -127,6 +127,22 @@ for (const [fg, bg] of NON_TEXT_PAIRS) {
   });
 }
 
+/**
+ * The selected card's edge (Post, Category). `accent` measured 2.34:1 on the cream around it
+ * (design review D2), so the 2 px border is `accentStrong`: it has to clear 3:1 against BOTH
+ * neighbours — the canvas outside the card and the gold tint the selection fills it with.
+ */
+test('the selected card edge clears 3:1 on the cream outside it and its own tint inside', () => {
+  const outside = ratio(c.accentStrong, c.canvas);
+  const insideOnCanvas = ratio(c.accentStrong, over(c.accentTint, c.canvas));
+  const insideOnSurface = ratio(c.accentStrong, over(c.accentTint, c.surface));
+  assert.ok(outside >= NON_TEXT, `accentStrong on canvas is ${outside.toFixed(2)}:1`);
+  assert.ok(insideOnCanvas >= NON_TEXT, `accentStrong on the tint is ${insideOnCanvas.toFixed(2)}:1`);
+  assert.ok(insideOnSurface >= NON_TEXT, `accentStrong on the tint is ${insideOnSurface.toFixed(2)}:1`);
+  // The shade it replaced, kept here so nobody puts it back: 2.34:1 on canvas.
+  assert.ok(ratio(c.accent, c.canvas) < NON_TEXT);
+});
+
 test('line and line2 are structure only: hairlines, dividers and grabbers, never a control edge', () => {
   // 1.15:1 and 1.5:1 on canvas — documented so nobody reaches for them as an outline.
   assert.ok(ratio(c.line, c.canvas) < NON_TEXT);

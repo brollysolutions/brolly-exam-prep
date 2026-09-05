@@ -133,11 +133,13 @@ export function OtpView({
   return (
     <Screen
       testID="otp-screen"
+      // The `ActionBar` at the foot owns the bottom inset, the way the tab bar does (I1).
+      bottomInset={false}
       overlay={error ? <Toast testID="otp-error" text={error} tone="danger" /> : undefined}
     >
       <ScrollView
         className="flex-1"
-        contentContainerClassName="px-4 pb-2 pt-5"
+        contentContainerClassName="px-4 pb-2"
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
       >
@@ -147,7 +149,7 @@ export function OtpView({
           onPress={onChangeNumber}
         />
 
-        <PageHeader title={t('auth.otpTitle')} testID="otp-header" className="mt-2" />
+        <PageHeader title={t('auth.otpTitle')} testID="otp-header" />
         {/* One sentence, not two fragments: Telugu puts the number before the postposition. */}
         <Text testID="otp-phone" variant="body" color="ink3" className="mt-2">
           <Trans
@@ -173,12 +175,11 @@ export function OtpView({
           </Animated.View>
         </View>
 
-        <Row gap={2} align="center" className="mt-4">
-          <View className="border-1.5 h-dot w-dot rounded-full border-ink3" />
-          <Text variant="caption" color="ink3" className="flex-1">
-            {t('auth.otpAuto')}
-          </Text>
-        </Row>
+        {/* No ring in front of it: a hollow circle beside a line of text reads as an
+            unchecked radio button nobody can check (design review D9). */}
+        <Text variant="caption" color="ink3" className="mt-4">
+          {t('auth.otpAuto')}
+        </Text>
 
         {devCode ? <DevCode code={devCode} onUse={() => setCode(digitsOnly(devCode))} /> : null}
 
@@ -257,7 +258,9 @@ function DevCode({ code, onUse }: DevCodeProps) {
         onPress={onUse}
         {...handlers}
         // Pressed = a `surface2` fill: an opacity dim is invisible between two creams.
-        className={cx('mt-1 min-h-touch justify-center', pressed && pressedClass)}
+        // `self-start`: stretched, the 48 px target ran the width of the screen and a tap
+        // anywhere on that band fired it (design review D10).
+        className={cx('mt-1 min-h-touch justify-center self-start px-1', pressed && pressedClass)}
       >
         <Text variant="small" weight="600" color="ink2">
           {t('auth.useDevCode')}
@@ -289,7 +292,7 @@ function Resend({ seconds, onResend }: ResendProps) {
 
   if (remainingSec > 0) {
     return (
-      <View testID="otp-resend-line" className="mt-2 min-h-touch justify-center">
+      <View testID="otp-resend-line" className="mt-2 min-h-touch justify-center self-start px-1">
         <Text variant="small" color="ink3">
           <Trans
             i18nKey="auth.resendIn"
@@ -313,7 +316,8 @@ function Resend({ seconds, onResend }: ResendProps) {
       }}
       {...handlers}
       // Pressed = a `surface2` fill: an opacity dim is invisible between two creams.
-      className={cx('mt-2 min-h-touch justify-center', pressed && pressedClass)}
+      // `self-start`: stretched, the 48 px target ran the width of the screen (D10).
+      className={cx('mt-2 min-h-touch justify-center self-start px-1', pressed && pressedClass)}
     >
       {/* Ink, not gold: gold is a fill on cream, so the link carries a gold dot instead of
           gold letters. */}

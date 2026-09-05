@@ -27,8 +27,10 @@ const EM_DASH = '—';
  * are all this tile.
  *
  * Read as one node, because "62%" and "Best score" are one fact to a screen reader and two
- * stops otherwise. The hairline is what separates the tile from the cream under it: `surface2`
- * sits 1.08:1 from the canvas, so the fill alone is not a boundary.
+ * stops otherwise. The `surface2` fill is the boundary — quietly, at 1.08:1 from the canvas,
+ * which is what a tile that holds a figure should be. The `line` hairline over it is texture,
+ * not the edge: it measures 1.07:1 on the fill and 1.15:1 on the canvas, so nothing here rests
+ * on it. A box that has to be found rather than read takes `outline` (3:1) instead.
  */
 export function StatTile({
   value,

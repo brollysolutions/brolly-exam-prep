@@ -1,10 +1,15 @@
 import { Ionicons } from '@expo/vector-icons';
 import { act, fireEvent, render, screen, userEvent } from '@testing-library/react-native';
-import { colors } from '@tslprb/design-tokens';
+import { colors, typography } from '@tslprb/design-tokens';
 import { initI18n } from '@tslprb/i18n';
+import { Text as RNText } from 'react-native';
 
 import { MarkerRow } from '../MarkerRow';
+import { Num } from '../Num';
 import { Pill } from '../Pill';
+
+/** The body line-height the mark and the trailing slot are boxed to (design review D4). */
+const LINE = typography('en', 'body').lineHeight;
 
 /** The icon host is the glyph's Text: a name resolves to a code point in the icon font. */
 const glyph = (name: keyof typeof Ionicons.glyphMap) => {
@@ -19,8 +24,8 @@ describe('MarkerRow', () => {
 
   it('puts an ink 600 title over an ink3 meta line', async () => {
     await render(<MarkerRow title="Indian polity" meta="12 min" testID="row" />);
-    expect(screen.getByText('Indian polity').props.className).toContain('text-ink');
-    expect(screen.getByText('12 min').props.className).toContain('text-ink3');
+    expect(screen.getByText('Indian polity').props.className).toMatch(/\btext-ink\b/);
+    expect(screen.getByText('12 min').props.className).toMatch(/\btext-ink3\b/);
   });
 
   it('marks what is still to do with a gold dot', async () => {
@@ -58,7 +63,9 @@ describe('MarkerRow', () => {
     );
     expect(screen.getByTestId('tag')).toBeOnTheScreen();
     const chevron = screen.getByText('›', { includeHiddenElements: true });
-    expect(chevron.props.className).toContain('text-ink3');
+    expect(chevron.props.className).toMatch(/\btext-ink3\b/);
+    // Order, not just presence: the pill is read before the chevron that follows it.
+    expect(screen.getByTestId('row-end')).toHaveTextContent('Free›');
   });
 
   // The hairline sits on top, so the last row never draws a line against the card's border.
@@ -95,6 +102,59 @@ describe('MarkerRow', () => {
   // title grows it further instead of being clipped.
   it('is at least 56 px tall and never fixed', async () => {
     await render(<MarkerRow title="Post" testID="row" />);
-    expect(screen.getByTestId('row-row').props.className).toMatch(/\bmin-h-touchLg\b/);
+    const row = screen.getByTestId('row');
+    expect(row.props.className).toMatch(/\bmin-h-touchLg\b/);
+    // A fixed height would clip a Telugu title; the class is a floor, and nothing pins it.
+    expect(row.props.style?.height).toBeUndefined();
+  });
+
+  // A wrapped title used to drag the mark and the date to the middle of the two lines, so the
+  // dot belonged to neither (design review D4). Both slots are boxed to one body line and
+  // pinned to the top, so they sit on line 1 however far the title wraps.
+  it('boxes the mark and the trailing slot to line 1 of a wrapped title', async () => {
+    await render(
+      <MarkerRow
+        title="A headline long enough to wrap onto a second line on a narrow handset"
+        marker="dot"
+        trailing={<Num variant="caption">{'12 Jul'}</Num>}
+        chevron
+        testID="row"
+      />,
+    );
+    expect(screen.getByTestId('row-mark').props.style).toMatchObject({
+      height: LINE,
+      alignSelf: 'flex-start',
+    });
+    expect(screen.getByTestId('row-end').props.style).toMatchObject({
+      height: LINE,
+      alignSelf: 'flex-start',
+    });
+  });
+
+  // Home's affair headline gets two lines; Profile and Study rows grow instead (no cap).
+  it('caps the title where the caller asks, and lets it grow where they do not', async () => {
+    await render(<MarkerRow title="Indian polity" titleLines={2} testID="capped" />);
+    expect(screen.getByText('Indian polity').props.numberOfLines).toBe(2);
+
+    await render(<MarkerRow title="Indian polity" testID="free" />);
+    expect(screen.getByText('Indian polity').props.numberOfLines).toBeUndefined();
+  });
+
+  // An explicit label stops children being composed, so a trailing date is silent unless the
+  // row is told what it says (code review I3).
+  it('folds a trailing label into the composed name, after the meta line', async () => {
+    await render(
+      <MarkerRow
+        title="Cabinet clears new PRC"
+        meta="Telangana"
+        trailingLabel="12 Jul"
+        trailing={<RNText>12 Jul</RNText>}
+        onPress={jest.fn()}
+        testID="row"
+      />,
+    );
+    expect(screen.getByTestId('row').props.accessibilityLabel).toBe(
+      'Cabinet clears new PRC Telangana 12 Jul',
+    );
   });
 });

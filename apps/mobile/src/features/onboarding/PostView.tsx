@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
+import { colors, size } from '@tslprb/design-tokens';
 import type { Post } from '@tslprb/fixtures';
-import { colors } from '@tslprb/design-tokens';
 import { useDir } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -15,7 +15,7 @@ const POSTS: readonly { id: Post; titleKey: string; subKey: string }[] = [
 ];
 
 /** The chosen card's mark: a filled circle reads as chosen where a bare tick reads as a tip. */
-const CHECK = 22;
+const CHECK = size.iconLg;
 
 export type PostViewProps = {
   /** The post already on file, if the user is revisiting the step. */
@@ -38,10 +38,11 @@ export function PostView({ initialPost, onSubmit, onBack }: PostViewProps) {
   const [post, setPost] = useState<Post | undefined>(initialPost);
 
   return (
-    <Screen testID="post-screen">
+    // The `ActionBar` at the foot owns the bottom inset, the way the tab bar does (I1).
+    <Screen testID="post-screen" bottomInset={false}>
       <ScrollView
         className="flex-1"
-        contentContainerClassName="px-4 pb-3 pt-6"
+        contentContainerClassName="px-4 pb-3"
         showsVerticalScrollIndicator={false}
       >
         {onBack && <BackRow testID="post-back" label={t('common.back')} onPress={onBack} />}

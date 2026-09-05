@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 import { Button } from './Button';
-import { Chip } from './Chip';
+import { cx } from './cx';
 import { Pill } from './Pill';
 import { Stack } from './Stack';
 import { Text } from './Text';
@@ -24,11 +24,19 @@ export type SkeletonBlock = keyof typeof BLOCK;
  * animates, so there is nothing for reduced motion to switch off. Hidden from screen readers —
  * an assistive user gets the real content when it arrives.
  */
-export function Skeleton({ blocks, testID }: { blocks: SkeletonBlock[]; testID: string }) {
+export function Skeleton({
+  blocks,
+  className,
+  testID,
+}: {
+  blocks: SkeletonBlock[];
+  className?: string;
+  testID?: string;
+}) {
   return (
     <Stack
       gap={3}
-      className="px-4 pt-5"
+      className={cx('px-4 pt-5', className)}
       testID={testID}
       accessibilityElementsHidden
       importantForAccessibility="no-hide-descendants"
@@ -47,7 +55,8 @@ export type EmptyStateProps = {
   message: string;
   /** An optional way on — an outline button, never a second fill. */
   action?: ReactNode;
-  testID: string;
+  className?: string;
+  testID?: string;
 };
 
 /**
@@ -55,10 +64,14 @@ export type EmptyStateProps = {
  * have filled. Distinct from `LoadError` — nothing failed, so there is nothing to retry, and a
  * grey line in the top corner reads as a screen that never loaded (design 13, F-24).
  */
-export function EmptyState({ title, message, action, testID }: EmptyStateProps) {
+export function EmptyState({ title, message, action, className, testID }: EmptyStateProps) {
   const { t } = useTranslation();
   return (
-    <Stack gap={3} className="flex-1 items-center justify-center px-8" testID={testID}>
+    <Stack
+      gap={3}
+      className={cx('flex-1 items-center justify-center px-8', className)}
+      testID={testID}
+    >
       <Pill align="center" label={title ?? t('common.nothingYet')} />
       <Text variant="body" color="ink3" align="center">
         {message}
@@ -75,19 +88,27 @@ export type LoadErrorProps = {
    */
   message?: string;
   onRetry?: () => void;
-  testID: string;
+  className?: string;
+  testID?: string;
 };
 
 /**
- * The load failed: a red pill, the message, and a 48 px outline retry. Red because a failure is
- * in the same family as wrong and missing; the pill is a `Chip tone="danger"` rather than a
- * `Pill`, which has no red — red is a verdict, and `Pill` carries states.
+ * The load failed: a pill with a red dot, the message, and a 48 px outline retry.
+ *
+ * The same 24 px `Pill` and the same centring as `EmptyState`: the two are one family, and a
+ * 34 px `Chip` beside a 24 px pill made them look like different mechanisms (design review D7).
+ * Red is a verdict, so it lives in the dot rather than in the fill — `dangerInk` at 5.4:1 on
+ * the pill's own `surface2`.
  */
-export function LoadError({ message, onRetry, testID }: LoadErrorProps) {
+export function LoadError({ message, onRetry, className, testID }: LoadErrorProps) {
   const { t } = useTranslation();
   return (
-    <Stack gap={3} className="items-center px-8 pt-8" testID={testID}>
-      <Chip label={t('result.errorKicker')} tone="danger" active shape="pill" />
+    <Stack
+      gap={3}
+      className={cx('flex-1 items-center justify-center px-8', className)}
+      testID={testID}
+    >
+      <Pill align="center" label={t('result.errorKicker')} dot dotTone="danger" />
       <Text variant="body" color="ink3" align="center">
         {message ?? t('result.loadError')}
       </Text>
@@ -95,7 +116,7 @@ export function LoadError({ message, onRetry, testID }: LoadErrorProps) {
         variant="secondary"
         label={t('result.retry')}
         onPress={onRetry}
-        testID={`${testID}-retry`}
+        testID={testID ? `${testID}-retry` : undefined}
         className="px-6"
       />
     </Stack>

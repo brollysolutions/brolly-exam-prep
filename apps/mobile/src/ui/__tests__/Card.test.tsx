@@ -10,11 +10,12 @@ describe('Card', () => {
     initI18n('en');
   });
 
-  it('is a plain, non-disabled view when static (no onPress)', async () => {
+  // A card nobody can press is not an option, so it must not announce one (design review D8).
+  it('is a plain view when static: no role, no selection to announce', async () => {
     await render(<Card title="Constable" subtitle="PC" testID="card" />);
     const el = screen.getByTestId('card');
     expect(el.props.accessibilityRole).toBeUndefined();
-    expect(el.props.accessibilityState).toEqual({ selected: false });
+    expect(el.props.accessibilityState).toBeUndefined();
     expect(screen.getByText('Constable')).toBeOnTheScreen();
   });
 
@@ -26,16 +27,38 @@ describe('Card', () => {
     expect(el.props.className).toMatch(/\bbg-surface\b/);
     expect(el.props.style).toBeDefined();
     expect(el.props.style.boxShadow).toBe(shadow.card);
-    expect(screen.getByText('Constable').props.className).toContain('text-ink');
+    expect(screen.getByText('Constable').props.className).toMatch(/\btext-ink\b/);
   });
 
-  it('selected turns the border 2 px gold on a gold tint; the title stays ink', async () => {
+  // `accent` measured 2.34:1 against the cream around the card: an edge that IS the state has
+  // to clear the 3:1 non-text floor, which `accentStrong` does at 3.37 (design review D2).
+  it('selected turns the border 2 px accentStrong on a gold tint; the title stays ink', async () => {
     await render(<Card title="SI / ASI" selected onPress={() => {}} testID="card" />);
-    expect(screen.getByTestId('card').props.className).toContain('border-2 border-accent');
-    expect(screen.getByTestId('card').props.className).toContain('bg-accentTint');
-    expect(screen.getByTestId('card').props.className).not.toContain('bg-surface');
+    const card = screen.getByTestId('card');
+    expect(card.props.className).toMatch(/\bborder-2 border-accentStrong\b/);
+    expect(card.props.className).not.toMatch(/\bborder-accent\b/);
+    expect(card.props.className).toMatch(/\bbg-accentTint\b/);
+    expect(card.props.className).not.toMatch(/\bbg-surface\b/);
     // Gold is a fill, never text: the title keeps its ink at 11:1 on the tint.
-    expect(screen.getByText('SI / ASI').props.className).toContain('text-ink');
+    expect(screen.getByText('SI / ASI').props.className).toMatch(/\btext-ink\b/);
+  });
+
+  // One of a set, not a switch: the post and category steps are single-choice groups, so the
+  // card that carries a `selected` reports `radio` with a checked state (design review D18).
+  it('is a radio while it is one option of a choice, and a button otherwise', async () => {
+    await render(<Card title="SI / ASI" selected onPress={jest.fn()} testID="on" />);
+    expect(screen.getByTestId('on').props.accessibilityRole).toBe('radio');
+    expect(screen.getByTestId('on').props.accessibilityState).toEqual({
+      checked: true,
+      disabled: false,
+    });
+
+    await render(<Card title="Constable" selected={false} onPress={jest.fn()} testID="off" />);
+    expect(screen.getByTestId('off').props.accessibilityState.checked).toBe(false);
+
+    await render(<Card title="Notice" onPress={jest.fn()} testID="plain" />);
+    expect(screen.getByTestId('plain').props.accessibilityRole).toBe('button');
+    expect(screen.getByTestId('plain').props.accessibilityState.checked).toBeUndefined();
   });
 
   it('drops the shadow when flat and renders a trailing slot after the content', async () => {
@@ -83,7 +106,7 @@ describe('Card', () => {
     expect(screen.getByTestId('card')).not.toHaveStyle({ opacity: 0.85 });
   });
 
-  it('reports presses and the selected state as a button', async () => {
+  it('reports presses as a button', async () => {
     const onPress = jest.fn();
     await render(<Card title="Constable" onPress={onPress} />);
     const btn = screen.getByRole('button');

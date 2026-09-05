@@ -43,17 +43,17 @@ export function CategoryView({ initialCategory, onSubmit, onBack }: CategoryView
   const [category, setCategory] = useState<CategoryId | undefined>(initialCategory);
 
   return (
-    <Screen testID="category-screen">
+    // The `ActionBar` at the foot owns the bottom inset, the way the tab bar does (I1).
+    <Screen testID="category-screen" bottomInset={false}>
       <ScrollView
         className="flex-1"
-        contentContainerClassName="px-4 pb-3 pt-5"
+        contentContainerClassName="px-4 pb-3"
         showsVerticalScrollIndicator={false}
       >
         <BackRow testID="category-back" label={t('common.back')} onPress={onBack} />
 
         <PageHeader
           testID="category-header"
-          className="mt-1"
           pill={
             <Pill
               leading={

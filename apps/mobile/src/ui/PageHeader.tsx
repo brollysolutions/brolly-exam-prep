@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 
 import { Brand } from './Brand';
+import { cx } from './cx';
 import { Row } from './Row';
 import { Stack } from './Stack';
 import { Text } from './Text';
@@ -26,6 +27,9 @@ export type PageHeaderProps = {
   className?: string;
 };
 
+/** The offset every page opening starts on. It lives here so no call site invents its own. */
+const TOP = 'mt-5';
+
 /**
  * The hub header: the brand lockup and whatever sits beside it, then a pill, then the screen's
  * name in the display face (Playfair in English, Noto Serif Telugu in Telugu).
@@ -35,6 +39,10 @@ export type PageHeaderProps = {
  * The title is `titleLg`, a display role: Playfair runs wider than Inter, so it is given a
  * two-line allowance rather than being truncated. A leaf screen uses `BackHeader` instead — a
  * bar with a way back, not a page opening.
+ *
+ * It owns the 20 px it starts on. Five screens had settled on five different top offsets
+ * (16–28 px) because each padded its own scroller (design review D11); the header carries one
+ * now, and its hosts pad for nothing.
  */
 export function PageHeader({
   brand = false,
@@ -50,7 +58,7 @@ export function PageHeader({
 }: PageHeaderProps) {
   const top = brand || trailing !== undefined;
   return (
-    <Stack testID={testID} gap={3} className={className}>
+    <Stack testID={testID} gap={3} className={cx(TOP, className)}>
       {top && (
         <Row
           testID={testID ? `${testID}-top` : undefined}

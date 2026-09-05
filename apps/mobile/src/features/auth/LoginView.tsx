@@ -51,11 +51,13 @@ export function LoginView({
   return (
     <Screen
       testID="login-screen"
+      // The `ActionBar` at the foot owns the bottom inset, the way the tab bar does (I1).
+      bottomInset={false}
       overlay={error ? <Toast testID="login-error" text={error} tone="danger" /> : undefined}
     >
       <ScrollView
         className="flex-1"
-        contentContainerClassName="px-4 pb-2 pt-7"
+        contentContainerClassName="px-4 pb-2"
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
       >
