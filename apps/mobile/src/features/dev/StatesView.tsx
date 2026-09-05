@@ -61,7 +61,7 @@ const DEV = {
   railCritical: 'critical (marquee)',
   auth: 'Auth & onboarding',
   login: 'LoginView — filled + error toast',
-  otp: 'OtpView — partial code, resend ready',
+  otp: 'OtpView — partial code, resend ready, dev code hint',
   post: 'PostView — step 1/2, SI chosen',
   category: 'CategoryView — step 2/2, BC chosen',
   disabled: 'disabled',
@@ -347,6 +347,7 @@ export function StatesView() {
           <OtpView
             phone="9000012345"
             initialCode="1234"
+            devCode="123456"
             resendSeconds={0}
             onVerify={() => false}
             onResend={() => {}}

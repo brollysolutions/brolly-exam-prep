@@ -30,9 +30,10 @@ export default function LoginRoute() {
     setError(null);
     try {
       // The request id is the OTP screen's handle on this attempt. It lives in memory only, so
-      // it never reaches the web URL, the history stack or a shared link.
-      const { request_id } = await getApi().requestOtp({ phone: next });
-      setOtpRequestId(request_id);
+      // it never reaches the web URL, the history stack or a shared link. A test build also
+      // hands back the code itself, which the OTP screen shows so nobody has to guess it.
+      const { request_id, dev_code } = await getApi().requestOtp({ phone: next });
+      setOtpRequestId(request_id, dev_code);
       setPhone(next);
       router.push(withReturnTo('/(auth)/otp', returnTo));
     } catch {

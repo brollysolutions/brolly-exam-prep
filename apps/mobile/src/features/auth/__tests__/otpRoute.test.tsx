@@ -1,9 +1,10 @@
-import { render, screen, userEvent } from '@testing-library/react-native';
+import { render, screen, userEvent, within } from '@testing-library/react-native';
 import { initI18n } from '@tslprb/i18n';
 
 import OtpRoute from '@/app/(auth)/otp';
 import { getApi, resetApi } from '@/data/api';
 import { useSessionStore } from '@/data/session';
+import { iso } from '@/ui';
 
 import { setOtpRequestId } from '../otpRequest';
 
@@ -90,6 +91,26 @@ describe('OtpRoute', () => {
     expect(screen.queryByTestId('otp-error')).toBeNull();
     expect(useSessionStore.getState().token).toBeTruthy();
     expect(mockRouter.replace).toHaveBeenCalledWith('/(onboarding)/post');
+  });
+
+  it('shows the dev code the API handed back and signs in from it with one tap', async () => {
+    const { request_id, dev_code } = await getApi().requestOtp({ phone: '9000012345' });
+    setOtpRequestId(request_id, dev_code);
+    await render(<OtpRoute />);
+    expect(
+      within(screen.getByTestId('otp-dev-code')).getByText(iso('123456')),
+    ).toBeOnTheScreen();
+    await userEvent.press(screen.getByTestId('otp-use-dev-code'));
+    await userEvent.press(screen.getByTestId('otp-verify'));
+    expect(useSessionStore.getState().token).toBeDefined();
+    expect(mockRouter.replace).toHaveBeenCalledWith('/(onboarding)/post');
+  });
+
+  it('keeps the hint off the screen when the API sent a real SMS', async () => {
+    setOtpRequestId('otp-live');
+    await render(<OtpRoute />);
+    expect(screen.queryByTestId('otp-dev-code')).toBeNull();
+    expect(screen.queryByTestId('otp-use-dev-code')).toBeNull();
   });
 
   it('explains an expired request and arms the resend at once', async () => {

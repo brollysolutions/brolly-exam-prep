@@ -15,6 +15,7 @@ import {
   Button,
   haptics,
   Keypad,
+  Kicker,
   Num,
   OtpCells,
   Row,
@@ -51,6 +52,11 @@ export type OtpViewProps = {
   /** The number the code was sent to. */
   phone: string;
   initialCode?: string;
+  /**
+   * The code a test build hands back with the request (mock API, API in `OTP_DEV_MODE`). Shows a
+   * hint and a one-tap fill; production sends an SMS instead and leaves this undefined.
+   */
+  devCode?: string;
   busy?: boolean;
   /** Seconds on the resend clock. 0 arms resend at once (an expired request, the dev gallery). */
   resendSeconds?: number;
@@ -69,6 +75,7 @@ export type OtpViewProps = {
 export function OtpView({
   phone,
   initialCode = '',
+  devCode,
   busy = false,
   resendSeconds = RESEND_SECONDS,
   error,
@@ -171,6 +178,8 @@ export function OtpView({
           </Text>
         </Row>
 
+        {devCode ? <DevCode code={devCode} onUse={() => setCode(digitsOnly(devCode))} /> : null}
+
         {/* Remounted whenever the caller changes the clock, which re-arms it from the new value. */}
         <Resend key={resendSeconds} seconds={resendSeconds} onResend={resend} />
 
@@ -206,6 +215,46 @@ export function OtpView({
         />
       </View>
     </Screen>
+  );
+}
+
+type DevCodeProps = {
+  code: string;
+  onUse: () => void;
+};
+
+/**
+ * The test-build hint under the cells: the code the API returned and a quiet button that puts
+ * it in the cells, so the only yellow on the screen stays on Verify. Never rendered when the
+ * code came by SMS.
+ */
+function DevCode({ code, onUse }: DevCodeProps) {
+  const { t } = useTranslation();
+  const { pressed, handlers } = usePressed();
+  return (
+    <View className="mt-3">
+      <Kicker testID="otp-dev-code">
+        <Trans
+          i18nKey="auth.devCodeHint"
+          values={{ code }}
+          components={{ num: <Num variant="kicker" weight="700" color="dim" /> }}
+        />
+      </Kicker>
+      <Pressable
+        testID="otp-use-dev-code"
+        accessibilityRole="button"
+        android_ripple={{ color: colors.hivisTint3 }}
+        onPress={onUse}
+        {...handlers}
+        className="min-h-touch justify-center"
+        // One flattened object, never a callback: see `usePressed`.
+        style={pressed ? { opacity: 0.8 } : undefined}
+      >
+        <Text variant="small" weight="600" color="chalk2">
+          {t('auth.useDevCode')}
+        </Text>
+      </Pressable>
+    </View>
   );
 }
 

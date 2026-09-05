@@ -121,6 +121,28 @@ describe('OtpView', () => {
     expect(screen.getByTestId('otp-error')).toBeOnTheScreen();
   });
 
+  it('shows the dev code when the API hands one back and fills the cells with one tap', async () => {
+    const onVerify = jest.fn(() => true);
+    await render(
+      <OtpView phone="9000012345" devCode="123456" onVerify={onVerify} {...noops()} />,
+    );
+    expect(
+      within(screen.getByTestId('otp-dev-code')).getByText(iso('123456')),
+    ).toBeOnTheScreen();
+    expect(screen.getByTestId('otp-verify')).toBeDisabled();
+    await userEvent.press(screen.getByTestId('otp-use-dev-code'));
+    expect(screen.getByTestId('otp-cells')).toHaveAccessibilityValue({ text: '123456' });
+    expect(screen.getByTestId('otp-verify')).toBeEnabled();
+    await userEvent.press(screen.getByTestId('otp-verify'));
+    expect(onVerify).toHaveBeenCalledWith('123456');
+  });
+
+  it('renders no dev hint when the code comes by SMS', async () => {
+    await render(<OtpView phone="9000012345" onVerify={jest.fn()} {...noops()} />);
+    expect(screen.queryByTestId('otp-dev-code')).toBeNull();
+    expect(screen.queryByTestId('otp-use-dev-code')).toBeNull();
+  });
+
   it('offers a way back to the number', async () => {
     const onChangeNumber = jest.fn();
     await render(
@@ -145,8 +167,17 @@ describe('OtpView (te)', () => {
   });
 
   it('renders the Telugu copy and keeps the cells physical', async () => {
-    await render(<OtpView phone="9000012345" initialCode="123" onVerify={jest.fn()} {...noops()} />);
+    await render(
+      <OtpView
+        phone="9000012345"
+        initialCode="123"
+        devCode="123456"
+        onVerify={jest.fn()}
+        {...noops()}
+      />,
+    );
     expect(screen.getByText('కోడ్ ఎంటర్ చేయండి')).toBeOnTheScreen();
+    expect(screen.getByText('ఈ కోడ్ ఉపయోగించండి')).toBeOnTheScreen();
     expect(screen.getByTestId('otp-cells')).toHaveStyle({ flexDirection: 'row' });
     expect(screen.getByTestId('otp-change-number-row')).toHaveStyle({ flexDirection: 'row' });
     // The chevron stays in the Latin face whatever the UI language.

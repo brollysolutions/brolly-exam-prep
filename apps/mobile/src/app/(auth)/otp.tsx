@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { ApiError, getApi } from '@/data/api';
 import { withReturnTo } from '@/data/href';
 import { useSessionStore } from '@/data/session';
-import { getOtpRequestId, setOtpRequestId } from '@/features/auth/otpRequest';
+import { getOtpDevCode, getOtpRequestId, setOtpRequestId } from '@/features/auth/otpRequest';
 import { OtpView } from '@/features/auth/OtpView';
 import { useAutoDismiss } from '@/ui';
 
@@ -30,6 +30,8 @@ export default function OtpRoute() {
   const shownError = useAutoDismiss(error);
 
   const requestId = getOtpRequestId();
+  // Set only by a test build (mock API, `OTP_DEV_MODE`): production leaves it undefined.
+  const devCode = getOtpDevCode();
 
   const verify = async (code: string): Promise<boolean> => {
     setBusy(true);
@@ -57,8 +59,8 @@ export default function OtpRoute() {
   const resend = async () => {
     setError(null);
     try {
-      const { request_id } = await getApi().requestOtp({ phone });
-      setOtpRequestId(request_id);
+      const { request_id, dev_code } = await getApi().requestOtp({ phone });
+      setOtpRequestId(request_id, dev_code);
       setExpired(false);
     } catch {
       setError(t('common.networkError'));
@@ -71,6 +73,7 @@ export default function OtpRoute() {
   return (
     <OtpView
       phone={phone}
+      devCode={devCode}
       busy={busy}
       error={shownError}
       resendSeconds={expired ? 0 : undefined}

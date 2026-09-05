@@ -419,6 +419,103 @@ exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] =
           </Text>
         </View>
         <View
+          className="mt-3"
+        >
+          <Text
+            className="text-dim"
+            style={
+              {
+                "fontFamily": "NotoSansTelugu_700Bold",
+                "fontSize": 12,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 19.8,
+                "textAlign": "left",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+            testID="otp-dev-code"
+          >
+            టెస్ట్ బిల్డ్ — కోడ్ 
+            <Text
+              accessibilityLanguage="en"
+              className="text-dim"
+              style={
+                {
+                  "fontFamily": "Archivo_700Bold",
+                  "fontSize": 10.5,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 2,
+                  "lineHeight": 15.2,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦
+              123456
+              ⁩
+            </Text>
+             నమోదు చేయండి
+          </Text>
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="min-h-touch justify-center"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            testID="otp-use-dev-code"
+          >
+            <Text
+              className="text-chalk2"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 12.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 20.6,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ఈ కోడ్ ఉపయోగించండి
+            </Text>
+          </View>
+        </View>
+        <View
           className="mt-2 min-h-touch justify-center"
           testID="otp-resend-line"
         >

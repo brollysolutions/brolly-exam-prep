@@ -41,7 +41,9 @@
     "verify": "వెరిఫై చేయి",
     "changeNumber": "నంబర్ మార్చు",
     "deleteDigit": "అంకె తొలగించు",
-    "autofillHint": "ఆటోఫిల్ ఉపయోగించడానికి నొక్కి పట్టుకోండి"
+    "autofillHint": "ఆటోఫిల్ ఉపయోగించడానికి నొక్కి పట్టుకోండి",
+    "devCodeHint": "టెస్ట్ బిల్డ్ — కోడ్ <num>{{code}}</num> నమోదు చేయండి",
+    "useDevCode": "ఈ కోడ్ ఉపయోగించండి"
   },
   "onboarding": {
     "step": "{{n}} / {{total}}",

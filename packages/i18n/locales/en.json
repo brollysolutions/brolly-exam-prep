@@ -41,7 +41,9 @@
     "verify": "Verify",
     "changeNumber": "Change number",
     "deleteDigit": "Delete digit",
-    "autofillHint": "Long-press to use autofill"
+    "autofillHint": "Long-press to use autofill",
+    "devCodeHint": "Test build — enter code <num>{{code}}</num>",
+    "useDevCode": "Use this code"
   },
   "onboarding": {
     "step": "{{n}} / {{total}}",
