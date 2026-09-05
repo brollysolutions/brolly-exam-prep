@@ -176,7 +176,7 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
             className="rounded-md border border-line bg-panel2 p-4"
             style={
               {
-                "borderLeftColor": "#B79A55",
+                "borderLeftColor": "#856a22",
                 "borderLeftWidth": 3,
               }
             }
@@ -241,7 +241,7 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
             className="rounded-md border border-line bg-panel2 p-4"
             style={
               {
-                "borderLeftColor": "#B79A55",
+                "borderLeftColor": "#856a22",
                 "borderLeftWidth": 3,
               }
             }
@@ -340,7 +340,7 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
             className="rounded-md border border-line bg-panel2 p-4"
             style={
               {
-                "borderLeftColor": "#B79A55",
+                "borderLeftColor": "#856a22",
                 "borderLeftWidth": 3,
               }
             }

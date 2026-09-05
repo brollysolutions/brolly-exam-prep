@@ -211,7 +211,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4 mt-4"
         style={
           {
-            "borderLeftColor": "#FF8A00",
+            "borderLeftColor": "#856a22",
             "borderLeftWidth": 3,
           }
         }
@@ -650,7 +650,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "borderRadius": 4,
+                    "borderRadius": 8,
                     "width": 236,
                   }
                 }
@@ -762,7 +762,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "borderRadius": 4,
+                    "borderRadius": 8,
                     "width": 236,
                   }
                 }
@@ -874,7 +874,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "borderRadius": 4,
+                    "borderRadius": 8,
                     "width": 236,
                   }
                 }
@@ -1242,11 +1242,11 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           <View
             style={
               {
-                "backgroundColor": "#141517",
-                "borderColor": "#2C2E31",
-                "borderLeftColor": "#B79A55",
+                "backgroundColor": "#faf6ec",
+                "borderColor": "#e9e2d3",
+                "borderLeftColor": "#856a22",
                 "borderLeftWidth": 3,
-                "borderRadius": 4,
+                "borderRadius": 8,
                 "borderWidth": 1,
                 "overflow": "hidden",
               }
@@ -1358,11 +1358,11 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           <View
             style={
               {
-                "backgroundColor": "#141517",
-                "borderColor": "#2C2E31",
-                "borderLeftColor": "#B79A55",
+                "backgroundColor": "#faf6ec",
+                "borderColor": "#e9e2d3",
+                "borderLeftColor": "#856a22",
                 "borderLeftWidth": 3,
-                "borderRadius": 4,
+                "borderRadius": 8,
                 "borderWidth": 1,
                 "overflow": "hidden",
               }
@@ -1474,11 +1474,11 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           <View
             style={
               {
-                "backgroundColor": "#141517",
-                "borderColor": "#2C2E31",
-                "borderLeftColor": "#B79A55",
+                "backgroundColor": "#faf6ec",
+                "borderColor": "#e9e2d3",
+                "borderLeftColor": "#856a22",
                 "borderLeftWidth": 3,
-                "borderRadius": 4,
+                "borderRadius": 8,
                 "borderWidth": 1,
                 "overflow": "hidden",
               }

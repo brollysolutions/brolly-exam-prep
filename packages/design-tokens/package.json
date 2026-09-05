@@ -2,7 +2,7 @@
   "name": "@tslprb/design-tokens",
   "version": "0.1.0",
   "private": true,
-  "description": "TSLPRB 'hi-vis on tar' design tokens: single source for colours, spacing, type, motion. Tailwind preset + TypeScript.",
+  "description": "TSLPRB 'Brolly on cream' design tokens: single source for colours, spacing, type, shadow, motion. Tailwind preset + TypeScript.",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "exports": {
@@ -11,7 +11,8 @@
     "./tokens.json": "./tokens.json"
   },
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "node --test test/contrast.test.mjs test/legacy.test.mjs"
   },
   "devDependencies": {
     "typescript": "~6.0.3"

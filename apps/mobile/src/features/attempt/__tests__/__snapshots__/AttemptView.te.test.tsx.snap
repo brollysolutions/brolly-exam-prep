@@ -214,8 +214,8 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             {
               "alignItems": "flex-end",
               "backgroundColor": "transparent",
-              "borderColor": "#2C2E31",
-              "borderRadius": 3,
+              "borderColor": "#e9e2d3",
+              "borderRadius": 6,
               "borderWidth": 1,
               "flexDirection": "column",
               "gap": 4,

@@ -538,8 +538,8 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               className="mt-3 px-3 py-2"
               style={
                 {
-                  "backgroundColor": "rgba(228,72,59,0.08)",
-                  "borderLeftColor": "#E4483B",
+                  "backgroundColor": "rgba(185,28,28,0.08)",
+                  "borderLeftColor": "#b91c1c",
                   "borderLeftWidth": 3,
                 }
               }
@@ -585,8 +585,8 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               className="mt-2 px-3 py-2"
               style={
                 {
-                  "backgroundColor": "rgba(255,224,27,0.07)",
-                  "borderLeftColor": "#FFE01B",
+                  "backgroundColor": "rgba(194,155,56,0.14)",
+                  "borderLeftColor": "#856a22",
                   "borderLeftWidth": 3,
                 }
               }
@@ -1026,8 +1026,8 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               className="mt-3 px-3 py-2"
               style={
                 {
-                  "backgroundColor": "rgba(228,72,59,0.08)",
-                  "borderLeftColor": "#E4483B",
+                  "backgroundColor": "rgba(185,28,28,0.08)",
+                  "borderLeftColor": "#b91c1c",
                   "borderLeftWidth": 3,
                 }
               }
@@ -1073,8 +1073,8 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               className="mt-2 px-3 py-2"
               style={
                 {
-                  "backgroundColor": "rgba(255,224,27,0.07)",
-                  "borderLeftColor": "#FFE01B",
+                  "backgroundColor": "rgba(194,155,56,0.14)",
+                  "borderLeftColor": "#856a22",
                   "borderLeftWidth": 3,
                 }
               }
@@ -1514,8 +1514,8 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               className="mt-3 px-3 py-2"
               style={
                 {
-                  "backgroundColor": "rgba(228,72,59,0.08)",
-                  "borderLeftColor": "#E4483B",
+                  "backgroundColor": "rgba(185,28,28,0.08)",
+                  "borderLeftColor": "#b91c1c",
                   "borderLeftWidth": 3,
                 }
               }
@@ -1561,8 +1561,8 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               className="mt-2 px-3 py-2"
               style={
                 {
-                  "backgroundColor": "rgba(255,224,27,0.07)",
-                  "borderLeftColor": "#FFE01B",
+                  "backgroundColor": "rgba(194,155,56,0.14)",
+                  "borderLeftColor": "#856a22",
                   "borderLeftWidth": 3,
                 }
               }

@@ -3,14 +3,27 @@ import raw from '../tokens.json';
 /** Single source of truth. Never hard-code a hex, size or duration outside this package. */
 export const tokens = raw;
 
-export type ColorName = keyof typeof raw.colors;
+/**
+ * Semantic colours (Brolly on cream). `legacyColors` keeps the hi-vis-on-tar names alive as
+ * aliases of brand values until Phase E renames every screen; `src/ui` uses semantic names only
+ * (enforced by `test/legacy.test.mjs`).
+ */
+export const semanticColors = raw.colors;
+export const legacyColors = raw.legacyColors;
+/** The raw brand scale the semantic names are drawn from. Tests only; components use `colors`. */
+export const palette = raw.palette;
+export const colors = { ...raw.legacyColors, ...raw.colors };
+
+export type ColorName = keyof typeof colors;
+export type SemanticColorName = keyof typeof raw.colors;
+export type LegacyColorName = keyof typeof raw.legacyColors;
 export type SpaceName = keyof typeof raw.spacing;
 export type RadiusName = keyof typeof raw.radius;
+export type ShadowName = keyof typeof raw.shadow;
 export type TextName = keyof typeof raw.text;
 export type Lang = 'en' | 'te';
 export type FontWeight = '400' | '500' | '600' | '700';
 
-export const colors = raw.colors;
 export const spacing = raw.spacing;
 export const radius = raw.radius;
 export const size = raw.size;
@@ -18,6 +31,15 @@ export const text = raw.text;
 export const tracking = raw.tracking;
 export const motion = raw.motion;
 export const hazard = raw.hazard;
+export const shadow = raw.shadow;
+
+/**
+ * A warm ink shadow as a style object (`boxShadow`: CSS on web, native since RN 0.76).
+ * Cards carry `card`, floating toasts `raised`, sheets and dialogs `sheet` (cast upward).
+ */
+export function shadowStyle(name: ShadowName): { boxShadow: string } {
+  return { boxShadow: raw.shadow[name] };
+}
 
 /** Font metadata per language; the loaded font family name comes from `weights`. */
 export const fonts = raw.font as Record<

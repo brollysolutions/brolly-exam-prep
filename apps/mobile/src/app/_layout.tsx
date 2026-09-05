@@ -59,12 +59,12 @@ export default function RootLayout() {
   if (!ready) return null;
 
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.ink }}>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.canvas }}>
       <SafeAreaProvider>
         <BottomSheetModalProvider>
-          <StatusBar style="light" />
+          <StatusBar style="dark" />
           <Stack
-            screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.tar } }}
+            screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.canvas } }}
           />
         </BottomSheetModalProvider>
       </SafeAreaProvider>

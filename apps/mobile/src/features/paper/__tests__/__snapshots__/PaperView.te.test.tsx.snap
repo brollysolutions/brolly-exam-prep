@@ -577,8 +577,8 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                 className="rounded-xs px-3 py-2"
                 style={
                   {
-                    "backgroundColor": "rgba(255,224,27,0.07)",
-                    "borderLeftColor": "#FFE01B",
+                    "backgroundColor": "rgba(194,155,56,0.14)",
+                    "borderLeftColor": "#856a22",
                     "borderLeftWidth": 3,
                   }
                 }
@@ -903,8 +903,8 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                 className="rounded-xs px-3 py-2"
                 style={
                   {
-                    "backgroundColor": "rgba(255,224,27,0.07)",
-                    "borderLeftColor": "#FFE01B",
+                    "backgroundColor": "rgba(194,155,56,0.14)",
+                    "borderLeftColor": "#856a22",
                     "borderLeftWidth": 3,
                   }
                 }

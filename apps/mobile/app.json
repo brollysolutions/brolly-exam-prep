@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "mobile",
-    "userInterfaceStyle": "dark",
+    "userInterfaceStyle": "light",
     "ios": {
       "icon": "./assets/expo.icon"
     },
@@ -42,6 +42,6 @@
       "typedRoutes": true,
       "reactCompiler": true
     },
-    "backgroundColor": "#0D0D0E"
+    "backgroundColor": "#f7f2e6"
   }
 }

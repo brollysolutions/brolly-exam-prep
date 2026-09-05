@@ -181,25 +181,26 @@ export function CallOverlay({ visible, onEnd }: CallOverlayProps) {
       accessibilityViewIsModal
       className="absolute inset-0 items-center justify-between bg-ink px-6 pb-10 pt-16"
     >
+      {/* The one dark surface in the app: cream text on ink, on purpose (a phone call). */}
       <Stack align="center" gap={2}>
-        <Kicker color="steel" align="center">
+        <Kicker color="onInk" align="center">
           {t('test.incomingCall')}
         </Kicker>
-        <Num variant="display" weight="600" align="center">
+        <Num variant="display" weight="600" color="onInk" align="center">
           {CALL_NUMBER}
         </Num>
-        <Text variant="body" color="steel" align="center">
+        <Text variant="body" color="onInk" align="center">
           {t('test.simulatedCall')}
         </Text>
       </Stack>
 
       <View
         className={cx(
-          'w-full border border-line px-3 py-3',
-          dir(d, 'border-l-3 border-l-hivis', 'border-r-3 border-r-hivis'),
+          'w-full border border-ink3 px-3 py-3',
+          dir(d, 'border-l-3 border-l-accent', 'border-r-3 border-r-accent'),
         )}
       >
-        <Text variant="small" color="chalk2">
+        <Text variant="small" color="onInk">
           {t('test.callNote')}
         </Text>
       </View>

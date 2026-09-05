@@ -1,3 +1,4 @@
+import { colors } from '@tslprb/design-tokens';
 import { render, screen, userEvent } from '@testing-library/react-native';
 import { findStudyTopic } from '@tslprb/fixtures';
 import { initI18n } from '@tslprb/i18n';
@@ -42,14 +43,19 @@ describe('TopicView', () => {
     expect(screen.getByTestId('study-block-tip')).toHaveTextContent(/Exam tip/);
   });
 
-  it('accents the example in hi-vis and the tip in sand, on the reading-start side', async () => {
+  it('accents the example and the tip with a 3 px gold edge on the reading-start side', async () => {
     await render(<TopicView {...props()} />);
-    expect(screen.getByTestId('study-block-example')).toHaveStyle({ borderLeftWidth: 3 });
-    expect(screen.getByTestId('study-block-tip')).toHaveStyle({ borderLeftWidth: 3 });
-    // Two different accents, so the reader can tell the worked answer from the advice.
-    expect(screen.getByTestId('study-block-example')).not.toHaveStyle(
-      screen.getByTestId('study-block-tip').props.style,
-    );
+    // Both edges are the dark brand gold since the rebrand's legacy aliases collapsed `hivis`
+    // and `sand`; the pill labels ("Worked example" / "Exam tip") tell the two apart, and
+    // Phase C gives the tip its own `surface2` block with no edge at all.
+    expect(screen.getByTestId('study-block-example')).toHaveStyle({
+      borderLeftWidth: 3,
+      borderLeftColor: colors.accentInk,
+    });
+    expect(screen.getByTestId('study-block-tip')).toHaveStyle({
+      borderLeftWidth: 3,
+      borderLeftColor: colors.accentInk,
+    });
   });
 
   it('reads the formula in the page own script, with the maths isolated', async () => {

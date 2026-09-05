@@ -661,7 +661,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
           className="bg-panel2 px-3 py-3"
           style={
             {
-              "borderLeftColor": "#FFE01B",
+              "borderLeftColor": "#856a22",
               "borderLeftWidth": 3,
             }
           }
@@ -706,7 +706,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
           className="bg-panel2 px-3 py-3"
           style={
             {
-              "borderLeftColor": "#B79A55",
+              "borderLeftColor": "#856a22",
               "borderLeftWidth": 3,
             }
           }

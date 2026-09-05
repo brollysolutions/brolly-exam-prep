@@ -693,11 +693,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   onChangeText={[Function]}
                   onFocus={[Function]}
                   placeholder="152.5"
-                  placeholderTextColor="#5A5D62"
-                  selectionColor="#FFE01B"
+                  placeholderTextColor="#989085"
+                  selectionColor="#856a22"
                   style={
                     {
-                      "color": "#EDEBE3",
+                      "color": "#211c17",
                       "fontFamily": "Archivo_600SemiBold",
                       "fontSize": 22,
                       "height": 56,
@@ -776,11 +776,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                     onChangeText={[Function]}
                     onFocus={[Function]}
                     placeholder="5"
-                    placeholderTextColor="#5A5D62"
-                    selectionColor="#FFE01B"
+                    placeholderTextColor="#989085"
+                    selectionColor="#856a22"
                     style={
                       {
-                        "color": "#EDEBE3",
+                        "color": "#211c17",
                         "fontFamily": "Archivo_600SemiBold",
                         "fontSize": 22,
                         "height": 56,
@@ -837,11 +837,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                     onChangeText={[Function]}
                     onFocus={[Function]}
                     placeholder="20"
-                    placeholderTextColor="#5A5D62"
-                    selectionColor="#FFE01B"
+                    placeholderTextColor="#989085"
+                    selectionColor="#856a22"
                     style={
                       {
-                        "color": "#EDEBE3",
+                        "color": "#211c17",
                         "fontFamily": "Archivo_600SemiBold",
                         "fontSize": 22,
                         "height": 56,
@@ -956,11 +956,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   onChangeText={[Function]}
                   onFocus={[Function]}
                   placeholder="2.5"
-                  placeholderTextColor="#5A5D62"
-                  selectionColor="#FFE01B"
+                  placeholderTextColor="#989085"
+                  selectionColor="#856a22"
                   style={
                     {
-                      "color": "#EDEBE3",
+                      "color": "#211c17",
                       "fontFamily": "Archivo_600SemiBold",
                       "fontSize": 22,
                       "height": 56,
@@ -1057,11 +1057,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   onChangeText={[Function]}
                   onFocus={[Function]}
                   placeholder="4"
-                  placeholderTextColor="#5A5D62"
-                  selectionColor="#FFE01B"
+                  placeholderTextColor="#989085"
+                  selectionColor="#856a22"
                   style={
                     {
-                      "color": "#EDEBE3",
+                      "color": "#211c17",
                       "fontFamily": "Archivo_600SemiBold",
                       "fontSize": 22,
                       "height": 56,

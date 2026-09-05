@@ -9,7 +9,9 @@ const fontSize = Object.fromEntries(Object.entries(t.text).map(([k, v]) => [k, p
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
-    colors: { transparent: 'transparent', current: 'currentColor', ...t.colors },
+    // Semantic names win over the legacy aliases where a name exists in both (`line`, `white`,
+    // `scrim`, `pressTint`); the aliases go in Phase E of the Brolly rebrand.
+    colors: { transparent: 'transparent', current: 'currentColor', ...t.legacyColors, ...t.colors },
     spacing,
     borderRadius,
     fontSize,

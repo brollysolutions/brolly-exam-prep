@@ -1,8 +1,8 @@
 const tokens = require('@tslprb/design-tokens/tokens.json');
 
 // Primitives resolve colour classes from a `color` prop (e.g. `text-${color}`), so every
-// token colour must survive Tailwind's static scan.
-const colorNames = Object.keys(tokens.colors).join('|');
+// token colour — semantic and legacy alias alike — must survive Tailwind's static scan.
+const colorNames = [...Object.keys(tokens.legacyColors), ...Object.keys(tokens.colors)].join('|');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {

@@ -922,11 +922,11 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
             <View
               style={
                 {
-                  "backgroundColor": "#141517",
-                  "borderColor": "#2C2E31",
-                  "borderLeftColor": "#FFE01B",
+                  "backgroundColor": "#faf6ec",
+                  "borderColor": "#e9e2d3",
+                  "borderLeftColor": "#856a22",
                   "borderLeftWidth": 3,
-                  "borderRadius": 4,
+                  "borderRadius": 8,
                   "borderWidth": 1,
                   "overflow": "hidden",
                 }
@@ -1048,11 +1048,11 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
             <View
               style={
                 {
-                  "backgroundColor": "#141517",
-                  "borderColor": "#2C2E31",
-                  "borderLeftColor": "#FFE01B",
+                  "backgroundColor": "#faf6ec",
+                  "borderColor": "#e9e2d3",
+                  "borderLeftColor": "#856a22",
                   "borderLeftWidth": 3,
-                  "borderRadius": 4,
+                  "borderRadius": 8,
                   "borderWidth": 1,
                   "overflow": "hidden",
                 }
@@ -1174,11 +1174,11 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
             <View
               style={
                 {
-                  "backgroundColor": "#141517",
-                  "borderColor": "#2C2E31",
-                  "borderLeftColor": "#FFE01B",
+                  "backgroundColor": "#faf6ec",
+                  "borderColor": "#e9e2d3",
+                  "borderLeftColor": "#856a22",
                   "borderLeftWidth": 3,
-                  "borderRadius": 4,
+                  "borderRadius": 8,
                   "borderWidth": 1,
                   "overflow": "hidden",
                 }
