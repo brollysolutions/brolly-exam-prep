@@ -6,7 +6,7 @@ from __future__ import annotations
 
 
 async def test_otp_request_returns_dev_code(client):
-    resp = await client.post("/v1/otp/request", json={"phone": "9876544210"})
+    resp = await client.post("/v1/otp/request", json={"phone": "9876543210"})
     assert resp.status_code == 200
     body = resp.json()
     assert "request_id" in body
@@ -14,14 +14,14 @@ async def test_otp_request_returns_dev_code(client):
 
 
 async def test_otp_verify_with_correct_code_succeeds(client):
-    req = await client.post("/v1/otp/request", json={"phone": "9876544210"})
+    req = await client.post("/v1/otp/request", json={"phone": "9876543210"})
     request_id = req.json()["request_id"]
 
     resp = await client.post("/v1/otp/verify", json={"request_id": request_id, "code": "123456"})
     assert resp.status_code == 200
     body = resp.json()
     assert body["token"]
-    assert body["user"]["phone"] == "9876544210"
+    assert body["user"]["phone"] == "9876543210"
 
 
 async def test_otp_verify_with_wrong_code_fails(client):
