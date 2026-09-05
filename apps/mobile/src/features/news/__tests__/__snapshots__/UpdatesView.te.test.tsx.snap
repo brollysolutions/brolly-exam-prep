@@ -93,10 +93,10 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
           style={
             {
               "fontFamily": "NotoSansTelugu_600SemiBold",
-              "fontSize": 14.5,
+              "fontSize": 16,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 23.9,
+              "lineHeight": 26.4,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -243,12 +243,12 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                       style={
                         {
                           "fontFamily": "Inter_600SemiBold",
-                          "fontSize": 11.5,
+                          "fontSize": 12,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 17.3,
+                          "lineHeight": 18,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -280,10 +280,10 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                       style={
                         {
                           "fontFamily": "Inter_400Regular",
-                          "fontSize": 13.5,
+                          "fontSize": 15,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 20.3,
+                          "lineHeight": 22.5,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -300,10 +300,10 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_600SemiBold",
-                      "fontSize": 13.5,
+                      "fontSize": 15,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 22.3,
+                      "lineHeight": 24.8,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -325,10 +325,10 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_400Regular",
-                        "fontSize": 11.5,
+                        "fontSize": 12,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 19,
+                        "lineHeight": 19.8,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -390,10 +390,10 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                         style={
                           {
                             "fontFamily": "NotoSansTelugu_600SemiBold",
-                            "fontSize": 11.5,
+                            "fontSize": 12,
                             "fontVariant": undefined,
                             "letterSpacing": 0,
-                            "lineHeight": 19,
+                            "lineHeight": 19.8,
                             "textAlign": "left",
                             "textTransform": undefined,
                             "writingDirection": "ltr",
@@ -409,10 +409,10 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                         style={
                           {
                             "fontFamily": "Inter_400Regular",
-                            "fontSize": 11.5,
+                            "fontSize": 12,
                             "fontVariant": undefined,
                             "letterSpacing": 0,
-                            "lineHeight": 17.3,
+                            "lineHeight": 18,
                             "textAlign": "left",
                             "textTransform": undefined,
                             "writingDirection": "ltr",
@@ -520,12 +520,12 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                       style={
                         {
                           "fontFamily": "Inter_600SemiBold",
-                          "fontSize": 11.5,
+                          "fontSize": 12,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 17.3,
+                          "lineHeight": 18,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -557,10 +557,10 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                       style={
                         {
                           "fontFamily": "Inter_400Regular",
-                          "fontSize": 13.5,
+                          "fontSize": 15,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 20.3,
+                          "lineHeight": 22.5,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -577,10 +577,10 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_600SemiBold",
-                      "fontSize": 13.5,
+                      "fontSize": 15,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 22.3,
+                      "lineHeight": 24.8,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",

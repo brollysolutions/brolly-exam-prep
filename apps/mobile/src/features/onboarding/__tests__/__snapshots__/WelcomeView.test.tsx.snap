@@ -147,11 +147,11 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
               className="text-ink mt-3"
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontFamily": "NotoSerifTelugu_700Bold",
                   "fontSize": 24,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 39.6,
+                  "lineHeight": 36,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -166,10 +166,10 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 13.5,
+                  "fontSize": 15,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 22.3,
+                  "lineHeight": 24.8,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -225,11 +225,11 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
               className="text-ink mt-3"
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontFamily": "NotoSerifTelugu_700Bold",
                   "fontSize": 24,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 39.6,
+                  "lineHeight": 36,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -244,10 +244,10 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 13.5,
+                  "fontSize": 15,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 22.3,
+                  "lineHeight": 24.8,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -303,11 +303,11 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
               className="text-ink mt-3"
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontFamily": "NotoSerifTelugu_700Bold",
                   "fontSize": 24,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 39.6,
+                  "lineHeight": 36,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -322,10 +322,10 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 13.5,
+                  "fontSize": 15,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 22.3,
+                  "lineHeight": 24.8,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -434,10 +434,10 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
             style={
               {
                 "fontFamily": "NotoSansTelugu_600SemiBold",
-                "fontSize": 13.5,
+                "fontSize": 15,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 22.3,
+                "lineHeight": 24.8,
                 "textAlign": "center",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
@@ -503,10 +503,10 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
             style={
               {
                 "fontFamily": "NotoSansTelugu_700Bold",
-                "fontSize": 14.5,
+                "fontSize": 16,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 23.9,
+                "lineHeight": 26.4,
                 "textAlign": "center",
                 "textTransform": undefined,
                 "writingDirection": "ltr",

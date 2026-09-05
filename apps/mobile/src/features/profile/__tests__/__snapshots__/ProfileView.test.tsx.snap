@@ -24,11 +24,11 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
         className="text-ink mt-5"
         style={
           {
-            "fontFamily": "NotoSansTelugu_700Bold",
+            "fontFamily": "NotoSerifTelugu_700Bold",
             "fontSize": 26,
             "fontVariant": undefined,
             "letterSpacing": 0,
-            "lineHeight": 42.9,
+            "lineHeight": 39,
             "textAlign": "left",
             "textTransform": undefined,
             "writingDirection": "ltr",
@@ -130,10 +130,10 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
-                    "fontSize": 13.5,
+                    "fontSize": 15,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 22.3,
+                    "lineHeight": 24.8,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -158,10 +158,10 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_400Regular",
-                      "fontSize": 13.5,
+                      "fontSize": 15,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 22.3,
+                      "lineHeight": 24.8,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -213,7 +213,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
               }
             }
             accessible={true}
-            className="border-t border-line2"
+            className="border-t border-line"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -245,10 +245,10 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
-                    "fontSize": 13.5,
+                    "fontSize": 15,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 22.3,
+                    "lineHeight": 24.8,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -273,10 +273,10 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_400Regular",
-                      "fontSize": 13.5,
+                      "fontSize": 15,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 22.3,
+                      "lineHeight": 24.8,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -371,10 +371,10 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
-                    "fontSize": 13.5,
+                    "fontSize": 15,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 22.3,
+                    "lineHeight": 24.8,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -385,7 +385,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
               </Text>
               <View
                 accessibilityRole="radiogroup"
-                className="h-touch overflow-hidden rounded-sm border border-line2 self-start"
+                className="h-touch overflow-hidden rounded-sm border border-outline self-start"
                 style={
                   {
                     "alignItems": undefined,
@@ -436,10 +436,10 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                     style={
                       {
                         "fontFamily": "Inter_700Bold",
-                        "fontSize": 13.5,
+                        "fontSize": 15,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 20.3,
+                        "lineHeight": 22.5,
                         "textAlign": "center",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -470,7 +470,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                     }
                   }
                   accessible={true}
-                  className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft"
+                  className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
                   collapsable={false}
                   focusable={true}
                   onBlur={[Function]}
@@ -488,10 +488,10 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_700Bold",
-                        "fontSize": 13.5,
+                        "fontSize": 15,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 22.3,
+                        "lineHeight": 24.8,
                         "textAlign": "center",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -505,7 +505,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
             </View>
           </View>
           <View
-            className="border-t border-line2"
+            className="border-t border-line"
           >
             <View
               className="h-touchLg"
@@ -524,10 +524,10 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
-                    "fontSize": 13.5,
+                    "fontSize": 15,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 22.3,
+                    "lineHeight": 24.8,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -679,7 +679,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                 }
               }
               accessible={true}
-              className="items-center justify-center rounded-sm px-4 border border-line2"
+              className="items-center justify-center rounded-sm px-4 border border-outline"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -714,10 +714,10 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_600SemiBold",
-                      "fontSize": 13.5,
+                      "fontSize": 15,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 22.3,
+                      "lineHeight": 24.8,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -783,10 +783,10 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_600SemiBold",
-                      "fontSize": 13.5,
+                      "fontSize": 15,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 22.3,
+                      "lineHeight": 24.8,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -805,10 +805,10 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
         style={
           {
             "fontFamily": "NotoSansTelugu_400Regular",
-            "fontSize": 11.5,
+            "fontSize": 12,
             "fontVariant": undefined,
             "letterSpacing": 0,
-            "lineHeight": 19,
+            "lineHeight": 19.8,
             "textAlign": "left",
             "textTransform": undefined,
             "writingDirection": "ltr",

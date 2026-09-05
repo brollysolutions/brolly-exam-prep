@@ -93,10 +93,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
           style={
             {
               "fontFamily": "NotoSansTelugu_600SemiBold",
-              "fontSize": 14.5,
+              "fontSize": 16,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 23.9,
+              "lineHeight": 26.4,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -202,7 +202,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                 "selected": true,
               }
             }
-            className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 bg-accentSoft border-accent"
+            className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 bg-accentSoft border-accent border-b-2 border-b-accentStrong"
             testID="result-qualified"
           >
             <Text
@@ -210,10 +210,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 12.5,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 20.6,
+                  "lineHeight": 21.5,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -239,10 +239,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 12.5,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 20.6,
+                  "lineHeight": 21.5,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -257,12 +257,12 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
               style={
                 {
                   "fontFamily": "Inter_600SemiBold",
-                  "fontSize": 12.5,
+                  "fontSize": 13,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 18.8,
+                  "lineHeight": 19.5,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -274,7 +274,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
           </View>
         </View>
         <View
-          className="mt-6 h-px bg-line2"
+          className="mt-6 h-px bg-line"
         />
         <View
           className="mt-4"
@@ -357,10 +357,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 13.5,
+                    "fontSize": 15,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 22.3,
+                    "lineHeight": 24.8,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -376,12 +376,12 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                 style={
                   {
                     "fontFamily": "Inter_700Bold",
-                    "fontSize": 14.5,
+                    "fontSize": 16,
                     "fontVariant": [
                       "tabular-nums",
                     ],
                     "letterSpacing": 0,
-                    "lineHeight": 21.8,
+                    "lineHeight": 24,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -411,10 +411,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 13.5,
+                    "fontSize": 15,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 22.3,
+                    "lineHeight": 24.8,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -430,12 +430,12 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                 style={
                   {
                     "fontFamily": "Inter_700Bold",
-                    "fontSize": 14.5,
+                    "fontSize": 16,
                     "fontVariant": [
                       "tabular-nums",
                     ],
                     "letterSpacing": 0,
-                    "lineHeight": 21.8,
+                    "lineHeight": 24,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -465,10 +465,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 13.5,
+                    "fontSize": 15,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 22.3,
+                    "lineHeight": 24.8,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -508,12 +508,12 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                     style={
                       {
                         "fontFamily": "Inter_700Bold",
-                        "fontSize": 14.5,
+                        "fontSize": 16,
                         "fontVariant": [
                           "tabular-nums",
                         ],
                         "letterSpacing": 0,
-                        "lineHeight": 21.8,
+                        "lineHeight": 24,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -527,10 +527,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_700Bold",
-                        "fontSize": 14.5,
+                        "fontSize": 16,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 23.9,
+                        "lineHeight": 26.4,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -634,10 +634,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_400Regular",
-                      "fontSize": 13.5,
+                      "fontSize": 15,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 22.3,
+                      "lineHeight": 24.8,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -651,10 +651,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_400Regular",
-                      "fontSize": 11.5,
+                      "fontSize": 12,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 19,
+                      "lineHeight": 19.8,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -671,12 +671,12 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                 style={
                   {
                     "fontFamily": "Inter_700Bold",
-                    "fontSize": 16.5,
+                    "fontSize": 17.5,
                     "fontVariant": [
                       "tabular-nums",
                     ],
                     "letterSpacing": 0,
-                    "lineHeight": 24.8,
+                    "lineHeight": 26.3,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -715,10 +715,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_400Regular",
-                      "fontSize": 13.5,
+                      "fontSize": 15,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 22.3,
+                      "lineHeight": 24.8,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -732,10 +732,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_400Regular",
-                      "fontSize": 11.5,
+                      "fontSize": 12,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 19,
+                      "lineHeight": 19.8,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -751,12 +751,12 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_700Bold",
-                    "fontSize": 16.5,
+                    "fontSize": 17.5,
                     "fontVariant": [
                       "tabular-nums",
                     ],
                     "letterSpacing": 0,
-                    "lineHeight": 27.2,
+                    "lineHeight": 28.9,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -795,10 +795,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_400Regular",
-                      "fontSize": 13.5,
+                      "fontSize": 15,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 22.3,
+                      "lineHeight": 24.8,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -812,10 +812,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_400Regular",
-                      "fontSize": 11.5,
+                      "fontSize": 12,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 19,
+                      "lineHeight": 19.8,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -832,12 +832,12 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                 style={
                   {
                     "fontFamily": "Inter_700Bold",
-                    "fontSize": 16.5,
+                    "fontSize": 17.5,
                     "fontVariant": [
                       "tabular-nums",
                     ],
                     "letterSpacing": 0,
-                    "lineHeight": 24.8,
+                    "lineHeight": 26.3,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -993,10 +993,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_600SemiBold",
-                          "fontSize": 13.5,
+                          "fontSize": 15,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 22.3,
+                          "lineHeight": 24.8,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -1010,10 +1010,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_400Regular",
-                          "fontSize": 11.5,
+                          "fontSize": 12,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 19,
+                          "lineHeight": 19.8,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -1119,10 +1119,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_600SemiBold",
-                          "fontSize": 13.5,
+                          "fontSize": 15,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 22.3,
+                          "lineHeight": 24.8,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -1136,10 +1136,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_400Regular",
-                          "fontSize": 11.5,
+                          "fontSize": 12,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 19,
+                          "lineHeight": 19.8,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -1245,10 +1245,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_600SemiBold",
-                          "fontSize": 13.5,
+                          "fontSize": 15,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 22.3,
+                          "lineHeight": 24.8,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -1262,10 +1262,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_400Regular",
-                          "fontSize": 11.5,
+                          "fontSize": 12,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 19,
+                          "lineHeight": 19.8,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -1359,10 +1359,10 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
             style={
               {
                 "fontFamily": "NotoSansTelugu_700Bold",
-                "fontSize": 14.5,
+                "fontSize": 16,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 23.9,
+                "lineHeight": 26.4,
                 "textAlign": "center",
                 "textTransform": undefined,
                 "writingDirection": "ltr",

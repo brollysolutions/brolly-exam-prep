@@ -48,7 +48,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
                 "top": "50%",
               }
             }
-            height={28}
+            height={22}
             importantForAccessibility="no-hide-descendants"
             nativeViewRef={"[React.ref]"}
             onError={[Function]}
@@ -66,8 +66,8 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
             }
             style={
               {
-                "height": 28,
-                "width": 44,
+                "height": 22,
+                "width": 34,
               }
             }
             symbolSize={null}
@@ -75,7 +75,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
             testID="login-brand-umbrella"
             tintColor={4280359959}
             transition={null}
-            width={44}
+            width={34}
           />
           <View
             style={
@@ -93,7 +93,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               numberOfLines={1}
               style={
                 {
-                  "fontFamily": "PlayfairDisplay_400Regular",
+                  "fontFamily": "PlayfairDisplay_400Regular_Italic",
                   "fontSize": 17,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
@@ -111,10 +111,10 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               numberOfLines={1}
               style={
                 {
-                  "fontFamily": "PlayfairDisplay_400Regular_Italic",
+                  "fontFamily": "PlayfairDisplay_400Regular",
                   "fontSize": 13,
                   "fontVariant": undefined,
-                  "letterSpacing": 0,
+                  "letterSpacing": 2,
                   "lineHeight": 15.6,
                   "textAlign": "left",
                   "textTransform": undefined,
@@ -130,11 +130,11 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
           className="text-ink mt-3"
           style={
             {
-              "fontFamily": "NotoSansTelugu_700Bold",
+              "fontFamily": "NotoSerifTelugu_700Bold",
               "fontSize": 26,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 42.9,
+              "lineHeight": 39,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -148,10 +148,10 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
           style={
             {
               "fontFamily": "NotoSansTelugu_400Regular",
-              "fontSize": 13.5,
+              "fontSize": 15,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 22.3,
+              "lineHeight": 24.8,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -215,7 +215,8 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
             testID="login-phone"
           >
             <View
-              className="h-field w-prefix items-center justify-center rounded-sm border border-line2 bg-surface"
+              className="h-field w-prefix items-center justify-center rounded-sm border border-outline bg-surface"
+              testID="login-phone-prefix"
             >
               <Text
                 accessibilityLanguage="en"
@@ -240,6 +241,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
             </View>
             <View
               className="h-field flex-1 justify-center rounded-sm border bg-surface px-3 border-accentStrong"
+              testID="login-phone-value"
             >
               <Text
                 accessibilityLanguage="en"
@@ -329,7 +331,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-outline bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -384,7 +386,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-outline bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -439,7 +441,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-outline bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -507,7 +509,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-outline bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -562,7 +564,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-outline bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -617,7 +619,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-outline bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -685,7 +687,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-outline bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -740,7 +742,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-outline bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -795,7 +797,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-outline bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -866,7 +868,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-outline bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -921,7 +923,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
               }
             }
             accessible={true}
-            className="h-key flex-1 items-center justify-center rounded-sm border border-line2 bg-surface"
+            className="h-key flex-1 items-center justify-center rounded-sm border border-outline bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1009,10 +1011,10 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
             style={
               {
                 "fontFamily": "NotoSansTelugu_700Bold",
-                "fontSize": 14.5,
+                "fontSize": 16,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 23.9,
+                "lineHeight": 26.4,
                 "textAlign": "center",
                 "textTransform": undefined,
                 "writingDirection": "ltr",

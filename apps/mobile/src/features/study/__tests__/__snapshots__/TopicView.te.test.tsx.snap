@@ -103,10 +103,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 13.5,
+                  "fontSize": 15,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 22.3,
+                  "lineHeight": 24.8,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -119,7 +119,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
         </View>
         <View
           accessibilityRole="radiogroup"
-          className="h-touch overflow-hidden rounded-sm border border-line2 self-start"
+          className="h-touch overflow-hidden rounded-sm border border-outline self-start"
           style={
             {
               "alignItems": undefined,
@@ -170,10 +170,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               style={
                 {
                   "fontFamily": "Inter_700Bold",
-                  "fontSize": 13.5,
+                  "fontSize": 15,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 20.3,
+                  "lineHeight": 22.5,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -204,7 +204,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft"
+            className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -222,10 +222,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 13.5,
+                  "fontSize": 15,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 22.3,
+                  "lineHeight": 24.8,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -258,11 +258,11 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
         className="text-ink mt-2"
         style={
           {
-            "fontFamily": "NotoSansTelugu_700Bold",
+            "fontFamily": "NotoSerifTelugu_700Bold",
             "fontSize": 24,
             "fontVariant": undefined,
             "letterSpacing": 0,
-            "lineHeight": 39.6,
+            "lineHeight": 36,
             "textAlign": "left",
             "textTransform": undefined,
             "writingDirection": "ltr",
@@ -290,12 +290,12 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
           style={
             {
               "fontFamily": "Inter_600SemiBold",
-              "fontSize": 11.5,
+              "fontSize": 12,
               "fontVariant": [
                 "tabular-nums",
               ],
               "letterSpacing": 0,
-              "lineHeight": 17.3,
+              "lineHeight": 18,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -309,10 +309,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
           style={
             {
               "fontFamily": "NotoSansTelugu_400Regular",
-              "fontSize": 11.5,
+              "fontSize": 12,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 19,
+              "lineHeight": 19.8,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -356,10 +356,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
           style={
             {
               "fontFamily": "NotoSansTelugu_400Regular",
-              "fontSize": 13.5,
+              "fontSize": 15,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 22.3,
+              "lineHeight": 24.8,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -374,10 +374,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
           style={
             {
               "fontFamily": "NotoSansTelugu_400Regular",
-              "fontSize": 13.5,
+              "fontSize": 15,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 22.3,
+              "lineHeight": 24.8,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -392,10 +392,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
           style={
             {
               "fontFamily": "NotoSansTelugu_400Regular",
-              "fontSize": 13.5,
+              "fontSize": 15,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 22.3,
+              "lineHeight": 24.8,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -434,10 +434,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               style={
                 {
                   "fontFamily": "Inter_400Regular",
-                  "fontSize": 12.5,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 18.8,
+                  "lineHeight": 19.5,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -451,10 +451,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 13.5,
+                  "fontSize": 15,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 22.3,
+                  "lineHeight": 24.8,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -482,10 +482,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               style={
                 {
                   "fontFamily": "Inter_400Regular",
-                  "fontSize": 12.5,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 18.8,
+                  "lineHeight": 19.5,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -499,10 +499,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 13.5,
+                  "fontSize": 15,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 22.3,
+                  "lineHeight": 24.8,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -530,10 +530,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               style={
                 {
                   "fontFamily": "Inter_400Regular",
-                  "fontSize": 12.5,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 18.8,
+                  "lineHeight": 19.5,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -547,10 +547,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 13.5,
+                  "fontSize": 15,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 22.3,
+                  "lineHeight": 24.8,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -578,10 +578,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               style={
                 {
                   "fontFamily": "Inter_400Regular",
-                  "fontSize": 12.5,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 18.8,
+                  "lineHeight": 19.5,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -595,10 +595,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 13.5,
+                  "fontSize": 15,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 22.3,
+                  "lineHeight": 24.8,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -626,10 +626,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               style={
                 {
                   "fontFamily": "Inter_400Regular",
-                  "fontSize": 12.5,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 18.8,
+                  "lineHeight": 19.5,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -643,10 +643,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 13.5,
+                  "fontSize": 15,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 22.3,
+                  "lineHeight": 24.8,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -689,10 +689,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
             style={
               {
                 "fontFamily": "NotoSansTelugu_400Regular",
-                "fontSize": 13.5,
+                "fontSize": 15,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 22.3,
+                "lineHeight": 24.8,
                 "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
@@ -734,10 +734,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
             style={
               {
                 "fontFamily": "NotoSansTelugu_400Regular",
-                "fontSize": 13.5,
+                "fontSize": 15,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 22.3,
+                "lineHeight": 24.8,
                 "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
@@ -814,10 +814,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 14.5,
+                  "fontSize": 16,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 23.9,
+                  "lineHeight": 26.4,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -848,7 +848,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
             }
           }
           accessible={true}
-          className="items-center justify-center rounded-sm px-4 border border-line2"
+          className="items-center justify-center rounded-sm px-4 border border-outline"
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -883,10 +883,10 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 13.5,
+                  "fontSize": 15,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 22.3,
+                  "lineHeight": 24.8,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",

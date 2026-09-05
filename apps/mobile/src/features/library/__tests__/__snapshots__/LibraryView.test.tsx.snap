@@ -20,11 +20,11 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
       className="text-ink mt-5"
       style={
         {
-          "fontFamily": "NotoSansTelugu_700Bold",
+          "fontFamily": "NotoSerifTelugu_700Bold",
           "fontSize": 26,
           "fontVariant": undefined,
           "letterSpacing": 0,
-          "lineHeight": 42.9,
+          "lineHeight": 39,
           "textAlign": "left",
           "textTransform": undefined,
           "writingDirection": "ltr",
@@ -67,7 +67,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
           }
         }
         accessible={true}
-        className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 bg-accentSoft border-accent"
+        className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 bg-accentSoft border-accent border-b-2 border-b-accentStrong"
         collapsable={false}
         focusable={true}
         hitSlop={0}
@@ -88,10 +88,10 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
           style={
             {
               "fontFamily": "NotoSansTelugu_700Bold",
-              "fontSize": 12.5,
+              "fontSize": 13,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 20.6,
+              "lineHeight": 21.5,
               "textAlign": "center",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -121,7 +121,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
           }
         }
         accessible={true}
-        className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line2"
+        className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-outline"
         collapsable={false}
         focusable={true}
         hitSlop={0}
@@ -142,10 +142,10 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
           style={
             {
               "fontFamily": "NotoSansTelugu_600SemiBold",
-              "fontSize": 12.5,
+              "fontSize": 13,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 20.6,
+              "lineHeight": 21.5,
               "textAlign": "center",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -175,7 +175,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
           }
         }
         accessible={true}
-        className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line2"
+        className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-outline"
         collapsable={false}
         focusable={true}
         hitSlop={0}
@@ -196,10 +196,10 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
           style={
             {
               "fontFamily": "NotoSansTelugu_600SemiBold",
-              "fontSize": 12.5,
+              "fontSize": 13,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 20.6,
+              "lineHeight": 21.5,
               "textAlign": "center",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -393,10 +393,10 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_600SemiBold",
-                      "fontSize": 14.5,
+                      "fontSize": 16,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 23.9,
+                      "lineHeight": 26.4,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -433,12 +433,12 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       style={
                         {
                           "fontFamily": "Inter_600SemiBold",
-                          "fontSize": 11.5,
+                          "fontSize": 12,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 17.3,
+                          "lineHeight": 18,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -452,10 +452,10 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_400Regular",
-                          "fontSize": 11.5,
+                          "fontSize": 12,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 19,
+                          "lineHeight": 19.8,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -470,10 +470,10 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                     style={
                       {
                         "fontFamily": "Inter_400Regular",
-                        "fontSize": 11.5,
+                        "fontSize": 12,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 17.3,
+                        "lineHeight": 18,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -499,12 +499,12 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       style={
                         {
                           "fontFamily": "Inter_600SemiBold",
-                          "fontSize": 11.5,
+                          "fontSize": 12,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 17.3,
+                          "lineHeight": 18,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -518,10 +518,10 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_400Regular",
-                          "fontSize": 11.5,
+                          "fontSize": 12,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 19,
+                          "lineHeight": 19.8,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -550,7 +550,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       "selected": false,
                     }
                   }
-                  className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line2"
+                  className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-outline"
                   testID="library-best-mock-07"
                 >
                   <View
@@ -570,12 +570,12 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       style={
                         {
                           "fontFamily": "Inter_700Bold",
-                          "fontSize": 12.5,
+                          "fontSize": 13,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 18.8,
+                          "lineHeight": 19.5,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -589,10 +589,10 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_600SemiBold",
-                          "fontSize": 12.5,
+                          "fontSize": 13,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 20.6,
+                          "lineHeight": 21.5,
                           "textAlign": "center",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -609,7 +609,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       "selected": false,
                     }
                   }
-                  className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line2"
+                  className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-outline"
                   testID="library-badge-mock-07"
                 >
                   <Text
@@ -617,10 +617,10 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_600SemiBold",
-                        "fontSize": 12.5,
+                        "fontSize": 13,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 20.6,
+                        "lineHeight": 21.5,
                         "textAlign": "center",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -701,10 +701,10 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_600SemiBold",
-                      "fontSize": 14.5,
+                      "fontSize": 16,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 23.9,
+                      "lineHeight": 26.4,
                       "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -741,12 +741,12 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       style={
                         {
                           "fontFamily": "Inter_600SemiBold",
-                          "fontSize": 11.5,
+                          "fontSize": 12,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 17.3,
+                          "lineHeight": 18,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -760,10 +760,10 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_400Regular",
-                          "fontSize": 11.5,
+                          "fontSize": 12,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 19,
+                          "lineHeight": 19.8,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -778,10 +778,10 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                     style={
                       {
                         "fontFamily": "Inter_400Regular",
-                        "fontSize": 11.5,
+                        "fontSize": 12,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 17.3,
+                        "lineHeight": 18,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -807,12 +807,12 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       style={
                         {
                           "fontFamily": "Inter_600SemiBold",
-                          "fontSize": 11.5,
+                          "fontSize": 12,
                           "fontVariant": [
                             "tabular-nums",
                           ],
                           "letterSpacing": 0,
-                          "lineHeight": 17.3,
+                          "lineHeight": 18,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -826,10 +826,10 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       style={
                         {
                           "fontFamily": "NotoSansTelugu_400Regular",
-                          "fontSize": 11.5,
+                          "fontSize": 12,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 19,
+                          "lineHeight": 19.8,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -858,7 +858,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       "selected": false,
                     }
                   }
-                  className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-line2"
+                  className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 border-outline"
                   testID="library-badge-mock-08"
                 >
                   <View
@@ -877,10 +877,10 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       style={
                         {
                           "fontFamily": "Inter_400Regular",
-                          "fontSize": 12.5,
+                          "fontSize": 13,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 18.8,
+                          "lineHeight": 19.5,
                           "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
@@ -890,14 +890,14 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                       ⛌
                     </Text>
                     <Text
-                      className="text-ink4"
+                      className="text-ink3"
                       style={
                         {
-                          "fontFamily": "NotoSansTelugu_600SemiBold",
-                          "fontSize": 12.5,
+                          "fontFamily": "NotoSansTelugu_500Medium",
+                          "fontSize": 13,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 20.6,
+                          "lineHeight": 21.5,
                           "textAlign": "center",
                           "textTransform": undefined,
                           "writingDirection": "ltr",

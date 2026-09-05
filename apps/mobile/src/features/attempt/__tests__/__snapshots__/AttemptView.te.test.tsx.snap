@@ -88,7 +88,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
         </View>
         <View
           accessibilityRole="radiogroup"
-          className="h-touch overflow-hidden rounded-sm border border-line2 self-start"
+          className="h-touch overflow-hidden rounded-sm border border-outline self-start"
           style={
             {
               "alignItems": undefined,
@@ -139,10 +139,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               style={
                 {
                   "fontFamily": "Inter_700Bold",
-                  "fontSize": 13.5,
+                  "fontSize": 15,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 20.3,
+                  "lineHeight": 22.5,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -173,7 +173,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft"
+            className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -191,10 +191,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 13.5,
+                  "fontSize": 15,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 22.3,
+                  "lineHeight": 24.8,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -229,10 +229,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             style={
               {
                 "fontFamily": "NotoSansTelugu_700Bold",
-                "fontSize": 11.5,
+                "fontSize": 12,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 19,
+                "lineHeight": 19.8,
                 "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
@@ -298,7 +298,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line2"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-outline"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -319,10 +319,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 12.5,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 20.6,
+                  "lineHeight": 21.5,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -352,7 +352,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 bg-accentSoft border-accent"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 bg-accentSoft border-accent border-b-2 border-b-accentStrong"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -373,10 +373,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 12.5,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 20.6,
+                  "lineHeight": 21.5,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -406,7 +406,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line2"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-outline"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -427,10 +427,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 12.5,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 20.6,
+                  "lineHeight": 21.5,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -460,7 +460,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-line2"
+            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-outline"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -477,14 +477,14 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             testID="section-chip-3"
           >
             <Text
-              className="text-ink4"
+              className="text-ink3"
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 12.5,
+                  "fontFamily": "NotoSansTelugu_500Medium",
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 20.6,
+                  "lineHeight": 21.5,
                   "textAlign": "center",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -570,32 +570,39 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
     >
       <Text
         accessibilityElementsHidden={true}
-        className="text-accentInk"
+        allowFontScaling={false}
         importantForAccessibility="no"
+        selectable={false}
         style={
-          {
-            "fontFamily": "Inter_400Regular",
-            "fontSize": 13.5,
-            "fontVariant": undefined,
-            "letterSpacing": 0,
-            "lineHeight": 20.3,
-            "textAlign": "left",
-            "textTransform": undefined,
-            "writingDirection": "ltr",
-          }
+          [
+            {
+              "color": "#6f665b",
+              "fontSize": 16,
+            },
+            {
+              "marginTop": 1,
+            },
+            {
+              "fontFamily": "ionicons",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            {},
+          ]
         }
+        testID="attempt-offline-icon"
       >
-        ■
+        
       </Text>
       <Text
         className="text-ink2 flex-1"
         style={
           {
             "fontFamily": "NotoSansTelugu_400Regular",
-            "fontSize": 11.5,
+            "fontSize": 12,
             "fontVariant": undefined,
             "letterSpacing": 0,
-            "lineHeight": 19,
+            "lineHeight": 19.8,
             "textAlign": "left",
             "textTransform": undefined,
             "writingDirection": "ltr",
@@ -646,10 +653,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               style={
                 {
                   "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 12.5,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 20.6,
+                  "lineHeight": 21.5,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -664,12 +671,12 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               style={
                 {
                   "fontFamily": "Inter_700Bold",
-                  "fontSize": 12.5,
+                  "fontSize": 13,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 1.2,
-                  "lineHeight": 18.8,
+                  "lineHeight": 19.5,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -688,10 +695,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 11.5,
+                  "fontSize": 12,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 19,
+                  "lineHeight": 19.8,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -707,10 +714,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
           style={
             {
               "fontFamily": "NotoSansTelugu_400Regular",
-              "fontSize": 16.5,
+              "fontSize": 17.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 27.2,
+              "lineHeight": 28.9,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -797,10 +804,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12.5,
+                      "fontSize": 13,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 20.6,
+                      "lineHeight": 21.5,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -815,10 +822,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 14.5,
+                    "fontSize": 16,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 23.9,
+                    "lineHeight": 26.4,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -894,10 +901,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12.5,
+                      "fontSize": 13,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 20.6,
+                      "lineHeight": 21.5,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -912,10 +919,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 14.5,
+                    "fontSize": 16,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 23.9,
+                    "lineHeight": 26.4,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -991,10 +998,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12.5,
+                      "fontSize": 13,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 20.6,
+                      "lineHeight": 21.5,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -1009,10 +1016,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 14.5,
+                    "fontSize": 16,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 23.9,
+                    "lineHeight": 26.4,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -1088,10 +1095,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12.5,
+                      "fontSize": 13,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 20.6,
+                      "lineHeight": 21.5,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -1106,10 +1113,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 14.5,
+                    "fontSize": 16,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 23.9,
+                    "lineHeight": 26.4,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -1144,10 +1151,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             style={
               {
                 "fontFamily": "NotoSansTelugu_400Regular",
-                "fontSize": 11.5,
+                "fontSize": 12,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 19,
+                "lineHeight": 19.8,
                 "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
@@ -1186,12 +1193,12 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 style={
                   {
                     "fontFamily": "Inter_400Regular",
-                    "fontSize": 11.5,
+                    "fontSize": 12,
                     "fontVariant": [
                       "tabular-nums",
                     ],
                     "letterSpacing": 0,
-                    "lineHeight": 17.3,
+                    "lineHeight": 18,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -1205,10 +1212,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 11.5,
+                    "fontSize": 12,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 19,
+                    "lineHeight": 19.8,
                     "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -1267,7 +1274,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center rounded-sm px-4 border border-line2"
+            className="items-center justify-center rounded-sm px-4 border border-outline"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1303,10 +1310,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
-                    "fontSize": 13.5,
+                    "fontSize": 15,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 22.3,
+                    "lineHeight": 24.8,
                     "textAlign": "center",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -1372,10 +1379,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_600SemiBold",
-                    "fontSize": 13.5,
+                    "fontSize": 15,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 22.3,
+                    "lineHeight": 24.8,
                     "textAlign": "center",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
@@ -1492,10 +1499,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               style={
                 {
                   "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 13.5,
+                  "fontSize": 15,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 22.3,
+                  "lineHeight": 24.8,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -1510,12 +1517,12 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               style={
                 {
                   "fontFamily": "Inter_400Regular",
-                  "fontSize": 11.5,
+                  "fontSize": 12,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 17.3,
+                  "lineHeight": 18,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -1581,10 +1588,10 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_700Bold",
-                    "fontSize": 14.5,
+                    "fontSize": 16,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 23.9,
+                    "lineHeight": 26.4,
                     "textAlign": "center",
                     "textTransform": undefined,
                     "writingDirection": "ltr",

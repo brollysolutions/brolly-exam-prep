@@ -47,11 +47,11 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
           className="text-ink mt-3"
           style={
             {
-              "fontFamily": "NotoSansTelugu_700Bold",
+              "fontFamily": "NotoSerifTelugu_700Bold",
               "fontSize": 24,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 39.6,
+              "lineHeight": 36,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -65,10 +65,10 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
           style={
             {
               "fontFamily": "NotoSansTelugu_400Regular",
-              "fontSize": 12.5,
+              "fontSize": 13,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 20.6,
+              "lineHeight": 21.5,
               "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
@@ -150,10 +150,10 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 12.5,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 20.6,
+                  "lineHeight": 21.5,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -224,10 +224,10 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 12.5,
+                  "fontSize": 13,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 20.6,
+                  "lineHeight": 21.5,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
@@ -298,10 +298,10 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
             style={
               {
                 "fontFamily": "NotoSansTelugu_700Bold",
-                "fontSize": 14.5,
+                "fontSize": 16,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 23.9,
+                "lineHeight": 26.4,
                 "textAlign": "center",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
