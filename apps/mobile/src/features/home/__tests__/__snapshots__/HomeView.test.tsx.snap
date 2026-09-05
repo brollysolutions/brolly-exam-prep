@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the snapshot 1`] = `
+exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matches the snapshot 1`] = `
 <View
   className="flex-1 bg-tar"
   style={
@@ -861,7 +861,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
         style={
           {
             "alignItems": "center",
-            "flexDirection": "row-reverse",
+            "flexDirection": "row",
             "flexWrap": "wrap",
             "gap": 8,
             "justifyContent": "space-between",
@@ -878,7 +878,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               "fontVariant": undefined,
               "letterSpacing": 3.4,
               "lineHeight": 15.2,
-              "textAlign": "right",
+              "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
             }
@@ -890,7 +890,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
           style={
             {
               "alignItems": "center",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 8,
               "justifyContent": undefined,
@@ -903,7 +903,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
             style={
               {
                 "alignItems": undefined,
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": undefined,
                 "justifyContent": undefined,
@@ -932,7 +932,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 }
               }
               accessible={true}
-              className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
+              className="h-full min-w-touch items-center justify-center px-3 border-line border-r"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}
@@ -969,58 +969,6 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               accessibilityState={
                 {
                   "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
-              collapsable={false}
-              focusable={true}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-            >
-              <Text
-                className="text-dim"
-                style={
-                  {
-                    "fontFamily": "NotoSansTelugu_700Bold",
-                    "fontSize": 13.5,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 22.3,
-                    "textAlign": "center",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                తె
-              </Text>
-            </View>
-            <View
-              accessibilityLabel="اُر"
-              accessibilityRole="radio"
-              accessibilityState={
-                {
-                  "busy": undefined,
                   "checked": true,
                   "disabled": undefined,
                   "expanded": undefined,
@@ -1053,18 +1001,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 className="text-tar"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
+                    "lineHeight": 22.3,
                     "textAlign": "center",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                اُر
+                తె
               </Text>
             </View>
           </View>
@@ -1074,22 +1022,22 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
         className="text-chalk mt-4"
         style={
           {
-            "fontFamily": "NotoNastaliqUrdu_700Bold",
-            "fontSize": 24,
+            "fontFamily": "NotoSansTelugu_600SemiBold",
+            "fontSize": 23,
             "fontVariant": undefined,
             "letterSpacing": 0,
-            "lineHeight": 49.2,
-            "textAlign": "right",
+            "lineHeight": 37.9,
+            "textAlign": "left",
             "textTransform": undefined,
-            "writingDirection": "rtl",
+            "writingDirection": "ltr",
           }
         }
         testID="home-greeting"
       >
-        تیار ہیں، ⁦…1234⁩؟
+        సిద్ధమా, ⁦…1234⁩?
       </Text>
       <View
-        accessibilityLabel="PWT میں ⁦45⁩ دن · Preliminary Written Test · ⁦18-10-2026⁩ · ⁦4⁩ دن کا سلسلہ · ⁦20⁩ میں سے ⁦12⁩ مکمل"
+        accessibilityLabel="PWTకి ⁦45⁩ రోజులు · Preliminary Written Test · ⁦18-10-2026⁩ · ⁦4⁩ రోజుల స్ట్రీక్ · ⁦20⁩లో ⁦12⁩ పూర్తి"
         accessibilityState={
           {
             "selected": false,
@@ -1099,8 +1047,8 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
         className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4 mt-4"
         style={
           {
-            "borderRightColor": "#FF8A00",
-            "borderRightWidth": 3,
+            "borderLeftColor": "#FF8A00",
+            "borderLeftWidth": 3,
           }
         }
         testID="home-hero"
@@ -1109,25 +1057,25 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
           className="text-hazard"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 13,
+              "fontFamily": "NotoSansTelugu_700Bold",
+              "fontSize": 12,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 26.7,
-              "textAlign": "right",
+              "lineHeight": 19.8,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          PWT امتحان میں باقی
+          PWT పరీక్షకు ఇంకా
         </Text>
         <View
           className="mt-2"
           style={
             {
               "alignItems": "baseline",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 8,
               "justifyContent": undefined,
@@ -1146,7 +1094,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 ],
                 "letterSpacing": 0,
                 "lineHeight": 40.6,
-                "textAlign": "right",
+                "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
               }
@@ -1159,32 +1107,32 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
             className="text-dim"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_400Regular",
-                "fontSize": 15.5,
+                "fontFamily": "NotoSansTelugu_400Regular",
+                "fontSize": 14.5,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 31.8,
-                "textAlign": "right",
+                "lineHeight": 23.9,
+                "textAlign": "left",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            دن
+            రోజులు
           </Text>
         </View>
         <Text
           className="text-dim mt-1"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_400Regular",
-              "fontSize": 12.5,
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 11.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 25.6,
-              "textAlign": "right",
+              "lineHeight": 19,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
           testID="home-exam-date"
@@ -1195,19 +1143,19 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
           className="text-dim mt-1"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_400Regular",
-              "fontSize": 12.5,
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 11.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 25.6,
-              "textAlign": "right",
+              "lineHeight": 19,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
           testID="home-streak"
         >
-          ⁦4⁩ دن کا سلسلہ
+          ⁦4⁩ రోజుల స్ట్రీక్
         </Text>
         <View
           className="mt-4 h-px bg-line2"
@@ -1217,7 +1165,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
           style={
             {
               "alignItems": "center",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 12,
               "justifyContent": "space-between",
@@ -1228,36 +1176,36 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
             className="text-dim"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 13,
+                "fontFamily": "NotoSansTelugu_700Bold",
+                "fontSize": 12,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 26.7,
-                "textAlign": "right",
+                "lineHeight": 19.8,
+                "textAlign": "left",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            آج کا ہدف
+            ఈరోజు లక్ష్యం
           </Text>
           <Text
             className="text-dim"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_400Regular",
-                "fontSize": 12.5,
+                "fontFamily": "NotoSansTelugu_400Regular",
+                "fontSize": 11.5,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 25.6,
-                "textAlign": "right",
+                "lineHeight": 19,
+                "textAlign": "left",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
             testID="home-target-count"
           >
-            ⁦20⁩ میں سے ⁦12⁩ مکمل
+            ⁦20⁩లో ⁦12⁩ పూర్తి
           </Text>
         </View>
         <View
@@ -1275,7 +1223,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
             style={
               {
                 "alignItems": undefined,
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 4,
                 "justifyContent": undefined,
@@ -1334,7 +1282,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
           style={
             {
               "alignItems": "center",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 12,
               "justifyContent": "space-between",
@@ -1346,7 +1294,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
             style={
               {
                 "alignItems": "center",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": "wrap",
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1357,18 +1305,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 13,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 26.7,
-                  "textAlign": "right",
+                  "lineHeight": 19.8,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              ٹی ایس ایل پی آر بی اپ ڈیٹس
+              TSLPRB అప్‌డేట్‌లు
             </Text>
             <View
               className="rounded-xs bg-panel3 px-2 py-0.5"
@@ -1378,23 +1326,23 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 className="text-dim"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 13,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 12,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 26.7,
+                    "lineHeight": 19.8,
                     "textAlign": "center",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                نمونہ ڈیٹا
+                నమూనా డేటా
               </Text>
             </View>
           </View>
           <View
-            accessibilityLabel="تمام اپ ڈیٹس"
+            accessibilityLabel="అన్ని అప్‌డేట్‌లు"
             accessibilityRole="link"
             accessibilityState={
               {
@@ -1439,7 +1387,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               style={
                 {
                   "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 4,
                   "justifyContent": undefined,
@@ -1450,18 +1398,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 className="text-chalk2"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 12.5,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 11.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 25.6,
-                    "textAlign": "right",
+                    "lineHeight": 19,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                تمام اپ ڈیٹس
+                అన్ని అప్‌డేట్‌లు
               </Text>
               <Text
                 accessibilityElementsHidden={true}
@@ -1474,13 +1422,13 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                     "fontVariant": undefined,
                     "letterSpacing": 0,
                     "lineHeight": 16.7,
-                    "textAlign": "right",
+                    "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
                   }
                 }
               >
-                ‹
+                ›
               </Text>
             </View>
           </View>
@@ -1497,7 +1445,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               style={
                 {
                   "alignItems": undefined,
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 8,
                   "justifyContent": undefined,
@@ -1548,7 +1496,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                   style={
                     {
                       "alignItems": "center",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": undefined,
                       "gap": 8,
                       "justifyContent": "space-between",
@@ -1562,14 +1510,14 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 13,
+                          "fontFamily": "NotoSansTelugu_600SemiBold",
+                          "fontSize": 12,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 26.7,
+                          "lineHeight": 19.8,
                           "textAlign": "center",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
@@ -1588,7 +1536,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                         ],
                         "letterSpacing": 0,
                         "lineHeight": 16.7,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
@@ -1602,18 +1550,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                   numberOfLines={3}
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_600SemiBold",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
+                      "lineHeight": 22.3,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  شارٹ لسٹ امیدواروں کے لیے پی ایم ٹی اور پی ای ٹی شیڈول
+                  షార్ట్‌లిస్ట్ అభ్యర్థులకు PMT, PET షెడ్యూల్
                 </Text>
               </View>
               <View
@@ -1660,7 +1608,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                   style={
                     {
                       "alignItems": "center",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": undefined,
                       "gap": 8,
                       "justifyContent": "space-between",
@@ -1674,18 +1622,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 13,
+                          "fontFamily": "NotoSansTelugu_600SemiBold",
+                          "fontSize": 12,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 26.7,
+                          "lineHeight": 19.8,
                           "textAlign": "center",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      ہال ٹکٹ
+                      హాల్ టికెట్
                     </Text>
                   </View>
                   <Text
@@ -1700,7 +1648,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                         ],
                         "letterSpacing": 0,
                         "lineHeight": 16.7,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
@@ -1714,18 +1662,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                   numberOfLines={3}
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_600SemiBold",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
+                      "lineHeight": 22.3,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  ہال ٹکٹ 10 اکتوبر سے ڈاؤن لوڈ کریں
+                  హాల్ టికెట్లు అక్టోబర్ 10 నుంచి
                 </Text>
               </View>
               <View
@@ -1772,7 +1720,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                   style={
                     {
                       "alignItems": "center",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": undefined,
                       "gap": 8,
                       "justifyContent": "space-between",
@@ -1786,18 +1734,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 13,
+                          "fontFamily": "NotoSansTelugu_600SemiBold",
+                          "fontSize": 12,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 26.7,
+                          "lineHeight": 19.8,
                           "textAlign": "center",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      امتحان کی تاریخ
+                      పరీక్ష తేదీ
                     </Text>
                   </View>
                   <Text
@@ -1812,7 +1760,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                         ],
                         "letterSpacing": 0,
                         "lineHeight": 16.7,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
@@ -1826,18 +1774,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                   numberOfLines={3}
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_600SemiBold",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
+                      "lineHeight": 22.3,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  ابتدائی تحریری امتحان 18 اکتوبر کو
+                  ప్రిలిమినరీ రాత పరీక్ష అక్టోబర్ 18న
                 </Text>
               </View>
             </View>
@@ -1857,14 +1805,14 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
           className="text-dim"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 13,
+              "fontFamily": "NotoSansTelugu_700Bold",
+              "fontSize": 12,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 26.7,
-              "textAlign": "right",
+              "lineHeight": 19.8,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
@@ -1874,18 +1822,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
           className="text-chalk mt-2"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 15.5,
+              "fontFamily": "NotoSansTelugu_600SemiBold",
+              "fontSize": 14.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 31.8,
-              "textAlign": "right",
+              "lineHeight": 23.9,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          کیا آپ جسمانی معیار پر پورا اترتے ہیں؟
+          శారీరక ప్రమాణాలు మీకు సరిపోతాయా?
         </Text>
         <View
           accessibilityRole="button"
@@ -1930,7 +1878,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
             style={
               {
                 "alignItems": "center",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1941,18 +1889,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               className="text-tar"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 15.5,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 14.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 31.8,
+                  "lineHeight": 23.9,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              اہلیت جانچیں
+              అర్హత చూడండి
             </Text>
           </View>
         </View>
@@ -1965,7 +1913,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
           style={
             {
               "alignItems": "center",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 12,
               "justifyContent": "space-between",
@@ -1977,7 +1925,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
             style={
               {
                 "alignItems": "center",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": "wrap",
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1988,18 +1936,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 13,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 26.7,
-                  "textAlign": "right",
+                  "lineHeight": 19.8,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              آج کے حالاتِ حاضرہ
+              నేటి కరెంట్ అఫైర్స్
             </Text>
             <View
               className="rounded-xs bg-panel3 px-2 py-0.5"
@@ -2009,23 +1957,23 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 className="text-dim"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 13,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 12,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 26.7,
+                    "lineHeight": 19.8,
                     "textAlign": "center",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                نمونہ ڈیٹا
+                నమూనా డేటా
               </Text>
             </View>
           </View>
           <View
-            accessibilityLabel="مزید"
+            accessibilityLabel="మరిన్ని"
             accessibilityRole="link"
             accessibilityState={
               {
@@ -2070,7 +2018,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               style={
                 {
                   "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 4,
                   "justifyContent": undefined,
@@ -2081,18 +2029,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 className="text-chalk2"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 12.5,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 11.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 25.6,
-                    "textAlign": "right",
+                    "lineHeight": 19,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                مزید
+                మరిన్ని
               </Text>
               <Text
                 accessibilityElementsHidden={true}
@@ -2105,13 +2053,13 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                     "fontVariant": undefined,
                     "letterSpacing": 0,
                     "lineHeight": 16.7,
-                    "textAlign": "right",
+                    "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
                   }
                 }
               >
-                ‹
+                ›
               </Text>
             </View>
           </View>
@@ -2132,9 +2080,9 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               {
                 "backgroundColor": "#141517",
                 "borderColor": "#2C2E31",
+                "borderLeftColor": "#B79A55",
+                "borderLeftWidth": 3,
                 "borderRadius": 4,
-                "borderRightColor": "#B79A55",
-                "borderRightWidth": 3,
                 "borderWidth": 1,
                 "overflow": "hidden",
               }
@@ -2178,7 +2126,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 style={
                   {
                     "alignItems": "baseline",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": "space-between",
@@ -2189,18 +2137,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                   className="text-sand"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 13,
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 12,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 26.7,
-                      "textAlign": "right",
+                      "lineHeight": 19.8,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  تلنگانہ
+                  తెలంగాణ
                 </Text>
                 <Text
                   accessibilityLanguage="en"
@@ -2214,7 +2162,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                       ],
                       "letterSpacing": 0,
                       "lineHeight": 16.7,
-                      "textAlign": "right",
+                      "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
                     }
@@ -2228,18 +2176,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 numberOfLines={2}
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
+                    "lineHeight": 22.3,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                ایئرپورٹ میٹرو راہداری کا پہلا حصہ کھل گیا
+                ఎయిర్‌పోర్ట్ మెట్రో కారిడార్ తొలి దశ ప్రారంభం
               </Text>
             </View>
           </View>
@@ -2248,9 +2196,9 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               {
                 "backgroundColor": "#141517",
                 "borderColor": "#2C2E31",
+                "borderLeftColor": "#B79A55",
+                "borderLeftWidth": 3,
                 "borderRadius": 4,
-                "borderRightColor": "#B79A55",
-                "borderRightWidth": 3,
                 "borderWidth": 1,
                 "overflow": "hidden",
               }
@@ -2294,7 +2242,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 style={
                   {
                     "alignItems": "baseline",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": "space-between",
@@ -2305,18 +2253,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                   className="text-sand"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 13,
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 12,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 26.7,
-                      "textAlign": "right",
+                      "lineHeight": 19.8,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  بھارت
+                  భారత్
                 </Text>
                 <Text
                   accessibilityLanguage="en"
@@ -2330,7 +2278,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                       ],
                       "letterSpacing": 0,
                       "lineHeight": 16.7,
-                      "textAlign": "right",
+                      "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
                     }
@@ -2344,18 +2292,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 numberOfLines={2}
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
+                    "lineHeight": 22.3,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                کابینہ نے دیہی سڑکوں کے پروگرام میں توسیع کی
+                గ్రామీణ రహదారుల పథకానికి కేబినెట్ పొడిగింపు
               </Text>
             </View>
           </View>
@@ -2364,9 +2312,9 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               {
                 "backgroundColor": "#141517",
                 "borderColor": "#2C2E31",
+                "borderLeftColor": "#B79A55",
+                "borderLeftWidth": 3,
                 "borderRadius": 4,
-                "borderRightColor": "#B79A55",
-                "borderRightWidth": 3,
                 "borderWidth": 1,
                 "overflow": "hidden",
               }
@@ -2410,7 +2358,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 style={
                   {
                     "alignItems": "baseline",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": "space-between",
@@ -2421,18 +2369,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                   className="text-sand"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 13,
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 12,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 26.7,
-                      "textAlign": "right",
+                      "lineHeight": 19.8,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  کھیل
+                  క్రీడలు
                 </Text>
                 <Text
                   accessibilityLanguage="en"
@@ -2446,7 +2394,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                       ],
                       "letterSpacing": 0,
                       "lineHeight": 16.7,
-                      "textAlign": "right",
+                      "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
                     }
@@ -2460,18 +2408,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                 numberOfLines={2}
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
+                    "lineHeight": 22.3,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                ورنگل میں بین الاضلاعی کرکٹ ٹورنامنٹ اختتام پذیر
+                వరంగల్‌లో అంతర్ జిల్లా క్రికెట్ టోర్నీ ముగింపు
               </Text>
             </View>
           </View>
@@ -2485,25 +2433,25 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
           className="text-dim"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 13,
+              "fontFamily": "NotoSansTelugu_700Bold",
+              "fontSize": 12,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 26.7,
-              "textAlign": "right",
+              "lineHeight": 19.8,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          آپ کی پیش رفت
+          మీ పురోగతి
         </Text>
         <View
           className="mt-3"
           style={
             {
               "alignItems": "stretch",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 8,
               "justifyContent": undefined,
@@ -2511,7 +2459,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
           }
         >
           <View
-            accessibilityLabel="پڑھے گئے موضوعات 5/11"
+            accessibilityLabel="చదివిన అంశాలు 5/11"
             accessible={true}
             className="flex-1 rounded-md border border-line bg-panel2 p-3"
             style={
@@ -2536,7 +2484,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                   ],
                   "letterSpacing": 0,
                   "lineHeight": 31.9,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
@@ -2548,22 +2496,22 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_400Regular",
-                  "fontSize": 12.5,
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 11.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 25.6,
-                  "textAlign": "right",
+                  "lineHeight": 19,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              پڑھے گئے موضوعات
+              చదివిన అంశాలు
             </Text>
           </View>
           <View
-            accessibilityLabel="مشق کیے گئے پرچے 3"
+            accessibilityLabel="సాధన చేసిన పేపర్లు 3"
             accessible={true}
             className="flex-1 rounded-md border border-line bg-panel2 p-3"
             style={
@@ -2588,7 +2536,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                   ],
                   "letterSpacing": 0,
                   "lineHeight": 31.9,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
@@ -2600,22 +2548,22 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_400Regular",
-                  "fontSize": 12.5,
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 11.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 25.6,
-                  "textAlign": "right",
+                  "lineHeight": 19,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              مشق کیے گئے پرچے
+              సాధన చేసిన పేపర్లు
             </Text>
           </View>
           <View
-            accessibilityLabel="بہترین اسکور 62%"
+            accessibilityLabel="అత్యుత్తమ స్కోరు 62%"
             accessible={true}
             className="flex-1 rounded-md border border-line bg-panel2 p-3"
             style={
@@ -2640,7 +2588,7 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
                   ],
                   "letterSpacing": 0,
                   "lineHeight": 31.9,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
@@ -2652,18 +2600,18 @@ exports[`HomeView (ur) mirrors the header, keeps the counts LTR, and matches the
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_400Regular",
-                  "fontSize": 12.5,
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 11.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 25.6,
-                  "textAlign": "right",
+                  "lineHeight": 19,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              بہترین اسکور
+              అత్యుత్తమ స్కోరు
             </Text>
           </View>
         </View>

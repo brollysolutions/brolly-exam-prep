@@ -59,9 +59,9 @@ const fill: Record<Exclude<ChipTone, 'label'>, string> = {
 };
 
 /**
- * Minimum heights with vertical padding, never a fixed box: Nastaliq at chip size is a
- * 27.7 px line box plus overhang, and a fixed 34 px chip drew its ink above its own border
- * (design review, F-23-25). Latin and Telugu still land on 34 / 40 / 48.
+ * Minimum heights with vertical padding, never a fixed box: a tall face at chip size is a
+ * line box plus overhang, and a fixed 34 px chip drew its ink above its own border
+ * (design review, F-23-25). Latin and Telugu land on 34 / 40 / 48.
  */
 const height: Record<ChipSize, string> = {
   sm: 'min-h-chip py-1 px-3',

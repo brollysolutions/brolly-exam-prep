@@ -90,7 +90,7 @@ function TargetBar({ done, target }: { done: number; target: number }) {
  *
  * `badge` is a static tag after the title — "Sample data" while the shelf is seeded from
  * fixtures. It sits inside the heading `Row`, so it follows the reading direction and lands
- * on the left of the kicker in Urdu without a mirrored class of its own.
+ * at the reading end without a mirrored class of its own.
  */
 function SectionHead({
   title,
@@ -245,7 +245,7 @@ export function HomeView({
 
   /**
    * The notice shelf is a reversed `Row` inside a scroller whose origin is its LEFT edge
-   * (the app never calls `I18nManager.forceRTL`), so in Urdu the newest notice sits at the
+   * (the app never calls `I18nManager.forceRTL`), so under RTL the newest notice sits at the
    * right and off-screen. The shelf is scrolled to its end once its content is measured.
    */
   const shelf = useRef<ScrollView>(null);
@@ -366,7 +366,7 @@ export function HomeView({
               if (d.isRTL) shelf.current?.scrollToEnd({ animated: false });
             }}
             // A row inside the scroller rather than `contentContainerStyle`: `Row` is what
-            // knows the reading direction, so Urdu gets the newest notice on the right.
+            // knows the reading direction, so RTL gets the newest notice on the right.
           >
             <Row gap={2}>
               {notices.map((notice) => (

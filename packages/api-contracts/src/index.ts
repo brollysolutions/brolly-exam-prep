@@ -16,7 +16,7 @@ import { z } from "zod";
 
 // ------------------------------------------------------------- Primitives --
 
-export const LangSchema = z.enum(["en", "te", "ur"]);
+export const LangSchema = z.enum(["en", "te"]);
 export type Lang = z.infer<typeof LangSchema>;
 
 export const PostSchema = z.enum(["pc", "si"]);
@@ -62,14 +62,12 @@ export const fromApiCategory = (category: Category): CategoryIdLower =>
 export const LocalizedTextSchema = z.object({
   en: z.string(),
   te: z.string(),
-  ur: z.string(),
 });
 export type LocalizedText = z.infer<typeof LocalizedTextSchema>;
 
 export const LocalizedOptionsSchema = z.object({
   en: z.array(z.string()),
   te: z.array(z.string()),
-  ur: z.array(z.string()),
 });
 export type LocalizedOptions = z.infer<typeof LocalizedOptionsSchema>;
 

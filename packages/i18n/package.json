@@ -2,7 +2,7 @@
   "name": "@tslprb/i18n",
   "version": "0.1.0",
   "private": true,
-  "description": "en/te/ur strings, i18next setup, direction (RTL) helpers and per-language typography for TSLPRB.",
+  "description": "en/te strings, i18next setup, direction (RTL) helpers and per-language typography for TSLPRB.",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "exports": {

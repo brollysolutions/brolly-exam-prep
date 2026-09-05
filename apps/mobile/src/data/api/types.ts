@@ -3,8 +3,8 @@ import type { Question as PaperQuestion, TestMeta } from '@tslprb/fixtures';
 
 export type { PaperQuestion };
 
-/** The three-language string every fixture carries. */
-export type LocalizedCopy = { en: string; te: string; ur: string };
+/** The two-language string every fixture carries. */
+export type LocalizedCopy = { en: string; te: string };
 
 /** One "do these three next" drill card on the result screen. */
 export type ResultAction = {

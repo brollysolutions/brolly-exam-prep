@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
+exports[`OtpView (te) renders the Telugu copy and keeps the cells physical 1`] = `
 <View
   className="flex-1 bg-tar"
   style={
@@ -897,7 +897,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             style={
               {
                 "alignItems": "center",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -916,31 +916,31 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
                   "fontVariant": undefined,
                   "letterSpacing": 0,
                   "lineHeight": 29,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
               }
               testID="otp-change-number-chevron"
             >
-              ›
+              ‹
             </Text>
             <Text
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 14.5,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 13.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29.7,
-                  "textAlign": "right",
+                  "lineHeight": 22.3,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              نمبر بدلیں
+              నంబర్ మార్చు
             </Text>
           </View>
         </View>
@@ -948,31 +948,31 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
           className="text-chalk mt-2"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 26,
+              "fontFamily": "NotoSansTelugu_600SemiBold",
+              "fontSize": 25,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 53.3,
-              "textAlign": "right",
+              "lineHeight": 41.3,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          کوڈ درج کریں
+          కోడ్ ఎంటర్ చేయండి
         </Text>
         <Text
           className="text-dim mt-2"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_400Regular",
-              "fontSize": 14.5,
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 13.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 29.7,
-              "textAlign": "right",
+              "lineHeight": 22.3,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
           testID="otp-phone"
@@ -989,7 +989,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
                 ],
                 "letterSpacing": 0,
                 "lineHeight": 19.6,
-                "textAlign": "right",
+                "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
               }
@@ -999,7 +999,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             +91 90000 12345
             ⁩
           </Text>
-           پر بھیجا گیا 6 ہندسوں کا کوڈ
+           కు పంపిన 6 అంకెల కోడ్
         </Text>
         <View
           className="mt-6"
@@ -1016,8 +1016,8 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             }
           >
             <View
-              accessibilityHint="آٹو فل کے لیے دبا کر رکھیں"
-              accessibilityLabel="کوڈ درج کریں"
+              accessibilityHint="ఆటోఫిల్ ఉపయోగించడానికి నొక్కి పట్టుకోండి"
+              accessibilityLabel="కోడ్ ఎంటర్ చేయండి"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -1226,7 +1226,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
           style={
             {
               "alignItems": "center",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 8,
               "justifyContent": undefined,
@@ -1240,18 +1240,18 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             className="text-dim flex-1"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_400Regular",
-                "fontSize": 12.5,
+                "fontFamily": "NotoSansTelugu_400Regular",
+                "fontSize": 11.5,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 25.6,
-                "textAlign": "right",
+                "lineHeight": 19,
+                "textAlign": "left",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            ایس ایم ایس آتے ہی خود بھر جائے گا
+            SMS వచ్చాక ఆటోమేటిక్‌గా నింపుతాము
           </Text>
         </View>
         <View
@@ -1262,14 +1262,14 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             className="text-sand"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_400Regular",
-                "fontSize": 13.5,
+                "fontFamily": "NotoSansTelugu_400Regular",
+                "fontSize": 12.5,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 27.7,
-                "textAlign": "right",
+                "lineHeight": 20.6,
+                "textAlign": "left",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
@@ -1285,7 +1285,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
                   ],
                   "letterSpacing": 0,
                   "lineHeight": 18.1,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
@@ -1295,7 +1295,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
               24
               ⁩
             </Text>
-             سیکنڈ بعد دوبارہ بھیجیں
+             సెకన్లలో మళ్లీ పంపు
           </Text>
         </View>
         <View
@@ -1935,7 +1935,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             </Text>
           </View>
           <View
-            accessibilityLabel="ہندسہ مٹائیں"
+            accessibilityLabel="అంకె తొలగించు"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -2031,7 +2031,7 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
           style={
             {
               "alignItems": "center",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 8,
               "justifyContent": undefined,
@@ -2042,18 +2042,18 @@ exports[`OtpView (ur) mirrors the copy and keeps the cells physical 1`] = `
             className="text-ghost"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 15.5,
+                "fontFamily": "NotoSansTelugu_700Bold",
+                "fontSize": 14.5,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 31.8,
+                "lineHeight": 23.9,
                 "textAlign": "center",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            تصدیق کریں
+            వెరిఫై చేయి
           </Text>
         </View>
       </View>

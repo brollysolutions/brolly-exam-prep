@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
+exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
 <View
   className="flex-1 bg-tar"
   style={
@@ -860,7 +860,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
         style={
           {
             "alignItems": "center",
-            "flexDirection": "row-reverse",
+            "flexDirection": "row",
             "flexWrap": undefined,
             "gap": 4,
             "justifyContent": undefined,
@@ -869,7 +869,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
         testID="result-header"
       >
         <View
-          accessibilityLabel="واپس"
+          accessibilityLabel="వెనక్కి"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -914,13 +914,13 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                 "fontVariant": undefined,
                 "letterSpacing": 0,
                 "lineHeight": 29,
-                "textAlign": "right",
+                "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
               }
             }
           >
-            ›
+            ‹
           </Text>
         </View>
         <Text
@@ -928,18 +928,18 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
           numberOfLines={1}
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 15.5,
+              "fontFamily": "NotoSansTelugu_600SemiBold",
+              "fontSize": 14.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 31.8,
-              "textAlign": "right",
+              "lineHeight": 23.9,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          پی ڈبلیو ٹی فل ماک 7
+          PWT ఫుల్ మాక్ 7
         </Text>
       </View>
     </View>
@@ -952,18 +952,18 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
           className="text-dim"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 13,
+              "fontFamily": "NotoSansTelugu_700Bold",
+              "fontSize": 12,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 26.7,
-              "textAlign": "right",
+              "lineHeight": 19.8,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          آپ کا اسکور
+          మీ స్కోరు
         </Text>
         <View
           className="mt-1"
@@ -990,7 +990,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                 ],
                 "letterSpacing": -1,
                 "lineHeight": 58,
-                "textAlign": "right",
+                "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
               }
@@ -1011,7 +1011,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                 ],
                 "letterSpacing": 0,
                 "lineHeight": 29,
-                "textAlign": "right",
+                "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
               }
@@ -1025,7 +1025,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
           style={
             {
               "alignItems": "center",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": "wrap",
               "gap": 8,
               "justifyContent": undefined,
@@ -1045,25 +1045,25 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               className="text-tar"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 13.5,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 27.7,
+                  "lineHeight": 20.6,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              اہل قرار
+              అర్హత సాధించారు
             </Text>
           </View>
           <View
             style={
               {
                 "alignItems": "baseline",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 4,
                 "justifyContent": undefined,
@@ -1074,18 +1074,18 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_400Regular",
-                  "fontSize": 13.5,
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 12.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 27.7,
-                  "textAlign": "right",
+                  "lineHeight": 20.6,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              کٹ آف
+              కట్-ఆఫ్
             </Text>
             <Text
               accessibilityLanguage="en"
@@ -1099,7 +1099,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                   ],
                   "letterSpacing": 0,
                   "lineHeight": 18.1,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
@@ -1127,7 +1127,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
             style={
               {
                 "alignItems": "baseline",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1146,7 +1146,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                   ],
                   "letterSpacing": 0,
                   "lineHeight": 15.2,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
@@ -1158,29 +1158,29 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 13,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 26.7,
-                  "textAlign": "right",
+                  "lineHeight": 19.8,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              آپ کہاں کھڑے ہیں
+              మీరు ఎక్కడ ఉన్నారు
             </Text>
           </View>
           <View>
             <View
-              accessibilityLabel="درجہ 1,284 / 9,033"
+              accessibilityLabel="ర్యాంక్ 1,284 / 9,033"
               accessible={true}
               className="border-b border-panel3 py-3"
               style={
                 {
                   "alignItems": "baseline",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": undefined,
@@ -1192,18 +1192,18 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                 className="text-chalk2 flex-1"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
+                    "lineHeight": 22.3,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                درجہ
+                ర్యాంక్
               </Text>
               <Text
                 accessibilityLanguage="en"
@@ -1218,7 +1218,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                     ],
                     "letterSpacing": 0,
                     "lineHeight": 21,
-                    "textAlign": "right",
+                    "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
                   }
@@ -1228,13 +1228,13 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               </Text>
             </View>
             <View
-              accessibilityLabel="درستگی 71%"
+              accessibilityLabel="కచ్చితత్వం 71%"
               accessible={true}
               className="border-b border-panel3 py-3"
               style={
                 {
                   "alignItems": "baseline",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": undefined,
@@ -1246,18 +1246,18 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                 className="text-chalk2 flex-1"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
+                    "lineHeight": 22.3,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                درستگی
+                కచ్చితత్వం
               </Text>
               <Text
                 accessibilityLanguage="en"
@@ -1272,7 +1272,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                     ],
                     "letterSpacing": 0,
                     "lineHeight": 21,
-                    "textAlign": "right",
+                    "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
                   }
@@ -1282,13 +1282,13 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               </Text>
             </View>
             <View
-              accessibilityLabel="فی سوال اوسط وقت 54 سیکنڈ"
+              accessibilityLabel="ప్రశ్నకు సగటు సమయం 54 సె"
               accessible={true}
               className="py-3"
               style={
                 {
                   "alignItems": "baseline",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": undefined,
@@ -1300,27 +1300,27 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                 className="text-chalk2 flex-1"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
+                    "lineHeight": 22.3,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                فی سوال اوسط وقت
+                ప్రశ్నకు సగటు సమయం
               </Text>
               <View
-                accessibilityLabel="54 سیکنڈ"
+                accessibilityLabel="54 సె"
                 accessible={true}
                 className="shrink-0"
                 style={
                   {
                     "alignItems": "baseline",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 4,
                     "justifyContent": undefined,
@@ -1331,7 +1331,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                   style={
                     {
                       "alignItems": "baseline",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": undefined,
                       "gap": undefined,
                       "justifyContent": undefined,
@@ -1350,7 +1350,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                         ],
                         "letterSpacing": 0,
                         "lineHeight": 21,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
@@ -1362,18 +1362,18 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                     className="text-chalk"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_700Bold",
-                        "fontSize": 15.5,
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 14.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 31.8,
-                        "textAlign": "right",
+                        "lineHeight": 23.9,
+                        "textAlign": "left",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                     سیکنڈ
+                     సె
                   </Text>
                 </View>
               </View>
@@ -1395,7 +1395,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
             style={
               {
                 "alignItems": "baseline",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1414,7 +1414,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                   ],
                   "letterSpacing": 0,
                   "lineHeight": 15.2,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
@@ -1426,18 +1426,18 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 13,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 26.7,
-                  "textAlign": "right",
+                  "lineHeight": 19.8,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              نمبر کہاں گئے
+              మార్కులు ఎక్కడ పోయాయి
             </Text>
           </View>
           <View>
@@ -1446,7 +1446,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               style={
                 {
                   "alignItems": "baseline",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": undefined,
@@ -1469,35 +1469,35 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                   className="text-chalk"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
+                      "lineHeight": 22.3,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  ریزننگ درستگی
+                  రీజనింగ్ కచ్చితత్వం
                 </Text>
                 <Text
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 12.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 11.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 25.6,
-                      "textAlign": "right",
+                      "lineHeight": 19,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  باقی سیکشنز میں 78%
+                  మిగతా విభాగాల్లో 78%
                 </Text>
               </View>
               <Text
@@ -1513,7 +1513,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                     ],
                     "letterSpacing": 0,
                     "lineHeight": 23.9,
-                    "textAlign": "right",
+                    "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
                   }
@@ -1527,7 +1527,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               style={
                 {
                   "alignItems": "baseline",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": undefined,
@@ -1550,35 +1550,35 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                   className="text-chalk"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
+                      "lineHeight": 22.3,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  فی پزل سیٹ وقت
+                  పజిల్ సెట్‌కు సమయం
                 </Text>
                 <Text
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 12.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 11.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 25.6,
-                      "textAlign": "right",
+                      "lineHeight": 19,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  اوسط 41 سیکنڈ
+                  సగటు 41 సె
                 </Text>
               </View>
               <Text
@@ -1586,20 +1586,20 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                 numberOfLines={1}
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 17.5,
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 16.5,
                     "fontVariant": [
                       "tabular-nums",
                     ],
                     "letterSpacing": 0,
-                    "lineHeight": 35.9,
-                    "textAlign": "right",
+                    "lineHeight": 27.2,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                92 سیکنڈ
+                92 సె
               </Text>
             </View>
             <View
@@ -1607,7 +1607,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               style={
                 {
                   "alignItems": "baseline",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": undefined,
@@ -1630,35 +1630,35 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                   className="text-chalk"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
+                      "lineHeight": 22.3,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  منفی نمبر
+                  నెగటివ్ మార్కులు
                 </Text>
                 <Text
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 12.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 11.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 25.6,
-                      "textAlign": "right",
+                      "lineHeight": 19,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  27 غلط جوابات سے
+                  27 తప్పు జవాబుల వల్ల
                 </Text>
               </View>
               <Text
@@ -1674,7 +1674,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                     ],
                     "letterSpacing": 0,
                     "lineHeight": 23.9,
-                    "textAlign": "right",
+                    "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
                   }
@@ -1700,7 +1700,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
             style={
               {
                 "alignItems": "baseline",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1719,7 +1719,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                   ],
                   "letterSpacing": 0,
                   "lineHeight": 15.2,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
@@ -1731,18 +1731,18 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
               className="text-hivis"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 13,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 26.7,
-                  "textAlign": "right",
+                  "lineHeight": 19.8,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              اب یہ تین کام کریں
+              ఇప్పుడు ఈ మూడు చేయండి
             </Text>
           </View>
           <View
@@ -1760,9 +1760,9 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                 {
                   "backgroundColor": "#141517",
                   "borderColor": "#2C2E31",
+                  "borderLeftColor": "#FFE01B",
+                  "borderLeftWidth": 3,
                   "borderRadius": 4,
-                  "borderRightColor": "#FFE01B",
-                  "borderRightWidth": 3,
                   "borderWidth": 1,
                   "overflow": "hidden",
                 }
@@ -1806,7 +1806,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                   style={
                     {
                       "alignItems": "center",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": undefined,
                       "gap": 12,
                       "justifyContent": undefined,
@@ -1828,35 +1828,35 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                       className="text-chalk"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 14.5,
+                          "fontFamily": "NotoSansTelugu_600SemiBold",
+                          "fontSize": 13.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 29.7,
-                          "textAlign": "right",
+                          "lineHeight": 22.3,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      سیٹنگ آرینجمنٹ — 20 سوالات کا سیکشنل
+                      సీటింగ్ అరేంజ్‌మెంట్ — 20 ప్రశ్నల సెక్షనల్
                     </Text>
                     <Text
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
+                          "fontFamily": "NotoSansTelugu_400Regular",
+                          "fontSize": 11.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
+                          "lineHeight": 19,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      آپ کا کمزور موضوع · 18 منٹ
+                      మీ బలహీనమైన టాపిక్ · 18 నిమిషాలు
                     </Text>
                   </View>
                   <Text
@@ -1870,13 +1870,13 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                         "fontVariant": undefined,
                         "letterSpacing": 0,
                         "lineHeight": 29,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
                     }
                   >
-                    ‹
+                    ›
                   </Text>
                 </View>
               </View>
@@ -1886,9 +1886,9 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                 {
                   "backgroundColor": "#141517",
                   "borderColor": "#2C2E31",
+                  "borderLeftColor": "#FFE01B",
+                  "borderLeftWidth": 3,
                   "borderRadius": 4,
-                  "borderRightColor": "#FFE01B",
-                  "borderRightWidth": 3,
                   "borderWidth": 1,
                   "overflow": "hidden",
                 }
@@ -1932,7 +1932,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                   style={
                     {
                       "alignItems": "center",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": undefined,
                       "gap": 12,
                       "justifyContent": undefined,
@@ -1954,35 +1954,35 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                       className="text-chalk"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 14.5,
+                          "fontFamily": "NotoSansTelugu_600SemiBold",
+                          "fontSize": 13.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 29.7,
-                          "textAlign": "right",
+                          "lineHeight": 22.3,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      بلڈ ریلیشنز — 15 سوالات
+                      బ్లడ్ రిలేషన్స్ — 15 ప్రశ్నలు
                     </Text>
                     <Text
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
+                          "fontFamily": "NotoSansTelugu_400Regular",
+                          "fontSize": 11.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
+                          "lineHeight": 19,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      12 منٹ · کل 3 غلط
+                      12 నిమిషాలు · నిన్న 3 తప్పులు
                     </Text>
                   </View>
                   <Text
@@ -1996,13 +1996,13 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                         "fontVariant": undefined,
                         "letterSpacing": 0,
                         "lineHeight": 29,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
                     }
                   >
-                    ‹
+                    ›
                   </Text>
                 </View>
               </View>
@@ -2012,9 +2012,9 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                 {
                   "backgroundColor": "#141517",
                   "borderColor": "#2C2E31",
+                  "borderLeftColor": "#FFE01B",
+                  "borderLeftWidth": 3,
                   "borderRadius": 4,
-                  "borderRightColor": "#FFE01B",
-                  "borderRightWidth": 3,
                   "borderWidth": 1,
                   "overflow": "hidden",
                 }
@@ -2058,7 +2058,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                   style={
                     {
                       "alignItems": "center",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": undefined,
                       "gap": 12,
                       "justifyContent": undefined,
@@ -2080,35 +2080,35 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                       className="text-chalk"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 14.5,
+                          "fontFamily": "NotoSansTelugu_600SemiBold",
+                          "fontSize": 13.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 29.7,
-                          "textAlign": "right",
+                          "lineHeight": 22.3,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      ٹائمڈ ریزننگ — 18 منٹ میں 20 سوالات
+                      టైమ్డ్ రీజనింగ్ — 18 నిమిషాల్లో 20 ప్రశ్నలు
                     </Text>
                     <Text
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
+                          "fontFamily": "NotoSansTelugu_400Regular",
+                          "fontSize": 11.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
+                          "lineHeight": 19,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      رفتار بڑھانے کے لیے
+                      వేగం పెంచడానికి
                     </Text>
                   </View>
                   <Text
@@ -2122,13 +2122,13 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
                         "fontVariant": undefined,
                         "letterSpacing": 0,
                         "lineHeight": 29,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
                     }
                   >
-                    ‹
+                    ›
                   </Text>
                 </View>
               </View>
@@ -2183,7 +2183,7 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
           style={
             {
               "alignItems": "center",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 8,
               "justifyContent": undefined,
@@ -2194,18 +2194,18 @@ exports[`ResultView (ur) mirrors the screen and matches the snapshot 1`] = `
             className="text-tar"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 15.5,
+                "fontFamily": "NotoSansTelugu_700Bold",
+                "fontSize": 14.5,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 31.8,
+                "lineHeight": 23.9,
                 "textAlign": "center",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            غلط جوابات + وضاحت
+            తప్పు జవాబులు + వివరణ
           </Text>
         </View>
       </View>

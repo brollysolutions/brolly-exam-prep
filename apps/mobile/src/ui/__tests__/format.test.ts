@@ -58,6 +58,5 @@ describe('isLatinValue', () => {
 
   it('rejects values whose unit is in another script', () => {
     expect(isLatinValue(COST_ROWS.te[1][1])).toBe(false);
-    expect(isLatinValue(COST_ROWS.ur[1][1])).toBe(false);
   });
 });

@@ -23,6 +23,5 @@ export const EXAM_INFO: ExamInfo = {
   label: {
     en: 'Preliminary Written Test',
     te: 'ప్రిలిమినరీ రాత పరీక్ష',
-    ur: 'پریلیمنری تحریری امتحان',
   },
 };

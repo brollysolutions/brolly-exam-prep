@@ -57,10 +57,10 @@ describe('CategoryView', () => {
   });
 });
 
-describe('CategoryView (ur)', () => {
+describe('CategoryView (te)', () => {
   beforeAll(async () => {
     await act(async () => {
-      await setLanguage('ur');
+      await setLanguage('te');
     });
   });
 
@@ -70,11 +70,11 @@ describe('CategoryView (ur)', () => {
     });
   });
 
-  it('mirrors the grid and matches the snapshot', async () => {
+  it('renders the Telugu grid and matches the snapshot', async () => {
     await render(<CategoryView initialCategory="bc" onSubmit={jest.fn()} {...noops()} />);
-    expect(screen.getByText('آپ کا زمرہ')).toBeOnTheScreen();
-    expect(screen.getByTestId('category-row-0')).toHaveStyle({ flexDirection: 'row-reverse' });
-    expect(screen.getByTestId('category-back-row')).toHaveStyle({ flexDirection: 'row-reverse' });
+    expect(screen.getByText('మీ కేటగిరీ')).toBeOnTheScreen();
+    expect(screen.getByTestId('category-row-0')).toHaveStyle({ flexDirection: 'row' });
+    expect(screen.getByTestId('category-back-row')).toHaveStyle({ flexDirection: 'row' });
     expect(screen.getByTestId('category-step')).toHaveStyle({ letterSpacing: 0 });
     expect(
       screen.getByTestId('category-back-chevron', { includeHiddenElements: true }),

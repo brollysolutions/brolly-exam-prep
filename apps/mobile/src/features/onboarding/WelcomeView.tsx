@@ -15,7 +15,7 @@ function BrandBlock() {
   return (
     <Stack align="center" testID="welcome-brand">
       <View className="h-[34px] w-[84px] items-center justify-center rounded-xs bg-hivis">
-        {/* "PWT" and "TSLPRB" are Latin acronyms in every language: never set in Nastaliq. */}
+        {/* "PWT" and "TSLPRB" are Latin acronyms in every language: always the Latin face. */}
         <Text variant="otp" weight="700" color="tar" lang="en">
           PWT
         </Text>
@@ -38,7 +38,7 @@ export type WelcomeViewProps = {
 /**
  * F-02 — splash to intro. Three claims, one per page, then sign-in.
  *
- * In Urdu the pages are laid out physically right-to-left, so "next" is a swipe to the *right*
+ * Under RTL (dormant) the pages are laid out physically right-to-left, so "next" is a swipe to the *right*
  * and slide 1 sits on the right edge. The data array is reversed rather than the scroll
  * transformed, because a mirrored scroll view breaks momentum paging on Android.
  */
@@ -56,10 +56,9 @@ export function WelcomeView({ initialSlide = 1, onDone }: WelcomeViewProps) {
 
   const slide = pages[page] ?? 1;
   const last = slide === SLIDES.length;
-  // Nastaliq's 2.05 line-height puts descenders where the next block's ascenders start, so
-  // Urdu needs the wider step between the counter, the title and the subtitle (design review
-  // round 1). One class, never two competing ones: NativeWind has no last-wins merge.
-  const gap = d.lang === 'ur' ? 'mt-6' : 'mt-3';
+  // One step between the counter, the title and the subtitle. One class, never two competing
+  // ones: NativeWind has no last-wins merge.
+  const gap = 'mt-3';
 
   const goTo = (nextPage: number) => {
     if (nextPage < 0 || nextPage >= pages.length) return;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = `
+exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical 1`] = `
 <View
   className="flex-1 bg-tar"
   style={
@@ -868,7 +868,7 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
               "fontVariant": undefined,
               "letterSpacing": 3.4,
               "lineHeight": 15.2,
-              "textAlign": "right",
+              "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
             }
@@ -881,39 +881,39 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
           className="text-chalk mt-3"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 26,
+              "fontFamily": "NotoSansTelugu_600SemiBold",
+              "fontSize": 25,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 53.3,
-              "textAlign": "right",
+              "lineHeight": 41.3,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          آپ کا فون نمبر
+          మీ ఫోన్ నంబర్
         </Text>
         <Text
           className="text-dim mt-2"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_400Regular",
-              "fontSize": 14.5,
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 13.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 29.7,
-              "textAlign": "right",
+              "lineHeight": 22.3,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          او ٹی پی ایس ایم ایس سے آئے گا۔ انٹرنیٹ کی ضرورت نہیں۔
+          OTP SMS ద్వారా వస్తుంది. ఇంటర్నెట్ అవసరం లేదు.
         </Text>
         <View
-          accessibilityHint="آٹو فل کے لیے دبا کر رکھیں"
-          accessibilityLabel="آپ کا فون نمبر"
+          accessibilityHint="ఆటోఫిల్ ఉపయోగించడానికి నొక్కి పట్టుకోండి"
+          accessibilityLabel="మీ ఫోన్ నంబర్"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -947,7 +947,7 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
           onStartShouldSetResponder={[Function]}
         >
           <View
-            accessibilityLabel="آپ کا فون نمبر"
+            accessibilityLabel="మీ ఫోన్ నంబర్"
             accessibilityValue={
               {
                 "text": "9000012345",
@@ -980,7 +980,7 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
                     ],
                     "letterSpacing": 0,
                     "lineHeight": 24.7,
-                    "textAlign": "right",
+                    "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
                   }
@@ -1652,7 +1652,7 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
             </Text>
           </View>
           <View
-            accessibilityLabel="ہندسہ مٹائیں"
+            accessibilityLabel="అంకె తొలగించు"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -1748,7 +1748,7 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
           style={
             {
               "alignItems": "center",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 8,
               "justifyContent": undefined,
@@ -1759,18 +1759,18 @@ exports[`LoginView (ur) mirrors the copy and keeps the phone row physical 1`] = 
             className="text-tar"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 15.5,
+                "fontFamily": "NotoSansTelugu_700Bold",
+                "fontSize": 14.5,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 31.8,
+                "lineHeight": 23.9,
                 "textAlign": "center",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            جاری رکھیں
+            కొనసాగించు
           </Text>
         </View>
       </View>

@@ -7,7 +7,7 @@ import { useLangStore } from '@/data/lang';
 import { EligibilityView } from '../EligibilityView';
 import { evaluate, toInput, type MeasureValues } from '../evaluate';
 
-/** A constable woman one centimetre short: one failing row, one banner, four rows to mirror. */
+/** A constable woman one centimetre short: one failing row, one banner, four rows to set. */
 const VALUES: MeasureValues = {
   height: '151',
   run800m: '300',
@@ -30,13 +30,13 @@ const SI_RESULT = evaluate(
 
 const noop = () => {};
 
-describe('EligibilityView (ur)', () => {
+describe('EligibilityView (te)', () => {
   beforeAll(() => {
-    useLangStore.setState({ lang: 'ur' });
-    initI18n('ur');
+    useLangStore.setState({ lang: 'te' });
+    initI18n('te');
   });
 
-  it('mirrors the screen while the digits stay left-to-right', async () => {
+  it('sets the screen in Telugu while the digits stay Latin', async () => {
     await render(
       <EligibilityView
         post="pc"
@@ -53,26 +53,25 @@ describe('EligibilityView (ur)', () => {
       />,
     );
 
-    expect(screen.getByTestId('eligibility-header')).toHaveStyle({
-      flexDirection: 'row-reverse',
-    });
-    expect(screen.getByTestId('eligibility-row-height')).toHaveStyle({
-      flexDirection: 'row-reverse',
-    });
+    expect(screen.getByTestId('eligibility-header')).toHaveStyle({ flexDirection: 'row' });
+    expect(screen.getByTestId('eligibility-row-height')).toHaveStyle({ flexDirection: 'row' });
 
-    // A measurement is typed in Latin figures in every language, so the field's writing
-    // direction never mirrors — but the caret sits on the reading side, which is the right.
+    // A measurement is typed in Latin figures in every language: the caret sits on the
+    // reading-start side and the writing direction follows `isRTL()`, which is LTR here.
     expect(screen.getByTestId('eligibility-field-height')).toHaveStyle({
-      textAlign: 'right',
+      textAlign: 'left',
       writingDirection: 'ltr',
     });
     expect(screen.getByTestId('eligibility-field-run800m-min')).toHaveStyle({
-      textAlign: 'right',
+      textAlign: 'left',
       writingDirection: 'ltr',
     });
 
-    // Urdu copy from the locale file is on screen, and so is the verdict.
+    // Telugu copy from the locale file is on screen, and so is the verdict.
     expect(screen.getByText(i18n.t('eligibility.title'))).toBeOnTheScreen();
+    expect(screen.getByText(i18n.t('eligibility.title'))).toHaveStyle({
+      fontFamily: 'NotoSansTelugu_600SemiBold',
+    });
     expect(screen.getByTestId('eligibility-verdict')).toHaveTextContent(
       i18n.t('eligibility.notYet'),
       { exact: false },
@@ -86,7 +85,7 @@ describe('EligibilityView (ur)', () => {
     expect(screen.toJSON()).toMatchSnapshot();
   });
 
-  it('carries the unconfirmed tag and the note in Urdu', async () => {
+  it('carries the unconfirmed tag and the note in Telugu', async () => {
     await render(
       <EligibilityView
         post="si"

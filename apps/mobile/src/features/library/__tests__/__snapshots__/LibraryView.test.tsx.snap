@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
+exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] = `
 <View
   className="flex-1 bg-tar"
   style={
@@ -856,18 +856,18 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
       className="text-chalk mt-5"
       style={
         {
-          "fontFamily": "NotoNastaliqUrdu_700Bold",
-          "fontSize": 26,
+          "fontFamily": "NotoSansTelugu_600SemiBold",
+          "fontSize": 25,
           "fontVariant": undefined,
           "letterSpacing": 0,
-          "lineHeight": 53.3,
-          "textAlign": "right",
+          "lineHeight": 41.3,
+          "textAlign": "left",
           "textTransform": undefined,
-          "writingDirection": "rtl",
+          "writingDirection": "ltr",
         }
       }
     >
-      ٹیسٹ
+      టెస్టులు
     </Text>
     <View
       accessibilityRole="radiogroup"
@@ -875,7 +875,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
       style={
         {
           "alignItems": undefined,
-          "flexDirection": "row-reverse",
+          "flexDirection": "row",
           "flexWrap": "wrap",
           "gap": 8,
           "justifyContent": undefined,
@@ -923,18 +923,18 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
           className="text-tar"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 13.5,
+              "fontFamily": "NotoSansTelugu_700Bold",
+              "fontSize": 12.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 27.7,
+              "lineHeight": 20.6,
               "textAlign": "center",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          فل ماکس
+          ఫుల్ మాక్స్
         </Text>
       </View>
       <View
@@ -977,18 +977,18 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
           className="text-dim"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 13.5,
+              "fontFamily": "NotoSansTelugu_600SemiBold",
+              "fontSize": 12.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 27.7,
+              "lineHeight": 20.6,
               "textAlign": "center",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          سیکشنل
+          సెక్షనల్
         </Text>
       </View>
       <View
@@ -1031,18 +1031,18 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
           className="text-dim"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 13.5,
+              "fontFamily": "NotoSansTelugu_600SemiBold",
+              "fontSize": 12.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 27.7,
+              "lineHeight": 20.6,
               "textAlign": "center",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          گزشتہ سال
+          గత సంవత్సరం
         </Text>
       </View>
     </View>
@@ -1096,7 +1096,6 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
             "title": {
               "en": "PWT Full Mock 07",
               "te": "PWT ఫుల్ మాక్ 07",
-              "ur": "پی ڈبلیو ٹی فل ماک 07",
             },
           },
           {
@@ -1140,7 +1139,6 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
             "title": {
               "en": "PWT Full Mock 08",
               "te": "PWT ఫుల్ మాక్ 08",
-              "ur": "پی ڈبلیو ٹی فل ماک 08",
             },
           },
         ]
@@ -1208,7 +1206,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
               style={
                 {
                   "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": "space-between",
@@ -1230,24 +1228,24 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                   className="text-chalk"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 15.5,
+                      "fontFamily": "NotoSansTelugu_600SemiBold",
+                      "fontSize": 14.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 31.8,
-                      "textAlign": "right",
+                      "lineHeight": 23.9,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  پی ڈبلیو ٹی فل ماک 07
+                  PWT ఫుల్ మాక్ 07
                 </Text>
                 <View
                   style={
                     {
                       "alignItems": "baseline",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": "wrap",
                       "gap": 8,
                       "justifyContent": undefined,
@@ -1258,7 +1256,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                     style={
                       {
                         "alignItems": "baseline",
-                        "flexDirection": "row-reverse",
+                        "flexDirection": "row",
                         "flexWrap": undefined,
                         "gap": 4,
                         "justifyContent": undefined,
@@ -1277,7 +1275,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                           ],
                           "letterSpacing": 0,
                           "lineHeight": 16.7,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
@@ -1289,18 +1287,18 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
+                          "fontFamily": "NotoSansTelugu_400Regular",
+                          "fontSize": 11.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
+                          "lineHeight": 19,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      سوالات
+                      ప్రశ్నలు
                     </Text>
                   </View>
                   <Text
@@ -1312,7 +1310,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                         "fontVariant": undefined,
                         "letterSpacing": 0,
                         "lineHeight": 16.7,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
@@ -1324,7 +1322,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                     style={
                       {
                         "alignItems": "baseline",
-                        "flexDirection": "row-reverse",
+                        "flexDirection": "row",
                         "flexWrap": undefined,
                         "gap": 4,
                         "justifyContent": undefined,
@@ -1343,7 +1341,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                           ],
                           "letterSpacing": 0,
                           "lineHeight": 16.7,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
@@ -1355,18 +1353,18 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
+                          "fontFamily": "NotoSansTelugu_400Regular",
+                          "fontSize": 11.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
+                          "lineHeight": 19,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      منٹ
+                      నిమి
                     </Text>
                   </View>
                 </View>
@@ -1375,7 +1373,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                 style={
                   {
                     "alignItems": "center",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": undefined,
@@ -1395,7 +1393,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                     style={
                       {
                         "alignItems": "center",
-                        "flexDirection": "row-reverse",
+                        "flexDirection": "row",
                         "flexWrap": undefined,
                         "gap": 4,
                         "justifyContent": undefined,
@@ -1414,7 +1412,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                           ],
                           "letterSpacing": 0,
                           "lineHeight": 18.1,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
@@ -1426,18 +1424,18 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 13.5,
+                          "fontFamily": "NotoSansTelugu_600SemiBold",
+                          "fontSize": 12.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 27.7,
+                          "lineHeight": 20.6,
                           "textAlign": "center",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      بہترین
+                      ఉత్తమం
                     </Text>
                   </View>
                 </View>
@@ -1454,18 +1452,18 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_700Bold",
-                        "fontSize": 13.5,
+                        "fontFamily": "NotoSansTelugu_600SemiBold",
+                        "fontSize": 12.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 27.7,
+                        "lineHeight": 20.6,
                         "textAlign": "center",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    مفت
+                    ఉచితం
                   </Text>
                 </View>
               </View>
@@ -1516,7 +1514,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
               style={
                 {
                   "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": "space-between",
@@ -1538,24 +1536,24 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 15.5,
+                      "fontFamily": "NotoSansTelugu_600SemiBold",
+                      "fontSize": 14.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 31.8,
-                      "textAlign": "right",
+                      "lineHeight": 23.9,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  پی ڈبلیو ٹی فل ماک 08
+                  PWT ఫుల్ మాక్ 08
                 </Text>
                 <View
                   style={
                     {
                       "alignItems": "baseline",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": "wrap",
                       "gap": 8,
                       "justifyContent": undefined,
@@ -1566,7 +1564,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                     style={
                       {
                         "alignItems": "baseline",
-                        "flexDirection": "row-reverse",
+                        "flexDirection": "row",
                         "flexWrap": undefined,
                         "gap": 4,
                         "justifyContent": undefined,
@@ -1585,7 +1583,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                           ],
                           "letterSpacing": 0,
                           "lineHeight": 16.7,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
@@ -1597,18 +1595,18 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
+                          "fontFamily": "NotoSansTelugu_400Regular",
+                          "fontSize": 11.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
+                          "lineHeight": 19,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      سوالات
+                      ప్రశ్నలు
                     </Text>
                   </View>
                   <Text
@@ -1620,7 +1618,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                         "fontVariant": undefined,
                         "letterSpacing": 0,
                         "lineHeight": 16.7,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
@@ -1632,7 +1630,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                     style={
                       {
                         "alignItems": "baseline",
-                        "flexDirection": "row-reverse",
+                        "flexDirection": "row",
                         "flexWrap": undefined,
                         "gap": 4,
                         "justifyContent": undefined,
@@ -1651,7 +1649,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                           ],
                           "letterSpacing": 0,
                           "lineHeight": 16.7,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
@@ -1663,18 +1661,18 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
+                          "fontFamily": "NotoSansTelugu_400Regular",
+                          "fontSize": 11.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
+                          "lineHeight": 19,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      منٹ
+                      నిమి
                     </Text>
                   </View>
                 </View>
@@ -1683,7 +1681,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                 style={
                   {
                     "alignItems": "center",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": undefined,
@@ -1703,7 +1701,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                     style={
                       {
                         "alignItems": "center",
-                        "flexDirection": "row-reverse",
+                        "flexDirection": "row",
                         "flexWrap": undefined,
                         "gap": 4,
                         "justifyContent": undefined,
@@ -1719,7 +1717,7 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                           "fontVariant": undefined,
                           "letterSpacing": 0,
                           "lineHeight": 18.1,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
@@ -1731,18 +1729,18 @@ exports[`LibraryView (ur) mirrors the rows and matches the snapshot 1`] = `
                       className="text-mute"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_700Bold",
-                          "fontSize": 13.5,
+                          "fontFamily": "NotoSansTelugu_600SemiBold",
+                          "fontSize": 12.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 27.7,
+                          "lineHeight": 20.6,
                           "textAlign": "center",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      مقفل
+                      లాక్
                     </Text>
                   </View>
                 </View>

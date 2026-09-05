@@ -413,11 +413,11 @@ describe('HomeView (en) — the shelf scroller', () => {
   });
 });
 
-describe('HomeView (ur)', () => {
+describe('HomeView (te)', () => {
   beforeAll(async () => {
     initI18n('en');
     await act(async () => {
-      await setLanguage('ur');
+      await setLanguage('te');
     });
   });
 
@@ -427,30 +427,22 @@ describe('HomeView (ur)', () => {
     });
   });
 
-  it('mirrors the header, keeps the counts LTR, and matches the snapshot', async () => {
-    await render(<HomeView {...props} lang="ur" />);
-    expect(screen.getByTestId('home-header')).toHaveStyle({ flexDirection: 'row-reverse' });
-    expect(screen.getByTestId('home-target')).toHaveStyle({ flexDirection: 'row-reverse' });
+  it('renders the Telugu copy, keeps the counts Latin, and matches the snapshot', async () => {
+    await render(<HomeView {...props} lang="te" />);
+    expect(screen.getByTestId('home-header')).toHaveStyle({ flexDirection: 'row' });
+    expect(screen.getByTestId('home-target')).toHaveStyle({ flexDirection: 'row' });
     expect(screen.getByTestId('home-days')).toHaveStyle({ fontFamily: 'Archivo_700Bold' });
-    expect(screen.getByTestId('sample-data-updates')).toHaveTextContent('نمونہ ڈیٹا');
-    // The streak digit is isolated, so it stays a Latin figure inside the Nastaliq line.
+    expect(screen.getByTestId('sample-data-updates')).toHaveTextContent('నమూనా డేటా');
+    // The streak digit is isolated, so it stays a Latin figure inside the Telugu line.
     expect(screen.getByTestId('home-streak')).toHaveTextContent(has(iso('4')));
     expect(screen.toJSON()).toMatchSnapshot();
   });
 
-  // The shelf is a reversed row inside a scroller whose origin is the LEFT edge, so without
-  // help Urdu opened on the two oldest notices with the newest off-screen (review I1).
-  it('starts the notice shelf at the newest notice, which is on the right', async () => {
-    await render(<HomeView {...props} lang="ur" />);
-    await fireEvent(screen.getByTestId('home-updates-shelf'), 'contentSizeChange', 724, 120);
-    expect(ScrollView.prototype.scrollToEnd).toHaveBeenCalledWith({ animated: false });
-  });
-
   it('keeps the shelf links in the Latin face, where the chevron has a glyph', async () => {
-    await render(<HomeView {...props} lang="ur" />);
-    expect(screen.getByTestId('home-updates-all')).toHaveTextContent(has('تمام اپ ڈیٹس'));
-    // Nastaliq has no U+2039, so the mirrored chevron has to render in Archivo or it is tofu.
-    const chevrons = screen.getAllByText('‹', { includeHiddenElements: true });
+    await render(<HomeView {...props} lang="te" />);
+    expect(screen.getByTestId('home-updates-all')).toHaveTextContent(has('అన్ని అప్‌డేట్‌లు'));
+    // The chevron renders in Archivo whatever the UI face, or a missing glyph is tofu.
+    const chevrons = screen.getAllByText('›', { includeHiddenElements: true });
     expect(chevrons.length).toBe(2);
     expect(chevrons[0]).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
   });

@@ -60,10 +60,10 @@ describe('PostView', () => {
   });
 });
 
-describe('PostView (ur)', () => {
+describe('PostView (te)', () => {
   beforeAll(async () => {
     await act(async () => {
-      await setLanguage('ur');
+      await setLanguage('te');
     });
   });
 
@@ -73,10 +73,10 @@ describe('PostView (ur)', () => {
     });
   });
 
-  it('mirrors the copy and matches the snapshot', async () => {
+  it('renders the Telugu copy and matches the snapshot', async () => {
     await render(<PostView initialPost="pc" onSubmit={jest.fn()} />);
-    expect(screen.getByText('کانسٹیبل')).toHaveStyle({ textAlign: 'right' });
-    // The cards stack, so the mirroring shows in the copy; the step counter loses its tracking.
+    expect(screen.getByText('కానిస్టేబుల్')).toHaveStyle({ fontFamily: 'NotoSansTelugu_700Bold' });
+    // The cards stack; the step counter loses its tracking in the Telugu face.
     expect(screen.getByTestId('post-cards')).toHaveStyle({ flexDirection: 'column' });
     expect(screen.getByTestId('post-step')).toHaveStyle({ letterSpacing: 0 });
     expect(screen.toJSON()).toMatchSnapshot();

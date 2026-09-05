@@ -35,10 +35,10 @@ describe('BackRow', () => {
   });
 });
 
-describe('BackRow (ur)', () => {
+describe('BackRow (te)', () => {
   beforeAll(async () => {
     await act(async () => {
-      await setLanguage('ur');
+      await setLanguage('te');
     });
   });
 
@@ -48,9 +48,10 @@ describe('BackRow (ur)', () => {
     });
   });
 
-  it('mirrors the row and draws the chevron in the Latin face', async () => {
-    await render(<BackRow label="واپس" onPress={jest.fn()} testID="back" />);
-    expect(screen.getByTestId('back-row')).toHaveStyle({ flexDirection: 'row-reverse' });
+  it('sets the label in Telugu and draws the chevron in the Latin face', async () => {
+    await render(<BackRow label="వెనుకకు" onPress={jest.fn()} testID="back" />);
+    expect(screen.getByTestId('back-row')).toHaveStyle({ flexDirection: 'row' });
+    expect(screen.getByText('వెనుకకు')).toHaveStyle({ fontFamily: 'NotoSansTelugu_600SemiBold' });
     // The chevron is decorative, so it is hidden from the a11y tree and from default queries.
     expect(
       screen.getByTestId('back-chevron', { includeHiddenElements: true }),

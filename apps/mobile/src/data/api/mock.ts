@@ -23,7 +23,7 @@ import {
   type Question as PaperQuestion,
   type TestMeta,
 } from '@tslprb/fixtures';
-import { en, te, ur } from '@tslprb/i18n';
+import { en, te } from '@tslprb/i18n';
 
 import { ApiError, type AppApi, type ResultDetail } from './types';
 
@@ -55,7 +55,7 @@ function localize(key: string): LocalizedText {
     }
     return typeof node === 'string' ? node : key;
   };
-  return { en: read(en), te: read(te), ur: read(ur) };
+  return { en: read(en), te: read(te) };
 }
 
 const marksOf = (p: ExamPattern) => p.totalQuestions * p.marksPerCorrect;
@@ -135,7 +135,7 @@ function toTest(meta: TestMeta): Test {
         section_id: spec.id,
         order_index: j,
         text: q.text,
-        options: { en: [...q.options.en], te: [...q.options.te], ur: [...q.options.ur] },
+        options: { en: [...q.options.en], te: [...q.options.te] },
       })),
     };
   });
@@ -305,7 +305,7 @@ export class MockApi implements AppApi {
       .map(({ row, q }) => ({
         question_id: q.id,
         text: q.text,
-        options: { en: [...q.options.en], te: [...q.options.te], ur: [...q.options.ur] },
+        options: { en: [...q.options.en], te: [...q.options.te] },
         your_choice: row.your,
         correct_choice: q.correct,
         explanation: q.explanation,

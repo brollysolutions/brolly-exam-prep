@@ -43,7 +43,7 @@ import {
 /** Developer-only gallery labels — not product copy, so deliberately outside the locale files. */
 const DEV = {
   title: 'Design system — states',
-  sub: 'Every primitive in every state. Switch language to inspect Urdu mirroring.',
+  sub: 'Every primitive in every state. Switch language to inspect the Telugu face.',
   text: 'Text',
   buttons: 'Buttons',
   cards: 'Cards',

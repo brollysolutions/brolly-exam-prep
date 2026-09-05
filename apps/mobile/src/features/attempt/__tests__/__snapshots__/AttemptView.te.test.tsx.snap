@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, and matches the snapshot 1`] = `
+exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Latin, and matches the snapshot 1`] = `
 <View
   className="flex-1 bg-tar"
   style={
@@ -861,7 +861,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
         style={
           {
             "alignItems": "center",
-            "flexDirection": "row-reverse",
+            "flexDirection": "row",
             "flexWrap": undefined,
             "gap": 8,
             "justifyContent": undefined,
@@ -870,7 +870,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
         testID="attempt-header-row"
       >
         <View
-          accessibilityLabel="ٹیسٹ سے باہر"
+          accessibilityLabel="టెస్ట్ నుండి బయటకు"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -913,7 +913,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
                 "fontVariant": undefined,
                 "letterSpacing": 0,
                 "lineHeight": 29,
-                "textAlign": "right",
+                "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
               }
@@ -928,7 +928,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
           style={
             {
               "alignItems": undefined,
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": undefined,
               "justifyContent": undefined,
@@ -957,7 +957,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
+            className="h-full min-w-touch items-center justify-center px-3 border-line border-r"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -994,58 +994,6 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
             accessibilityState={
               {
                 "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-          >
-            <Text
-              className="text-dim"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 13.5,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 22.3,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              తె
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="اُر"
-            accessibilityRole="radio"
-            accessibilityState={
-              {
-                "busy": undefined,
                 "checked": true,
                 "disabled": undefined,
                 "expanded": undefined,
@@ -1078,18 +1026,18 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               className="text-tar"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 14.5,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 13.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29.7,
+                  "lineHeight": 22.3,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              اُر
+              తె
             </Text>
           </View>
         </View>
@@ -1116,18 +1064,18 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
             className="text-dim"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 12.5,
+                "fontFamily": "NotoSansTelugu_700Bold",
+                "fontSize": 11.5,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 25.6,
-                "textAlign": "right",
+                "lineHeight": 19,
+                "textAlign": "left",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            باقی وقت
+            మిగిలిన సమయం
           </Text>
           <Text
             accessibilityLanguage="en"
@@ -1141,7 +1089,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
                 ],
                 "letterSpacing": 0,
                 "lineHeight": 23,
-                "textAlign": "right",
+                "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
               }
@@ -1155,7 +1103,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
       <RCTScrollView
         contentContainerStyle={
           {
-            "flexDirection": "row-reverse",
+            "flexDirection": "row",
             "gap": 8,
             "paddingBottom": 8,
             "paddingHorizontal": 12,
@@ -1206,18 +1154,18 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 13.5,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 12.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 27.7,
+                  "lineHeight": 20.6,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              حساب
+              అంకగణితం
             </Text>
           </View>
           <View
@@ -1260,18 +1208,18 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               className="text-tar"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 13.5,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 27.7,
+                  "lineHeight": 20.6,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              ریزننگ
+              రీజనింగ్
             </Text>
           </View>
           <View
@@ -1314,18 +1262,18 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 13.5,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 12.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 27.7,
+                  "lineHeight": 20.6,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              جنرل اسٹڈیز
+              జనరల్ స్టడీస్
             </Text>
           </View>
           <View
@@ -1368,18 +1316,18 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               className="text-mute"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 13.5,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 12.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 27.7,
+                  "lineHeight": 20.6,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              تلنگانہ  ⛌
+              తెలంగాణ  ⛌
             </Text>
           </View>
           <View
@@ -1407,7 +1355,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
           className="absolute bottom-0 top-0 bg-hivis"
           style={
             {
-              "right": 0,
+              "left": 0,
               "width": "20%",
             }
           }
@@ -1417,7 +1365,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
           className="absolute bottom-0 top-0 w-px bg-tar"
           style={
             {
-              "right": "25%",
+              "left": "25%",
             }
           }
           testID="progress-tick"
@@ -1426,7 +1374,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
           className="absolute bottom-0 top-0 w-px bg-tar"
           style={
             {
-              "right": "50%",
+              "left": "50%",
             }
           }
           testID="progress-tick"
@@ -1435,7 +1383,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
           className="absolute bottom-0 top-0 w-px bg-tar"
           style={
             {
-              "right": "75%",
+              "left": "75%",
             }
           }
           testID="progress-tick"
@@ -1448,7 +1396,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
       style={
         {
           "alignItems": "flex-start",
-          "flexDirection": "row-reverse",
+          "flexDirection": "row",
           "flexWrap": undefined,
           "gap": 8,
           "justifyContent": undefined,
@@ -1467,7 +1415,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
             "fontVariant": undefined,
             "letterSpacing": 0,
             "lineHeight": 19.6,
-            "textAlign": "right",
+            "textAlign": "left",
             "textTransform": undefined,
             "writingDirection": "ltr",
           }
@@ -1479,18 +1427,18 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
         className="text-offlineText flex-1"
         style={
           {
-            "fontFamily": "NotoNastaliqUrdu_400Regular",
-            "fontSize": 12.5,
+            "fontFamily": "NotoSansTelugu_400Regular",
+            "fontSize": 11.5,
             "fontVariant": undefined,
             "letterSpacing": 0,
-            "lineHeight": 25.6,
-            "textAlign": "right",
+            "lineHeight": 19,
+            "textAlign": "left",
             "textTransform": undefined,
-            "writingDirection": "rtl",
+            "writingDirection": "ltr",
           }
         }
       >
-        آف لائن — اس ٹیسٹ کے لیے انٹرنیٹ کی ضرورت نہیں۔ آپ کے جوابات اسی فون میں محفوظ ہو رہے ہیں۔
+        ఆఫ్‌లైన్ — ఈ టెస్ట్‌కు ఇంటర్నెట్ అవసరం లేదు. మీ జవాబులు ఫోన్‌లోనే సేవ్ అవుతున్నాయి.
       </Text>
     </View>
     <RCTScrollView
@@ -1509,7 +1457,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
           style={
             {
               "alignItems": "center",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": "wrap",
               "gap": 8,
               "justifyContent": undefined,
@@ -1533,18 +1481,18 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               className="text-hivis"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 13.5,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 27.7,
-                  "textAlign": "right",
+                  "lineHeight": 20.6,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              س
+              ప్ర
             </Text>
             <Text
               accessibilityLanguage="en"
@@ -1558,7 +1506,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
                   ],
                   "letterSpacing": 1.2,
                   "lineHeight": 18.1,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
@@ -1575,18 +1523,18 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 12.5,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 11.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 25.6,
-                  "textAlign": "right",
+                  "lineHeight": 19,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              منفی نمبر نہیں
+              నెగటివ్ మార్కులు లేవు
             </Text>
           </View>
         </View>
@@ -1594,19 +1542,19 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
           className="text-chalk mt-3"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_400Regular",
-              "fontSize": 17.5,
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 16.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 35.9,
-              "textAlign": "right",
+              "lineHeight": 27.2,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
           testID="question-text"
         >
-          ایک کوڈ زبان میں POLICE کو QPMJDF لکھا جاتا ہے۔ اسی زبان میں GUARD کیسے لکھا جائے گا؟
+          ఒక సంకేత భాషలో POLICE అనే పదాన్ని QPMJDF అని రాస్తే, అదే భాషలో GUARD అనే పదాన్ని ఎలా రాస్తారు?
         </Text>
         <View
           accessibilityRole="radiogroup"
@@ -1621,7 +1569,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
           }
         >
           <View
-            accessibilityLabel="ا HVBSE"
+            accessibilityLabel="అ HVBSE"
             accessibilityRole="radio"
             accessibilityState={
               {
@@ -1664,7 +1612,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               style={
                 {
                   "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": undefined,
@@ -1684,32 +1632,32 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 13.5,
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 12.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 27.7,
+                      "lineHeight": 20.6,
                       "textAlign": "center",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  ا
+                  అ
                 </Text>
               </View>
               <Text
                 className="text-chalk flex-1"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 15.5,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 14.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 31.8,
-                    "textAlign": "right",
+                    "lineHeight": 23.9,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
@@ -1718,7 +1666,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
             </View>
           </View>
           <View
-            accessibilityLabel="ب HVBRE"
+            accessibilityLabel="ఆ HVBRE"
             accessibilityRole="radio"
             accessibilityState={
               {
@@ -1761,7 +1709,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               style={
                 {
                   "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": undefined,
@@ -1781,32 +1729,32 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 13.5,
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 12.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 27.7,
+                      "lineHeight": 20.6,
                       "textAlign": "center",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  ب
+                  ఆ
                 </Text>
               </View>
               <Text
                 className="text-chalk flex-1"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 15.5,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 14.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 31.8,
-                    "textAlign": "right",
+                    "lineHeight": 23.9,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
@@ -1815,7 +1763,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
             </View>
           </View>
           <View
-            accessibilityLabel="ج HUBSE"
+            accessibilityLabel="ఇ HUBSE"
             accessibilityRole="radio"
             accessibilityState={
               {
@@ -1858,7 +1806,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               style={
                 {
                   "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": undefined,
@@ -1878,32 +1826,32 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 13.5,
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 12.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 27.7,
+                      "lineHeight": 20.6,
                       "textAlign": "center",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  ج
+                  ఇ
                 </Text>
               </View>
               <Text
                 className="text-chalk flex-1"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 15.5,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 14.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 31.8,
-                    "textAlign": "right",
+                    "lineHeight": 23.9,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
@@ -1912,7 +1860,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
             </View>
           </View>
           <View
-            accessibilityLabel="د GVBSE"
+            accessibilityLabel="ఈ GVBSE"
             accessibilityRole="radio"
             accessibilityState={
               {
@@ -1955,7 +1903,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               style={
                 {
                   "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": undefined,
@@ -1975,32 +1923,32 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 13.5,
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 12.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 27.7,
+                      "lineHeight": 20.6,
                       "textAlign": "center",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  د
+                  ఈ
                 </Text>
               </View>
               <Text
                 className="text-chalk flex-1"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 15.5,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 14.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 31.8,
-                    "textAlign": "right",
+                    "lineHeight": 23.9,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
@@ -2014,7 +1962,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
           style={
             {
               "alignItems": "center",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 8,
               "justifyContent": undefined,
@@ -2031,26 +1979,26 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
             className="text-dim"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_400Regular",
-                "fontSize": 12.5,
+                "fontFamily": "NotoSansTelugu_400Regular",
+                "fontSize": 11.5,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 25.6,
-                "textAlign": "right",
+                "lineHeight": 19,
+                "textAlign": "left",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            اس سوال پر وقت ·
+            ఈ ప్రశ్నపై సమయం ·
           </Text>
           <View
-            accessibilityLabel="41 سیکنڈ"
+            accessibilityLabel="41 సె"
             accessible={true}
             style={
               {
                 "alignItems": "baseline",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 4,
                 "justifyContent": undefined,
@@ -2061,7 +2009,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               style={
                 {
                   "alignItems": "baseline",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": undefined,
                   "justifyContent": undefined,
@@ -2080,7 +2028,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
                     ],
                     "letterSpacing": 0,
                     "lineHeight": 16.7,
-                    "textAlign": "right",
+                    "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
                   }
@@ -2092,18 +2040,18 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
                 className="text-dim"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 12.5,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 11.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 25.6,
-                    "textAlign": "right",
+                    "lineHeight": 19,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                 سیکنڈ
+                 సె
               </Text>
             </View>
           </View>
@@ -2128,7 +2076,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
           style={
             {
               "alignItems": undefined,
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 8,
               "justifyContent": undefined,
@@ -2179,7 +2127,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               style={
                 {
                   "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 8,
                   "justifyContent": undefined,
@@ -2190,18 +2138,18 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
                 className="text-chalk"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
+                    "lineHeight": 22.3,
                     "textAlign": "center",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                صاف کریں
+                క్లియర్
               </Text>
             </View>
           </View>
@@ -2248,7 +2196,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               style={
                 {
                   "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 8,
                   "justifyContent": undefined,
@@ -2259,18 +2207,18 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
                 className="text-hazard"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
+                    "lineHeight": 22.3,
                     "textAlign": "center",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                نظرثانی کے لیے نشان
+                రివ్యూకి గుర్తు పెట్టు
               </Text>
             </View>
           </View>
@@ -2279,7 +2227,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
           style={
             {
               "alignItems": undefined,
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 8,
               "justifyContent": undefined,
@@ -2287,7 +2235,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
           }
         >
           <View
-            accessibilityLabel="پچھلا"
+            accessibilityLabel="మునుపటిది"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -2330,18 +2278,18 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
                   "fontVariant": undefined,
                   "letterSpacing": 0,
                   "lineHeight": 29,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
               }
               testID="chevron-prev"
             >
-              ›
+              ‹
             </Text>
           </View>
           <View
-            accessibilityLabel="سوالات 8/40"
+            accessibilityLabel="ప్రశ్నలు 8/40"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -2379,18 +2327,18 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 14.5,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 13.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29.7,
-                  "textAlign": "right",
+                  "lineHeight": 22.3,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              سوالات
+              ప్రశ్నలు
             </Text>
             <Text
               accessibilityLanguage="en"
@@ -2404,7 +2352,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
                   ],
                   "letterSpacing": 0,
                   "lineHeight": 16.7,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
@@ -2457,7 +2405,7 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
               style={
                 {
                   "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 8,
                   "justifyContent": undefined,
@@ -2468,18 +2416,18 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
                 className="text-tar"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 15.5,
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 14.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 31.8,
+                    "lineHeight": 23.9,
                     "textAlign": "center",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                اگلا
+                తర్వాత
               </Text>
               <Text
                 className="text-tar"
@@ -2490,14 +2438,14 @@ exports[`AttemptView (ur) mirrors the header and footer, keeps the clock LTR, an
                     "fontVariant": undefined,
                     "letterSpacing": 0,
                     "lineHeight": 29,
-                    "textAlign": "right",
+                    "textAlign": "left",
                     "textTransform": undefined,
                     "writingDirection": "ltr",
                   }
                 }
                 testID="chevron-next"
               >
-                ‹
+                ›
               </Text>
             </View>
           </View>

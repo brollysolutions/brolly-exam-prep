@@ -13,9 +13,9 @@ import { NewsEmpty } from './Empty';
 import { formatDay } from './format';
 
 /**
- * The disclosure caret. Latin face through `Glyph` — Nastaliq has no Geometric Shapes block,
- * the same reason `■` and `✓` are drawn that way. Collapsed it points along the reading
- * direction, so Urdu gets the mirrored one; open, the SAME glyph is turned a quarter to
+ * The disclosure caret. Latin face through `Glyph`, the same reason `■` and `✓` are drawn
+ * that way. Collapsed it points along the reading direction, so RTL gets the mirrored one;
+ * open, the SAME glyph is turned a quarter to
  * point down — turned inwards, so it never swings out through the card's edge.
  */
 const CARET_LTR = '▸';
@@ -135,7 +135,7 @@ function NoticeCard({
                 testID={`update-kind-${notice.id}`}
               />
               {/* Latin face, tabular, LTR-isolated: the dates line up down the list and never
-                  re-order inside an Urdu row. */}
+                  re-order inside a bidi row. */}
               <Num variant="caption" weight="600" color="dim" testID={`update-date-${notice.id}`}>
                 {formatDay(notice.date)}
               </Num>

@@ -6,23 +6,25 @@ import { Row } from '../Row';
 
 describe('Row', () => {
   beforeAll(() => {
-    initI18n('ur');
+    initI18n('te');
   });
 
-  // Every case starts from Urdu regardless of order.
+  // Every case starts from Telugu regardless of order.
   afterEach(async () => {
     await act(async () => {
-      await setLanguage('ur');
+      await setLanguage('te');
     });
   });
 
-  it('mirrors to row-reverse when the language is Urdu', async () => {
+  // RTL is dormant (F-26): both shipped languages read left-to-right, so `Row` is a plain row
+  // in each. The `row-reverse` branch stays behind `useDir().isRTL` for a future RTL language.
+  it('is a plain row when the language is Telugu', async () => {
     await render(
       <Row testID="row">
         <View />
       </Row>,
     );
-    expect(screen.getByTestId('row')).toHaveStyle({ flexDirection: 'row-reverse' });
+    expect(screen.getByTestId('row')).toHaveStyle({ flexDirection: 'row' });
   });
 
   it('keeps physical LTR order with physical', async () => {

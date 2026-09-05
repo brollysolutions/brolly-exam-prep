@@ -7,12 +7,12 @@ import {
 } from '@tslprb/fixtures';
 import { en } from '@tslprb/i18n';
 
-const LANGS = ['en', 'te', 'ur'] as const;
+const LANGS = ['en', 'te'] as const;
 
 /** Every string a block carries, whichever arm of the union it is. */
 const stringsOf = (block: StudyBlock) => (block.kind === 'bullets' ? block.items : [block.text]);
 
-/** The text of every formula box in the material, in all three languages. */
+/** The text of every formula box in the material, in both languages. */
 const FORMULAS = STUDY_TOPICS.flatMap((topic) =>
   topic.blocks.flatMap((block) => (block.kind === 'formula' ? [block.text] : [])),
 );
@@ -65,13 +65,13 @@ describe('study fixtures', () => {
     }
   });
 
-  // A formula box copied verbatim into te and ur left "New ÷ Old" and "SP − CP" on a page
+  // A formula box copied verbatim into te left "New ÷ Old" and "SP − CP" on a page
   // whose reader may not read English at all — the one place in the material where that was
   // ever true. Copying it is only honest when there is nothing left to translate.
   it('translates the words in every formula box', () => {
     expect(FORMULAS.length).toBeGreaterThan(0);
     for (const text of FORMULAS) {
-      for (const lang of ['te', 'ur'] as const) {
+      for (const lang of ['te'] as const) {
         if (text[lang] !== text.en) continue;
         // Pure symbols and digits read the same in every script; a Latin letter does not.
         expect(text.en).not.toMatch(/[A-Za-z]/);
@@ -80,9 +80,9 @@ describe('study fixtures', () => {
   });
 
   // The variables (a, b, A…Z) stay Latin; whole English words must not survive.
-  it('leaves no English word in a Telugu or Urdu formula box', () => {
+  it('leaves no English word in a Telugu formula box', () => {
     for (const text of FORMULAS) {
-      for (const lang of ['te', 'ur'] as const) {
+      for (const lang of ['te'] as const) {
         expect(text[lang]).not.toMatch(/[A-Za-z]{2,}/);
       }
     }

@@ -7,10 +7,6 @@ import {
   Archivo_700Bold,
 } from '@expo-google-fonts/archivo';
 import {
-  NotoNastaliqUrdu_400Regular,
-  NotoNastaliqUrdu_700Bold,
-} from '@expo-google-fonts/noto-nastaliq-urdu';
-import {
   NotoSansTelugu_400Regular,
   NotoSansTelugu_500Medium,
   NotoSansTelugu_600SemiBold,
@@ -50,8 +46,6 @@ const FONTS = {
   NotoSansTelugu_500Medium,
   NotoSansTelugu_600SemiBold,
   NotoSansTelugu_700Bold,
-  NotoNastaliqUrdu_400Regular,
-  NotoNastaliqUrdu_700Bold,
 };
 
 export default function RootLayout() {

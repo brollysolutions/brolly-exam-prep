@@ -26,7 +26,7 @@ const INSET = (TRACK_H - THUMB) / 2;
  * RN's `Switch` draws a fully round track and, on Android, a thumb tinted by the platform's
  * Material palette — a teal pill in the middle of a sharp, hi-vis-on-tar screen (design review
  * round 1). Every value here comes from the tokens, and the thumb travels toward the reading
- * end, so in Urdu "on" is on the left.
+ * end (under RTL "on" would be on the left).
  *
  * Colours live in a flattened style object rather than `className`: they change with `value`,
  * and a class list that changes between renders accumulates on web (see `Text`).
@@ -42,7 +42,7 @@ export function Toggle({
   const d = useDir();
   const { pressed, handlers } = usePressed();
   // `left`/`right`, not `start`/`end`: RN resolves those from I18nManager, not the in-app
-  // language, and this app switches Urdu live without a restart.
+  // language, and this app switches language live without a restart.
   const offset = value ? TRACK_W - THUMB - INSET : INSET;
   return (
     <Pressable

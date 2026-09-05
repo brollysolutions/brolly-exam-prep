@@ -29,22 +29,22 @@ SECTIONS: list[dict[str, Any]] = [
     {
         "id": "sec-arithmetic",
         "order_index": 0,
-        "name": {"en": "Arithmetic", "te": "అంకగణితం", "ur": "حساب"},
+        "name": {"en": "Arithmetic", "te": "అంకగణితం"},
     },
     {
         "id": "sec-reasoning",
         "order_index": 1,
-        "name": {"en": "Reasoning", "te": "రీజనింగ్", "ur": "ریزننگ"},
+        "name": {"en": "Reasoning", "te": "రీజనింగ్"},
     },
     {
         "id": "sec-general-studies",
         "order_index": 2,
-        "name": {"en": "General Studies", "te": "జనరల్ స్టడీస్", "ur": "جنرل اسٹڈیز"},
+        "name": {"en": "General Studies", "te": "జనరల్ స్టడీస్"},
     },
     {
         "id": "sec-telangana",
         "order_index": 3,
-        "name": {"en": "Telangana", "te": "తెలంగాణ", "ur": "تلنگانہ"},
+        "name": {"en": "Telangana", "te": "తెలంగాణ"},
     },
 ]
 SECTIONS_BY_ID = {s["id"]: s for s in SECTIONS}
@@ -59,18 +59,15 @@ QUESTIONS: list[dict[str, Any]] = [
         "text": {
             "en": "A train 180 metres long crosses a pole in 9 seconds. What is its speed in kilometres per hour?",
             "te": "180 మీటర్ల పొడవున్న రైలు ఒక స్తంభాన్ని 9 సెకన్లలో దాటుతుంది. దాని వేగం గంటకు ఎన్ని కిలోమీటర్లు?",
-            "ur": "180 میٹر لمبی ایک ریل گاڑی ایک کھمبے کو 9 سیکنڈ میں عبور کرتی ہے۔ اس کی رفتار کلومیٹر فی گھنٹہ میں کیا ہے؟",
         },
         "options": {
             "en": ["60 km/h", "64 km/h", "72 km/h", "80 km/h"],
             "te": ["60 కి.మీ/గం", "64 కి.మీ/గం", "72 కి.మీ/గం", "80 కి.మీ/గం"],
-            "ur": ["60 کلومیٹر/گھنٹہ", "64 کلومیٹر/گھنٹہ", "72 کلومیٹر/گھنٹہ", "80 کلومیٹر/گھنٹہ"],
         },
         "correct_index": 2,
         "explanation": {
             "en": "To cross a pole the train travels its own length. Speed = 180 ÷ 9 = 20 m/s. Convert by multiplying by 18/5: 20 × 18/5 = 72 km/h.",
             "te": "స్తంభాన్ని దాటడానికి రైలు తన పొడవునే ప్రయాణించాలి. వేగం = 180 ÷ 9 = 20 మీ/సె. కి.మీ/గం లోకి మార్చడానికి 18/5 తో గుణించాలి: 20 × 18/5 = 72.",
-            "ur": "کھمبا عبور کرنے کے لیے گاڑی اپنی ہی لمبائی طے کرتی ہے۔ رفتار = 180 ÷ 9 = 20 میٹر/سیکنڈ۔ 18/5 سے ضرب دیں: 20 × 18/5 = 72 کلومیٹر/گھنٹہ۔",
         },
     },
     {
@@ -80,18 +77,15 @@ QUESTIONS: list[dict[str, Any]] = [
         "text": {
             "en": "An article sold at a 15% profit fetches ₹460. What was its cost price?",
             "te": "ఒక వస్తువును 15% లాభంతో అమ్మితే ₹460 వస్తుంది. ఆ వస్తువు కొన్న ధర ఎంత?",
-            "ur": "ایک چیز 15 فیصد نفع پر ₹460 میں فروخت ہوتی ہے۔ اس کی لاگت کیا تھی؟",
         },
         "options": {
             "en": ["₹380", "₹400", "₹410", "₹425"],
             "te": ["₹380", "₹400", "₹410", "₹425"],
-            "ur": ["₹380", "₹400", "₹410", "₹425"],
         },
         "correct_index": 1,
         "explanation": {
             "en": "Cost price × 1.15 = 460, so cost price = 460 ÷ 1.15 = ₹400.",
             "te": "కొన్న ధర × 1.15 = 460, కాబట్టి కొన్న ధర = 460 ÷ 1.15 = ₹400.",
-            "ur": "لاگت × 1.15 = 460، لہذا لاگت = 460 ÷ 1.15 = ₹400۔",
         },
     },
     {
@@ -101,18 +95,15 @@ QUESTIONS: list[dict[str, Any]] = [
         "text": {
             "en": "Find the odd one out: 8, 27, 64, 100, 125",
             "te": "క్రింది వాటిలో సరిపోని దానిని గుర్తించండి: 8, 27, 64, 100, 125",
-            "ur": "درج ذیل میں سے غیر متعلق عدد کی نشاندہی کریں: 8، 27، 64، 100، 125",
         },
         "options": {
             "en": ["27", "64", "100", "125"],
             "te": ["27", "64", "100", "125"],
-            "ur": ["27", "64", "100", "125"],
         },
         "correct_index": 2,
         "explanation": {
             "en": "Of the numbers given, 8, 27, 64 and 125 are all perfect cubes (2³, 3³, 4³, 5³). 100 is a perfect square (10²), not a cube — so 100 is the odd one.",
             "te": "ఇచ్చిన వాటిలో 8, 27, 64, 125 అన్నీ ఘనాలు (2³, 3³, 4³, 5³). 100 మాత్రం ఒక వర్గం (10²) — ఘనం కాదు. కాబట్టి 100 సరిపోదు.",
-            "ur": "دیے گئے اعداد میں 8، 27، 64 اور 125 سب مکعب ہیں (2³، 3³، 4³، 5³)۔ 100 ایک مربع ہے (10²)، مکعب نہیں — اس لیے 100 غیر متعلق ہے۔",
         },
     },
     {
@@ -122,18 +113,15 @@ QUESTIONS: list[dict[str, Any]] = [
         "text": {
             "en": "In a code language POLICE is written as QPMJDF. How is GUARD written in the same language?",
             "te": "ఒక సంకేత భాషలో POLICE అనే పదాన్ని QPMJDF అని రాస్తే, అదే భాషలో GUARD అనే పదాన్ని ఎలా రాస్తారు?",
-            "ur": "ایک کوڈ زبان میں POLICE کو QPMJDF لکھا جاتا ہے۔ اسی زبان میں GUARD کیسے لکھا جائے گا؟",
         },
         "options": {
             "en": ["HVBSE", "HVBRE", "HUBSE", "GVBSE"],
             "te": ["HVBSE", "HVBRE", "HUBSE", "GVBSE"],
-            "ur": ["HVBSE", "HVBRE", "HUBSE", "GVBSE"],
         },
         "correct_index": 0,
         "explanation": {
             "en": "Each letter moves one step forward in the alphabet: P→Q, O→P, L→M, I→J, C→D, E→F. Applying the same rule, GUARD becomes HVBSE.",
             "te": "ప్రతి అక్షరాన్ని ఇంగ్లిష్ వర్ణమాలలో ఒక స్థానం ముందుకు జరపాలి: P→Q, O→P, L→M, I→J, C→D, E→F. అదే నియమంతో GUARD → HVBSE.",
-            "ur": "ہر حرف حروفِ تہجی میں ایک قدم آگے بڑھتا ہے: P→Q, O→P, L→M, I→J, C→D, E→F۔ اسی اصول سے GUARD کا کوڈ HVBSE بنتا ہے۔",
         },
     },
     {
@@ -143,18 +131,15 @@ QUESTIONS: list[dict[str, Any]] = [
         "text": {
             "en": "Which river is known as the Dakshina Ganga?",
             "te": "దక్షిణ గంగా అని పిలువబడే నది ఏది?",
-            "ur": "کون سا دریا دکشن گنگا کے نام سے جانا جاتا ہے؟",
         },
         "options": {
             "en": ["Krishna", "Godavari", "Tungabhadra", "Manjeera"],
             "te": ["కృష్ణా", "గోదావరి", "తుంగభద్ర", "మంజీరా"],
-            "ur": ["کرشنا", "گوداوری", "تنگ بھدرا", "منجیرا"],
         },
         "correct_index": 1,
         "explanation": {
             "en": "The Godavari is called the Dakshina Ganga. It is the largest river flowing through Telangana.",
             "te": "గోదావరి నదిని దక్షిణ గంగా అని పిలుస్తారు. ఇది తెలంగాణ గుండా ప్రవహించే అతిపెద్ద నది.",
-            "ur": "گوداوری کو دکشن گنگا کہا جاتا ہے۔ یہ تلنگانہ سے گزرنے والا سب سے بڑا دریا ہے۔",
         },
     },
 ]

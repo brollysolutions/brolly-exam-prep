@@ -36,7 +36,7 @@ describe('Chip', () => {
     expect(screen.getByRole('button')).toBeDisabled();
   });
 
-  // Nastaliq at chip size is a 27.7 px line box plus overhang: a fixed 34 px chip clips it
+  // A tall face at chip size is a line box plus overhang: a fixed 34 px chip clips it
   // (design review, F-23-25). The size is a floor, and the padding is what keeps it a chip.
   it('sizes by a minimum height with vertical padding, never a fixed box', async () => {
     await render(<Chip label="Notification" testID="chip" />);

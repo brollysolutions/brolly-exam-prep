@@ -24,7 +24,7 @@ export type SolutionsViewProps = {
 
 const SKELETON = ['chip', 'card', 'card', 'card'] as const;
 
-/** ✓ / ✕ in the Latin face — Noto Nastaliq Urdu has neither glyph. */
+/** ✓ / ✕ in the Latin face, which is the one face guaranteed to carry both glyphs. */
 function Badge({ correct }: { correct: boolean }) {
   return (
     <View

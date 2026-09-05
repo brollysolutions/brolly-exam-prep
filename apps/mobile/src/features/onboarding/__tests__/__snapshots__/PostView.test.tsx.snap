@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PostView (ur) mirrors the copy and matches the snapshot 1`] = `
+exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
 <View
   className="flex-1 bg-tar"
   style={
@@ -870,7 +870,7 @@ exports[`PostView (ur) mirrors the copy and matches the snapshot 1`] = `
               ],
               "letterSpacing": 0,
               "lineHeight": 15.2,
-              "textAlign": "right",
+              "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
             }
@@ -883,35 +883,35 @@ exports[`PostView (ur) mirrors the copy and matches the snapshot 1`] = `
           className="text-chalk mt-3"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 24,
+              "fontFamily": "NotoSansTelugu_600SemiBold",
+              "fontSize": 23,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 49.2,
-              "textAlign": "right",
+              "lineHeight": 37.9,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          آپ کس پوسٹ کی تیاری کر رہے ہیں؟
+          మీరు ఏ పోస్ట్‌కు సిద్ధమవుతున్నారు?
         </Text>
         <Text
           className="text-dim mt-2"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_400Regular",
-              "fontSize": 13.5,
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 12.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 27.7,
-              "textAlign": "right",
+              "lineHeight": 20.6,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          اس سے آپ کے ٹیسٹ، جسمانی معیار اور امتحانی طرز بدلتا ہے۔ بعد میں تبدیل کر سکتے ہیں۔
+          దీన్ని బట్టి టెస్టులు, ఫిజికల్ ప్రమాణాలు, పరీక్ష విధానం మారతాయి. తర్వాత మార్చుకోవచ్చు.
         </Text>
         <View
           className="mt-6"
@@ -964,35 +964,35 @@ exports[`PostView (ur) mirrors the copy and matches the snapshot 1`] = `
               className="text-hivis"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 20,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 19,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 41,
-                  "textAlign": "right",
+                  "lineHeight": 31.4,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              کانسٹیبل
+              కానిస్టేబుల్
             </Text>
             <Text
               className="text-dim mt-1"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_400Regular",
-                  "fontSize": 13.5,
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 12.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 27.7,
-                  "textAlign": "right",
+                  "lineHeight": 20.6,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              پی سی اور مساوی پوسٹیں
+              PC మరియు తత్సమాన పోస్టులు
             </Text>
           </View>
           <View
@@ -1034,35 +1034,35 @@ exports[`PostView (ur) mirrors the copy and matches the snapshot 1`] = `
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 20,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 19,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 41,
-                  "textAlign": "right",
+                  "lineHeight": 31.4,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              ایس آئی / اے ایس آئی
+              ఎస్‌ఐ / ఏఎస్‌ఐ
             </Text>
             <Text
               className="text-dim mt-1"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_400Regular",
-                  "fontSize": 13.5,
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 12.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 27.7,
-                  "textAlign": "right",
+                  "lineHeight": 20.6,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              ایس آئی، اے ایس آئی اور مساوی پوسٹیں
+              SI, ASI మరియు తత్సమాన పోస్టులు
             </Text>
           </View>
         </View>
@@ -1114,7 +1114,7 @@ exports[`PostView (ur) mirrors the copy and matches the snapshot 1`] = `
           style={
             {
               "alignItems": "center",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 8,
               "justifyContent": undefined,
@@ -1125,18 +1125,18 @@ exports[`PostView (ur) mirrors the copy and matches the snapshot 1`] = `
             className="text-tar"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 15.5,
+                "fontFamily": "NotoSansTelugu_700Bold",
+                "fontSize": 14.5,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 31.8,
+                "lineHeight": 23.9,
                 "textAlign": "center",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            جاری رکھیں
+            కొనసాగించు
           </Text>
         </View>
       </View>

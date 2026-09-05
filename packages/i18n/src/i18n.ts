@@ -2,11 +2,14 @@ import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import en from '../locales/en.json';
 import te from '../locales/te.json';
-import ur from '../locales/ur.json';
 
-export type Lang = 'en' | 'te' | 'ur';
-export const LANGS: readonly Lang[] = ['en', 'te', 'ur'] as const;
-const RTL_LANGS: ReadonlySet<string> = new Set(['ur']);
+export type Lang = 'en' | 'te';
+export const LANGS: readonly Lang[] = ['en', 'te'] as const;
+/**
+ * Languages written right-to-left. Empty since F-26 (Urdu removed at the user's request): the
+ * direction helpers stay wired so an RTL language can be added back without touching screens.
+ */
+const RTL_LANGS: ReadonlySet<string> = new Set();
 
 export const isRTL = (lang: string): boolean => RTL_LANGS.has(lang);
 
@@ -19,7 +22,7 @@ export function initI18n(initial: Lang = 'en') {
     return i18next;
   }
   void i18next.use(initReactI18next).init({
-    resources: { en: { translation: en }, te: { translation: te }, ur: { translation: ur } },
+    resources: { en: { translation: en }, te: { translation: te } },
     lng: initial,
     fallbackLng: 'en',
     interpolation: { escapeValue: false },

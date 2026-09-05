@@ -11,7 +11,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
-Lang = Literal["en", "te", "ur"]
+Lang = Literal["en", "te"]
 Post = Literal["pc", "si"]
 Category = Literal["OC", "EWS", "BC", "SC", "ST", "ExS"]
 
@@ -19,13 +19,11 @@ Category = Literal["OC", "EWS", "BC", "SC", "ST", "ExS"]
 class LocalizedText(BaseModel):
     en: str
     te: str
-    ur: str
 
 
 class LocalizedOptions(BaseModel):
     en: list[str]
     te: list[str]
-    ur: list[str]
 
 
 # ---------------------------------------------------------------- OTP ----

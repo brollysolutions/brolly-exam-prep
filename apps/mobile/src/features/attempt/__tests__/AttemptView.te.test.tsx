@@ -1,5 +1,5 @@
 import { render, screen, within } from '@testing-library/react-native';
-import { initI18n, ur } from '@tslprb/i18n';
+import { initI18n, te } from '@tslprb/i18n';
 
 import { useLangStore } from '@/data/lang';
 import {
@@ -20,7 +20,7 @@ const props = {
   question: DEMO_PAPER[DEMO_ATTEMPT.current - 1],
   remainingSec: DEMO_REMAINING_SEC,
   elapsedSec: DEMO_ELAPSED_SEC,
-  lang: 'ur' as const,
+  lang: 'te' as const,
   onLangChange: noop,
   onExit: noop,
   onSectionPress: noop,
@@ -33,27 +33,29 @@ const props = {
   onOpenPalette: noop,
 };
 
-describe('AttemptView (ur)', () => {
+describe('AttemptView (te)', () => {
   beforeAll(() => {
-    useLangStore.setState({ lang: 'ur' });
-    initI18n('ur');
+    useLangStore.setState({ lang: 'te' });
+    initI18n('te');
   });
 
-  it('mirrors the header and footer, keeps the clock LTR, and matches the snapshot', async () => {
+  it('sets the paper in the Telugu face, keeps the clock Latin, and matches the snapshot', async () => {
     await render(<AttemptView {...props} notices={<AttemptNotices offline />} />);
 
-    // The Urdu question stem is on screen, in the Nastaliq face.
-    expect(
-      screen.getByTestId('question-text'),
-    ).toHaveTextContent(DEMO_PAPER[DEMO_ATTEMPT.current - 1].text.ur);
-    // The header mirrors to row-reverse under Urdu.
-    expect(screen.getByTestId('attempt-header-row')).toHaveStyle({ flexDirection: 'row-reverse' });
-    // The marks chip is a physical row: its digits never re-order inside an RTL line.
+    // The Telugu question stem is on screen, in the Telugu face.
+    expect(screen.getByTestId('question-text')).toHaveTextContent(
+      DEMO_PAPER[DEMO_ATTEMPT.current - 1].text.te,
+    );
+    expect(screen.getByTestId('question-text')).toHaveStyle({
+      fontFamily: 'NotoSansTelugu_400Regular',
+    });
+    expect(screen.getByTestId('attempt-header-row')).toHaveStyle({ flexDirection: 'row' });
+    // The marks chip is a physical row: its digits never re-order.
     expect(screen.getByTestId('q-badge')).toHaveStyle({ flexDirection: 'row' });
-    // Chevrons flip: "next" points left in Urdu.
-    expect(screen.getByTestId('btn-prev')).toHaveTextContent('›');
-    expect(screen.getByTestId('btn-next')).toHaveTextContent('اگلا‹');
-    // …and are drawn with the Latin face: Nastaliq has no chevron glyph.
+    // Chevrons point along the reading direction.
+    expect(screen.getByTestId('btn-prev')).toHaveTextContent('‹');
+    expect(screen.getByTestId('btn-next')).toHaveTextContent(`${te.test.next}›`);
+    // …and are drawn with the Latin face, whatever the UI language.
     expect(screen.getByTestId('chevron-prev')).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
     expect(screen.getByTestId('chevron-next')).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
 
@@ -61,18 +63,18 @@ describe('AttemptView (ur)', () => {
   });
 
   // The line used to be `<Num>{t('common.seconds', { count })}</Num>`, which forced the whole
-  // string — Urdu unit included — through Archivo and drew the unit as tofu boxes.
-  it('splits the time-on-question line: digits in Archivo, the unit in Nastaliq', async () => {
+  // string — Telugu unit included — through Archivo and drew the unit as tofu boxes.
+  it('splits the time-on-question line: digits in Archivo, the unit in the Telugu face', async () => {
     await render(<AttemptView {...props} />);
     const line = within(screen.getByTestId('time-on-question'));
 
     expect(line.getByText(iso(String(DEMO_ELAPSED_SEC)))).toHaveStyle({
       fontFamily: 'Archivo_400Regular',
     });
-    expect(line.getByText(` ${ur.common.unitS}`)).toHaveStyle({
-      fontFamily: 'NotoNastaliqUrdu_400Regular',
+    expect(line.getByText(` ${te.common.unitS}`)).toHaveStyle({
+      fontFamily: 'NotoSansTelugu_400Regular',
     });
     // The flat string is still what a screen reader announces.
-    expect(screen.getByLabelText(`${DEMO_ELAPSED_SEC} ${ur.common.unitS}`)).toBeOnTheScreen();
+    expect(screen.getByLabelText(`${DEMO_ELAPSED_SEC} ${te.common.unitS}`)).toBeOnTheScreen();
   });
 });

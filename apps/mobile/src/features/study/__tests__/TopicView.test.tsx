@@ -59,13 +59,9 @@ describe('TopicView', () => {
 
     // The words are translated — only the symbols and digits stay Latin.
     await view.rerender(<TopicView {...p} lang="te" />);
-    expect(screen.getByTestId('study-block-formula')).toHaveTextContent(/వేగం = దూరం ÷ సమయం/);
-
-    // And each Urdu maths run carries its own LRI…PDI, so `18/5` cannot re-order in the line.
-    await view.rerender(<TopicView {...p} lang="ur" />);
-    const urdu = screen.getByTestId('study-block-formula');
-    expect(urdu).toHaveTextContent(/رفتار = فاصلہ ÷ وقت/);
-    expect(urdu).toHaveTextContent(new RegExp(iso('× 18/5')));
+    const telugu = screen.getByTestId('study-block-formula');
+    expect(telugu).toHaveTextContent(/వేగం = దూరం ÷ సమయం/);
+    expect(telugu).toHaveTextContent(/× 18\/5/);
   });
 
   it('offers to mark the topic read, and swaps the button for a badge once it is', async () => {

@@ -131,10 +131,10 @@ describe('OtpView', () => {
   });
 });
 
-describe('OtpView (ur)', () => {
+describe('OtpView (te)', () => {
   beforeAll(async () => {
     await act(async () => {
-      await setLanguage('ur');
+      await setLanguage('te');
     });
   });
 
@@ -144,14 +144,12 @@ describe('OtpView (ur)', () => {
     });
   });
 
-  it('mirrors the copy and keeps the cells physical', async () => {
+  it('renders the Telugu copy and keeps the cells physical', async () => {
     await render(<OtpView phone="9000012345" initialCode="123" onVerify={jest.fn()} {...noops()} />);
-    expect(screen.getByText('کوڈ درج کریں')).toBeOnTheScreen();
+    expect(screen.getByText('కోడ్ ఎంటర్ చేయండి')).toBeOnTheScreen();
     expect(screen.getByTestId('otp-cells')).toHaveStyle({ flexDirection: 'row' });
-    expect(screen.getByTestId('otp-change-number-row')).toHaveStyle({
-      flexDirection: 'row-reverse',
-    });
-    // The chevron must not take the Nastaliq face — it has no glyph for it.
+    expect(screen.getByTestId('otp-change-number-row')).toHaveStyle({ flexDirection: 'row' });
+    // The chevron stays in the Latin face whatever the UI language.
     expect(
       screen.getByTestId('otp-change-number-chevron', { includeHiddenElements: true }),
     ).toHaveStyle({ fontFamily: 'Archivo_400Regular' });

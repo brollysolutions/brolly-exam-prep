@@ -30,7 +30,7 @@ const KINDS: { kind: TestKind; labelKey: string }[] = [
 
 /**
  * The same locked mark the attempt screen puts on a locked section tab — monochrome, and
- * rendered through `Glyph` so Nastaliq never falls back to tofu.
+ * rendered through `Glyph` so it never falls back to tofu in another face.
  */
 const LOCK_GLYPH = '⛌';
 

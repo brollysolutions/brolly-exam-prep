@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] = `
+exports[`ProfileView (te) renders the Telugu setting rows and matches the snapshot 1`] = `
 <View
   className="flex-1 bg-tar"
   style={
@@ -860,18 +860,18 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
         className="text-chalk mt-5"
         style={
           {
-            "fontFamily": "NotoNastaliqUrdu_700Bold",
-            "fontSize": 26,
+            "fontFamily": "NotoSansTelugu_600SemiBold",
+            "fontSize": 25,
             "fontVariant": undefined,
             "letterSpacing": 0,
-            "lineHeight": 53.3,
-            "textAlign": "right",
+            "lineHeight": 41.3,
+            "textAlign": "left",
             "textTransform": undefined,
-            "writingDirection": "rtl",
+            "writingDirection": "ltr",
           }
         }
       >
-        پروفائل
+        ప్రొఫైల్
       </Text>
       <View
         className="mt-6"
@@ -888,18 +888,18 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
           className="text-dim"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 13,
+              "fontFamily": "NotoSansTelugu_700Bold",
+              "fontSize": 12,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 26.7,
-              "textAlign": "right",
+              "lineHeight": 19.8,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          آپ کا امتحان
+          మీ పరీక్ష
         </Text>
         <View
           accessibilityState={
@@ -910,7 +910,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
           className="justify-center rounded-md min-h-16 border border-line bg-panel2 p-4"
         >
           <View
-            accessibilityLabel="پوسٹ"
+            accessibilityLabel="పోస్ట్"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -948,7 +948,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
               style={
                 {
                   "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": "space-between",
@@ -960,24 +960,24 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                 className="text-chalk flex-1"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
+                    "lineHeight": 22.3,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                پوسٹ
+                పోస్ట్
               </Text>
               <View
                 style={
                   {
                     "alignItems": "center",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": undefined,
@@ -988,18 +988,18 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
+                      "lineHeight": 22.3,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  ایس آئی / اے ایس آئی
+                  ఎస్‌ఐ / ఏఎస్‌ఐ
                 </Text>
                 <Text
                   accessibilityElementsHidden={true}
@@ -1012,19 +1012,19 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                       "fontVariant": undefined,
                       "letterSpacing": 0,
                       "lineHeight": 29,
-                      "textAlign": "right",
+                      "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
                     }
                   }
                 >
-                  ‹
+                  ›
                 </Text>
               </View>
             </View>
           </View>
           <View
-            accessibilityLabel="زمرہ"
+            accessibilityLabel="కేటగిరీ"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -1063,7 +1063,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
               style={
                 {
                   "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": "space-between",
@@ -1075,24 +1075,24 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                 className="text-chalk flex-1"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
+                    "lineHeight": 22.3,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                زمرہ
+                కేటగిరీ
               </Text>
               <View
                 style={
                   {
                     "alignItems": "center",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": undefined,
@@ -1103,18 +1103,18 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
+                      "lineHeight": 22.3,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  بی سی
+                  బీసీ
                 </Text>
                 <Text
                   accessibilityElementsHidden={true}
@@ -1127,13 +1127,13 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                       "fontVariant": undefined,
                       "letterSpacing": 0,
                       "lineHeight": 29,
-                      "textAlign": "right",
+                      "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
                     }
                   }
                 >
-                  ‹
+                  ›
                 </Text>
               </View>
             </View>
@@ -1155,18 +1155,18 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
           className="text-dim"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 13,
+              "fontFamily": "NotoSansTelugu_700Bold",
+              "fontSize": 12,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 26.7,
-              "textAlign": "right",
+              "lineHeight": 19.8,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          ایپ
+          యాప్
         </Text>
         <View
           accessibilityState={
@@ -1184,7 +1184,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
               style={
                 {
                   "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": "space-between",
@@ -1196,18 +1196,18 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                 className="text-chalk flex-1"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
+                    "lineHeight": 22.3,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                زبان
+                భాష
               </Text>
               <View
                 accessibilityRole="radiogroup"
@@ -1215,7 +1215,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                 style={
                   {
                     "alignItems": undefined,
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": undefined,
                     "justifyContent": undefined,
@@ -1244,7 +1244,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                     }
                   }
                   accessible={true}
-                  className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
+                  className="h-full min-w-touch items-center justify-center px-3 border-line border-r"
                   collapsable={false}
                   focusable={true}
                   onBlur={[Function]}
@@ -1281,58 +1281,6 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                   accessibilityState={
                     {
                       "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
-                  collapsable={false}
-                  focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                >
-                  <Text
-                    className="text-dim"
-                    style={
-                      {
-                        "fontFamily": "NotoSansTelugu_700Bold",
-                        "fontSize": 13.5,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 22.3,
-                        "textAlign": "center",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
-                      }
-                    }
-                  >
-                    తె
-                  </Text>
-                </View>
-                <View
-                  accessibilityLabel="اُر"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
                       "checked": true,
                       "disabled": undefined,
                       "expanded": undefined,
@@ -1365,18 +1313,18 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                     className="text-tar"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_700Bold",
-                        "fontSize": 14.5,
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 13.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 29.7,
+                        "lineHeight": 22.3,
                         "textAlign": "center",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    اُر
+                    తె
                   </Text>
                 </View>
               </View>
@@ -1390,7 +1338,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
               style={
                 {
                   "alignItems": "center",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 12,
                   "justifyContent": "space-between",
@@ -1401,21 +1349,21 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                 className="text-chalk flex-1"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
+                    "lineHeight": 22.3,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                روزانہ یاد دہانی
+                రోజువారీ రిమైండర్
               </Text>
               <View
-                accessibilityLabel="روزانہ یاد دہانی"
+                accessibilityLabel="రోజువారీ రిమైండర్"
                 accessibilityRole="switch"
                 accessibilityState={
                   {
@@ -1474,8 +1422,8 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                       "backgroundColor": "#0D0D0E",
                       "borderRadius": 2,
                       "height": 26,
+                      "left": 23,
                       "position": "absolute",
-                      "right": 23,
                       "width": 26,
                     }
                   }
@@ -1501,18 +1449,18 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
           className="text-dim"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 13,
+              "fontFamily": "NotoSansTelugu_700Bold",
+              "fontSize": 12,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 26.7,
-              "textAlign": "right",
+              "lineHeight": 19.8,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          اکاؤنٹ
+          ఖాతా
         </Text>
         <View
           accessibilityState={
@@ -1575,7 +1523,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                 style={
                   {
                     "alignItems": "center",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": undefined,
@@ -1586,18 +1534,18 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                   className="text-chalk"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_600SemiBold",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
+                      "lineHeight": 22.3,
                       "textAlign": "center",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  لاگ آؤٹ
+                  లాగ్ అవుట్
                 </Text>
               </View>
             </View>
@@ -1644,7 +1592,7 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                 style={
                   {
                     "alignItems": "center",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": undefined,
@@ -1655,18 +1603,18 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
                   className="text-flag"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_600SemiBold",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
+                      "lineHeight": 22.3,
                       "textAlign": "center",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  اکاؤنٹ حذف کریں
+                  ఖాతా తొలగించు
                 </Text>
               </View>
             </View>
@@ -1677,19 +1625,19 @@ exports[`ProfileView (ur) mirrors the setting rows and matches the snapshot 1`] 
         className="text-dim mt-6"
         style={
           {
-            "fontFamily": "NotoNastaliqUrdu_400Regular",
-            "fontSize": 12.5,
+            "fontFamily": "NotoSansTelugu_400Regular",
+            "fontSize": 11.5,
             "fontVariant": undefined,
             "letterSpacing": 0,
-            "lineHeight": 25.6,
-            "textAlign": "right",
+            "lineHeight": 19,
+            "textAlign": "left",
             "textTransform": undefined,
-            "writingDirection": "rtl",
+            "writingDirection": "ltr",
           }
         }
         testID="profile-version"
       >
-        ورژن 1.0.0
+        వెర్షన్ 1.0.0
       </Text>
     </View>
   </RCTScrollView>

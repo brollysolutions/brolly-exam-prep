@@ -11,7 +11,7 @@ import { Pressable, StyleSheet } from 'react-native';
 
 import { Chip, cx, Glyph, Kicker, Measure, Row, Screen, Stack, Text, usePressed } from '@/ui';
 
-/** The ✓ that marks a topic already read. Latin face — Nastaliq has no U+2713. */
+/** The ✓ that marks a topic already read. Latin face, like every other glyph. */
 const READ_GLYPH = '✓';
 
 export type StudyViewProps = {

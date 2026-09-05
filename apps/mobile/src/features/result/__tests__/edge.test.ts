@@ -1,4 +1,4 @@
-import { en, te, ur } from '@tslprb/i18n';
+import { en, te } from '@tslprb/i18n';
 
 import { startEdge } from '../edge';
 
@@ -13,8 +13,7 @@ describe('locale parity for the screens in this feature', () => {
   const keys = (bundle: unknown, block: 'result' | 'solutions') =>
     Object.keys((bundle as Record<string, Record<string, unknown>>)[block]).sort();
 
-  it.each(['result', 'solutions'] as const)('%s has the same keys in en, te and ur', (block) => {
+  it.each(['result', 'solutions'] as const)('%s has the same keys in en and te', (block) => {
     expect(keys(te, block)).toEqual(keys(en, block));
-    expect(keys(ur, block)).toEqual(keys(en, block));
   });
 });

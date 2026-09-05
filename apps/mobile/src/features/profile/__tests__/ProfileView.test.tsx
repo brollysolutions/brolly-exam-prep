@@ -86,8 +86,8 @@ describe('ProfileView', () => {
   it('switches language inline', async () => {
     const h = handlers();
     await render(<ProfileView {...base} lang="en" {...h} />);
-    await userEvent.press(screen.getByLabelText('اُر'));
-    expect(h.onLang).toHaveBeenCalledWith('ur');
+    await userEvent.press(screen.getByLabelText('తె'));
+    expect(h.onLang).toHaveBeenCalledWith('te');
   });
 
   it('logs out without asking', async () => {
@@ -163,10 +163,10 @@ describe('ProfileView (signed out)', () => {
   });
 });
 
-describe('ProfileView (ur)', () => {
+describe('ProfileView (te)', () => {
   beforeAll(async () => {
     await act(async () => {
-      await setLanguage('ur');
+      await setLanguage('te');
     });
   });
 
@@ -176,26 +176,25 @@ describe('ProfileView (ur)', () => {
     });
   });
 
-  it('mirrors the setting rows and matches the snapshot', async () => {
-    await render(<ProfileView {...base} lang="ur" {...handlers()} />);
-    expect(screen.getByText('پروفائل')).toBeOnTheScreen();
-    // The settings rows mirror like every other row on the screen.
-    expect(screen.getByTestId('profile-post-row')).toHaveStyle({ flexDirection: 'row-reverse' });
-    // "On" travels toward the reading end, which in Urdu is the left.
-    expect(screen.getByTestId('profile-notifications-thumb')).toHaveStyle({ right: 23 });
+  it('renders the Telugu setting rows and matches the snapshot', async () => {
+    await render(<ProfileView {...base} lang="te" {...handlers()} />);
+    expect(screen.getByText('ప్రొఫైల్')).toBeOnTheScreen();
+    expect(screen.getByTestId('profile-post-row')).toHaveStyle({ flexDirection: 'row' });
+    // "On" travels toward the reading end, the right.
+    expect(screen.getByTestId('profile-notifications-thumb')).toHaveStyle({ left: 23 });
     expect(screen.getByTestId('profile-notifications').props.accessibilityState.checked).toBe(true);
-    // Chevrons must stay Latin-faced: Nastaliq has no U+203A.
-    expect(screen.getAllByText('‹', { includeHiddenElements: true })[0]).toHaveStyle({
+    // Chevrons stay Latin-faced whatever the UI language.
+    expect(screen.getAllByText('›', { includeHiddenElements: true })[0]).toHaveStyle({
       fontFamily: 'Archivo_400Regular',
     });
     expect(screen.toJSON()).toMatchSnapshot();
   });
 
-  it('reads the sign-in offer in Urdu', async () => {
+  it('reads the sign-in offer in Telugu', async () => {
     await render(
-      <ProfileView signedIn={false} notifications version="1.0.0" lang="ur" {...handlers()} />,
+      <ProfileView signedIn={false} notifications version="1.0.0" lang="te" {...handlers()} />,
     );
-    expect(screen.getByText('آپ سائن ان نہیں ہیں')).toBeOnTheScreen();
-    expect(screen.getByTestId('profile-signin')).toHaveTextContent('سائن ان');
+    expect(screen.getByText('మీరు సైన్ ఇన్ కాలేదు')).toBeOnTheScreen();
+    expect(screen.getByTestId('profile-signin')).toHaveTextContent('సైన్ ఇన్');
   });
 });

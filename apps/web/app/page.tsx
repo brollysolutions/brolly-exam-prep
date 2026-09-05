@@ -12,7 +12,7 @@ export default function Home() {
           Practise the real PWT. On your phone. Without internet.
         </h1>
         <p style={{ color: colors.dim, fontSize: 16, lineHeight: 1.6, margin: 0 }}>
-          200 questions, 3 hours, the official sections — in English, Telugu and Urdu. Mobile app coming
+          200 questions, 3 hours, the official sections — in English and Telugu. Mobile app coming
           soon; this site will carry SEO pages and checkout.
         </p>
         <div style={{ marginTop: 32, display: 'inline-block', background: colors.hivis, color: colors.tar, padding: '16px 24px', borderRadius: 3, fontWeight: 700 }}>

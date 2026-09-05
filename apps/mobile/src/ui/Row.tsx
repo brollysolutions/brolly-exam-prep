@@ -11,7 +11,7 @@ import {
 } from './layoutProps';
 
 export type RowProps = ViewProps & {
-  /** Keep physical left-to-right order even in Urdu (numbers: keypad, OTP, phone). */
+  /** Keep physical left-to-right order even under RTL (numbers: keypad, OTP, phone). */
   physical?: boolean;
   gap?: SpaceStep;
   align?: Align;

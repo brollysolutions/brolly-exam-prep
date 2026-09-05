@@ -5,7 +5,7 @@ import { Glyph } from '../Glyph';
 
 describe('Glyph', () => {
   beforeAll(() => {
-    initI18n('ur');
+    initI18n('te');
   });
 
   afterAll(async () => {
@@ -14,7 +14,7 @@ describe('Glyph', () => {
     });
   });
 
-  it('keeps the Latin face in Urdu, where Nastaliq has no chevron', async () => {
+  it('keeps the Latin face when the UI language is Telugu', async () => {
     await render(<Glyph testID="glyph">{'‹'}</Glyph>);
     expect(screen.getByTestId('glyph')).toHaveStyle({ fontFamily: 'Archivo_400Regular' });
   });

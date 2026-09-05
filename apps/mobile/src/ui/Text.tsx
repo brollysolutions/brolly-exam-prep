@@ -6,7 +6,7 @@ import {
   type Lang,
   type TextName,
 } from '@tslprb/design-tokens';
-import { useDir } from '@tslprb/i18n';
+import { isRTL, useDir } from '@tslprb/i18n';
 import {
   Text as RNText,
   StyleSheet,
@@ -27,7 +27,7 @@ export type TextProps = Omit<RNTextProps, 'style'> & {
   color?: ColorName;
   /** Reading-order alignment resolved through `useDir()`. Defaults to `start`. */
   align?: TextAlign;
-  /** Letter-spacing token, applied when the *face* is Latin (Telugu/Urdu faces get 0); `none` forces 0. */
+  /** Letter-spacing token, applied when the *face* is Latin (the Telugu face gets 0); `none` forces 0. */
   tracking?: keyof typeof trackingTokens | 'none';
   /** Tabular figures. */
   numeric?: boolean;
@@ -77,7 +77,7 @@ export function Text({
         {
           letterSpacing,
           textAlign,
-          writingDirection: face === 'ur' ? 'rtl' : 'ltr',
+          writingDirection: isRTL(face) ? 'rtl' : 'ltr',
           fontVariant: numeric ? ['tabular-nums'] : undefined,
           textTransform: uppercase ? 'uppercase' : undefined,
         },

@@ -74,10 +74,10 @@ describe('LoginView', () => {
   });
 });
 
-describe('LoginView (ur)', () => {
+describe('LoginView (te)', () => {
   beforeAll(async () => {
     await act(async () => {
-      await setLanguage('ur');
+      await setLanguage('te');
     });
   });
 
@@ -87,10 +87,12 @@ describe('LoginView (ur)', () => {
     });
   });
 
-  it('mirrors the copy and keeps the phone row physical', async () => {
+  it('renders the Telugu copy and keeps the phone row physical', async () => {
     await render(<LoginView initialPhone="9000012345" onSubmit={jest.fn()} />);
-    expect(screen.getByText('آپ کا فون نمبر')).toHaveStyle({ textAlign: 'right' });
-    // The screen's own rows are all numeric, so they stay physically LTR while the copy mirrors.
+    expect(screen.getByText('మీ ఫోన్ నంబర్')).toHaveStyle({
+      fontFamily: 'NotoSansTelugu_600SemiBold',
+    });
+    // The screen's own rows are all numeric, so they stay physically LTR in every language.
     expect(screen.getByTestId('login-phone')).toHaveStyle({ flexDirection: 'row' });
     expect(screen.getByTestId('login-keypad-row-0')).toHaveStyle({ flexDirection: 'row' });
     expect(screen.toJSON()).toMatchSnapshot();

@@ -93,9 +93,9 @@ const MAX_RUN_DIGITS = 3;
 const VERDICT_MARGIN = 16;
 
 /**
- * The one text input. Its caret sits on the reading-start side — the right in Urdu — while
+ * The one text input. Its caret sits on the reading-start side (the right under RTL) while
  * the digits themselves stay LTR; a hard-coded `textAlign: 'left'` put the caret on the far
- * side of every Urdu field (design review 4).
+ * side of every RTL field (design review 4).
  */
 function MeasureInput({
   value,
@@ -313,7 +313,7 @@ function ResultRow({
       : row.pass === false
         ? t('eligibility.fail')
         : t('eligibility.notEntered');
-  // A column's figures sit on its reading-end edge — the left in Urdu.
+  // A column's figures sit on its reading-end edge (the left under RTL).
   const end = d.isRTL ? 'start' : 'end';
   return (
     <Row

@@ -102,12 +102,12 @@ function StandRow({
 }
 
 /**
- * One "what cost you marks" row. The fixture's Telugu and Urdu values carry their unit in
+ * One "what cost you marks" row. The fixture's Telugu values carry their unit in
  * their own script ("92 sec"), which Archivo cannot draw - only a Latin value may go into
  * `<Num>`; the rest stays in the language face and is merely tabular.
  *
  * `align="baseline"` sits the value on the label's first line rather than the top of the
- * box: an Urdu value is a whole word tall and floated above the label without it. It never
+ * box: a Telugu value is a whole word tall and floated above the label without it. It never
  * shrinks or wraps, so the two-line label keeps the width it needs.
  */
 function CostRow({

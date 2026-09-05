@@ -27,12 +27,12 @@ const TABS = [
 /**
  * Bar height by language, before the safe-area inset is added.
  *
- * Telugu sits taller than Latin at the same point size and Nastaliq taller again — its
- * line-height is 2.05 — so a bar sized for English clips their labels (design review round 1).
+ * Telugu sits taller than Latin at the same point size — its line-height is 1.65 — so a bar
+ * sized for English clips its labels (design review round 1).
  * English needs 62, not the 56 px touch target: icon, 6 px of padding each side and a caption
  * line come to 60, and the touch height clipped the label band by a pixel (review F-23-25).
  */
-const BAR_HEIGHT = { en: 62, te: 68, ur: 76 } as const;
+const BAR_HEIGHT = { en: 62, te: 68 } as const;
 
 export default function TabsLayout() {
   const { t } = useTranslation();

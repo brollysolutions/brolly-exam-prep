@@ -24,8 +24,8 @@ const DEV = {
 
 /**
  * One preview per screen, not one per state: each screen carries its own state matrix in
- * `features/<area>/__tests__`, and every preview here costs the gallery's Urdu snapshot a
- * full screen tree.
+ * `features/<area>/__tests__`, and every preview here costs the gallery test a full screen
+ * tree.
  */
 
 /** Dev frame: every screen is `flex-1`, so a preview inside a scroll needs a bounded height. */

@@ -17,7 +17,6 @@ module.exports = {
       fontFamily: {
         en: [t.font.en.family, 'system-ui', 'sans-serif'],
         te: [t.font.te.family, 'sans-serif'],
-        ur: [t.font.ur.family, 'serif'],
       },
       letterSpacing: Object.fromEntries(Object.entries(t.tracking).map(([k, v]) => [k, px(v)])),
       height: {

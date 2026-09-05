@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TopicView (ur) mirrors the header and the block accents, and matches the snapshot 1`] = `
+exports[`TopicView (te) sets the page in the Telugu face, keeps the block accents on the left, and matches the snapshot 1`] = `
 <View
   className="flex-1 bg-tar"
   style={
@@ -860,7 +860,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
         style={
           {
             "alignItems": "center",
-            "flexDirection": "row-reverse",
+            "flexDirection": "row",
             "flexWrap": undefined,
             "gap": 12,
             "justifyContent": "space-between",
@@ -906,7 +906,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
             style={
               {
                 "alignItems": "center",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -925,31 +925,31 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
                   "fontVariant": undefined,
                   "letterSpacing": 0,
                   "lineHeight": 29,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
               }
               testID="topic-back-chevron"
             >
-              ›
+              ‹
             </Text>
             <Text
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 14.5,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 13.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29.7,
-                  "textAlign": "right",
+                  "lineHeight": 22.3,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              واپس
+              వెనక్కి
             </Text>
           </View>
         </View>
@@ -959,7 +959,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
           style={
             {
               "alignItems": undefined,
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": undefined,
               "justifyContent": undefined,
@@ -988,7 +988,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
+            className="h-full min-w-touch items-center justify-center px-3 border-line border-r"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1025,58 +1025,6 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
             accessibilityState={
               {
                 "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            className="h-full min-w-touch items-center justify-center px-3 border-line border-l"
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-          >
-            <Text
-              className="text-dim"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 13.5,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 22.3,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              తె
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="اُر"
-            accessibilityRole="radio"
-            accessibilityState={
-              {
-                "busy": undefined,
                 "checked": true,
                 "disabled": undefined,
                 "expanded": undefined,
@@ -1109,18 +1057,18 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
               className="text-tar"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 14.5,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 13.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29.7,
+                  "lineHeight": 22.3,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              اُر
+              తె
             </Text>
           </View>
         </View>
@@ -1129,42 +1077,42 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
         className="text-dim mt-4"
         style={
           {
-            "fontFamily": "NotoNastaliqUrdu_700Bold",
-            "fontSize": 13,
+            "fontFamily": "NotoSansTelugu_700Bold",
+            "fontSize": 12,
             "fontVariant": undefined,
             "letterSpacing": 0,
-            "lineHeight": 26.7,
-            "textAlign": "right",
+            "lineHeight": 19.8,
+            "textAlign": "left",
             "textTransform": "uppercase",
-            "writingDirection": "rtl",
+            "writingDirection": "ltr",
           }
         }
       >
-        تلنگانہ
+        తెలంగాణ
       </Text>
       <Text
         className="text-chalk mt-2"
         style={
           {
-            "fontFamily": "NotoNastaliqUrdu_700Bold",
-            "fontSize": 24,
+            "fontFamily": "NotoSansTelugu_600SemiBold",
+            "fontSize": 23,
             "fontVariant": undefined,
             "letterSpacing": 0,
-            "lineHeight": 49.2,
-            "textAlign": "right",
+            "lineHeight": 37.9,
+            "textAlign": "left",
             "textTransform": undefined,
-            "writingDirection": "rtl",
+            "writingDirection": "ltr",
           }
         }
       >
-        تحریکِ ریاست اور تشکیل
+        తెలంగాణ ఉద్యమం, రాష్ట్ర ఏర్పాటు
       </Text>
       <View
         className="mt-2"
         style={
           {
             "alignItems": "baseline",
-            "flexDirection": "row-reverse",
+            "flexDirection": "row",
             "flexWrap": undefined,
             "gap": 4,
             "justifyContent": undefined,
@@ -1184,7 +1132,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
               ],
               "letterSpacing": 0,
               "lineHeight": 16.7,
-              "textAlign": "right",
+              "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
             }
@@ -1196,18 +1144,18 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
           className="text-dim"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_400Regular",
-              "fontSize": 12.5,
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 11.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 25.6,
-              "textAlign": "right",
+              "lineHeight": 19,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          منٹ
+          నిమి
         </Text>
       </View>
       <View
@@ -1225,73 +1173,73 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
           className="text-dim"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 13,
+              "fontFamily": "NotoSansTelugu_700Bold",
+              "fontSize": 12,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 26.7,
-              "textAlign": "right",
+              "lineHeight": 19.8,
+              "textAlign": "left",
               "textTransform": "uppercase",
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
           testID="study-block-heading"
         >
-          1956 سے 2 جون 2014 تک
+          1956 నుండి 2014 జూన్ 2 వరకు
         </Text>
         <Text
           className="text-chalk2"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_400Regular",
-              "fontSize": 14.5,
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 13.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 29.7,
-              "textAlign": "right",
+              "lineHeight": 22.3,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
           testID="study-block-para"
         >
-          1956 میں جنٹلمینز ایگریمنٹ کی ضمانتوں پر تلنگانہ کو آندھرا ریاست کے ساتھ ملا کر آندھرا پردیش بنایا گیا۔ یہ احساس کہ وہ ضمانتیں پوری نہیں ہوئیں، پوری تحریک کی بنیاد ہے۔
+          జెంటిల్‌మెన్స్ అగ్రిమెంట్‌లోని రక్షణల ఆధారంగా 1956లో తెలంగాణను ఆంధ్ర రాష్ట్రంతో కలిపి ఆంధ్రప్రదేశ్ ఏర్పాటు చేశారు. ఆ రక్షణలు అమలు కాలేదన్న భావనే మొత్తం ఉద్యమానికి మూలం.
         </Text>
         <Text
           className="text-chalk2"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_400Regular",
-              "fontSize": 14.5,
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 13.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 29.7,
-              "textAlign": "right",
+              "lineHeight": 22.3,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
           testID="study-block-para"
         >
-          پہلی عوامی تحریک 1969 میں اٹھی، جس کی قیادت طلبہ نے کی اور تلنگانہ پرجا سمیتی نے اسے آگے بڑھایا۔ اسے دبا دیا گیا، مگر مطالبہ کبھی ختم نہیں ہوا۔
+          మొదటి ప్రజా ఉద్యమం 1969లో వచ్చింది; విద్యార్థులు నడిపిన దాన్ని తెలంగాణ ప్రజా సమితి ముందుకు తీసుకెళ్లింది. అది అణచివేయబడినా, డిమాండ్ మాత్రం ఎప్పుడూ ఆగలేదు.
         </Text>
         <Text
           className="text-chalk2"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_400Regular",
-              "fontSize": 14.5,
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 13.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 29.7,
-              "textAlign": "right",
+              "lineHeight": 22.3,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
           testID="study-block-para"
         >
-          2001 میں تلنگانہ راشٹرا سمیتی قائم ہوئی جس کا واحد مطالبہ الگ ریاست تھا۔ مرکز نے دسمبر 2009 میں عمل کا اعلان کیا، 2010 میں سری کرشنا کمیٹی مقرر کی، اور پارلیمنٹ نے فروری 2014 میں آندھرا پردیش تنظیمِ نو ایکٹ منظور کیا۔
+          రాష్ట్ర సాధనే ఏకైక డిమాండ్‌గా 2001లో తెలంగాణ రాష్ట్ర సమితి ఏర్పడింది. కేంద్రం 2009 డిసెంబర్‌లో ప్రక్రియను ప్రకటించి, 2010లో శ్రీకృష్ణ కమిటీని నియమించింది; పార్లమెంటు 2014 ఫిబ్రవరిలో ఆంధ్రప్రదేశ్ పునర్విభజన చట్టాన్ని ఆమోదించింది.
         </Text>
         <View
           style={
@@ -1308,7 +1256,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
             style={
               {
                 "alignItems": "baseline",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1326,7 +1274,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
                   "fontVariant": undefined,
                   "letterSpacing": 0,
                   "lineHeight": 18.1,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
@@ -1338,25 +1286,25 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
               className="text-chalk2 flex-1"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_400Regular",
-                  "fontSize": 14.5,
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 13.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29.7,
-                  "textAlign": "right",
+                  "lineHeight": 22.3,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              1956 — آندھرا پردیش کی تشکیل؛ جنٹلمینز ایگریمنٹ نے تلنگانہ کے لیے ضمانتیں طے کیں۔
+              1956 — ఆంధ్రప్రదేశ్ ఏర్పాటు; జెంటిల్‌మెన్స్ అగ్రిమెంట్ తెలంగాణకు రక్షణలు నిర్దేశించింది.
             </Text>
           </View>
           <View
             style={
               {
                 "alignItems": "baseline",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1374,7 +1322,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
                   "fontVariant": undefined,
                   "letterSpacing": 0,
                   "lineHeight": 18.1,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
@@ -1386,25 +1334,25 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
               className="text-chalk2 flex-1"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_400Regular",
-                  "fontSize": 14.5,
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 13.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29.7,
-                  "textAlign": "right",
+                  "lineHeight": 22.3,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              1969 — پہلی تلنگانہ تحریک؛ قیادت تلنگانہ پرجا سمیتی نے کی۔
+              1969 — మొదటి తెలంగాణ ఉద్యమం; తెలంగాణ ప్రజా సమితి నాయకత్వం.
             </Text>
           </View>
           <View
             style={
               {
                 "alignItems": "baseline",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1422,7 +1370,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
                   "fontVariant": undefined,
                   "letterSpacing": 0,
                   "lineHeight": 18.1,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
@@ -1434,25 +1382,25 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
               className="text-chalk2 flex-1"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_400Regular",
-                  "fontSize": 14.5,
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 13.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29.7,
-                  "textAlign": "right",
+                  "lineHeight": 22.3,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              2001 — کے۔ چندر شیکھر راؤ نے تلنگانہ راشٹرا سمیتی قائم کی۔
+              2001 — కె. చంద్రశేఖర రావు తెలంగాణ రాష్ట్ర సమితిని స్థాపించారు.
             </Text>
           </View>
           <View
             style={
               {
                 "alignItems": "baseline",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1470,7 +1418,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
                   "fontVariant": undefined,
                   "letterSpacing": 0,
                   "lineHeight": 18.1,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
@@ -1482,25 +1430,25 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
               className="text-chalk2 flex-1"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_400Regular",
-                  "fontSize": 14.5,
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 13.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29.7,
-                  "textAlign": "right",
+                  "lineHeight": 22.3,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              2 جون 2014 — تلنگانہ ہندوستان کی 29ویں ریاست بنی؛ حیدرآباد دس سال تک مشترکہ دارالحکومت رہا۔
+              2014 జూన్ 2 — తెలంగాణ భారతదేశంలో 29వ రాష్ట్రంగా ఏర్పడింది; పదేళ్ల వరకు హైదరాబాద్ ఉమ్మడి రాజధాని.
             </Text>
           </View>
           <View
             style={
               {
                 "alignItems": "baseline",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1518,7 +1466,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
                   "fontVariant": undefined,
                   "letterSpacing": 0,
                   "lineHeight": 18.1,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
@@ -1530,18 +1478,18 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
               className="text-chalk2 flex-1"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_400Regular",
-                  "fontSize": 14.5,
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 13.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29.7,
-                  "textAlign": "right",
+                  "lineHeight": 22.3,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              کے۔ چندر شیکھر راؤ پہلے وزیر اعلیٰ اور ای۔ ایس۔ ایل۔ نرسمہن پہلے گورنر بنے۔
+              కె. చంద్రశేఖర రావు మొదటి ముఖ్యమంత్రి, ఈ. ఎస్. ఎల్. నరసింహన్ మొదటి గవర్నర్ అయ్యారు.
             </Text>
           </View>
         </View>
@@ -1549,8 +1497,8 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
           className="bg-panel2 px-3 py-3"
           style={
             {
-              "borderRightColor": "#FFE01B",
-              "borderRightWidth": 3,
+              "borderLeftColor": "#FFE01B",
+              "borderLeftWidth": 3,
             }
           }
           testID="study-block-example"
@@ -1559,43 +1507,43 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
             className="text-hivis"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 13,
+                "fontFamily": "NotoSansTelugu_700Bold",
+                "fontSize": 12,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 26.7,
-                "textAlign": "right",
+                "lineHeight": 19.8,
+                "textAlign": "left",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            حل شدہ مثال
+            ఉదాహరణ
           </Text>
           <Text
             className="text-chalk2 mt-2"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_400Regular",
-                "fontSize": 14.5,
+                "fontFamily": "NotoSansTelugu_400Regular",
+                "fontSize": 13.5,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 29.7,
-                "textAlign": "right",
+                "lineHeight": 22.3,
+                "textAlign": "left",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            ایک معیاری سوال: "تلنگانہ کس تاریخ کو اور ہندوستان کی کون سے نمبر کی ریاست کے طور پر بنی؟" جواب 2 جون 2014، 29ویں ریاست کے طور پر۔ یاد رہے کہ پارلیمنٹ نے ایکٹ فروری 2014 میں منظور کیا — ایکٹ اور تشکیل دو الگ تاریخیں ہیں، اور پرچہ اسی فرق کو پسند کرتا ہے۔
+            ఒక ప్రామాణిక ప్రశ్న: "తెలంగాణ ఏ తేదీన, భారతదేశంలో ఎన్నో రాష్ట్రంగా ఏర్పడింది?" జవాబు 2014 జూన్ 2, 29వ రాష్ట్రంగా. పార్లమెంటు చట్టాన్ని 2014 ఫిబ్రవరిలో ఆమోదించిందని గుర్తుంచుకోండి — చట్టం, ఏర్పాటు రెండు వేర్వేరు తేదీలు; ఆ తేడానే పేపర్ ఇష్టపడుతుంది.
           </Text>
         </View>
         <View
           className="bg-panel2 px-3 py-3"
           style={
             {
-              "borderRightColor": "#B79A55",
-              "borderRightWidth": 3,
+              "borderLeftColor": "#B79A55",
+              "borderLeftWidth": 3,
             }
           }
           testID="study-block-tip"
@@ -1604,35 +1552,35 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
             className="text-sand"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 13,
+                "fontFamily": "NotoSansTelugu_700Bold",
+                "fontSize": 12,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 26.7,
-                "textAlign": "right",
+                "lineHeight": 19.8,
+                "textAlign": "left",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            امتحانی مشورہ
+            పరీక్ష చిట్కా
           </Text>
           <Text
             className="text-chalk2 mt-2"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_400Regular",
-                "fontSize": 14.5,
+                "fontFamily": "NotoSansTelugu_400Regular",
+                "fontSize": 13.5,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 29.7,
-                "textAlign": "right",
+                "lineHeight": 22.3,
+                "textAlign": "left",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            ٹائم لائن کو ایک بار سالوں کے ایک عمودی کالم کی شکل میں لکھ لیں۔ امتحان میں آپ کو کہانی نہیں، ترتیب یاد کرنی ہوگی۔
+            కాలక్రమాన్ని ఒక్కసారి సంవత్సరాల నిలువు వరుసగా రాయండి. పరీక్షలో మీరు గుర్తుచేసుకోవాల్సింది కథను కాదు, వరుసను.
           </Text>
         </View>
       </View>
@@ -1690,7 +1638,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
             style={
               {
                 "alignItems": "center",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1701,18 +1649,18 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
               className="text-tar"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 15.5,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 14.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 31.8,
+                  "lineHeight": 23.9,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              پڑھا ہوا نشان زد کریں
+              చదివినట్లు గుర్తించండి
             </Text>
           </View>
         </View>
@@ -1759,7 +1707,7 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
             style={
               {
                 "alignItems": "center",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1770,18 +1718,18 @@ exports[`TopicView (ur) mirrors the header and the block accents, and matches th
               className="text-chalk"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 14.5,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 13.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29.7,
+                  "lineHeight": 22.3,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              اس حصے کی مشق کریں
+              ఈ విభాగాన్ని ప్రాక్టీస్ చేయండి
             </Text>
           </View>
         </View>

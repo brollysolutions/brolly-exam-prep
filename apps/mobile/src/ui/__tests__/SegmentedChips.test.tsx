@@ -4,20 +4,20 @@ import { act } from 'react';
 
 import { SegmentedChips } from '../SegmentedChips';
 
-const LABEL: Record<Lang, string> = { en: 'EN', te: 'తె', ur: 'اُر' };
+const LABEL: Record<Lang, string> = { en: 'EN', te: 'తె' };
 const options = LANGS.map((l) => ({ value: l, label: LABEL[l], lang: l }));
 
 describe('SegmentedChips (language switcher)', () => {
   beforeAll(() => {
-    initI18n('ur');
+    initI18n('te');
   });
   afterEach(async () => {
     await act(async () => {
-      await setLanguage('ur');
+      await setLanguage('te');
     });
   });
 
-  it.each(['ur', 'te', 'en'] as Lang[])(
+  it.each(['te', 'en'] as Lang[])(
     'shows every label, including "EN", when the UI language is %s',
     async (ui) => {
       await act(async () => {
@@ -31,8 +31,9 @@ describe('SegmentedChips (language switcher)', () => {
 
   it('marks the active cell checked, cells are ≥ 48 px wide, and reports changes', async () => {
     const onChange = jest.fn();
-    await render(<SegmentedChips value="ur" onChange={onChange} options={options} />);
-    expect(screen.getByRole('radio', { name: 'اُر' })).toBeChecked();
+    await render(<SegmentedChips value="te" onChange={onChange} options={options} />);
+    expect(screen.getByRole('radio', { name: 'తె' })).toBeChecked();
+    expect(screen.getAllByRole('radio')).toHaveLength(2);
     expect(screen.getByRole('radio', { name: 'EN' }).props.className).toContain('min-w-touch ');
     await userEvent.press(screen.getByRole('radio', { name: 'EN' }));
     expect(onChange).toHaveBeenCalledWith('en');

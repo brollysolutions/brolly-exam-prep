@@ -26,7 +26,7 @@
     "sampleData": "Sample data",
     "nothingYet": "Nothing yet"
   },
-  "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "Language" },
+  "lang": { "en": "EN", "te": "తెలుగు", "enShort": "EN", "teShort": "తె", "label": "Language" },
   "auth": {
     "loginTitle": "Your phone number",
     "loginSub": "The OTP arrives by SMS. No internet needed.",

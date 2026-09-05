@@ -3,7 +3,7 @@ import { colors } from '@tslprb/design-tokens';
 
 export const metadata = {
   title: 'TSLPRB PWT mock tests',
-  description: 'Practise the Telangana police Preliminary Written Test in English, Telugu and Urdu.',
+  description: 'Practise the Telangana police Preliminary Written Test in English and Telugu.',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

@@ -12,17 +12,17 @@ const ROWS = buildSolutionRows(
   buildPaper(FREE_MOCK_SHORT.sections),
 );
 
-describe('SolutionsView (ur)', () => {
+describe('SolutionsView (te)', () => {
   beforeAll(() => {
-    useLangStore.setState({ lang: 'ur' });
-    initI18n('ur');
+    useLangStore.setState({ lang: 'te' });
+    initI18n('te');
   });
 
-  it('mirrors the screen and matches the snapshot', async () => {
+  it('renders in Telugu and matches the snapshot', async () => {
     await render(<SolutionsView rows={ROWS} />);
-    expect(screen.getByTestId('solutions-header')).toHaveStyle({ flexDirection: 'row-reverse' });
+    expect(screen.getByTestId('solutions-header')).toHaveStyle({ flexDirection: 'row' });
     expect(screen.getAllByTestId('solution-card')).toHaveLength(3);
-    expect(screen.getAllByText('درست جواب')).toHaveLength(3);
+    expect(screen.getAllByText('సరైన జవాబు')).toHaveLength(3);
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });

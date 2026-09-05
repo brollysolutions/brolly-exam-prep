@@ -18,7 +18,7 @@ import {
   Text,
 } from '@/ui';
 
-/** The bullet mark. Latin face, like every other glyph — Nastaliq has no U+25A0. */
+/** The bullet mark. Latin face, like every other glyph. */
 const BULLET_GLYPH = '■';
 const READ_GLYPH = '✓';
 
@@ -99,8 +99,8 @@ function Block({ block, lang }: { block: StudyBlock; lang: Lang }) {
         </Kicker>
       );
     case 'para':
-      // `Text` resolves the line-height from the language's own metrics: 1.45 en, 1.65 te,
-      // 2.05 ur. Nothing to set here.
+      // `Text` resolves the line-height from the language's own metrics: 1.45 en, 1.65 te.
+      // Nothing to set here.
       return (
         <Text variant="body" color="chalk2" testID="study-block-para">
           {block.text[lang]}
@@ -117,7 +117,7 @@ function Block({ block, lang }: { block: StudyBlock; lang: Lang }) {
           {/* The box carries words now, not just symbols — a Telugu reader should not have to
               decode "New ÷ Old" — so it reads in the page's own face rather than going
               through `Num`'s Latin one. The digits stay tabular, and each maths run in the
-              Urdu fixture carries its own LRI…PDI isolation, so `18/5` never re-orders. */}
+              fixture carries its own LRI…PDI isolation, so `18/5` never re-orders. */}
           <Text variant="body" weight="600" color="chalk" numeric>
             {block.text[lang]}
           </Text>

@@ -10,7 +10,7 @@ export type BackHeaderProps = {
   onBack?: () => void;
   /**
    * After the title, at the end of the title row (a static "Sample data" chip). The row is a
-   * `Row`, so in Urdu it lands at the left edge without a mirrored class of its own.
+   * `Row`, so under RTL it lands at the left edge without a mirrored class of its own.
    */
   trailing?: ReactNode;
   /** Second row inside the header panel (the solutions filter chips). */
@@ -20,8 +20,8 @@ export type BackHeaderProps = {
 
 /**
  * The result/solutions header: a 48 px chevron-back target and the screen title on the
- * `panel` bar. The chevron is drawn `lang="en"` because Noto Nastaliq Urdu has no
- * U+2039/U+203A and silently falls back to parentheses.
+ * `panel` bar. The chevron is drawn `lang="en"` so it never depends on the language face
+ * carrying U+2039/U+203A.
  */
 export function BackHeader({ title, onBack, trailing, children, testID }: BackHeaderProps) {
   const d = useDir();

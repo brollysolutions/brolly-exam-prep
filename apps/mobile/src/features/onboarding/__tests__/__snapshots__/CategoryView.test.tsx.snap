@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
+exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] = `
 <View
   className="flex-1 bg-tar"
   style={
@@ -896,7 +896,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
             style={
               {
                 "alignItems": "center",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -915,31 +915,31 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                   "fontVariant": undefined,
                   "letterSpacing": 0,
                   "lineHeight": 29,
-                  "textAlign": "right",
+                  "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
               }
               testID="category-back-chevron"
             >
-              ›
+              ‹
             </Text>
             <Text
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 14.5,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 13.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29.7,
-                  "textAlign": "right",
+                  "lineHeight": 22.3,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              واپس
+              వెనక్కి
             </Text>
           </View>
         </View>
@@ -955,7 +955,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
               ],
               "letterSpacing": 0,
               "lineHeight": 15.2,
-              "textAlign": "right",
+              "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
             }
@@ -968,35 +968,35 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
           className="text-chalk mt-2"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 24,
+              "fontFamily": "NotoSansTelugu_600SemiBold",
+              "fontSize": 23,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 49.2,
-              "textAlign": "right",
+              "lineHeight": 37.9,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          آپ کا زمرہ
+          మీ కేటగిరీ
         </Text>
         <Text
           className="text-dim mt-2"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_400Regular",
-              "fontSize": 13.5,
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 12.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 27.7,
-              "textAlign": "right",
+              "lineHeight": 20.6,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          پی ڈبلیو ٹی کی اہلیت کا فیصد زمرے پر منحصر ہے۔
+          PWT అర్హత శాతం కేటగిరీని బట్టి మారుతుంది.
         </Text>
         <View
           className="mt-5"
@@ -1014,7 +1014,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
             style={
               {
                 "alignItems": "stretch",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1061,25 +1061,25 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                 className="text-chalk"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 15.5,
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 14.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 31.8,
-                    "textAlign": "right",
+                    "lineHeight": 23.9,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                او سی
+                ఓసీ
               </Text>
               <View
                 className="mt-1"
                 style={
                   {
                     "alignItems": "baseline",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": "wrap",
                     "gap": 4,
                     "justifyContent": undefined,
@@ -1090,18 +1090,18 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 12.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 11.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 25.6,
-                      "textAlign": "right",
+                      "lineHeight": 19,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  پی ڈبلیو ٹی اہلیت
+                  PWT అర్హత
                 </Text>
                 <Text
                   accessibilityLanguage="en"
@@ -1115,7 +1115,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                       ],
                       "letterSpacing": 0,
                       "lineHeight": 16.7,
-                      "textAlign": "right",
+                      "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
                     }
@@ -1164,25 +1164,25 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                 className="text-chalk"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 15.5,
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 14.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 31.8,
-                    "textAlign": "right",
+                    "lineHeight": 23.9,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                ای ڈبلیو ایس
+                ఈడబ్ల్యూఎస్
               </Text>
               <View
                 className="mt-1"
                 style={
                   {
                     "alignItems": "baseline",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": "wrap",
                     "gap": 4,
                     "justifyContent": undefined,
@@ -1193,18 +1193,18 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 12.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 11.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 25.6,
-                      "textAlign": "right",
+                      "lineHeight": 19,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  پی ڈبلیو ٹی اہلیت
+                  PWT అర్హత
                 </Text>
                 <Text
                   accessibilityLanguage="en"
@@ -1218,7 +1218,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                       ],
                       "letterSpacing": 0,
                       "lineHeight": 16.7,
-                      "textAlign": "right",
+                      "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
                     }
@@ -1233,7 +1233,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
             style={
               {
                 "alignItems": "stretch",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1280,25 +1280,25 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                 className="text-hivis"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 15.5,
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 14.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 31.8,
-                    "textAlign": "right",
+                    "lineHeight": 23.9,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                بی سی
+                బీసీ
               </Text>
               <View
                 className="mt-1"
                 style={
                   {
                     "alignItems": "baseline",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": "wrap",
                     "gap": 4,
                     "justifyContent": undefined,
@@ -1309,18 +1309,18 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 12.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 11.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 25.6,
-                      "textAlign": "right",
+                      "lineHeight": 19,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  پی ڈبلیو ٹی اہلیت
+                  PWT అర్హత
                 </Text>
                 <Text
                   accessibilityLanguage="en"
@@ -1334,7 +1334,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                       ],
                       "letterSpacing": 0,
                       "lineHeight": 16.7,
-                      "textAlign": "right",
+                      "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
                     }
@@ -1383,25 +1383,25 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                 className="text-chalk"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 15.5,
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 14.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 31.8,
-                    "textAlign": "right",
+                    "lineHeight": 23.9,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                ایس سی
+                ఎస్సీ
               </Text>
               <View
                 className="mt-1"
                 style={
                   {
                     "alignItems": "baseline",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": "wrap",
                     "gap": 4,
                     "justifyContent": undefined,
@@ -1412,18 +1412,18 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 12.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 11.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 25.6,
-                      "textAlign": "right",
+                      "lineHeight": 19,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  پی ڈبلیو ٹی اہلیت
+                  PWT అర్హత
                 </Text>
                 <Text
                   accessibilityLanguage="en"
@@ -1437,7 +1437,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                       ],
                       "letterSpacing": 0,
                       "lineHeight": 16.7,
-                      "textAlign": "right",
+                      "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
                     }
@@ -1452,7 +1452,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
             style={
               {
                 "alignItems": "stretch",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1499,25 +1499,25 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                 className="text-chalk"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 15.5,
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 14.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 31.8,
-                    "textAlign": "right",
+                    "lineHeight": 23.9,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                ایس ٹی
+                ఎస్టీ
               </Text>
               <View
                 className="mt-1"
                 style={
                   {
                     "alignItems": "baseline",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": "wrap",
                     "gap": 4,
                     "justifyContent": undefined,
@@ -1528,18 +1528,18 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 12.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 11.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 25.6,
-                      "textAlign": "right",
+                      "lineHeight": 19,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  پی ڈبلیو ٹی اہلیت
+                  PWT అర్హత
                 </Text>
                 <Text
                   accessibilityLanguage="en"
@@ -1553,7 +1553,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                       ],
                       "letterSpacing": 0,
                       "lineHeight": 16.7,
-                      "textAlign": "right",
+                      "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
                     }
@@ -1602,25 +1602,25 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                 className="text-chalk"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 15.5,
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 14.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 31.8,
-                    "textAlign": "right",
+                    "lineHeight": 23.9,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                سابق فوجی
+                మాజీ సైనికులు
               </Text>
               <View
                 className="mt-1"
                 style={
                   {
                     "alignItems": "baseline",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": "wrap",
                     "gap": 4,
                     "justifyContent": undefined,
@@ -1631,18 +1631,18 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 12.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 11.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 25.6,
-                      "textAlign": "right",
+                      "lineHeight": 19,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  پی ڈبلیو ٹی اہلیت
+                  PWT అర్హత
                 </Text>
                 <Text
                   accessibilityLanguage="en"
@@ -1656,7 +1656,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
                       ],
                       "letterSpacing": 0,
                       "lineHeight": 16.7,
-                      "textAlign": "right",
+                      "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
                     }
@@ -1716,7 +1716,7 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
           style={
             {
               "alignItems": "center",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 8,
               "justifyContent": undefined,
@@ -1727,18 +1727,18 @@ exports[`CategoryView (ur) mirrors the grid and matches the snapshot 1`] = `
             className="text-tar"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 15.5,
+                "fontFamily": "NotoSansTelugu_700Bold",
+                "fontSize": 14.5,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 31.8,
+                "lineHeight": 23.9,
                 "textAlign": "center",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            مفت ماک ٹیسٹ شروع کریں
+            ఫ్రీ మాక్ టెస్ట్ మొదలుపెట్టు
           </Text>
         </View>
       </View>

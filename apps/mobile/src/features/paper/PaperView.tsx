@@ -136,7 +136,7 @@ function QuestionCard({
         </Num>
       </Row>
 
-      {/* `question` carries the per-language size and line-height (en 1.45, te 1.6, ur 2.0). */}
+      {/* `question` carries the per-language size and line-height (en 1.45, te 1.65). */}
       <Text variant="question" className="mt-3" testID={`paper-stem-${questionNo}`}>
         {question.text[lang]}
       </Text>

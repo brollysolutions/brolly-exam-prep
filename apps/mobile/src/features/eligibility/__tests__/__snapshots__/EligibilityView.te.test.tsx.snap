@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-right 1`] = `
+exports[`EligibilityView (te) sets the screen in Telugu while the digits stay Latin 1`] = `
 <View
   className="flex-1 bg-tar"
   style={
@@ -860,7 +860,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
         style={
           {
             "alignItems": "center",
-            "flexDirection": "row-reverse",
+            "flexDirection": "row",
             "flexWrap": undefined,
             "gap": 4,
             "justifyContent": undefined,
@@ -869,7 +869,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
         testID="eligibility-header"
       >
         <View
-          accessibilityLabel="واپس"
+          accessibilityLabel="వెనక్కి"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -914,13 +914,13 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 "fontVariant": undefined,
                 "letterSpacing": 0,
                 "lineHeight": 29,
-                "textAlign": "right",
+                "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
               }
             }
           >
-            ›
+            ‹
           </Text>
         </View>
         <Text
@@ -928,18 +928,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
           numberOfLines={1}
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 15.5,
+              "fontFamily": "NotoSansTelugu_600SemiBold",
+              "fontSize": 14.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 31.8,
-              "textAlign": "right",
+              "lineHeight": 23.9,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          PMT / PET جانچ
+          PMT / PET చెక్
         </Text>
       </View>
     </View>
@@ -955,18 +955,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
           className="text-dim"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_400Regular",
-              "fontSize": 13.5,
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 12.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 27.7,
-              "textAlign": "right",
+              "lineHeight": 20.6,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          اپنی پیمائشیں درج کریں — آپ کی پوسٹ کے جسمانی معیارات سے موازنہ دکھایا جائے گا۔
+          మీ కొలతలు నమోదు చేయండి — మీ పోస్టుకు ఉన్న శారీరక ప్రమాణాలతో పోల్చి చూపిస్తుంది.
         </Text>
         <View
           className="mt-6"
@@ -993,18 +993,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 13,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 26.7,
-                  "textAlign": "right",
+                  "lineHeight": 19.8,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              پوسٹ
+              పోస్ట్
             </Text>
             <View
               accessibilityRole="radiogroup"
@@ -1012,7 +1012,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               style={
                 {
                   "alignItems": undefined,
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": undefined,
                   "justifyContent": undefined,
@@ -1021,7 +1021,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               testID="eligibility-post"
             >
               <View
-                accessibilityLabel="کانسٹیبل"
+                accessibilityLabel="కానిస్టేబుల్"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1041,7 +1041,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-panel3 border-line3 border-line3 border-l"
+                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-panel3 border-line3 border-line3 border-r"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -1058,22 +1058,22 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="text-chalk"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
+                      "lineHeight": 22.3,
                       "textAlign": "center",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  کانسٹیبل
+                  కానిస్టేబుల్
                 </Text>
               </View>
               <View
-                accessibilityLabel="ایس آئی / اے ایس آئی"
+                accessibilityLabel="ఎస్‌ఐ / ఏఎస్‌ఐ"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1110,18 +1110,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
+                      "lineHeight": 22.3,
                       "textAlign": "center",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  ایس آئی / اے ایس آئی
+                  ఎస్‌ఐ / ఏఎస్‌ఐ
                 </Text>
               </View>
             </View>
@@ -1140,18 +1140,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 13,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 26.7,
-                  "textAlign": "right",
+                  "lineHeight": 19.8,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              جنس
+              లింగం
             </Text>
             <View
               accessibilityRole="radiogroup"
@@ -1159,7 +1159,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               style={
                 {
                   "alignItems": undefined,
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": undefined,
                   "justifyContent": undefined,
@@ -1168,7 +1168,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               testID="eligibility-gender"
             >
               <View
-                accessibilityLabel="مرد"
+                accessibilityLabel="పురుషులు"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1188,7 +1188,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 flex-1 border-line3 border-l"
+                className="h-full min-w-touch items-center justify-center px-3 flex-1 border-line3 border-r"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -1205,22 +1205,22 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
+                      "lineHeight": 22.3,
                       "textAlign": "center",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  مرد
+                  పురుషులు
                 </Text>
               </View>
               <View
-                accessibilityLabel="خواتین"
+                accessibilityLabel="మహిళలు"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1257,18 +1257,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="text-chalk"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
+                      "lineHeight": 22.3,
                       "textAlign": "center",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  خواتین
+                  మహిళలు
                 </Text>
               </View>
             </View>
@@ -1287,18 +1287,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 13,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 26.7,
-                  "textAlign": "right",
+                  "lineHeight": 19.8,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              زمرہ
+              కేటగిరీ
             </Text>
             <View
               accessibilityRole="radiogroup"
@@ -1306,7 +1306,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               style={
                 {
                   "alignItems": undefined,
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": undefined,
                   "justifyContent": undefined,
@@ -1315,7 +1315,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               testID="eligibility-group"
             >
               <View
-                accessibilityLabel="جنرل"
+                accessibilityLabel="జనరల్"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1335,7 +1335,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-panel3 border-line3 border-line3 border-l"
+                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-panel3 border-line3 border-line3 border-r"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -1352,22 +1352,22 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="text-chalk"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
+                      "lineHeight": 22.3,
                       "textAlign": "center",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  جنرل
+                  జనరల్
                 </Text>
               </View>
               <View
-                accessibilityLabel="ایس ٹی / ایجنسی"
+                accessibilityLabel="ఎస్టీ / ఏజెన్సీ"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1404,18 +1404,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
+                      "lineHeight": 22.3,
                       "textAlign": "center",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  ایس ٹی / ایجنسی
+                  ఎస్టీ / ఏజెన్సీ
                 </Text>
               </View>
             </View>
@@ -1437,18 +1437,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
             className="text-dim"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 13,
+                "fontFamily": "NotoSansTelugu_700Bold",
+                "fontSize": 12,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 26.7,
-                "textAlign": "right",
+                "lineHeight": 19.8,
+                "textAlign": "left",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            آپ کی پیمائشیں
+            మీ కొలతలు
           </Text>
           <View
             style={
@@ -1464,7 +1464,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               style={
                 {
                   "alignItems": "baseline",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 8,
                   "justifyContent": undefined,
@@ -1475,42 +1475,42 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 className="text-chalk2"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
+                    "lineHeight": 22.3,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                قد
+                ఎత్తు
               </Text>
               <Text
                 className="text-dim"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 12.5,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 11.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 25.6,
-                    "textAlign": "right",
+                    "lineHeight": 19,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                سینٹی میٹر
+                సెం.మీ
               </Text>
             </View>
             <View
               style={
                 {
                   "alignItems": undefined,
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": undefined,
                   "justifyContent": undefined,
@@ -1521,7 +1521,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 className="h-touchLg flex-1 justify-center rounded-sm border bg-panel2 px-3 border-line"
               >
                 <TextInput
-                  accessibilityLabel="قد (سینٹی میٹر)"
+                  accessibilityLabel="ఎత్తు (సెం.మీ)"
                   inputMode="decimal"
                   keyboardType="decimal-pad"
                   maxLength={6}
@@ -1540,7 +1540,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                       "letterSpacing": 0,
                       "lineHeight": 31.9,
                       "padding": 0,
-                      "textAlign": "right",
+                      "textAlign": "left",
                       "textAlignVertical": "center",
                       "writingDirection": "ltr",
                     }
@@ -1565,24 +1565,24 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               className="text-chalk2"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 14.5,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 13.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29.7,
-                  "textAlign": "right",
+                  "lineHeight": 22.3,
+                  "textAlign": "left",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              ⁦800⁩ میٹر دوڑ
+              ⁦800⁩ మీ. పరుగు
             </Text>
             <View
               style={
                 {
                   "alignItems": undefined,
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 8,
                   "justifyContent": undefined,
@@ -1604,7 +1604,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="h-touchLg flex-1 justify-center rounded-sm border bg-panel2 px-3 border-line"
                 >
                   <TextInput
-                    accessibilityLabel="⁦800⁩ میٹر دوڑ (منٹ)"
+                    accessibilityLabel="⁦800⁩ మీ. పరుగు (నిమి)"
                     inputMode="numeric"
                     keyboardType="number-pad"
                     maxLength={3}
@@ -1623,7 +1623,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                         "letterSpacing": 0,
                         "lineHeight": 31.9,
                         "padding": 0,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textAlignVertical": "center",
                         "writingDirection": "ltr",
                       }
@@ -1636,18 +1636,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 12.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 11.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 25.6,
-                      "textAlign": "right",
+                      "lineHeight": 19,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  منٹ
+                  నిమి
                 </Text>
               </View>
               <View
@@ -1665,7 +1665,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="h-touchLg flex-1 justify-center rounded-sm border bg-panel2 px-3 border-line"
                 >
                   <TextInput
-                    accessibilityLabel="⁦800⁩ میٹر دوڑ (سیکنڈ)"
+                    accessibilityLabel="⁦800⁩ మీ. పరుగు (సెక.)"
                     inputMode="numeric"
                     keyboardType="number-pad"
                     maxLength={3}
@@ -1684,7 +1684,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                         "letterSpacing": 0,
                         "lineHeight": 31.9,
                         "padding": 0,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textAlignVertical": "center",
                         "writingDirection": "ltr",
                       }
@@ -1697,18 +1697,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_400Regular",
-                      "fontSize": 12.5,
+                      "fontFamily": "NotoSansTelugu_400Regular",
+                      "fontSize": 11.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 25.6,
-                      "textAlign": "right",
+                      "lineHeight": 19,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  سیکنڈ
+                  సెక.
                 </Text>
               </View>
             </View>
@@ -1727,7 +1727,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               style={
                 {
                   "alignItems": "baseline",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 8,
                   "justifyContent": undefined,
@@ -1738,42 +1738,42 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 className="text-chalk2"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
+                    "lineHeight": 22.3,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                لمبی چھلانگ
+                లాంగ్ జంప్
               </Text>
               <Text
                 className="text-dim"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 12.5,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 11.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 25.6,
-                    "textAlign": "right",
+                    "lineHeight": 19,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                میٹر
+                మీ
               </Text>
             </View>
             <View
               style={
                 {
                   "alignItems": undefined,
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": undefined,
                   "justifyContent": undefined,
@@ -1784,7 +1784,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 className="h-touchLg flex-1 justify-center rounded-sm border bg-panel2 px-3 border-line"
               >
                 <TextInput
-                  accessibilityLabel="لمبی چھلانگ (میٹر)"
+                  accessibilityLabel="లాంగ్ జంప్ (మీ)"
                   inputMode="decimal"
                   keyboardType="decimal-pad"
                   maxLength={6}
@@ -1803,7 +1803,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                       "letterSpacing": 0,
                       "lineHeight": 31.9,
                       "padding": 0,
-                      "textAlign": "right",
+                      "textAlign": "left",
                       "textAlignVertical": "center",
                       "writingDirection": "ltr",
                     }
@@ -1828,7 +1828,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               style={
                 {
                   "alignItems": "baseline",
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": 8,
                   "justifyContent": undefined,
@@ -1839,42 +1839,42 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 className="text-chalk2"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_700Bold",
-                    "fontSize": 14.5,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 13.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 29.7,
-                    "textAlign": "right",
+                    "lineHeight": 22.3,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                گولہ پھینک
+                షాట్ పుట్
               </Text>
               <Text
                 className="text-dim"
                 style={
                   {
-                    "fontFamily": "NotoNastaliqUrdu_400Regular",
-                    "fontSize": 12.5,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 11.5,
                     "fontVariant": undefined,
                     "letterSpacing": 0,
-                    "lineHeight": 25.6,
-                    "textAlign": "right",
+                    "lineHeight": 19,
+                    "textAlign": "left",
                     "textTransform": undefined,
-                    "writingDirection": "rtl",
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                میٹر
+                మీ
               </Text>
             </View>
             <View
               style={
                 {
                   "alignItems": undefined,
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexWrap": undefined,
                   "gap": undefined,
                   "justifyContent": undefined,
@@ -1885,7 +1885,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 className="h-touchLg flex-1 justify-center rounded-sm border bg-panel2 px-3 border-line"
               >
                 <TextInput
-                  accessibilityLabel="گولہ پھینک (میٹر)"
+                  accessibilityLabel="షాట్ పుట్ (మీ)"
                   inputMode="decimal"
                   keyboardType="decimal-pad"
                   maxLength={6}
@@ -1904,7 +1904,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                       "letterSpacing": 0,
                       "lineHeight": 31.9,
                       "padding": 0,
-                      "textAlign": "right",
+                      "textAlign": "left",
                       "textAlignVertical": "center",
                       "writingDirection": "ltr",
                     }
@@ -1959,7 +1959,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
             style={
               {
                 "alignItems": "center",
-                "flexDirection": "row-reverse",
+                "flexDirection": "row",
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
@@ -1970,18 +1970,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
               className="text-tar"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 15.5,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 14.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 31.8,
+                  "lineHeight": 23.9,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              اہلیت جانچیں
+              అర్హత చూడండి
             </Text>
           </View>
         </View>
@@ -2019,7 +2019,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 style={
                   {
                     "alignItems": "center",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": undefined,
@@ -2037,7 +2037,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                       "fontVariant": undefined,
                       "letterSpacing": 0,
                       "lineHeight": 29,
-                      "textAlign": "right",
+                      "textAlign": "left",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
                     }
@@ -2049,18 +2049,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="text-flag flex-1"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 20,
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 19,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 41,
-                      "textAlign": "right",
+                      "lineHeight": 31.4,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  ابھی نہیں
+                  ఇంకా కాదు
                 </Text>
               </View>
               <View
@@ -2077,24 +2077,24 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="text-dim"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 13,
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 12,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 26.7,
-                      "textAlign": "right",
+                      "lineHeight": 19.8,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                 >
-                  کس پر محنت کرنی ہے
+                  దేనిపై కృషి చేయాలి
                 </Text>
                 <View
                   style={
                     {
                       "alignItems": "baseline",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": undefined,
                       "gap": 8,
                       "justifyContent": undefined,
@@ -2113,7 +2113,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                         "fontVariant": undefined,
                         "letterSpacing": 0,
                         "lineHeight": 16.7,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
@@ -2125,18 +2125,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                     className="text-chalk2 flex-1"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 13.5,
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 12.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 27.7,
-                        "textAlign": "right",
+                        "lineHeight": 20.6,
+                        "textAlign": "left",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    قد
+                    ఎత్తు
                   </Text>
                 </View>
               </View>
@@ -2158,7 +2158,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 style={
                   {
                     "alignItems": "center",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": undefined,
@@ -2171,7 +2171,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   testID="eligibility-mark-height"
                 >
                   <Text
-                    accessibilityLabel="معیار سے کم"
+                    accessibilityLabel="ప్రమాణం కంటే తక్కువ"
                     className="text-flag"
                     style={
                       {
@@ -2180,7 +2180,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                         "fontVariant": undefined,
                         "letterSpacing": 0,
                         "lineHeight": 23.9,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
@@ -2194,7 +2194,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   style={
                     {
                       "alignItems": "center",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": "wrap",
                       "gap": 8,
                       "justifyContent": undefined,
@@ -2205,25 +2205,25 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                     className="text-chalk"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_700Bold",
-                        "fontSize": 14.5,
+                        "fontFamily": "NotoSansTelugu_600SemiBold",
+                        "fontSize": 13.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 29.7,
-                        "textAlign": "right",
+                        "lineHeight": 22.3,
+                        "textAlign": "left",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    قد
+                    ఎత్తు
                   </Text>
                 </View>
                 <View
                   className="w-16"
                   style={
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "flex-end",
                       "flexDirection": "column",
                       "gap": 4,
                       "justifyContent": undefined,
@@ -2234,24 +2234,24 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 12.5,
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 11.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 25.6,
-                        "textAlign": "right",
+                        "lineHeight": 19,
+                        "textAlign": "left",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    مطلوب
+                    అవసరం
                   </Text>
                   <View
                     style={
                       {
                         "alignItems": "baseline",
-                        "flexDirection": "row-reverse",
+                        "flexDirection": "row",
                         "flexWrap": undefined,
                         "gap": 4,
                         "justifyContent": undefined,
@@ -2270,7 +2270,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                           ],
                           "letterSpacing": 0,
                           "lineHeight": 16.7,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
@@ -2282,18 +2282,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
+                          "fontFamily": "NotoSansTelugu_400Regular",
+                          "fontSize": 11.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
+                          "lineHeight": 19,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      سینٹی میٹر
+                      సెం.మీ
                     </Text>
                   </View>
                 </View>
@@ -2301,7 +2301,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="w-16"
                   style={
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "flex-end",
                       "flexDirection": "column",
                       "gap": 4,
                       "justifyContent": undefined,
@@ -2312,24 +2312,24 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 12.5,
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 11.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 25.6,
-                        "textAlign": "right",
+                        "lineHeight": 19,
+                        "textAlign": "left",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    آپ کا
+                    మీది
                   </Text>
                   <View
                     style={
                       {
                         "alignItems": "baseline",
-                        "flexDirection": "row-reverse",
+                        "flexDirection": "row",
                         "flexWrap": undefined,
                         "gap": 4,
                         "justifyContent": undefined,
@@ -2349,7 +2349,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                           ],
                           "letterSpacing": 0,
                           "lineHeight": 16.7,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
@@ -2361,18 +2361,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                       className="text-flag"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
+                          "fontFamily": "NotoSansTelugu_400Regular",
+                          "fontSize": 11.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
+                          "lineHeight": 19,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      سینٹی میٹر
+                      సెం.మీ
                     </Text>
                   </View>
                 </View>
@@ -2382,7 +2382,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 style={
                   {
                     "alignItems": "center",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": undefined,
@@ -2395,7 +2395,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   testID="eligibility-mark-run800m"
                 >
                   <Text
-                    accessibilityLabel="معیار پر پورا"
+                    accessibilityLabel="ప్రమాణం అందుకుంది"
                     className="text-hivis"
                     style={
                       {
@@ -2404,7 +2404,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                         "fontVariant": undefined,
                         "letterSpacing": 0,
                         "lineHeight": 23.9,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
@@ -2418,7 +2418,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   style={
                     {
                       "alignItems": "center",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": "wrap",
                       "gap": 8,
                       "justifyContent": undefined,
@@ -2429,25 +2429,25 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                     className="text-chalk"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_700Bold",
-                        "fontSize": 14.5,
+                        "fontFamily": "NotoSansTelugu_600SemiBold",
+                        "fontSize": 13.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 29.7,
-                        "textAlign": "right",
+                        "lineHeight": 22.3,
+                        "textAlign": "left",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    ⁦800⁩ میٹر دوڑ
+                    ⁦800⁩ మీ. పరుగు
                   </Text>
                 </View>
                 <View
                   className="w-16"
                   style={
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "flex-end",
                       "flexDirection": "column",
                       "gap": 4,
                       "justifyContent": undefined,
@@ -2458,18 +2458,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 12.5,
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 11.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 25.6,
-                        "textAlign": "right",
+                        "lineHeight": 19,
+                        "textAlign": "left",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    مطلوب
+                    అవసరం
                   </Text>
                   <Text
                     accessibilityLanguage="en"
@@ -2483,7 +2483,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                         ],
                         "letterSpacing": 0,
                         "lineHeight": 16.7,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
@@ -2496,7 +2496,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="w-16"
                   style={
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "flex-end",
                       "flexDirection": "column",
                       "gap": 4,
                       "justifyContent": undefined,
@@ -2507,18 +2507,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 12.5,
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 11.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 25.6,
-                        "textAlign": "right",
+                        "lineHeight": 19,
+                        "textAlign": "left",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    آپ کا
+                    మీది
                   </Text>
                   <Text
                     accessibilityLanguage="en"
@@ -2532,7 +2532,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                         ],
                         "letterSpacing": 0,
                         "lineHeight": 16.7,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
@@ -2548,7 +2548,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 style={
                   {
                     "alignItems": "center",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": undefined,
@@ -2561,7 +2561,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   testID="eligibility-mark-longJump"
                 >
                   <Text
-                    accessibilityLabel="معیار پر پورا"
+                    accessibilityLabel="ప్రమాణం అందుకుంది"
                     className="text-hivis"
                     style={
                       {
@@ -2570,7 +2570,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                         "fontVariant": undefined,
                         "letterSpacing": 0,
                         "lineHeight": 23.9,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
@@ -2584,7 +2584,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   style={
                     {
                       "alignItems": "center",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": "wrap",
                       "gap": 8,
                       "justifyContent": undefined,
@@ -2595,25 +2595,25 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                     className="text-chalk"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_700Bold",
-                        "fontSize": 14.5,
+                        "fontFamily": "NotoSansTelugu_600SemiBold",
+                        "fontSize": 13.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 29.7,
-                        "textAlign": "right",
+                        "lineHeight": 22.3,
+                        "textAlign": "left",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    لمبی چھلانگ
+                    లాంగ్ జంప్
                   </Text>
                 </View>
                 <View
                   className="w-16"
                   style={
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "flex-end",
                       "flexDirection": "column",
                       "gap": 4,
                       "justifyContent": undefined,
@@ -2624,24 +2624,24 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 12.5,
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 11.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 25.6,
-                        "textAlign": "right",
+                        "lineHeight": 19,
+                        "textAlign": "left",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    مطلوب
+                    అవసరం
                   </Text>
                   <View
                     style={
                       {
                         "alignItems": "baseline",
-                        "flexDirection": "row-reverse",
+                        "flexDirection": "row",
                         "flexWrap": undefined,
                         "gap": 4,
                         "justifyContent": undefined,
@@ -2660,7 +2660,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                           ],
                           "letterSpacing": 0,
                           "lineHeight": 16.7,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
@@ -2672,18 +2672,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
+                          "fontFamily": "NotoSansTelugu_400Regular",
+                          "fontSize": 11.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
+                          "lineHeight": 19,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      میٹر
+                      మీ
                     </Text>
                   </View>
                 </View>
@@ -2691,7 +2691,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="w-16"
                   style={
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "flex-end",
                       "flexDirection": "column",
                       "gap": 4,
                       "justifyContent": undefined,
@@ -2702,24 +2702,24 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 12.5,
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 11.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 25.6,
-                        "textAlign": "right",
+                        "lineHeight": 19,
+                        "textAlign": "left",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    آپ کا
+                    మీది
                   </Text>
                   <View
                     style={
                       {
                         "alignItems": "baseline",
-                        "flexDirection": "row-reverse",
+                        "flexDirection": "row",
                         "flexWrap": undefined,
                         "gap": 4,
                         "justifyContent": undefined,
@@ -2739,7 +2739,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                           ],
                           "letterSpacing": 0,
                           "lineHeight": 16.7,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
@@ -2751,18 +2751,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                       className="text-hivis"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
+                          "fontFamily": "NotoSansTelugu_400Regular",
+                          "fontSize": 11.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
+                          "lineHeight": 19,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      میٹر
+                      మీ
                     </Text>
                   </View>
                 </View>
@@ -2772,7 +2772,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                 style={
                   {
                     "alignItems": "center",
-                    "flexDirection": "row-reverse",
+                    "flexDirection": "row",
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": undefined,
@@ -2785,7 +2785,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   testID="eligibility-mark-shotPut"
                 >
                   <Text
-                    accessibilityLabel="معیار پر پورا"
+                    accessibilityLabel="ప్రమాణం అందుకుంది"
                     className="text-hivis"
                     style={
                       {
@@ -2794,7 +2794,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                         "fontVariant": undefined,
                         "letterSpacing": 0,
                         "lineHeight": 23.9,
-                        "textAlign": "right",
+                        "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
@@ -2808,7 +2808,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   style={
                     {
                       "alignItems": "center",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": "wrap",
                       "gap": 8,
                       "justifyContent": undefined,
@@ -2819,25 +2819,25 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                     className="text-chalk"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_700Bold",
-                        "fontSize": 14.5,
+                        "fontFamily": "NotoSansTelugu_600SemiBold",
+                        "fontSize": 13.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 29.7,
-                        "textAlign": "right",
+                        "lineHeight": 22.3,
+                        "textAlign": "left",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    گولہ پھینک
+                    షాట్ పుట్
                   </Text>
                 </View>
                 <View
                   className="w-16"
                   style={
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "flex-end",
                       "flexDirection": "column",
                       "gap": 4,
                       "justifyContent": undefined,
@@ -2848,24 +2848,24 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 12.5,
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 11.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 25.6,
-                        "textAlign": "right",
+                        "lineHeight": 19,
+                        "textAlign": "left",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    مطلوب
+                    అవసరం
                   </Text>
                   <View
                     style={
                       {
                         "alignItems": "baseline",
-                        "flexDirection": "row-reverse",
+                        "flexDirection": "row",
                         "flexWrap": undefined,
                         "gap": 4,
                         "justifyContent": undefined,
@@ -2884,7 +2884,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                           ],
                           "letterSpacing": 0,
                           "lineHeight": 16.7,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
@@ -2896,18 +2896,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                       className="text-dim"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
+                          "fontFamily": "NotoSansTelugu_400Regular",
+                          "fontSize": 11.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
+                          "lineHeight": 19,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      میٹر
+                      మీ
                     </Text>
                   </View>
                 </View>
@@ -2915,7 +2915,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                   className="w-16"
                   style={
                     {
-                      "alignItems": "flex-start",
+                      "alignItems": "flex-end",
                       "flexDirection": "column",
                       "gap": 4,
                       "justifyContent": undefined,
@@ -2926,24 +2926,24 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                     className="text-dim"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 12.5,
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 11.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 25.6,
-                        "textAlign": "right",
+                        "lineHeight": 19,
+                        "textAlign": "left",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                   >
-                    آپ کا
+                    మీది
                   </Text>
                   <View
                     style={
                       {
                         "alignItems": "baseline",
-                        "flexDirection": "row-reverse",
+                        "flexDirection": "row",
                         "flexWrap": undefined,
                         "gap": 4,
                         "justifyContent": undefined,
@@ -2963,7 +2963,7 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                           ],
                           "letterSpacing": 0,
                           "lineHeight": 16.7,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
@@ -2975,18 +2975,18 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
                       className="text-hivis"
                       style={
                         {
-                          "fontFamily": "NotoNastaliqUrdu_400Regular",
-                          "fontSize": 12.5,
+                          "fontFamily": "NotoSansTelugu_400Regular",
+                          "fontSize": 11.5,
                           "fontVariant": undefined,
                           "letterSpacing": 0,
-                          "lineHeight": 25.6,
-                          "textAlign": "right",
+                          "lineHeight": 19,
+                          "textAlign": "left",
                           "textTransform": undefined,
-                          "writingDirection": "rtl",
+                          "writingDirection": "ltr",
                         }
                       }
                     >
-                      میٹر
+                      మీ
                     </Text>
                   </View>
                 </View>
@@ -2998,19 +2998,19 @@ exports[`EligibilityView (ur) mirrors the screen while the digits stay left-to-r
           className="text-dim mt-6"
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_400Regular",
-              "fontSize": 12.5,
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 11.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 25.6,
-              "textAlign": "right",
+              "lineHeight": 19,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
           testID="eligibility-disclaimer"
         >
-          معیارات ⁦2022⁩ کے نوٹیفکیشن کے مطابق؛ تازہ ترین TSLPRB نوٹیفکیشن سے تصدیق کریں۔
+          ప్రమాణాలు ⁦2022⁩ నోటిఫికేషన్ ప్రకారం; తాజా TSLPRB నోటిఫికేషన్‌తో నిర్ధారించుకోండి.
         </Text>
       </View>
     </RCTScrollView>

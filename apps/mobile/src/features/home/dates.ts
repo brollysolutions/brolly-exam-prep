@@ -3,9 +3,9 @@
  *
  * Deliberately `Intl`-free: Hermes ships `Intl` only on some platforms, and jest has to
  * produce the string the phone does. Home writes dates as digits rather than as words — a
- * month name would have to be translated into three languages and would leave the Latin face
- * mid-line in Telugu and Urdu, where a numeric date goes through `<Num>` instead: tabular,
- * LTR-isolated, and identical in all three. Day-first, which is how India writes them.
+ * month name would have to be translated and would leave the Latin face mid-line in Telugu,
+ * where a numeric date goes through `<Num>` instead: tabular, LTR-isolated, and identical in
+ * both languages. Day-first, which is how India writes them.
  *
  * `/updates` and `/affairs` print their own, longer form (`src/features/news/format.ts`):
  * those screens have a row to spend on a month name, a 60 px notice card does not. Both

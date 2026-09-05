@@ -14,7 +14,7 @@ function keys(obj, prefix = '') {
 }
 
 const en = keys(load('en')).sort();
-for (const lang of ['te', 'ur']) {
+for (const lang of ['te']) {
   test(`${lang}.json has exactly the same keys as en.json`, () => {
     const other = keys(load(lang)).sort();
     const missing = en.filter((k) => !other.includes(k));
@@ -27,7 +27,7 @@ test('interpolation placeholders match across languages', () => {
   const flat = (l) => Object.fromEntries(keys(load(l)).map((k) => [k, k.split('.').reduce((o, p) => o[p], load(l))]));
   const ph = (s) => (typeof s === 'string' ? [...s.matchAll(/\{\{(\w+)\}\}/g)].map((m) => m[1]).sort() : []);
   const e = flat('en');
-  for (const lang of ['te', 'ur']) {
+  for (const lang of ['te']) {
     const o = flat(lang);
     for (const k of Object.keys(e)) assert.deepEqual(ph(o[k]), ph(e[k]), `${lang}:${k}`);
   }
@@ -84,7 +84,7 @@ function declaredKeys(raw) {
   return keys;
 }
 
-for (const lang of ['en', 'te', 'ur']) {
+for (const lang of ['en', 'te']) {
   test(`${lang}.json declares every key exactly once`, () => {
     const raw = readFileSync(path.join(dir, '..', 'locales', `${lang}.json`), 'utf8');
     const counts = new Map();

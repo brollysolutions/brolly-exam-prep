@@ -139,7 +139,7 @@ export function OtpView({
         <Text variant="titleLg" weight="600" className="mt-2">
           {t('auth.otpTitle')}
         </Text>
-        {/* One sentence, not two fragments: Telugu and Urdu put the number before the postposition. */}
+        {/* One sentence, not two fragments: Telugu puts the number before the postposition. */}
         <Text testID="otp-phone" variant="body" color="dim" className="mt-2">
           <Trans
             i18nKey="auth.otpSub"

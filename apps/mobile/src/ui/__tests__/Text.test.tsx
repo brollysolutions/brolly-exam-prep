@@ -31,9 +31,9 @@ describe('Text', () => {
     expect(Array.isArray(el.props.style)).toBe(false);
   });
 
-  it('keeps Latin tracking when the face is en even if the UI language is Urdu', async () => {
+  it('keeps Latin tracking when the face is en even if the UI language is Telugu', async () => {
     await act(async () => {
-      await setLanguage('ur');
+      await setLanguage('te');
     });
     await render(
       <Text lang="en" variant="kicker" tracking="brand" testID="t">
@@ -46,26 +46,27 @@ describe('Text', () => {
     });
     await render(
       <Text variant="kicker" tracking="brand" testID="u">
-        اردو
+        తెలుగు
       </Text>,
     );
     expect(screen.getByTestId('u')).toHaveStyle({
       letterSpacing: 0,
-      fontFamily: 'NotoNastaliqUrdu_400Regular',
-      // Kickers have their own floor per face: 13 in Nastaliq, not the 12 px general minimum.
-      fontSize: 13,
+      fontFamily: 'NotoSansTelugu_400Regular',
+      // Kickers have their own floor per face: 12 in Telugu, not the 10.5 px kicker size.
+      fontSize: 12,
     });
   });
 
-  it('aligns to the reading start by default and mirrors end', async () => {
+  it('aligns to the reading start by default and `end` to the right', async () => {
     await act(async () => {
-      await setLanguage('ur');
+      await setLanguage('te');
     });
     await render(
       <Text testID="s" align="end">
         x
       </Text>,
     );
-    expect(screen.getByTestId('s')).toHaveStyle({ textAlign: 'left', writingDirection: 'rtl' });
+    // Both shipped languages read left-to-right; `writingDirection` follows `isRTL()`.
+    expect(screen.getByTestId('s')).toHaveStyle({ textAlign: 'right', writingDirection: 'ltr' });
   });
 });

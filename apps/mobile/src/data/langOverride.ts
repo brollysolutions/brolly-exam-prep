@@ -11,8 +11,8 @@ export function parseLangParam(search: string | null | undefined): Lang | undefi
 }
 
 /**
- * Dev/web-only escape hatch: the screenshot tooling opens `…/login?lang=ur` and gets the whole
- * app in Urdu without a language switcher on the screen. Native builds never see this — there is
+ * Dev/web-only escape hatch: the screenshot tooling opens `…/login?lang=te` and gets the whole
+ * app in Telugu without a language switcher on the screen. Native builds never see this — there is
  * no URL to read — so the stored preference stays the only way to change language on a phone.
  */
 export function webLangOverride(): Lang | undefined {

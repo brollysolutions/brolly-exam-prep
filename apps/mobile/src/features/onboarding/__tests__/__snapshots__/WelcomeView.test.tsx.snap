@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snapshot 1`] = `
+exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the snapshot 1`] = `
 <View
   className="flex-1 bg-tar"
   style={
@@ -878,7 +878,7 @@ exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snaps
                 "fontVariant": undefined,
                 "letterSpacing": 0,
                 "lineHeight": 29,
-                "textAlign": "right",
+                "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
               }
@@ -896,7 +896,7 @@ exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snaps
               "fontVariant": undefined,
               "letterSpacing": 3.4,
               "lineHeight": 24.7,
-              "textAlign": "right",
+              "textAlign": "left",
               "textTransform": undefined,
               "writingDirection": "ltr",
             }
@@ -918,16 +918,16 @@ exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snaps
       }
       data={
         [
-          3,
-          2,
           1,
+          2,
+          3,
         ]
       }
       getItem={[Function]}
       getItemCount={[Function]}
       getItemLayout={[Function]}
       horizontal={true}
-      initialScrollIndex={2}
+      initialScrollIndex={0}
       keyExtractor={[Function]}
       onContentSizeChange={[Function]}
       onLayout={[Function]}
@@ -946,13 +946,6 @@ exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snaps
       viewabilityConfigCallbackPairs={[]}
     >
       <View>
-        <View
-          style={
-            {
-              "width": 1500,
-            }
-          }
-        />
         <View
           onFocusCapture={[Function]}
           style={
@@ -995,39 +988,195 @@ exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snaps
               ⁦1 / 3⁩
             </Text>
             <Text
-              className="text-chalk mt-6"
+              className="text-chalk mt-3"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 24,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 23,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 49.2,
+                  "lineHeight": 37.9,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
               testID="welcome-title-1"
             >
-              اصل پی ڈبلیو ٹی کی مشق
+              నిజమైన PWT లాగే ప్రాక్టీస్
             </Text>
             <Text
-              className="text-dim mt-6"
+              className="text-dim mt-3"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_400Regular",
-                  "fontSize": 14.5,
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 13.5,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 29.7,
+                  "lineHeight": 22.3,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              200 سوالات، 3 گھنٹے، سرکاری امتحان جیسے سیکشن اور مارکنگ۔
+              200 ప్రశ్నలు, 3 గంటలు, అధికారిక పరీక్షలోని విభాగాలు, మార్కింగ్.
+            </Text>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          style={
+            [
+              {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            className="justify-center px-4"
+            style={
+              {
+                "flex": 1,
+                "width": 750,
+              }
+            }
+            testID="welcome-slide-2"
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-hazard"
+              style={
+                {
+                  "fontFamily": "Archivo_700Bold",
+                  "fontSize": 10.5,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 15.2,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦2 / 3⁩
+            </Text>
+            <Text
+              className="text-chalk mt-3"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 23,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 37.9,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+              testID="welcome-title-2"
+            >
+              ఇంటర్నెట్ లేకుండా పనిచేస్తుంది
+            </Text>
+            <Text
+              className="text-dim mt-3"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 22.3,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ప్రతి జవాబు మీ ఫోన్‌లో సేవ్ అవుతుంది. సిగ్నల్ వచ్చాక సబ్మిట్ చేయండి.
+            </Text>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          style={
+            [
+              {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            className="justify-center px-4"
+            style={
+              {
+                "flex": 1,
+                "width": 750,
+              }
+            }
+            testID="welcome-slide-3"
+          >
+            <Text
+              accessibilityLanguage="en"
+              className="text-hazard"
+              style={
+                {
+                  "fontFamily": "Archivo_700Bold",
+                  "fontSize": 10.5,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": 0,
+                  "lineHeight": 15.2,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ⁦3 / 3⁩
+            </Text>
+            <Text
+              className="text-chalk mt-3"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 23,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 37.9,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+              testID="welcome-title-3"
+            >
+              ఏం సరిదిద్దాలో కచ్చితంగా తెలుసుకోండి
+            </Text>
+            <Text
+              className="text-dim mt-3"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 13.5,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 22.3,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ర్యాంక్, కచ్చితత్వం, మీ స్కోరు పెంచే మూడు డ్రిల్స్.
             </Text>
           </View>
         </View>
@@ -1049,16 +1198,16 @@ exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snaps
       testID="welcome-dots"
     >
       <View
-        className="h-dot w-dot rounded-xs bg-line3"
-        testID="welcome-dot-3"
+        className="h-dot w-dot rounded-xs bg-hivis"
+        testID="welcome-dot-1"
       />
       <View
         className="h-dot w-dot rounded-xs bg-line3"
         testID="welcome-dot-2"
       />
       <View
-        className="h-dot w-dot rounded-xs bg-hivis"
-        testID="welcome-dot-1"
+        className="h-dot w-dot rounded-xs bg-line3"
+        testID="welcome-dot-3"
       />
     </View>
     <View
@@ -1066,7 +1215,7 @@ exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snaps
       style={
         {
           "alignItems": "center",
-          "flexDirection": "row-reverse",
+          "flexDirection": "row",
           "flexWrap": undefined,
           "gap": 12,
           "justifyContent": undefined,
@@ -1117,7 +1266,7 @@ exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snaps
           style={
             {
               "alignItems": "center",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 8,
               "justifyContent": undefined,
@@ -1128,18 +1277,18 @@ exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snaps
             className="text-dim"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 14.5,
+                "fontFamily": "NotoSansTelugu_600SemiBold",
+                "fontSize": 13.5,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 29.7,
+                "lineHeight": 22.3,
                 "textAlign": "center",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            چھوڑیں
+            దాటవేయి
           </Text>
         </View>
       </View>
@@ -1186,7 +1335,7 @@ exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snaps
           style={
             {
               "alignItems": "center",
-              "flexDirection": "row-reverse",
+              "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 8,
               "justifyContent": undefined,
@@ -1197,18 +1346,18 @@ exports[`WelcomeView (ur) lays the pages out right-to-left and matches the snaps
             className="text-tar"
             style={
               {
-                "fontFamily": "NotoNastaliqUrdu_700Bold",
-                "fontSize": 15.5,
+                "fontFamily": "NotoSansTelugu_700Bold",
+                "fontSize": 14.5,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 31.8,
+                "lineHeight": 23.9,
                 "textAlign": "center",
                 "textTransform": undefined,
-                "writingDirection": "rtl",
+                "writingDirection": "ltr",
               }
             }
           >
-            اگلا
+            తర్వాత
           </Text>
         </View>
       </View>

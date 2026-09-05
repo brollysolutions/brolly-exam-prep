@@ -20,8 +20,8 @@ export type MeasureProps = {
 /**
  * Digits plus a unit noun — "40 questions", "60 min". The one shape that keeps `<Num>` and
  * `t()` both honest: the number stays in the Latin face where it lines up and never re-orders,
- * and the unit keeps its own script, because Archivo has no Telugu or Nastaliq glyphs. The row
- * follows the reading direction, so Urdu reads right-to-left with the number leading.
+ * and the unit keeps its own script, because Archivo has no Telugu glyphs. The row follows
+ * the reading direction (RTL would read right-to-left with the number leading).
  *
  * Use `Duration` instead when the quantity is a span of time that may carry two units.
  */

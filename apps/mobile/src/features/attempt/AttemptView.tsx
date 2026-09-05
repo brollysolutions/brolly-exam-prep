@@ -392,7 +392,7 @@ export function AttemptView({
             {`${t('test.timeOnQ')} ·`}
           </Text>
           {/* Digits in Archivo, the unit in the language's own face: `common.seconds`
-              inside `<Num>` drew the Telugu and Urdu unit as tofu. */}
+              inside `<Num>` drew the Telugu unit as tofu. */}
           <Duration seconds={elapsedSec} variant="caption" weight="400" color="dim" />
         </Row>
       </ScrollView>
@@ -423,7 +423,7 @@ export function AttemptView({
               testID="btn-prev"
               className="h-touchLg w-touchLg items-center justify-center rounded-sm border border-line3"
             >
-              {/* Latin face: Nastaliq has no chevron glyph, so Urdu fell back to a tofu box. */}
+              {/* Latin face: a language face without the chevron glyph draws a tofu box. */}
               <Glyph color="chalk" testID="chevron-prev">
                 {d.chevronPrev}
               </Glyph>

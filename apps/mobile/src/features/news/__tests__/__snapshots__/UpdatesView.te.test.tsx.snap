@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link chevron round 1`] = `
+exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on open 1`] = `
 <View
   className="flex-1 bg-tar"
   style={
@@ -860,7 +860,7 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
         style={
           {
             "alignItems": "center",
-            "flexDirection": "row-reverse",
+            "flexDirection": "row",
             "flexWrap": undefined,
             "gap": 4,
             "justifyContent": undefined,
@@ -869,7 +869,7 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
         testID="updates-header"
       >
         <View
-          accessibilityLabel="واپس"
+          accessibilityLabel="వెనక్కి"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -914,13 +914,13 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                 "fontVariant": undefined,
                 "letterSpacing": 0,
                 "lineHeight": 29,
-                "textAlign": "right",
+                "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
               }
             }
           >
-            ›
+            ‹
           </Text>
         </View>
         <Text
@@ -928,18 +928,18 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
           numberOfLines={1}
           style={
             {
-              "fontFamily": "NotoNastaliqUrdu_700Bold",
-              "fontSize": 15.5,
+              "fontFamily": "NotoSansTelugu_600SemiBold",
+              "fontSize": 14.5,
               "fontVariant": undefined,
               "letterSpacing": 0,
-              "lineHeight": 31.8,
-              "textAlign": "right",
+              "lineHeight": 23.9,
+              "textAlign": "left",
               "textTransform": undefined,
-              "writingDirection": "rtl",
+              "writingDirection": "ltr",
             }
           }
         >
-          بورڈ کی اطلاعات
+          బోర్డు అప్‌డేట్‌లు
         </Text>
         <View
           className="px-2"
@@ -952,18 +952,18 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
               className="text-dim"
               style={
                 {
-                  "fontFamily": "NotoNastaliqUrdu_700Bold",
-                  "fontSize": 13,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 12,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 26.7,
+                  "lineHeight": 19.8,
                   "textAlign": "center",
                   "textTransform": undefined,
-                  "writingDirection": "rtl",
+                  "writingDirection": "ltr",
                 }
               }
             >
-              نمونہ ڈیٹا
+              నమూనా డేటా
             </Text>
           </View>
         </View>
@@ -1032,7 +1032,7 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                   style={
                     {
                       "alignItems": "center",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": undefined,
                       "gap": 8,
                       "justifyContent": "space-between",
@@ -1044,7 +1044,7 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                     style={
                       {
                         "alignItems": "center",
-                        "flexDirection": "row-reverse",
+                        "flexDirection": "row",
                         "flexWrap": undefined,
                         "gap": 8,
                         "justifyContent": undefined,
@@ -1059,18 +1059,18 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                         className="text-dim"
                         style={
                           {
-                            "fontFamily": "NotoNastaliqUrdu_700Bold",
-                            "fontSize": 13,
+                            "fontFamily": "NotoSansTelugu_600SemiBold",
+                            "fontSize": 12,
                             "fontVariant": undefined,
                             "letterSpacing": 0,
-                            "lineHeight": 26.7,
+                            "lineHeight": 19.8,
                             "textAlign": "center",
                             "textTransform": undefined,
-                            "writingDirection": "rtl",
+                            "writingDirection": "ltr",
                           }
                         }
                       >
-                        ہال ٹکٹ
+                        హాల్ టికెట్
                       </Text>
                     </View>
                     <Text
@@ -1085,7 +1085,7 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                           ],
                           "letterSpacing": 0,
                           "lineHeight": 16.7,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
@@ -1100,7 +1100,7 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                       {
                         "transform": [
                           {
-                            "rotate": "-90deg",
+                            "rotate": "90deg",
                           },
                         ],
                         "transitionDuration": 180,
@@ -1120,14 +1120,14 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                           "fontVariant": undefined,
                           "letterSpacing": 0,
                           "lineHeight": 19.6,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
                       }
                       testID="update-caret-nt-2026-hall-ticket"
                     >
-                      ◂
+                      ▸
                     </Text>
                   </View>
                 </View>
@@ -1135,19 +1135,19 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                   className="text-chalk mt-2"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_600SemiBold",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
+                      "lineHeight": 22.3,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                   testID="update-title-nt-2026-hall-ticket"
                 >
-                  ہال ٹکٹ 10 اکتوبر سے ڈاؤن لوڈ کریں
+                  హాల్ టికెట్లు అక్టోబర్ 10 నుంచి
                 </Text>
               </View>
               <View
@@ -1160,22 +1160,22 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                     className="text-chalk2"
                     style={
                       {
-                        "fontFamily": "NotoNastaliqUrdu_400Regular",
-                        "fontSize": 12.5,
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 11.5,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 25.6,
-                        "textAlign": "right",
+                        "lineHeight": 19,
+                        "textAlign": "left",
                         "textTransform": undefined,
-                        "writingDirection": "rtl",
+                        "writingDirection": "ltr",
                       }
                     }
                     testID="update-body-nt-2026-hall-ticket"
                   >
-                    ہال ٹکٹ اپنے درخواست نمبر اور تاریخِ پیدائش سے ڈاؤن لوڈ کریں۔ چھپی ہوئی کاپی اور ایک اصل تصویری شناختی کارڈ ساتھ لائیں؛ جس امیدوار کے پاس دونوں نہ ہوں اسے ہال میں داخل نہیں ہونے دیا جاتا۔
+                    దరఖాస్తు నంబర్, పుట్టిన తేదీతో హాల్ టికెట్ డౌన్‌లోడ్ చేసుకోండి. ప్రింట్ చేసిన కాపీని, ఒక ఒరిజినల్ ఫోటో గుర్తింపు కార్డును తీసుకెళ్లండి; రెండూ లేని అభ్యర్థిని పరీక్ష హాలులోకి అనుమతించరు.
                   </Text>
                   <View
-                    accessibilityLabel="مکمل نوٹس پڑھیں"
+                    accessibilityLabel="పూర్తి నోటీసు చదవండి"
                     accessibilityRole="link"
                     accessibilityState={
                       {
@@ -1214,7 +1214,7 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                       style={
                         {
                           "alignItems": "center",
-                          "flexDirection": "row-reverse",
+                          "flexDirection": "row",
                           "flexWrap": undefined,
                           "gap": 4,
                           "justifyContent": undefined,
@@ -1225,18 +1225,18 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                         className="text-chalk2"
                         style={
                           {
-                            "fontFamily": "NotoNastaliqUrdu_700Bold",
-                            "fontSize": 12.5,
+                            "fontFamily": "NotoSansTelugu_600SemiBold",
+                            "fontSize": 11.5,
                             "fontVariant": undefined,
                             "letterSpacing": 0,
-                            "lineHeight": 25.6,
-                            "textAlign": "right",
+                            "lineHeight": 19,
+                            "textAlign": "left",
                             "textTransform": undefined,
-                            "writingDirection": "rtl",
+                            "writingDirection": "ltr",
                           }
                         }
                       >
-                        مکمل نوٹس پڑھیں
+                        పూర్తి నోటీసు చదవండి
                       </Text>
                       <Text
                         accessibilityElementsHidden={true}
@@ -1249,13 +1249,13 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                             "fontVariant": undefined,
                             "letterSpacing": 0,
                             "lineHeight": 16.7,
-                            "textAlign": "right",
+                            "textAlign": "left",
                             "textTransform": undefined,
                             "writingDirection": "ltr",
                           }
                         }
                       >
-                        ‹
+                        ›
                       </Text>
                     </View>
                   </View>
@@ -1309,7 +1309,7 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                   style={
                     {
                       "alignItems": "center",
-                      "flexDirection": "row-reverse",
+                      "flexDirection": "row",
                       "flexWrap": undefined,
                       "gap": 8,
                       "justifyContent": "space-between",
@@ -1321,7 +1321,7 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                     style={
                       {
                         "alignItems": "center",
-                        "flexDirection": "row-reverse",
+                        "flexDirection": "row",
                         "flexWrap": undefined,
                         "gap": 8,
                         "justifyContent": undefined,
@@ -1336,18 +1336,18 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                         className="text-dim"
                         style={
                           {
-                            "fontFamily": "NotoNastaliqUrdu_700Bold",
-                            "fontSize": 13,
+                            "fontFamily": "NotoSansTelugu_600SemiBold",
+                            "fontSize": 12,
                             "fontVariant": undefined,
                             "letterSpacing": 0,
-                            "lineHeight": 26.7,
+                            "lineHeight": 19.8,
                             "textAlign": "center",
                             "textTransform": undefined,
-                            "writingDirection": "rtl",
+                            "writingDirection": "ltr",
                           }
                         }
                       >
-                        امتحان کی تاریخ
+                        పరీక్ష తేదీ
                       </Text>
                     </View>
                     <Text
@@ -1362,7 +1362,7 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                           ],
                           "letterSpacing": 0,
                           "lineHeight": 16.7,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
@@ -1397,14 +1397,14 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                           "fontVariant": undefined,
                           "letterSpacing": 0,
                           "lineHeight": 19.6,
-                          "textAlign": "right",
+                          "textAlign": "left",
                           "textTransform": undefined,
                           "writingDirection": "ltr",
                         }
                       }
                       testID="update-caret-nt-2026-exam-date"
                     >
-                      ◂
+                      ▸
                     </Text>
                   </View>
                 </View>
@@ -1412,19 +1412,19 @@ exports[`UpdatesView (ur) mirrors the screen and turns the caret and the link ch
                   className="text-chalk mt-2"
                   style={
                     {
-                      "fontFamily": "NotoNastaliqUrdu_700Bold",
-                      "fontSize": 14.5,
+                      "fontFamily": "NotoSansTelugu_600SemiBold",
+                      "fontSize": 13.5,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 29.7,
-                      "textAlign": "right",
+                      "lineHeight": 22.3,
+                      "textAlign": "left",
                       "textTransform": undefined,
-                      "writingDirection": "rtl",
+                      "writingDirection": "ltr",
                     }
                   }
                   testID="update-title-nt-2026-exam-date"
                 >
-                  ابتدائی تحریری امتحان 18 اکتوبر کو
+                  ప్రిలిమినరీ రాత పరీక్ష అక్టోబర్ 18న
                 </Text>
               </View>
             </View>

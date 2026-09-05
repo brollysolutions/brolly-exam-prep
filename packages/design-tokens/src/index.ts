@@ -7,7 +7,7 @@ export type ColorName = keyof typeof raw.colors;
 export type SpaceName = keyof typeof raw.spacing;
 export type RadiusName = keyof typeof raw.radius;
 export type TextName = keyof typeof raw.text;
-export type Lang = 'en' | 'te' | 'ur';
+export type Lang = 'en' | 'te';
 export type FontWeight = '400' | '500' | '600' | '700';
 
 export const colors = raw.colors;
@@ -26,13 +26,13 @@ export const fonts = raw.font as Record<
     family: string;
     weights: Record<FontWeight, string>;
     lineHeight: number;
-    /** Added to every role's size (Urdu runs 1 px larger). */
+    /** Added to every role's size (0 for both shipped faces; kept for a face that runs small). */
     bodyDelta: number;
-    /** Floor for any role — Nastaliq below 12 px is unreadable. */
+    /** Floor for any role (0 = none). */
     minSize: number;
     /**
      * Floor for the `kicker` role alone. Kickers are 10.5 px, bold and letter-spaced: legible
-     * in Archivo's caps, but Telugu and Urdu carry their meaning in marks that vanish at that
+     * in Archivo's caps, but Telugu carries its meaning in marks that vanish at that
      * size (design review round 1). `0` means "no special floor".
      */
     kickerMin: number;

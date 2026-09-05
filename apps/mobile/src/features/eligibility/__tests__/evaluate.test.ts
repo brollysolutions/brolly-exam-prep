@@ -211,7 +211,7 @@ describe('parseMeasure', () => {
     expect(parseMeasure(' 5 ')).toBe(5);
   });
 
-  // A Telugu or Urdu keyboard offers a decimal comma; typing one must not fail the candidate.
+  // A Telugu keyboard offers a decimal comma; typing one must not fail the candidate.
   it('accepts a decimal comma', () => {
     expect(parseMeasure('167,6')).toBe(167.6);
   });

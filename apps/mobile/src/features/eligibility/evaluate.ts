@@ -50,7 +50,7 @@ export type MeasureValues = Partial<Record<StandardKey, string>>;
 /**
  * A typed field as a number, or `undefined` for "not answered".
  *
- * A decimal comma is accepted because a Telugu or Urdu keyboard offers one, and anything at or
+ * A decimal comma is accepted because a Telugu keyboard offers one, and anything at or
  * below zero is treated as blank: a height of 0 is a half-typed number, not a failing one, and
  * failing someone on it would be a lie.
  */

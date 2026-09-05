@@ -5,8 +5,8 @@
  */
 
 /**
- * How a duration spells its units. English abuts them to the digits ("54s"); Telugu and
- * Urdu units are separate words ("54 sec"), the way `COST_ROWS` already writes them.
+ * How a duration spells its units. English abuts them to the digits ("54s"); Telugu
+ * units are separate words ("54 sec"), the way `COST_ROWS` already writes them.
  */
 export type DurationUnits = { minute: string; second: string; separator: string };
 
@@ -66,7 +66,7 @@ const SYMBOL_END = 0x22ff;
 
 /**
  * True when a value can render in the Latin face, i.e. inside `<Num>`. The localised
- * "what cost you marks" values carry their units in Telugu and Urdu, and Archivo has no
+ * "what cost you marks" values carry their units in Telugu, and Archivo has no
  * glyphs for those - such values must stay in the language's own face.
  */
 export function isLatinValue(value: string): boolean {

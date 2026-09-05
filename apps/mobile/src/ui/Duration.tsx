@@ -9,7 +9,7 @@ import { Text } from './Text';
 
 /**
  * The duration units for the current language. English abuts them to the digits ("54s");
- * Telugu and Urdu units are separate words ("54 sec"), which is how `COST_ROWS` already
+ * Telugu units are separate words ("54 sec"), which is how `COST_ROWS` already
  * spells the same quantities.
  */
 export function useDurationUnits(): DurationUnits {
@@ -34,8 +34,8 @@ export type DurationProps = {
 /**
  * A duration with its unit localised. The digits stay in `<Num>` - Latin face, tabular,
  * LTR-isolated - while the unit renders in the language's own face, because Archivo has no
- * Telugu or Nastaliq glyphs. Both rows follow the reading direction, so Urdu reads
- * right-to-left with the minutes leading; the flat string goes to the screen reader.
+ * Telugu glyphs. Both rows follow the reading direction (RTL would read right-to-left
+ * with the minutes leading); the flat string goes to the screen reader.
  */
 export function Duration({
   seconds,

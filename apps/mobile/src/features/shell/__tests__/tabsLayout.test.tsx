@@ -89,16 +89,16 @@ describe('tab bar', () => {
     expect(itemStyle().paddingBottom).toBe(6 + BOTTOM_INSET);
   });
 
-  it.each<[Lang, number]>([
-    ['te', 68],
-    ['ur', 76],
-  ])('gives %s a taller bar so its labels are not clipped', async (lang, height) => {
-    await act(async () => {
-      await setLanguage(lang);
-    });
-    await render(<TabsLayout />);
-    expect(barStyle().height).toBe(height + BOTTOM_INSET);
-    // Tracking is Latin-only.
-    expect(options.tabBarLabelStyle).toMatchObject({ letterSpacing: 0 });
-  });
+  it.each<[Lang, number]>([['te', 68]])(
+    'gives %s a taller bar so its labels are not clipped',
+    async (lang, height) => {
+      await act(async () => {
+        await setLanguage(lang);
+      });
+      await render(<TabsLayout />);
+      expect(barStyle().height).toBe(height + BOTTOM_INSET);
+      // Tracking is Latin-only.
+      expect(options.tabBarLabelStyle).toMatchObject({ letterSpacing: 0 });
+    },
+  );
 });

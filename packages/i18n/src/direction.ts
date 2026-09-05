@@ -5,7 +5,8 @@ import { isRTL, type Lang } from './i18n';
 /**
  * Direction helpers that follow the IN-APP language, not the OS locale.
  * We deliberately avoid I18nManager / start-end style props: they need an app restart,
- * and the prototype switches Urdu live from the test header.
+ * and the app switches language live from the header. RTL is dormant since F-26 (no RTL
+ * language ships) but every helper still resolves through `isRTL`.
  */
 export type Dir = {
   lang: Lang;
@@ -26,7 +27,7 @@ export type Dir = {
 export function useLang(): Lang {
   const { i18n } = useTranslation();
   const l = i18n.language.slice(0, 2);
-  return (l === 'te' || l === 'ur' ? l : 'en') as Lang;
+  return l === 'te' ? 'te' : 'en';
 }
 
 export function useDir(): Dir {

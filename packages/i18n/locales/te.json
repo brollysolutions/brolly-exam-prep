@@ -26,7 +26,7 @@
     "sampleData": "నమూనా డేటా",
     "nothingYet": "ఇంకా ఏమీ లేదు"
   },
-  "lang": { "en": "EN", "te": "తెలుగు", "ur": "اردو", "enShort": "EN", "teShort": "తె", "urShort": "اُر", "label": "భాష" },
+  "lang": { "en": "EN", "te": "తెలుగు", "enShort": "EN", "teShort": "తె", "label": "భాష" },
   "auth": {
     "loginTitle": "మీ ఫోన్ నంబర్",
     "loginSub": "OTP SMS ద్వారా వస్తుంది. ఇంటర్నెట్ అవసరం లేదు.",

@@ -17,17 +17,17 @@ const RESULT: ResultDetail = {
   review: SAMPLE_RESULT.review.map((r) => ({ ...r })),
 };
 
-describe('ResultView (ur)', () => {
+describe('ResultView (te)', () => {
   beforeAll(() => {
-    useLangStore.setState({ lang: 'ur' });
-    initI18n('ur');
+    useLangStore.setState({ lang: 'te' });
+    initI18n('te');
   });
 
-  it('mirrors the screen and matches the snapshot', async () => {
+  it('renders in Telugu and matches the snapshot', async () => {
     await render(<ResultView result={RESULT} />);
-    expect(screen.getByTestId('result-header')).toHaveStyle({ flexDirection: 'row-reverse' });
-    // Urdu copy from the locale file is on screen, and the score stays physically LTR.
-    expect(screen.getByText('آپ کا اسکور')).toBeOnTheScreen();
+    expect(screen.getByTestId('result-header')).toHaveStyle({ flexDirection: 'row' });
+    // Telugu copy from the locale file is on screen, and the score stays physically LTR.
+    expect(screen.getByText('మీ స్కోరు')).toBeOnTheScreen();
     expect(screen.getByTestId('result-score-row')).toHaveStyle({ flexDirection: 'row' });
     expect(screen.toJSON()).toMatchSnapshot();
   });

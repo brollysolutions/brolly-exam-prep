@@ -49,10 +49,10 @@ describe('WelcomeView', () => {
   });
 });
 
-describe('WelcomeView (ur)', () => {
+describe('WelcomeView (te)', () => {
   beforeAll(async () => {
     await act(async () => {
-      await setLanguage('ur');
+      await setLanguage('te');
     });
   });
 
@@ -62,25 +62,26 @@ describe('WelcomeView (ur)', () => {
     });
   });
 
-  it('lays the pages out right-to-left and matches the snapshot', async () => {
+  it('renders the Telugu pages left-to-right and matches the snapshot', async () => {
     await render(<WelcomeView onDone={jest.fn()} />);
-    expect(screen.getByText('اصل پی ڈبلیو ٹی کی مشق')).toBeOnTheScreen();
-    // The footer mirrors like every other row…
-    expect(screen.getByTestId('welcome-footer')).toHaveStyle({ flexDirection: 'row-reverse' });
-    // …but the dots track physical page order: slide 1 is the right-most page, so the row
-    // stays physically left-to-right and runs 3-2-1.
+    expect(screen.getByText('నిజమైన PWT లాగే ప్రాక్టీస్')).toBeOnTheScreen();
+    expect(screen.getByTestId('welcome-footer')).toHaveStyle({ flexDirection: 'row' });
+    // The dots track physical page order, which is 1-2-3 in a left-to-right language.
     const hidden = { includeHiddenElements: true };
     expect(screen.getByTestId('welcome-dots', hidden)).toHaveStyle({ flexDirection: 'row' });
     expect(
       screen.getAllByTestId(/^welcome-dot-/, hidden).map((dot) => dot.props.testID),
-    ).toEqual(['welcome-dot-3', 'welcome-dot-2', 'welcome-dot-1']);
-    // The brand acronym never falls back to Nastaliq.
+    ).toEqual(['welcome-dot-1', 'welcome-dot-2', 'welcome-dot-3']);
+    // The brand acronym never leaves the Latin face.
     expect(screen.getByText('PWT')).toHaveStyle({ fontFamily: 'Archivo_700Bold' });
-    // Nastaliq is set on a 2.05 line-height, and the title needs the room: 24 px type on a
-    // 49 px line, with the wider step to the subtitle underneath it.
+    // Telugu is set on a 1.65 line-height: 23 px type on a 37.9 px line, one step to the subtitle.
     const title = screen.getByTestId('welcome-title-1');
-    expect(title).toHaveStyle({ fontSize: 24, lineHeight: 49.2 });
-    expect(title.props.className).toContain('mt-6');
+    expect(title).toHaveStyle({
+      fontSize: 23,
+      lineHeight: 37.9,
+      fontFamily: 'NotoSansTelugu_600SemiBold',
+    });
+    expect(title.props.className).toContain('mt-3');
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });

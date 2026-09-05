@@ -1,6 +1,6 @@
 import { colors } from '@tslprb/design-tokens';
 import { act, render, screen, userEvent } from '@testing-library/react-native';
-import { initI18n, setLanguage } from '@tslprb/i18n';
+import { initI18n } from '@tslprb/i18n';
 
 import { Toggle } from '../Toggle';
 
@@ -42,26 +42,5 @@ describe('Toggle', () => {
     await render(<Toggle value onValueChange={jest.fn()} testID="t" />);
     // 52 track − 26 thumb − 3 inset.
     expect(screen.getByTestId('t-thumb')).toHaveStyle({ left: 23 });
-  });
-});
-
-describe('Toggle (ur)', () => {
-  beforeAll(async () => {
-    await act(async () => {
-      await setLanguage('ur');
-    });
-  });
-
-  afterAll(async () => {
-    await act(async () => {
-      await setLanguage('en');
-    });
-  });
-
-  it('travels toward the reading end, which in Urdu is the left', async () => {
-    const { rerender } = await render(<Toggle value onValueChange={jest.fn()} testID="t" />);
-    expect(screen.getByTestId('t-thumb')).toHaveStyle({ right: 23 });
-    await act(async () => rerender(<Toggle value={false} onValueChange={jest.fn()} testID="t" />));
-    expect(screen.getByTestId('t-thumb')).toHaveStyle({ right: 3 });
   });
 });

@@ -198,10 +198,10 @@ describe('LibraryView — previous papers', () => {
   });
 });
 
-describe('LibraryView (ur)', () => {
+describe('LibraryView (te)', () => {
   beforeAll(async () => {
     await act(async () => {
-      await setLanguage('ur');
+      await setLanguage('te');
     });
   });
 
@@ -211,10 +211,10 @@ describe('LibraryView (ur)', () => {
     });
   });
 
-  it('mirrors the rows and matches the snapshot', async () => {
-    await render(<LibraryView {...handlers()} lang="ur" />);
-    expect(screen.getByTestId('library-filters')).toHaveStyle({ flexDirection: 'row-reverse' });
-    expect(screen.getByText('پی ڈبلیو ٹی فل ماک 07')).toBeOnTheScreen();
+  it('renders the Telugu rows and matches the snapshot', async () => {
+    await render(<LibraryView {...handlers()} lang="te" />);
+    expect(screen.getByTestId('library-filters')).toHaveStyle({ flexDirection: 'row' });
+    expect(screen.getByText('PWT ఫుల్ మాక్ 07')).toBeOnTheScreen();
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });

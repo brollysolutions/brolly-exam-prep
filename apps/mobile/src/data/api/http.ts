@@ -41,7 +41,7 @@ export type HttpApiOptions = {
  *
  * The AppApi extras have no /v1 endpoint yet. `listTestMetas`, `getTestMeta` and
  * `getPaper` reject with 501 rather than fabricate data (the earlier version invented
- * Telugu and Urdu titles by copying the English one and guessed a pattern from the post,
+ * Telugu titles by copying the English one and guessed a pattern from the post,
  * which would have shipped silently wrong section locks). `getResultDetail` is the one
  * exception: it serves the fixture analysis so the result screen still renders against a
  * real backend, and says so.

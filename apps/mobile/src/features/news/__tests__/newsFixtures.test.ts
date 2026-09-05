@@ -11,7 +11,7 @@ import { en } from '@tslprb/i18n';
 
 import { isIsoDay } from '../format';
 
-const LANGS = ['en', 'te', 'ur'] as const;
+const LANGS = ['en', 'te'] as const;
 
 const KINDS: NoticeKind[] = ['notification', 'admitCard', 'examDate', 'result', 'pet'];
 const CATEGORIES: AffairCategory[] = ['india', 'telangana', 'world', 'sports', 'awards'];

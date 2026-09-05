@@ -9,10 +9,11 @@ describe('typography()', () => {
     });
   });
 
-  it('Urdu applies bodyDelta and never drops below 12 px', () => {
-    expect(typography('ur', 'statLabel').fontSize).toBe(12);
-    expect(typography('ur', 'body').fontSize).toBe(text.body + 1);
-    expect(typography('ur', 'kicker').letterSpacing).toBe(0);
+  it('Telugu keeps every role at its base size and drops the tracking', () => {
+    expect(typography('te', 'statLabel').fontSize).toBe(text.statLabel);
+    expect(typography('te', 'body').fontSize).toBe(text.body);
+    expect(typography('te', 'body').fontFamily).toBe('NotoSansTelugu_400Regular');
+    expect(typography('te', 'kicker').letterSpacing).toBe(0);
   });
 
   it('Telugu has no tracking and a ≥ 1.6 line-height', () => {
@@ -21,12 +22,11 @@ describe('typography()', () => {
     expect(t.lineHeight / t.fontSize).toBeGreaterThanOrEqual(1.6);
   });
 
-  // A 10.5 px kicker is legible in Archivo's caps; Telugu and Urdu carry their meaning in
-  // marks that disappear at that size, so those two faces get their own floor.
-  it('kickers have a per-language floor that only lifts the non-Latin faces', () => {
+  // A 10.5 px kicker is legible in Archivo's caps; Telugu carries its meaning in marks that
+  // disappear at that size, so that face gets its own floor.
+  it('kickers have a per-language floor that only lifts the non-Latin face', () => {
     expect(typography('en', 'kicker', '700').fontSize).toBe(text.kicker);
     expect(typography('te', 'kicker', '700').fontSize).toBe(12);
-    expect(typography('ur', 'kicker', '700').fontSize).toBe(13);
   });
 
   it('the kicker floor lifts nothing else', () => {

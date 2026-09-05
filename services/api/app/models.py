@@ -6,7 +6,7 @@ from an in-memory store (see app/routers/otp.py). The models + migration
 below define the target schema for the next phase.
 
 Question/section text and options are stored as JSONB keyed by language code
-("en" | "te" | "ur"), e.g. {"en": "...", "te": "...", "ur": "..."}.
+("en" | "te"), e.g. {"en": "...", "te": "..."}.
 """
 
 from __future__ import annotations
@@ -87,7 +87,7 @@ class Section(Base):
     test_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("tests.id", ondelete="CASCADE"), index=True
     )
-    name: Mapped[dict] = mapped_column(JSONB, nullable=False)  # {"en":..,"te":..,"ur":..}
+    name: Mapped[dict] = mapped_column(JSONB, nullable=False)  # {"en":..,"te":..}
     order_index: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
 
     test: Mapped[Test] = relationship(back_populates="sections")
@@ -107,8 +107,8 @@ class Question(Base):
         ForeignKey("sections.id", ondelete="CASCADE"), index=True
     )
     order_index: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
-    text: Mapped[dict] = mapped_column(JSONB, nullable=False)  # {"en":..,"te":..,"ur":..}
-    options: Mapped[dict] = mapped_column(JSONB, nullable=False)  # {"en":[..],"te":[..],"ur":[..]}
+    text: Mapped[dict] = mapped_column(JSONB, nullable=False)  # {"en":..,"te":..}
+    options: Mapped[dict] = mapped_column(JSONB, nullable=False)  # {"en":[..],"te":[..]}
     correct_index: Mapped[int] = mapped_column(Integer, nullable=False)
     explanation: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
 
