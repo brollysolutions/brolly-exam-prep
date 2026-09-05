@@ -11,13 +11,17 @@ import Animated, {
 
 import { useCountdown } from '@/data/useCountdown';
 import {
+  ActionBar,
   BackRow,
   Button,
+  cx,
   haptics,
   Keypad,
-  Kicker,
   Num,
   OtpCells,
+  PageHeader,
+  Pill,
+  pressedClass,
   Row,
   Screen,
   Text,
@@ -129,7 +133,7 @@ export function OtpView({
   return (
     <Screen
       testID="otp-screen"
-      overlay={error ? <Toast testID="otp-error" text={error} tone="flag" /> : undefined}
+      overlay={error ? <Toast testID="otp-error" text={error} tone="danger" /> : undefined}
     >
       <ScrollView
         className="flex-1"
@@ -143,15 +147,13 @@ export function OtpView({
           onPress={onChangeNumber}
         />
 
-        <Text variant="titleLg" weight="600" className="mt-2">
-          {t('auth.otpTitle')}
-        </Text>
+        <PageHeader title={t('auth.otpTitle')} testID="otp-header" className="mt-2" />
         {/* One sentence, not two fragments: Telugu puts the number before the postposition. */}
-        <Text testID="otp-phone" variant="body" color="dim" className="mt-2">
+        <Text testID="otp-phone" variant="body" color="ink3" className="mt-2">
           <Trans
             i18nKey="auth.otpSub"
             values={{ phone: formatPhone(phone, t('auth.countryCode')) }}
-            components={{ num: <Num variant="body" weight="600" color="chalk" /> }}
+            components={{ num: <Num variant="body" weight="600" color="ink" /> }}
           />
         </Text>
 
@@ -172,8 +174,8 @@ export function OtpView({
         </View>
 
         <Row gap={2} align="center" className="mt-4">
-          <View className="border-1.5 h-dot w-dot rounded-full border-dim" />
-          <Text variant="caption" color="dim" className="flex-1">
+          <View className="border-1.5 h-dot w-dot rounded-full border-ink3" />
+          <Text variant="caption" color="ink3" className="flex-1">
             {t('auth.otpAuto')}
           </Text>
         </Row>
@@ -201,19 +203,24 @@ export function OtpView({
         </View>
       </ScrollView>
 
-      <View className="px-3 pb-4 pt-2">
+      {/* The keypad and the one ink action ride the same bar, so the decision never scrolls
+          away from the cells it is about. */}
+      <ActionBar
+        testID="otp-bar"
+        primary={
+          <Button
+            testID="otp-verify"
+            size="lg"
+            label={t('auth.verify')}
+            disabled={!ready}
+            onPress={() => {
+              void verify();
+            }}
+          />
+        }
+      >
         <Keypad onKey={append} onDelete={remove} testID="otp-keypad" />
-        <Button
-          testID="otp-verify"
-          size="lg"
-          label={t('auth.verify')}
-          disabled={!ready}
-          onPress={() => {
-            void verify();
-          }}
-          className="mt-3"
-        />
-      </View>
+      </ActionBar>
     </Screen>
   );
 }
@@ -233,24 +240,26 @@ function DevCode({ code, onUse }: DevCodeProps) {
   const { pressed, handlers } = usePressed();
   return (
     <View className="mt-3">
-      <Kicker testID="otp-dev-code">
-        <Trans
-          i18nKey="auth.devCodeHint"
-          values={{ code }}
-          components={{ num: <Num variant="kicker" weight="700" color="dim" /> }}
-        />
-      </Kicker>
+      <Pill
+        testID="otp-dev-code"
+        label={
+          <Trans
+            i18nKey="auth.devCodeHint"
+            values={{ code }}
+            components={{ num: <Num variant="caption" weight="700" color="ink3" /> }}
+          />
+        }
+      />
       <Pressable
         testID="otp-use-dev-code"
         accessibilityRole="button"
-        android_ripple={{ color: colors.hivisTint3 }}
+        android_ripple={{ color: colors.accentTint }}
         onPress={onUse}
         {...handlers}
-        className="min-h-touch justify-center"
-        // One flattened object, never a callback: see `usePressed`.
-        style={pressed ? { opacity: 0.8 } : undefined}
+        // Pressed = a `surface2` fill: an opacity dim is invisible between two creams.
+        className={cx('mt-1 min-h-touch justify-center', pressed && pressedClass)}
       >
-        <Text variant="small" weight="600" color="chalk2">
+        <Text variant="small" weight="600" color="ink2">
           {t('auth.useDevCode')}
         </Text>
       </Pressable>
@@ -281,11 +290,11 @@ function Resend({ seconds, onResend }: ResendProps) {
   if (remainingSec > 0) {
     return (
       <View testID="otp-resend-line" className="mt-2 min-h-touch justify-center">
-        <Text variant="small" color="sand">
+        <Text variant="small" color="ink3">
           <Trans
             i18nKey="auth.resendIn"
             values={{ seconds: remainingSec }}
-            components={{ num: <Num variant="small" weight="400" color="sand" /> }}
+            components={{ num: <Num variant="small" weight="400" color="ink3" /> }}
           />
         </Text>
       </View>
@@ -295,7 +304,7 @@ function Resend({ seconds, onResend }: ResendProps) {
     <Pressable
       testID="otp-resend"
       accessibilityRole="button"
-      android_ripple={{ color: colors.hivisTint3 }}
+      android_ripple={{ color: colors.accentTint }}
       onPress={() => {
         // A resend always costs the full wait, whatever the clock was opened with.
         setEndsAt(Date.now() + RESEND_SECONDS * 1000);
@@ -303,13 +312,17 @@ function Resend({ seconds, onResend }: ResendProps) {
         onResend();
       }}
       {...handlers}
-      className="mt-2 min-h-touch justify-center"
-      // One flattened object, never a callback: see `usePressed`.
-      style={pressed ? { opacity: 0.8 } : undefined}
+      // Pressed = a `surface2` fill: an opacity dim is invisible between two creams.
+      className={cx('mt-2 min-h-touch justify-center', pressed && pressedClass)}
     >
-      <Text variant="small" weight="600" color="sand">
-        {t('auth.resend')}
-      </Text>
+      {/* Ink, not gold: gold is a fill on cream, so the link carries a gold dot instead of
+          gold letters. */}
+      <Row gap={2} align="center">
+        <View className="h-1.5 w-1.5 rounded-full bg-accentStrong" />
+        <Text variant="small" weight="600">
+          {t('auth.resend')}
+        </Text>
+      </Row>
     </Pressable>
   );
 }

@@ -107,61 +107,107 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
             </Text>
           </View>
         </View>
-        <Text
-          accessibilityLanguage="en"
-          className="text-hazard mt-1"
+        <View
+          className="mt-1"
           style={
             {
-              "fontFamily": "Inter_700Bold",
-              "fontSize": 10.5,
-              "fontVariant": [
-                "tabular-nums",
-              ],
-              "letterSpacing": 0,
-              "lineHeight": 15.8,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
+              "alignItems": undefined,
+              "flexDirection": "column",
+              "gap": 12,
+              "justifyContent": undefined,
             }
           }
-          testID="category-step"
+          testID="category-header"
         >
-          ⁦2 / 2⁩
-        </Text>
-        <Text
-          className="text-ink mt-2"
-          style={
-            {
-              "fontFamily": "NotoSerifTelugu_700Bold",
-              "fontSize": 24,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 36,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
+          <View
+            style={
+              {
+                "alignItems": undefined,
+                "flexDirection": "column",
+                "gap": 8,
+                "justifyContent": undefined,
+              }
             }
-          }
-        >
-          మీ కేటగిరీ
-        </Text>
-        <Text
-          className="text-dim mt-2"
-          style={
-            {
-              "fontFamily": "NotoSansTelugu_400Regular",
-              "fontSize": 13,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 21.5,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
-            }
-          }
-        >
-          PWT అర్హత శాతం కేటగిరీని బట్టి మారుతుంది.
-        </Text>
+          >
+            <View
+              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+              style={
+                {
+                  "justifyContent": "center",
+                  "minHeight": 24,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+              >
+                <Text
+                  accessibilityLanguage="en"
+                  className="text-ink"
+                  style={
+                    {
+                      "fontFamily": "Inter_700Bold",
+                      "fontSize": 12,
+                      "fontVariant": [
+                        "tabular-nums",
+                      ],
+                      "letterSpacing": 0,
+                      "lineHeight": 18,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                  testID="category-step"
+                >
+                  ⁦2 / 2⁩
+                </Text>
+              </View>
+            </View>
+            <Text
+              className="text-ink"
+              style={
+                {
+                  "fontFamily": "NotoSerifTelugu_700Bold",
+                  "fontSize": 26,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 39,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              మీ కేటగిరీ
+            </Text>
+            <Text
+              className="text-ink3"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 15,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 24.8,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              PWT అర్హత శాతం కేటగిరీని బట్టి మారుతుంది.
+            </Text>
+          </View>
+        </View>
         <View
           className="mt-5"
           style={
@@ -242,56 +288,43 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               >
                 ఓసీ
               </Text>
-              <View
-                className="mt-1"
+              <Text
+                accessibilityLanguage="en"
+                className="text-ink mt-1"
                 style={
                   {
-                    "alignItems": "baseline",
-                    "flexDirection": "row",
-                    "flexWrap": "wrap",
-                    "gap": 4,
-                    "justifyContent": undefined,
+                    "fontFamily": "Inter_700Bold",
+                    "fontSize": 22,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 33,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                <Text
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "NotoSansTelugu_400Regular",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
+                ⁦40%⁩
+              </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
-                >
-                  PWT అర్హత
-                </Text>
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "Inter_400Regular",
-                      "fontSize": 12,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 18,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  ⁦40%⁩
-                </Text>
-              </View>
+                }
+              >
+                PWT అర్హత
+              </Text>
             </View>
             <View
               accessibilityRole="button"
@@ -349,56 +382,43 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               >
                 ఈడబ్ల్యూఎస్
               </Text>
-              <View
-                className="mt-1"
+              <Text
+                accessibilityLanguage="en"
+                className="text-ink mt-1"
                 style={
                   {
-                    "alignItems": "baseline",
-                    "flexDirection": "row",
-                    "flexWrap": "wrap",
-                    "gap": 4,
-                    "justifyContent": undefined,
+                    "fontFamily": "Inter_700Bold",
+                    "fontSize": 22,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 33,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                <Text
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "NotoSansTelugu_400Regular",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
+                ⁦40%⁩
+              </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
-                >
-                  PWT అర్హత
-                </Text>
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "Inter_400Regular",
-                      "fontSize": 12,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 18,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  ⁦40%⁩
-                </Text>
-              </View>
+                }
+              >
+                PWT అర్హత
+              </Text>
             </View>
           </View>
           <View
@@ -469,56 +489,43 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               >
                 బీసీ
               </Text>
-              <View
-                className="mt-1"
+              <Text
+                accessibilityLanguage="en"
+                className="text-ink mt-1"
                 style={
                   {
-                    "alignItems": "baseline",
-                    "flexDirection": "row",
-                    "flexWrap": "wrap",
-                    "gap": 4,
-                    "justifyContent": undefined,
+                    "fontFamily": "Inter_700Bold",
+                    "fontSize": 22,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 33,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                <Text
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "NotoSansTelugu_400Regular",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
+                ⁦35%⁩
+              </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
-                >
-                  PWT అర్హత
-                </Text>
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "Inter_400Regular",
-                      "fontSize": 12,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 18,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  ⁦35%⁩
-                </Text>
-              </View>
+                }
+              >
+                PWT అర్హత
+              </Text>
             </View>
             <View
               accessibilityRole="button"
@@ -576,56 +583,43 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               >
                 ఎస్సీ
               </Text>
-              <View
-                className="mt-1"
+              <Text
+                accessibilityLanguage="en"
+                className="text-ink mt-1"
                 style={
                   {
-                    "alignItems": "baseline",
-                    "flexDirection": "row",
-                    "flexWrap": "wrap",
-                    "gap": 4,
-                    "justifyContent": undefined,
+                    "fontFamily": "Inter_700Bold",
+                    "fontSize": 22,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 33,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                <Text
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "NotoSansTelugu_400Regular",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
+                ⁦30%⁩
+              </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
-                >
-                  PWT అర్హత
-                </Text>
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "Inter_400Regular",
-                      "fontSize": 12,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 18,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  ⁦30%⁩
-                </Text>
-              </View>
+                }
+              >
+                PWT అర్హత
+              </Text>
             </View>
           </View>
           <View
@@ -696,56 +690,43 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               >
                 ఎస్టీ
               </Text>
-              <View
-                className="mt-1"
+              <Text
+                accessibilityLanguage="en"
+                className="text-ink mt-1"
                 style={
                   {
-                    "alignItems": "baseline",
-                    "flexDirection": "row",
-                    "flexWrap": "wrap",
-                    "gap": 4,
-                    "justifyContent": undefined,
+                    "fontFamily": "Inter_700Bold",
+                    "fontSize": 22,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 33,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                <Text
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "NotoSansTelugu_400Regular",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
+                ⁦30%⁩
+              </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
-                >
-                  PWT అర్హత
-                </Text>
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "Inter_400Regular",
-                      "fontSize": 12,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 18,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  ⁦30%⁩
-                </Text>
-              </View>
+                }
+              >
+                PWT అర్హత
+              </Text>
             </View>
             <View
               accessibilityRole="button"
@@ -803,131 +784,141 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
               >
                 మాజీ సైనికులు
               </Text>
-              <View
-                className="mt-1"
+              <Text
+                accessibilityLanguage="en"
+                className="text-ink mt-1"
                 style={
                   {
-                    "alignItems": "baseline",
-                    "flexDirection": "row",
-                    "flexWrap": "wrap",
-                    "gap": 4,
-                    "justifyContent": undefined,
+                    "fontFamily": "Inter_700Bold",
+                    "fontSize": 22,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 33,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                <Text
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "NotoSansTelugu_400Regular",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
+                ⁦30%⁩
+              </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
-                >
-                  PWT అర్హత
-                </Text>
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "Inter_400Regular",
-                      "fontSize": 12,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 18,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  ⁦30%⁩
-                </Text>
-              </View>
+                }
+              >
+                PWT అర్హత
+              </Text>
             </View>
           </View>
         </View>
       </View>
     </RCTScrollView>
     <View
-      className="px-3 pb-4"
+      className="bg-surface px-4 pb-4 pt-3 border-t border-line"
+      style={
+        {
+          "boxShadow": "0 -8px 32px -16px rgba(33,28,23,0.30)",
+        }
+      }
+      testID="category-bar"
     >
       <View
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        className="items-center justify-center rounded-sm px-4 bg-ink"
-        collapsable={false}
-        focusable={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           {
-            "height": 56,
+            "alignItems": "center",
+            "flexDirection": "row",
+            "flexWrap": undefined,
+            "gap": 12,
+            "justifyContent": undefined,
           }
         }
-        testID="category-start"
+        testID="category-bar-row"
       >
         <View
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "flexWrap": undefined,
-              "gap": 8,
-              "justifyContent": undefined,
-            }
-          }
+          className="flex-1"
         >
-          <Text
-            className="text-onInk"
-            style={
+          <View
+            accessibilityRole="button"
+            accessibilityState={
               {
-                "fontFamily": "NotoSansTelugu_700Bold",
-                "fontSize": 16,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 26.4,
-                "textAlign": "center",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center rounded-sm px-4 bg-ink"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "height": 56,
+              }
+            }
+            testID="category-start"
           >
-            ఫ్రీ మాక్ టెస్ట్ మొదలుపెట్టు
-          </Text>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-onInk"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 16,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 26.4,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ఫ్రీ మాక్ టెస్ట్ మొదలుపెట్టు
+              </Text>
+            </View>
+          </View>
         </View>
       </View>
     </View>

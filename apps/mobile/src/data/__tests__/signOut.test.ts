@@ -15,7 +15,7 @@ describe('signOut', () => {
 
   it('clears the session and the running attempt together', () => {
     const session = useSessionStore.getState();
-    session.setPhone('9876543210');
+    session.setPhone('9876544210');
     session.setToken('tok-1');
     session.setPost('pc');
     session.setCategory('sc');

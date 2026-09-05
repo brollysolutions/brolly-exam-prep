@@ -6,10 +6,20 @@ import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import Animated, { LinearTransition } from 'react-native-reanimated';
 
-import { BackHeader } from '@/features/result/Header';
-import { Chip, Glyph, Num, Row, Screen, Stack, Text, useMotion, usePressed } from '@/ui';
+import {
+  BackHeader,
+  Chip,
+  EmptyState,
+  Glyph,
+  Num,
+  Row,
+  Screen,
+  Stack,
+  Text,
+  useMotion,
+  usePressed,
+} from '@/ui';
 
-import { NewsEmpty } from './Empty';
 import { formatDay } from './format';
 
 /**
@@ -207,7 +217,7 @@ export function UpdatesView({ notices, lang, onBack, onOpenLink, openId }: Updat
         trailing={<Chip label={t('common.sampleData')} tone="label" testID="sample-data" />}
       />
       {notices.length === 0 ? (
-        <NewsEmpty message={t('updates.empty')} testID="updates-empty" />
+        <EmptyState message={t('updates.empty')} testID="updates-empty" />
       ) : (
         <ScrollView
           className="flex-1"

@@ -23,10 +23,7 @@ import {
 import { AttemptView } from '@/features/attempt/AttemptView';
 import { PaletteSheet } from '@/features/attempt/PaletteSheet';
 import { useAttemptGuards } from '@/features/attempt/useAttemptGuards';
-// Generic in name and in copy ("could not load, try again"), so the attempt screen borrows
-// the result screens' placeholder rather than growing a second one.
-import { LoadError } from '@/features/result/Placeholder';
-import { haptics, Screen, type SheetHandle } from '@/ui';
+import { haptics, LoadError, Screen, type SheetHandle } from '@/ui';
 
 /** A locked-section notice clears itself; the timer warnings stay until the next one lands. */
 const LOCKED_TOAST_MS = 4000;

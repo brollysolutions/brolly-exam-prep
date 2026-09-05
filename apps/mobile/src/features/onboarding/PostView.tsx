@@ -1,16 +1,21 @@
+import { Ionicons } from '@expo/vector-icons';
 import type { Post } from '@tslprb/fixtures';
+import { colors } from '@tslprb/design-tokens';
 import { useDir } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 
-import { BackRow, Button, Card, Num, Screen, Stack, Text } from '@/ui';
+import { ActionBar, BackRow, Button, Card, Num, PageHeader, Pill, Screen, Stack } from '@/ui';
 
 /** Step 1 of 2: the two post families the PWT is written for. */
 const POSTS: readonly { id: Post; titleKey: string; subKey: string }[] = [
   { id: 'pc', titleKey: 'onboarding.pcTitle', subKey: 'onboarding.pcSub' },
   { id: 'si', titleKey: 'onboarding.siTitle', subKey: 'onboarding.siSub' },
 ];
+
+/** The chosen card's mark: a filled circle reads as chosen where a bare tick reads as a tip. */
+const CHECK = 22;
 
 export type PostViewProps = {
   /** The post already on file, if the user is revisiting the step. */
@@ -40,21 +45,25 @@ export function PostView({ initialPost, onSubmit, onBack }: PostViewProps) {
         showsVerticalScrollIndicator={false}
       >
         {onBack && <BackRow testID="post-back" label={t('common.back')} onPress={onBack} />}
-        <Num
-          variant="kicker"
-          weight="700"
-          color="hazard"
-          tracking={d.lang === 'en' ? 'kicker' : 'none'}
-          testID="post-step"
-        >
-          {t('onboarding.step', { n: 1, total: 2 })}
-        </Num>
-        <Text variant="title" weight="600" className="mt-3">
-          {t('onboarding.postTitle')}
-        </Text>
-        <Text variant="small" color="dim" className="mt-2">
-          {t('onboarding.postSub')}
-        </Text>
+        <PageHeader
+          testID="post-header"
+          pill={
+            <Pill
+              leading={
+                <Num
+                  variant="caption"
+                  weight="700"
+                  testID="post-step"
+                  tracking={d.lang === 'en' ? 'kicker' : 'none'}
+                >
+                  {t('onboarding.step', { n: 1, total: 2 })}
+                </Num>
+              }
+            />
+          }
+          title={t('onboarding.postTitle')}
+          subtitle={t('onboarding.postSub')}
+        />
         <Stack testID="post-cards" gap={3} className="mt-6">
           {POSTS.map((p) => (
             <Card
@@ -64,19 +73,34 @@ export function PostView({ initialPost, onSubmit, onBack }: PostViewProps) {
               subtitle={t(p.subKey)}
               selected={post === p.id}
               onPress={() => setPost(p.id)}
+              trailing={
+                post === p.id ? (
+                  <Ionicons
+                    testID={`post-check-${p.id}`}
+                    name="checkmark-circle"
+                    size={CHECK}
+                    color={colors.accentStrong}
+                    accessibilityElementsHidden
+                    importantForAccessibility="no"
+                  />
+                ) : undefined
+              }
             />
           ))}
         </Stack>
       </ScrollView>
-      <View className="px-3 pb-4">
-        <Button
-          testID="post-continue"
-          size="lg"
-          label={t('common.continue')}
-          disabled={post === undefined}
-          onPress={() => post !== undefined && onSubmit(post)}
-        />
-      </View>
+      <ActionBar
+        testID="post-bar"
+        primary={
+          <Button
+            testID="post-continue"
+            size="lg"
+            label={t('common.continue')}
+            disabled={post === undefined}
+            onPress={() => post !== undefined && onSubmit(post)}
+          />
+        }
+      />
     </Screen>
   );
 }

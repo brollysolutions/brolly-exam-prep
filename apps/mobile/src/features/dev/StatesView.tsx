@@ -10,6 +10,7 @@ import { AttemptStates } from '@/features/dev/sections/AttemptStates';
 import { EligibilityStates } from '@/features/dev/sections/EligibilityStates';
 import { NewsStates } from '@/features/dev/sections/NewsStates';
 import { PaperStates } from '@/features/dev/sections/PaperStates';
+import { PatternStates } from '@/features/dev/sections/PatternStates';
 import { ResultStates } from '@/features/dev/sections/ResultStates';
 import { ShellStates } from '@/features/dev/sections/ShellStates';
 import { StudyStates } from '@/features/dev/sections/StudyStates';
@@ -329,9 +330,11 @@ export function StatesView() {
         <Rail critical />
       </Section>
 
-      <AttemptStates index="12" />
+      <PatternStates index="12" />
 
-      <Section index="13" title={DEV.auth}>
+      <AttemptStates index="13" />
+
+      <Section index="14" title={DEV.auth}>
         <Preview label={DEV.login}>
           <LoginView
             initialPhone="9000012345"
@@ -358,19 +361,19 @@ export function StatesView() {
         </Preview>
       </Section>
 
-      <ResultStates index="14" />
+      <ResultStates index="15" />
 
-      <ShellStates index="15" />
+      <ShellStates index="16" />
 
-      <StudyStates index="16" />
+      <StudyStates index="17" />
 
-      <PaperStates index="17" />
+      <PaperStates index="18" />
 
-      <NewsStates index="18" />
+      <NewsStates index="19" />
 
-      <EligibilityStates index="19" />
+      <EligibilityStates index="20" />
 
-      <Section index="20" title={DEV.brand}>
+      <Section index="21" title={DEV.brand}>
         <Brand />
         <Brand size={40} />
         <Brand variant="splash" size={160} />

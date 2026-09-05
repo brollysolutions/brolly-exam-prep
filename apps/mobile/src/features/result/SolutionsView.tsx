@@ -4,11 +4,22 @@ import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, View } from 'react-native';
 
-import { Chip, Duration, Glyph, Kicker, Num, Row, Screen, Stack, Text } from '@/ui';
+import {
+  BackHeader,
+  Chip,
+  Duration,
+  Glyph,
+  Kicker,
+  LoadError,
+  Num,
+  Row,
+  Screen,
+  Skeleton,
+  Stack,
+  Text,
+} from '@/ui';
 
 import { startEdge } from './edge';
-import { BackHeader } from './Header';
-import { LoadError, Skeleton } from './Placeholder';
 import { filterSolutionRows, type SolutionFilter, type SolutionRow } from './solutions';
 
 export type SolutionsViewProps = {
