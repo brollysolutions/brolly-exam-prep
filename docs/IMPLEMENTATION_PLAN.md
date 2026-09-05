@@ -61,7 +61,7 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 - [x] FastAPI app, routers, models, Alembic initial migration, arq worker with 3 cron jobs
 - [x] `docker-compose.yml`: postgres:17, redis:7, api, worker (the `dev` profile was removed in F-27)
 - [x] `packages/api-contracts` zod schemas + `ApiClient` interface · [ ] `pnpm contracts:gen` (needs live API)
-- [x] F-27 whole-app Docker stack — `pnpm docker:up` runs `web` (Expo static web export behind nginx, `apps/mobile/Dockerfile` + `nginx.conf`, built from the repo root with `EXPO_PUBLIC_API=http`) on :3201, `api` on :8200 (uvicorn 8000 inside, `--reload` bind mount, `/health` healthcheck, `CORS_ORIGINS` follows `WEB_HOST_PORT`), `worker`, postgres :5432, redis :6379; no compose profiles; root `.dockerignore`; `docker:*` / `api:*` scripts; `docker compose build web api` job in CI; `HttpApi` serves the catalogue, paper and analysis from the fixture bank until `/v1/tests/{id}/paper` exists (main)
+- [x] F-27 whole-app Docker stack — `pnpm docker:up` runs `web` (Expo static web export behind nginx, `apps/mobile/Dockerfile` + `nginx.conf`, built from the repo root with `EXPO_PUBLIC_API=http`) on :3201, `api` on :8200 (uvicorn 8000 inside, `--reload` bind mount, `/health` healthcheck, `CORS_ORIGINS` follows `WEB_HOST_PORT`), `worker`, postgres :5442, redis :6379; no compose profiles; root `.dockerignore`; `docker:*` / `api:*` scripts; `docker compose build web api` job in CI; `HttpApi` serves the catalogue, paper and analysis from the fixture bank until `/v1/tests/{id}/paper` exists (main)
 
 ## Phase 6 — Verification
 - [x] `pnpm typecheck && pnpm lint && pnpm test` green on the stack tip (478 mobile tests, 67 suites; i18n 6/6; package typechecks)

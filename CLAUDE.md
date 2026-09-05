@@ -12,7 +12,7 @@ Languages: **English default**, Telugu. Two languages only (Urdu removed 2026-09
 - `packages/i18n` (`@tslprb/i18n`) — en/te strings, i18next init, `useDir()` direction helpers (RTL dormant).
 - `packages/api-contracts` (`@tslprb/api-contracts`) — zod schemas + types shared by app and API.
 - `packages/fixtures` (`@tslprb/fixtures`) — exam pattern config, question bank (en/te), sample results.
-- `services/api` — FastAPI + SQLAlchemy 2 + Alembic + arq worker. Root `docker-compose.yml` runs the whole app (F-27): `web` (Expo web export behind nginx, `apps/mobile/Dockerfile`) on :3201, `api` on :8200, `worker`, postgres:17 (:5432), redis:7 (:6379); no compose profiles.
+- `services/api` — FastAPI + SQLAlchemy 2 + Alembic + arq worker. Root `docker-compose.yml` runs the whole app (F-27): `web` (Expo web export behind nginx, `apps/mobile/Dockerfile`) on :3201, `api` on :8200, `worker`, postgres:17 (:5442), redis:7 (:6379); no compose profiles.
 - `prototype/` — the approved Claude Design prototype. `prototype/extracted/template.html` is the readable source of every screen, state, string and colour. Treat it as the spec for content and behaviour.
 - `docs/` — `IMPLEMENTATION_PLAN.md` (live checklist), `FEATURES.md`, `PR_TRACKING.md`, `WORKFLOW.md`, `DESIGN_SYSTEM.md`, `specs/`.
 

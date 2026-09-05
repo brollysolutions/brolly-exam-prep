@@ -19,7 +19,7 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    database_url: str = "postgresql+asyncpg://tslprb:tslprb@localhost:5432/tslprb"
+    database_url: str = "postgresql+asyncpg://tslprb:tslprb@localhost:5442/tslprb"
     redis_url: str = "redis://localhost:6379/0"
 
     otp_dev_mode: bool = True
