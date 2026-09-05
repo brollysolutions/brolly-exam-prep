@@ -4,9 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 
 import { startEdge } from '@/features/result/edge';
-import { BackHeader, Chip, Kicker, Num, Screen, Stack, Text } from '@/ui';
+import { BackHeader, Chip, EmptyState, Kicker, Num, Screen, Stack, Text } from '@/ui';
 
-import { NewsEmpty } from './Empty';
 import { formatDay } from './format';
 
 export type AffairsViewProps = {
@@ -93,7 +92,7 @@ export function AffairsView({ affairs, lang, onBack }: AffairsViewProps) {
         trailing={<Chip label={t('common.sampleData')} tone="label" testID="sample-data" />}
       />
       {days.length === 0 ? (
-        <NewsEmpty message={t('affairs.empty')} testID="affairs-empty" />
+        <EmptyState message={t('affairs.empty')} testID="affairs-empty" />
       ) : (
         <ScrollView
           className="flex-1"

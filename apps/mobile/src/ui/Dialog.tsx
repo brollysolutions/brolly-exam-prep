@@ -5,9 +5,9 @@ import Animated from 'react-native-reanimated';
 import { Button } from './Button';
 import { Kicker } from './Kicker';
 import { useMotion } from './motion';
-import { Num } from './Num';
 import { Row } from './Row';
 import { Stack } from './Stack';
+import { StatTile } from './StatTile';
 import { Text } from './Text';
 
 /** `accent` asks (submit, resume), `danger` reports (auto-submit). `hivis`/`hazard`/`flag` are the old names. */
@@ -77,14 +77,7 @@ export function Dialog({
           {stats && stats.length > 0 && (
             <Row gap={2} className="mt-3">
               {stats.map((s) => (
-                <View key={s.label} className="flex-1 items-center rounded-sm bg-surface2 px-1 py-2">
-                  <Num variant="stat" align="center">
-                    {s.num}
-                  </Num>
-                  <Text variant="caption" color="ink3" align="center" className="mt-1">
-                    {s.label}
-                  </Text>
-                </View>
+                <StatTile key={s.label} value={s.num} label={s.label} align="center" />
               ))}
             </Row>
           )}

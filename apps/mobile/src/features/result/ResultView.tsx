@@ -16,9 +16,11 @@ import {
   Glyph,
   isLatinValue,
   Kicker,
+  LoadError,
   Num,
   Row,
   Screen,
+  Skeleton,
   Stack,
   Text,
   useDurationUnits,
@@ -26,7 +28,6 @@ import {
 } from '@/ui';
 
 import { startEdge } from './edge';
-import { LoadError, Skeleton } from './Placeholder';
 
 export type ResultViewProps = {
   /** Omit while the analysis is loading; the skeleton shows instead. */

@@ -9,6 +9,7 @@ import Animated, { LinearTransition } from 'react-native-reanimated';
 import {
   BackHeader,
   Chip,
+  EmptyState,
   Glyph,
   Num,
   Row,
@@ -19,7 +20,6 @@ import {
   usePressed,
 } from '@/ui';
 
-import { NewsEmpty } from './Empty';
 import { formatDay } from './format';
 
 /**
@@ -217,7 +217,7 @@ export function UpdatesView({ notices, lang, onBack, onOpenLink, openId }: Updat
         trailing={<Chip label={t('common.sampleData')} tone="label" testID="sample-data" />}
       />
       {notices.length === 0 ? (
-        <NewsEmpty message={t('updates.empty')} testID="updates-empty" />
+        <EmptyState message={t('updates.empty')} testID="updates-empty" />
       ) : (
         <ScrollView
           className="flex-1"
