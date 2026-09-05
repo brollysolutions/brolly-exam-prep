@@ -153,3 +153,48 @@ Sequential, one implementer per phase in the main checkout (worktrees are not wo
 - `hivis`, `hazard` and `sand` collapse to `#856a22` until Phases C/D restore distinct tones; the exit and auto-submit dialogs are tonally identical apart from the kicker colour until Phase D.
 - The root `doctor` script pointed at a binary that never resolved (`expo-doctor` is not installed locally) — it never ran; it now runs `npx expo-doctor`.
 - **Fix wave 1 (2026-09-05, after code + design review).** Tokens: `outline` (`#938b80`, 3.0:1 on canvas, 3.1 on surface) for control boundaries and `okTint` (`rgba(34,197,94,.12)`); `contrast.test.mjs` gained an rgba parser + alpha compositor, pins `accentInk` over `accentTint` (4.14) and on `surface2` (4.25) as below AA, `ink` over `accentTint` (14.0), `dangerInk` over `dangerTint` (5.1), `okInk` over `okTint` (5.8), and a non-text block (`outline`/`accentStrong` ≥ 3; `line`/`line2` structure only); `scale.test.mjs` pins the ramp and tracking. Type ramp caption 12 · small 13 · body 15 · bodyLg 16 · question 17.5 (kicker, display roles, wordmarks, stat/timer/score/field/otp/keypad/cell/prefix/glyph unchanged); Telugu display roles in Noto Serif Telugu 700 on a 1.5 line-height (`@expo-google-fonts/noto-serif-telugu`); tab labels on their own 16 (en) / 19 (te) px line. Primitives: Chip `muted` = weight 500 at ink3 (ink4 was 2.8:1), resting border `outline`, selected accent chip and selected segment carry a 2 px `accentStrong` inner bottom edge; Button `secondary` border `outline`, disabled primary = surface2 in the outline ring with ink3; SegmentedChips frame `outline` (dividers stay `line2`); Keypad/OtpCells/PhoneField idle `outline`; Toast `danger` = `dangerInk` + cream; Banner = Ionicons `cloud-offline-outline` in ink3; Card keeps press feedback when selected (dims, tint stays); the not-answered palette cell fills surface2 when held; Brand = 22 px umbrella, italic "Brolly", roman "Solutions" with `tracking.brand` (the token's one consumer). Assets: rasters recoloured to `colors.ink` in `make-brand-assets.mjs`, umbrella gets a 3 px transparent bleed (263×168), `icon.png` flattened on navy, `sharp` 0.35.4 pinned as a mobile devDependency. Screens pulled forward: ink kickers/keys/ticks on the tinted answer blocks (`SolutionsView`, `PaperView`, the gallery's state tiles — `EligibilityView`'s verdict title is 19 px/700, large text, and passed at 3:1 until D17 made the eligible verdict green: `okInk` on `okTint` in an `okInk` border); Home's affairs rows lost their `sand` edge and the hero's edge is `accentStrong` (one gold-edged card on Home). `app.json`: name "TSLPRB Prep", slug "tslprb-prep", scheme "tslprb" — no EAS project is linked yet, so these are changeable. Lockfile: adding the two packages flipped `@types/node` peer resolutions (26.4.0 ↔ 22.20.1) inside `pnpm-lock.yaml` — pnpm's own drift, no version changed.
+
+## Addendum — Phase B as built (2026-09-05)
+- Five commits on `main`: P1 patterns (`31c3fb9`), P2 patterns (`6ea1fbd`), Welcome/Login/OTP
+  (`bb5a899`), Post/Category/Home/Profile (`78b7c6b`), docs (`19a016e`). Fix wave 1 after the
+  code and design reviews: `5fc0e54` (the machine's auto-commit swept the primitive sources
+  before they could be staged, as it did three times during the phase itself), `301146e`
+  (screens), `d4be6ba` (tests) and this docs commit.
+- **Accepted deviations** (nine, with the eight the phase reported):
+  1. No per-slide fade on Welcome. `entering` on a virtualized row fires for every row at
+     mount, and the pager already carries the motion.
+  2. Post cards keep the `md` card radius. `Card` hard-codes `rounded-md`, and a second radius
+     class on the same element is the "two competing classes" defect the rules ban. **Phase C
+     gives `Card` a `radius` prop** so the spec's `lg` corner can land without that.
+  3. The guest card's subtitle stays Inter. A Playfair role between 19 and 24 px does not
+     exist, and `title` (24) inside a card would compete with the screen title. (Fix wave 1
+     moved its *body line* from `caption` to `body`, which is the readability half of it.)
+  4. No "brand pill" on Welcome: the copy for one does not exist, and 0 new locale keys was
+     the harder constraint.
+  5. The auth error toast keeps `Toast`'s 16 px inset — a primitive shared by four screens.
+  6. `LoadError`'s badge. It began as a `Chip tone="danger"`; fix wave 1 made it the same
+     24 px `Pill` as `EmptyState` with a `danger` dot, so the two waiting states are one
+     family and the decorative badge stopped announcing `selected`.
+  7. The `Pill` label is `caption` (12 px), not the 10.5 px kicker the spec's wording implies:
+     `ink3` is 4.7:1 on `surface2`, and nothing at that ratio goes below caption size.
+  8. Home's affairs category is `ink3`, not `accentInk`: it is a `MarkerRow` meta line now,
+     and the pattern owns that tone. Phase C rules on the affairs category colour.
+  9. **Category tiles stay `Card` + `<Num>`, not `StatTile`.** The step is a single-choice
+     grid and `StatTile` is not pressable. **Phase C is to give `StatTile` a selectable
+     variant**; until then the grid is a `Card` that reports `radio`/`checked`.
+- **Fix wave 1 rulings that outlive the phase.** A dot on a `Pill` is status (mine, active,
+  failed, passed), never decoration — a section heading carries none. Chrome owns the space it
+  sits in: `ActionBar` takes the bottom safe-area inset (its hosts pass
+  `Screen bottomInset={false}`, following the tab bar) and `PageHeader` owns the 20 px every
+  page opening starts on. `hitSlop` is not implemented in react-native-web, so a small control
+  grows its target with padding given back as negative margin, never with slop. A single-choice
+  card reports `accessibilityRole="radio"` with a checked state; a card or chip with no
+  `onPress` announces no selection at all. The selected card's 2 px edge is `accentStrong`
+  (3.37:1) — `accent` measured 2.34:1 against the cream around it, and the contrast test now
+  pins the edge against both its neighbours. `line`/`line2` on `surface2` measure 1.07:1: the
+  fill is the boundary and the hairline is texture. Every screen pattern takes a `className`
+  and an optional `testID`; icon sizes are `size.icon` (18) and `size.iconLg` (22).
+- **Phase C follow-ups recorded here**: `Card` gets a `radius` prop; `StatTile` gets a
+  selectable variant; the affairs category tone is Phase C's ruling; the `Chip` label/kicker
+  note from the design critic's deviation 7 is a Phase C item.
+
