@@ -9,8 +9,8 @@ const fontSize = Object.fromEntries(Object.entries(t.text).map(([k, v]) => [k, p
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
-    // Semantic names win over the legacy aliases where a name exists in both (`line`, `white`,
-    // `scrim`, `pressTint`); the aliases go in Phase E of the Brolly rebrand.
+    // The two blocks share no key; the merge order is defensive (semantic last, so a future
+    // collision would resolve to the semantic value). The aliases go in Phase E of the rebrand.
     colors: { transparent: 'transparent', current: 'currentColor', ...t.legacyColors, ...t.colors },
     spacing,
     borderRadius,

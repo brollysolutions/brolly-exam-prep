@@ -77,13 +77,13 @@ describe('WelcomeView (te)', () => {
     ).toEqual(['welcome-dot-1', 'welcome-dot-2', 'welcome-dot-3']);
     // The brand keeps its Latin name in every language; the exam name stays in the Telugu copy.
     expect(screen.getByRole('image', { name: 'Brolly Solutions' })).toBeOnTheScreen();
-    // Telugu is set on a 1.65 line-height: 24 px type on a 39.6 px line, one step to the
-    // subtitle — and in Noto 700, since Playfair (the English title face) has no Telugu.
+    // A Telugu title is a serif too: Noto Serif Telugu 700 on a 1.5 line-height (24 px type
+    // on a 36 px line), since Playfair (the English display face) has no Telugu.
     const title = screen.getByTestId('welcome-title-1');
     expect(title).toHaveStyle({
       fontSize: 24,
-      lineHeight: 39.6,
-      fontFamily: 'NotoSansTelugu_700Bold',
+      lineHeight: 36,
+      fontFamily: 'NotoSerifTelugu_700Bold',
     });
     expect(title.props.className).toContain('mt-3');
     expect(screen.toJSON()).toMatchSnapshot();

@@ -34,7 +34,8 @@ export const shadow = raw.shadow;
 
 /**
  * A warm ink shadow as a style object (`boxShadow`: CSS on web, native since RN 0.76).
- * Cards carry `card`, floating toasts `raised`, sheets and dialogs `sheet` (cast upward).
+ * Cards carry `card`, floating toasts `raised`, dialogs `sheet` (cast upward; the bottom sheet
+ * is a `@gorhom` surface and carries no shadow of its own).
  */
 export function shadowStyle(name: ShadowName): { boxShadow: string } {
   return { boxShadow: raw.shadow[name] };
