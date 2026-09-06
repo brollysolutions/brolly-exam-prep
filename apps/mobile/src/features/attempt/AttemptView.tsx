@@ -238,14 +238,10 @@ function OptionRow({
           )}
           style={{ width: size.optionKey, height: size.optionKey }}
         >
-          {/* Ink on the gold key box (6.47:1); the Latin face carries A–D in both languages. */}
-          <Text
-            variant="small"
-            weight="700"
-            color={selected ? 'ink' : 'ink3'}
-            align="center"
-            lang="en"
-          >
+          {/* Ink on the gold key box (6.47:1). The key stays in the LANGUAGE's own face: it is
+              a localised label, not a glyph — `test.optionKeys` is A–D in en and అ–ఈ in te, and
+              Inter draws the Telugu letters as tofu. */}
+          <Text variant="small" weight="700" color={selected ? 'ink' : 'ink3'} align="center">
             {glyph}
           </Text>
         </View>

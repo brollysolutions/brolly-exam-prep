@@ -877,11 +877,11 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                   className="text-ink3"
                   style={
                     {
-                      "fontFamily": "Inter_700Bold",
+                      "fontFamily": "NotoSansTelugu_700Bold",
                       "fontSize": 13,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 19.5,
+                      "lineHeight": 21.5,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -974,11 +974,11 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                   className="text-ink3"
                   style={
                     {
-                      "fontFamily": "Inter_700Bold",
+                      "fontFamily": "NotoSansTelugu_700Bold",
                       "fontSize": 13,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 19.5,
+                      "lineHeight": 21.5,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -1071,11 +1071,11 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                   className="text-ink3"
                   style={
                     {
-                      "fontFamily": "Inter_700Bold",
+                      "fontFamily": "NotoSansTelugu_700Bold",
                       "fontSize": 13,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 19.5,
+                      "lineHeight": 21.5,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -1168,11 +1168,11 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                   className="text-ink3"
                   style={
                     {
-                      "fontFamily": "Inter_700Bold",
+                      "fontFamily": "NotoSansTelugu_700Bold",
                       "fontSize": 13,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 19.5,
+                      "lineHeight": 21.5,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",

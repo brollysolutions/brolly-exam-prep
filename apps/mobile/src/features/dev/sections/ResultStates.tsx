@@ -21,6 +21,7 @@ const DEV = {
   error: 'F-12 result — failed load',
   wrong: 'F-13 solutions — wrong filter',
   all: 'F-13 solutions — all filter',
+  allCorrect: 'F-13 solutions — nothing wrong (P6)',
 } as const;
 
 const FRAME_HEIGHT = 520;
@@ -45,14 +46,25 @@ const BELOW_CUTOFF: ResultDetail = {
 };
 
 const ROWS = buildSolutionRows(QUALIFIED.review, buildPaper(FREE_MOCK_SHORT.sections));
+/** Every answer right: the wrong filter has nothing to show and the P6 empty state takes over. */
+const ALL_RIGHT = ROWS.filter((r) => r.isCorrect);
 
-function Frame({ label, children }: { label: string; children: ReactNode }) {
+function Frame({
+  label,
+  testID,
+  children,
+}: {
+  label: string;
+  testID: string;
+  children: ReactNode;
+}) {
   return (
     <Stack gap={2}>
-      <Text variant="caption" color="dim">
+      <Text variant="caption" color="ink3">
         {label}
       </Text>
       <View
+        testID={testID}
         className="overflow-hidden rounded-md border border-line"
         style={{ height: FRAME_HEIGHT }}
       >
@@ -65,26 +77,29 @@ function Frame({ label, children }: { label: string; children: ReactNode }) {
 export function ResultStates({ index }: { index: string }) {
   return (
     <Stack gap={3} className="mt-6">
-      <Kicker index={index} color="dim" uppercase>
+      <Kicker index={index} color="ink3" uppercase>
         {DEV.title}
       </Kicker>
-      <Frame label={DEV.qualified}>
+      <Frame label={DEV.qualified} testID="frame-result-qualified">
         <ResultView result={QUALIFIED} />
       </Frame>
-      <Frame label={DEV.below}>
+      <Frame label={DEV.below} testID="frame-result-below">
         <ResultView result={BELOW_CUTOFF} />
       </Frame>
-      <Frame label={DEV.loading}>
+      <Frame label={DEV.loading} testID="frame-result-loading">
         <ResultView />
       </Frame>
-      <Frame label={DEV.error}>
+      <Frame label={DEV.error} testID="frame-result-error">
         <ResultView failed />
       </Frame>
-      <Frame label={DEV.wrong}>
+      <Frame label={DEV.wrong} testID="frame-solutions-wrong">
         <SolutionsView rows={ROWS} initialFilter="wrong" />
       </Frame>
-      <Frame label={DEV.all}>
+      <Frame label={DEV.all} testID="frame-solutions-all">
         <SolutionsView rows={ROWS} initialFilter="all" />
+      </Frame>
+      <Frame label={DEV.allCorrect} testID="frame-solutions-allcorrect">
+        <SolutionsView rows={ALL_RIGHT} initialFilter="wrong" />
       </Frame>
     </Stack>
   );

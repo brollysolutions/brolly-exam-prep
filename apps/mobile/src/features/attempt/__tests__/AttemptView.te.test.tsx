@@ -57,6 +57,12 @@ describe('AttemptView (te)', () => {
     expect(screen.getByTestId('q-badge')).toHaveTextContent(
       new RegExp(`${te.test.qLabel}.?${iso(DEMO_ATTEMPT.current)}`),
     );
+    // The option key is a LOCALISED label, not a glyph: `test.optionKeys` is A–D in en and
+    // అ–ఈ in te, so it stays in the language's own face — Inter draws the Telugu letters as
+    // tofu. (Chevrons and ✕ ✓ are the glyphs that go the other way.)
+    expect(screen.getByText(te.test.optionKeys[0])).toHaveStyle({
+      fontFamily: 'NotoSansTelugu_700Bold',
+    });
     // Chevrons point along the reading direction.
     expect(screen.getByTestId('btn-prev')).toHaveTextContent('‹');
     expect(screen.getByTestId('btn-next')).toHaveTextContent(`${te.test.next}›`);

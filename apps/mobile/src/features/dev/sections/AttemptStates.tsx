@@ -157,10 +157,10 @@ export function AttemptStates({ index }: { index: string }) {
 
   return (
     <Stack gap={3} className="mt-6">
-      <Kicker index={index} color="dim" uppercase>
+      <Kicker index={index} color="ink3" uppercase>
         {DEV.title}
       </Kicker>
-      <Text variant="small" color="dim">
+      <Text variant="small" color="ink3">
         {DEV.sub}
       </Text>
 
@@ -172,11 +172,12 @@ export function AttemptStates({ index }: { index: string }) {
             accessibilityState={{ selected: id === value }}
             onPress={() => setId(value)}
             testID={`attempt-state-${value}`}
-            // Ink on the gold tint (gold text on it is 4.14:1); the gold border says "selected".
+            // Ink on the gold tint (gold text on it is 4.14:1); the 2 px `accentStrong` edge
+            // says "selected" — the brand `accent` is 2.34:1 against the cream around it.
             className={
               id === value
-                ? 'rounded-xs border border-hivis bg-hivisTint px-3 py-2'
-                : 'rounded-xs border border-line bg-panel4 px-3 py-2'
+                ? 'min-h-touch justify-center rounded-md border-2 border-accentStrong bg-accentTint px-3 py-2'
+                : 'min-h-touch justify-center rounded-md border border-outline bg-surface px-3 py-2'
             }
           >
             <Text variant="small" weight="600" color="ink">
@@ -188,7 +189,7 @@ export function AttemptStates({ index }: { index: string }) {
 
       <View
         testID="attempt-frame"
-        className="overflow-hidden border border-line"
+        className="overflow-hidden rounded-md border border-line"
         style={{ height: FRAME_HEIGHT }}
       >
         <AttemptView
