@@ -25,10 +25,11 @@ describe('PaperView (te)', () => {
       <PaperView title="PWT 2022 — SCT PC" questions={QUESTIONS} sections={SECTIONS} lang="te" />,
     );
     expect(screen.getByTestId('paper-header')).toHaveStyle({ flexDirection: 'row' });
-    // The 3 px accent follows the reading start, the left-hand side.
+    // The 3 px gold edge follows the reading start, the left-hand side. `accentStrong` (3.4:1)
+    // is the edge token; `accentInk` is the gold that carries words (F-30).
     QUESTIONS.forEach((question, i) => {
       const marked = screen.getByTestId(`paper-option-${i + 1}-${question.correct}`);
-      expect(marked).toHaveStyle({ borderLeftWidth: 3, borderLeftColor: colors.hivis });
+      expect(marked).toHaveStyle({ borderLeftWidth: 3, borderLeftColor: colors.accentStrong });
       expect(marked).not.toHaveStyle({ borderRightWidth: 3 });
     });
     const stem = screen.getByTestId('paper-stem-1');

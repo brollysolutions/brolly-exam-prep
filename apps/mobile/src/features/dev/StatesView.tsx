@@ -8,6 +8,7 @@ import { LoginView } from '@/features/auth/LoginView';
 import { OtpView } from '@/features/auth/OtpView';
 import { AttemptStates } from '@/features/dev/sections/AttemptStates';
 import { EligibilityStates } from '@/features/dev/sections/EligibilityStates';
+import { LibraryStates } from '@/features/dev/sections/LibraryStates';
 import { NewsStates } from '@/features/dev/sections/NewsStates';
 import { PaperStates } from '@/features/dev/sections/PaperStates';
 import { PatternStates } from '@/features/dev/sections/PatternStates';
@@ -367,13 +368,15 @@ export function StatesView() {
 
       <StudyStates index="17" />
 
-      <PaperStates index="18" />
+      <LibraryStates index="18" />
 
-      <NewsStates index="19" />
+      <PaperStates index="19" />
 
-      <EligibilityStates index="20" />
+      <NewsStates index="20" />
 
-      <Section index="21" title={DEV.brand}>
+      <EligibilityStates index="21" />
+
+      <Section index="22" title={DEV.brand}>
         <Brand />
         <Brand size={40} />
         <Brand variant="splash" size={160} />

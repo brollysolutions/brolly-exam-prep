@@ -9,12 +9,13 @@ import type { PaperQuestion } from '@/data/api';
 import { startEdge } from '@/features/result/edge';
 import {
   BackHeader,
+  Card,
   Chip,
   Glyph,
-  Kicker,
   LoadError,
   Measure,
   Num,
+  Pill,
   Row,
   Screen,
   Skeleton,
@@ -48,8 +49,12 @@ export function firstIndexOfSection(sections: SectionSpec[], i: number): number 
 }
 
 /**
- * One answer. The correct one carries the prototype's 3 px hi-vis start bar over the matching
- * tint and a ✓; the other three stay plain, because marking all four is marking none.
+ * One answer. The correct one carries a 3 px gold start bar over the gold tint and a ✓ in a
+ * 20 px gold disc; the other three stay plain, because marking all four is marking none.
+ *
+ * The disc is what makes the tick readable: a bare gold ✓ on cream is 2.3:1, under the 3:1
+ * floor for a mark, while ink on the gold disc is 11:1 and the disc itself clears it against
+ * the tint behind it.
  *
  * The ✓ is decorative — a screen reader is told which option is correct by the row's own
  * label, not by a glyph it would read as "check mark".
@@ -74,13 +79,13 @@ function Option({
     <View
       testID={`paper-option-${questionNo}-${index}`}
       accessibilityLabel={correct ? `${glyph} · ${label} · ${correctLabel}` : `${glyph} · ${label}`}
-      className="rounded-xs px-3 py-2"
+      className="rounded-sm px-3 py-2"
       // Tint and mirrored bar are object styles, never a class: css-interop accumulates a
       // dynamic className next to a style array, and RN's `borderStartWidth` follows
       // `I18nManager` rather than the in-app language (`startEdge`).
       style={
         correct
-          ? { backgroundColor: colors.hivisTint2, ...startEdge(d.isRTL, 'hivis') }
+          ? { backgroundColor: colors.accentTint, ...startEdge(d.isRTL, 'accentStrong') }
           : undefined
       }
     >
@@ -89,7 +94,7 @@ function Option({
           variant="small"
           weight="700"
           // Ink, not gold, on the gold tint (4.14:1 — fix wave 1, C2); the edge carries the mark.
-          color={correct ? 'ink' : 'dim'}
+          color={correct ? 'ink' : 'ink3'}
           lang="en"
           accessibilityElementsHidden
           importantForAccessibility="no"
@@ -99,7 +104,7 @@ function Option({
         <Text
           variant="body"
           weight={correct ? '600' : '400'}
-          color={correct ? 'chalk' : 'chalk2'}
+          color={correct ? 'ink' : 'ink2'}
           className="flex-1"
           accessibilityElementsHidden
           importantForAccessibility="no"
@@ -107,23 +112,25 @@ function Option({
           {label}
         </Text>
         {correct && (
-          <Glyph
-            variant="small"
-            weight="700"
-            color="ink"
-            testID={`paper-tick-${questionNo}-${index}`}
-            accessibilityElementsHidden
-            importantForAccessibility="no"
-          >
-            ✓
-          </Glyph>
+          <View className="h-5 w-5 items-center justify-center rounded-full bg-accent">
+            <Glyph
+              variant="small"
+              weight="700"
+              color="ink"
+              testID={`paper-tick-${questionNo}-${index}`}
+              accessibilityElementsHidden
+              importantForAccessibility="no"
+            >
+              ✓
+            </Glyph>
+          </View>
         )}
       </Row>
     </View>
   );
 }
 
-/** One question, answered: kicker, stem, the four options with the key marked, and why. */
+/** One question, answered: the Q pill, the stem, the four options with the key marked, and why. */
 function QuestionCard({
   question,
   questionNo,
@@ -137,16 +144,20 @@ function QuestionCard({
   const optionKeys = t('test.optionKeys', { returnObjects: true }) as unknown as string[];
   const correctLabel = t('solutions.correctAnswer');
   return (
-    <View
-      className="rounded-md border border-line bg-panel2 p-4"
-      testID={`paper-card-${questionNo}`}
-    >
-      <Row gap={1} align="baseline">
-        <Kicker tracking="kickerTight">{t('test.qLabel')}</Kicker>
-        <Num variant="kicker" color="dim" tracking="none">
-          {questionNo}
-        </Num>
-      </Row>
+    <Card testID={`paper-card-${questionNo}`}>
+      <Pill
+        testID={`paper-q-${questionNo}`}
+        leading={
+          <>
+            <Text variant="caption" weight="700" color="ink3" tracking="kicker">
+              {t('test.qLabel')}
+            </Text>
+            <Num variant="caption" weight="700" color="ink3" tracking="none">
+              {questionNo}
+            </Num>
+          </>
+        }
+      />
 
       {/* `question` carries the per-language size and line-height (en 1.45, te 1.65). */}
       <Text variant="question" className="mt-3" testID={`paper-stem-${questionNo}`}>
@@ -167,15 +178,13 @@ function QuestionCard({
         ))}
       </Stack>
 
-      <View className="mt-3 border-t border-panel3 pt-3">
-        <Kicker color="sand" tracking="kicker">
-          {t('paper.why')}
-        </Kicker>
-        <Text variant="body" color="chalk2" className="mt-2">
+      <Stack gap={2} className="mt-3 border-t border-line pt-3">
+        <Pill label={t('paper.why')} />
+        <Text variant="body" color="ink2">
           {question.explanation[lang]}
         </Text>
-      </View>
-    </View>
+      </Stack>
+    </Card>
   );
 }
 
@@ -275,6 +284,7 @@ export function PaperView({
             <Chip
               key={s.id}
               size="lg"
+              shape="pill"
               label={t(s.labelKey)}
               onPress={() => jump(i)}
               testID={`paper-section-${i}`}

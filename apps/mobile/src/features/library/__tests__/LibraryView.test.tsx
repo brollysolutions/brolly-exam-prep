@@ -69,11 +69,20 @@ describe('LibraryView', () => {
     );
   });
 
-  it('lets a locked paper recede instead of shouting like one you can sit', async () => {
+  // The badge says whether the paper will open, not the title's colour: `MarkerRow` gives every
+  // title the same ink, and the lock is the icon the tab bar and the pattern already use — the
+  // `⛌` glyph was a character no face outside the Latin one carries (F-30).
+  it('marks a locked paper with a lock, not by dimming its title', async () => {
     await render(<LibraryView {...handlers()} />);
-    expect(screen.getByText('PWT Full Mock 08').props.className).toMatch(/\btext-dim\b/);
-    expect(screen.getByText('PWT Full Mock 07').props.className).toMatch(/\btext-chalk\b/);
-    expect(screen.getByTestId('library-badge-mock-08')).toHaveTextContent(/⛌/);
+    expect(screen.getByText('PWT Full Mock 08').props.className).toMatch(/\btext-ink\b/);
+    expect(screen.getByText('PWT Full Mock 07').props.className).toMatch(/\btext-ink\b/);
+    expect(screen.getByTestId('library-badge-mock-08')).toHaveTextContent(/Locked$/);
+    expect(
+      screen.getByTestId('library-lock-mock-08', { includeHiddenElements: true }),
+    ).toBeOnTheScreen();
+    expect(
+      screen.queryByTestId('library-lock-mock-07', { includeHiddenElements: true }),
+    ).toBeNull();
   });
 
   it('gives every filter a full 48 px target', async () => {

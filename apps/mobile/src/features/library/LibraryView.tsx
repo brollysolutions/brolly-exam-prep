@@ -1,24 +1,27 @@
-import { colors } from '@tslprb/design-tokens';
+import { Ionicons } from '@expo/vector-icons';
+import { colors, size } from '@tslprb/design-tokens';
 import { TESTS, type TestKind, type TestMeta } from '@tslprb/fixtures';
 import type { Lang } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FlatList, Pressable, StyleSheet, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 import {
   Button,
+  Card,
   Chip,
-  cx,
   Glyph,
+  iso,
+  MarkerRow,
   Measure,
   Num,
+  PageHeader,
+  Pill,
   Row,
   Screen,
   Stack,
-  Text,
   Toast,
   useAutoDismiss,
-  usePressed,
 } from '@/ui';
 
 /** Reading order of the three shelves; also the chip order. */
@@ -28,11 +31,8 @@ const KINDS: { kind: TestKind; labelKey: string }[] = [
   { kind: 'previous', labelKey: 'library.previousYear' },
 ];
 
-/**
- * The same locked mark the attempt screen puts on a locked section tab — monochrome, and
- * rendered through `Glyph` so it never falls back to tofu in another face.
- */
-const LOCK_GLYPH = '⛌';
+/** The lock the badge wears, and the tab bar's own icon set. */
+const LOCK = size.icon;
 
 export type LibraryViewProps = {
   lang: Lang;
@@ -56,62 +56,78 @@ export type LibraryViewProps = {
   onLocked?: (id: string) => void;
 };
 
-/**
- * What every shelf says about a paper and no more: what it is, how big it is, and whether it
- * will open. Shared by the pressable rows and the previous-year row, which carries its own
- * buttons underneath instead.
- */
-function RowHead({ test, lang }: { test: TestMeta; lang: Lang }) {
+/** How big the paper is. Digits, so the row's meta line is a node and not a string. */
+function Size({ test }: { test: TestMeta }) {
   const { t } = useTranslation();
-  const locked = !test.free;
   return (
-    <Row gap={3} align="center" justify="between">
-      <Stack gap={1} className="flex-1">
-        {/* A locked paper is present but not available, so its title recedes rather than
-            shouting the same as one you can sit. */}
-        <Text variant="bodyLg" weight="600" color={locked ? 'dim' : 'chalk'}>
-          {test.title[lang]}
-        </Text>
-        <Row gap={2} align="baseline" wrap>
-          <Measure value={test.pattern.totalQuestions} unit={t('common.questionsUnit')} />
-          <Glyph variant="caption" color="mute">
-            ·
-          </Glyph>
-          <Measure value={test.pattern.durationMinutes} unit={t('common.minutesUnit')} />
-        </Row>
-      </Stack>
-      <Row gap={2} align="center">
-        {test.attempted && (
-          <Chip
-            testID={`library-best-${test.id}`}
-            label={t('library.bestScore')}
-            leading={
-              <Num variant="small" weight="700" color="dim">
-                {test.attempted.bestScore}
-              </Num>
-            }
-          />
-        )}
-        {/* Only the active filter wears hi-vis; a shelf of solid-yellow Free badges would
-            have three primary actions per row (design review round 1). */}
-        <Chip
-          testID={`library-badge-${test.id}`}
-          label={locked ? t('common.locked') : t('common.free')}
-          muted={locked}
-          leading={
-            locked ? (
-              <Glyph variant="small" color="mute">
-                {LOCK_GLYPH}
-              </Glyph>
-            ) : undefined
-          }
-        />
-      </Row>
+    <Row gap={2} align="baseline" wrap>
+      <Measure value={test.pattern.totalQuestions} unit={t('common.questionsUnit')} />
+      <Glyph variant="caption" color="ink3">
+        ·
+      </Glyph>
+      <Measure value={test.pattern.durationMinutes} unit={t('common.minutesUnit')} />
     </Row>
   );
 }
 
-/** One shelf row. Its own component so the press delta can live in state, not a callback. */
+/**
+ * What the row says about itself at its reading end: the best score you have on this paper,
+ * and whether it will open. Both quiet pills — a shelf of gold Free badges beside three gold
+ * filters would be six primary actions on one screen, so the gold stays on the active filter.
+ *
+ * A locked paper wears the lock icon the tab bar and `MarkerRow` already use, not the `⛌`
+ * glyph, which no face outside the Latin one carries.
+ */
+function Badges({ test }: { test: TestMeta }) {
+  const { t } = useTranslation();
+  const locked = !test.free;
+  return (
+    <>
+      {test.attempted && (
+        <Pill
+          testID={`library-best-${test.id}`}
+          label={t('library.bestScore')}
+          leading={
+            <Num variant="caption" weight="700" color="ink3">
+              {test.attempted.bestScore}
+            </Num>
+          }
+        />
+      )}
+      <Pill
+        testID={`library-badge-${test.id}`}
+        label={locked ? t('common.locked') : t('common.free')}
+        leading={
+          locked ? (
+            <Ionicons
+              testID={`library-lock-${test.id}`}
+              name="lock-closed-outline"
+              size={LOCK}
+              color={colors.ink3}
+              accessibilityElementsHidden
+              importantForAccessibility="no"
+            />
+          ) : undefined
+        }
+      />
+    </>
+  );
+}
+
+/** Everything a row is called out loud: a node meta says nothing, so the row spells it out. */
+function rowName(test: TestMeta, lang: Lang, t: (key: string) => string): string {
+  return [
+    test.title[lang],
+    `${iso(test.pattern.totalQuestions)} ${t('common.questionsUnit')}`,
+    `${iso(test.pattern.durationMinutes)} ${t('common.minutesUnit')}`,
+    test.attempted ? `${t('library.bestScore')} ${iso(test.attempted.bestScore)}` : null,
+    test.free ? t('common.free') : t('common.locked'),
+  ]
+    .filter(Boolean)
+    .join(' ');
+}
+
+/** One shelf row: the whole row is the tap target, and the badges are decoration on it. */
 function TestRow({
   test,
   lang,
@@ -123,20 +139,17 @@ function TestRow({
   first: boolean;
   onPress: () => void;
 }) {
-  const { pressed, handlers } = usePressed();
+  const { t } = useTranslation();
   return (
-    <Pressable
+    <MarkerRow
       testID={`library-row-${test.id}`}
-      accessibilityRole="button"
-      android_ripple={{ color: colors.hivisTint3 }}
+      first={first}
+      title={test.title[lang]}
+      meta={<Size test={test} />}
+      trailing={<Badges test={test} />}
+      accessibilityLabel={rowName(test, lang, t)}
       onPress={onPress}
-      {...handlers}
-      className={cx('min-h-[72px] justify-center border-b border-line', first && 'border-t')}
-      // One flattened object, never a callback: see `usePressed`.
-      style={StyleSheet.flatten([pressed ? { opacity: 0.85 } : null])}
-    >
-      <RowHead test={test} lang={lang} />
-    </Pressable>
+    />
   );
 }
 
@@ -145,9 +158,9 @@ function TestRow({
  * the clock, and something to read with the answers already on it. One tap target cannot be
  * both, so the row states the paper and then offers the choice underneath.
  *
- * Practise is the row's one hi-vis action and View paper stays `secondary`: a pair of
- * identical outlines made the reader work out which was the main move, and weight alone was
- * too quiet to say it. The filter chips overhead are navigation, not actions on this paper.
+ * Practise leads on the ink fill and View paper stays an outline: a pair of identical outlines
+ * made the reader work out which was the main move, and weight alone was too quiet to say it.
+ * The filter chips overhead are navigation, not actions on this paper.
  */
 function PreviousRow({
   test,
@@ -164,12 +177,14 @@ function PreviousRow({
 }) {
   const { t } = useTranslation();
   return (
-    <View
-      testID={`library-row-${test.id}`}
-      className={cx('justify-center border-b border-line py-3', first && 'border-t')}
-    >
-      <RowHead test={test} lang={lang} />
-      <Row gap={2} className="mt-3">
+    <View testID={`library-row-${test.id}`}>
+      <MarkerRow
+        first={first}
+        title={test.title[lang]}
+        meta={<Size test={test} />}
+        trailing={<Badges test={test} />}
+      />
+      <Row gap={2} className="pb-3">
         <Button
           variant="primary"
           size="md"
@@ -240,50 +255,53 @@ export function LibraryView({
       testID="library-screen"
       overlay={
         locked === undefined ? undefined : (
-          <Toast testID="library-locked-toast" text={t('library.lockedToast')} tone="hazard" />
+          // `info`: nothing failed and nothing is urgent — the paper is simply not yours yet.
+          <Toast testID="library-locked-toast" text={t('library.lockedToast')} tone="info" />
         )
       }
     >
-      <Text variant="titleLg" weight="600" className="mt-5">
-        {t('library.title')}
-      </Text>
+      <PageHeader testID="library-header" title={t('library.title')} />
 
-      <Row testID="library-filters" gap={2} wrap className="mt-4" accessibilityRole="radiogroup">
-        {KINDS.map((k) => (
-          <Chip
-            key={k.kind}
-            testID={`library-filter-${k.kind}`}
-            label={t(k.labelKey)}
-            size="lg"
-            active={k.kind === kind}
-            accessibilityRole="radio"
-            accessibilityState={{ checked: k.kind === kind }}
-            onPress={() => setKind(k.kind)}
-          />
-        ))}
-      </Row>
-
-      <FlatList
-        testID="library-list"
-        className="mt-4 flex-1"
-        contentContainerClassName="pb-6"
-        data={rows}
-        keyExtractor={(test) => test.id}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item, index }) =>
-          item.kind === 'previous' ? (
-            <PreviousRow
-              test={item}
-              lang={lang}
-              first={index === 0}
-              onPractise={() => press(item)}
-              onView={() => onViewPaper?.(item.id)}
+      <Stack gap={3} className="mt-5 flex-1">
+        <Row testID="library-filters" gap={2} wrap accessibilityRole="radiogroup">
+          {KINDS.map((k) => (
+            <Chip
+              key={k.kind}
+              testID={`library-filter-${k.kind}`}
+              label={t(k.labelKey)}
+              shape="pill"
+              size="lg"
+              active={k.kind === kind}
+              accessibilityRole="radio"
+              accessibilityState={{ checked: k.kind === kind }}
+              onPress={() => setKind(k.kind)}
             />
-          ) : (
-            <TestRow test={item} lang={lang} first={index === 0} onPress={() => press(item)} />
-          )
-        }
-      />
+          ))}
+        </Row>
+
+        {/* One shelf, one card: a run of bordered boxes competed with the filters above it. */}
+        <Card className="flex-1">
+          <FlatList
+            testID="library-list"
+            data={rows}
+            keyExtractor={(test) => test.id}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item, index }) =>
+              item.kind === 'previous' ? (
+                <PreviousRow
+                  test={item}
+                  lang={lang}
+                  first={index === 0}
+                  onPractise={() => press(item)}
+                  onView={() => onViewPaper?.(item.id)}
+                />
+              ) : (
+                <TestRow test={item} lang={lang} first={index === 0} onPress={() => press(item)} />
+              )
+            }
+          />
+        </Card>
+      </Stack>
     </Screen>
   );
 }

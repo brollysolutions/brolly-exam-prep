@@ -53,11 +53,12 @@ describe('PaperView', () => {
     await render(<PaperView {...props()} />);
     QUESTIONS.forEach((question, i) => {
       const n = i + 1;
-      // The mark is a 3 px hi-vis bar on the reading-start side plus the tint behind it.
+      // The mark is a 3 px gold bar on the reading-start side plus the gold tint behind it —
+      // `accentStrong`, the edge token that clears 3:1, not the gold text one (F-30).
       expect(screen.getByTestId(`paper-option-${n}-${question.correct}`)).toHaveStyle({
         borderLeftWidth: 3,
-        borderLeftColor: colors.hivis,
-        backgroundColor: colors.hivisTint2,
+        borderLeftColor: colors.accentStrong,
+        backgroundColor: colors.accentTint,
       });
       [0, 1, 2, 3]
         .filter((k) => k !== question.correct)
