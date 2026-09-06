@@ -87,7 +87,7 @@ function CalloutBlock({
   );
   if (tone === 'tip') {
     return (
-      <View testID={testID} className="rounded-md bg-surface2 p-3">
+      <View testID={testID} className="rounded-md bg-surface2 p-4">
         {body}
       </View>
     );

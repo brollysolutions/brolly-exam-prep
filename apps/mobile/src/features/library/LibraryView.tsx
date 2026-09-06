@@ -4,7 +4,7 @@ import { TESTS, type TestKind, type TestMeta } from '@tslprb/fixtures';
 import type { Lang } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FlatList, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 import {
   Button,
@@ -279,28 +279,39 @@ export function LibraryView({
           ))}
         </Row>
 
-        {/* One shelf, one card: a run of bordered boxes competed with the filters above it. */}
-        <Card className="flex-1">
-          <FlatList
-            testID="library-list"
-            data={rows}
-            keyExtractor={(test) => test.id}
-            showsVerticalScrollIndicator={false}
-            renderItem={({ item, index }) =>
-              item.kind === 'previous' ? (
+        {/* One shelf, one card: a run of bordered boxes competed with the filters above it.
+            The card hugs its rows and the scroller around it takes the height — a `flex-1`
+            card left two rows floating at the top of a screen-tall empty box. A shelf is four
+            papers at most, so the list is a scroller, not a `FlatList`. */}
+        <ScrollView
+          testID="library-list"
+          className="flex-1"
+          contentContainerClassName="pb-6"
+          showsVerticalScrollIndicator={false}
+        >
+          <Card>
+            {rows.map((test, index) =>
+              test.kind === 'previous' ? (
                 <PreviousRow
-                  test={item}
+                  key={test.id}
+                  test={test}
                   lang={lang}
                   first={index === 0}
-                  onPractise={() => press(item)}
-                  onView={() => onViewPaper?.(item.id)}
+                  onPractise={() => press(test)}
+                  onView={() => onViewPaper?.(test.id)}
                 />
               ) : (
-                <TestRow test={item} lang={lang} first={index === 0} onPress={() => press(item)} />
-              )
-            }
-          />
-        </Card>
+                <TestRow
+                  key={test.id}
+                  test={test}
+                  lang={lang}
+                  first={index === 0}
+                  onPress={() => press(test)}
+                />
+              ),
+            )}
+          </Card>
+        </ScrollView>
       </Stack>
     </Screen>
   );

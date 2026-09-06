@@ -1,4 +1,4 @@
-import { colors, motion } from '@tslprb/design-tokens';
+import { colors, motion, spacing } from '@tslprb/design-tokens';
 import type { Notice } from '@tslprb/fixtures';
 import { useDir, type Lang } from '@tslprb/i18n';
 import { useState } from 'react';
@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView } from 'react-native';
 import Animated, { LinearTransition } from 'react-native-reanimated';
 
-import { startEdge } from '@/features/result/edge';
+import { EDGE_WIDTH, startEdge } from '@/features/result/edge';
 import {
   BackHeader,
   Card,
@@ -34,6 +34,9 @@ import { formatDay } from './format';
  */
 const CARET_LTR = '▸';
 const CARET_RTL = '◂';
+
+/** `Card`'s own padding, which the open card's start edge is compensated against. */
+const CARD_PAD = spacing['4'];
 
 export type UpdatesViewProps = {
   /** Newest first — the order the list prints them in. */
@@ -127,14 +130,21 @@ function NoticeCard({
   // transition, not a shared value: two resting angles need no worklet.
   const turn = d.isRTL ? -90 : 90;
   const layout = m.reduced ? undefined : LinearTransition.duration(motion.base);
+  // The edge is a style, never a class (`startEdge`), and the reading-side padding gives its
+  // three pixels back — the way `Card` compensates for its own selected border — so opening a
+  // notice does not shove its pill three pixels out of line with the cards around it.
+  const edge = expanded
+    ? {
+        ...startEdge(d.isRTL, 'accentStrong'),
+        ...(d.isRTL
+          ? { paddingRight: CARD_PAD - EDGE_WIDTH }
+          : { paddingLeft: CARD_PAD - EDGE_WIDTH }),
+      }
+    : undefined;
 
   return (
     <Animated.View layout={layout}>
-      <Card
-        testID={`update-card-${notice.id}`}
-        // The mirrored edge is a style, never a class: see `startEdge`.
-        style={expanded ? startEdge(d.isRTL, 'accentStrong') : undefined}
-      >
+      <Card testID={`update-card-${notice.id}`} style={edge}>
         {/* The card supplies the padding, so the press target fills its inner box — the same
             shape `MarkerRow` takes inside a card on Home and Profile. */}
         <Pressable

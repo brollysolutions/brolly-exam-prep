@@ -178,6 +178,7 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                   "borderLeftColor": "#a17f2a",
                   "borderLeftWidth": 3,
                   "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+                  "paddingLeft": 13,
                 }
               }
               testID="update-card-nt-2026-hall-ticket"

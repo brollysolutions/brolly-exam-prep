@@ -690,7 +690,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
           </View>
         </View>
         <View
-          className="rounded-md bg-surface2 p-3"
+          className="rounded-md bg-surface2 p-4"
           testID="study-block-tip"
         >
           <View
