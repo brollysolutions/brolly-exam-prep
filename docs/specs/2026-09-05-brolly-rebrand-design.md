@@ -279,3 +279,60 @@ Three commits on `main` (base `dba672d`): the primitives (`e5ab5db`), the seven 
   here. D17: `BackHeader` gains an optional `title` in Phase E (above).
 - Mobile **873 tests / 96 suites / 16 snapshots** (856 at `dba672d`); tokens 44; i18n 4.
   Eight snapshots refreshed, every diff read by category.
+
+## Addendum — Phase D as built (2026-09-06)
+
+Four commits on `main` (base `37face2`): the primitives (`9743c44`), the attempt screen with its
+palette, overlays and toast tones (`d93799d`), Result and Solutions (`b1dc03f`), the two dev
+gallery sections plus the option-key face fix (`4a4c78b`), and this docs commit. Nothing pushed.
+
+- **The critical-time signal is fully static, as the plan asked**: a 4 px `dangerInk`
+  `HeaderBand` (new `size.band` token) over the header, a solid `dangerInk` timer box and a red
+  progress fill, with the pinned one-minute toast and haptic already in place. `Screen` loses
+  `rail`/`critical` with its last caller; `Rail` and `motion.pulse` survive for the dev gallery.
+- **Accepted deviations** (five, each measured on the running build):
+  1. **The five-minute timer's digits are ink, not `accentInk`.** `accentInk` on `accentSoft`
+     measures **3.34:1** — AA for the 23 px numeral, under it for the 12 px "TIME LEFT" above
+     it, and a label darker than the figure it names inverts the hierarchy. The `accentSoft`
+     fill under an `accentStrong` edge is what says "warning"; ink carries the text, as it does
+     on every other tint in the system. `DESIGN_SYSTEM.md`'s timer line is corrected to match.
+  2. **The unvisited palette cell keeps the `surface2` fill**, not the `surface` the Phase D
+     bullet names: the grid sits on a `surface` sheet, where `surface` measures **1.00:1** — a
+     cell, and a 14 px legend swatch, with no edge at all. `surface2` is 1.12 there, the same
+     "the fill is the boundary" model `Pill` and `StatTile` document. The border takes the
+     spec's `line`.
+  3. **The marks pill is ink and `dangerInk`, not `accentInk` and `dangerInk`.** Gold text on
+     the pill's `surface2` is 4.25:1, and gold in this app means the candidate's own input,
+     which the exam's marking scheme is not. Ink rewards, red penalises.
+  4. **Result's section indices are `ink3` numerals on pills, not `accentInk`** — the standing
+     F-30 fix-wave ruling ("a printed index is not gold"; `accentInk` on a pill is 4.25:1),
+     which outranks the Phase D bullet written before it.
+  5. **Result's "where you stand" and "what cost you marks" rows moved into `Card`s.** The
+     bullet only names the score card, the action cards and the CTA bar; a run of rows on the
+     bare canvas separated by 1.15:1 hairlines was the one block on the screen with no shape,
+     and every other list of rows in the app is a card of rows since Phase C.
+- **`ActionBar` gains `grow`.** The attempt footer's Next is 112 px (`size.nextBtn`, which the
+  Phase D bullet pins) and shares its row with a square Prev and a Questions button, so the
+  remaining width has to go to the secondary slot rather than to a `flex-1` wrapper the button
+  cannot grow into. One prop, one caller, tested both ways.
+- **`Dialog`'s tone becomes a pill.** `accent` (exit, submit, resume) is the gold pill, `danger`
+  (auto-submit) the quiet pill with a red status dot — red is a verdict and lives in the dot,
+  the `LoadError` ruling. The exit and auto cards are visually distinct for the first time since
+  Phase A recorded them as "tonally identical apart from the kicker colour".
+- **One regression this phase introduced and fixed inside it**: the option key was forced into
+  the Latin face on the ground that A–D is a glyph. It is not — `test.optionKeys` is A–D in en
+  and అ–ఈ in te, and Inter draws the Telugu letters as tofu. The key is back in the language's
+  own face and `AttemptView.te.test` pins it.
+- **Known, pre-existing, not this phase's**: the palette `Sheet` does not mount in the web
+  build. A `snapPoints: ['82%']` modal gets no container height there, so `present()` renders
+  nothing; the gallery's own content-sized `Sheet` (section 07) opens normally. Verified by
+  re-probing with the pre-F-31 `PaletteSheet.tsx` checked out, which behaves identically. The
+  palette's cells were reviewed instead through gallery section 10, where every state renders.
+- **Retired here**: `LOCK_GLYPH` (`AttemptView.tsx:38`), `Button variant="hazard"` on the
+  attempt footer, and the `sand` kicker at `SolutionsView.tsx:144` — the last of that alias in
+  the product. Phase E deletes the aliases themselves.
+- **0 new locale keys**; no route, store, string or product testID change. Toast tones in
+  `app/test/[id]/index.tsx` moved from `hazard`/`flag` to `accent`/`danger`/`info` — three
+  presentational literals, not logic. Mobile **898 tests / 97 suites / 16 snapshots** (890 at
+  commit 2, 882 at commit 1, 873 at the base); tokens 44; i18n 4. Three snapshots refreshed
+  (`AttemptView.te` twice, `ResultView.te`, `SolutionsView.te`).
