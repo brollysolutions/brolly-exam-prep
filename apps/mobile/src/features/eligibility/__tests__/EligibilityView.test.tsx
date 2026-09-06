@@ -1,4 +1,5 @@
-import { fireEvent, render, screen, userEvent, waitFor } from '@testing-library/react-native';
+import { act, fireEvent, render, screen, userEvent, waitFor } from '@testing-library/react-native';
+import { colors } from '@tslprb/design-tokens';
 import { standardsFor } from '@tslprb/fixtures';
 import { i18n, initI18n } from '@tslprb/i18n';
 import { ScrollView } from 'react-native';
@@ -163,10 +164,14 @@ describe('EligibilityView — the form', () => {
     expect(runField('run1600m', 'sec')).toHaveProp('placeholder', '15');
   });
 
-  it('heads the fields with a kicker and keeps the picker kickers in sentence case', async () => {
+  it('heads each block with a pill and keeps those labels in sentence case', async () => {
     await render(<EligibilityView {...props()} />);
     expect(screen.getByText(t('eligibility.measurements'))).toBeOnTheScreen();
     expect(screen.getByText(t('eligibility.post')).props.style.textTransform).toBeUndefined();
+    // A `Pill`, not a bare kicker: the label the rest of the app names a block with.
+    expect(screen.getByText(t('eligibility.post')).parent?.parent?.props.className).toMatch(
+      /\brounded-full\b/,
+    );
   });
 
   // Three stacked pickers cannot each carry a yellow block beside the one yellow action:
@@ -177,6 +182,32 @@ describe('EligibilityView — the form', () => {
     expect(cell.props.className).toMatch(/\bbg-surface2\b/);
     expect(cell.props.className).toMatch(/\bflex-1\b/);
     expect(cell.props.className).not.toMatch(/\bbg-accentSoft\b/);
+  });
+
+  // The box a figure is typed into: `outline` at rest (3.0:1 — the boundary every interactive
+  // outlined control rests on), a 2 px gold ring on focus, and the padding gives the pixel
+  // back so the digits never shift under the caret (F-30).
+  it('rings a focused field in gold and compensates the padding for it', async () => {
+    await render(<EligibilityView {...props()} />);
+    const box = () => screen.getByTestId('eligibility-field-height').parent;
+    expect(box()?.props.className).toMatch(/\bborder border-outline px-3\b/);
+    expect(box()?.props.className).toMatch(/\bbg-surface\b/);
+
+    await act(async () => {
+      fireEvent(screen.getByTestId('eligibility-field-height'), 'focus');
+    });
+    expect(box()?.props.className).toMatch(/\bborder-2 border-accentStrong\b/);
+    expect(box()?.props.className).toMatch(/px-\[11px\]/);
+    expect(box()?.props.className).not.toMatch(/\bpx-3\b/);
+  });
+
+  // `ink4` is 2.8:1 and decorative: a hint has to be readable to be a hint.
+  it('places the hint in ink3, never in the decorative grey', async () => {
+    await render(<EligibilityView {...props()} />);
+    expect(screen.getByTestId('eligibility-field-height')).toHaveProp(
+      'placeholderTextColor',
+      colors.ink3,
+    );
   });
 
   it('moves the three pickers', async () => {
@@ -260,6 +291,37 @@ describe('EligibilityView — the verdict', () => {
     expect(verdict.props.className).toMatch(/\bbg-okTint\b/);
     expect(verdict.props.className).not.toMatch(/\bborder-hivis\b/);
     expect(screen.getByText(t('eligibility.eligible')).props.className).toMatch(/\btext-okInk\b/);
+  });
+
+  // Three tones, each a text colour inside a box tinted to match it (F-30). The unfinished
+  // box rests on `outline`, not on a 1.07:1 hairline it would be invisible against.
+  it('colours a missed verdict red and an unfinished one ink3', async () => {
+    const missed = { ...PASSING, height: '160' };
+    await render(<EligibilityView {...props({ values: missed, result: result(missed) })} />);
+    let verdict = screen.getByTestId('eligibility-verdict');
+    expect(verdict.props.className).toMatch(/\bborder-dangerInk\b/);
+    expect(verdict.props.className).toMatch(/\bbg-dangerTint\b/);
+    expect(screen.getByText(t('eligibility.notYet')).props.className).toMatch(
+      /\btext-dangerInk\b/,
+    );
+
+    const partial = { height: '172' };
+    await render(<EligibilityView {...props({ values: partial, result: result(partial) })} />);
+    verdict = screen.getByTestId('eligibility-verdict');
+    expect(verdict.props.className).toMatch(/\bborder-outline\b/);
+    expect(verdict.props.className).toMatch(/\bbg-surface2\b/);
+    expect(screen.getByText(t('eligibility.incomplete')).props.className).toMatch(
+      /\btext-ink3\b/,
+    );
+  });
+
+  // The verdict is the page's answer, so it is the page's headline: a display role, which
+  // means Playfair in English and Noto Serif Telugu in Telugu.
+  it('sets the verdict in the display face', async () => {
+    await render(<EligibilityView {...props({ values: PASSING, result: result(PASSING) })} />);
+    expect(screen.getByText(t('eligibility.eligible'))).toHaveStyle({
+      fontFamily: 'PlayfairDisplay_400Regular',
+    });
   });
 
   it('prints the required figure beside the entered one on every row', async () => {

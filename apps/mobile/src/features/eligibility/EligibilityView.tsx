@@ -19,13 +19,14 @@ import Animated, { LinearTransition } from 'react-native-reanimated';
 import {
   BackHeader,
   Button,
-  Chip,
+  Card,
   cx,
   Glyph,
   iso,
   Kicker,
   Measure,
   Num,
+  Pill,
   Row,
   Screen,
   SegmentedChips,
@@ -75,7 +76,7 @@ const LABEL: Partial<Record<StandardKey, string>> = {
 const INPUT_STYLE = StyleSheet.flatten([
   typography('en', 'field', '600'),
   {
-    color: colors.chalk,
+    color: colors.ink,
     height: sizes.touchLg,
     padding: 0,
     textAlignVertical: 'center' as const,
@@ -120,8 +121,10 @@ function MeasureInput({
   return (
     <View
       className={cx(
-        'h-touchLg flex-1 justify-center rounded-sm border bg-panel2 px-3',
-        focused ? 'border-hivis' : 'border-line',
+        'h-touchLg flex-1 justify-center rounded-md bg-surface',
+        // The focus ring grows 1 -> 2 px and the padding gives the pixel back, so the digits
+        // never shift under the caret. One padding slot and one border slot, never two.
+        focused ? 'border-2 border-accentStrong px-[11px]' : 'border border-outline px-3',
       )}
     >
       <TextInput
@@ -134,9 +137,10 @@ function MeasureInput({
         inputMode={whole ? 'numeric' : 'decimal'}
         maxLength={whole ? MAX_RUN_DIGITS : MAX_DIGITS}
         accessibilityLabel={accessibilityLabel}
-        selectionColor={colors.hivis}
+        selectionColor={colors.accentStrong}
         placeholder={placeholder}
-        placeholderTextColor={colors.ghost}
+        // `ink3` (5.0:1), never `ink4` at 2.8: a hint has to be readable to be a hint.
+        placeholderTextColor={colors.ink3}
         style={StyleSheet.flatten([INPUT_STYLE, { textAlign: d.textAlign }])}
       />
     </View>
@@ -162,10 +166,10 @@ function MeasureField({
   return (
     <Stack gap={1}>
       <Row gap={2} align="baseline">
-        <Text variant="body" weight="600" color="chalk2">
+        <Text variant="body" weight="600" color="ink2">
           {label}
         </Text>
-        <Text variant="caption" color="dim">
+        <Text variant="caption" color="ink3">
           {unit}
         </Text>
       </Row>
@@ -223,7 +227,7 @@ function RunTimeField({
   const seconds = t('eligibility.sec');
   return (
     <Stack gap={1}>
-      <Text variant="body" weight="600" color="chalk2">
+      <Text variant="body" weight="600" color="ink2">
         {label}
       </Text>
       <Row gap={2}>
@@ -236,7 +240,7 @@ function RunTimeField({
             accessibilityLabel={`${label} (${minutes})`}
             whole
           />
-          <Text variant="caption" color="dim">
+          <Text variant="caption" color="ink3">
             {minutes}
           </Text>
         </Stack>
@@ -249,7 +253,7 @@ function RunTimeField({
             accessibilityLabel={`${label} (${seconds})`}
             whole
           />
-          <Text variant="caption" color="dim">
+          <Text variant="caption" color="ink3">
             {seconds}
           </Text>
         </Stack>
@@ -258,8 +262,9 @@ function RunTimeField({
   );
 }
 
+/** Green passes, red misses, `ink3` is a row nobody has answered yet (status vocabulary). */
 const rowTone = (pass: boolean | undefined): ColorName =>
-  pass === true ? 'hivis' : pass === false ? 'flag' : 'dim';
+  pass === true ? 'okInk' : pass === false ? 'dangerInk' : 'ink3';
 
 const rowGlyph = (pass: boolean | undefined): string =>
   pass === true ? '✓' : pass === false ? '✕' : '·';
@@ -332,25 +337,21 @@ function ResultRow({
           {label}
         </Text>
         {!row.verified && (
-          <Chip
-            label={t('eligibility.unverified')}
-            tone="label"
-            testID={`eligibility-unverified-${row.key}`}
-          />
+          <Pill label={t('eligibility.unverified')} testID={`eligibility-unverified-${row.key}`} />
         )}
       </Row>
       <Stack gap={1} align={end} className="w-16">
-        <Text variant="caption" color="dim">
+        <Text variant="caption" color="ink3">
           {t('eligibility.required')}
         </Text>
-        <Figure rowKey={row.key} value={row.required} unit={unit} color="dim" />
+        <Figure rowKey={row.key} value={row.required} unit={unit} color="ink3" />
       </Stack>
       <Stack gap={1} align={end} className="w-16">
-        <Text variant="caption" color="dim">
+        <Text variant="caption" color="ink3">
           {t('eligibility.yours')}
         </Text>
         {row.actual === undefined ? (
-          <Glyph variant="caption" color="dim">
+          <Glyph variant="caption" color="ink3">
             —
           </Glyph>
         ) : (
@@ -367,11 +368,16 @@ function ResultRow({
   );
 }
 
-/** Green = eligible (status vocabulary): `okInk` text in an ok-tinted box, pulled forward from Phase C. */
+/**
+ * The verdict's three tones: a text colour inside a box tinted to match it. Green = eligible,
+ * red = below the standard, `ink3` = the form is not finished (status vocabulary). The
+ * unfinished box takes `outline`, not `line`: a box that has to be found cannot rest on a
+ * 1.07:1 hairline.
+ */
 const VERDICT: Record<Verdict, { box: string; color: ColorName; glyph: string }> = {
   eligible: { box: 'border-okInk bg-okTint', color: 'okInk', glyph: '✓' },
-  notYet: { box: 'border-flag bg-flagTint', color: 'flag', glyph: '✕' },
-  incomplete: { box: 'border-line bg-panel2', color: 'dim', glyph: '·' },
+  notYet: { box: 'border-dangerInk bg-dangerTint', color: 'dangerInk', glyph: '✕' },
+  incomplete: { box: 'border-outline bg-surface2', color: 'ink3', glyph: '·' },
 };
 
 function VerdictBanner({
@@ -394,7 +400,10 @@ function VerdictBanner({
         <Glyph color={tone.color} accessibilityElementsHidden importantForAccessibility="no">
           {tone.glyph}
         </Glyph>
-        <Text variant="subtitle" weight="700" color={tone.color} className="flex-1">
+        {/* The page's answer, so it is the page's headline: a display role (Playfair in
+            English, Noto Serif Telugu in Telugu). The leaf bar's title is Inter 16, so there
+            is nothing here for it to compete with. */}
+        <Text variant="title" weight="600" color={tone.color} className="flex-1">
           {t(`eligibility.${result.verdict}`)}
         </Text>
       </Row>
@@ -402,16 +411,11 @@ function VerdictBanner({
         <Stack gap={2}>
           <Kicker>{t('eligibility.improve')}</Kicker>
           {result.improve.map((key) => (
-            <Row key={key} testID={`eligibility-improve-${key}`} gap={2} align="baseline">
-              <Glyph
-                variant="caption"
-                color="hazard"
-                accessibilityElementsHidden
-                importantForAccessibility="no"
-              >
-                ■
-              </Glyph>
-              <Text variant="small" color="chalk2" className="flex-1">
+            <Row key={key} testID={`eligibility-improve-${key}`} gap={3} align="baseline">
+              {/* A gold dot: the mark a study row still to read carries, because this is a
+                  to-do list and not a second verdict. */}
+              <View className="mt-2 h-1.5 w-1.5 rounded-full bg-accentStrong" />
+              <Text variant="small" color="ink2" className="flex-1">
                 {labelOf(key)}
               </Text>
             </Row>
@@ -534,15 +538,15 @@ export function EligibilityView({
         automaticallyAdjustKeyboardInsets
         showsVerticalScrollIndicator={false}
       >
-        <Text variant="small" color="dim">
+        <Text variant="small" color="ink3">
           {t('eligibility.sub')}
         </Text>
 
         {/* Quiet, full-width pickers: three yellow blocks over the one yellow action would
             leave the screen with nothing to point at. */}
-        <Stack gap={4} className="mt-6">
+        <Stack gap={4} className="mt-7">
           <Stack gap={2}>
-            <Kicker>{t('eligibility.post')}</Kicker>
+            <Pill label={t('eligibility.post')} />
             <SegmentedChips
               testID="eligibility-post"
               tone="quiet"
@@ -556,7 +560,7 @@ export function EligibilityView({
             />
           </Stack>
           <Stack gap={2}>
-            <Kicker>{t('eligibility.gender')}</Kicker>
+            <Pill label={t('eligibility.gender')} />
             <SegmentedChips
               testID="eligibility-gender"
               tone="quiet"
@@ -570,7 +574,7 @@ export function EligibilityView({
             />
           </Stack>
           <Stack gap={2}>
-            <Kicker>{t('eligibility.group')}</Kicker>
+            <Pill label={t('eligibility.group')} />
             <SegmentedChips
               testID="eligibility-group"
               tone="quiet"
@@ -586,14 +590,14 @@ export function EligibilityView({
           {!allVerified(standards) && (
             // Something on this table is not confirmed yet; say so where the reader is looking,
             // not only in the small print at the bottom.
-            <Text testID="eligibility-unverified-note" variant="caption" color="dim">
+            <Text testID="eligibility-unverified-note" variant="caption" color="ink3">
               {t('eligibility.unverifiedNote')}
             </Text>
           )}
         </Stack>
 
-        <Stack testID="eligibility-fields" gap={4} className="mt-6">
-          <Kicker>{t('eligibility.measurements')}</Kicker>
+        <Stack testID="eligibility-fields" gap={4} className="mt-7">
+          <Pill label={t('eligibility.measurements')} />
           {entries.map(({ key, standard }) => field(key, standard))}
         </Stack>
 
@@ -602,7 +606,7 @@ export function EligibilityView({
           size="lg"
           label={t('eligibility.check')}
           onPress={check}
-          className="mt-6"
+          className="mt-7"
         />
 
         {result && (
@@ -614,12 +618,9 @@ export function EligibilityView({
             entering={m.fadeIn()}
             layout={m.reduced ? undefined : LinearTransition.duration(motion.base)}
           >
-            <Stack gap={3} className="mt-6">
+            <Stack gap={3} className="mt-7">
               <VerdictBanner result={result} labelOf={labelOf} />
-              <Stack
-                testID="eligibility-rows"
-                className="rounded-md border border-line bg-panel2 px-3"
-              >
+              <Card testID="eligibility-rows">
                 {result.rows.map((row, i) => (
                   <ResultRow
                     key={row.key}
@@ -629,12 +630,12 @@ export function EligibilityView({
                     last={i === result.rows.length - 1}
                   />
                 ))}
-              </Stack>
+              </Card>
             </Stack>
           </Animated.View>
         )}
 
-        <Text testID="eligibility-disclaimer" variant="caption" color="dim" className="mt-6">
+        <Text testID="eligibility-disclaimer" variant="caption" color="ink3" className="mt-7">
           {t('eligibility.disclaimer', { year: iso(STANDARDS_NOTIFICATION_YEAR) })}
         </Text>
       </ScrollView>
