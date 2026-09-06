@@ -72,20 +72,18 @@ function Segment({
       // An inactive cell fills `surface2` while pressed; the active cell already has its fill.
       className={cx(className, pressed && !active && pressedClass)}
     >
-      <Text
-        variant="body"
-        weight="700"
-        color={active ? 'ink' : 'ink3'}
-        align="center"
-        lang={lang}
-      >
+      <Text variant="body" weight="700" color={active ? 'ink' : 'ink3'} align="center" lang={lang}>
         {label}
       </Text>
     </Pressable>
   );
 }
 
-/** The bordered language switcher from the prototype header: 48 px tall, cells ≥ 48 px wide. */
+/**
+ * The bordered language switcher from the prototype header. The 48 px floor belongs to the
+ * CELL, not to the frame: a `h-touch` frame minus its own 1 px border leaves a 46 px target,
+ * and `hitSlop` is not implemented in react-native-web, so the height has to be real.
+ */
 export function SegmentedChips<V extends string>({
   value,
   onChange,
@@ -104,7 +102,7 @@ export function SegmentedChips<V extends string>({
       {...rest}
       // The frame is the 3:1 `outline` (a control); the dividers between cells stay `line2`.
       className={cx(
-        'h-touch overflow-hidden rounded-sm border border-outline',
+        'min-h-touch overflow-hidden rounded-sm border border-outline',
         block ? 'self-stretch' : 'self-start',
         className,
       )}
@@ -124,7 +122,7 @@ export function SegmentedChips<V extends string>({
               onChange(o.value);
             }}
             className={cx(
-              'h-full min-w-touch items-center justify-center px-3',
+              'min-h-touch min-w-touch items-center justify-center px-3',
               block && 'flex-1',
               active && selectedFill[tone],
               // This cell draws only its own trailing edge; the leading one belongs to the cell before it.

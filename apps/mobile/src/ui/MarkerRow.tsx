@@ -17,16 +17,25 @@ import { Text } from './Text';
  */
 export type Marker = 'none' | 'dot' | 'done' | 'locked';
 
-export type MarkerRowProps = {
+/**
+ * The three shapes `meta`, `onPress` and `accessibilityLabel` are allowed to take together —
+ * a union rather than a doc comment, so the a11y contract is unrepresentable when broken
+ * (code review 4).
+ *
+ * A node `meta` is silent **in the composed name**, and only a pressable row composes one: a
+ * static row is a plain `View` whose children a screen reader walks in order, so a node there
+ * reads itself. That is why the third arm needs no label and the second one does.
+ */
+type MarkerRowName =
+  /** A string meta (or none): the pattern draws it and can read it back into the row's name. */
+  | { meta?: string; onPress?: () => void; accessibilityLabel?: string }
+  /** A node meta on a button: the composed name would drop it, so the row must be named. */
+  | { meta: ReactNode; onPress: () => void; accessibilityLabel: string }
+  /** A node meta on a static row: nothing is composed, so the children speak for themselves. */
+  | { meta: ReactNode; onPress?: undefined; accessibilityLabel?: undefined };
+
+type MarkerRowBase = {
   title: string;
-  /**
-   * The line under the title: minutes, a date, a count, a sentence of summary.
-   *
-   * A string is drawn by the pattern (`caption` in `ink3`). A node is drawn as it comes, for
-   * the one thing a string cannot carry — digits, which live in `<Num>`/`Measure` so they stay
-   * tabular and LTR-isolated. A node is silent in the composed name (see `accessibilityLabel`).
-   */
-  meta?: ReactNode;
   /**
    * Cap the title at n lines. Left off, it grows — Profile and Study rows carry short labels
    * and a Telugu one has to be allowed to wrap; Home's affair headline takes `titleLines={2}`.
@@ -48,11 +57,8 @@ export type MarkerRowProps = {
   trailingLabel?: string;
   /** The `ink3` "goes somewhere" chevron at the reading end. */
   chevron?: boolean;
-  onPress?: () => void;
   /** The first row inside a card: no hairline above it. */
   first?: boolean;
-  /** Overrides the composed label (title + meta + trailingLabel) a screen reader would hear. */
-  accessibilityLabel?: string;
   className?: string;
   testID?: string;
   /**
@@ -64,6 +70,12 @@ export type MarkerRowProps = {
   titleTestID?: string;
   metaTestID?: string;
 };
+
+/**
+ * `meta`, `onPress` and `accessibilityLabel` come from the union above; everything else is
+ * plain. See `MarkerRowName` for why a node meta drags the label in with it.
+ */
+export type MarkerRowProps = MarkerRowBase & MarkerRowName;
 
 const ICON = size.icon;
 
@@ -149,12 +161,7 @@ export function MarkerRow({
         )}
       </Stack>
       {end && (
-        <Row
-          testID={testID ? `${testID}-end` : undefined}
-          gap={2}
-          align="center"
-          style={slot}
-        >
+        <Row testID={testID ? `${testID}-end` : undefined} gap={2} align="center" style={slot}>
           {trailing}
           {chevron && (
             <Glyph color="ink3" accessibilityElementsHidden importantForAccessibility="no">

@@ -38,18 +38,38 @@ describe('MarkerRow', () => {
     expect(screen.getByTestId('mins')).toHaveTextContent(`${iso(8)}min`);
   });
 
-  // A composed name is built from strings: a node says nothing a label can use, so a row with
-  // one names itself instead of announcing a half-sentence.
-  it('leaves a node meta out of the composed name', async () => {
+  // A composed name is built from strings: a node says nothing a label can use. On a PRESSABLE
+  // row the types now make that unrepresentable — a node meta drags an `accessibilityLabel` in
+  // with it (code review 4) — so the only thing left to pin is that the row says what it was
+  // given and does not quietly compose half a sentence beside it.
+  it('announces the caller name, not a composed half-sentence, when the meta is a node', async () => {
     await render(
       <MarkerRow
         title="Percentages"
         meta={<RNText>8 min</RNText>}
         onPress={jest.fn()}
+        accessibilityLabel="Percentages 8 min"
         testID="row"
       />,
     );
-    expect(screen.getByTestId('row').props.accessibilityLabel).toBe('Percentages');
+    expect(screen.getByTestId('row').props.accessibilityLabel).toBe('Percentages 8 min');
+  });
+
+  // The third arm of the union: a static row is a plain `View`, so nothing composes a name and
+  // the children are walked in order — a node meta reads itself and needs no label at all.
+  // Affairs' summary is exactly this shape.
+  it('needs no label for a node meta on a static row: the children are read as they come', async () => {
+    await render(
+      <MarkerRow
+        title="Metro corridor opens"
+        meta={<RNText>Trains now run</RNText>}
+        testID="row"
+      />,
+    );
+    const row = screen.getByTestId('row');
+    expect(row.props.accessibilityLabel).toBeUndefined();
+    expect(row.props.accessibilityRole).toBeUndefined();
+    expect(screen.getByText('Trains now run')).toBeOnTheScreen();
   });
 
   // The affairs row keeps `affair-headline-<id>` and `affair-summary-<id>` where they were:
@@ -175,11 +195,7 @@ describe('MarkerRow', () => {
   // slot, and a fixed line box clipped it into the row below.
   it('lets a tall trailing control grow its slot instead of clipping it', async () => {
     await render(
-      <MarkerRow
-        title="Language"
-        trailing={<RNText testID="switcher">EN</RNText>}
-        testID="row"
-      />,
+      <MarkerRow title="Language" trailing={<RNText testID="switcher">EN</RNText>} testID="row" />,
     );
     const end = screen.getByTestId('row-end');
     expect(end.props.style.height).toBeUndefined();

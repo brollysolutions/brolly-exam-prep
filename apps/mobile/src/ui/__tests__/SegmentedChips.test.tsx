@@ -98,6 +98,21 @@ describe('SegmentedChips (form pickers)', () => {
     },
   );
 
+  // The 48 px belongs to the CELL, not to the frame around it: `h-touch` on the frame minus its
+  // own 1 px border left a 46 px target, six of them stacked on the eligibility screen, and
+  // `hitSlop` is inert on web (design review D9).
+  it('gives every cell the full 48 px, not the frame minus its border', async () => {
+    await render(<SegmentedChips value="pc" onChange={() => {}} options={posts} testID="seg" />);
+    const frame = screen.getByTestId('seg');
+    expect(frame.props.className).toMatch(/\bmin-h-touch\b/);
+    expect(frame.props.className).not.toMatch(/(^|\s)h-touch\b/);
+    for (const name of ['Constable', 'Sub-Inspector']) {
+      const cell = screen.getByRole('radio', { name });
+      expect(cell.props.className).toMatch(/\bmin-h-touch\b/);
+      expect(cell.props.className).not.toMatch(/\bh-full\b/);
+    }
+  });
+
   it('keeps `hivis` as the old name of the accent tone', async () => {
     await render(
       <SegmentedChips value="pc" onChange={() => {}} options={posts} tone="hivis" testID="seg" />,

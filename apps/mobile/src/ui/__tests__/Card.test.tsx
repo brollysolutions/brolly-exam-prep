@@ -1,5 +1,5 @@
 import { act, fireEvent, render, screen, userEvent } from '@testing-library/react-native';
-import { shadow } from '@tslprb/design-tokens';
+import { colors, shadow } from '@tslprb/design-tokens';
 import { initI18n } from '@tslprb/i18n';
 import { Text } from 'react-native';
 
@@ -54,6 +54,47 @@ describe('Card', () => {
     await render(<Card title="Constable" radius="lg" testID="lg" />);
     expect(screen.getByTestId('lg').props.className).toMatch(/\brounded-lg\b/);
     expect(screen.getByTestId('lg').props.className).not.toMatch(/\brounded-md\b/);
+  });
+
+  // The gold start edge marks the one card per screen that carries it. The card owns the
+  // arithmetic: the bar replaces its own 1 px `line` on that side, so only the DIFFERENCE comes
+  // off the reading-side padding and the content stays on the axis the cards around it use.
+  // Subtracting the whole 3 px is what left an open notice's pill a pixel out of line
+  // (fix wave 1, code review 1 / design D8).
+  it('draws a start edge and gives back only the pixels it added', async () => {
+    await render(<Card title="Worked example" startEdge="accentStrong" testID="edged" />);
+    const edged = screen.getByTestId('edged');
+    expect(edged.props.style.borderLeftWidth).toBe(3);
+    expect(edged.props.style.borderLeftColor).toBe(colors.accentStrong);
+    // 16 px of `p-4` minus the two pixels the 3 px bar added over the 1 px border.
+    expect(edged.props.style.paddingLeft).toBe(14);
+    // The class still says `p-4`: the object style overrides one side, it does not fight it.
+    expect(edged.props.className).toMatch(/\bp-4\b/);
+  });
+
+  it('lands an edged card content on the same axis as a plain one', async () => {
+    await render(
+      <>
+        <Card title="Plain" testID="plain" />
+        <Card title="Edged" startEdge="accentStrong" testID="edged" />
+      </>,
+    );
+    // A plain card: 1 px `line` + 16 px padding. An edged one: 3 px bar + the compensated 14.
+    const plain = 1 + 16;
+    const edged =
+      (screen.getByTestId('edged').props.style.borderLeftWidth as number) +
+      (screen.getByTestId('edged').props.style.paddingLeft as number);
+    expect(edged).toBe(plain);
+  });
+
+  it('compensates the md card tighter box too, and draws nothing without the prop', async () => {
+    await render(<Card size="md" title="Tight" startEdge="accentStrong" testID="md" />);
+    // `p-3` is 12 px, so the bar leaves 10 and the content still starts on 13.
+    expect(screen.getByTestId('md').props.style.paddingLeft).toBe(10);
+
+    await render(<Card title="Plain" testID="plain" />);
+    expect(screen.getByTestId('plain').props.style.borderLeftWidth).toBeUndefined();
+    expect(screen.getByTestId('plain').props.style.paddingLeft).toBeUndefined();
   });
 
   // One of a set, not a switch: the post and category steps are single-choice groups, so the

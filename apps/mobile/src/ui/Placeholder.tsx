@@ -4,7 +4,7 @@ import { View } from 'react-native';
 
 import { Button } from './Button';
 import { cx } from './cx';
-import { Pill } from './Pill';
+import { Pill, type PillDotTone } from './Pill';
 import { Stack } from './Stack';
 import { Text } from './Text';
 
@@ -55,6 +55,13 @@ export type EmptyStateProps = {
   message: string;
   /** An optional way on — an outline button, never a second fill. */
   action?: ReactNode;
+  /**
+   * A status dot on the pill. Left off there is none — an empty shelf is not a state, it is a
+   * shelf with nothing on it. `danger` is for the empty state that IS a failure of a sort: an
+   * id nothing answers to, which `LoadError` already marks the same way, so the two not-found
+   * screens read as one mechanism rather than two (design review D14).
+   */
+  dotTone?: PillDotTone;
   className?: string;
   testID?: string;
 };
@@ -64,7 +71,14 @@ export type EmptyStateProps = {
  * have filled. Distinct from `LoadError` — nothing failed, so there is nothing to retry, and a
  * grey line in the top corner reads as a screen that never loaded (design 13, F-24).
  */
-export function EmptyState({ title, message, action, className, testID }: EmptyStateProps) {
+export function EmptyState({
+  title,
+  message,
+  action,
+  dotTone,
+  className,
+  testID,
+}: EmptyStateProps) {
   const { t } = useTranslation();
   return (
     <Stack
@@ -72,7 +86,13 @@ export function EmptyState({ title, message, action, className, testID }: EmptyS
       className={cx('flex-1 items-center justify-center px-8', className)}
       testID={testID}
     >
-      <Pill align="center" label={title ?? t('common.nothingYet')} />
+      <Pill
+        align="center"
+        label={title ?? t('common.nothingYet')}
+        testID={testID ? `${testID}-pill` : undefined}
+        dot={dotTone !== undefined && dotTone !== 'none'}
+        dotTone={dotTone}
+      />
       <Text variant="body" color="ink3" align="center">
         {message}
       </Text>

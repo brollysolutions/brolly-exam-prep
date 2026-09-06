@@ -17,3 +17,18 @@ export function startEdge(isRTL: boolean, color: ColorName, width = EDGE_WIDTH):
     ? { borderRightWidth: width, borderRightColor: colors[color] }
     : { borderLeftWidth: width, borderLeftColor: colors[color] };
 }
+
+/**
+ * The reading-side padding a box needs so a `startEdge` never pushes its content out of line
+ * with the boxes around it.
+ *
+ * The bar REPLACES whatever boundary that side already had, so only the difference comes off
+ * the padding: 3 px of gold over a `Card`'s own 1 px `line` is two pixels, not three.
+ * Subtracting the whole edge is what left an open notice's pill on 16 px against a closed
+ * card's 17 (fix wave 1, code review 1). `borderWidth` is what the box draws at rest — 0 for a
+ * bare box such as a paper option, 1 for a card, 2 for a selected one.
+ */
+export function startEdgeInset(isRTL: boolean, pad: number, borderWidth = 0): ViewStyle {
+  const inset = pad - (EDGE_WIDTH - borderWidth);
+  return isRTL ? { paddingRight: inset } : { paddingLeft: inset };
+}

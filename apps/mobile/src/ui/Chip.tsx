@@ -19,9 +19,13 @@ import { Text } from './Text';
 
 /**
  * Status vocabulary: `accent` (gold) is the candidate's own input or the active filter,
- * `danger` is wrong / unanswered, `ok` is eligible / correct. `label` is the odd one out: not
- * a fill for an active chip but a whole other shape — the small quiet tag on a card ("Sample
- * data", a notice's kind). It is never a control.
+ * `danger` is wrong / unanswered, `ok` is eligible / correct.
+ *
+ * `label` is **deprecated**: use `Pill` (the P1 pattern), which is the same quiet tag at the
+ * caption size the contrast floor asks for, and which every product screen now uses — Phase C
+ * moved the last three call sites ("Sample data" × 2, a notice's kind) plus the gallery one.
+ * Only the dev gallery still renders it, to show what it was. It goes in Phase E with the
+ * other legacy tones.
  * `hivis`, `hazard`, `sand` (→ accent) and `flag` (→ danger) are the old names, kept one cycle.
  */
 export type ChipTone = 'accent' | 'danger' | 'ok' | 'label' | 'hivis' | 'hazard' | 'flag' | 'sand';
@@ -89,9 +93,9 @@ const height: Record<ChipSize, string> = {
 };
 
 /**
- * The tag tone: a kicker on `surface2` with no border and no gold, ~18 px tall in Latin, so a
- * "Sample data" tag reads quieter than the heading it sits beside and a notice's kind chip
- * stops out-shouting the notice.
+ * The tag tone. **Deprecated in favour of `Pill`** — a kicker on `surface2` with no border and
+ * no gold, whose 10.5 px label sits below the caption floor `ink3` is held to; `Pill` draws the
+ * same tag at 12 px. Kept for the gallery until Phase E deletes the legacy tones.
  */
 function LabelChip({
   label,

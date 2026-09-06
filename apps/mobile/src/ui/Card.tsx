@@ -1,4 +1,5 @@
-import { colors, shadowStyle } from '@tslprb/design-tokens';
+import { colors, shadowStyle, spacing, type ColorName } from '@tslprb/design-tokens';
+import { useDir } from '@tslprb/i18n';
 import type { ReactNode } from 'react';
 import {
   Pressable,
@@ -9,6 +10,8 @@ import {
   type ViewProps,
   type ViewStyle,
 } from 'react-native';
+
+import { startEdge as startEdgeStyle, startEdgeInset } from '@/features/result/edge';
 
 import { cx } from './cx';
 import * as haptics from './haptics';
@@ -33,6 +36,17 @@ export type CardProps = Omit<PressableProps, 'style' | 'children'> & {
    * a second `rounded-*` on the same element lets Tailwind's emission order decide the corner.
    */
   radius?: 'md' | 'lg';
+  /**
+   * The 3 px bar on the reading-start side that marks the one card per screen carrying it: the
+   * hero, the worked example, the open notice, the score.
+   *
+   * The card owns the arithmetic, because it owns both numbers involved. The bar REPLACES the
+   * `line` on that side rather than adding to it, so only the difference comes off the
+   * reading-side padding — two pixels over a resting card, one over a selected one — and the
+   * content stays on the axis the cards around it start theirs on. A screen that subtracted the
+   * whole 3 px left an open notice's pill a pixel out of line with the closed cards (fix wave 1).
+   */
+  startEdge?: ColorName;
   /** Rendered after the content in reading order, vertically centred: a check, a pill, a chevron. */
   trailing?: ReactNode;
   /** No shadow: a card inside another surface, or one in a dense list. */
@@ -54,6 +68,7 @@ export function Card({
   subtitle,
   size = 'lg',
   radius = 'md',
+  startEdge,
   trailing,
   flat = false,
   children,
@@ -65,8 +80,14 @@ export function Card({
   style,
   ...rest
 }: CardProps) {
+  const d = useDir();
   const { pressed, handlers } = usePressed(onPressIn, onPressOut);
   const md = size === 'md';
+  // The box's two numbers, kept beside the classes that draw them: a selected card grows its
+  // border by a pixel and gives that pixel back out of the padding (`p-[11px]` / `p-[15px]`).
+  // `startEdge` needs both, which is why the card and not the screen does this sum.
+  const border = selected ? 2 : 1;
+  const pad = (md ? spacing['3'] : spacing['4']) - (border - 1);
   // A choice at all? `undefined` is "this card is not an option", which is not the same thing
   // as an option nobody has picked.
   const choice = selected !== undefined;
@@ -115,9 +136,16 @@ export function Card({
         {trailing}
       </Row>
     );
+  // The edge is an object style, never a class: RN's `borderStartWidth` follows `I18nManager`
+  // rather than the in-app language, and a dynamic className next to a style array accumulates
+  // stale classes on web. The inset overrides one side of the `p-4` the class already set.
+  const edge = startEdge
+    ? { ...startEdgeStyle(d.isRTL, startEdge), ...startEdgeInset(d.isRTL, pad, border) }
+    : null;
   // Flattened on purpose: css-interop mutates array styles on web (see Text).
   const surface = StyleSheet.flatten([
     flat ? null : shadowStyle('card'),
+    edge,
     style,
     selected && pressed && !disabled ? pressedStyle : null,
   ]);

@@ -23,6 +23,18 @@ describe('Placeholder — the three waiting states', () => {
     expect(screen.queryByText('Nothing yet')).toBeNull();
   });
 
+  // An empty shelf is not a state, so its pill carries no dot; a not-found IS a sort of
+  // failure, and takes the same red dot `LoadError` wears, so the two read as one mechanism
+  // rather than two (design review D14).
+  it('empty: no dot by default, and the LoadError red one on request', async () => {
+    await render(<EmptyState message="Nothing on this shelf." testID="empty" />);
+    expect(screen.queryByTestId('empty-pill-dot')).toBeNull();
+
+    await render(<EmptyState message="No such topic." dotTone="danger" testID="notfound" />);
+    const dot = screen.getByTestId('notfound-pill-dot');
+    expect(dot.props.className).toMatch(/\bbg-dangerInk\b/);
+  });
+
   // Nothing animates, so there is nothing for reduced motion to switch off; and an assistive
   // user gets the real content when it arrives, not a description of grey boxes.
   it('skeleton: static surface2 blocks, hidden from the reader', async () => {
