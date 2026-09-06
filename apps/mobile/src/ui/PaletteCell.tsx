@@ -32,8 +32,8 @@ export type PaletteCellProps = Omit<PressableProps, 'style' | 'children'> & {
 };
 
 /**
- * 48 × 48 question cell in one of five states (nv / na / a / m / am):
- * plain = unvisited, red outline = not answered, gold = answered, ink = marked.
+ * 48 × 48 question cell in one of five states (nv / na / a / m / am): quiet = unvisited, a red
+ * tint under a 2 px red outline = not answered, gold = answered, ink = marked.
  */
 export function PaletteCell({
   n,
@@ -51,9 +51,10 @@ export function PaletteCell({
   const { t } = useTranslation();
   const { pressed, handlers } = usePressed(onPressIn, onPressOut);
   const s = paletteState[state];
-  // A transparent cell (not answered) has nothing to dim: it takes the `surface2` press fill
-  // every outlined control uses (`pressedClass`); the filled cells dim like filled controls.
-  const outlined = s.bg === 'transparent';
+  // A quiet or tinted cell has nothing to dim — a 12 % tint at 85 % opacity is the same tint —
+  // so it takes the `surface2` press fill every outlined control uses (`pressedClass`); the
+  // gold and ink cells dim like the filled controls they are. The token says which is which.
+  const outlined = !s.solid;
   return (
     <Pressable
       accessibilityRole="button"

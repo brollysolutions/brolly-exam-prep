@@ -67,16 +67,16 @@ describe('Dialog', () => {
     expect(onSecondary).toHaveBeenCalledTimes(1);
   });
 
-  // Exit (accent) and auto-submit (danger) share one card: gold top edge, surface, the tone
-  // lives in the kicker alone. (Phase D gives the dialogs their tone pills; until then the
-  // two are tonally identical apart from this kicker — spec addendum, fix wave 1.)
+  // A card that ASKS wears the gold pill; a card that REPORTS a failure wears the quiet pill
+  // with a red status dot, because red is a verdict and lives in the dot, not in a fill.
+  // Gold is never the word: both labels are ink or ink3, never `accentInk` on a tint (4.14).
   it.each([
-    ['accent', 'text-accentInk'],
-    ['hivis', 'text-accentInk'],
-    ['hazard', 'text-accentInk'],
-    ['danger', 'text-dangerInk'],
-    ['flag', 'text-dangerInk'],
-  ] as const)('tone %s colours the kicker %s under a gold top edge', async (tone, color) => {
+    ['accent', 'bg-accentTint', 'text-ink'],
+    ['hivis', 'bg-accentTint', 'text-ink'],
+    ['hazard', 'bg-accentTint', 'text-ink'],
+    ['danger', 'bg-surface2', 'text-ink3'],
+    ['flag', 'bg-surface2', 'text-ink3'],
+  ] as const)('tone %s fills its pill %s under a gold top edge', async (tone, fill, label) => {
     await render(
       <Dialog
         visible
@@ -86,12 +86,36 @@ describe('Dialog', () => {
         testID="dlg"
       />,
     );
-    expect(screen.getByText(base.kicker).props.className).toMatch(new RegExp(`\\b${color}\\b`));
+    const pill = screen.getByTestId('dlg-pill');
+    expect(pill.props.className).toMatch(new RegExp(`\\b${fill}\\b`));
+    expect(screen.getByText(base.kicker).props.className).toMatch(new RegExp(`\\b${label}\\b`));
+    expect(screen.getByText(base.kicker).props.className).not.toMatch(/\btext-accentInk\b/);
     const card = screen.getByTestId('dlg-card');
     expect(card.props.className).toMatch(/\bborder-t-accentStrong\b/);
     expect(card.props.className).toMatch(/\bborder-t-3\b/);
     expect(card.props.className).toMatch(/\bbg-surface\b/);
     expect(card.props.className).toMatch(/\brounded-lg\b/);
+  });
+
+  // Only the failing card carries a status dot: a submit or a resume is not a state gone wrong.
+  it('marks only the danger tone with a red dot', async () => {
+    await render(
+      <Dialog visible tone="flag" {...base} primary={{ label: 'Wait', onPress: () => {} }} testID="dlg" />,
+    );
+    expect(screen.getByTestId('dlg-pill-dot').props.className).toMatch(/\bbg-dangerInk\b/);
+
+    await render(
+      <Dialog visible tone="accent" {...base} primary={{ label: 'Yes', onPress: () => {} }} testID="ask" />,
+    );
+    expect(screen.queryByTestId('ask-pill-dot')).toBeNull();
+  });
+
+  // The title is the screen's one sentence while the card is open, so it takes the display face.
+  it('sets the title in the display face', async () => {
+    await render(
+      <Dialog visible {...base} primary={{ label: 'Yes', onPress: () => {} }} testID="dlg" />,
+    );
+    expect(screen.getByText(base.title)).toHaveStyle({ fontFamily: 'PlayfairDisplay_400Regular' });
   });
 
   it('omits the secondary button when not provided', async () => {

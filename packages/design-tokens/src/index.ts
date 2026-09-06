@@ -126,14 +126,29 @@ export function typography(
 }
 
 /**
- * Palette cell states. Brand semantics (decision 2026-09-05): plain = unvisited, red outline =
- * not answered, gold = answered (the candidate's own input), ink = marked (a deliberate flag).
+ * Palette cell states. Brand semantics (decision 2026-09-05): plain = unvisited, red = not
+ * answered, gold = answered (the candidate's own input), ink = marked (a deliberate flag).
+ *
+ * `solid` says whether the cell has a fill dense enough to dim under a finger. The gold and
+ * ink cells do, so they take the filled-control dim; the quiet and the red-tinted ones do not
+ * — a 12 % tint at 85 % opacity is the same tint — so they take the `surface2` press fill
+ * every outlined control on cream uses.
+ *
+ * The unvisited cell keeps the `surface2` fill rather than the sheet's own `surface`: the fill
+ * IS the boundary (1.12:1, quiet on purpose, the `Pill` / `StatTile` model) and `surface` on
+ * `surface` measures 1.00 — a cell, and a legend swatch, with no edge at all (Phase D).
  */
 export const paletteState = {
-  nv: { bg: colors.surface2, fg: colors.ink3, border: colors.line2, borderWidth: 1 },
-  na: { bg: 'transparent', fg: colors.dangerInk, border: colors.dangerInk, borderWidth: 2 },
-  a: { bg: colors.accent, fg: colors.ink, border: colors.accent, borderWidth: 2 },
-  m: { bg: colors.ink, fg: colors.onInk, border: colors.ink, borderWidth: 2 },
-  am: { bg: colors.ink, fg: colors.onInk, border: colors.ink, borderWidth: 2 },
+  nv: { bg: colors.surface2, fg: colors.ink3, border: colors.line, borderWidth: 1, solid: false },
+  na: {
+    bg: colors.dangerTint,
+    fg: colors.dangerInk,
+    border: colors.dangerInk,
+    borderWidth: 2,
+    solid: false,
+  },
+  a: { bg: colors.accent, fg: colors.ink, border: colors.accent, borderWidth: 2, solid: true },
+  m: { bg: colors.ink, fg: colors.onInk, border: colors.ink, borderWidth: 2, solid: true },
+  am: { bg: colors.ink, fg: colors.onInk, border: colors.ink, borderWidth: 2, solid: true },
 } as const;
 export type PaletteState = keyof typeof paletteState;

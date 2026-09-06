@@ -39,13 +39,36 @@ describe('PaletteCell', () => {
   });
 
   // Brand semantics: gold = the candidate's own input, ink = a deliberate flag, red = missing.
-  it('answered is gold with ink, marked is ink with cream, not-answered a red outline', () => {
+  it('answered is gold with ink, marked is ink with cream, not-answered a red tint under red', () => {
     expect(paletteState.a).toMatchObject({ bg: colors.accent, fg: colors.ink });
     expect(paletteState.m).toMatchObject({ bg: colors.ink, fg: colors.onInk });
     expect(paletteState.am).toMatchObject({ bg: colors.ink, fg: colors.onInk });
-    expect(paletteState.na.bg).toBe('transparent');
-    expect(paletteState.na.border).toBe(colors.dangerInk);
-    expect(paletteState.nv).toMatchObject({ bg: colors.surface2, fg: colors.ink3, border: colors.line2 });
+    // The unanswered cell is filled now, not a hollow box: `dangerInk` on that tint is 5.27:1.
+    expect(paletteState.na).toMatchObject({
+      bg: colors.dangerTint,
+      fg: colors.dangerInk,
+      border: colors.dangerInk,
+      borderWidth: 2,
+    });
+    // The quiet fill is the boundary; the `line` hairline over it is texture. `surface` would
+    // be 1.00:1 against the sheet the grid sits on — a cell with no edge at all.
+    expect(paletteState.nv).toMatchObject({
+      bg: colors.surface2,
+      fg: colors.ink3,
+      border: colors.line,
+    });
+    expect(paletteState.nv.bg).not.toBe(colors.surface);
+  });
+
+  // Which cells have a fill worth dimming is a property of the token, not a string test in the
+  // component: `bg === 'transparent'` stopped being the question the moment `na` took a tint.
+  it('marks only the gold and ink cells as solid fills', () => {
+    expect([paletteState.a.solid, paletteState.m.solid, paletteState.am.solid]).toEqual([
+      true,
+      true,
+      true,
+    ]);
+    expect([paletteState.nv.solid, paletteState.na.solid]).toEqual([false, false]);
   });
 
   it('draws the current outline and the answered+marked dot', async () => {
@@ -71,8 +94,8 @@ describe('PaletteCell', () => {
 });
 
 describe('PaletteCell pressed', () => {
-  // A transparent cell (not answered) has no fill to dim: opacity on nothing is nothing, so
-  // it takes the `surface2` press fill every outlined control uses (code review, fix wave 1).
+  // A tinted cell (not answered) has no fill to dim — 8 % red at 85 % opacity is the same 8 %
+  // red — so it takes the `surface2` press fill every outlined control uses (fix wave 1).
   it('fills the not-answered cell surface2 while held, and dims the filled ones', async () => {
     await render(<PaletteCell n={4} state="na" onPress={jest.fn()} testID="cell" />);
     await act(async () => {
@@ -83,7 +106,7 @@ describe('PaletteCell pressed', () => {
     await act(async () => {
       fireEvent(screen.getByTestId('cell'), 'pressOut');
     });
-    expect(screen.getByTestId('cell')).toHaveStyle({ backgroundColor: 'transparent' });
+    expect(screen.getByTestId('cell')).toHaveStyle({ backgroundColor: colors.dangerTint });
 
     await screen.rerender(<PaletteCell n={4} state="a" onPress={jest.fn()} testID="cell" />);
     await act(async () => {

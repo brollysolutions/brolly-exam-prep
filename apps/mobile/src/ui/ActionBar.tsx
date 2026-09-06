@@ -22,6 +22,14 @@ export type ActionBarProps = {
    * line to separate it from — and a shadow with no line to cast it reads as a smudge.
    */
   bordered?: boolean;
+  /**
+   * The primary takes the remaining width by default, which is what a bar with one decision on
+   * it wants. Turn it off where the primary is a fixed-width control — the attempt footer's
+   * 112 px Next (`size.nextBtn`), whose row also carries a square Prev and a Questions button —
+   * and the remaining width goes to the `secondary` slot instead of leaving a hole beside a
+   * button that cannot grow into it.
+   */
+  grow?: boolean;
   className?: string;
   testID?: string;
 };
@@ -46,6 +54,7 @@ export function ActionBar({
   primary,
   secondary,
   bordered = true,
+  grow = true,
   className,
   testID,
 }: ActionBarProps) {
@@ -68,7 +77,7 @@ export function ActionBar({
         className={children !== undefined ? 'mt-3' : undefined}
       >
         {secondary}
-        <View className="flex-1">{primary}</View>
+        {grow ? <View className="flex-1">{primary}</View> : primary}
       </Row>
     </View>
   );

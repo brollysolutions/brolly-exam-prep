@@ -26,6 +26,7 @@ export {
   type DurationUnits,
 } from './format';
 export { Glyph, type GlyphProps } from './Glyph';
+export { HeaderBand, type HeaderBandProps } from './HeaderBand';
 export * as haptics from './haptics';
 export { Keypad, type KeypadProps } from './Keypad';
 export { Kicker, type KickerProps } from './Kicker';

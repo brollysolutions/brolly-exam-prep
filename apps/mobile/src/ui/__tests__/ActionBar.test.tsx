@@ -102,6 +102,36 @@ describe('ActionBar', () => {
     expect(second).toHaveTextContent('Continue');
   });
 
+  // The attempt footer's Next is 112 px wide and its row carries two more controls, so the
+  // remaining width has to go to the secondary slot rather than to a wrapper the button
+  // cannot grow into.
+  it('lets a fixed-width primary hug its own width', async () => {
+    await render(
+      <ActionBar
+        testID="bar"
+        grow={false}
+        secondary={<Button variant="secondary" label="Questions" onPress={jest.fn()} />}
+        primary={<Button size="lg" label="Next" onPress={jest.fn()} style={{ width: 112 }} />}
+      />,
+    );
+    const row = screen.getByTestId('bar-row');
+    const kids = row.children.filter((c) => typeof c !== 'string');
+    // Two children, both buttons: no `flex-1` wrapper between the row and the primary.
+    expect(kids).toHaveLength(2);
+    expect(screen.getByText('Next').parent).toBeTruthy();
+    expect(screen.getAllByRole('button')[1]).toHaveStyle({ width: 112 });
+  });
+
+  it('wraps a growing primary so it takes the remaining width', async () => {
+    await render(
+      <ActionBar testID="bar" primary={<Button size="lg" label="Next" onPress={jest.fn()} />} />,
+    );
+    const row = screen.getByTestId('bar-row');
+    const kids = row.children.filter((c) => typeof c !== 'string');
+    expect(kids).toHaveLength(1);
+    expect(typeof kids[0] === 'object' && kids[0].props.className).toBe('flex-1');
+  });
+
   it('hosts the keypad above the actions', async () => {
     await render(
       <ActionBar testID="bar" primary={<Button size="lg" label="Verify" onPress={jest.fn()} />}>
