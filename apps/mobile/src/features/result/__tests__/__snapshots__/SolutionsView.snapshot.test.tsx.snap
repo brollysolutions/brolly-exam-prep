@@ -139,7 +139,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
             }
           }
           accessible={true}
-          className="items-center justify-center border rounded-xs min-h-chipMd py-1.5 px-4 bg-accentSoft border-accent border-b-2 border-b-accentStrong"
+          className="items-center justify-center border rounded-full min-h-chipMd py-1.5 px-4 bg-accentSoft border-accent border-b-2 border-b-accentStrong"
           collapsable={false}
           focusable={true}
           hitSlop={4}
@@ -225,7 +225,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
             }
           }
           accessible={true}
-          className="items-center justify-center border rounded-xs min-h-chipMd py-1.5 px-4 border-outline"
+          className="items-center justify-center border rounded-full min-h-chipMd py-1.5 px-4 border-outline"
           collapsable={false}
           focusable={true}
           hitSlop={4}
@@ -296,7 +296,14 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
     <RCTScrollView
       ItemSeparatorComponent={[Function]}
       ListEmptyComponent={[Function]}
-      contentContainerClassName="px-4 pb-6 pt-3"
+      contentContainerStyle={
+        {
+          "flexGrow": 1,
+          "paddingBottom": 24,
+          "paddingHorizontal": 16,
+          "paddingTop": 12,
+        }
+      }
       data={
         [
           {
@@ -430,7 +437,12 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
           style={null}
         >
           <View
-            className="rounded-md border border-line bg-panel2 p-4"
+            className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
+            style={
+              {
+                "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+              }
+            }
             testID="solution-card"
           >
             <View
@@ -445,11 +457,12 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               }
             >
               <View
-                className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
+                className="h-7 w-7 shrink-0 items-center justify-center rounded-full bg-dangerInk"
+                testID="solution-badge-wrong"
               >
                 <Text
                   accessibilityElementsHidden={true}
-                  className="text-white"
+                  className="text-onInk"
                   importantForAccessibility="no"
                   style={
                     {
@@ -468,53 +481,63 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 </Text>
               </View>
               <View
+                className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
                 style={
                   {
-                    "alignItems": "baseline",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 4,
-                    "justifyContent": undefined,
+                    "justifyContent": "center",
+                    "minHeight": 24,
                   }
                 }
               >
-                <Text
-                  className="text-ink3"
+                <View
                   style={
                     {
-                      "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 4,
+                      "justifyContent": undefined,
                     }
                   }
                 >
-                  ప్ర
-                </Text>
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "Inter_700Bold",
-                      "fontSize": 10.5,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 15.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
                     }
-                  }
-                >
-                  ⁦3⁩
-                </Text>
+                  >
+                    ప్ర
+                  </Text>
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "Inter_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 18,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ⁦3⁩
+                  </Text>
+                </View>
               </View>
             </View>
             <Text
@@ -535,12 +558,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               180 మీటర్ల పొడవున్న రైలు ఒక స్తంభాన్ని 9 సెకన్లలో దాటుతుంది. దాని వేగం గంటకు ఎన్ని కిలోమీటర్లు?
             </Text>
             <View
-              className="mt-3 px-3 py-2"
+              className="mt-3 rounded-sm px-3 py-2"
               style={
                 {
                   "backgroundColor": "rgba(185,28,28,0.08)",
                   "borderLeftColor": "#b91c1c",
                   "borderLeftWidth": 3,
+                  "paddingLeft": 9,
                 }
               }
               testID="solution-your-answer"
@@ -582,12 +606,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               </Text>
             </View>
             <View
-              className="mt-2 px-3 py-2"
+              className="mt-2 rounded-sm px-3 py-2"
               style={
                 {
                   "backgroundColor": "rgba(194,155,56,0.14)",
-                  "borderLeftColor": "#856a22",
+                  "borderLeftColor": "#a17f2a",
                   "borderLeftWidth": 3,
+                  "paddingLeft": 9,
                 }
               }
               testID="solution-correct-answer"
@@ -629,27 +654,57 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               </Text>
             </View>
             <View
-              className="mt-3 border-t border-panel3 pt-3"
+              className="mt-3 border-t border-line pt-3"
+              style={
+                {
+                  "alignItems": undefined,
+                  "flexDirection": "column",
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
             >
-              <Text
-                className="text-sand"
+              <View
+                className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
                 style={
                   {
-                    "fontFamily": "NotoSansTelugu_700Bold",
-                    "fontSize": 12,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 19.8,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
+                    "justifyContent": "center",
+                    "minHeight": 24,
                   }
                 }
               >
-                ఎందుకు
-              </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 4,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ఎందుకు
+                  </Text>
+                </View>
+              </View>
               <Text
-                className="text-chalk2 mt-2"
+                className="text-ink2"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -679,7 +734,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               }
             >
               <Text
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -809,7 +864,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 </View>
               </View>
               <Text
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "Inter_400Regular",
@@ -826,7 +881,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 ·
               </Text>
               <Text
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -918,7 +973,12 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
           style={null}
         >
           <View
-            className="rounded-md border border-line bg-panel2 p-4"
+            className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
+            style={
+              {
+                "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+              }
+            }
             testID="solution-card"
           >
             <View
@@ -933,11 +993,12 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               }
             >
               <View
-                className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
+                className="h-7 w-7 shrink-0 items-center justify-center rounded-full bg-dangerInk"
+                testID="solution-badge-wrong"
               >
                 <Text
                   accessibilityElementsHidden={true}
-                  className="text-white"
+                  className="text-onInk"
                   importantForAccessibility="no"
                   style={
                     {
@@ -956,53 +1017,63 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 </Text>
               </View>
               <View
+                className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
                 style={
                   {
-                    "alignItems": "baseline",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 4,
-                    "justifyContent": undefined,
+                    "justifyContent": "center",
+                    "minHeight": 24,
                   }
                 }
               >
-                <Text
-                  className="text-ink3"
+                <View
                   style={
                     {
-                      "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 4,
+                      "justifyContent": undefined,
                     }
                   }
                 >
-                  ప్ర
-                </Text>
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "Inter_700Bold",
-                      "fontSize": 10.5,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 15.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
                     }
-                  }
-                >
-                  ⁦12⁩
-                </Text>
+                  >
+                    ప్ర
+                  </Text>
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "Inter_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 18,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ⁦12⁩
+                  </Text>
+                </View>
               </View>
             </View>
             <Text
@@ -1023,12 +1094,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               ఒక సంకేత భాషలో POLICE అనే పదాన్ని QPMJDF అని రాస్తే, అదే భాషలో GUARD అనే పదాన్ని ఎలా రాస్తారు?
             </Text>
             <View
-              className="mt-3 px-3 py-2"
+              className="mt-3 rounded-sm px-3 py-2"
               style={
                 {
                   "backgroundColor": "rgba(185,28,28,0.08)",
                   "borderLeftColor": "#b91c1c",
                   "borderLeftWidth": 3,
+                  "paddingLeft": 9,
                 }
               }
               testID="solution-your-answer"
@@ -1070,12 +1142,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               </Text>
             </View>
             <View
-              className="mt-2 px-3 py-2"
+              className="mt-2 rounded-sm px-3 py-2"
               style={
                 {
                   "backgroundColor": "rgba(194,155,56,0.14)",
-                  "borderLeftColor": "#856a22",
+                  "borderLeftColor": "#a17f2a",
                   "borderLeftWidth": 3,
+                  "paddingLeft": 9,
                 }
               }
               testID="solution-correct-answer"
@@ -1117,27 +1190,57 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               </Text>
             </View>
             <View
-              className="mt-3 border-t border-panel3 pt-3"
+              className="mt-3 border-t border-line pt-3"
+              style={
+                {
+                  "alignItems": undefined,
+                  "flexDirection": "column",
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
             >
-              <Text
-                className="text-sand"
+              <View
+                className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
                 style={
                   {
-                    "fontFamily": "NotoSansTelugu_700Bold",
-                    "fontSize": 12,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 19.8,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
+                    "justifyContent": "center",
+                    "minHeight": 24,
                   }
                 }
               >
-                ఎందుకు
-              </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 4,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ఎందుకు
+                  </Text>
+                </View>
+              </View>
               <Text
-                className="text-chalk2 mt-2"
+                className="text-ink2"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -1167,7 +1270,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               }
             >
               <Text
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -1297,7 +1400,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 </View>
               </View>
               <Text
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "Inter_400Regular",
@@ -1314,7 +1417,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 ·
               </Text>
               <Text
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -1406,7 +1509,12 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
           style={null}
         >
           <View
-            className="rounded-md border border-line bg-panel2 p-4"
+            className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
+            style={
+              {
+                "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+              }
+            }
             testID="solution-card"
           >
             <View
@@ -1421,11 +1529,12 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               }
             >
               <View
-                className="h-7 w-7 shrink-0 items-center justify-center rounded-xs bg-flag"
+                className="h-7 w-7 shrink-0 items-center justify-center rounded-full bg-dangerInk"
+                testID="solution-badge-wrong"
               >
                 <Text
                   accessibilityElementsHidden={true}
-                  className="text-white"
+                  className="text-onInk"
                   importantForAccessibility="no"
                   style={
                     {
@@ -1444,53 +1553,63 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 </Text>
               </View>
               <View
+                className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
                 style={
                   {
-                    "alignItems": "baseline",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 4,
-                    "justifyContent": undefined,
+                    "justifyContent": "center",
+                    "minHeight": 24,
                   }
                 }
               >
-                <Text
-                  className="text-ink3"
+                <View
                   style={
                     {
-                      "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 4,
+                      "justifyContent": undefined,
                     }
                   }
                 >
-                  ప్ర
-                </Text>
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-dim"
-                  style={
-                    {
-                      "fontFamily": "Inter_700Bold",
-                      "fontSize": 10.5,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 15.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
                     }
-                  }
-                >
-                  ⁦15⁩
-                </Text>
+                  >
+                    ప్ర
+                  </Text>
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "Inter_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 18,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ⁦15⁩
+                  </Text>
+                </View>
               </View>
             </View>
             <Text
@@ -1511,12 +1630,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               క్రింది వాటిలో సరిపోని దానిని గుర్తించండి: 8, 27, 64, 100, 125
             </Text>
             <View
-              className="mt-3 px-3 py-2"
+              className="mt-3 rounded-sm px-3 py-2"
               style={
                 {
                   "backgroundColor": "rgba(185,28,28,0.08)",
                   "borderLeftColor": "#b91c1c",
                   "borderLeftWidth": 3,
+                  "paddingLeft": 9,
                 }
               }
               testID="solution-your-answer"
@@ -1558,12 +1678,13 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               </Text>
             </View>
             <View
-              className="mt-2 px-3 py-2"
+              className="mt-2 rounded-sm px-3 py-2"
               style={
                 {
                   "backgroundColor": "rgba(194,155,56,0.14)",
-                  "borderLeftColor": "#856a22",
+                  "borderLeftColor": "#a17f2a",
                   "borderLeftWidth": 3,
+                  "paddingLeft": 9,
                 }
               }
               testID="solution-correct-answer"
@@ -1605,27 +1726,57 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               </Text>
             </View>
             <View
-              className="mt-3 border-t border-panel3 pt-3"
+              className="mt-3 border-t border-line pt-3"
+              style={
+                {
+                  "alignItems": undefined,
+                  "flexDirection": "column",
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
             >
-              <Text
-                className="text-sand"
+              <View
+                className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
                 style={
                   {
-                    "fontFamily": "NotoSansTelugu_700Bold",
-                    "fontSize": 12,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 19.8,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
+                    "justifyContent": "center",
+                    "minHeight": 24,
                   }
                 }
               >
-                ఎందుకు
-              </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 4,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ఎందుకు
+                  </Text>
+                </View>
+              </View>
               <Text
-                className="text-chalk2 mt-2"
+                className="text-ink2"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -1655,7 +1806,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
               }
             >
               <Text
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -1736,7 +1887,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 </View>
               </View>
               <Text
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "Inter_400Regular",
@@ -1753,7 +1904,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 ·
               </Text>
               <Text
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",

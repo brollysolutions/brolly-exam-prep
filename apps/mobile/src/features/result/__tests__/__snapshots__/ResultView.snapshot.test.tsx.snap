@@ -112,167 +112,199 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
       contentContainerClassName="px-4 pb-6 pt-5"
     >
       <View>
-        <Text
-          className="text-ink3"
-          style={
-            {
-              "fontFamily": "NotoSansTelugu_700Bold",
-              "fontSize": 12,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 19.8,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
-            }
-          }
-        >
-          మీ స్కోరు
-        </Text>
         <View
-          className="mt-1"
+          className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
           style={
             {
-              "alignItems": "baseline",
-              "flexDirection": "row",
-              "flexWrap": undefined,
-              "gap": 8,
-              "justifyContent": undefined,
+              "borderLeftColor": "#a17f2a",
+              "borderLeftWidth": 3,
+              "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+              "paddingLeft": 14,
             }
           }
-          testID="result-score-row"
-        >
-          <Text
-            accessibilityLanguage="en"
-            className="text-hivis"
-            style={
-              {
-                "fontFamily": "Inter_700Bold",
-                "fontSize": 58,
-                "fontVariant": [
-                  "tabular-nums",
-                ],
-                "letterSpacing": -1,
-                "lineHeight": 58,
-                "textAlign": "left",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
-              }
-            }
-            testID="result-score"
-          >
-            ⁦62.25⁩
-          </Text>
-          <Text
-            accessibilityLanguage="en"
-            className="text-ghost"
-            style={
-              {
-                "fontFamily": "Inter_600SemiBold",
-                "fontSize": 20,
-                "fontVariant": [
-                  "tabular-nums",
-                ],
-                "letterSpacing": 0,
-                "lineHeight": 30,
-                "textAlign": "left",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
-              }
-            }
-          >
-            ⁦/ 100⁩
-          </Text>
-        </View>
-        <View
-          className="mt-3"
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "flexWrap": "wrap",
-              "gap": 8,
-              "justifyContent": undefined,
-            }
-          }
+          testID="result-score-card"
         >
           <View
-            className="items-center justify-center border rounded-xs min-h-chip py-1 px-3 bg-accentSoft border-accent border-b-2 border-b-accentStrong"
-            testID="result-qualified"
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+            style={
+              {
+                "justifyContent": "center",
+                "minHeight": 24,
+              }
+            }
           >
-            <Text
-              className="text-ink"
+            <View
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 13,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 21.5,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
                 }
               }
             >
-              అర్హత సాధించారు
-            </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                మీ స్కోరు
+              </Text>
+            </View>
           </View>
           <View
+            className="mt-2"
             style={
               {
                 "alignItems": "baseline",
                 "flexDirection": "row",
                 "flexWrap": undefined,
-                "gap": 4,
+                "gap": 8,
                 "justifyContent": undefined,
               }
             }
+            testID="result-score-row"
           >
             <Text
-              className="text-dim"
+              accessibilityLanguage="en"
+              className="text-ink"
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 13,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 21.5,
+                  "fontFamily": "Inter_700Bold",
+                  "fontSize": 58,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
+                  "letterSpacing": -1,
+                  "lineHeight": 58,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
               }
+              testID="result-score"
             >
-              కట్-ఆఫ్
+              ⁦62.25⁩
             </Text>
             <Text
               accessibilityLanguage="en"
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "Inter_600SemiBold",
-                  "fontSize": 13,
+                  "fontSize": 20,
                   "fontVariant": [
                     "tabular-nums",
                   ],
                   "letterSpacing": 0,
-                  "lineHeight": 19.5,
+                  "lineHeight": 30,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
               }
             >
-              ⁦40%⁩
+              ⁦/ 100⁩
             </Text>
+          </View>
+          <View
+            className="mt-3"
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <View
+              className="items-center justify-center border rounded-full min-h-chipMd py-1.5 px-4 bg-accentSoft border-accent border-b-2 border-b-accentStrong"
+              testID="result-qualified"
+            >
+              <Text
+                className="text-ink"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 13,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 21.5,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                అర్హత సాధించారు
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "baseline",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 13,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 21.5,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                కట్-ఆఫ్
+              </Text>
+              <Text
+                accessibilityLanguage="en"
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "Inter_600SemiBold",
+                    "fontSize": 13,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 19.5,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ⁦40%⁩
+              </Text>
+            </View>
           </View>
         </View>
         <View
-          className="mt-6 h-px bg-line"
-        />
-        <View
-          className="mt-4"
+          className="mt-7"
           style={
             {
               "alignItems": undefined,
@@ -283,59 +315,76 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
           }
         >
           <View
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
             style={
               {
-                "alignItems": "baseline",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 8,
-                "justifyContent": undefined,
+                "justifyContent": "center",
+                "minHeight": 24,
               }
             }
           >
-            <Text
-              accessibilityLanguage="en"
-              className="text-accentInk"
+            <View
               style={
                 {
-                  "fontFamily": "Inter_700Bold",
-                  "fontSize": 10.5,
-                  "fontVariant": [
-                    "tabular-nums",
-                  ],
-                  "letterSpacing": 0,
-                  "lineHeight": 15.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
                 }
               }
             >
-              ⁦01⁩
-            </Text>
-            <Text
-              className="text-ink3"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+              <Text
+                accessibilityLanguage="en"
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "Inter_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
                 }
-              }
-            >
-              మీరు ఎక్కడ ఉన్నారు
-            </Text>
+              >
+                ⁦01⁩
+              </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                మీరు ఎక్కడ ఉన్నారు
+              </Text>
+            </View>
           </View>
-          <View>
+          <View
+            className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
+            style={
+              {
+                "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+              }
+            }
+          >
             <View
               accessibilityLabel="ర్యాంక్ 1,284 / 9,033"
               accessible={true}
-              className="border-b border-panel3 py-3"
+              className="py-3"
               style={
                 {
                   "alignItems": "baseline",
@@ -348,7 +397,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
               testID="result-stand-row"
             >
               <Text
-                className="text-chalk2 flex-1"
+                className="text-ink2 flex-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -389,7 +438,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
             <View
               accessibilityLabel="కచ్చితత్వం 71%"
               accessible={true}
-              className="border-b border-panel3 py-3"
+              className="border-t border-line py-3"
               style={
                 {
                   "alignItems": "baseline",
@@ -402,7 +451,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
               testID="result-stand-row"
             >
               <Text
-                className="text-chalk2 flex-1"
+                className="text-ink2 flex-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -443,7 +492,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
             <View
               accessibilityLabel="ప్రశ్నకు సగటు సమయం 54 సె"
               accessible={true}
-              className="py-3"
+              className="border-t border-line py-3"
               style={
                 {
                   "alignItems": "baseline",
@@ -456,7 +505,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
               testID="result-stand-row"
             >
               <Text
-                className="text-chalk2 flex-1"
+                className="text-ink2 flex-1"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -499,7 +548,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                 >
                   <Text
                     accessibilityLanguage="en"
-                    className="text-chalk"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "Inter_700Bold",
@@ -518,7 +567,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                     ⁦54⁩
                   </Text>
                   <Text
-                    className="text-chalk"
+                    className="text-ink3"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_700Bold",
@@ -540,7 +589,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
           </View>
         </View>
         <View
-          className="mt-6"
+          className="mt-7"
           style={
             {
               "alignItems": undefined,
@@ -551,57 +600,74 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
           }
         >
           <View
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
             style={
               {
-                "alignItems": "baseline",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 8,
-                "justifyContent": undefined,
+                "justifyContent": "center",
+                "minHeight": 24,
               }
             }
           >
-            <Text
-              accessibilityLanguage="en"
-              className="text-accentInk"
-              style={
-                {
-                  "fontFamily": "Inter_700Bold",
-                  "fontSize": 10.5,
-                  "fontVariant": [
-                    "tabular-nums",
-                  ],
-                  "letterSpacing": 0,
-                  "lineHeight": 15.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              ⁦02⁩
-            </Text>
-            <Text
-              className="text-ink3"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              మార్కులు ఎక్కడ పోయాయి
-            </Text>
-          </View>
-          <View>
             <View
-              className="border-b border-panel3 py-3"
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                accessibilityLanguage="en"
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "Inter_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ⁦02⁩
+              </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                మార్కులు ఎక్కడ పోయాయి
+              </Text>
+            </View>
+          </View>
+          <View
+            className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
+            style={
+              {
+                "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+              }
+            }
+          >
+            <View
+              className="py-3"
               style={
                 {
                   "alignItems": "baseline",
@@ -642,7 +708,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                   రీజనింగ్ కచ్చితత్వం
                 </Text>
                 <Text
-                  className="text-dim"
+                  className="text-ink3"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_400Regular",
@@ -661,7 +727,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
               </View>
               <Text
                 accessibilityLanguage="en"
-                className="text-hazard shrink-0"
+                className="text-accentInk shrink-0"
                 numberOfLines={1}
                 style={
                   {
@@ -682,7 +748,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
               </Text>
             </View>
             <View
-              className="border-b border-panel3 py-3"
+              className="border-t border-line py-3"
               style={
                 {
                   "alignItems": "baseline",
@@ -723,7 +789,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                   పజిల్ సెట్‌కు సమయం
                 </Text>
                 <Text
-                  className="text-dim"
+                  className="text-ink3"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_400Regular",
@@ -741,7 +807,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                 </Text>
               </View>
               <Text
-                className="text-hazard shrink-0"
+                className="text-accentInk shrink-0"
                 numberOfLines={1}
                 style={
                   {
@@ -762,7 +828,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
               </Text>
             </View>
             <View
-              className="py-3"
+              className="border-t border-line py-3"
               style={
                 {
                   "alignItems": "baseline",
@@ -803,7 +869,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
                   నెగటివ్ మార్కులు
                 </Text>
                 <Text
-                  className="text-dim"
+                  className="text-ink3"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_400Regular",
@@ -822,7 +888,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
               </View>
               <Text
                 accessibilityLanguage="en"
-                className="text-hazard shrink-0"
+                className="text-accentInk shrink-0"
                 numberOfLines={1}
                 style={
                   {
@@ -845,7 +911,7 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
           </View>
         </View>
         <View
-          className="mt-6"
+          className="mt-7"
           style={
             {
               "alignItems": undefined,
@@ -856,53 +922,63 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
           }
         >
           <View
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
             style={
               {
-                "alignItems": "baseline",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 8,
-                "justifyContent": undefined,
+                "justifyContent": "center",
+                "minHeight": 24,
               }
             }
           >
-            <Text
-              accessibilityLanguage="en"
-              className="text-hivis"
+            <View
               style={
                 {
-                  "fontFamily": "Inter_700Bold",
-                  "fontSize": 10.5,
-                  "fontVariant": [
-                    "tabular-nums",
-                  ],
-                  "letterSpacing": 0,
-                  "lineHeight": 15.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
                 }
               }
             >
-              ⁦03⁩
-            </Text>
-            <Text
-              className="text-hivis"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+              <Text
+                accessibilityLanguage="en"
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "Inter_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
                 }
-              }
-            >
-              ఇప్పుడు ఈ మూడు చేయండి
-            </Text>
+              >
+                ⁦03⁩
+              </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ఇప్పుడు ఈ మూడు చేయండి
+              </Text>
+            </View>
           </View>
           <View
             style={
@@ -915,381 +991,330 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
             }
           >
             <View
-              style={
+              accessibilityRole="button"
+              accessibilityState={
                 {
-                  "backgroundColor": "#faf6ec",
-                  "borderColor": "#e9e2d3",
-                  "borderLeftColor": "#856a22",
-                  "borderLeftWidth": 3,
-                  "borderRadius": 8,
-                  "borderWidth": 1,
-                  "overflow": "hidden",
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              className="justify-center rounded-md min-h-[72px] border border-line p-3 bg-surface"
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+                }
+              }
+              testID="result-action"
             >
               <View
-                accessibilityRole="button"
-                accessibilityState={
+                style={
                   {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 12,
+                    "justifyContent": undefined,
                   }
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                className="min-h-16 justify-center p-4"
-                collapsable={false}
-                focusable={true}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                testID="result-action"
               >
                 <View
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "flexWrap": undefined,
-                      "gap": 12,
-                      "justifyContent": undefined,
-                    }
-                  }
+                  className="flex-1"
                 >
-                  <View
-                    className="flex-1"
-                    style={
-                      {
-                        "alignItems": undefined,
-                        "flexDirection": "column",
-                        "gap": 4,
-                        "justifyContent": undefined,
-                      }
-                    }
-                  >
-                    <Text
-                      className="text-ink"
-                      style={
-                        {
-                          "fontFamily": "NotoSansTelugu_600SemiBold",
-                          "fontSize": 15,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 24.8,
-                          "textAlign": "left",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        }
-                      }
-                    >
-                      సీటింగ్ అరేంజ్‌మెంట్ — 20 ప్రశ్నల సెక్షనల్
-                    </Text>
-                    <Text
-                      className="text-dim"
-                      style={
-                        {
-                          "fontFamily": "NotoSansTelugu_400Regular",
-                          "fontSize": 12,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 19.8,
-                          "textAlign": "left",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        }
-                      }
-                    >
-                      మీ బలహీనమైన టాపిక్ · 18 నిమిషాలు
-                    </Text>
-                  </View>
                   <Text
-                    accessibilityElementsHidden={true}
-                    className="text-hivis"
-                    importantForAccessibility="no"
+                    className="text-ink"
                     style={
                       {
-                        "fontFamily": "Inter_400Regular",
-                        "fontSize": 20,
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 16,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 30,
+                        "lineHeight": 26.4,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
                     }
                   >
-                    ›
+                    సీటింగ్ అరేంజ్‌మెంట్ — 20 ప్రశ్నల సెక్షనల్
+                  </Text>
+                  <Text
+                    className="text-ink3 mt-1"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    మీ బలహీనమైన టాపిక్ · 18 నిమిషాలు
                   </Text>
                 </View>
+                <Text
+                  accessibilityElementsHidden={true}
+                  className="text-ink3"
+                  importantForAccessibility="no"
+                  style={
+                    {
+                      "fontFamily": "Inter_400Regular",
+                      "fontSize": 20,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 30,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ›
+                </Text>
               </View>
             </View>
             <View
-              style={
+              accessibilityRole="button"
+              accessibilityState={
                 {
-                  "backgroundColor": "#faf6ec",
-                  "borderColor": "#e9e2d3",
-                  "borderLeftColor": "#856a22",
-                  "borderLeftWidth": 3,
-                  "borderRadius": 8,
-                  "borderWidth": 1,
-                  "overflow": "hidden",
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              className="justify-center rounded-md min-h-[72px] border border-line p-3 bg-surface"
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+                }
+              }
+              testID="result-action"
             >
               <View
-                accessibilityRole="button"
-                accessibilityState={
+                style={
                   {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 12,
+                    "justifyContent": undefined,
                   }
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                className="min-h-16 justify-center p-4"
-                collapsable={false}
-                focusable={true}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                testID="result-action"
               >
                 <View
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "flexWrap": undefined,
-                      "gap": 12,
-                      "justifyContent": undefined,
-                    }
-                  }
+                  className="flex-1"
                 >
-                  <View
-                    className="flex-1"
-                    style={
-                      {
-                        "alignItems": undefined,
-                        "flexDirection": "column",
-                        "gap": 4,
-                        "justifyContent": undefined,
-                      }
-                    }
-                  >
-                    <Text
-                      className="text-ink"
-                      style={
-                        {
-                          "fontFamily": "NotoSansTelugu_600SemiBold",
-                          "fontSize": 15,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 24.8,
-                          "textAlign": "left",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        }
-                      }
-                    >
-                      బ్లడ్ రిలేషన్స్ — 15 ప్రశ్నలు
-                    </Text>
-                    <Text
-                      className="text-dim"
-                      style={
-                        {
-                          "fontFamily": "NotoSansTelugu_400Regular",
-                          "fontSize": 12,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 19.8,
-                          "textAlign": "left",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        }
-                      }
-                    >
-                      12 నిమిషాలు · నిన్న 3 తప్పులు
-                    </Text>
-                  </View>
                   <Text
-                    accessibilityElementsHidden={true}
-                    className="text-hivis"
-                    importantForAccessibility="no"
+                    className="text-ink"
                     style={
                       {
-                        "fontFamily": "Inter_400Regular",
-                        "fontSize": 20,
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 16,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 30,
+                        "lineHeight": 26.4,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
                     }
                   >
-                    ›
+                    బ్లడ్ రిలేషన్స్ — 15 ప్రశ్నలు
+                  </Text>
+                  <Text
+                    className="text-ink3 mt-1"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    12 నిమిషాలు · నిన్న 3 తప్పులు
                   </Text>
                 </View>
+                <Text
+                  accessibilityElementsHidden={true}
+                  className="text-ink3"
+                  importantForAccessibility="no"
+                  style={
+                    {
+                      "fontFamily": "Inter_400Regular",
+                      "fontSize": 20,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 30,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ›
+                </Text>
               </View>
             </View>
             <View
-              style={
+              accessibilityRole="button"
+              accessibilityState={
                 {
-                  "backgroundColor": "#faf6ec",
-                  "borderColor": "#e9e2d3",
-                  "borderLeftColor": "#856a22",
-                  "borderLeftWidth": 3,
-                  "borderRadius": 8,
-                  "borderWidth": 1,
-                  "overflow": "hidden",
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              className="justify-center rounded-md min-h-[72px] border border-line p-3 bg-surface"
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+                }
+              }
+              testID="result-action"
             >
               <View
-                accessibilityRole="button"
-                accessibilityState={
+                style={
                   {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 12,
+                    "justifyContent": undefined,
                   }
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                className="min-h-16 justify-center p-4"
-                collapsable={false}
-                focusable={true}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                testID="result-action"
               >
                 <View
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "flexWrap": undefined,
-                      "gap": 12,
-                      "justifyContent": undefined,
-                    }
-                  }
+                  className="flex-1"
                 >
-                  <View
-                    className="flex-1"
-                    style={
-                      {
-                        "alignItems": undefined,
-                        "flexDirection": "column",
-                        "gap": 4,
-                        "justifyContent": undefined,
-                      }
-                    }
-                  >
-                    <Text
-                      className="text-ink"
-                      style={
-                        {
-                          "fontFamily": "NotoSansTelugu_600SemiBold",
-                          "fontSize": 15,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 24.8,
-                          "textAlign": "left",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        }
-                      }
-                    >
-                      టైమ్డ్ రీజనింగ్ — 18 నిమిషాల్లో 20 ప్రశ్నలు
-                    </Text>
-                    <Text
-                      className="text-dim"
-                      style={
-                        {
-                          "fontFamily": "NotoSansTelugu_400Regular",
-                          "fontSize": 12,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 19.8,
-                          "textAlign": "left",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        }
-                      }
-                    >
-                      వేగం పెంచడానికి
-                    </Text>
-                  </View>
                   <Text
-                    accessibilityElementsHidden={true}
-                    className="text-hivis"
-                    importantForAccessibility="no"
+                    className="text-ink"
                     style={
                       {
-                        "fontFamily": "Inter_400Regular",
-                        "fontSize": 20,
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 16,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 30,
+                        "lineHeight": 26.4,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
                       }
                     }
                   >
-                    ›
+                    టైమ్డ్ రీజనింగ్ — 18 నిమిషాల్లో 20 ప్రశ్నలు
+                  </Text>
+                  <Text
+                    className="text-ink3 mt-1"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    వేగం పెంచడానికి
                   </Text>
                 </View>
+                <Text
+                  accessibilityElementsHidden={true}
+                  className="text-ink3"
+                  importantForAccessibility="no"
+                  style={
+                    {
+                      "fontFamily": "Inter_400Regular",
+                      "fontSize": 20,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 30,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ›
+                </Text>
               </View>
             </View>
           </View>
@@ -1297,75 +1322,99 @@ exports[`ResultView (te) renders in Telugu and matches the snapshot 1`] = `
       </View>
     </RCTScrollView>
     <View
-      className="border-t border-line bg-panel px-3 pb-3 pt-2"
+      className="bg-surface px-4 pt-3 border-t border-line"
+      style={
+        {
+          "boxShadow": "0 -8px 32px -16px rgba(33,28,23,0.30)",
+          "paddingBottom": 16,
+        }
+      }
+      testID="result-actions"
     >
       <View
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        className="items-center justify-center rounded-sm px-4 bg-ink"
-        collapsable={false}
-        focusable={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           {
-            "height": 56,
+            "alignItems": "center",
+            "flexDirection": "row",
+            "flexWrap": undefined,
+            "gap": 12,
+            "justifyContent": undefined,
           }
         }
-        testID="result-cta"
+        testID="result-actions-row"
       >
         <View
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "flexWrap": undefined,
-              "gap": 8,
-              "justifyContent": undefined,
-            }
-          }
+          className="flex-1"
         >
-          <Text
-            className="text-onInk"
-            style={
+          <View
+            accessibilityRole="button"
+            accessibilityState={
               {
-                "fontFamily": "NotoSansTelugu_700Bold",
-                "fontSize": 16,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 26.4,
-                "textAlign": "center",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center rounded-sm px-4 bg-ink"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "height": 56,
+              }
+            }
+            testID="result-cta"
           >
-            తప్పు జవాబులు + వివరణ
-          </Text>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-onInk"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 16,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 26.4,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                తప్పు జవాబులు + వివరణ
+              </Text>
+            </View>
+          </View>
         </View>
       </View>
     </View>

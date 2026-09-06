@@ -1,4 +1,5 @@
 import { render, screen, userEvent } from '@testing-library/react-native';
+import { colors, spacing } from '@tslprb/design-tokens';
 import { SAMPLE_RESULT } from '@tslprb/fixtures';
 import { initI18n } from '@tslprb/i18n';
 
@@ -38,6 +39,51 @@ describe('ResultView', () => {
     await render(<ResultView result={{ ...RESULT, qualified: false }} />);
     expect(screen.getByText('Below cut-off')).toBeOnTheScreen();
     expect(screen.queryByText('Qualified')).toBeNull();
+  });
+
+  // A verdict is a `Chip`: gold when it passed, the red tint under a red outline when it did
+  // not — `dangerInk` on that tint measures 5.27:1, and it is the label as well as the edge.
+  it('paints the verdict gold when qualified and red-on-tint when not', async () => {
+    await render(<ResultView result={RESULT} />);
+    expect(screen.getByTestId('result-qualified').props.className).toMatch(/\bbg-accentSoft\b/);
+    expect(screen.getByText('Qualified').props.className).toMatch(/\btext-ink\b/);
+
+    await render(<ResultView result={{ ...RESULT, qualified: false }} />);
+    expect(screen.getByTestId('result-qualified').props.className).toMatch(/\bbg-dangerTint\b/);
+    expect(screen.getByText('Below cut-off').props.className).toMatch(/\btext-dangerInk\b/);
+  });
+
+  // The score card is the screen's ONE gold-edged card: three drill cards under it with an
+  // edge each would point at none of them. `accentStrong`, not `accent` (2.42:1 on the card).
+  it('gives the score card the screen’s only gold start edge, in ink', async () => {
+    await render(<ResultView result={RESULT} />);
+    const card = screen.getByTestId('result-score-card');
+    expect(card).toHaveStyle({ borderLeftWidth: 3, borderLeftColor: colors.accentStrong });
+    // The bar replaces the card's own 1 px `line`, so two of its three pixels come back.
+    expect(card).toHaveStyle({ paddingLeft: spacing['4'] - 2 });
+    expect(screen.getByTestId('result-score').props.className).toMatch(/\btext-ink\b/);
+
+    for (const action of screen.getAllByTestId('result-action'))
+      expect(action.props.style?.borderLeftWidth).toBeUndefined();
+  });
+
+  // A printed index is not the candidate's own input, and `accentInk` on a pill's `surface2`
+  // is 4.25:1: the three section heads are pills carrying an `ink3` numeral (F-30, A2).
+  it('numbers its three section heads on quiet pills, never in gold', async () => {
+    await render(<ResultView result={RESULT} />);
+    for (const index of ['01', '02', '03'])
+      expect(screen.getByText(`⁦${index}⁩`).props.className).toMatch(/\btext-ink3\b/);
+    // The cost figures ARE the candidate's own, and sit on `surface` at 4.77:1.
+    expect(screen.getAllByTestId('result-cost-row')).toHaveLength(3);
+  });
+
+  // `ActionBar` owns the bottom inset, so the screen must not pad for it too.
+  it('puts the CTA in the sticky bar and stops padding for the inset itself', async () => {
+    await render(<ResultView result={RESULT} />);
+    const bar = screen.getByTestId('result-actions');
+    expect(bar.props.className).toMatch(/\bbg-surface\b/);
+    expect(bar.props.className).toMatch(/\bborder-t border-line\b/);
+    expect(screen.getByTestId('result-screen').props.style.paddingBottom).toBe(0);
   });
 
   it('renders three stand rows, three cost rows and three drill cards', async () => {

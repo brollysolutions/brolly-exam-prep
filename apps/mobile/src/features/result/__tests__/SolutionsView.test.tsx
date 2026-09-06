@@ -1,4 +1,5 @@
 import { render, screen, userEvent, within } from '@testing-library/react-native';
+import { colors, spacing } from '@tslprb/design-tokens';
 import { buildPaper, FREE_MOCK_SHORT, SAMPLE_RESULT } from '@tslprb/fixtures';
 import { i18n, initI18n } from '@tslprb/i18n';
 
@@ -77,10 +78,67 @@ describe('SolutionsView', () => {
     expect(screen.getByLabelText('1m 47s')).toBeOnTheScreen();
   });
 
+  // P6, the shape every other empty screen wears — with an `ok` dot, because nothing has gone
+  // wrong: the shelf is empty because every answer was right.
   it('says so when the wrong filter has nothing to show', async () => {
     await render(<SolutionsView rows={ROWS.filter((r) => r.isCorrect)} initialFilter="wrong" />);
     expect(screen.queryAllByTestId('solution-card')).toHaveLength(0);
+    expect(screen.getByTestId('solutions-empty')).toBeOnTheScreen();
     expect(screen.getByText('No wrong answers in this test.')).toBeOnTheScreen();
+    expect(screen.getByTestId('solutions-empty-pill-dot').props.className).toMatch(/\bbg-okInk\b/);
+  });
+
+  // The verdict disc: gold with an ink ✓ (6.47:1), `dangerInk` with a cream ✕ (5.79:1). Never
+  // a cream tick on `danger`, which is 2.77:1.
+  it('marks each card with a round badge in the two verdict colours', async () => {
+    await render(<SolutionsView rows={ROWS} initialFilter="all" />);
+    const right = screen.getAllByTestId('solution-badge-correct');
+    const wrong = screen.getAllByTestId('solution-badge-wrong');
+    expect(right).toHaveLength(1);
+    expect(wrong).toHaveLength(3);
+    expect(right[0].props.className).toMatch(/\bbg-accent\b/);
+    expect(right[0].props.className).toMatch(/\brounded-full\b/);
+    expect(wrong[0].props.className).toMatch(/\bbg-dangerInk\b/);
+    expect(
+      within(right[0]).getByText('✓', { includeHiddenElements: true }).props.className,
+    ).toMatch(/\btext-ink\b/);
+    expect(
+      within(wrong[0]).getByText('✕', { includeHiddenElements: true }).props.className,
+    ).toMatch(/\btext-onInk\b/);
+  });
+
+  // Both blocks give all three of the bar's pixels back out of the reading-side padding, so
+  // the answer given and the key start their text on one axis (ruling D8).
+  it('starts both answer blocks on one axis under their own tint and edge', async () => {
+    await render(<SolutionsView rows={ROWS} initialFilter="wrong" />);
+    const yours = screen.getAllByTestId('solution-your-answer')[0];
+    const key = screen.getAllByTestId('solution-correct-answer')[0];
+    expect(yours).toHaveStyle({
+      backgroundColor: colors.dangerTint,
+      borderLeftWidth: 3,
+      borderLeftColor: colors.dangerInk,
+      paddingLeft: spacing['3'] - 3,
+    });
+    expect(key).toHaveStyle({
+      backgroundColor: colors.accentTint,
+      borderLeftWidth: 3,
+      borderLeftColor: colors.accentStrong,
+      paddingLeft: spacing['3'] - 3,
+    });
+  });
+
+  // The `sand` alias was the last gold kicker in the app.
+  it('heads the explanation with the paper viewer’s Why pill', async () => {
+    await render(<SolutionsView rows={ROWS} initialFilter="wrong" />);
+    const why = screen.getAllByText('Why')[0];
+    expect(why.props.className).toMatch(/\btext-ink3\b/);
+    expect(String(why.props.className)).not.toMatch(/text-(sand|hivis|accentInk)\b/);
+  });
+
+  it('draws the two filters as pills carrying their counts', async () => {
+    await render(<SolutionsView rows={ROWS} />);
+    for (const id of ['solutions-filter-wrong', 'solutions-filter-all'])
+      expect(screen.getByTestId(id).props.className).toMatch(/\brounded-full\b/);
   });
 
   it('shows the skeleton and no filters while loading', async () => {

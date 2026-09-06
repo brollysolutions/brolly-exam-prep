@@ -1,33 +1,32 @@
-import { colors, radius, text as textSizes } from '@tslprb/design-tokens';
+import { text as textSizes } from '@tslprb/design-tokens';
 import { COST_ROWS } from '@tslprb/fixtures';
 import { useDir } from '@tslprb/i18n';
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable, ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import type { ResultAction, ResultDetail } from '@/data/api';
 import {
+  ActionBar,
   BackHeader,
   Button,
+  Card,
   Chip,
   Duration,
   formatDuration,
   formatRank,
   Glyph,
   isLatinValue,
-  Kicker,
   LoadError,
   Num,
+  Pill,
   Row,
   Screen,
   Skeleton,
   Stack,
   Text,
   useDurationUnits,
-  usePressed,
 } from '@/ui';
-
-import { startEdge } from './edge';
 
 export type ResultViewProps = {
   /** Omit while the analysis is loading; the skeleton shows instead. */
@@ -57,10 +56,10 @@ const SKELETON = [
 ] as const;
 
 /**
- * Rows are separated, not boxed: the last row of a list drops its rule so the block ends on
- * the section gap instead of a line that divides nothing.
+ * Rows inside a card carry the hairline on TOP, so the last one never draws a line against the
+ * card's own border — the `MarkerRow` rule, and the reason the first row asks for `first`.
  */
-const rowDivider = (last: boolean) => (last ? 'py-3' : 'border-b border-panel3 py-3');
+const rowDivider = (first: boolean) => (first ? 'py-3' : 'border-t border-line py-3');
 
 /** The tabular figure at the end of a "where you stand" row. */
 const StandValue = ({ children }: { children: string }) => (
@@ -78,23 +77,23 @@ function StandRow({
   label,
   value,
   valueText,
-  last = false,
+  first = false,
 }: {
   label: string;
   value: ReactNode;
   valueText: string;
-  last?: boolean;
+  first?: boolean;
 }) {
   return (
     <Row
       gap={3}
       align="baseline"
-      className={rowDivider(last)}
+      className={rowDivider(first)}
       testID="result-stand-row"
       accessible
       accessibilityLabel={`${label} ${valueText}`}
     >
-      <Text variant="body" color="chalk2" className="flex-1">
+      <Text variant="body" color="ink2" className="flex-1">
         {label}
       </Text>
       {value}
@@ -107,6 +106,9 @@ function StandRow({
  * their own script ("92 sec"), which Inter cannot draw - only a Latin value may go into
  * `<Num>`; the rest stays in the language face and is merely tabular.
  *
+ * The value is `accentInk` (4.77:1 on the card's `surface`) — the one gold that is text, and
+ * these figures are the candidate's own: the minutes they spent, the marks they gave away.
+ *
  * `align="baseline"` sits the value on the label's first line rather than the top of the
  * box: a Telugu value is a whole word tall and floated above the label without it. It never
  * shrinks or wraps, so the two-line label keeps the width it needs.
@@ -115,30 +117,30 @@ function CostRow({
   label,
   note,
   value,
-  last = false,
+  first = false,
 }: {
   label: string;
   note: string;
   value: string;
-  last?: boolean;
+  first?: boolean;
 }) {
   return (
-    <Row gap={3} align="baseline" className={rowDivider(last)} testID="result-cost-row">
+    <Row gap={3} align="baseline" className={rowDivider(first)} testID="result-cost-row">
       <Stack gap={1} className="flex-1">
         <Text variant="body">{label}</Text>
-        <Text variant="caption" color="dim">
+        <Text variant="caption" color="ink3">
           {note}
         </Text>
       </Stack>
       {isLatinValue(value) ? (
-        <Num variant="question" color="hazard" className="shrink-0" numberOfLines={1}>
+        <Num variant="question" color="accentInk" className="shrink-0" numberOfLines={1}>
           {value}
         </Num>
       ) : (
         <Text
           variant="question"
           weight="700"
-          color="hazard"
+          color="accentInk"
           numeric
           className="shrink-0"
           numberOfLines={1}
@@ -151,49 +153,41 @@ function CostRow({
 }
 
 /**
- * A "do this next" drill card. Built from a `Pressable` rather than `Card` so the mirrored
- * 3 px edge can live in a flattened style object: a `className` that changes with the
- * language would accumulate on web, and a `Pressable` style *function* would drop those
- * static values on web (see `usePressed`) — press feedback is driven from state instead.
+ * A "do this next" drill card: P2 with the chevron in its `trailing` slot. It carries no gold
+ * start edge — the score above it is the screen's one edged card, and three edges in a column
+ * would point at none of them (the Updates ruling, F-30).
  */
 function ActionCard({ action, onPress }: { action: ResultAction; onPress?: () => void }) {
   const d = useDir();
-  const { pressed, handlers } = usePressed();
   return (
-    <View
-      style={{
-        borderRadius: radius.md,
-        borderWidth: 1,
-        borderColor: colors.line,
-        backgroundColor: colors.panel2,
-        overflow: 'hidden',
-        ...startEdge(d.isRTL, 'hivis'),
-      }}
-    >
-      <Pressable
-        accessibilityRole="button"
-        android_ripple={{ color: colors.hivisTint3 }}
-        onPress={onPress}
-        {...handlers}
-        className="min-h-16 justify-center p-4"
-        style={pressed ? { opacity: 0.85 } : undefined}
-        testID="result-action"
-      >
-        <Row gap={3} align="center">
-          <Stack gap={1} className="flex-1">
-            <Text variant="body" weight="600">
-              {action.title[d.lang]}
-            </Text>
-            <Text variant="caption" color="dim">
-              {action.sub[d.lang]}
-            </Text>
-          </Stack>
-          <Glyph color="hivis" accessibilityElementsHidden importantForAccessibility="no">
-            {d.chevronNext}
-          </Glyph>
-        </Row>
-      </Pressable>
-    </View>
+    <Card
+      size="md"
+      title={action.title[d.lang]}
+      subtitle={action.sub[d.lang]}
+      onPress={onPress}
+      trailing={
+        <Glyph color="ink3" accessibilityElementsHidden importantForAccessibility="no">
+          {d.chevronNext}
+        </Glyph>
+      }
+      testID="result-action"
+    />
+  );
+}
+
+/** A numbered section head: the pill every block on every screen opens with. */
+function SectionPill({ index, label }: { index: string; label: string }) {
+  return (
+    <Pill
+      // `ink3` on the pill's `surface2` is 4.66:1; `accentInk` there would be 4.25, and a
+      // printed index is not the candidate's own input in any case (ruling F-30 fix wave, A2).
+      leading={
+        <Num variant="caption" weight="700" color="ink3" tracking="none">
+          {index}
+        </Num>
+      }
+      label={label}
+    />
   );
 }
 
@@ -217,7 +211,8 @@ export function ResultView({
   const accuracyText = result ? `${result.accuracyPct}%` : '';
 
   return (
-    <Screen testID="result-screen">
+    /* `ActionBar` owns the bottom inset, the way a tab scene's bar does. */
+    <Screen bottomInset={false} testID="result-screen">
       <BackHeader
         title={t('result.title', { n: result?.testTitleN ?? '' }).trim()}
         onBack={onBack}
@@ -232,49 +227,56 @@ export function ResultView({
         <>
           {/* The indicator stays: this screen runs several viewports long. */}
           <ScrollView className="flex-1" contentContainerClassName="px-4 pb-6 pt-5">
-            <Kicker>{t('result.yourScore')}</Kicker>
-            {/* Physical: a score always reads "62.25 / 100", never mirrored. */}
-            <Row physical align="baseline" gap={2} className="mt-1" testID="result-score-row">
-              <Num
-                variant="score"
-                color="hivis"
-                tracking="scoreTight"
-                style={{ lineHeight: textSizes.score }}
-                testID="result-score"
-              >
-                {result.score}
-              </Num>
-              <Num variant="glyph" weight="600" color="ghost">
-                {`/ ${result.maxScore}`}
-              </Num>
-            </Row>
-
-            <Row gap={2} wrap align="center" className="mt-3">
-              <Chip
-                label={result.qualified ? t('result.qualified') : t('result.notQualified')}
-                tone={result.qualified ? 'hivis' : 'flag'}
-                active
-                testID="result-qualified"
-              />
-              <Row gap={1} align="baseline">
-                <Text variant="small" color="dim">
-                  {t('result.cutoff')}
-                </Text>
-                <Num variant="small" weight="600" color="dim">
-                  {`${result.cutoffPct}%`}
+            {/* The screen's one gold-edged card. `accentStrong` (3.48:1 on the card), not the
+                brand `accent`, which is 2.42 there. */}
+            <Card startEdge="accentStrong" testID="result-score-card">
+              <Pill label={t('result.yourScore')} />
+              {/* Physical: a score always reads "62.25 / 100", never mirrored. */}
+              <Row physical align="baseline" gap={2} className="mt-2" testID="result-score-row">
+                {/* Ink, never gold: 58 px of `accent` on cream is 2.42:1. */}
+                <Num
+                  variant="score"
+                  tracking="scoreTight"
+                  style={{ lineHeight: textSizes.score }}
+                  testID="result-score"
+                >
+                  {result.score}
+                </Num>
+                <Num variant="glyph" weight="600" color="ink3">
+                  {`/ ${result.maxScore}`}
                 </Num>
               </Row>
-            </Row>
 
-            <View className="mt-6 h-px bg-line" />
+              <Row gap={2} wrap align="center" className="mt-3">
+                {/* A verdict is a `Chip`: gold when it passed, the red tint under a red
+                    outline when it did not (`dangerInk` on that tint is 5.27:1). */}
+                <Chip
+                  label={result.qualified ? t('result.qualified') : t('result.notQualified')}
+                  tone={result.qualified ? 'accent' : 'danger'}
+                  shape="pill"
+                  size="md"
+                  active
+                  testID="result-qualified"
+                />
+                <Row gap={1} align="baseline">
+                  <Text variant="small" color="ink3">
+                    {t('result.cutoff')}
+                  </Text>
+                  <Num variant="small" weight="600" color="ink3">
+                    {`${result.cutoffPct}%`}
+                  </Num>
+                </Row>
+              </Row>
+            </Card>
 
-            <Stack gap={2} className="mt-4">
-              <Kicker index="01">{t('result.r1')}</Kicker>
-              <View>
+            <Stack gap={2} className="mt-7">
+              <SectionPill index="01" label={t('result.r1')} />
+              <Card>
                 <StandRow
                   label={t('result.rank')}
                   value={<StandValue>{rankText}</StandValue>}
                   valueText={rankText}
+                  first
                 />
                 <StandRow
                   label={t('result.accuracy')}
@@ -288,35 +290,25 @@ export function ResultView({
                       seconds={result.avgSecondsPerQuestion}
                       variant="bodyLg"
                       weight="700"
-                      color="chalk"
                       className="shrink-0"
                     />
                   }
                   valueText={formatDuration(result.avgSecondsPerQuestion, units)}
-                  last
                 />
-              </View>
+              </Card>
             </Stack>
 
-            <Stack gap={2} className="mt-6">
-              <Kicker index="02">{t('result.r2')}</Kicker>
-              <View>
+            <Stack gap={2} className="mt-7">
+              <SectionPill index="02" label={t('result.r2')} />
+              <Card>
                 {costRows.map(([label, value, note], i) => (
-                  <CostRow
-                    key={label}
-                    label={label}
-                    value={value}
-                    note={note}
-                    last={i === costRows.length - 1}
-                  />
+                  <CostRow key={label} label={label} value={value} note={note} first={i === 0} />
                 ))}
-              </View>
+              </Card>
             </Stack>
 
-            <Stack gap={2} className="mt-6">
-              <Kicker index="03" indexColor="hivis" color="hivis">
-                {t('result.r3')}
-              </Kicker>
+            <Stack gap={2} className="mt-7">
+              <SectionPill index="03" label={t('result.r3')} />
               <Stack gap={2}>
                 {result.actions.map((action) => (
                   <ActionCard key={action.id} action={action} onPress={() => onAction?.(action)} />
@@ -325,14 +317,17 @@ export function ResultView({
             </Stack>
           </ScrollView>
 
-          <View className="border-t border-line bg-panel px-3 pb-3 pt-2">
-            <Button
-              size="lg"
-              label={t('result.seeWrong')}
-              onPress={onSeeWrong}
-              testID="result-cta"
-            />
-          </View>
+          <ActionBar
+            testID="result-actions"
+            primary={
+              <Button
+                size="lg"
+                label={t('result.seeWrong')}
+                onPress={onSeeWrong}
+                testID="result-cta"
+              />
+            }
+          />
         </>
       )}
     </Screen>
