@@ -198,3 +198,47 @@ Sequential, one implementer per phase in the main checkout (worktrees are not wo
   selectable variant; the affairs category tone is Phase C's ruling; the `Chip` label/kicker
   note from the design critic's deviation 7 is a Phase C item.
 
+## Addendum — Phase C as built (2026-09-06)
+- Six commits on `main` (base `e1f6c32`): patterns (`13972d0`), Study + Topic (`7f42f0f`),
+  Library + Paper (`89bd79c`), Updates + Affairs (`724d596`), Eligibility (`e00a253`), and one
+  fix commit for the three defects the 390 px captures found (`b0c5358`). Nothing pushed.
+- **The three Phase B follow-ups.** `Card` gets `radius` (`md` | `lg`) in one class slot and
+  `PostView` takes the `lg` corner. `MarkerRow.meta` widens to a node, because Study's minutes
+  and Library's "40 questions · 60 min" are digits and a digit lives in `<Num>`; a node is
+  **silent in the composed accessibility name**, so a row carrying one names itself.
+  `MarkerRow` also gains `titleTestID` / `metaTestID`, the split `PageHeader` already makes, so
+  Affairs keeps `affair-headline-<id>` and `affair-summary-<id>`. **A selectable `StatTile` was
+  not built**: nothing in Phase C selects a tile (Eligibility picks with `SegmentedChips`,
+  Library with `Chip`s), and a variant with no caller is an API guess. The category grid stays
+  a `Card`.
+- **Rulings this phase makes.** The affairs category is a **quiet pill** with no gold — the
+  tone Phase B parked. A gold start edge marks **the open card**, not every card in a list
+  (Updates). A card of rows **hugs its rows** and the scroller around it takes the height. The
+  correct answer's tick sits in a **20 px gold disc**: a bare gold ✓ on cream is 2.3:1, under
+  the 3:1 floor for a mark. A **gold index digit stays on the canvas** — `accentInk` is 4.25:1
+  on a pill's `surface2`, so Study's section numbering is a `Kicker`, not a pill's leading
+  `<Num>`.
+- **Accepted deviations** (five):
+  1. **`study-chevron-<id>` retires.** The pattern owns the chevron and names its own `-end`
+     slot; the ID had one consumer, `StudyView.test`, which now reads `study-row-<id>-end`.
+  2. **The previous-papers shelf keeps one ink Practise per row.** The spec names the ink
+     fill; the one-ink-primary-per-screen rule is about screen chrome, and a shelf of two
+     papers therefore shows two. Flagged for the design critic rather than silently resolved
+     either way.
+  3. **Study's section index is a `Kicker` on the canvas**, not a pill's leading `<Num>` —
+     the contrast rule above.
+  4. **The library shelf is a `ScrollView`, not a `FlatList`.** A shelf is four papers at
+     most, and a `FlatList` needs a bounded height, which is what put two rows at the top of a
+     viewport-tall empty card in the first capture pass. `library-list` is unchanged.
+  5. **Updates' notice body steps up from `caption` to `body`/`ink2`.** A notice is prose, and
+     12 px `ink2` under a 15 px title read as a footnote.
+- **Test rewrites beyond the three the brief named**: `PaperView.test`'s correct-option style
+  (`hivis` → `accentStrong`, plus the disc), `UpdatesView.test`'s link row (gold chevron → ink
+  label + `ink3` chevron) and its row floor (`min-h-[72px]` → the pattern's `min-h-touchLg`),
+  `StudyView.test`'s read badge and chevron, and the two vacuous
+  `not.toMatch(/bg-hivis/)` sample-data lines, which now assert the pill they describe. All
+  five Phase A `it.failing` guards (Topic ×1, Affairs ×2, plus the two edge assertions) are
+  real assertions.
+- Six snapshots refreshed (Library, Topic.te, Paper.te, Updates.te, Affairs.te,
+  Eligibility.te) plus `PostView.te` for the `lg` radius. Mobile 856 tests / 96 suites / 16
+  snapshots; tokens 44; i18n 4.
