@@ -97,12 +97,12 @@ Welcome, Login, OTP, Post, Category, Home, Profile + the six patterns above + ga
 
 ## Phase C — Content screens (F-30)
 Study, Topic, Library, Paper, Updates, Affairs, Eligibility.
-- **Study**: hub header; section index digits `accentInk`; each section = one P2 of P4 rows (gold dot unread / ink check read, minutes ink3, quiet "Read" pill, ink3 chevron).
+- **Study**: hub header; each section heads on a `Pill` carrying its index as an `ink3` `<Num>` (4.66:1 on the pill's `surface2`; **not** `accentInk`, which is 4.25 there, and not a `Kicker`, whose 10.5 px is below the caption floor — fix wave 1, A2); each section = one P2 of P4 rows (gold dot unread / ink check read, minutes ink3, ink3 chevron). The mark is the state and says it once: **no trailing "Read" pill** beside the check that already says it (fix wave 1, D13).
 - **Topic**: section pill, Playfair title; paragraphs ink2, bullets get a 6 px gold dot instead of `■`, formula = `surface2` inset, example = the one gold-edged P2 with a "Worked example" pill, tip = `surface2` block with an "Exam tip" pill; footer stays in flow (Mark as read ink primary; read badge = quiet pill).
-- **Library**: filter chips = `Chip shape="pill" size="lg"` (active gold fill + ink 700); shelves = P2 of P4 rows; Free/Locked/Best as quiet pills (Locked gets a leading `lock-closed-outline` and `testID="library-lock-<id>"`, replacing the `⛌` glyph); Practise ink `md` + View paper outline; locked toast `info`.
-- **Paper**: leaf header + section pills; question cards P2 with a "Q n" pill; correct option = `accentTint` fill + 3 px gold edge + a 20 px gold circle with an ink check (a bare gold ✓ fails 3:1); Why pill.
-- **Updates / Affairs**: leaf header with the Sample-data tag pill; notice cards P2 with kind pill, ink3 date, ink3 caret (face + rotation tests unchanged), gold start edge only while expanded; affairs = day pill with `<Num>` date + one P2 of P4 rows (the `sand` edge goes, and its two assertions with it).
-- **Eligibility**: quiet `SegmentedChips`, "Your measurements" pill, inputs surface `rounded-md` with a padding-compensated 2 px gold focus and ink3 placeholder, ink Check in flow (it scrolls to the verdict), verdict banner `okInk`/`dangerInk`/`ink3` tones with Playfair subtitle, result rows in a P2 with `okInk` ✓ / `dangerInk` ✕.
+- **Library**: filter chips = `Chip shape="pill" size="lg"` (active gold fill + ink 700); shelves = P2 of P4 rows; Free/Locked/Best as quiet pills (Locked gets a leading `lock-closed-outline` and `testID="library-lock-<id>"`, replacing the `⛌` glyph); Practise `secondary` `md` + View paper `ghost` — **neither is the ink fill**, because one ink fill per screen counts every instance and this pair is drawn once per row (fix wave 1, A1); locked toast `info`. A shelf with nothing on it is a P6 `EmptyState` with no dot (`library.empty`, the one key pair the fix wave adds), reachable through the view's `tests` prop.
+- **Paper**: leaf header + section pills; question cards P2 with a "Q n" pill; correct option = `accentTint` fill + a 3 px `accentStrong` edge **taken out of the option's own padding**, so the key's text keeps the other three options' axis (fix wave 1, D8), + a 20 px **`accentStrong`** disc with an ink check — the token, not "gold": a bare ✓ on the card is 2.42:1 and an `accent` disc on the tint 2.16, both under the 3:1 mark floor, while `accentStrong` there is 3.11 (fix wave 1, D1); Why pill.
+- **Updates / Affairs**: leaf header with the Sample-data tag pill; notice cards P2 with kind pill, ink3 date, ink3 caret (face + rotation tests unchanged), gold start edge only while expanded and **drawn by `Card`, which gives back only the two pixels it added over its own `line`** so an open card keeps the closed cards' 17 px axis (fix wave 1, D8); the link row hugs the reading edge through `dir()` and gives its target padding back as a negative margin (D10); affairs = day pill with `<Num>` date + one P2 of P4 rows (the `sand` edge goes, and its two assertions with it), the summary a `small`/`ink2` node at 9.13:1 rather than the pattern's `caption`/`ink3` at 5.0 (fix wave 1, A3).
+- **Eligibility**: quiet `SegmentedChips` (48 px cells, the floor on the cell and not the frame), their labels in the **field-label shape** the seven measurement fields use — `body`/600/`ink2` — so **exactly one `Pill`** heads the screen, "Your measurements" (fix wave 1, D7); inputs surface `rounded-md` with a padding-compensated 2 px gold focus, an ink3 placeholder and the UA focus ring suppressed on web (`outlineStyle: none`; the brand ring is 3.37:1 and is drawn for pointer and keyboard alike — D2); ink Check in flow (it scrolls to the verdict), verdict banner `okInk`/`dangerInk`/`ink3` tones with Playfair subtitle, its to-do list `ink2` behind ink dots (`ink3` is 4.43:1 on the red tint and a gold dot 2.96 — D3), result rows in a P2 with `okInk` ✓ / `dangerInk` ✕.
 - Tests: 6 snapshots; assertion rewrites at `LibraryView.test.tsx:74`, `PaperView.te.test.tsx:31`, `AffairsView(.te).test.tsx` edge lines; critic captures 7 screens × en/te plus empty/not-found states.
 
 ## Phase D — Attempt, palette, result, solutions (F-31)
@@ -117,6 +117,8 @@ Study, Topic, Library, Paper, Updates, Affairs, Eligibility.
 
 ## Phase E — Rename legacy tokens (chore, after D)
 Codemod the unambiguous names (`tar→canvas`, `panel*→surface/surface2`, `line2/3`, `chalk*→ink/ink2`, `dim/steel→ink3`, `mute/ghost→ink4`, tints), manual pass for `hivis/hazard/flag/sand/success` (fill vs text), delete `legacyColors` and the aliases (`HazardRail`, `dangerOutline`, `hazard` variant), flip `legacy.test.mjs` to scan all of `src`, full snapshot refresh, `DESIGN_SYSTEM.md` final.
+- **Also delete `Chip tone="label"`** with the other legacy tones (deprecated in the F-30 fix wave: `Pill` is the tag, and only the dev gallery still renders the old one) and its `LabelChip` branch, and drop the gallery's demo of it.
+- **Give `BackHeader` an optional `title`** and put Topic on it (F-30 fix wave, D17 — tracked, not fixed): Topic is the only leaf screen without the bar, carrying a bare `BackRow` beside its language switcher instead. Changing it now would move the language switcher and the title on the one screen a reader spends the longest on, in a wave whose other items are one- and three-pixel corrections.
 
 ## Docs and tracking
 `docs/FEATURES.md` rows F-28..F-31 (+ chore), `docs/IMPLEMENTATION_PLAN.md` Phase 4 lines + dated rulings (theme, buttons, fonts, brand lockup, hazard rail replacement, palette semantics), `docs/DESIGN_SYSTEM.md` rewrite in A5 + a "Screen patterns" section in B, `docs/specs/2026-09-05-brolly-rebrand-design.md` (this plan's design content as the spec), `CLAUDE.md` identity line, `.claude/rules/mobile-ui.md` (no hazard rail, one gold-edged card per screen, gold never as text below the 700 shade, pressed fill not opacity).
@@ -194,9 +196,11 @@ Sequential, one implementer per phase in the main checkout (worktrees are not wo
   pins the edge against both its neighbours. `line`/`line2` on `surface2` measure 1.07:1: the
   fill is the boundary and the hairline is texture. Every screen pattern takes a `className`
   and an optional `testID`; icon sizes are `size.icon` (18) and `size.iconLg` (22).
-- **Phase C follow-ups recorded here**: `Card` gets a `radius` prop; `StatTile` gets a
-  selectable variant; the affairs category tone is Phase C's ruling; the `Chip` label/kicker
-  note from the design critic's deviation 7 is a Phase C item.
+- **Phase C follow-ups recorded here**: `Card` gets a `radius` prop; the affairs category tone
+  is Phase C's ruling; the `Chip` label/kicker note from the design critic's deviation 7 is a
+  Phase C item. (A selectable `StatTile` was on this list and is struck: Phase C found no
+  caller and Phase D has none either — Result tiles are read-only, the palette is `PaletteCell`
+  and the filters are `Chip`s — so the closing ruling lives in `DESIGN_SYSTEM.md` instead.)
 
 ## Addendum — Phase C as built (2026-09-06)
 - Six commits on `main` (base `e1f6c32`): patterns (`13972d0`), Study + Topic (`7f42f0f`),
@@ -237,8 +241,41 @@ Sequential, one implementer per phase in the main checkout (worktrees are not wo
   label + `ink3` chevron) and its row floor (`min-h-[72px]` → the pattern's `min-h-touchLg`),
   `StudyView.test`'s read badge and chevron, and the two vacuous
   `not.toMatch(/bg-hivis/)` sample-data lines, which now assert the pill they describe. All
-  five Phase A `it.failing` guards (Topic ×1, Affairs ×2, plus the two edge assertions) are
-  real assertions.
-- Six snapshots refreshed (Library, Topic.te, Paper.te, Updates.te, Affairs.te,
-  Eligibility.te) plus `PostView.te` for the `lg` radius. Mobile 856 tests / 96 suites / 16
+  **three** Phase A `it.failing` guards (Topic ×1, Affairs ×2) are real assertions, and so are
+  the two `sand`-edge assertions beside them — five converted lines, but only three were
+  `it.failing` (fix wave 1, code review 7).
+- **Seven** snapshots refreshed: Library, Topic.te, Paper.te, Updates.te, Affairs.te,
+  Eligibility.te and `PostView.te` for the `lg` radius. Mobile 856 tests / 96 suites / 16
   snapshots; tokens 44; i18n 4.
+
+## Addendum — Phase C fix wave 1 (2026-09-06)
+
+Three commits on `main` (base `dba672d`): the primitives (`e5ab5db`), the seven screens
+(`0478093`) and the docs (this one). Nothing pushed.
+
+- **The theme of the wave was that rulings had outrun the build.** Three of them were written
+  into `DESIGN_SYSTEM.md` and into source comments in a form the code did not meet: the gold
+  disc "clears the 3:1 mark floor" (it measured **2.16:1**, worse than the 2.42:1 bare tick it
+  replaced), the open notice "sits on the same axis" as the closed ones (it sat a pixel inside
+  them), and a gold index digit was codified at a size the caption floor two sections above
+  forbids. Every ratio in this spec and in `DESIGN_SYSTEM.md` was re-measured against the
+  tokens; the corrected numbers are in the lines above.
+- **The primitive, not the screen, owns the arithmetic.** `Card startEdge` draws the bar and
+  compensates its own padding, because a bar that REPLACES a border gives back only the
+  difference (two pixels over `Card`'s 1 px `line`, three over a bare box). `UpdatesView` and
+  `TopicView` lost their copies of the sum; `startEdgeInset(isRTL, pad, borderWidth)` serves the
+  one site that is not a card.
+- **Rank is said once, and never twice in two shapes.** Two ink Practise buttons per shelf,
+  four pills where the spec drew one, a "Read" pill beside the check that already said it, a
+  gold dot on a news row that is not a to-do: each drew a second voice for a rank already
+  spoken. One ink fill per screen counts every instance, per-row buttons included.
+- **Types where a doc comment used to be.** `MarkerRow`'s a11y contract is a prop union: a node
+  `meta` is silent only in a COMPOSED name, and only a pressable row composes one, so a node on
+  a button drags an `accessibilityLabel` in with it and a node on a static row needs none. The
+  union caught the existing test that rendered the forbidden shape.
+- **One new key pair**, `library.empty` (en + te) for the empty shelf; nothing else was added.
+- **Tracked, not fixed.** D16: "62.25 Best" reads backwards in English while the Telugu order is
+  correct, so it is a copy decision for the standing native-copy review, not a guess to make
+  here. D17: `BackHeader` gains an optional `title` in Phase E (above).
+- Mobile **873 tests / 96 suites / 16 snapshots** (856 at `dba672d`); tokens 44; i18n 4.
+  Eight snapshots refreshed, every diff read by category.
