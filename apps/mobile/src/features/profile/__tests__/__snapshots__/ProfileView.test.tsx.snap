@@ -498,7 +498,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
               >
                 <View
                   accessibilityRole="radiogroup"
-                  className="h-touch overflow-hidden rounded-sm border border-outline self-start"
+                  className="min-h-touch overflow-hidden rounded-sm border border-outline self-start"
                   style={
                     {
                       "alignItems": undefined,
@@ -531,7 +531,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                       }
                     }
                     accessible={true}
-                    className="h-full min-w-touch items-center justify-center px-3 border-line2 border-r"
+                    className="min-h-touch min-w-touch items-center justify-center px-3 border-line2 border-r"
                     collapsable={false}
                     focusable={true}
                     onBlur={[Function]}
@@ -583,7 +583,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                       }
                     }
                     accessible={true}
-                    className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
+                    className="min-h-touch min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
                     collapsable={false}
                     focusable={true}
                     onBlur={[Function]}

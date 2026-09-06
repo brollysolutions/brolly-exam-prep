@@ -325,6 +325,9 @@ describe('HomeView — the three shelves', () => {
     await render(<HomeView {...props} lang="en" />);
     const rows = screen.getAllByTestId('home-affair');
     expect(rows).toHaveLength(3);
+    // A news item is not a to-do, so it carries no mark: `/affairs` already draws these rows
+    // without one, and the shelf now matches the screen behind it (design review D12).
+    expect(screen.queryByTestId('home-affair-marker', { includeHiddenElements: true })).toBeNull();
     expect(rows[0]).toHaveTextContent(has('Telangana'));
     expect(rows[1]).toHaveTextContent(has('India'));
     expect(rows[2]).toHaveTextContent(has('Sports'));

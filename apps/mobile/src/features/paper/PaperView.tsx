@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { FlatList, ScrollView, View, type ListRenderItemInfo } from 'react-native';
 
 import type { PaperQuestion } from '@/data/api';
-import { startEdge } from '@/features/result/edge';
+import { startEdge, startEdgeInset } from '@/features/result/edge';
 import {
   BackHeader,
   Card,
@@ -52,9 +52,13 @@ export function firstIndexOfSection(sections: SectionSpec[], i: number): number 
  * One answer. The correct one carries a 3 px gold start bar over the gold tint and a ✓ in a
  * 20 px gold disc; the other three stay plain, because marking all four is marking none.
  *
- * The disc is what makes the tick readable: a bare gold ✓ on cream is 2.3:1, under the 3:1
- * floor for a mark, while ink on the gold disc is 11:1 and the disc itself clears it against
- * the tint behind it.
+ * The disc is what makes the tick readable, and it is `accentStrong`, not the brand `accent`:
+ * a bare gold ✓ on the card measures 2.42:1 and an `accent` disc on the tint behind it 2.16:1,
+ * so the first disc was WORSE than the tick it replaced. `accentStrong` on that tint is 3.11:1
+ * — over the 3:1 floor a mark has to clear — with the ink ✓ on it at 4.49:1 (design review D1).
+ *
+ * The bar is compensated out of the reading-side padding, so the key's text starts on the same
+ * axis as the other three options' rather than three pixels in (design review D8).
  *
  * The ✓ is decorative — a screen reader is told which option is correct by the row's own
  * label, not by a glyph it would read as "check mark".
@@ -82,10 +86,15 @@ function Option({
       className="rounded-sm px-3 py-2"
       // Tint and mirrored bar are object styles, never a class: css-interop accumulates a
       // dynamic className next to a style array, and RN's `borderStartWidth` follows
-      // `I18nManager` rather than the in-app language (`startEdge`).
+      // `I18nManager` rather than the in-app language (`startEdge`). The box draws no border of
+      // its own, so all three of the bar's pixels come back off the `px-3` (`startEdgeInset`).
       style={
         correct
-          ? { backgroundColor: colors.accentTint, ...startEdge(d.isRTL, 'accentStrong') }
+          ? {
+              backgroundColor: colors.accentTint,
+              ...startEdge(d.isRTL, 'accentStrong'),
+              ...startEdgeInset(d.isRTL, spacing['3']),
+            }
           : undefined
       }
     >
@@ -112,7 +121,10 @@ function Option({
           {label}
         </Text>
         {correct && (
-          <View className="h-5 w-5 items-center justify-center rounded-full bg-accent">
+          <View
+            testID={`paper-disc-${questionNo}-${index}`}
+            className="h-5 w-5 items-center justify-center rounded-full bg-accentStrong"
+          >
             <Glyph
               variant="small"
               weight="700"

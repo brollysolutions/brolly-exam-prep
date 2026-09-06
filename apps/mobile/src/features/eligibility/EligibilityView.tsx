@@ -13,7 +13,14 @@ import {
 import { useDir } from '@tslprb/i18n';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, StyleSheet, TextInput, View, type LayoutChangeEvent } from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  View,
+  type LayoutChangeEvent,
+  type TextStyle,
+} from 'react-native';
 import Animated, { LinearTransition } from 'react-native-reanimated';
 
 import {
@@ -73,6 +80,18 @@ const LABEL: Partial<Record<StandardKey, string>> = {
  * The writing direction stays LTR for the same reason; only the caret's side follows the
  * reading direction (see `MeasureInput`).
  */
+/**
+ * Web is the delivery surface, and Chromium paints its own `outline: auto` ring INSIDE the
+ * brand one the moment a field takes focus — two rings, one of them orange (design review D2).
+ * `none` is the value that removes it; `outlineWidth: 0` does not, because `auto` ignores the
+ * width. Cast because RN types `outlineStyle` as the three values its NATIVE runtimes draw,
+ * and this one is web-only.
+ *
+ * 2.4.11 still holds without the UA ring: the box's own 2 px `accentStrong` ring is drawn for
+ * pointer and keyboard alike and measures 3.37:1 against the canvas, over the 3:1 floor.
+ */
+const NO_UA_FOCUS_RING = { outlineStyle: 'none' } as unknown as TextStyle;
+
 const INPUT_STYLE = StyleSheet.flatten([
   typography('en', 'field', '600'),
   {
@@ -82,6 +101,7 @@ const INPUT_STYLE = StyleSheet.flatten([
     textAlignVertical: 'center' as const,
     writingDirection: 'ltr' as const,
   },
+  NO_UA_FOCUS_RING,
 ]);
 
 /** Longest sane entry is "167.6"; the cap stops a paste from turning a height into a novel. */
@@ -409,12 +429,19 @@ function VerdictBanner({
       </Row>
       {result.improve.length > 0 && (
         <Stack gap={2}>
-          <Kicker>{t('eligibility.improve')}</Kicker>
+          {/* `ink2` (7.75:1 on the red verdict's tint), not the default `ink3`, which measures
+              4.43 there — under AA for a 10.5 px label (design review D3). */}
+          <Kicker color="ink2">{t('eligibility.improve')}</Kicker>
           {result.improve.map((key) => (
             <Row key={key} testID={`eligibility-improve-${key}`} gap={3} align="baseline">
-              {/* A gold dot: the mark a study row still to read carries, because this is a
-                  to-do list and not a second verdict. */}
-              <View className="mt-2 h-1.5 w-1.5 rounded-full bg-accentStrong" />
+              {/* A to-do mark, not a second verdict — but ink rather than gold: `accentStrong`
+                  on the red tint is 2.96:1, under the 3:1 floor a mark has to clear, and ink
+                  there is 13.3:1 (design review D3). Named `-dot`, the way every pattern names
+                  its own, so a test reaches it rather than walking the tree (code review 8). */}
+              <View
+                testID={`eligibility-improve-${key}-dot`}
+                className="mt-2 h-1.5 w-1.5 rounded-full bg-ink"
+              />
               <Text variant="small" color="ink2" className="flex-1">
                 {labelOf(key)}
               </Text>
@@ -543,10 +570,17 @@ export function EligibilityView({
         </Text>
 
         {/* Quiet, full-width pickers: three yellow blocks over the one yellow action would
-            leave the screen with nothing to point at. */}
+            leave the screen with nothing to point at.
+
+            Their labels are `Text`, not `Pill`s. The spec asked for one pill on this screen and
+            got four, and the seven measurement fields below already label themselves this way —
+            two shapes for one rank (design review D7). The single `Pill` left is the head of
+            the measurements block. */}
         <Stack gap={4} className="mt-7">
           <Stack gap={2}>
-            <Pill label={t('eligibility.post')} />
+            <Text variant="body" weight="600" color="ink2">
+              {t('eligibility.post')}
+            </Text>
             <SegmentedChips
               testID="eligibility-post"
               tone="quiet"
@@ -560,7 +594,9 @@ export function EligibilityView({
             />
           </Stack>
           <Stack gap={2}>
-            <Pill label={t('eligibility.gender')} />
+            <Text variant="body" weight="600" color="ink2">
+              {t('eligibility.gender')}
+            </Text>
             <SegmentedChips
               testID="eligibility-gender"
               tone="quiet"
@@ -574,7 +610,9 @@ export function EligibilityView({
             />
           </Stack>
           <Stack gap={2}>
-            <Pill label={t('eligibility.group')} />
+            <Text variant="body" weight="600" color="ink2">
+              {t('eligibility.group')}
+            </Text>
             <SegmentedChips
               testID="eligibility-group"
               tone="quiet"
@@ -597,7 +635,9 @@ export function EligibilityView({
         </Stack>
 
         <Stack testID="eligibility-fields" gap={4} className="mt-7">
-          <Pill label={t('eligibility.measurements')} />
+          {/* The one pill on the screen: the head of the block, named so a test can reach it
+              without walking the tree (code review 8). */}
+          <Pill testID="eligibility-measurements" label={t('eligibility.measurements')} />
           {entries.map(({ key, standard }) => field(key, standard))}
         </Stack>
 

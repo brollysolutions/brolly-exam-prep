@@ -141,6 +141,32 @@ describe('UpdatesView', () => {
     });
   });
 
+  // The edge must not move the card's contents. `Card` gives back only the two pixels the 3 px
+  // bar added over its own 1 px `line` — the screen used to subtract all three, which left the
+  // open card's pill on 16 px against a closed card's 17 (design review D8 / code review 1).
+  it('keeps the open card contents on the same axis as every closed one', async () => {
+    await render(<UpdatesView {...props()} openId="nt-2026-hall-ticket" />);
+    const open = screen.getByTestId('update-card-nt-2026-hall-ticket');
+    const closed = screen.getByTestId('update-card-nt-2026-exam-date');
+    expect(open.props.style.paddingLeft).toBe(14);
+    expect((open.props.style.borderLeftWidth as number) + 14).toBe(17);
+    // The closed card takes its 16 px from `p-4` behind its 1 px border: 17 either way.
+    expect(closed.props.style.paddingLeft).toBeUndefined();
+    expect(closed.props.className).toMatch(/\bp-4\b/);
+  });
+
+  // `self-start` is physical: under RTL the link has to hug the right edge, so it goes through
+  // `dir()`. The `px-1` that grows the 48 px target comes back as a negative margin, so the
+  // label still starts on the card's own text axis (design review D10).
+  it('hugs the reading edge with the link row, and gives its padding back', async () => {
+    await render(<UpdatesView {...props()} openId="nt-2026-hall-ticket" />);
+    const link = screen.getByTestId('update-link-nt-2026-hall-ticket');
+    expect(link.props.className).toMatch(/\bself-start\b/);
+    expect(link.props.className).toMatch(/-mx-1/);
+    expect(link.props.className).toMatch(/\bpx-1\b/);
+    expect(link.props.className).toMatch(/\bh-touch\b/);
+  });
+
   // Centred in the space the list would fill, with a kicker: not one grey line in the corner.
   it('says so plainly when the Board has posted nothing', async () => {
     await render(<UpdatesView notices={[]} lang="en" onBack={jest.fn()} />);

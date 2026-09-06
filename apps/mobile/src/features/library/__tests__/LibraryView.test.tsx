@@ -179,17 +179,34 @@ describe('LibraryView — previous papers', () => {
     expect(screen.queryByTestId('library-locked-toast')).toBeNull();
   });
 
-  it('keeps both controls 48 px and gives the row exactly one hi-vis action', async () => {
+  // One ink fill per screen counts every INSTANCE, and a shelf draws this pair once per row:
+  // two black blocks at 15.1:1 were 14 % of the card while the active filter chip — the thing
+  // that says which shelf you are on — is 1.38:1 (design review A1/D4). Neither is the fill.
+  it('keeps both controls 48 px and gives the shelf no ink fill at all', async () => {
     await previous();
     const practise = screen.getByTestId('library-practise-prev-2022');
     const view = screen.getByTestId('library-view-prev-2022');
     expect(practise).toHaveStyle({ height: 48 });
     expect(view).toHaveStyle({ height: 48 });
-    // Practise leads on fill, not on weight alone; View paper stays an outline.
-    expect(practise.props.className).toMatch(/\bbg-ink\b/);
+    expect(practise.props.className).not.toMatch(/\bbg-ink\b/);
     expect(view.props.className).not.toMatch(/\bbg-ink\b/);
+    // Rank inside the pair is the box, not the fill: Practise is the outlined one, View paper
+    // is bare. Weight still separates them, as it did.
+    expect(practise.props.className).toMatch(/\bborder-outline\b/);
+    expect(view.props.className).not.toMatch(/\bborder-outline\b/);
     expect(within(practise).getByText('Practise').props.style.fontFamily).toContain('700Bold');
     expect(within(view).getByText('View paper').props.style.fontFamily).not.toContain('700Bold');
+  });
+
+  // The screen's ink budget: with the pair demoted there is no `bg-ink` control anywhere on it.
+  it('leaves the whole Tests screen without a single ink-filled button', async () => {
+    await previous();
+    const filled = screen
+      .getAllByRole('button')
+      .filter(
+        (n) => typeof n.props.className === 'string' && /\bbg-ink\b/.test(n.props.className),
+      );
+    expect(filled).toHaveLength(0);
   });
 
   // Filling Practise must not cost the shelf its "which shelf am I on" mark.
@@ -201,6 +218,18 @@ describe('LibraryView — previous papers', () => {
     expect(screen.getByTestId('library-filter-full').props.className).not.toContain(
       'bg-accentSoft',
     );
+  });
+
+  // A shelf with nothing on it: the state Library never had. Not a failure, so no red dot and
+  // nothing to retry — the filters above are the way out and the line says so (design D15).
+  it('shows an empty state when a shelf has nothing on it', async () => {
+    await render(<LibraryView {...handlers()} tests={[]} />);
+    expect(screen.queryByTestId('library-list')).toBeNull();
+    expect(screen.getByTestId('library-empty')).toBeOnTheScreen();
+    expect(screen.getByText('No tests here yet. Try another filter.')).toBeOnTheScreen();
+    expect(screen.queryByTestId('library-empty-pill-dot')).toBeNull();
+    // The filters are still there: the empty state replaces the shelf, not the screen.
+    expect(screen.getByTestId('library-filter-full')).toBeOnTheScreen();
   });
 
   it('leaves the other shelves with the one whole-row action they had', async () => {

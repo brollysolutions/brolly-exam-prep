@@ -42,7 +42,11 @@ describe('StudyRoute', () => {
   it('ticks the topics the store already holds', async () => {
     useStudyStore.getState().markRead('st-ar-percentages');
     await render(<StudyRoute />);
-    expect(screen.getByTestId('study-read-st-ar-percentages')).toBeOnTheScreen();
+    // The tick in the marker column is the whole signal now (design review D13).
+    expect(screen.getByTestId('study-row-st-ar-percentages')).toHaveProp(
+      'accessibilityLabel',
+      expect.stringContaining('Read'),
+    );
   });
 });
 

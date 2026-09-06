@@ -596,6 +596,7 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                     "backgroundColor": "rgba(194,155,56,0.14)",
                     "borderLeftColor": "#a17f2a",
                     "borderLeftWidth": 3,
+                    "paddingLeft": 9,
                   }
                 }
                 testID="paper-option-1-2"
@@ -650,7 +651,8 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                     100
                   </Text>
                   <View
-                    className="h-5 w-5 items-center justify-center rounded-full bg-accent"
+                    className="h-5 w-5 items-center justify-center rounded-full bg-accentStrong"
+                    testID="paper-disc-1-2"
                   >
                     <Text
                       accessibilityElementsHidden={true}
@@ -972,6 +974,7 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                     "backgroundColor": "rgba(194,155,56,0.14)",
                     "borderLeftColor": "#a17f2a",
                     "borderLeftWidth": 3,
+                    "paddingLeft": 9,
                   }
                 }
                 testID="paper-option-2-1"
@@ -1026,7 +1029,8 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                     గోదావరి
                   </Text>
                   <View
-                    className="h-5 w-5 items-center justify-center rounded-full bg-accent"
+                    className="h-5 w-5 items-center justify-center rounded-full bg-accentStrong"
+                    testID="paper-disc-2-1"
                   >
                     <Text
                       accessibilityElementsHidden={true}

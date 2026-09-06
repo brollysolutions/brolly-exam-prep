@@ -266,14 +266,14 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
                     ఎయిర్‌పోర్ట్ మెట్రో కారిడార్ తొలి దశ ప్రారంభం
                   </Text>
                   <Text
-                    className="text-ink3"
+                    className="text-ink2"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_400Regular",
-                        "fontSize": 12,
+                        "fontSize": 13,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 19.8,
+                        "lineHeight": 21.5,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -387,14 +387,14 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
                     గ్రామీణ రహదారుల పథకానికి కేబినెట్ పొడిగింపు
                   </Text>
                   <Text
-                    className="text-ink3"
+                    className="text-ink2"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_400Regular",
-                        "fontSize": 12,
+                        "fontSize": 13,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 19.8,
+                        "lineHeight": 21.5,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",
@@ -573,14 +573,14 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
                     రెండు జిల్లాల్లోని ప్రతి మండలానికీ నల్లా నీరు
                   </Text>
                   <Text
-                    className="text-ink3"
+                    className="text-ink2"
                     style={
                       {
                         "fontFamily": "NotoSansTelugu_400Regular",
-                        "fontSize": 12,
+                        "fontSize": 13,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
-                        "lineHeight": 19.8,
+                        "lineHeight": 21.5,
                         "textAlign": "left",
                         "textTransform": undefined,
                         "writingDirection": "ltr",

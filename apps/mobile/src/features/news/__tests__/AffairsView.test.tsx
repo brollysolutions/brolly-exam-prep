@@ -81,8 +81,16 @@ describe('AffairsView', () => {
     expect(screen.getByTestId('affair-headline-af-metro-corridor')).toHaveTextContent(
       'First stretch of the airport metro corridor opens',
     );
-    expect(screen.getByTestId('affair-summary-af-metro-corridor')).toHaveTextContent(
-      /Trains now run on the first elevated section/,
+    const summary = screen.getByTestId('affair-summary-af-metro-corridor');
+    expect(summary).toHaveTextContent(/Trains now run on the first elevated section/);
+    // A whole sentence, so it is `small`/`ink2` (9.13:1) rather than the pattern's
+    // `caption`/`ink3` (5.0:1, the lowest-contrast body copy in the app). Still subordinate:
+    // 13 px at 400 under a 15 px 600 headline. Affairs is the caller out of contract here, not
+    // P4 (design review A3/D6), and the row has no `onPress`, so nothing is silenced.
+    expect(summary.props.className).toMatch(/\btext-ink2\b/);
+    expect(summary.props.className).not.toMatch(/\btext-ink3\b/);
+    expect(screen.getByTestId('affair-card-af-metro-corridor').props.accessibilityRole).toBe(
+      undefined,
     );
   });
 

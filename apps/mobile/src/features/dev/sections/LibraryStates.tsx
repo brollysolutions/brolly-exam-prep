@@ -11,6 +11,7 @@ const DEV = {
   full: 'LibraryView — full mocks: a best score, a locked paper',
   sectional: 'LibraryView — sectional drills',
   previous: 'LibraryView — previous papers: practise or read',
+  empty: 'LibraryView — a shelf with nothing on it',
 } as const;
 
 /** Dev frame: every screen is `flex-1`, so a preview inside a scroll needs a bounded height. */
@@ -52,6 +53,11 @@ export function LibraryStates({ index }: { index: string }) {
       </Preview>
       <Preview label={DEV.previous}>
         <LibraryView lang={lang} initialKind="previous" onOpen={noop} onViewPaper={noop} />
+      </Preview>
+      {/* No combination of the seeded bank is empty, so the state is reached with the prop the
+          view takes for exactly this (design D15). */}
+      <Preview label={DEV.empty}>
+        <LibraryView lang={lang} tests={[]} onOpen={noop} onViewPaper={noop} />
       </Preview>
     </Stack>
   );

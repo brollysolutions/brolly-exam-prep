@@ -486,7 +486,10 @@ function AffairRow({
   return (
     <MarkerRow
       testID="home-affair"
-      marker="dot"
+      // No mark: a news item is not a to-do, and the gold dot said it was. `/affairs` already
+      // draws these rows without one, so the shelf and the screen it links to now match
+      // (design review D12).
+      marker="none"
       first={first}
       title={affair.headline[lang]}
       titleLines={2}

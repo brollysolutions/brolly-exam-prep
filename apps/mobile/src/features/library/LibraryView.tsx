@@ -10,6 +10,7 @@ import {
   Button,
   Card,
   Chip,
+  EmptyState,
   Glyph,
   iso,
   MarkerRow,
@@ -36,6 +37,11 @@ const LOCK = size.icon;
 
 export type LibraryViewProps = {
   lang: Lang;
+  /**
+   * The shelf's contents. Defaults to the seeded bank; a prop so the gallery and the tests can
+   * render the shelf with nothing on it, which no combination of the real fixtures produces.
+   */
+  tests?: TestMeta[];
   /**
    * Shelf the screen opens on, from `?kind=`. The Tests tab is already mounted when Home
    * links to it, so a later request moves the shelf too — see the sync below.
@@ -158,9 +164,15 @@ function TestRow({
  * the clock, and something to read with the answers already on it. One tap target cannot be
  * both, so the row states the paper and then offers the choice underneath.
  *
- * Practise leads on the ink fill and View paper stays an outline: a pair of identical outlines
- * made the reader work out which was the main move, and weight alone was too quiet to say it.
- * The filter chips overhead are navigation, not actions on this paper.
+ * **Neither is the ink fill** (design review A1/D4). One ink primary per screen counts every
+ * instance, and a shelf draws this pair once per row: two black blocks were 14 % of the card
+ * at 15.1:1 while the thing that actually says where you are — the active filter chip — is
+ * 1.38:1, so the repeated secondary action out-shouted the screen's own state. A repeated
+ * per-row action is never the ink fill.
+ *
+ * Practise still leads, on the box rather than on the ink: boxed against unboxed is the rank
+ * signal inside a repeated pair, which is what the "two identical outlines" objection was
+ * really about. The filter chips overhead are navigation, not actions on this paper.
  */
 function PreviousRow({
   test,
@@ -186,7 +198,7 @@ function PreviousRow({
       />
       <Row gap={2} className="pb-3">
         <Button
-          variant="primary"
+          variant="secondary"
           size="md"
           weight="700"
           label={t('library.practise')}
@@ -195,7 +207,7 @@ function PreviousRow({
           testID={`library-practise-${test.id}`}
         />
         <Button
-          variant="secondary"
+          variant="ghost"
           size="md"
           label={t('library.viewPaper')}
           onPress={onView}
@@ -214,6 +226,7 @@ function PreviousRow({
  */
 export function LibraryView({
   lang,
+  tests = TESTS,
   initialKind,
   kindKey,
   onOpen,
@@ -237,7 +250,7 @@ export function LibraryView({
   const [lockedTick, setLockedTick] = useState(0);
   const locked = useAutoDismiss(lockedTick || null);
 
-  const rows = TESTS.filter((test) => test.kind === kind);
+  const rows = tests.filter((test) => test.kind === kind);
 
   const press = (test: TestMeta) => {
     if (test.free) {
@@ -283,35 +296,41 @@ export function LibraryView({
             The card hugs its rows and the scroller around it takes the height — a `flex-1`
             card left two rows floating at the top of a screen-tall empty box. A shelf is four
             papers at most, so the list is a scroller, not a `FlatList`. */}
-        <ScrollView
-          testID="library-list"
-          className="flex-1"
-          contentContainerClassName="pb-6"
-          showsVerticalScrollIndicator={false}
-        >
-          <Card>
-            {rows.map((test, index) =>
-              test.kind === 'previous' ? (
-                <PreviousRow
-                  key={test.id}
-                  test={test}
-                  lang={lang}
-                  first={index === 0}
-                  onPractise={() => press(test)}
-                  onView={() => onViewPaper?.(test.id)}
-                />
-              ) : (
-                <TestRow
-                  key={test.id}
-                  test={test}
-                  lang={lang}
-                  first={index === 0}
-                  onPress={() => press(test)}
-                />
-              ),
-            )}
-          </Card>
-        </ScrollView>
+        {rows.length === 0 ? (
+          // A shelf with nothing on it is not a failure, so there is no dot and nothing to
+          // retry — the filters above are the way out, and the line says so (design D15).
+          <EmptyState testID="library-empty" message={t('library.empty')} />
+        ) : (
+          <ScrollView
+            testID="library-list"
+            className="flex-1"
+            contentContainerClassName="pb-6"
+            showsVerticalScrollIndicator={false}
+          >
+            <Card>
+              {rows.map((test, index) =>
+                test.kind === 'previous' ? (
+                  <PreviousRow
+                    key={test.id}
+                    test={test}
+                    lang={lang}
+                    first={index === 0}
+                    onPractise={() => press(test)}
+                    onView={() => onViewPaper?.(test.id)}
+                  />
+                ) : (
+                  <TestRow
+                    key={test.id}
+                    test={test}
+                    lang={lang}
+                    first={index === 0}
+                    onPress={() => press(test)}
+                  />
+                ),
+              )}
+            </Card>
+          </ScrollView>
+        )}
       </Stack>
     </Screen>
   );

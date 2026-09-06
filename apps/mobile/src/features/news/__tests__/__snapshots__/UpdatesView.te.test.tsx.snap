@@ -178,7 +178,7 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                   "borderLeftColor": "#a17f2a",
                   "borderLeftWidth": 3,
                   "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
-                  "paddingLeft": 13,
+                  "paddingLeft": 14,
                 }
               }
               testID="update-card-nt-2026-hall-ticket"
@@ -410,7 +410,7 @@ exports[`UpdatesView (te) sets the notices in Telugu and turns the caret down on
                       }
                     }
                     accessible={true}
-                    className="h-touch justify-center self-start rounded-sm px-1"
+                    className="-mx-1 h-touch justify-center rounded-sm px-1 self-start"
                     collapsable={false}
                     focusable={true}
                     onBlur={[Function]}

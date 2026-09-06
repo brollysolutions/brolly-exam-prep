@@ -60,6 +60,12 @@ describe('PaperView', () => {
         borderLeftColor: colors.accentStrong,
         backgroundColor: colors.accentTint,
       });
+      // The bar comes out of the padding, not on top of it: the box draws no border of its
+      // own, so all three pixels come back and the key's text starts on the same 12 px axis
+      // as the other three options' (design review D8).
+      expect(screen.getByTestId(`paper-option-${n}-${question.correct}`)).toHaveStyle({
+        paddingLeft: 9,
+      });
       [0, 1, 2, 3]
         .filter((k) => k !== question.correct)
         .forEach((k) => {
@@ -76,11 +82,18 @@ describe('PaperView', () => {
       });
       expect(tick).toBeOnTheScreen();
       // Gold text on the gold tint is 4.14:1 (fix wave 1, C2): the key letter and the tick
-      // are ink; the edge and the tint carry the meaning. The tick sits in a 20 px gold disc,
-      // because a bare gold ✓ on cream measures 2.3:1 (F-30).
+      // are ink; the edge and the tint carry the meaning. The tick sits in a 20 px disc, and
+      // the disc is `accentStrong`: a bare gold ✓ on the card is 2.42:1 and an `accent` disc on
+      // the tint 2.16:1, so the first disc was worse than the tick it replaced. `accentStrong`
+      // there is 3.11:1 with the ink ✓ at 4.49:1 (design review D1). Named, not reached for
+      // through the tree (code review 8).
       expect(tick.props.className).toMatch(/\btext-ink\b/);
-      expect(tick.parent?.props.className).toMatch(/\bh-5 w-5\b/);
-      expect(tick.parent?.props.className).toMatch(/\bbg-accent\b/);
+      const disc = screen.getByTestId(`paper-disc-${n}-${question.correct}`, {
+        includeHiddenElements: true,
+      });
+      expect(disc.props.className).toMatch(/\bh-5 w-5\b/);
+      expect(disc.props.className).toMatch(/\bbg-accentStrong\b/);
+      expect(disc.props.className).not.toMatch(/\bbg-accent\b/);
       const option = screen.getByTestId(`paper-option-${n}-${question.correct}`);
       expect(
         within(option).getByText(KEYS[question.correct], { includeHiddenElements: true }).props

@@ -3,7 +3,7 @@ import type { Lang } from '@tslprb/i18n';
 import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native';
 
-import { BackHeader, Card, EmptyState, MarkerRow, Num, Pill, Screen, Stack } from '@/ui';
+import { BackHeader, Card, EmptyState, MarkerRow, Num, Pill, Screen, Stack, Text } from '@/ui';
 
 import { formatDay } from './format';
 
@@ -41,6 +41,13 @@ export function groupByDay(affairs: Affair[]): AffairDay[] {
  * notice's kind, and no gold at all. It used to be a dark-gold kicker over its own 3 px start
  * edge, which put a second accented card on a screen made of nothing but cards; the day is the
  * heading here, the category is a tag, and the screen's gold is spent on neither.
+ *
+ * The summary is a whole sentence, so it is drawn `small`/`ink2` (9.13:1) rather than through
+ * the pattern's `caption`/`ink3` (5.0:1) — the lowest-contrast body copy in the app, and this
+ * is the screen that carries the most of it. It stays subordinate: 13 px at 400 under a 15 px
+ * 600 headline. Affairs is the caller out of contract here, not P4, so the node stays on this
+ * side of the line and `metaTestID` goes with the string it used to name (design review A3/D6).
+ * The row has no `onPress`, so nothing composes a name and the sentence is read as it comes.
  */
 function AffairRow({ affair, lang, first }: { affair: Affair; lang: Lang; first: boolean }) {
   const { t } = useTranslation();
@@ -48,15 +55,15 @@ function AffairRow({ affair, lang, first }: { affair: Affair; lang: Lang; first:
     <MarkerRow
       testID={`affair-card-${affair.id}`}
       titleTestID={`affair-headline-${affair.id}`}
-      metaTestID={`affair-summary-${affair.id}`}
       first={first}
       title={affair.headline[lang]}
-      meta={affair.summary[lang]}
+      meta={
+        <Text testID={`affair-summary-${affair.id}`} variant="small" color="ink2">
+          {affair.summary[lang]}
+        </Text>
+      }
       trailing={
-        <Pill
-          testID={`affair-cat-${affair.id}`}
-          label={t(`affairs.cat.${affair.category}`)}
-        />
+        <Pill testID={`affair-cat-${affair.id}`} label={t(`affairs.cat.${affair.category}`)} />
       }
     />
   );

@@ -164,14 +164,23 @@ describe('EligibilityView — the form', () => {
     expect(runField('run1600m', 'sec')).toHaveProp('placeholder', '15');
   });
 
-  it('heads each block with a pill and keeps those labels in sentence case', async () => {
+  // ONE pill on this screen, not four. The spec asked for a single "Your measurements" head and
+  // the build stacked one over each picker as well — and then labelled the seven fields below
+  // in a different shape for the same rank (design review D7). The pickers' labels now match
+  // the fields'. The pill is reached by its own name, not through the tree (code review 8).
+  it('heads the measurements block with the screen one pill, and labels the pickers as fields', async () => {
     await render(<EligibilityView {...props()} />);
-    expect(screen.getByText(t('eligibility.measurements'))).toBeOnTheScreen();
-    expect(screen.getByText(t('eligibility.post')).props.style.textTransform).toBeUndefined();
-    // A `Pill`, not a bare kicker: the label the rest of the app names a block with.
-    expect(screen.getByText(t('eligibility.post')).parent?.parent?.props.className).toMatch(
-      /\brounded-full\b/,
-    );
+    const pill = screen.getByTestId('eligibility-measurements');
+    expect(pill.props.className).toMatch(/\brounded-full\b/);
+    expect(pill).toHaveTextContent(t('eligibility.measurements'));
+
+    for (const key of ['post', 'gender', 'group'] as const) {
+      const label = screen.getByText(t(`eligibility.${key}`));
+      expect(label.props.style.textTransform).toBeUndefined();
+      // The field-label shape: `body`/600/`ink2`, the same as "Height" and "Long jump".
+      expect(label.props.className).toMatch(/\btext-ink2\b/);
+      expect(label.parent?.props.className ?? '').not.toMatch(/\brounded-full\b/);
+    }
   });
 
   // Three stacked pickers cannot each carry a yellow block beside the one yellow action:
@@ -182,6 +191,20 @@ describe('EligibilityView — the form', () => {
     expect(cell.props.className).toMatch(/\bbg-surface2\b/);
     expect(cell.props.className).toMatch(/\bflex-1\b/);
     expect(cell.props.className).not.toMatch(/\bbg-accentSoft\b/);
+  });
+
+  // The red verdict's to-do list. `ink3` on that tint is 4.43:1 — under AA for a 10.5 px label
+  // — and a gold dot there is 2.96:1, under the 3:1 a mark has to clear (design review D3).
+  it('carries the not-yet verdict to-do list in ink, not in ink3 and gold', async () => {
+    const missed = { ...PASSING, height: '160' };
+    await render(<EligibilityView {...props({ values: missed, result: result(missed) })} />);
+    expect(screen.getByText(t('eligibility.improve')).props.className).toMatch(/\btext-ink2\b/);
+    expect(screen.getByText(t('eligibility.improve')).props.className).not.toMatch(
+      /\btext-ink3\b/,
+    );
+    const dot = screen.getByTestId('eligibility-improve-height-dot');
+    expect(dot.props.className).toMatch(/\bbg-ink\b/);
+    expect(dot.props.className).not.toMatch(/\bbg-accentStrong\b/);
   });
 
   // The box a figure is typed into: `outline` at rest (3.0:1 — the boundary every interactive

@@ -1,17 +1,16 @@
 import { Ionicons } from '@expo/vector-icons';
 import { colors, size } from '@tslprb/design-tokens';
 import type { Localized, StudyBlock, StudySection, StudyTopic } from '@tslprb/fixtures';
-import { LANGS, useDir, type Lang } from '@tslprb/i18n';
+import { LANGS, type Lang } from '@tslprb/i18n';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
-import { startEdge } from '@/features/result/edge';
 import {
   BackRow,
   Button,
   Card,
+  cx,
   EmptyState,
-  Kicker,
   Measure,
   Pill,
   Row,
@@ -23,6 +22,15 @@ import {
 
 /** The read mark, the same Ionicon the study shelf puts on a topic it has ticked off. */
 const CHECK = size.icon;
+
+/**
+ * The inset the two quiet callouts pad to, so their text starts on the same axis as the worked
+ * example's. A `Card` puts its content 17 px in — 16 px of padding behind its 1 px `line` — and
+ * a box that draws no border has to make that pixel up itself. `p-4` alone left the exam tip and
+ * the formula a pixel inside the example beside them, and the formula's `px-3` left it four
+ * (design review D8). A literal, so Tailwind's scanner sees the class.
+ */
+const CALLOUT_INSET = 'p-[17px]';
 
 export type TopicViewProps = {
   /** The topic and the section it sits in. Omit for an id the shelf does not hold. */
@@ -76,7 +84,6 @@ function CalloutBlock({
   text: string;
   testID: string;
 }) {
-  const d = useDir();
   const body = (
     <Stack gap={2}>
       <Pill label={label} />
@@ -87,15 +94,15 @@ function CalloutBlock({
   );
   if (tone === 'tip') {
     return (
-      <View testID={testID} className="rounded-md bg-surface2 p-4">
+      <View testID={testID} className={cx('rounded-md bg-surface2', CALLOUT_INSET)}>
         {body}
       </View>
     );
   }
+  // The card draws the edge and compensates its own padding for it, so the example's prose
+  // starts where the tip's does rather than three pixels further in (design review D8).
   return (
-    // The edge is a style, not a class: RN's `borderStartWidth` follows `I18nManager`, not
-    // the in-app language. See `startEdge`.
-    <Card testID={testID} style={startEdge(d.isRTL, 'accentStrong')}>
+    <Card testID={testID} startEdge="accentStrong">
       {body}
     </Card>
   );
@@ -105,11 +112,10 @@ function Block({ block, lang }: { block: StudyBlock; lang: Lang }) {
   const { t } = useTranslation();
   switch (block.kind) {
     case 'heading':
-      return (
-        <Kicker testID="study-block-heading" uppercase>
-          {block.text[lang]}
-        </Kicker>
-      );
+      // A `Pill`, not a 10.5 px `Kicker`: `ink3` below caption size is under the floor the rules
+      // set for it, and this is a block head — the shape the rest of the app names one with
+      // (design review A2/D5).
+      return <Pill testID="study-block-heading" label={block.text[lang]} />;
     case 'para':
       // `Text` resolves the line-height from the language's own metrics: 1.5 en, 1.65 te.
       // Nothing to set here.
@@ -122,7 +128,7 @@ function Block({ block, lang }: { block: StudyBlock; lang: Lang }) {
       return <Bullets items={block.items} lang={lang} />;
     case 'formula':
       return (
-        <View testID="study-block-formula" className="rounded-md bg-surface2 px-3 py-3">
+        <View testID="study-block-formula" className={cx('rounded-md bg-surface2', CALLOUT_INSET)}>
           {/* The box carries words now, not just symbols — a Telugu reader should not have to
               decode "New ÷ Old" — so it reads in the page's own face rather than going
               through `Num`'s Latin one. The digits stay tabular, and each maths run in the
@@ -188,6 +194,9 @@ export function TopicView({
         {header}
         <EmptyState
           testID="topic-not-found"
+          // The same red dot `LoadError` puts on the paper that could not be opened: two
+          // not-found screens should read as one mechanism (design review D14).
+          dotTone="danger"
           title={t('result.errorKicker')}
           message={t('study.notFound')}
           action={

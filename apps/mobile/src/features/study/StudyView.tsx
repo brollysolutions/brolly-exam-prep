@@ -11,9 +11,9 @@ import {
   Card,
   Glyph,
   iso,
-  Kicker,
   MarkerRow,
   Measure,
+  Num,
   PageHeader,
   Pill,
   Row,
@@ -31,9 +31,11 @@ export type StudyViewProps = {
 
 /**
  * One topic row (P4). The mark says where you are — a gold dot for a topic still to read, the
- * ink check for one you have — and the pill repeats it in words for anyone who cannot see the
- * mark. The minutes are a `Measure`, not a string, because a digit belongs in `<Num>`; a node
- * meta is silent in the composed name, so the row spells its own out.
+ * ink check for one you have — and that is the whole of it. A trailing "Read" pill said the
+ * same thing a second time, in the slot the chevron already occupies, on every row you had
+ * finished; the composed name below still spells "Read" out for anyone who cannot see the mark
+ * (design review D13). The minutes are a `Measure`, not a string, because a digit belongs in
+ * `<Num>`; a node meta is silent in the composed name, so the row spells its own out.
  */
 function TopicRow({
   topic,
@@ -60,9 +62,6 @@ function TopicRow({
       marker={read ? 'done' : 'dot'}
       title={topic.title[lang]}
       meta={<Measure testID={`study-minutes-${topic.id}`} value={topic.minutes} unit={unit} />}
-      trailing={
-        read ? <Pill testID={`study-read-${topic.id}`} label={t('study.read')} /> : undefined
-      }
       chevron
       accessibilityLabel={name}
       onPress={onPress}
@@ -71,9 +70,14 @@ function TopicRow({
 }
 
 /**
- * One section: the paper's own numbering in dark gold on the canvas (gold text may not sit on
- * a pill's `surface2` at 4.25:1), what the section costs in minutes and topics, then one card
- * of rows rather than a run of bordered boxes.
+ * One section: the paper's own numbering and the section name in a single `Pill`, what the
+ * section costs in minutes and topics beside it, then one card of rows.
+ *
+ * The number is `ink3` on the pill's `surface2` (4.66:1), not gold. Gold is the candidate's own
+ * input in this app and a printed section number is nobody's input; and the `Kicker` form it
+ * replaces was 10.5 px, below the caption floor the same rules set two lines above — gold on
+ * `surface2` would have been 4.25:1 anyway (design review A2/D5). It is the shape Affairs and
+ * Library already head their blocks with.
  */
 function Section({
   section,
@@ -91,10 +95,16 @@ function Section({
   const { t } = useTranslation();
   return (
     <Stack gap={2} className="mt-7" testID={`study-section-${section.id}`}>
-      <Row gap={3} align="baseline" justify="between">
-        <Kicker index={index} uppercase>
-          {t(section.labelKey)}
-        </Kicker>
+      <Row gap={3} align="center" justify="between">
+        <Pill
+          testID={`study-index-${section.id}`}
+          leading={
+            <Num variant="caption" weight="700" color="ink3" tracking="none">
+              {index}
+            </Num>
+          }
+          label={t(section.labelKey)}
+        />
         <Row gap={2} align="baseline" wrap>
           <Measure value={studySectionMinutes(section)} unit={t('study.minutes')} />
           <Glyph variant="caption" color="ink3">

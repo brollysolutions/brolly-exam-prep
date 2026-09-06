@@ -119,7 +119,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
         </View>
         <View
           accessibilityRole="radiogroup"
-          className="h-touch overflow-hidden rounded-sm border border-outline self-start"
+          className="min-h-touch overflow-hidden rounded-sm border border-outline self-start"
           style={
             {
               "alignItems": undefined,
@@ -152,7 +152,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-3 border-line2 border-r"
+            className="min-h-touch min-w-touch items-center justify-center px-3 border-line2 border-r"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -204,7 +204,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               }
             }
             accessible={true}
-            className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
+            className="min-h-touch min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -366,24 +366,46 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
           }
         }
       >
-        <Text
-          className="text-ink3"
+        <View
+          className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
           style={
             {
-              "fontFamily": "NotoSansTelugu_700Bold",
-              "fontSize": 12,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 19.8,
-              "textAlign": "left",
-              "textTransform": "uppercase",
-              "writingDirection": "ltr",
+              "justifyContent": "center",
+              "minHeight": 24,
             }
           }
           testID="study-block-heading"
         >
-          1956 నుండి 2014 జూన్ 2 వరకు
-        </Text>
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "flexWrap": undefined,
+                "gap": 4,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              className="text-ink3"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 12,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 19.8,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              1956 నుండి 2014 జూన్ 2 వరకు
+            </Text>
+          </View>
+        </View>
         <Text
           className="text-ink2"
           style={
@@ -617,6 +639,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               "borderLeftColor": "#a17f2a",
               "borderLeftWidth": 3,
               "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+              "paddingLeft": 14,
             }
           }
           testID="study-block-example"
@@ -690,7 +713,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
           </View>
         </View>
         <View
-          className="rounded-md bg-surface2 p-4"
+          className="rounded-md bg-surface2 p-[17px]"
           testID="study-block-tip"
         >
           <View

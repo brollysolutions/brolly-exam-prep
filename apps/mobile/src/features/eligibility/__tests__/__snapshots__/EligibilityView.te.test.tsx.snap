@@ -153,48 +153,26 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
               }
             }
           >
-            <View
-              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+            <Text
+              className="text-ink2"
               style={
                 {
-                  "justifyContent": "center",
-                  "minHeight": 24,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 15,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 24.8,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
                 }
               }
             >
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 4,
-                    "justifyContent": undefined,
-                  }
-                }
-              >
-                <Text
-                  className="text-ink3"
-                  style={
-                    {
-                      "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  పోస్ట్
-                </Text>
-              </View>
-            </View>
+              పోస్ట్
+            </Text>
             <View
               accessibilityRole="radiogroup"
-              className="h-touch overflow-hidden rounded-sm border border-outline self-stretch"
+              className="min-h-touch overflow-hidden rounded-sm border border-outline self-stretch"
               style={
                 {
                   "alignItems": undefined,
@@ -227,7 +205,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-surface2 border-b-2 border-b-accentStrong border-line2 border-r"
+                className="min-h-touch min-w-touch items-center justify-center px-3 flex-1 bg-surface2 border-b-2 border-b-accentStrong border-line2 border-r"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -279,7 +257,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 flex-1"
+                className="min-h-touch min-w-touch items-center justify-center px-3 flex-1"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -322,48 +300,26 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
               }
             }
           >
-            <View
-              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+            <Text
+              className="text-ink2"
               style={
                 {
-                  "justifyContent": "center",
-                  "minHeight": 24,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 15,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 24.8,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
                 }
               }
             >
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 4,
-                    "justifyContent": undefined,
-                  }
-                }
-              >
-                <Text
-                  className="text-ink3"
-                  style={
-                    {
-                      "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  లింగం
-                </Text>
-              </View>
-            </View>
+              లింగం
+            </Text>
             <View
               accessibilityRole="radiogroup"
-              className="h-touch overflow-hidden rounded-sm border border-outline self-stretch"
+              className="min-h-touch overflow-hidden rounded-sm border border-outline self-stretch"
               style={
                 {
                   "alignItems": undefined,
@@ -396,7 +352,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 flex-1 border-line2 border-r"
+                className="min-h-touch min-w-touch items-center justify-center px-3 flex-1 border-line2 border-r"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -448,7 +404,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-surface2 border-b-2 border-b-accentStrong"
+                className="min-h-touch min-w-touch items-center justify-center px-3 flex-1 bg-surface2 border-b-2 border-b-accentStrong"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -491,48 +447,26 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
               }
             }
           >
-            <View
-              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+            <Text
+              className="text-ink2"
               style={
                 {
-                  "justifyContent": "center",
-                  "minHeight": 24,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 15,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 24.8,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
                 }
               }
             >
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 4,
-                    "justifyContent": undefined,
-                  }
-                }
-              >
-                <Text
-                  className="text-ink3"
-                  style={
-                    {
-                      "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  కేటగిరీ
-                </Text>
-              </View>
-            </View>
+              కేటగిరీ
+            </Text>
             <View
               accessibilityRole="radiogroup"
-              className="h-touch overflow-hidden rounded-sm border border-outline self-stretch"
+              className="min-h-touch overflow-hidden rounded-sm border border-outline self-stretch"
               style={
                 {
                   "alignItems": undefined,
@@ -565,7 +499,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 flex-1 bg-surface2 border-b-2 border-b-accentStrong border-line2 border-r"
+                className="min-h-touch min-w-touch items-center justify-center px-3 flex-1 bg-surface2 border-b-2 border-b-accentStrong border-line2 border-r"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -617,7 +551,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 flex-1"
+                className="min-h-touch min-w-touch items-center justify-center px-3 flex-1"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -671,6 +605,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                 "minHeight": 24,
               }
             }
+            testID="eligibility-measurements"
           >
             <View
               style={
@@ -791,6 +726,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                       "height": 56,
                       "letterSpacing": 0,
                       "lineHeight": 33,
+                      "outlineStyle": "none",
                       "padding": 0,
                       "textAlign": "left",
                       "textAlignVertical": "center",
@@ -874,6 +810,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                         "height": 56,
                         "letterSpacing": 0,
                         "lineHeight": 33,
+                        "outlineStyle": "none",
                         "padding": 0,
                         "textAlign": "left",
                         "textAlignVertical": "center",
@@ -935,6 +872,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                         "height": 56,
                         "letterSpacing": 0,
                         "lineHeight": 33,
+                        "outlineStyle": "none",
                         "padding": 0,
                         "textAlign": "left",
                         "textAlignVertical": "center",
@@ -1054,6 +992,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                       "height": 56,
                       "letterSpacing": 0,
                       "lineHeight": 33,
+                      "outlineStyle": "none",
                       "padding": 0,
                       "textAlign": "left",
                       "textAlignVertical": "center",
@@ -1155,6 +1094,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                       "height": 56,
                       "letterSpacing": 0,
                       "lineHeight": 33,
+                      "outlineStyle": "none",
                       "padding": 0,
                       "textAlign": "left",
                       "textAlignVertical": "center",
@@ -1326,7 +1266,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                 }
               >
                 <Text
-                  className="text-ink3"
+                  className="text-ink2"
                   style={
                     {
                       "fontFamily": "NotoSansTelugu_700Bold",
@@ -1355,7 +1295,8 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                   testID="eligibility-improve-height"
                 >
                   <View
-                    className="mt-2 h-1.5 w-1.5 rounded-full bg-accentStrong"
+                    className="mt-2 h-1.5 w-1.5 rounded-full bg-ink"
+                    testID="eligibility-improve-height-dot"
                   />
                   <Text
                     className="text-ink2 flex-1"

@@ -160,7 +160,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           >
             <View
               accessibilityRole="radiogroup"
-              className="h-touch overflow-hidden rounded-sm border border-outline self-start"
+              className="min-h-touch overflow-hidden rounded-sm border border-outline self-start"
               style={
                 {
                   "alignItems": undefined,
@@ -193,7 +193,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 border-line2 border-r"
+                className="min-h-touch min-w-touch items-center justify-center px-3 border-line2 border-r"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -245,7 +245,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                   }
                 }
                 accessible={true}
-                className="h-full min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
+                className="min-h-touch min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
                 collapsable={false}
                 focusable={true}
                 onBlur={[Function]}
@@ -1500,22 +1500,6 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               testID="home-affair-row"
             >
               <View
-                className="items-center justify-center"
-                style={
-                  {
-                    "alignSelf": "flex-start",
-                    "minHeight": 24.8,
-                    "width": 18,
-                  }
-                }
-                testID="home-affair-mark"
-              >
-                <View
-                  className="h-2 w-2 rounded-full bg-accentStrong"
-                  testID="home-affair-marker"
-                />
-              </View>
-              <View
                 className="flex-1"
                 style={
                   {
@@ -1647,22 +1631,6 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               testID="home-affair-row"
             >
               <View
-                className="items-center justify-center"
-                style={
-                  {
-                    "alignSelf": "flex-start",
-                    "minHeight": 24.8,
-                    "width": 18,
-                  }
-                }
-                testID="home-affair-mark"
-              >
-                <View
-                  className="h-2 w-2 rounded-full bg-accentStrong"
-                  testID="home-affair-marker"
-                />
-              </View>
-              <View
                 className="flex-1"
                 style={
                   {
@@ -1793,22 +1761,6 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               }
               testID="home-affair-row"
             >
-              <View
-                className="items-center justify-center"
-                style={
-                  {
-                    "alignSelf": "flex-start",
-                    "minHeight": 24.8,
-                    "width": 18,
-                  }
-                }
-                testID="home-affair-mark"
-              >
-                <View
-                  className="h-2 w-2 rounded-full bg-accentStrong"
-                  testID="home-affair-marker"
-                />
-              </View>
               <View
                 className="flex-1"
                 style={

@@ -61,6 +61,31 @@ describe('TopicView', () => {
     expect(tip.props.className).toMatch(/\bbg-surface2\b/);
   });
 
+  // The three blocks that step out of the prose start their text on ONE axis. The example is a
+  // `Card`, so its content sits 17 px in — 16 px of padding behind a 1 px `line`, with the gold
+  // edge compensated by the card itself — and the two borderless boxes pad to 17 to match.
+  // `p-4` on them left a pixel, and the formula's `px-3` left four (design review D8).
+  it('starts the example, the tip and the formula on the same text axis', async () => {
+    await render(<TopicView {...props()} />);
+    const example = screen.getByTestId('study-block-example');
+    const exampleInset =
+      (example.props.style.borderLeftWidth as number) + (example.props.style.paddingLeft as number);
+    expect(exampleInset).toBe(17);
+    for (const id of ['study-block-tip', 'study-block-formula']) {
+      expect(screen.getByTestId(id).props.className).toMatch(/p-\[17px\]/);
+      expect(screen.getByTestId(id).props.className).not.toMatch(/\bpx-3\b/);
+    }
+  });
+
+  // A block head inside the prose is a `Pill`, not a 10.5 px `Kicker`: `ink3` below caption
+  // size is under the floor the rules set for it (design review A2/D5).
+  it('heads a prose block with a quiet pill rather than a sub-caption kicker', async () => {
+    await render(<TopicView {...props()} />);
+    const head = screen.getByTestId('study-block-heading');
+    expect(head.props.className).toMatch(/\brounded-full\b/);
+    expect(head.props.className).toMatch(/\bbg-surface2\b/);
+  });
+
   it('reads the formula in the page own script, with the maths isolated', async () => {
     const p = props();
     const view = await render(<TopicView {...p} />);
@@ -85,9 +110,7 @@ describe('TopicView', () => {
     const badge = screen.getByTestId('topic-read');
     expect(badge).toHaveTextContent(/Read$/);
     expect(badge.props.className).toMatch(/\bbg-surface2\b/);
-    expect(
-      within(badge).getByText(CHECK_GLYPH, { includeHiddenElements: true }),
-    ).toBeOnTheScreen();
+    expect(within(badge).getByText(CHECK_GLYPH, { includeHiddenElements: true })).toBeOnTheScreen();
   });
 
   it('sends the reader on to the drills for the section', async () => {
@@ -125,6 +148,10 @@ describe('TopicView', () => {
   it('says so, and offers a way out, when the id is not in the shelf', async () => {
     const p = { ...props(), topic: undefined, section: undefined };
     await render(<TopicView {...p} />);
+    // The same red dot `LoadError` wears, so the two not-found screens read as one mechanism.
+    expect(screen.getByTestId('topic-not-found-pill-dot').props.className).toMatch(
+      /\bbg-dangerInk\b/,
+    );
     expect(screen.getByTestId('topic-not-found')).toHaveTextContent(
       /That topic is not in the study material./,
     );
