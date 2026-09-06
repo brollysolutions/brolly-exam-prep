@@ -1,4 +1,5 @@
 import { act, render, screen, userEvent, within } from '@testing-library/react-native';
+import { colors } from '@tslprb/design-tokens';
 import { STUDY_SECTIONS, STUDY_TOPICS } from '@tslprb/fixtures';
 import { initI18n, setLanguage } from '@tslprb/i18n';
 
@@ -37,10 +38,20 @@ describe('StudyView', () => {
     );
   });
 
+  // The mark is the state and the pill is the word for it: a topic still to read carries the
+  // gold dot and no pill; one you have read carries the ink check and says so.
   it('ticks only the topics that have been read', async () => {
     await render(<StudyView {...props()} read={{ 'st-re-coding': true }} />);
-    expect(screen.getByTestId('study-read-st-re-coding')).toHaveTextContent(/✓Read/);
+    expect(screen.getByTestId('study-read-st-re-coding')).toHaveTextContent('Read');
     expect(screen.queryByTestId('study-read-st-ar-percentages')).toBeNull();
+
+    const done = screen.getByTestId('study-row-st-re-coding-marker', {
+      includeHiddenElements: true,
+    });
+    expect(done).toHaveStyle({ color: colors.ink });
+    expect(screen.getByTestId('study-row-st-ar-percentages-marker').props.className).toMatch(
+      /\bbg-accentStrong\b/,
+    );
   });
 
   it('opens the topic that was pressed', async () => {
@@ -50,24 +61,37 @@ describe('StudyView', () => {
     expect(p.onOpen).toHaveBeenCalledWith('st-gs-rivers');
   });
 
-  it('keeps the row hi-vis to ink — the chevron and the read tick — and never a fill', async () => {
+  // Gold is a dot and an edge on this screen, never a fill or a word: the read pill is quiet,
+  // and the chevron the pattern draws is `ink3` (the `study-chevron-<id>` ID went with the
+  // hand-rolled row — the pattern names its own end slot).
+  it('spends no gold fill on a row, and lets the pattern own the chevron', async () => {
     await render(<StudyView {...props()} read={{ 'st-re-coding': true }} />);
-    // The chevron is decorative, so it is hidden from the accessibility tree and has to be
-    // asked for explicitly.
-    const chevron = screen.getByTestId('study-chevron-st-re-coding', {
-      includeHiddenElements: true,
-    });
-    expect(chevron.props.className).toMatch(/\btext-hivis\b/);
-    const chip = screen.getByTestId('study-read-st-re-coding');
-    expect(chip.props.className).not.toMatch(/\bbg-hivis\b/);
-    // The same tick the topic page uses once you mark it read.
-    expect(within(chip).getByText('✓').props.className).toMatch(/\btext-hivis\b/);
+    const pill = screen.getByTestId('study-read-st-re-coding');
+    expect(pill.props.className).toMatch(/\bbg-surface2\b/);
+    expect(pill.props.className).not.toMatch(/\bbg-accent\b/);
+    const end = screen.getByTestId('study-row-st-re-coding-end');
+    expect(end).toHaveTextContent('Read›');
+    const chevron = within(end).getByText('›', { includeHiddenElements: true });
+    expect(chevron.props.className).toMatch(/\btext-ink3\b/);
   });
 
   it('gives every row a 48 px-plus target', async () => {
     await render(<StudyView {...props()} />);
-    expect(screen.getByTestId('study-row-st-ar-percentages').props.className).toContain(
-      'min-h-[72px]',
+    // The pattern's own floor: 56 px, grown by the minutes line under the title.
+    expect(screen.getByTestId('study-row-st-ar-percentages').props.className).toMatch(
+      /\bmin-h-touchLg\b/,
+    );
+  });
+
+  // A node meta says nothing a composed label could read, so the row spells out what it is,
+  // how long it takes and whether it is read (`MarkerRow` code review I3).
+  it('names each row with its minutes and its state', async () => {
+    await render(<StudyView {...props()} read={{ 'st-re-coding': true }} />);
+    expect(screen.getByTestId('study-row-st-ar-percentages').props.accessibilityLabel).toBe(
+      `Percentages ${iso(8)} min`,
+    );
+    expect(screen.getByTestId('study-row-st-re-coding').props.accessibilityLabel).toMatch(
+      /Read$/,
     );
   });
 });

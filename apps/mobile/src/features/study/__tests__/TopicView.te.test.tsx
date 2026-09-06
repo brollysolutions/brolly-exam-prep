@@ -32,7 +32,8 @@ describe('TopicView (te)', () => {
     // it would move to the right under an RTL language without any screen change.
     expect(screen.getByTestId('study-block-example')).toHaveStyle({ borderLeftWidth: 3 });
     expect(screen.getByTestId('study-block-example')).not.toHaveStyle({ borderRightWidth: 3 });
-    expect(screen.getByTestId('study-block-tip')).toHaveStyle({ borderLeftWidth: 3 });
+    // One gold-edged card per screen (F-30): the tip is a quiet inset, not a second edge.
+    expect(screen.getByTestId('study-block-tip')).not.toHaveStyle({ borderLeftWidth: 3 });
     // Telugu copy from the fixture, not a fallback to English.
     const title = FOUND!.topic.title;
     expect(title.te).not.toBe(title.en);

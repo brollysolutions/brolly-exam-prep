@@ -1,11 +1,15 @@
+import { Ionicons } from '@expo/vector-icons';
+import { render, screen, userEvent, within } from '@testing-library/react-native';
 import { colors } from '@tslprb/design-tokens';
-import { render, screen, userEvent } from '@testing-library/react-native';
 import { findStudyTopic } from '@tslprb/fixtures';
 import { initI18n } from '@tslprb/i18n';
 
 import { iso } from '@/ui';
 
 import { TopicView } from '../TopicView';
+
+/** The icon host is the glyph's Text: a name resolves to a code point in the icon font. */
+const CHECK_GLYPH = String.fromCodePoint(Ionicons.glyphMap['checkmark-circle'] as number);
 
 const FOUND = findStudyTopic('st-ar-speed');
 
@@ -43,32 +47,19 @@ describe('TopicView', () => {
     expect(screen.getByTestId('study-block-tip')).toHaveTextContent(/Exam tip/);
   });
 
-  // As built in Phase A: `hivis` and `sand` both alias `#856a22`, so the example's and the
-  // tip's edges are the same dark gold and only the pill labels ("Worked example" /
-  // "Exam tip") tell them apart. Pinned so the collapse is deliberate, not accidental.
-  it('draws both blocks with a 3 px dark-gold start edge until Phase C', async () => {
+  // F-30: the worked example is the one gold-edged card on the page (`accentStrong`, 3.4:1 —
+  // the edge token, not the gold text one) and the exam tip is a quiet `surface2` inset with
+  // no edge at all. Phase A had both on the same `#856a22` bar, told apart only by their label.
+  it('gives the worked example the page own gold edge, and the tip none', async () => {
     await render(<TopicView {...props()} />);
     expect(screen.getByTestId('study-block-example')).toHaveStyle({
       borderLeftWidth: 3,
-      borderLeftColor: colors.accentInk,
+      borderLeftColor: colors.accentStrong,
     });
-    expect(screen.getByTestId('study-block-tip')).toHaveStyle({
-      borderLeftWidth: 3,
-      borderLeftColor: colors.accentInk,
-    });
+    const tip = screen.getByTestId('study-block-tip');
+    expect(tip).not.toHaveStyle({ borderLeftWidth: 3 });
+    expect(tip.props.className).toMatch(/\bbg-surface2\b/);
   });
-
-  // F-30 (Phase C): the worked example is the one gold-edged card on the page and the tip
-  // becomes a `surface2` block with no edge. Fails on purpose until then — flip to `it`
-  // when Phase C lands.
-  it.failing(
-    'F-30: only the worked example carries the gold edge; the tip has none (restored in Phase C)',
-    async () => {
-      await render(<TopicView {...props()} />);
-      expect(screen.getByTestId('study-block-example')).toHaveStyle({ borderLeftWidth: 3 });
-      expect(screen.getByTestId('study-block-tip')).not.toHaveStyle({ borderLeftWidth: 3 });
-    },
-  );
 
   it('reads the formula in the page own script, with the maths isolated', async () => {
     const p = props();
@@ -90,7 +81,13 @@ describe('TopicView', () => {
 
     await view.rerender(<TopicView {...p} read />);
     expect(screen.queryByTestId('topic-mark-read')).toBeNull();
-    expect(screen.getByTestId('topic-read')).toHaveTextContent(/✓Read/);
+    // A quiet pill behind the same ink check the shelf ticks a read topic with.
+    const badge = screen.getByTestId('topic-read');
+    expect(badge).toHaveTextContent(/Read$/);
+    expect(badge.props.className).toMatch(/\bbg-surface2\b/);
+    expect(
+      within(badge).getByText(CHECK_GLYPH, { includeHiddenElements: true }),
+    ).toBeOnTheScreen();
   });
 
   it('sends the reader on to the drills for the section', async () => {

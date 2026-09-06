@@ -1,18 +1,25 @@
-import { colors } from '@tslprb/design-tokens';
 import {
   STUDY_SECTIONS,
   studySectionMinutes,
   type StudySection,
   type StudyTopic,
 } from '@tslprb/fixtures';
-import { useDir, type Lang } from '@tslprb/i18n';
+import { type Lang } from '@tslprb/i18n';
 import { useTranslation } from 'react-i18next';
-import { Pressable, StyleSheet } from 'react-native';
 
-import { Chip, cx, Glyph, Kicker, Measure, Row, Screen, Stack, Text, usePressed } from '@/ui';
-
-/** The ✓ that marks a topic already read. Latin face, like every other glyph. */
-const READ_GLYPH = '✓';
+import {
+  Card,
+  Glyph,
+  iso,
+  Kicker,
+  MarkerRow,
+  Measure,
+  PageHeader,
+  Pill,
+  Row,
+  Screen,
+  Stack,
+} from '@/ui';
 
 export type StudyViewProps = {
   /** Language the topic titles are read in. */
@@ -22,7 +29,12 @@ export type StudyViewProps = {
   onOpen: (id: string) => void;
 };
 
-/** One topic row. Its own component so the press delta lives in state, not a style callback. */
+/**
+ * One topic row (P4). The mark says where you are — a gold dot for a topic still to read, the
+ * ink check for one you have — and the pill repeats it in words for anyone who cannot see the
+ * mark. The minutes are a `Measure`, not a string, because a digit belongs in `<Num>`; a node
+ * meta is silent in the composed name, so the row spells its own out.
+ */
 function TopicRow({
   topic,
   lang,
@@ -37,60 +49,32 @@ function TopicRow({
   onPress: () => void;
 }) {
   const { t } = useTranslation();
-  const d = useDir();
-  const { pressed, handlers } = usePressed();
+  const unit = t('study.minutes');
+  const name = [topic.title[lang], `${iso(topic.minutes)} ${unit}`, read ? t('study.read') : null]
+    .filter(Boolean)
+    .join(' ');
   return (
-    <Pressable
+    <MarkerRow
       testID={`study-row-${topic.id}`}
-      accessibilityRole="button"
-      android_ripple={{ color: colors.hivisTint3 }}
+      first={first}
+      marker={read ? 'done' : 'dot'}
+      title={topic.title[lang]}
+      meta={<Measure testID={`study-minutes-${topic.id}`} value={topic.minutes} unit={unit} />}
+      trailing={
+        read ? <Pill testID={`study-read-${topic.id}`} label={t('study.read')} /> : undefined
+      }
+      chevron
+      accessibilityLabel={name}
       onPress={onPress}
-      {...handlers}
-      className={cx('min-h-[72px] justify-center border-b border-line', first && 'border-t')}
-      // One flattened object, never a callback: see `usePressed`.
-      style={StyleSheet.flatten([pressed ? { opacity: 0.85 } : null])}
-    >
-      <Row gap={3} align="center" justify="between">
-        <Stack gap={1} className="flex-1">
-          <Text variant="body" weight="600">
-            {topic.title[lang]}
-          </Text>
-          <Measure
-            testID={`study-minutes-${topic.id}`}
-            value={topic.minutes}
-            unit={t('study.minutes')}
-          />
-        </Stack>
-        <Row gap={2} align="center">
-          {read && (
-            <Chip
-              testID={`study-read-${topic.id}`}
-              label={t('study.read')}
-              leading={
-                // The same hi-vis tick the topic page marks itself read with: the shelf and
-                // the page must not disagree about what "read" looks like.
-                <Glyph variant="small" color="hivis">
-                  {READ_GLYPH}
-                </Glyph>
-              }
-            />
-          )}
-          {/* The only hi-vis on the row: it says "this opens", and nothing else on the row
-              competes with it. */}
-          <Glyph
-            color="hivis"
-            accessibilityElementsHidden
-            importantForAccessibility="no"
-            testID={`study-chevron-${topic.id}`}
-          >
-            {d.chevronNext}
-          </Glyph>
-        </Row>
-      </Row>
-    </Pressable>
+    />
   );
 }
 
+/**
+ * One section: the paper's own numbering in dark gold on the canvas (gold text may not sit on
+ * a pill's `surface2` at 4.25:1), what the section costs in minutes and topics, then one card
+ * of rows rather than a run of bordered boxes.
+ */
 function Section({
   section,
   index,
@@ -106,20 +90,20 @@ function Section({
 }) {
   const { t } = useTranslation();
   return (
-    <Stack className="mt-6">
-      <Row gap={3} align="baseline" justify="between" testID={`study-section-${section.id}`}>
+    <Stack gap={2} className="mt-7" testID={`study-section-${section.id}`}>
+      <Row gap={3} align="baseline" justify="between">
         <Kicker index={index} uppercase>
           {t(section.labelKey)}
         </Kicker>
         <Row gap={2} align="baseline" wrap>
           <Measure value={studySectionMinutes(section)} unit={t('study.minutes')} />
-          <Glyph variant="caption" color="mute">
+          <Glyph variant="caption" color="ink3">
             ·
           </Glyph>
           <Measure value={section.topics.length} unit={t('study.topics')} />
         </Row>
       </Row>
-      <Stack className="mt-3">
+      <Card>
         {section.topics.map((topic, i) => (
           <TopicRow
             key={topic.id}
@@ -130,7 +114,7 @@ function Section({
             onPress={() => onOpen(topic.id)}
           />
         ))}
-      </Stack>
+      </Card>
     </Stack>
   );
 }
@@ -145,9 +129,7 @@ export function StudyView({ lang, read = {}, onOpen }: StudyViewProps) {
   const { t } = useTranslation();
   return (
     <Screen scroll padded bottomInset={false} testID="study-screen">
-      <Text variant="titleLg" weight="600" className="mt-5">
-        {t('study.title')}
-      </Text>
+      <PageHeader testID="study-header" title={t('study.title')} />
       {STUDY_SECTIONS.map((section, i) => (
         <Section
           key={section.id}
