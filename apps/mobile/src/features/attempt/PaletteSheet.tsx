@@ -18,9 +18,11 @@ import {
   totalQuestions,
 } from '@/data/attempt.selectors';
 import {
+  ActionBar,
   Button,
   Num,
   PaletteCell,
+  Pill,
   Row,
   Sheet,
   Stack,
@@ -96,10 +98,15 @@ export const PaletteSheet = forwardRef<SheetHandle, PaletteSheetProps>(function 
     { state: 'am', label: t('test.both'), count: bothCount(attempt) },
   ];
 
+  // P5: the sheet's decision sits in the same bar every other screen puts one in, and the bar
+  // owns the bottom inset — the sheet's own footer runs to the screen edge.
   const footer = (
-    <View className="border-t border-line px-3 pb-3 pt-2">
-      <Button size="lg" label={t('test.submit')} onPress={onSubmit} testID="palette-submit" />
-    </View>
+    <ActionBar
+      testID="palette-actions"
+      primary={
+        <Button size="lg" label={t('test.submit')} onPress={onSubmit} testID="palette-submit" />
+      }
+    />
   );
 
   return (
@@ -116,10 +123,10 @@ export const PaletteSheet = forwardRef<SheetHandle, PaletteSheetProps>(function 
           {legend.map((l) => (
             <Row key={l.state} gap={2} align="center">
               <Swatch state={l.state} />
-              <Text variant="small" color="dim">
+              <Text variant="small" color="ink3">
                 {l.label}
               </Text>
-              <Num variant="small" color="chalk" testID={`legend-${l.state}`}>
+              <Num variant="small" color="ink" testID={`legend-${l.state}`}>
                 {l.count}
               </Num>
             </Row>
@@ -140,18 +147,12 @@ export const PaletteSheet = forwardRef<SheetHandle, PaletteSheetProps>(function 
               pointerEvents={locked ? 'none' : 'auto'}
               style={locked ? { opacity: LOCKED_OPACITY } : undefined}
             >
+              {/* A block head is a `Pill`, not a 10.5 px kicker: `ink3` at that ratio never
+                  goes below the caption size (F-30 fix wave, A2). */}
               <Row gap={2} align="center" className="mb-2 mt-3">
-                <Text
-                  variant="kicker"
-                  weight="700"
-                  color="dim"
-                  tracking="kickerTight"
-                  uppercase
-                >
-                  {t(section.labelKey)}
-                </Text>
+                <Pill testID={`palette-section-${i}`} label={t(section.labelKey)} />
                 <View className="h-px flex-1 bg-line" />
-                <Num variant="kicker" weight="400" color="dim">
+                <Num variant="caption" weight="600" color="ink3">
                   {`${done}/${section.questions}`}
                 </Num>
               </Row>

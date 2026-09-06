@@ -17,7 +17,12 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
     className="flex-1"
   >
     <View
-      className="border-b border-line bg-panel"
+      className="border-b border-line bg-surface"
+      style={
+        {
+          "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+        }
+      }
       testID="attempt-header"
     >
       <View
@@ -54,7 +59,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             }
           }
           accessible={true}
-          className="h-touch w-touch items-center justify-center"
+          className="h-touch w-touch items-center justify-center rounded-sm"
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -69,21 +74,27 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
           testID="btn-exit"
         >
           <Text
-            className="text-dim"
+            accessibilityElementsHidden={true}
+            allowFontScaling={false}
+            importantForAccessibility="no"
+            selectable={false}
             style={
-              {
-                "fontFamily": "Inter_400Regular",
-                "fontSize": 20,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 30,
-                "textAlign": "left",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
-              }
+              [
+                {
+                  "color": "#4a423a",
+                  "fontSize": 22,
+                },
+                undefined,
+                {
+                  "fontFamily": "ionicons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                {},
+              ]
             }
           >
-            ✕
+            
           </Text>
         </View>
         <View
@@ -213,7 +224,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
           style={
             {
               "alignItems": "flex-end",
-              "backgroundColor": "transparent",
+              "backgroundColor": "#f0e9d8",
               "borderColor": "#e9e2d3",
               "borderRadius": 6,
               "borderWidth": 1,
@@ -225,7 +236,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
           testID="timer-box"
         >
           <Text
-            className="text-dim"
+            className="text-ink3"
             style={
               {
                 "fontFamily": "NotoSansTelugu_700Bold",
@@ -243,7 +254,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
           </Text>
           <Text
             accessibilityLanguage="en"
-            className="text-chalk"
+            className="text-ink"
             style={
               {
                 "fontFamily": "Inter_700Bold",
@@ -298,7 +309,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-outline"
+            className="items-center justify-center border rounded-full min-h-touch py-2 px-4 border-outline"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -352,7 +363,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 bg-accentSoft border-accent border-b-2 border-b-accentStrong"
+            className="items-center justify-center border rounded-full min-h-touch py-2 px-4 bg-accentSoft border-accent border-b-2 border-b-accentStrong"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -406,7 +417,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-outline"
+            className="items-center justify-center border rounded-full min-h-touch py-2 px-4 border-outline"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -460,7 +471,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="items-center justify-center border rounded-xs min-h-touch py-2 px-4 border-outline"
+            className="items-center justify-center border rounded-full min-h-touch py-2 px-4 border-outline"
             collapsable={false}
             focusable={true}
             hitSlop={0}
@@ -476,23 +487,59 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             style={{}}
             testID="section-chip-3"
           >
-            <Text
-              className="text-ink3"
+            <View
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_500Medium",
-                  "fontSize": 13,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 21.5,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
                 }
               }
             >
-              తెలంగాణ  ⛌
-            </Text>
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no"
+                selectable={false}
+                style={
+                  [
+                    {
+                      "color": "#6f665b",
+                      "fontSize": 18,
+                    },
+                    undefined,
+                    {
+                      "fontFamily": "ionicons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    {},
+                  ]
+                }
+                testID="section-lock-3"
+              >
+                
+              </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_500Medium",
+                    "fontSize": 13,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 21.5,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                తెలంగాణ
+              </Text>
+            </View>
           </View>
           <View
             style={
@@ -636,77 +683,104 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
           }
         >
           <View
-            className="rounded-xs border-2 border-hivis px-2 py-1"
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
             style={
               {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 4,
-                "justifyContent": undefined,
+                "justifyContent": "center",
+                "minHeight": 24,
               }
             }
             testID="q-badge"
           >
-            <Text
-              className="text-hivis"
+            <View
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 13,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 21.5,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
                 }
               }
             >
-              ప్ర
-            </Text>
-            <Text
-              accessibilityLanguage="en"
-              className="text-hivis"
-              style={
-                {
-                  "fontFamily": "Inter_700Bold",
-                  "fontSize": 13,
-                  "fontVariant": [
-                    "tabular-nums",
-                  ],
-                  "letterSpacing": 1.2,
-                  "lineHeight": 19.5,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
                 }
-              }
-            >
-              ⁦12⁩
-            </Text>
+              >
+                ప్ర
+              </Text>
+              <Text
+                accessibilityLanguage="en"
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "Inter_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ⁦12⁩
+              </Text>
+            </View>
           </View>
           <View
-            className="rounded-xs border border-line px-2 py-1"
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+            style={
+              {
+                "justifyContent": "center",
+                "minHeight": 24,
+              }
+            }
             testID="marks-chip"
           >
-            <Text
-              className="text-dim"
+            <View
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
                 }
               }
             >
-              నెగటివ్ మార్కులు లేవు
-            </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                నెగటివ్ మార్కులు లేవు
+              </Text>
+            </View>
           </View>
         </View>
         <Text
@@ -760,7 +834,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="min-h-key justify-center rounded-md py-3 border border-line bg-panel2 px-4"
+            className="min-h-key justify-center rounded-md py-3 border border-outline px-4 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -791,7 +865,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             >
               <View
-                className="items-center justify-center rounded-sm border border-line3"
+                className="items-center justify-center rounded-sm border border-outline"
                 style={
                   {
                     "height": 30,
@@ -800,14 +874,14 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 }
               >
                 <Text
-                  className="text-dim"
+                  className="text-ink3"
                   style={
                     {
-                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontFamily": "Inter_700Bold",
                       "fontSize": 13,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 21.5,
+                      "lineHeight": 19.5,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -857,7 +931,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="min-h-key justify-center rounded-md py-3 border border-line bg-panel2 px-4"
+            className="min-h-key justify-center rounded-md py-3 border border-outline px-4 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -888,7 +962,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             >
               <View
-                className="items-center justify-center rounded-sm border border-line3"
+                className="items-center justify-center rounded-sm border border-outline"
                 style={
                   {
                     "height": 30,
@@ -897,14 +971,14 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 }
               >
                 <Text
-                  className="text-dim"
+                  className="text-ink3"
                   style={
                     {
-                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontFamily": "Inter_700Bold",
                       "fontSize": 13,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 21.5,
+                      "lineHeight": 19.5,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -954,7 +1028,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="min-h-key justify-center rounded-md py-3 border border-line bg-panel2 px-4"
+            className="min-h-key justify-center rounded-md py-3 border border-outline px-4 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -985,7 +1059,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             >
               <View
-                className="items-center justify-center rounded-sm border border-line3"
+                className="items-center justify-center rounded-sm border border-outline"
                 style={
                   {
                     "height": 30,
@@ -994,14 +1068,14 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 }
               >
                 <Text
-                  className="text-dim"
+                  className="text-ink3"
                   style={
                     {
-                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontFamily": "Inter_700Bold",
                       "fontSize": 13,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 21.5,
+                      "lineHeight": 19.5,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -1051,7 +1125,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="min-h-key justify-center rounded-md py-3 border border-line bg-panel2 px-4"
+            className="min-h-key justify-center rounded-md py-3 border border-outline px-4 bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1082,7 +1156,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             >
               <View
-                className="items-center justify-center rounded-sm border border-line3"
+                className="items-center justify-center rounded-sm border border-outline"
                 style={
                   {
                     "height": 30,
@@ -1091,14 +1165,14 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 }
               >
                 <Text
-                  className="text-dim"
+                  className="text-ink3"
                   style={
                     {
-                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontFamily": "Inter_700Bold",
                       "fontSize": 13,
                       "fontVariant": undefined,
                       "letterSpacing": 0,
-                      "lineHeight": 21.5,
+                      "lineHeight": 19.5,
                       "textAlign": "center",
                       "textTransform": undefined,
                       "writingDirection": "ltr",
@@ -1141,13 +1215,32 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
           }
           testID="time-on-question"
         >
-          <View
-            accessibilityElementsHidden={true}
-            className="h-dot w-dot rounded-full border-1.5 border-mute"
-            importantForAccessibility="no"
-          />
           <Text
-            className="text-dim"
+            accessibilityElementsHidden={true}
+            allowFontScaling={false}
+            importantForAccessibility="no"
+            selectable={false}
+            style={
+              [
+                {
+                  "color": "#6f665b",
+                  "fontSize": 18,
+                },
+                undefined,
+                {
+                  "fontFamily": "ionicons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                {},
+              ]
+            }
+            testID="time-on-question-icon"
+          >
+            
+          </Text>
+          <Text
+            className="text-ink3"
             style={
               {
                 "fontFamily": "NotoSansTelugu_400Regular",
@@ -1189,7 +1282,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             >
               <Text
                 accessibilityLanguage="en"
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "Inter_400Regular",
@@ -1208,7 +1301,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 ⁦41⁩
               </Text>
               <Text
-                className="text-dim"
+                className="text-ink3"
                 style={
                   {
                     "fontFamily": "NotoSansTelugu_400Regular",
@@ -1230,174 +1323,208 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
       </View>
     </RCTScrollView>
     <View
-      className="border-t border-line bg-panel px-3 pb-3 pt-2"
+      className="bg-surface px-4 pt-3 border-t border-line"
+      style={
+        {
+          "boxShadow": "0 -8px 32px -16px rgba(33,28,23,0.30)",
+          "paddingBottom": 16,
+        }
+      }
       testID="attempt-footer"
     >
       <View
         style={
           {
-            "alignItems": undefined,
-            "flexDirection": "column",
+            "alignItems": "center",
+            "flexDirection": "row",
+            "flexWrap": undefined,
             "gap": 8,
             "justifyContent": undefined,
           }
         }
       >
         <View
-          style={
+          accessibilityRole="button"
+          accessibilityState={
             {
-              "alignItems": undefined,
-              "flexDirection": "row",
-              "flexWrap": undefined,
-              "gap": 8,
-              "justifyContent": undefined,
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
             }
           }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="items-center justify-center rounded-sm px-4"
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "height": 48,
+              "width": 92,
+            }
+          }
+          testID="btn-clear"
         >
           <View
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": false,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            className="items-center justify-center rounded-sm px-4 border border-outline"
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
               {
-                "height": 48,
-                "width": 92,
+                "alignItems": "center",
+                "flexDirection": "row",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
               }
             }
-            testID="btn-clear"
           >
-            <View
+            <Text
+              className="text-ink2"
               style={
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "flexWrap": undefined,
-                  "gap": 8,
-                  "justifyContent": undefined,
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 15,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 24.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
                 }
               }
             >
-              <Text
-                className="text-ink"
-                style={
-                  {
-                    "fontFamily": "NotoSansTelugu_600SemiBold",
-                    "fontSize": 15,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 24.8,
-                    "textAlign": "center",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                క్లియర్
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": false,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            className="items-center justify-center rounded-sm px-4 border border-accentStrong flex-1"
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "height": 48,
-              }
-            }
-            testID="btn-mark"
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "flexWrap": undefined,
-                  "gap": 8,
-                  "justifyContent": undefined,
-                }
-              }
-            >
-              <Text
-                className="text-accentInk"
-                style={
-                  {
-                    "fontFamily": "NotoSansTelugu_600SemiBold",
-                    "fontSize": 15,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 24.8,
-                    "textAlign": "center",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                రివ్యూకి గుర్తు పెట్టు
-              </Text>
-            </View>
+              క్లియర్
+            </Text>
           </View>
         </View>
         <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="items-center justify-center rounded-sm px-4 border border-outline flex-1"
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             {
-              "alignItems": undefined,
+              "height": 48,
+            }
+          }
+          testID="btn-mark"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              className="text-ink"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 15,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 24.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              రివ్యూకి గుర్తు పెట్టు
+            </Text>
+            <Text
+              accessibilityElementsHidden={true}
+              allowFontScaling={false}
+              importantForAccessibility="no"
+              selectable={false}
+              style={
+                [
+                  {
+                    "color": "#211c17",
+                    "fontSize": 18,
+                  },
+                  undefined,
+                  {
+                    "fontFamily": "ionicons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  {},
+                ]
+              }
+              testID="btn-mark-icon"
+            >
+              
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        className="mt-3"
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "flexWrap": undefined,
+            "gap": 12,
+            "justifyContent": undefined,
+          }
+        }
+        testID="attempt-footer-row"
+      >
+        <View
+          className="flex-1"
+          style={
+            {
+              "alignItems": "center",
               "flexDirection": "row",
               "flexWrap": undefined,
               "gap": 8,
@@ -1426,7 +1553,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="h-touchLg w-touchLg items-center justify-center rounded-sm border border-line3"
+            className="h-touchLg w-touchLg items-center justify-center rounded-sm border border-outline"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1441,7 +1568,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             testID="btn-prev"
           >
             <Text
-              className="text-chalk"
+              className="text-ink"
               style={
                 {
                   "fontFamily": "Inter_400Regular",
@@ -1480,7 +1607,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="h-touchLg flex-1 items-center justify-center rounded-sm border border-line3"
+            className="h-touchLg flex-1 items-center justify-center rounded-sm border border-outline"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1513,7 +1640,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             </Text>
             <Text
               accessibilityLanguage="en"
-              className="text-dim"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "Inter_400Regular",
@@ -1532,93 +1659,93 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               ⁦8 / 40⁩
             </Text>
           </View>
+        </View>
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="items-center justify-center rounded-sm px-4 bg-ink"
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "height": 56,
+              "width": 112,
+            }
+          }
+          testID="btn-next"
+        >
           <View
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": false,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            className="items-center justify-center rounded-sm px-4 bg-ink"
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
               {
-                "height": 56,
-                "width": 112,
+                "alignItems": "center",
+                "flexDirection": "row",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
               }
             }
-            testID="btn-next"
           >
-            <View
+            <Text
+              className="text-onInk"
               style={
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "flexWrap": undefined,
-                  "gap": 8,
-                  "justifyContent": undefined,
+                  "fontFamily": "NotoSansTelugu_700Bold",
+                  "fontSize": 16,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 26.4,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
                 }
               }
             >
-              <Text
-                className="text-onInk"
-                style={
-                  {
-                    "fontFamily": "NotoSansTelugu_700Bold",
-                    "fontSize": 16,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 26.4,
-                    "textAlign": "center",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
+              తర్వాత
+            </Text>
+            <Text
+              className="text-onInk"
+              style={
+                {
+                  "fontFamily": "Inter_400Regular",
+                  "fontSize": 20,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 30,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
                 }
-              >
-                తర్వాత
-              </Text>
-              <Text
-                className="text-tar"
-                style={
-                  {
-                    "fontFamily": "Inter_400Regular",
-                    "fontSize": 20,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 30,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-                testID="chevron-next"
-              >
-                ›
-              </Text>
-            </View>
+              }
+              testID="chevron-next"
+            >
+              ›
+            </Text>
           </View>
         </View>
       </View>

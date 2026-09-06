@@ -3,16 +3,8 @@ import { ScrollView, StyleSheet, View, type ViewProps } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { cx } from './cx';
-import { Rail } from './Rail';
 
 export type ScreenProps = ViewProps & {
-  /**
-   * Brand rule on top. Default OFF since 2026-09-05 (user ruling): a rail is no longer screen
-   * chrome. The attempt screen still raises it as the critical-time warning.
-   */
-  rail?: boolean;
-  /** Rail turns red and pulses. */
-  critical?: boolean;
   /** 16 px horizontal padding on the body. */
   padded?: boolean;
   /** Body becomes a ScrollView. */
@@ -35,10 +27,12 @@ export type ScreenProps = ViewProps & {
 /**
  * Safe-area container on `canvas`. Every route renders inside one.
  * Body goes in `children`; modal surfaces (Dialog, Toast) go in `overlay`.
+ *
+ * No rail: a coloured rule stopped being screen chrome on 2026-09-05, and the attempt
+ * screen's critical-time warning is a static `HeaderBand` over its own header (Phase D).
+ * `Rail` itself survives for the dev gallery.
  */
 export function Screen({
-  rail = false,
-  critical = false,
   padded = false,
   scroll = false,
   bottomInset = true,
@@ -64,7 +58,6 @@ export function Screen({
         style,
       ])}
     >
-      {rail && <Rail critical={critical} />}
       {scroll ? (
         <ScrollView
           className="flex-1"

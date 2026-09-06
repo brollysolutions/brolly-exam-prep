@@ -50,8 +50,13 @@ describe('AttemptView (te)', () => {
       fontFamily: 'NotoSansTelugu_400Regular',
     });
     expect(screen.getByTestId('attempt-header-row')).toHaveStyle({ flexDirection: 'row' });
-    // The marks chip is a physical row: its digits never re-order.
-    expect(screen.getByTestId('q-badge')).toHaveStyle({ flexDirection: 'row' });
+    // The Q badge is the paper viewer's pill: the label in the Telugu face, the number Latin
+    // and isolated. (The old assertion read the badge's own `flexDirection`; a `Pill` keeps
+    // that on the row inside it, and the physical-order guarantee that mattered — "+1 / −0.25"
+    // — moved to the marks pill, which `AttemptView.test` asserts.)
+    expect(screen.getByTestId('q-badge')).toHaveTextContent(
+      new RegExp(`${te.test.qLabel}.?${iso(DEMO_ATTEMPT.current)}`),
+    );
     // Chevrons point along the reading direction.
     expect(screen.getByTestId('btn-prev')).toHaveTextContent('‹');
     expect(screen.getByTestId('btn-next')).toHaveTextContent(`${te.test.next}›`);

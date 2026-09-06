@@ -47,7 +47,7 @@ describe('AttemptNotices', () => {
 
   it('shows a toast with its tone', async () => {
     await render(
-      <AttemptNotices toast={{ key: 'warn1', text: '1 minute left', tone: 'flag' }} />,
+      <AttemptNotices toast={{ key: 'warn1', text: '1 minute left', tone: 'danger' }} />,
     );
     expect(screen.getByTestId('attempt-toast')).toHaveTextContent('1 minute left');
   });

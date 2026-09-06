@@ -1,11 +1,12 @@
-import { radius, size } from '@tslprb/design-tokens';
-import { dir, useDir } from '@tslprb/i18n';
+import { radius, size, spacing } from '@tslprb/design-tokens';
+import { useDir } from '@tslprb/i18n';
 import type { ExamPattern } from '@tslprb/fixtures';
 import type { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import type { PaletteCounts } from '@/data/attempt.selectors';
+import { startEdge, startEdgeInset } from '@/features/result/edge';
 import { Banner, cx, Dialog, Glyph, Kicker, Num, Row, Stack, Text, Toast, usePressed } from '@/ui';
 
 /** The four confirmation cards of the attempt screen (prototype `D` map). */
@@ -13,7 +14,12 @@ export type AttemptDialogKind = 'exit' | 'submit' | 'resume' | 'auto';
 
 export type AttemptToast = {
   text: string;
-  tone: 'hazard' | 'flag';
+  /**
+   * `accent` is the 5-minute notice (soft gold, ink), `danger` the last minute (solid
+   * `dangerInk` with cream — the same pair as the critical timer box), `info` a locked section
+   * (ink fill, cream), which is a fact about the paper rather than a warning about the clock.
+   */
+  tone: 'accent' | 'danger' | 'info';
   /** Distinguishes one notice from the next so a repeat re-announces. */
   key: string;
 };
@@ -79,7 +85,7 @@ export function AttemptDialogs({
     <>
       <Dialog
         visible={kind === 'exit'}
-        tone="hazard"
+        tone="accent"
         kicker={t('test.exitKicker')}
         title={t('test.exitTitle')}
         body={t('test.exitBody')}
@@ -89,7 +95,7 @@ export function AttemptDialogs({
       />
       <Dialog
         visible={kind === 'submit'}
-        tone="hivis"
+        tone="accent"
         kicker={t('test.submitKicker')}
         title={t('test.submitTitle')}
         body={t('test.submitBody')}
@@ -104,7 +110,7 @@ export function AttemptDialogs({
       />
       <Dialog
         visible={kind === 'resume'}
-        tone="hivis"
+        tone="accent"
         kicker={t('test.resumeKicker')}
         title={t('test.resumeTitle')}
         body={t('test.resumeBody')}
@@ -113,7 +119,7 @@ export function AttemptDialogs({
       />
       <Dialog
         visible={kind === 'auto'}
-        tone="flag"
+        tone="danger"
         kicker={t('test.autoKicker')}
         title={t('test.autoTitle')}
         body={t('test.autoBody')}
@@ -127,7 +133,11 @@ export function AttemptDialogs({
 /** Placeholder caller for the simulated interruption; never a real number. */
 const CALL_NUMBER = '+91 90000 12345';
 
-/** One of the two 64 px round call actions. */
+/**
+ * One of the two 64 px round call actions. The glyph is INK on both fills: cream on `danger`
+ * measures 2.77:1 and on `ok` 2.28, both under the 3:1 floor a mark has to clear, while ink is
+ * 6.11 and 7.41.
+ */
 function CallButton({
   tone,
   glyph,
@@ -135,7 +145,7 @@ function CallButton({
   testID,
   onPress,
 }: {
-  tone: 'flag' | 'success';
+  tone: 'danger' | 'ok';
   glyph: string;
   label: string;
   testID: string;
@@ -149,14 +159,14 @@ function CallButton({
       onPress={onPress}
       testID={testID}
       {...handlers}
-      className={cx('items-center justify-center', tone === 'flag' ? 'bg-flag' : 'bg-success')}
+      className={cx('items-center justify-center', tone === 'danger' ? 'bg-danger' : 'bg-ok')}
       // Flattened object, never a callback: a `style` function loses its statics on web.
       style={StyleSheet.flatten([
         { width: size.call, height: size.call, borderRadius: radius.full },
         pressed ? { opacity: 0.85 } : null,
       ])}
     >
-      <Glyph color="white">{glyph}</Glyph>
+      <Glyph color="ink">{glyph}</Glyph>
     </Pressable>
   );
 }
@@ -195,10 +205,16 @@ export function CallOverlay({ visible, onEnd }: CallOverlayProps) {
       </Stack>
 
       <View
-        className={cx(
-          'w-full border border-ink3 px-3 py-3',
-          dir(d, 'border-l-3 border-l-accent', 'border-r-3 border-r-accent'),
-        )}
+        testID="call-note"
+        className="w-full rounded-md border border-ink3 px-3 py-3"
+        // The bar and its padding compensation are object styles: RN's `borderStartWidth`
+        // follows `I18nManager` rather than the in-app language, and a className that changes
+        // with the direction accumulates beside a style on web. The box already draws a 1 px
+        // border on that side, so only two of the bar's three pixels come off the padding.
+        style={{
+          ...startEdge(d.isRTL, 'accent'),
+          ...startEdgeInset(d.isRTL, spacing['3'], 1),
+        }}
       >
         <Text variant="small" color="onInk">
           {t('test.callNote')}
@@ -207,14 +223,14 @@ export function CallOverlay({ visible, onEnd }: CallOverlayProps) {
 
       <Row gap={6}>
         <CallButton
-          tone="flag"
+          tone="danger"
           glyph="✕"
           label={t('test.callDecline')}
           testID="call-decline"
           onPress={onEnd}
         />
         <CallButton
-          tone="success"
+          tone="ok"
           glyph="✓"
           label={t('test.callAccept')}
           testID="call-accept"

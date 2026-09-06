@@ -86,13 +86,13 @@ function configFor(id: StateId, lockedText: string, warn5: string, warn1: string
     case 'revisitedQ4':
       return { ...base, attempt: demoAttempt({ current: 4 }) };
     case 'locked':
-      return { ...base, toast: { key: 'locked', text: lockedText, tone: 'hazard' } };
+      return { ...base, toast: { key: 'locked', text: lockedText, tone: 'info' } };
     case 'offline':
       return { ...base, offline: true };
     case 'warn5':
-      return { ...base, remainingSec: 300, toast: { key: 'warn5', text: warn5, tone: 'hazard' } };
+      return { ...base, remainingSec: 300, toast: { key: 'warn5', text: warn5, tone: 'accent' } };
     case 'warn1':
-      return { ...base, remainingSec: 47, toast: { key: 'warn1', text: warn1, tone: 'flag' } };
+      return { ...base, remainingSec: 47, toast: { key: 'warn1', text: warn1, tone: 'danger' } };
     case 'online':
       return { ...base, offline: false };
     case 'resume':

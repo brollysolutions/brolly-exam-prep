@@ -1,4 +1,13 @@
-import { colors, radius, size, spacing, text, type ColorName } from '@tslprb/design-tokens';
+import { Ionicons } from '@expo/vector-icons';
+import {
+  colors,
+  radius,
+  shadowStyle,
+  size,
+  spacing,
+  text,
+  type ColorName,
+} from '@tslprb/design-tokens';
 import { LANGS, useDir, type Lang } from '@tslprb/i18n';
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -14,13 +23,18 @@ import {
   totalQuestions,
 } from '@/data/attempt.selectors';
 import {
+  ActionBar,
   Button,
   Chip,
   cx,
   Duration,
   Glyph,
   haptics,
+  HeaderBand,
   Num,
+  Pill,
+  pressedClass,
+  pressedStyle,
   ProgressRail,
   Row,
   Screen,
@@ -30,12 +44,10 @@ import {
   usePressed,
 } from '@/ui';
 
-/** Rail, timer box and toast turn flag-red from here down (spec section 5). */
+/** Band, timer box, progress fill and toast turn red from here down (spec section 5). */
 const CRITICAL_SEC = 60;
-/** Timer box turns hazard-orange from here down. */
+/** Timer box turns gold from here down. */
 const WARNING_SEC = 300;
-/** The prototype's locked-tab glyph, appended to the section label. */
-const LOCK_GLYPH = '  ⛌';
 
 export type AttemptViewProps = {
   /** The persisted half of the attempt; every derived value comes from `attempt.selectors`. */
@@ -78,15 +90,21 @@ export function formatClock(totalSec: number): string {
 }
 
 /**
- * The header clock: transparent, then hazard under 5 minutes, then flag under 1 — but only once
- * the attempt is armed, so a not-yet-started paper never shows a red 00:00.
+ * The header clock: a quiet `surface2` box, a soft-gold one under 5 minutes and a solid
+ * `dangerInk` one under 1 — but only once the attempt is armed, so a not-yet-started paper
+ * never shows a red 00:00.
+ *
+ * Ink carries the digits on both cream and gold (13.96:1 and 10.97:1); the fill is what
+ * changes. `accentInk` on `accentSoft` measures 3.34:1 — inside AA for the 23 px bold numeral
+ * but under it for the 12 px label above it, and a label darker than the figure it names is
+ * the hierarchy upside down. The critical box is `dangerInk` with `onInk` (5.79:1), never
+ * `danger` with cream (2.77:1).
  */
 function TimerBox({ remainingSec, armed }: { remainingSec: number; armed: boolean }) {
   const { t } = useTranslation();
   const critical = armed && remainingSec <= CRITICAL_SEC;
-  const warning = armed && remainingSec <= WARNING_SEC;
-  const filled = warning || critical;
-  const fg: ColorName = filled ? 'tar' : 'chalk';
+  const warning = armed && !critical && remainingSec <= WARNING_SEC;
+  const fg: ColorName = critical ? 'onInk' : 'ink';
   return (
     <Stack
       align="end"
@@ -97,11 +115,24 @@ function TimerBox({ remainingSec, armed }: { remainingSec: number; armed: boolea
       style={{
         borderRadius: radius.sm,
         borderWidth: 1,
-        backgroundColor: critical ? colors.flag : warning ? colors.hazard : 'transparent',
-        borderColor: critical ? colors.flag : warning ? colors.hazard : colors.line,
+        backgroundColor: critical
+          ? colors.dangerInk
+          : warning
+            ? colors.accentSoft
+            : colors.surface2,
+        borderColor: critical
+          ? colors.dangerInk
+          : warning
+            ? colors.accentStrong
+            : colors.line,
       }}
     >
-      <Text variant="caption" weight="700" color={filled ? 'tar' : 'dim'} tracking="timer">
+      <Text
+        variant="caption"
+        weight="700"
+        color={critical ? 'onInk' : warning ? 'ink2' : 'ink3'}
+        tracking="timer"
+      >
         {t('test.timeLeft')}
       </Text>
       {/* The prototype pins the numeral's line-height to 1.0 so the box stays 48 px tall. */}
@@ -112,37 +143,53 @@ function TimerBox({ remainingSec, armed }: { remainingSec: number; armed: boolea
   );
 }
 
-/** "+1 / −0.25", or the free mock's "No negative marking". */
-function MarksChip({ attempt }: { attempt: AttemptState }) {
+/**
+ * The paper's marking scheme as a quiet pill: "+1 / −0.25", or the free mock's "No negative
+ * marking".
+ *
+ * The reward is ink and the penalty `dangerInk` (5.35:1 on the pill's `surface2`). Not gold:
+ * `accentInk` measures 4.25 there, and gold in this app means the candidate's own input, which
+ * the exam's own marking scheme is not.
+ */
+function MarksPill({ attempt }: { attempt: AttemptState }) {
   const { t } = useTranslation();
   const pattern = attempt.pattern;
   if (!pattern) return null;
   if (pattern.negativePerWrong <= 0)
-    return (
-      <View className="rounded-xs border border-line px-2 py-1" testID="marks-chip">
-        <Text variant="caption" weight="600" color="dim">
-          {t('common.noNegative')}
-        </Text>
-      </View>
-    );
+    return <Pill label={t('common.noNegative')} testID="marks-chip" />;
   return (
-    <Row
-      physical
-      gap={1}
-      align="center"
-      className="rounded-xs border border-line px-2 py-1"
+    <Pill
       testID="marks-chip"
-    >
-      <Num variant="caption" color="hivis">{`+${pattern.marksPerCorrect}`}</Num>
-      <Text variant="caption" color="ghost">
-        /
-      </Text>
-      <Num variant="caption" color="flag">{`−${pattern.negativePerWrong}`}</Num>
-    </Row>
+      // Physical: "+1 / −0.25" is arithmetic and never re-orders with the reading direction.
+      leading={
+        <Row physical gap={1} align="baseline">
+          <Num variant="caption" weight="700" color="ink">{`+${pattern.marksPerCorrect}`}</Num>
+          <Text variant="caption" color="ink3">
+            /
+          </Text>
+          <Num
+            variant="caption"
+            weight="700"
+            color="dangerInk"
+          >{`−${pattern.negativePerWrong}`}</Num>
+        </Row>
+      }
+    />
   );
 }
 
-/** One answer row: 58 px minimum, key glyph box, 2 px hi-vis border and tint when selected. */
+/**
+ * One answer row: a `surface` box 58 px tall, its key in a bordered square, a 2 px
+ * `accentStrong` edge and the gold tint when it is the candidate's answer.
+ *
+ * The resting border is `outline` (3.12:1 on the box, 3.01 on the canvas behind it), not the
+ * `line` a card rests on: `surface` on `canvas` measures 1.06, so a `line` hairline would leave
+ * four radio targets with no visible boundary at all. Selected is `accentStrong`, not the brand
+ * `accent`, which is 2.34:1 against the cream around it (ruling D2).
+ *
+ * Held, an unselected row takes the `surface2` press fill — opacity is invisible between two
+ * creams — and a selected one dims, so the tint the press is confirming survives it.
+ */
 function OptionRow({
   index,
   glyph,
@@ -163,6 +210,7 @@ function OptionRow({
       accessibilityState={{ checked: selected }}
       accessibilityLabel={`${glyph} ${label}`}
       testID={`option-${index}`}
+      android_ripple={{ color: colors.accentTint }}
       {...handlers}
       onPress={() => {
         haptics.select();
@@ -171,23 +219,33 @@ function OptionRow({
       className={cx(
         'min-h-key justify-center rounded-md py-3',
         // Border grows 1 → 2 px when selected; padding gives the pixel back.
-        selected ? 'border-2 border-hivis bg-hivisTint px-3' : 'border border-line bg-panel2 px-4',
+        // One fill slot, never two `bg-*`: the tint, the press fill or the resting surface.
+        selected
+          ? 'border-2 border-accentStrong bg-accentTint px-3'
+          : cx('border border-outline px-4', pressed ? pressedClass : 'bg-surface'),
       )}
       // Flattened object, never a callback: a `style` function loses its statics on web.
       style={StyleSheet.flatten([
         { minHeight: size.key },
-        pressed ? { opacity: 0.85 } : null,
+        selected && pressed ? pressedStyle : null,
       ])}
     >
       <Row gap={3} align="center">
         <View
           className={cx(
             'items-center justify-center rounded-sm border',
-            selected ? 'border-hivis bg-hivis' : 'border-line3',
+            selected ? 'border-accent bg-accent' : 'border-outline',
           )}
           style={{ width: size.optionKey, height: size.optionKey }}
         >
-          <Text variant="small" weight="700" color={selected ? 'tar' : 'dim'} align="center">
+          {/* Ink on the gold key box (6.47:1); the Latin face carries A–D in both languages. */}
+          <Text
+            variant="small"
+            weight="700"
+            color={selected ? 'ink' : 'ink3'}
+            align="center"
+            lang="en"
+          >
             {glyph}
           </Text>
         </View>
@@ -202,17 +260,18 @@ function OptionRow({
 /**
  * A pressable whose press delta lives in state instead of a `style` callback: a callback
  * next to `className` silently loses its static values under css-interop on web (`usePressed`).
+ *
+ * The feedback is the `surface2` fill every outlined control on cream takes — an opacity dim
+ * between two creams is invisible. One fill slot, so the caller's `className` carries no `bg-*`.
  */
 function PressBox({
   className,
-  pressedOpacity = 0.85,
   accessibilityLabel,
   onPress,
   testID,
   children,
 }: {
   className: string;
-  pressedOpacity?: number;
   accessibilityLabel: string;
   onPress: () => void;
   testID: string;
@@ -223,11 +282,11 @@ function PressBox({
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel}
+      android_ripple={{ color: colors.accentTint }}
       onPress={onPress}
       testID={testID}
       {...handlers}
-      className={className}
-      style={pressed ? { opacity: pressedOpacity } : undefined}
+      className={cx(className, pressed && pressedClass)}
     >
       {children}
     </Pressable>
@@ -275,24 +334,35 @@ export function AttemptView({
   const langOptions = LANGS.map((l) => ({ value: l, label: t(`lang.${l}Short`), lang: l }));
 
   const options = question?.options[lang] ?? [];
+  const critical = armed && remainingSec <= CRITICAL_SEC;
 
   return (
-    <Screen
-      rail={armed && remainingSec <= CRITICAL_SEC}
-      critical={armed && remainingSec <= CRITICAL_SEC}
-      overlay={overlay}
-      testID={testID}
-    >
-      <View className="border-b border-line bg-panel" testID="attempt-header">
+    /* `ActionBar` owns the bottom inset, the way a tab scene's bar does. */
+    <Screen bottomInset={false} overlay={overlay} testID={testID}>
+      {/* The last minute says so three times and none of them moves: this band, the solid red
+          timer box and the red progress fill, with the pinned toast carrying the words. The
+          pulsing `Rail` that used to sit here is gone (ruling 2026-09-05, Phase D). */}
+      {critical && <HeaderBand />}
+      <View
+        className="border-b border-line bg-surface"
+        style={shadowStyle('card')}
+        testID="attempt-header"
+      >
         <Row align="center" gap={2} className="px-2 py-1" testID="attempt-header-row">
           <PressBox
             accessibilityLabel={t('test.exit')}
             onPress={onExit}
             testID="btn-exit"
-            className="h-touch w-touch items-center justify-center"
-            pressedOpacity={0.7}
+            className="h-touch w-touch items-center justify-center rounded-sm"
           >
-            <Glyph color="dim">✕</Glyph>
+            {/* The icon, not a ✕ glyph: a close cross is a symbol every platform draws. */}
+            <Ionicons
+              name="close"
+              size={size.iconLg}
+              color={colors.ink2}
+              accessibilityElementsHidden
+              importantForAccessibility="no"
+            />
           </PressBox>
           <SegmentedChips
             value={lang}
@@ -321,7 +391,23 @@ export function AttemptView({
               <Chip
                 key={s.id}
                 size="lg"
-                label={locked ? `${t(s.labelKey)}${LOCK_GLYPH}` : t(s.labelKey)}
+                shape="pill"
+                label={t(s.labelKey)}
+                // The lock is an icon in the chip's own leading slot, not two spaces and a `⛌`
+                // concatenated onto a translated label: only the Latin face carries that glyph,
+                // and a padded string is not a mark.
+                leading={
+                  locked ? (
+                    <Ionicons
+                      testID={`section-lock-${i}`}
+                      name="lock-closed-outline"
+                      size={size.icon}
+                      color={colors.ink3}
+                      accessibilityElementsHidden
+                      importantForAccessibility="no"
+                    />
+                  ) : undefined
+                }
                 active={i === currentSection}
                 muted={locked}
                 onPress={() => (locked ? onLockedTap(i) : onSectionPress(i))}
@@ -336,6 +422,7 @@ export function AttemptView({
         <ProgressRail
           fraction={progressFraction(attempt)}
           ticks={Math.max(1, sections.length)}
+          tone={critical ? 'danger' : 'accent'}
           testID="attempt-progress"
         />
       </View>
@@ -349,23 +436,38 @@ export function AttemptView({
         testID="attempt-body"
       >
         <Row gap={2} wrap align="center">
-          <Row
-            physical
-            gap={1}
-            align="center"
-            className="rounded-xs border-2 border-hivis px-2 py-1"
+          {/* The same Q pill the paper viewer heads its cards with. */}
+          <Pill
             testID="q-badge"
-          >
-            <Text variant="small" weight="700" color="hivis" tracking="qBadge">
-              {t('test.qLabel')}
-            </Text>
-            <Num variant="small" color="hivis" tracking="qBadge">
-              {current}
-            </Num>
-          </Row>
-          <MarksChip attempt={attempt} />
+            leading={
+              <>
+                <Text variant="caption" weight="700" color="ink3" tracking="kicker">
+                  {t('test.qLabel')}
+                </Text>
+                <Num variant="caption" weight="700" color="ink3" tracking="none">
+                  {current}
+                </Num>
+              </>
+            }
+          />
+          <MarksPill attempt={attempt} />
+          {/* Ink = a deliberate flag, and a filled bookmark says the flag is set. */}
           {isMarked && (
-            <Chip label={t('test.markedShort')} tone="hazard" active testID="marked-chip" />
+            <Pill
+              testID="marked-chip"
+              tone="ink"
+              label={t('test.markedShort')}
+              leading={
+                <Ionicons
+                  testID="marked-bookmark"
+                  name="bookmark"
+                  size={size.icon}
+                  color={colors.onInk}
+                  accessibilityElementsHidden
+                  importantForAccessibility="no"
+                />
+              }
+            />
           )}
         </Row>
 
@@ -387,49 +489,38 @@ export function AttemptView({
         </Stack>
 
         <Row gap={2} align="center" className="mt-4" testID="time-on-question">
-          {/* Decorative ring: `mute` is reserved for non-text marks like this one. */}
-          <View
-            className="h-dot w-dot rounded-full border-1.5 border-mute"
+          {/* A clock, not a decorative ring: the mark names what the line counts. */}
+          <Ionicons
+            testID="time-on-question-icon"
+            name="time-outline"
+            size={size.icon}
+            color={colors.ink3}
             accessibilityElementsHidden
             importantForAccessibility="no"
           />
-          <Text variant="caption" color="dim">
+          <Text variant="caption" color="ink3">
             {`${t('test.timeOnQ')} ·`}
           </Text>
           {/* Digits in Inter, the unit in the language's own face: `common.seconds`
               inside `<Num>` drew the Telugu unit as tofu. */}
-          <Duration seconds={elapsedSec} variant="caption" weight="400" color="dim" />
+          <Duration seconds={elapsedSec} variant="caption" weight="400" color="ink3" />
         </Row>
       </ScrollView>
 
-      <View className="border-t border-line bg-panel px-3 pb-3 pt-2" testID="attempt-footer">
-        <Stack gap={2}>
-          <Row gap={2}>
-            <Button
-              variant="secondary"
-              label={t('test.clear')}
-              onPress={onClear}
-              style={{ width: size.clearBtn }}
-              testID="btn-clear"
-            />
-            <Button
-              variant="hazard"
-              active={isMarked}
-              label={isMarked ? t('test.unmark') : t('test.mark')}
-              onPress={onToggleMark}
-              className="flex-1"
-              testID="btn-mark"
-            />
-          </Row>
-          <Row gap={2}>
+      {/* P5. The primary hugs its 112 px, so the remaining width goes to Prev + Questions. */}
+      <ActionBar
+        testID="attempt-footer"
+        grow={false}
+        secondary={
+          <Row gap={2} align="center" className="flex-1">
             <PressBox
               accessibilityLabel={t('test.previous')}
               onPress={onPrev}
               testID="btn-prev"
-              className="h-touchLg w-touchLg items-center justify-center rounded-sm border border-line3"
+              className="h-touchLg w-touchLg items-center justify-center rounded-sm border border-outline"
             >
               {/* Latin face: a language face without the chevron glyph draws a tofu box. */}
-              <Glyph color="chalk" testID="chevron-prev">
+              <Glyph color="ink" testID="chevron-prev">
                 {d.chevronPrev}
               </Glyph>
             </PressBox>
@@ -437,30 +528,62 @@ export function AttemptView({
               accessibilityLabel={`${t('test.palette')} ${tally.answered}/${total}`}
               onPress={onOpenPalette}
               testID="btn-palette"
-              className="h-touchLg flex-1 items-center justify-center rounded-sm border border-line3"
+              className="h-touchLg flex-1 items-center justify-center rounded-sm border border-outline"
             >
               <Text variant="body" weight="600">
                 {t('test.palette')}
               </Text>
-              <Num variant="caption" weight="400" color="dim">
+              <Num variant="caption" weight="400" color="ink3">
                 {`${tally.answered} / ${total}`}
               </Num>
             </PressBox>
-            <Button
-              size="lg"
-              label={t('test.next')}
-              icon={
-                <Glyph color="tar" testID="chevron-next">
-                  {d.chevronNext}
-                </Glyph>
-              }
-              onPress={onNext}
-              style={{ width: size.nextBtn }}
-              testID="btn-next"
-            />
           </Row>
-        </Stack>
-      </View>
+        }
+        primary={
+          <Button
+            size="lg"
+            label={t('test.next')}
+            icon={
+              <Glyph color="onInk" testID="chevron-next">
+                {d.chevronNext}
+              </Glyph>
+            }
+            onPress={onNext}
+            style={{ width: size.nextBtn }}
+            testID="btn-next"
+          />
+        }
+      >
+        <Row gap={2} align="center">
+          <Button
+            variant="ghost"
+            label={t('test.clear')}
+            onPress={onClear}
+            style={{ width: size.clearBtn }}
+            testID="btn-clear"
+          />
+          {/* Marking is a flag, not a second decision: the box stays outlined either way and
+              the bookmark fills. A gold fill here would be the screen's second filled control
+              and would claim the rank the ink Next already has. */}
+          <Button
+            variant="secondary"
+            label={isMarked ? t('test.unmark') : t('test.mark')}
+            icon={
+              <Ionicons
+                testID="btn-mark-icon"
+                name={isMarked ? 'bookmark' : 'bookmark-outline'}
+                size={size.icon}
+                color={colors.ink}
+                accessibilityElementsHidden
+                importantForAccessibility="no"
+              />
+            }
+            onPress={onToggleMark}
+            className="flex-1"
+            testID="btn-mark"
+          />
+        </Row>
+      </ActionBar>
     </Screen>
   );
 }

@@ -31,10 +31,7 @@ export function HeaderBand({ className, style, testID = 'header-band' }: HeaderB
       importantForAccessibility="no-hide-descendants"
       className={cx(className)}
       // Flattened on purpose: css-interop mutates array styles on web (see Text).
-      style={StyleSheet.flatten([
-        { height: size.band, backgroundColor: colors.dangerInk },
-        style,
-      ])}
+      style={StyleSheet.flatten([{ height: size.band, backgroundColor: colors.dangerInk }, style])}
     />
   );
 }

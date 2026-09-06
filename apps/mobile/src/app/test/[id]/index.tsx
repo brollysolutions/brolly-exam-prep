@@ -134,11 +134,11 @@ function TestAttempt({ id }: { id: string }) {
     enabled: running,
     onWarn5: () => {
       haptics.warning();
-      showToast({ key: 'warn5', text: t('test.warn5'), tone: 'hazard' });
+      showToast({ key: 'warn5', text: t('test.warn5'), tone: 'accent' });
     },
     onWarn1: () => {
       haptics.warning();
-      showToast({ key: 'warn1', text: t('test.warn1'), tone: 'flag' });
+      showToast({ key: 'warn1', text: t('test.warn1'), tone: 'danger' });
     },
     onExpire: () => {
       useAttemptStore.getState().autoSubmit();
@@ -190,7 +190,9 @@ function TestAttempt({ id }: { id: string }) {
           {
             key: `locked-${sectionIndex}`,
             text: lockedMessage(t, useAttemptStore.getState().pattern, sectionIndex),
-            tone: 'hazard',
+            // A locked section is a fact about the paper, not a warning about the clock:
+            // the ink toast, the same one the library raises on a locked test.
+            tone: 'info',
           },
           LOCKED_TOAST_MS,
         );
