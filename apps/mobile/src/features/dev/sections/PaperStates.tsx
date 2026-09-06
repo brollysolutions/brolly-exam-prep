@@ -28,7 +28,7 @@ const TITLE = 'PWT 2022 — SCT PC';
 function Frame({ label, children }: { label: string; children: ReactNode }) {
   return (
     <Stack gap={2}>
-      <Text variant="caption" color="dim">
+      <Text variant="caption" color="ink3">
         {label}
       </Text>
       <View
@@ -45,7 +45,7 @@ export function PaperStates({ index }: { index: string }) {
   const lang = useLangStore((s) => s.lang);
   return (
     <Stack gap={3} className="mt-6">
-      <Kicker index={index} color="dim" uppercase>
+      <Kicker index={index} color="ink3" uppercase>
         {DEV.title}
       </Kicker>
       <Frame label={DEV.loaded}>

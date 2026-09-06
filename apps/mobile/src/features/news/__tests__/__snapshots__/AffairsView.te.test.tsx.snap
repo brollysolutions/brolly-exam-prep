@@ -109,26 +109,44 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
           className="px-2"
         >
           <View
-            className="rounded-xs bg-surface2 px-2 py-0.5"
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+            style={
+              {
+                "justifyContent": "center",
+                "minHeight": 24,
+              }
+            }
             testID="sample-data"
           >
-            <Text
-              className="text-ink3"
+            <View
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
                 }
               }
             >
-              నమూనా డేటా
-            </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                నమూనా డేటా
+              </Text>
+            </View>
           </View>
         </View>
       </View>
@@ -145,261 +163,491 @@ exports[`AffairsView (te) sets the feed in Telugu and keeps the day heading in L
             {
               "alignItems": undefined,
               "flexDirection": "column",
-              "gap": 12,
+              "gap": 8,
               "justifyContent": undefined,
             }
           }
           testID="affairs-day-2026-09-02"
         >
-          <Text
-            accessibilityLanguage="en"
-            className="text-chalk2"
-            style={
-              {
-                "fontFamily": "Inter_700Bold",
-                "fontSize": 10.5,
-                "fontVariant": [
-                  "tabular-nums",
-                ],
-                "letterSpacing": 0,
-                "lineHeight": 15.8,
-                "textAlign": "left",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
-              }
-            }
-            testID="affairs-date-2026-09-02"
-          >
-            ⁦2 Sep 2026⁩
-          </Text>
           <View
-            className="rounded-md border border-line bg-panel2 p-4"
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
             style={
               {
-                "borderLeftColor": "#856a22",
-                "borderLeftWidth": 3,
+                "justifyContent": "center",
+                "minHeight": 24,
               }
             }
-            testID="affair-card-af-metro-corridor"
           >
-            <Text
-              className="text-sand"
+            <View
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
                 }
               }
-              testID="affair-cat-af-metro-corridor"
             >
-              తెలంగాణ
-            </Text>
-            <Text
-              className="text-ink mt-2"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 24.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+              <Text
+                accessibilityLanguage="en"
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "Inter_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
                 }
-              }
-              testID="affair-headline-af-metro-corridor"
-            >
-              ఎయిర్‌పోర్ట్ మెట్రో కారిడార్ తొలి దశ ప్రారంభం
-            </Text>
-            <Text
-              className="text-chalk2 mt-2"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-              testID="affair-summary-af-metro-corridor"
-            >
-              ఎయిర్‌పోర్ట్ వైపు ఎలివేటెడ్ మార్గంలోని తొలి భాగంలో రైళ్లు నడుస్తున్నాయి. కారిడార్‌లో మిగిలిన స్టేషన్లను దశలవారీగా తెరుస్తారు.
-            </Text>
+                testID="affairs-date-2026-09-02"
+              >
+                ⁦2 Sep 2026⁩
+              </Text>
+            </View>
           </View>
           <View
-            className="rounded-md border border-line bg-panel2 p-4"
+            className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
             style={
               {
-                "borderLeftColor": "#856a22",
-                "borderLeftWidth": 3,
+                "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
               }
             }
-            testID="affair-card-af-rural-roads"
           >
-            <Text
-              className="text-sand"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-              testID="affair-cat-af-rural-roads"
+            <View
+              className="min-h-touchLg justify-center py-2"
+              testID="affair-card-af-metro-corridor"
             >
-              భారత్
-            </Text>
-            <Text
-              className="text-ink mt-2"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 24.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 12,
+                    "justifyContent": undefined,
+                  }
                 }
-              }
-              testID="affair-headline-af-rural-roads"
+                testID="affair-card-af-metro-corridor-row"
+              >
+                <View
+                  className="flex-1"
+                  style={
+                    {
+                      "alignItems": undefined,
+                      "flexDirection": "column",
+                      "gap": 4,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    className="text-ink"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_600SemiBold",
+                        "fontSize": 15,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 24.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                    testID="affair-headline-af-metro-corridor"
+                  >
+                    ఎయిర్‌పోర్ట్ మెట్రో కారిడార్ తొలి దశ ప్రారంభం
+                  </Text>
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                    testID="affair-summary-af-metro-corridor"
+                  >
+                    ఎయిర్‌పోర్ట్ వైపు ఎలివేటెడ్ మార్గంలోని తొలి భాగంలో రైళ్లు నడుస్తున్నాయి. కారిడార్‌లో మిగిలిన స్టేషన్లను దశలవారీగా తెరుస్తారు.
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "alignSelf": "flex-start",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 8,
+                      "justifyContent": undefined,
+                      "minHeight": 24.8,
+                    }
+                  }
+                  testID="affair-card-af-metro-corridor-end"
+                >
+                  <View
+                    className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+                    style={
+                      {
+                        "justifyContent": "center",
+                        "minHeight": 24,
+                      }
+                    }
+                    testID="affair-cat-af-metro-corridor"
+                  >
+                    <View
+                      style={
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "flexWrap": undefined,
+                          "gap": 4,
+                          "justifyContent": undefined,
+                        }
+                      }
+                    >
+                      <Text
+                        className="text-ink3"
+                        style={
+                          {
+                            "fontFamily": "NotoSansTelugu_700Bold",
+                            "fontSize": 12,
+                            "fontVariant": undefined,
+                            "letterSpacing": 0,
+                            "lineHeight": 19.8,
+                            "textAlign": "left",
+                            "textTransform": undefined,
+                            "writingDirection": "ltr",
+                          }
+                        }
+                      >
+                        తెలంగాణ
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              className="min-h-touchLg justify-center py-2 border-t border-line"
+              testID="affair-card-af-rural-roads"
             >
-              గ్రామీణ రహదారుల పథకానికి కేబినెట్ పొడిగింపు
-            </Text>
-            <Text
-              className="text-chalk2 mt-2"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 12,
+                    "justifyContent": undefined,
+                  }
                 }
-              }
-              testID="affair-summary-af-rural-roads"
-            >
-              గ్రామీణ అనుసంధాన పథకానికి మరో దశకు కేంద్ర కేబినెట్ ఆమోదం తెలిపింది; వ్యయాన్ని కేంద్రం, రాష్ట్రాలు పంచుకుంటాయి.
-            </Text>
+                testID="affair-card-af-rural-roads-row"
+              >
+                <View
+                  className="flex-1"
+                  style={
+                    {
+                      "alignItems": undefined,
+                      "flexDirection": "column",
+                      "gap": 4,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    className="text-ink"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_600SemiBold",
+                        "fontSize": 15,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 24.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                    testID="affair-headline-af-rural-roads"
+                  >
+                    గ్రామీణ రహదారుల పథకానికి కేబినెట్ పొడిగింపు
+                  </Text>
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                    testID="affair-summary-af-rural-roads"
+                  >
+                    గ్రామీణ అనుసంధాన పథకానికి మరో దశకు కేంద్ర కేబినెట్ ఆమోదం తెలిపింది; వ్యయాన్ని కేంద్రం, రాష్ట్రాలు పంచుకుంటాయి.
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "alignSelf": "flex-start",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 8,
+                      "justifyContent": undefined,
+                      "minHeight": 24.8,
+                    }
+                  }
+                  testID="affair-card-af-rural-roads-end"
+                >
+                  <View
+                    className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+                    style={
+                      {
+                        "justifyContent": "center",
+                        "minHeight": 24,
+                      }
+                    }
+                    testID="affair-cat-af-rural-roads"
+                  >
+                    <View
+                      style={
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "flexWrap": undefined,
+                          "gap": 4,
+                          "justifyContent": undefined,
+                        }
+                      }
+                    >
+                      <Text
+                        className="text-ink3"
+                        style={
+                          {
+                            "fontFamily": "NotoSansTelugu_700Bold",
+                            "fontSize": 12,
+                            "fontVariant": undefined,
+                            "letterSpacing": 0,
+                            "lineHeight": 19.8,
+                            "textAlign": "left",
+                            "textTransform": undefined,
+                            "writingDirection": "ltr",
+                          }
+                        }
+                      >
+                        భారత్
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
         <View
-          className="mt-6"
+          className="mt-7"
           style={
             {
               "alignItems": undefined,
               "flexDirection": "column",
-              "gap": 12,
+              "gap": 8,
               "justifyContent": undefined,
             }
           }
           testID="affairs-day-2026-09-01"
         >
-          <Text
-            accessibilityLanguage="en"
-            className="text-chalk2"
-            style={
-              {
-                "fontFamily": "Inter_700Bold",
-                "fontSize": 10.5,
-                "fontVariant": [
-                  "tabular-nums",
-                ],
-                "letterSpacing": 0,
-                "lineHeight": 15.8,
-                "textAlign": "left",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
-              }
-            }
-            testID="affairs-date-2026-09-01"
-          >
-            ⁦1 Sep 2026⁩
-          </Text>
           <View
-            className="rounded-md border border-line bg-panel2 p-4"
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
             style={
               {
-                "borderLeftColor": "#856a22",
-                "borderLeftWidth": 3,
+                "justifyContent": "center",
+                "minHeight": 24,
               }
             }
-            testID="affair-card-af-water-grid"
           >
-            <Text
-              className="text-sand"
+            <View
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
                 }
               }
-              testID="affair-cat-af-water-grid"
             >
-              తెలంగాణ
-            </Text>
-            <Text
-              className="text-ink mt-2"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 24.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+              <Text
+                accessibilityLanguage="en"
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "Inter_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
                 }
+                testID="affairs-date-2026-09-01"
+              >
+                ⁦1 Sep 2026⁩
+              </Text>
+            </View>
+          </View>
+          <View
+            className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
+            style={
+              {
+                "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
               }
-              testID="affair-headline-af-water-grid"
+            }
+          >
+            <View
+              className="min-h-touchLg justify-center py-2"
+              testID="affair-card-af-water-grid"
             >
-              రెండు జిల్లాల్లోని ప్రతి మండలానికీ నల్లా నీరు
-            </Text>
-            <Text
-              className="text-chalk2 mt-2"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 12,
+                    "justifyContent": undefined,
+                  }
                 }
-              }
-              testID="affair-summary-af-water-grid"
-            >
-              మరో రెండు జిల్లాల్లోని ప్రతి మండలానికీ తాగునీటి గ్రిడ్ చేరిందని, చివరి ఆవాసాలను ఈ నెలలో కలిపామని రాష్ట్రం తెలిపింది.
-            </Text>
+                testID="affair-card-af-water-grid-row"
+              >
+                <View
+                  className="flex-1"
+                  style={
+                    {
+                      "alignItems": undefined,
+                      "flexDirection": "column",
+                      "gap": 4,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    className="text-ink"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_600SemiBold",
+                        "fontSize": 15,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 24.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                    testID="affair-headline-af-water-grid"
+                  >
+                    రెండు జిల్లాల్లోని ప్రతి మండలానికీ నల్లా నీరు
+                  </Text>
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_400Regular",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                    testID="affair-summary-af-water-grid"
+                  >
+                    మరో రెండు జిల్లాల్లోని ప్రతి మండలానికీ తాగునీటి గ్రిడ్ చేరిందని, చివరి ఆవాసాలను ఈ నెలలో కలిపామని రాష్ట్రం తెలిపింది.
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "alignSelf": "flex-start",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 8,
+                      "justifyContent": undefined,
+                      "minHeight": 24.8,
+                    }
+                  }
+                  testID="affair-card-af-water-grid-end"
+                >
+                  <View
+                    className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+                    style={
+                      {
+                        "justifyContent": "center",
+                        "minHeight": 24,
+                      }
+                    }
+                    testID="affair-cat-af-water-grid"
+                  >
+                    <View
+                      style={
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "flexWrap": undefined,
+                          "gap": 4,
+                          "justifyContent": undefined,
+                        }
+                      }
+                    >
+                      <Text
+                        className="text-ink3"
+                        style={
+                          {
+                            "fontFamily": "NotoSansTelugu_700Bold",
+                            "fontSize": 12,
+                            "fontVariant": undefined,
+                            "letterSpacing": 0,
+                            "lineHeight": 19.8,
+                            "textAlign": "left",
+                            "textTransform": undefined,
+                            "writingDirection": "ltr",
+                          }
+                        }
+                      >
+                        తెలంగాణ
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
       </View>

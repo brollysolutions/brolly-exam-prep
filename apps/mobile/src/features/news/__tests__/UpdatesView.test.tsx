@@ -1,4 +1,5 @@
 import { render, screen, userEvent, within } from '@testing-library/react-native';
+import { colors } from '@tslprb/design-tokens';
 import { latestNotices, NOTICES } from '@tslprb/fixtures';
 import { initI18n } from '@tslprb/i18n';
 
@@ -88,13 +89,14 @@ describe('UpdatesView', () => {
     expect(box()).toHaveStyle({ transform: [{ rotate: '90deg' }] });
   });
 
-  // The way to the full notice is chalk with a yellow chevron, not a second yellow line.
-  it('keeps the link row quiet, with the yellow on its chevron alone', async () => {
+  // Gold is a fill, an edge or a dot in this app, never a link (Phase B ruling): the label is
+  // ink and the chevron is the `ink3` one every row that goes somewhere carries.
+  it('keeps the link row quiet — an ink label behind an ink3 chevron', async () => {
     await render(<UpdatesView {...props()} />);
     await userEvent.press(screen.getByTestId('update-row-nt-2026-notification'));
-    expect(screen.getByText('Read the full notice').props.className).toMatch(/\btext-chalk2\b/);
-    expect(screen.getByText('›', { includeHiddenElements: true }).props.className).toContain(
-      'text-hivis',
+    expect(screen.getByText('Read the full notice').props.className).toMatch(/\btext-ink\b/);
+    expect(screen.getByText('›', { includeHiddenElements: true }).props.className).toMatch(
+      /\btext-ink3\b/,
     );
   });
 
@@ -121,9 +123,22 @@ describe('UpdatesView', () => {
 
   it('gives every row a 48 px-plus target', async () => {
     await render(<UpdatesView {...props()} />);
-    expect(screen.getByTestId('update-row-nt-2026-notification').props.className).toContain(
-      'min-h-[72px]',
+    expect(screen.getByTestId('update-row-nt-2026-notification').props.className).toMatch(
+      /\bmin-h-touchLg\b/,
     );
+  });
+
+  // The gold start edge marks where you are in the list, so only the open card wears one: a
+  // shelf where every card carried an accent would have six and point at none (F-30).
+  it('gives the gold start edge to the open card and to no other', async () => {
+    await render(<UpdatesView {...props()} openId="nt-2026-hall-ticket" />);
+    expect(screen.getByTestId('update-card-nt-2026-hall-ticket')).toHaveStyle({
+      borderLeftWidth: 3,
+      borderLeftColor: colors.accentStrong,
+    });
+    expect(screen.getByTestId('update-card-nt-2026-exam-date')).not.toHaveStyle({
+      borderLeftWidth: 3,
+    });
   });
 
   // Centred in the space the list would fill, with a kicker: not one grey line in the corner.
@@ -150,7 +165,9 @@ describe('UpdatesView', () => {
     const chip = within(screen.getByTestId('updates-header')).getByTestId('sample-data');
     expect(chip).toHaveTextContent('Sample data');
     expect(chip.props.accessibilityRole).toBeUndefined();
-    expect(chip.props.className).not.toMatch(/\bbg-hivis\b/);
+    // A quiet `Pill` now, the same label shape the rest of the app names a block with.
+    expect(chip.props.className).toMatch(/\bbg-surface2\b/);
+    expect(chip.props.className).toMatch(/\brounded-full\b/);
   });
 });
 

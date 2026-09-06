@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react-native';
-import { colors } from '@tslprb/design-tokens';
 import { AFFAIRS } from '@tslprb/fixtures';
 import { initI18n } from '@tslprb/i18n';
 
@@ -31,10 +30,9 @@ describe('AffairsView (te)', () => {
     const headline = screen.getByTestId('affair-headline-af-metro-corridor');
     expect(headline).toHaveTextContent(FEED[0].headline.te);
     expect(headline).toHaveStyle({ fontFamily: 'NotoSansTelugu_600SemiBold' });
-    // The accent edge is on the reading-start side, the left.
-    expect(screen.getByTestId('affair-card-af-metro-corridor')).toHaveStyle({
+    // One card of rows per day, so no row carries an accent edge of its own any more (F-30).
+    expect(screen.getByTestId('affair-card-af-metro-corridor')).not.toHaveStyle({
       borderLeftWidth: 3,
-      borderLeftColor: colors.sand,
     });
     expect(screen.toJSON()).toMatchSnapshot();
   });

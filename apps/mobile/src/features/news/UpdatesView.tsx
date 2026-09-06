@@ -3,15 +3,19 @@ import type { Notice } from '@tslprb/fixtures';
 import { useDir, type Lang } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Pressable, ScrollView } from 'react-native';
 import Animated, { LinearTransition } from 'react-native-reanimated';
 
+import { startEdge } from '@/features/result/edge';
 import {
   BackHeader,
-  Chip,
+  Card,
+  cx,
   EmptyState,
   Glyph,
   Num,
+  Pill,
+  pressedClass,
   Row,
   Screen,
   Stack,
@@ -23,10 +27,10 @@ import {
 import { formatDay } from './format';
 
 /**
- * The disclosure caret. Latin face through `Glyph`, the same reason `■` and `✓` are drawn
- * that way. Collapsed it points along the reading direction, so RTL gets the mirrored one;
- * open, the SAME glyph is turned a quarter to
- * point down — turned inwards, so it never swings out through the card's edge.
+ * The disclosure caret. Latin face through `Glyph`, the same reason `‹ ›` is drawn that way.
+ * Collapsed it points along the reading direction, so RTL gets the mirrored one; open, the
+ * SAME glyph is turned a quarter to point down — turned inwards, so it never swings out
+ * through the card's edge.
  */
 const CARET_LTR = '▸';
 const CARET_RTL = '◂';
@@ -45,7 +49,8 @@ export type UpdatesViewProps = {
 
 /**
  * The "read the full notice" row. Its own 48 px target, below the body, only when expanded.
- * Chalk with a yellow chevron: the yellow says "this leaves", the label does not have to.
+ * Ink label and an `ink3` chevron: gold is a fill, an edge or a dot in this app, never a link
+ * (Phase B ruling), and the chevron is the same one every row that goes somewhere carries.
  */
 function LinkRow({
   label,
@@ -65,17 +70,16 @@ function LinkRow({
       accessibilityLabel={label}
       onPress={onPress}
       {...handlers}
-      className="mt-2 h-touch justify-center"
-      // One flattened object, never a callback: see `usePressed`.
-      style={StyleSheet.flatten([pressed ? { opacity: 0.85 } : null])}
+      // Pressed = a `surface2` fill: an opacity dim is invisible between two creams.
+      className={cx('h-touch justify-center self-start rounded-sm px-1', pressed && pressedClass)}
     >
       <Row gap={1} align="center">
-        <Text variant="caption" weight="600" color="chalk2">
+        <Text variant="caption" weight="600">
           {label}
         </Text>
         <Glyph
           variant="caption"
-          color="hivis"
+          color="ink3"
           accessibilityElementsHidden
           importantForAccessibility="no"
         >
@@ -93,10 +97,13 @@ function LinkRow({
  * Its own component because the expanded flag, the caret's turn and the press delta are
  * per-row state; a `style` callback would lose the card's static values on web (`usePressed`).
  *
+ * The gold start edge appears **only while the card is open**: it marks where you are in the
+ * list, and a shelf where every card wore one would have six accents and no focus.
+ *
  * Opening is 180 ms, not a jump: the card grows on a layout transition, the body fades in,
  * and the caret turns. All three fall back to an instant change under reduced motion.
  * `Animated.View` ignores `className`, so it carries only the motion and inline styles; the
- * styled surface is the plain `View` inside it.
+ * styled surface is the `Card` inside it.
  */
 function NoticeCard({
   notice,
@@ -123,30 +130,30 @@ function NoticeCard({
 
   return (
     <Animated.View layout={layout}>
-      <View className="rounded-md border border-line bg-panel2" testID={`update-card-${notice.id}`}>
+      <Card
+        testID={`update-card-${notice.id}`}
+        // The mirrored edge is a style, never a class: see `startEdge`.
+        style={expanded ? startEdge(d.isRTL, 'accentStrong') : undefined}
+      >
+        {/* The card supplies the padding, so the press target fills its inner box — the same
+            shape `MarkerRow` takes inside a card on Home and Profile. */}
         <Pressable
           testID={`update-row-${notice.id}`}
           accessibilityRole="button"
           accessibilityState={{ expanded }}
-          android_ripple={{ color: colors.hivisTint3 }}
+          android_ripple={{ color: colors.accentTint }}
           onPress={() => setExpanded((open) => !open)}
           {...handlers}
-          className="min-h-[72px] justify-center p-4"
-          // One flattened object, never a callback: see `usePressed`.
-          style={StyleSheet.flatten([pressed ? { opacity: 0.85 } : null])}
+          className={cx('min-h-touchLg justify-center', pressed && pressedClass)}
         >
           <Row gap={2} align="center" justify="between">
             <Row gap={2} align="center" className="flex-1">
-              {/* A tag, not a chip: the kind is a label to read, and it must not out-shout the
-                  title under it. */}
-              <Chip
-                label={t(`updates.kind.${notice.kind}`)}
-                tone="label"
-                testID={`update-kind-${notice.id}`}
-              />
+              {/* A label, not a control: the kind is a tag to read, and it must not out-shout
+                  the title under it. */}
+              <Pill label={t(`updates.kind.${notice.kind}`)} testID={`update-kind-${notice.id}`} />
               {/* Latin face, tabular, LTR-isolated: the dates line up down the list and never
                   re-order inside a bidi row. */}
-              <Num variant="caption" weight="600" color="dim" testID={`update-date-${notice.id}`}>
+              <Num variant="caption" weight="600" color="ink3" testID={`update-date-${notice.id}`}>
                 {formatDay(notice.date)}
               </Num>
             </Row>
@@ -160,7 +167,7 @@ function NoticeCard({
             >
               <Glyph
                 variant="body"
-                color="dim"
+                color="ink3"
                 testID={`update-caret-${notice.id}`}
                 accessibilityElementsHidden
                 importantForAccessibility="no"
@@ -176,8 +183,8 @@ function NoticeCard({
 
         {expanded && (
           <Animated.View entering={m.fadeIn()}>
-            <View className="px-4 pb-4">
-              <Text variant="caption" color="chalk2" testID={`update-body-${notice.id}`}>
+            <Stack gap={2} className="mt-3">
+              <Text variant="body" color="ink2" testID={`update-body-${notice.id}`}>
                 {notice.body[lang]}
               </Text>
               {link !== undefined && onOpenLink !== undefined && (
@@ -187,10 +194,10 @@ function NoticeCard({
                   testID={`update-link-${notice.id}`}
                 />
               )}
-            </View>
+            </Stack>
           </Animated.View>
         )}
-      </View>
+      </Card>
     </Animated.View>
   );
 }
@@ -208,13 +215,13 @@ export function UpdatesView({ notices, lang, onBack, onOpenLink, openId }: Updat
   const { t } = useTranslation();
   return (
     <Screen testID="updates-screen">
-      {/* A quiet tag on the feed, not a control, and never a second yellow. It goes when
+      {/* A quiet tag on the feed, not a control, and never a second accent. It goes when
           `GET /notices` replaces the seeded fixtures. */}
       <BackHeader
         title={t('updates.title')}
         onBack={onBack}
         testID="updates-header"
-        trailing={<Chip label={t('common.sampleData')} tone="label" testID="sample-data" />}
+        trailing={<Pill label={t('common.sampleData')} testID="sample-data" />}
       />
       {notices.length === 0 ? (
         <EmptyState message={t('updates.empty')} testID="updates-empty" />

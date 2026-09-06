@@ -1,5 +1,5 @@
 import { render, screen, userEvent, within } from '@testing-library/react-native';
-import { colors, tracking } from '@tslprb/design-tokens';
+import { tracking } from '@tslprb/design-tokens';
 import { AFFAIRS, latestAffairs, type Affair } from '@tslprb/fixtures';
 import { initI18n } from '@tslprb/i18n';
 
@@ -67,7 +67,7 @@ describe('AffairsView', () => {
     expect(groupByDay(FEED).map((g) => g.date)).toEqual(['2026-09-02', '2026-09-01', '2026-08-31']);
   });
 
-  it('kickers each card with its category, in words from the locale file', async () => {
+  it('tags each row with its category, in words from the locale file', async () => {
     await render(<AffairsView {...props()} />);
     expect(screen.getByTestId('affair-cat-af-metro-corridor')).toHaveTextContent('Telangana');
     expect(screen.getByTestId('affair-cat-af-rural-roads')).toHaveTextContent('India');
@@ -86,38 +86,32 @@ describe('AffairsView', () => {
     );
   });
 
-  it('tracks the category kicker like every other kicker', async () => {
+  // F-30 rules the category tone: a quiet pill, the same tag shape a notice's kind wears, and
+  // no gold at all. Phase A had it as a dark-gold kicker that `sand` had collapsed onto the
+  // primary accent, so "the info accent, never the primary one" no longer meant anything.
+  it('tags each card with its category as a quiet pill, and spends no gold on it', async () => {
     await render(<AffairsView {...props()} />);
-    const kicker = screen.getByTestId('affair-cat-af-metro-corridor');
-    expect(kicker.props.className).toMatch(/\btext-sand\b/);
-    // The same tracking as every other kicker, Home's affairs rows included (design 23d).
-    expect(kicker).toHaveStyle({ letterSpacing: tracking.kicker });
+    const tag = screen.getByTestId('affair-cat-af-metro-corridor');
+    expect(tag.props.className).toMatch(/\bbg-surface2\b/);
+    expect(tag.props.className).not.toMatch(/\bbg-accent\b/);
+    expect(tag.props.className).not.toMatch(/\bborder-accentStrong\b/);
+    // The pill's label keeps the kicker's tracking, like every other label in the app.
+    expect(within(tag).getByText('Telangana')).toHaveStyle({ letterSpacing: tracking.kicker });
   });
 
-  // As built in Phase A, `sand` aliases `#856a22` — the same dark gold as `hivis`/`hazard` —
-  // so the "info accent, never the primary one" distinction is gone until Phase C gives the
-  // category its own tone (F-30 decides which). Fails on purpose until then.
-  it.failing('F-30: the category kicker has a tone of its own, not the primary accent (restored in Phase C)', async () => {
-    await render(<AffairsView {...props()} />);
-    const kicker = screen.getByTestId('affair-cat-af-metro-corridor');
-    expect(kicker.props.className).toMatch(/\btext-sand\b/);
-    expect(colors.sand).not.toBe(colors.accentInk);
-  });
-
-  // Home's affairs rows lost their edge in fix wave 1 (one gold-edged card per screen);
-  // this card drops its own in Phase C, when the affairs list becomes one surface card of
-  // marker rows (F-30). Fails on purpose until then — flip to `it` when Phase C lands.
-  it.failing('F-30: the affairs card carries no start edge (restored in Phase C)', async () => {
+  // Home's affairs rows lost their edge in fix wave 1 (one gold-edged card per screen); this
+  // list is one card of rows now, so there is nothing left to draw an edge on (F-30).
+  it('carries no start edge on a row', async () => {
     await render(<AffairsView {...props()} />);
     expect(screen.getByTestId('affair-card-af-metro-corridor')).not.toHaveStyle({
       borderLeftWidth: 3,
     });
   });
 
-  it('heads each day in chalk2, a step above the card text it introduces', async () => {
+  it('heads each day with the date in a quiet pill, in ink3', async () => {
     await render(<AffairsView {...props()} />);
-    expect(screen.getByTestId('affairs-date-2026-09-02').props.className).toContain(
-      'text-chalk2',
+    expect(screen.getByTestId('affairs-date-2026-09-02').props.className).toMatch(
+      /\btext-ink3\b/,
     );
   });
 
@@ -143,7 +137,9 @@ describe('AffairsView', () => {
     const chip = within(screen.getByTestId('affairs-header')).getByTestId('sample-data');
     expect(chip).toHaveTextContent('Sample data');
     expect(chip.props.accessibilityRole).toBeUndefined();
-    expect(chip.props.className).not.toMatch(/\bbg-hivis\b/);
+    // A quiet `Pill` now, the same label shape the rest of the app names a block with.
+    expect(chip.props.className).toMatch(/\bbg-surface2\b/);
+    expect(chip.props.className).toMatch(/\brounded-full\b/);
   });
 });
 

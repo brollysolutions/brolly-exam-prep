@@ -40,7 +40,7 @@ const PARTIAL: MeasureValues = { height: '155', run100m: '15.5' };
 function Frame({ label, children }: { label: string; children: ReactNode }) {
   return (
     <Stack gap={2}>
-      <Text variant="caption" color="dim">
+      <Text variant="caption" color="ink3">
         {label}
       </Text>
       <View
@@ -90,7 +90,7 @@ function Preview({
 export function EligibilityStates({ index }: { index: string }) {
   return (
     <Stack gap={3} className="mt-6">
-      <Kicker index={index} color="dim" uppercase>
+      <Kicker index={index} color="ink3" uppercase>
         {DEV.title}
       </Kicker>
       <Preview label={DEV.eligible} post="pc" gender="male" group="general" values={PASSING} />

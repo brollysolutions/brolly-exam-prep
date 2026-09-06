@@ -76,8 +76,11 @@ describe('PaperView', () => {
       });
       expect(tick).toBeOnTheScreen();
       // Gold text on the gold tint is 4.14:1 (fix wave 1, C2): the key letter and the tick
-      // are ink; the edge and the tint carry the meaning.
+      // are ink; the edge and the tint carry the meaning. The tick sits in a 20 px gold disc,
+      // because a bare gold ✓ on cream measures 2.3:1 (F-30).
       expect(tick.props.className).toMatch(/\btext-ink\b/);
+      expect(tick.parent?.props.className).toMatch(/\bh-5 w-5\b/);
+      expect(tick.parent?.props.className).toMatch(/\bbg-accent\b/);
       const option = screen.getByTestId(`paper-option-${n}-${question.correct}`);
       expect(
         within(option).getByText(KEYS[question.correct], { includeHiddenElements: true }).props
