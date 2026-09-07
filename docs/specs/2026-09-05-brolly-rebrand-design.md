@@ -418,5 +418,6 @@ Everything below was measured on the running web build at 390 px in `en` and `te
   owns the inset only renders in the loaded branch. Harmless, and it matches `TopicView`.
 
 **Gates**: `pnpm typecheck`, `pnpm lint`, `pnpm test` — mobile **909 tests / 98 suites / 16
-snapshots** (898 / 97 / 16 at `97c3e9a`), `@tslprb/design-tokens` 44, `@tslprb/i18n` 4.
+snapshots** at the wave's tip `bd5a9e0` (898 / 97 / 16 at `97c3e9a`; **910** once F-08's
+unrelated Sectional removal merged into `main` alongside), `@tslprb/design-tokens` 44, `@tslprb/i18n` 4.
 **0 new locale keys**; no route, store or product string change.
