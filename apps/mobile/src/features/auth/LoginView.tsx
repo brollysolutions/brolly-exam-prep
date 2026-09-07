@@ -63,8 +63,6 @@ export function LoginView({
       >
         {onBack && <BackRow testID="login-back" label={t('common.back')} onPress={onBack} />}
         <PageHeader
-          brand
-          brandTestID="login-brand"
           title={t('auth.loginTitle')}
           subtitle={t('auth.loginSub')}
           testID="login-header"

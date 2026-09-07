@@ -39,114 +39,11 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               "flexDirection": "row",
               "flexWrap": "wrap",
               "gap": 8,
-              "justifyContent": "space-between",
+              "justifyContent": "flex-end",
             }
           }
           testID="home-header-top"
         >
-          <View
-            accessibilityLabel="Brolly Solutions"
-            accessibilityRole="header"
-            accessible={true}
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 8,
-                "justifyContent": undefined,
-              }
-            }
-            testID="home-brand"
-          >
-            <ViewManagerAdapter_ExpoImage
-              accessibilityElementsHidden={true}
-              containerViewRef={"[React.ref]"}
-              contentFit="contain"
-              contentPosition={
-                {
-                  "left": "50%",
-                  "top": "50%",
-                }
-              }
-              height={22}
-              importantForAccessibility="no-hide-descendants"
-              nativeViewRef={"[React.ref]"}
-              onError={[Function]}
-              onLoad={[Function]}
-              onLoadStart={[Function]}
-              onProgress={[Function]}
-              placeholder={[]}
-              sfEffect={null}
-              source={
-                [
-                  {
-                    "testUri": "../../../apps/mobile/assets/brand/umbrella.png",
-                  },
-                ]
-              }
-              style={
-                {
-                  "height": 22,
-                  "width": 34,
-                }
-              }
-              symbolSize={null}
-              symbolWeight={null}
-              testID="home-brand-umbrella"
-              tintColor={4280359959}
-              transition={null}
-              width={34}
-            />
-            <View
-              style={
-                {
-                  "alignItems": "baseline",
-                  "flexDirection": "row",
-                  "flexWrap": undefined,
-                  "gap": 4,
-                  "justifyContent": undefined,
-                }
-              }
-            >
-              <Text
-                className="text-ink"
-                numberOfLines={1}
-                style={
-                  {
-                    "fontFamily": "PlayfairDisplay_400Regular_Italic",
-                    "fontSize": 17,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 20.4,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                Brolly
-              </Text>
-              <Text
-                className="text-ink"
-                numberOfLines={1}
-                style={
-                  {
-                    "fontFamily": "PlayfairDisplay_400Regular",
-                    "fontSize": 13,
-                    "fontVariant": undefined,
-                    "letterSpacing": 2,
-                    "lineHeight": 15.6,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                Solutions
-              </Text>
-            </View>
-          </View>
           <View
             style={
               {

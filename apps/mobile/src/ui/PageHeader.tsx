@@ -1,14 +1,11 @@
 import type { ReactNode } from 'react';
 
-import { Brand } from './Brand';
 import { cx } from './cx';
 import { Row } from './Row';
 import { Stack } from './Stack';
 import { Text } from './Text';
 
 export type PageHeaderProps = {
-  /** The Brolly lockup above the title. Hubs (Home, Login, OTP) carry it; leaf steps do not. */
-  brand?: boolean;
   /**
    * Beside the lockup, at the reading end: the language switcher, a sign-in pill. Inside a
    * `Row`, so it lands at the correct edge without a mirrored class of its own.
@@ -23,7 +20,6 @@ export type PageHeaderProps = {
   /** The title carries the screen's own ID (`home-greeting`), so it stays queryable. */
   titleTestID?: string;
   subtitleTestID?: string;
-  brandTestID?: string;
   className?: string;
 };
 
@@ -45,7 +41,6 @@ const TOP = 'mt-5';
  * now, and its hosts pad for nothing.
  */
 export function PageHeader({
-  brand = false,
   trailing,
   pill,
   title,
@@ -53,21 +48,19 @@ export function PageHeader({
   testID,
   titleTestID,
   subtitleTestID,
-  brandTestID,
   className,
 }: PageHeaderProps) {
-  const top = brand || trailing !== undefined;
+  const top = trailing !== undefined;
   return (
     <Stack testID={testID} gap={3} className={cx(TOP, className)}>
       {top && (
         <Row
           testID={testID ? `${testID}-top` : undefined}
           align="center"
-          justify={brand ? 'between' : 'end'}
+          justify="end"
           gap={2}
           wrap
         >
-          {brand && <Brand testID={brandTestID} />}
           {trailing}
         </Row>
       )}

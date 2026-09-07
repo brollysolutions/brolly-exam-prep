@@ -16,55 +16,6 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
   <View
     className="flex-1"
   >
-    <View
-      className="items-center pb-6 pt-8"
-    >
-      <View
-        accessibilityLabel="Brolly Solutions"
-        accessibilityRole="image"
-        accessible={true}
-        testID="welcome-brand"
-      >
-        <ViewManagerAdapter_ExpoImage
-          accessibilityElementsHidden={true}
-          containerViewRef={"[React.ref]"}
-          contentFit="contain"
-          contentPosition={
-            {
-              "left": "50%",
-              "top": "50%",
-            }
-          }
-          height={158}
-          importantForAccessibility="no-hide-descendants"
-          nativeViewRef={"[React.ref]"}
-          onError={[Function]}
-          onLoad={[Function]}
-          onLoadStart={[Function]}
-          onProgress={[Function]}
-          placeholder={[]}
-          sfEffect={null}
-          source={
-            [
-              {
-                "testUri": "../../../apps/mobile/assets/brand/splash-logo.png",
-              },
-            ]
-          }
-          style={
-            {
-              "height": 158,
-              "width": 200,
-            }
-          }
-          symbolSize={null}
-          symbolWeight={null}
-          testID="welcome-brand-logo"
-          transition={null}
-          width={200}
-        />
-      </View>
-    </View>
     <RCTScrollView
       className="flex-1"
       contentContainerStyle={

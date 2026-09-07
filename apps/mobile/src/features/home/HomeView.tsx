@@ -240,16 +240,14 @@ export function HomeView({
   return (
     <Screen scroll padded bottomInset={false} testID="home-screen">
       <PageHeader
-        brand
-        brandTestID="home-brand"
         testID="home-header"
         titleTestID="home-greeting"
         title={name ? t('home.greeting', { name: iso(name) }) : t('home.greetingPlain')}
         trailing={
           <Row gap={2} align="center">
             {/* An outlined capsule, not a fill: signing in is not what this screen is for.
-                `md`, not `lg`: at the Telugu face the lockup, the capsule and the switcher
-                filled the row edge to edge with no slack left (design review D14). */}
+                `md`, not `lg`: at the Telugu face the capsule and the switcher used to fill the
+                row edge to edge beside the lockup, and the size stayed when it went (D14). */}
             {!signedIn && (
               <Chip
                 testID="home-signin"

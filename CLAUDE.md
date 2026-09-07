@@ -2,7 +2,7 @@
 
 Mock-test app for Telangana State Level Police Recruitment Board (PWT = Preliminary Written Test).
 Monorepo: Expo SDK 57 mobile app (Android-first, iOS-ready), Next.js placeholder site, FastAPI scaffold.
-Design identity: "Brolly on cream" (since 2026-09-05, F-28) — charcoal ink `#211c17` on cream `#f7f2e6`, brand gold `#c29b38` for fills and marks only (gold text is `accentInk` `#856a22`), Inter + Playfair Display, soft 4–16 px radii, warm ink shadows. One ink-filled primary per screen. The hi-vis/hazard identity is retired; see `docs/DESIGN_SYSTEM.md`.
+Design identity: cream and ink (the Brolly palette, since 2026-09-05, F-28; the name and logo were removed from the app on 2026-09-07, F-33 — nothing in the UI names the maker) — charcoal ink `#211c17` on cream `#f7f2e6`, brand gold `#c29b38` for fills and marks only (gold text is `accentInk` `#856a22`), Inter + Playfair Display, soft 4–16 px radii, warm ink shadows. One ink-filled primary per screen. The hi-vis/hazard identity is retired; see `docs/DESIGN_SYSTEM.md`.
 Languages: **English default**, Telugu. Two languages only (Urdu removed 2026-09-03, F-26); the direction helpers stay wired but RTL is dormant.
 
 ## Layout
