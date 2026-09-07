@@ -417,6 +417,6 @@ Everything below was measured on the running web build at 390 px in `en` and `te
 - **C6** — `ResultView.tsx` sets `bottomInset={false}` unconditionally while the `ActionBar` that
   owns the inset only renders in the loaded branch. Harmless, and it matches `TopicView`.
 
-**Gates**: `pnpm typecheck`, `pnpm lint`, `pnpm test` — mobile **910 tests / 98 suites / 16
+**Gates**: `pnpm typecheck`, `pnpm lint`, `pnpm test` — mobile **909 tests / 98 suites / 16
 snapshots** (898 / 97 / 16 at `97c3e9a`), `@tslprb/design-tokens` 44, `@tslprb/i18n` 4.
 **0 new locale keys**; no route, store or product string change.
