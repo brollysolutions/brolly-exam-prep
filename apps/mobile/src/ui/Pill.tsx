@@ -9,11 +9,14 @@ import { Text } from './Text';
 
 /**
  * `quiet` is the default label (a section name, a step, a state); `gold` marks the candidate's
- * own input or the active thing; `ink` is a deliberate flag. The vocabulary is the app's:
- * gold = mine / active, ink = flagged, and nothing here is ever red or green — a verdict is a
- * `Chip`, which can be pressed and can carry a count.
+ * own input or the active thing; `ink` is a deliberate flag; `danger` is the quiet pill whose
+ * WORD is the warning — the dialog tone on a destructive ask or an auto-submit.
+ *
+ * The vocabulary is the app's: gold = mine / active, ink = flagged, red = critical. A pill
+ * never FILLS itself red or green — a verdict you can press and count is a `Chip`; `danger`
+ * keeps the quiet `surface2` box and spends the red on the label (5.35:1) and the dot.
  */
-export type PillTone = 'quiet' | 'gold' | 'ink';
+export type PillTone = 'quiet' | 'gold' | 'ink' | 'danger';
 
 /**
  * What the dot says, independently of the fill: `gold` is the default status mark (mine /
@@ -61,13 +64,22 @@ const box: Record<PillTone, string> = {
   quiet: 'bg-surface2 border-line',
   gold: 'bg-accentTint border-accentStrong',
   ink: 'bg-ink border-ink',
+  // The same quiet box as `quiet`: red is the word, not the fill.
+  danger: 'bg-surface2 border-line',
 };
 
 /**
  * Label colour. Gold is never text: on the gold tint the label is ink (14:1), and the tint plus
- * the edge carry the meaning instead.
+ * the edge carry the meaning instead. Red is the one colour a pill spends on its LABEL, because
+ * `danger` exists for the cards where the word itself is the warning: `dangerInk` on `surface2`
+ * is 5.35:1, where the `ink3` it replaced was 4.66 and said nothing (fix wave 1, C2).
  */
-const fg: Record<PillTone, ColorName> = { quiet: 'ink3', gold: 'ink', ink: 'onInk' };
+const fg: Record<PillTone, ColorName> = {
+  quiet: 'ink3',
+  gold: 'ink',
+  ink: 'onInk',
+  danger: 'dangerInk',
+};
 
 /**
  * The dot is non-text, so it may be a fill colour — but it still has to be found on the pill
@@ -75,9 +87,14 @@ const fg: Record<PillTone, ColorName> = { quiet: 'ink3', gold: 'ink', ink: 'onIn
  * 5.9:1) and the bright ones on the ink fill (`accent`, `danger` 6.1:1, `ok` 7.4:1).
  */
 const dotColor: Record<Exclude<PillDotTone, 'none'>, Record<PillTone, string>> = {
-  gold: { quiet: 'bg-accentStrong', gold: 'bg-accentStrong', ink: 'bg-accent' },
-  danger: { quiet: 'bg-dangerInk', gold: 'bg-dangerInk', ink: 'bg-danger' },
-  ok: { quiet: 'bg-okInk', gold: 'bg-okInk', ink: 'bg-ok' },
+  gold: {
+    quiet: 'bg-accentStrong',
+    gold: 'bg-accentStrong',
+    ink: 'bg-accent',
+    danger: 'bg-accentStrong',
+  },
+  danger: { quiet: 'bg-dangerInk', gold: 'bg-dangerInk', ink: 'bg-danger', danger: 'bg-dangerInk' },
+  ok: { quiet: 'bg-okInk', gold: 'bg-okInk', ink: 'bg-ok', danger: 'bg-okInk' },
 };
 
 /**

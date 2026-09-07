@@ -30,15 +30,21 @@ export type DialogProps = {
 
 /**
  * The tone pill. A card that asks wears the gold tag — the candidate is about to do something
- * — and a card that reports a failure wears the quiet tag with a red status dot, because red
- * is a verdict and lives in the dot rather than in a fill (the `LoadError` ruling, F-29 D7).
+ * — and a `danger` card wears the quiet tag with a red dot AND red words: the fill stays quiet
+ * because red is a verdict rather than a surface (the `LoadError` ruling, F-29 D7), but the
+ * label is `dangerInk` (5.35:1 on `surface2`), not `ink3`.
+ *
+ * That `ink3` label was this phase's own regression: `danger` is worn by exactly two cards —
+ * the auto-submit report and Profile's delete-account confirmation — and quietening the label
+ * took the red words off the app's most destructive ASK (fix wave 1, C2). The exit card's gold
+ * pill and this one stay clearly distinct: a different fill, a dot, and a different word colour.
  *
  * Gold is never the word: the `gold` pill's label is ink on the gold tint (14:1), where
  * `accentInk` on it measures 4.14 and on a quiet pill's `surface2` 4.25 — both under AA.
  */
 const tonePill = (tone: DialogTone): { tone: PillTone; dot: boolean; dotTone: PillDotTone } =>
   tone === 'flag' || tone === 'danger'
-    ? { tone: 'quiet', dot: true, dotTone: 'danger' }
+    ? { tone: 'danger', dot: true, dotTone: 'danger' }
     : { tone: 'gold', dot: false, dotTone: 'none' };
 
 /**

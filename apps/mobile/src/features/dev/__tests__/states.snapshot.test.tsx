@@ -25,4 +25,14 @@ describe('dev states screen (te)', () => {
     await userEvent.press(screen.getByTestId('dialog-toggle'));
     expect(screen.getByTestId('dialog')).toBeOnTheScreen();
   });
+
+  // Both dialog tones have a frame since fix wave 1 (C2): the `danger` card is worn by the
+  // auto-submit report and by Profile's delete-account ask, and had no gallery until now.
+  it('opens the danger dialog with its red pill label and red dot', async () => {
+    await render(<StatesView />);
+    expect(screen.queryByTestId('dialog-danger')).toBeNull();
+    await userEvent.press(screen.getByTestId('dialog-danger-toggle'));
+    expect(screen.getByTestId('dialog-danger')).toBeOnTheScreen();
+    expect(screen.getByTestId('dialog-danger-pill-dot')).toBeOnTheScreen();
+  });
 });

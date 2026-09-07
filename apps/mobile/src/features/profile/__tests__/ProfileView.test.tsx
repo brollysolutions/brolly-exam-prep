@@ -86,6 +86,21 @@ describe('ProfileView', () => {
     expect(screen.getByTestId('profile-delete-dialog')).toBeOnTheScreen();
   });
 
+  // The app's most destructive ASK keeps its red words. The `danger` dialog tone drew an
+  // `ink3` label for one phase, which quietened the delete confirmation to the colour of a
+  // caption (fix wave 1, C2). `dangerInk` on the pill's `surface2` is 5.35:1.
+  it('keeps the delete confirmation red: a red pill label over a red dot', async () => {
+    await render(<ProfileView {...base} lang="en" {...handlers()} />);
+    await userEvent.press(screen.getByTestId('profile-delete'));
+    const pill = screen.getByTestId('profile-delete-dialog-pill');
+    expect(pill.props.className).toMatch(/\bbg-surface2\b/);
+    expect(within(pill).getByText(/delete account/i).props.className).toMatch(/\btext-dangerInk\b/);
+    expect(within(pill).getByText(/delete account/i).props.className).not.toMatch(/\btext-ink3\b/);
+    expect(screen.getByTestId('profile-delete-dialog-pill-dot').props.className).toMatch(
+      /\bbg-dangerInk\b/,
+    );
+  });
+
   it('switches language inline', async () => {
     const h = handlers();
     await render(<ProfileView {...base} lang="en" {...h} />);

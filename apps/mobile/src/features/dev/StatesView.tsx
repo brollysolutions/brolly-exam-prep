@@ -55,7 +55,8 @@ const DEV = {
   toasts: 'Toast + Banner',
   sheet: 'Sheet',
   sheetOpen: 'Open sheet',
-  dialogOpen: 'Open dialog',
+  dialogOpen: 'Open dialog — accent (asks)',
+  dialogDanger: 'Open dialog — danger (reports)',
   sheetBody: 'Sheet body — surface, 3 px gold edge, warm scrim.',
   entry: 'Keypad + PhoneField + OTP',
   progress: 'ProgressRail 40 % · danger 100 %',
@@ -136,27 +137,42 @@ export function StatesView() {
   const lang = useLangStore((s) => s.lang);
   const setLang = useLangStore((s) => s.setLang);
   const [phone, setPhone] = useState('');
-  const [dialogOpen, setDialogOpen] = useState(false);
+  // `null` = closed. Both tones have a frame: `danger` is worn by the auto-submit report and
+  // by Profile's delete-account confirmation, and until fix wave 1 it had no gallery at all.
+  const [dialogTone, setDialogTone] = useState<'accent' | 'danger' | null>(null);
   const sheet = useRef<SheetHandle>(null);
 
   const langOptions = LANGS.map((l: Lang) => ({ value: l, label: t(`lang.${l}Short`), lang: l }));
 
+  const close = () => setDialogTone(null);
   const dialog = (
-    <Dialog
-      visible={dialogOpen}
-      tone="accent"
-      kicker={t('test.submitKicker')}
-      title={t('test.submitTitle')}
-      body={t('test.submitBody')}
-      stats={[
-        { num: 31, label: t('test.answered') },
-        { num: 6, label: t('test.notAnswered') },
-        { num: 3, label: t('test.marked') },
-      ]}
-      primary={{ label: t('test.submitYes'), onPress: () => setDialogOpen(false) }}
-      secondary={{ label: t('test.submitNo'), onPress: () => setDialogOpen(false) }}
-      testID="dialog"
-    />
+    <>
+      <Dialog
+        visible={dialogTone === 'accent'}
+        tone="accent"
+        kicker={t('test.submitKicker')}
+        title={t('test.submitTitle')}
+        body={t('test.submitBody')}
+        stats={[
+          { num: 31, label: t('test.answered') },
+          { num: 6, label: t('test.notAnswered') },
+          { num: 3, label: t('test.marked') },
+        ]}
+        primary={{ label: t('test.submitYes'), onPress: close }}
+        secondary={{ label: t('test.submitNo'), onPress: close }}
+        testID="dialog"
+      />
+      <Dialog
+        visible={dialogTone === 'danger'}
+        tone="danger"
+        kicker={t('profile.deleteAccount')}
+        title={t('profile.deleteTitle')}
+        body={t('profile.deleteConfirm')}
+        primary={{ label: t('profile.deleteYes'), onPress: close }}
+        secondary={{ label: t('common.cancel'), onPress: close }}
+        testID="dialog-danger"
+      />
+    </>
   );
 
   return (
@@ -261,14 +277,20 @@ export function StatesView() {
       </Section>
 
       <Section index="05" title={DEV.dialog}>
-        <Row gap={2}>
+        <Stack gap={2}>
           <Button
             variant="secondary"
             label={DEV.dialogOpen}
-            onPress={() => setDialogOpen(true)}
+            onPress={() => setDialogTone('accent')}
             testID="dialog-toggle"
           />
-        </Row>
+          <Button
+            variant="secondary"
+            label={DEV.dialogDanger}
+            onPress={() => setDialogTone('danger')}
+            testID="dialog-danger-toggle"
+          />
+        </Stack>
       </Section>
 
       <Section index="06" title={DEV.toasts}>

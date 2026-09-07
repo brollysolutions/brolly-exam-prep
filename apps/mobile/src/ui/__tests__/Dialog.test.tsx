@@ -67,15 +67,17 @@ describe('Dialog', () => {
     expect(onSecondary).toHaveBeenCalledTimes(1);
   });
 
-  // A card that ASKS wears the gold pill; a card that REPORTS a failure wears the quiet pill
-  // with a red status dot, because red is a verdict and lives in the dot, not in a fill.
-  // Gold is never the word: both labels are ink or ink3, never `accentInk` on a tint (4.14).
+  // A card that ASKS wears the gold pill; a card that carries a `danger` tone wears the
+  // quiet pill with a red dot AND red words — an auto-submit and a delete-account
+  // confirmation are the two most consequential cards in the app, and an `ink3` label put
+  // them at caption weight (fix wave 1, C2). `dangerInk` on `surface2` is 5.35:1.
+  // Gold is never the word: the gold pill's label is ink, never `accentInk` on a tint (4.14).
   it.each([
     ['accent', 'bg-accentTint', 'text-ink'],
     ['hivis', 'bg-accentTint', 'text-ink'],
     ['hazard', 'bg-accentTint', 'text-ink'],
-    ['danger', 'bg-surface2', 'text-ink3'],
-    ['flag', 'bg-surface2', 'text-ink3'],
+    ['danger', 'bg-surface2', 'text-dangerInk'],
+    ['flag', 'bg-surface2', 'text-dangerInk'],
   ] as const)('tone %s fills its pill %s under a gold top edge', async (tone, fill, label) => {
     await render(
       <Dialog
@@ -97,15 +99,27 @@ describe('Dialog', () => {
     expect(card.props.className).toMatch(/\brounded-lg\b/);
   });
 
-  // Only the failing card carries a status dot: a submit or a resume is not a state gone wrong.
+  // Only the danger card carries a status dot: a submit or a resume is not a state gone wrong.
   it('marks only the danger tone with a red dot', async () => {
     await render(
-      <Dialog visible tone="flag" {...base} primary={{ label: 'Wait', onPress: () => {} }} testID="dlg" />,
+      <Dialog
+        visible
+        tone="flag"
+        {...base}
+        primary={{ label: 'Wait', onPress: () => {} }}
+        testID="dlg"
+      />,
     );
     expect(screen.getByTestId('dlg-pill-dot').props.className).toMatch(/\bbg-dangerInk\b/);
 
     await render(
-      <Dialog visible tone="accent" {...base} primary={{ label: 'Yes', onPress: () => {} }} testID="ask" />,
+      <Dialog
+        visible
+        tone="accent"
+        {...base}
+        primary={{ label: 'Yes', onPress: () => {} }}
+        testID="ask"
+      />,
     );
     expect(screen.queryByTestId('ask-pill-dot')).toBeNull();
   });
