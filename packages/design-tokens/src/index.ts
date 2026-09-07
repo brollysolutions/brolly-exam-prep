@@ -134,12 +134,15 @@ export function typography(
  * — a 12 % tint at 85 % opacity is the same tint — so they take the `surface2` press fill
  * every outlined control on cream uses.
  *
- * The unvisited cell keeps the `surface2` fill rather than the sheet's own `surface`: the fill
- * IS the boundary (1.12:1, quiet on purpose, the `Pill` / `StatTile` model) and `surface` on
- * `surface` measures 1.00 — a cell, and a legend swatch, with no edge at all (Phase D).
+ * The unvisited cell is an OUTLINED CONTROL, not a quiet tile: `surface` under a 1 px
+ * `outline` (**3.12:1** on the sheet the grid sits on), the same rest boundary as a secondary
+ * button or an inactive chip. It carried `surface2` under `line` for one phase, which gave the
+ * most numerous cell in the grid a 1.19:1 edge — and, because `surface2` is also the press
+ * fill every outlined control on cream takes, no press state at all (fix wave 1, D1/C1). One
+ * mechanism: the resting fill moves, and the press fill it already had becomes a real change.
  */
 export const paletteState = {
-  nv: { bg: colors.surface2, fg: colors.ink3, border: colors.line, borderWidth: 1, solid: false },
+  nv: { bg: colors.surface, fg: colors.ink3, border: colors.outline, borderWidth: 1, solid: false },
   na: {
     bg: colors.dangerTint,
     fg: colors.dangerInk,

@@ -50,14 +50,17 @@ describe('PaletteCell', () => {
       border: colors.dangerInk,
       borderWidth: 2,
     });
-    // The quiet fill is the boundary; the `line` hairline over it is texture. `surface` would
-    // be 1.00:1 against the sheet the grid sits on — a cell with no edge at all.
+    // The unvisited cell is an outlined control like every other one on cream: `surface` under
+    // the 3.12:1 `outline`, never a `line` hairline (1.19:1 on the sheet, 1.07:1 on `surface2`).
+    // Resting on `surface` is also what makes the `surface2` press fill a real change.
     expect(paletteState.nv).toMatchObject({
-      bg: colors.surface2,
+      bg: colors.surface,
       fg: colors.ink3,
-      border: colors.line,
+      border: colors.outline,
+      borderWidth: 1,
     });
-    expect(paletteState.nv.bg).not.toBe(colors.surface);
+    expect(paletteState.nv.border).not.toBe(colors.line);
+    expect(paletteState.nv.bg).not.toBe(colors.surface2);
   });
 
   // Which cells have a fill worth dimming is a property of the token, not a string test in the
@@ -112,7 +115,30 @@ describe('PaletteCell pressed', () => {
     await act(async () => {
       fireEvent(screen.getByTestId('cell'), 'pressIn');
     });
-    expect(screen.getByTestId('cell')).toHaveStyle({ opacity: 0.85, backgroundColor: colors.accent });
+    expect(screen.getByTestId('cell')).toHaveStyle({
+      opacity: 0.85,
+      backgroundColor: colors.accent,
+    });
+  });
+
+  // The most numerous cell in the grid, and the one with no press state at all while its
+  // resting fill WAS `surface2`: the held fill has to differ from the fill it started on.
+  it('fills the unvisited cell surface2 while held — a change, not a no-op', async () => {
+    await render(<PaletteCell n={30} state="nv" onPress={jest.fn()} testID="cell" />);
+    const rest = screen.getByTestId('cell');
+    expect(rest).toHaveStyle({ backgroundColor: paletteState.nv.bg });
+    await act(async () => {
+      fireEvent(rest, 'pressIn');
+    });
+    expect(screen.getByTestId('cell')).toHaveStyle({ backgroundColor: colors.surface2 });
+    expect(screen.getByTestId('cell')).not.toHaveStyle({
+      backgroundColor: paletteState.nv.bg,
+    });
+    expect(screen.getByTestId('cell')).not.toHaveStyle({ opacity: 0.85 });
+    await act(async () => {
+      fireEvent(screen.getByTestId('cell'), 'pressOut');
+    });
+    expect(screen.getByTestId('cell')).toHaveStyle({ backgroundColor: paletteState.nv.bg });
   });
 });
 
