@@ -408,43 +408,55 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                   }
                 }
               >
-                <Text
-                  className="text-ink3"
+                <View
                   style={
                     {
-                      "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
+                      "alignItems": "baseline",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 4,
+                      "justifyContent": undefined,
                     }
                   }
                 >
-                  ప్ర
-                </Text>
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-ink3"
-                  style={
-                    {
-                      "fontFamily": "Inter_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 18,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
                     }
-                  }
-                >
-                  ⁦1⁩
-                </Text>
+                  >
+                    ప్ర
+                  </Text>
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "Inter_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 18,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ⁦1⁩
+                  </Text>
+                </View>
               </View>
             </View>
             <Text
@@ -842,43 +854,55 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                   }
                 }
               >
-                <Text
-                  className="text-ink3"
+                <View
                   style={
                     {
-                      "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
+                      "alignItems": "baseline",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 4,
+                      "justifyContent": undefined,
                     }
                   }
                 >
-                  ప్ర
-                </Text>
-                <Text
-                  accessibilityLanguage="en"
-                  className="text-ink3"
-                  style={
-                    {
-                      "fontFamily": "Inter_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": [
-                        "tabular-nums",
-                      ],
-                      "letterSpacing": 0,
-                      "lineHeight": 18,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
                     }
-                  }
-                >
-                  ⁦2⁩
-                </Text>
+                  >
+                    ప్ర
+                  </Text>
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "Inter_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 18,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ⁦2⁩
+                  </Text>
+                </View>
               </View>
             </View>
             <Text

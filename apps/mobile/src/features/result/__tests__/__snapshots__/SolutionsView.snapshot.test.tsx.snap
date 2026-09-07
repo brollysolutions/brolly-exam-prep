@@ -107,6 +107,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
         </Text>
       </View>
       <View
+        accessibilityRole="radiogroup"
         className="px-3 pb-2"
         style={
           {
@@ -120,14 +121,14 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
         testID="solutions-filters"
       >
         <View
-          accessibilityRole="button"
+          accessibilityRole="radio"
           accessibilityState={
             {
               "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
+              "checked": true,
+              "disabled": undefined,
               "expanded": undefined,
-              "selected": true,
+              "selected": undefined,
             }
           }
           accessibilityValue={
@@ -139,10 +140,10 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
             }
           }
           accessible={true}
-          className="items-center justify-center border rounded-full min-h-chipMd py-1.5 px-4 bg-accentSoft border-accent border-b-2 border-b-accentStrong"
+          className="items-center justify-center border rounded-full min-h-touch py-2 px-4 bg-accentSoft border-accent border-b-2 border-b-accentStrong"
           collapsable={false}
           focusable={true}
-          hitSlop={4}
+          hitSlop={0}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -206,14 +207,14 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="button"
+          accessibilityRole="radio"
           accessibilityState={
             {
               "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
+              "checked": false,
+              "disabled": undefined,
               "expanded": undefined,
-              "selected": false,
+              "selected": undefined,
             }
           }
           accessibilityValue={
@@ -225,10 +226,10 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
             }
           }
           accessible={true}
-          className="items-center justify-center border rounded-full min-h-chipMd py-1.5 px-4 border-outline"
+          className="items-center justify-center border rounded-full min-h-touch py-2 px-4 border-outline"
           collapsable={false}
           focusable={true}
-          hitSlop={4}
+          hitSlop={0}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -500,43 +501,55 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     }
                   }
                 >
-                  <Text
-                    className="text-ink3"
+                  <View
                     style={
                       {
-                        "fontFamily": "NotoSansTelugu_700Bold",
-                        "fontSize": 12,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 19.8,
-                        "textAlign": "left",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
+                        "alignItems": "baseline",
+                        "flexDirection": "row",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
                       }
                     }
                   >
-                    ప్ర
-                  </Text>
-                  <Text
-                    accessibilityLanguage="en"
-                    className="text-ink3"
-                    style={
-                      {
-                        "fontFamily": "Inter_700Bold",
-                        "fontSize": 12,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "letterSpacing": 0,
-                        "lineHeight": 18,
-                        "textAlign": "left",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
+                    <Text
+                      className="text-ink3"
+                      style={
+                        {
+                          "fontFamily": "NotoSansTelugu_700Bold",
+                          "fontSize": 12,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 19.8,
+                          "textAlign": "left",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
                       }
-                    }
-                  >
-                    ⁦3⁩
-                  </Text>
+                    >
+                      ప్ర
+                    </Text>
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-ink3"
+                      style={
+                        {
+                          "fontFamily": "Inter_700Bold",
+                          "fontSize": 12,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 18,
+                          "textAlign": "left",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⁦3⁩
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -1036,43 +1049,55 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     }
                   }
                 >
-                  <Text
-                    className="text-ink3"
+                  <View
                     style={
                       {
-                        "fontFamily": "NotoSansTelugu_700Bold",
-                        "fontSize": 12,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 19.8,
-                        "textAlign": "left",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
+                        "alignItems": "baseline",
+                        "flexDirection": "row",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
                       }
                     }
                   >
-                    ప్ర
-                  </Text>
-                  <Text
-                    accessibilityLanguage="en"
-                    className="text-ink3"
-                    style={
-                      {
-                        "fontFamily": "Inter_700Bold",
-                        "fontSize": 12,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "letterSpacing": 0,
-                        "lineHeight": 18,
-                        "textAlign": "left",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
+                    <Text
+                      className="text-ink3"
+                      style={
+                        {
+                          "fontFamily": "NotoSansTelugu_700Bold",
+                          "fontSize": 12,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 19.8,
+                          "textAlign": "left",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
                       }
-                    }
-                  >
-                    ⁦12⁩
-                  </Text>
+                    >
+                      ప్ర
+                    </Text>
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-ink3"
+                      style={
+                        {
+                          "fontFamily": "Inter_700Bold",
+                          "fontSize": 12,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 18,
+                          "textAlign": "left",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⁦12⁩
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -1572,43 +1597,55 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                     }
                   }
                 >
-                  <Text
-                    className="text-ink3"
+                  <View
                     style={
                       {
-                        "fontFamily": "NotoSansTelugu_700Bold",
-                        "fontSize": 12,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 19.8,
-                        "textAlign": "left",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
+                        "alignItems": "baseline",
+                        "flexDirection": "row",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
                       }
                     }
                   >
-                    ప్ర
-                  </Text>
-                  <Text
-                    accessibilityLanguage="en"
-                    className="text-ink3"
-                    style={
-                      {
-                        "fontFamily": "Inter_700Bold",
-                        "fontSize": 12,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "letterSpacing": 0,
-                        "lineHeight": 18,
-                        "textAlign": "left",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
+                    <Text
+                      className="text-ink3"
+                      style={
+                        {
+                          "fontFamily": "NotoSansTelugu_700Bold",
+                          "fontSize": 12,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 19.8,
+                          "textAlign": "left",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
                       }
-                    }
-                  >
-                    ⁦15⁩
-                  </Text>
+                    >
+                      ప్ర
+                    </Text>
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-ink3"
+                      style={
+                        {
+                          "fontFamily": "Inter_700Bold",
+                          "fontSize": 12,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 18,
+                          "textAlign": "left",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⁦15⁩
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>

@@ -160,14 +160,15 @@ function QuestionCard({
       <Pill
         testID={`paper-q-${questionNo}`}
         leading={
-          <>
+          // "Q" and its number on one baseline — see AttemptView (fix wave 1, C4).
+          <Row gap={1} align="baseline">
             <Text variant="caption" weight="700" color="ink3" tracking="kicker">
               {t('test.qLabel')}
             </Text>
             <Num variant="caption" weight="700" color="ink3" tracking="none">
               {questionNo}
             </Num>
-          </>
+          </Row>
         }
       />
 

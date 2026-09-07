@@ -88,15 +88,18 @@ describe('SolutionsView', () => {
     expect(screen.getByTestId('solutions-empty-pill-dot').props.className).toMatch(/\bbg-okInk\b/);
   });
 
-  // The verdict disc: gold with an ink ✓ (6.47:1), `dangerInk` with a cream ✕ (5.79:1). Never
-  // a cream tick on `danger`, which is 2.77:1.
+  // The verdict disc: `accentStrong` with an ink ✓, `dangerInk` with a cream ✕. The brand
+  // `accent` measured 2.42:1 against the card behind it while its red twin was 6.00 — a mark
+  // has to clear the 3:1 non-text floor on both, and `accentStrong` is 3.48 (ink on it 4.49).
+  // Never a cream tick on `danger`, which is 2.77:1.
   it('marks each card with a round badge in the two verdict colours', async () => {
     await render(<SolutionsView rows={ROWS} initialFilter="all" />);
     const right = screen.getAllByTestId('solution-badge-correct');
     const wrong = screen.getAllByTestId('solution-badge-wrong');
     expect(right).toHaveLength(1);
     expect(wrong).toHaveLength(3);
-    expect(right[0].props.className).toMatch(/\bbg-accent\b/);
+    expect(right[0].props.className).toMatch(/\bbg-accentStrong\b/);
+    expect(right[0].props.className).not.toMatch(/\bbg-accent\b/);
     expect(right[0].props.className).toMatch(/\brounded-full\b/);
     expect(wrong[0].props.className).toMatch(/\bbg-dangerInk\b/);
     expect(
@@ -139,6 +142,36 @@ describe('SolutionsView', () => {
     await render(<SolutionsView rows={ROWS} />);
     for (const id of ['solutions-filter-wrong', 'solutions-filter-all'])
       expect(screen.getByTestId(id).props.className).toMatch(/\brounded-full\b/);
+  });
+
+  // Every filter row in the app is `lg`: 48 px of box, because `hitSlop` is inert on web and
+  // an `md` chip left a 40 px target on the build the reviewers actually see (fix wave 1, D2).
+  it('gives the filters the 48 px lg box, not the 40 px md one', async () => {
+    await render(<SolutionsView rows={ROWS} />);
+    for (const id of ['solutions-filter-wrong', 'solutions-filter-all']) {
+      const chip = screen.getByTestId(id);
+      expect(chip.props.className).toMatch(/\bmin-h-touch\b/);
+      expect(chip.props.className).not.toMatch(/\bmin-h-chipMd\b/);
+    }
+  });
+
+  // Library's semantics: one of two, so the pair is a radiogroup and each chip a radio that
+  // says which one is checked — `selected` on a button never says "one of these".
+  it('reports the filters as a radio group with the live one checked', async () => {
+    await render(<SolutionsView rows={ROWS} initialFilter="wrong" />);
+    expect(screen.getByTestId('solutions-filters').props.accessibilityRole).toBe('radiogroup');
+    const wrong = screen.getByTestId('solutions-filter-wrong');
+    const all = screen.getByTestId('solutions-filter-all');
+    expect(wrong.props.accessibilityRole).toBe('radio');
+    expect(all.props.accessibilityRole).toBe('radio');
+    expect(wrong.props.accessibilityState.checked).toBe(true);
+    expect(all.props.accessibilityState.checked).toBe(false);
+
+    await userEvent.press(all);
+    expect(screen.getByTestId('solutions-filter-all').props.accessibilityState.checked).toBe(true);
+    expect(screen.getByTestId('solutions-filter-wrong').props.accessibilityState.checked).toBe(
+      false,
+    );
   });
 
   it('shows the skeleton and no filters while loading', async () => {

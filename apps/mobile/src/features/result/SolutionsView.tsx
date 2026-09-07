@@ -39,8 +39,14 @@ export type SolutionsViewProps = {
 const SKELETON = ['chip', 'card', 'card', 'card'] as const;
 
 /**
- * The verdict on a card: a 28 px disc, gold with an ink ✓ (6.47:1) or `dangerInk` with a cream
- * ✕ (5.79:1). Never a cream tick on `danger`, which measures 2.77:1.
+ * The verdict on a card: a 28 px disc, `accentStrong` with an ink ✓ or `dangerInk` with a cream
+ * ✕. Never a cream tick on `danger`, which measures 2.77:1.
+ *
+ * The gold is `accentStrong`, not the brand `accent`: the two discs are twins and have to be
+ * found equally well, and `accent` measured **2.42:1** on the card against its red twin's
+ * **6.00** — under the 3:1 non-text floor a mark has to clear. `accentStrong` is **3.48:1**
+ * there, and the ink ✓ on it 4.49. This is the F-30 ruling ("the disc is `accentStrong`, not
+ * `accent`") applied to the one disc Phase D added afterwards.
  *
  * ✓ / ✕ are drawn in the Latin face, the one face guaranteed to carry both glyphs.
  */
@@ -50,7 +56,7 @@ function Badge({ correct }: { correct: boolean }) {
       testID={correct ? 'solution-badge-correct' : 'solution-badge-wrong'}
       className={
         correct
-          ? 'h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent'
+          ? 'h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accentStrong'
           : 'h-7 w-7 shrink-0 items-center justify-center rounded-full bg-dangerInk'
       }
     >
@@ -127,14 +133,15 @@ function SolutionCard({ row }: { row: SolutionRow }) {
         {/* The paper viewer's Q pill. */}
         <Pill
           leading={
-            <>
+            // "Q" and its number on one baseline — see AttemptView (fix wave 1, C4).
+            <Row gap={1} align="baseline">
               <Text variant="caption" weight="700" color="ink3" tracking="kicker">
                 {t('test.qLabel')}
               </Text>
               <Num variant="caption" weight="700" color="ink3" tracking="none">
                 {row.questionNo}
               </Num>
-            </>
+            </Row>
           }
         />
       </Row>
@@ -218,23 +225,29 @@ export function SolutionsView({
   const visible = useMemo(() => filterSolutionRows(rows ?? [], filter), [rows, filter]);
   const wrongCount = useMemo(() => (rows ?? []).filter((r) => !r.isCorrect).length, [rows]);
 
+  // Library's filter row, to the letter: `lg` chips (48 px — `hitSlop` is inert on web, so a
+  // filter's target is its box) in a radiogroup, each saying whether it is the checked one.
   const chips = rows && !failed && (
-    <Row gap={2} className="px-3 pb-2" testID="solutions-filters">
+    <Row gap={2} className="px-3 pb-2" testID="solutions-filters" accessibilityRole="radiogroup">
       <Chip
-        size="md"
+        size="lg"
         shape="pill"
         label={t('solutions.filterWrong')}
         count={wrongCount}
         active={filter === 'wrong'}
+        accessibilityRole="radio"
+        accessibilityState={{ checked: filter === 'wrong' }}
         onPress={() => setFilter('wrong')}
         testID="solutions-filter-wrong"
       />
       <Chip
-        size="md"
+        size="lg"
         shape="pill"
         label={t('solutions.filterAll')}
         count={rows.length}
         active={filter === 'all'}
+        accessibilityRole="radio"
+        accessibilityState={{ checked: filter === 'all' }}
         onPress={() => setFilter('all')}
         testID="solutions-filter-all"
       />
