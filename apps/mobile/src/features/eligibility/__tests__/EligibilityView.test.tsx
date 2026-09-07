@@ -312,7 +312,8 @@ describe('EligibilityView — the verdict', () => {
     const verdict = screen.getByTestId('eligibility-verdict');
     expect(verdict.props.className).toMatch(/\bborder-okInk\b/);
     expect(verdict.props.className).toMatch(/\bbg-okTint\b/);
-    expect(verdict.props.className).not.toMatch(/\bborder-hivis\b/);
+    // Not gold, in any of its four shades: green is the eligible verdict's own colour.
+    expect(verdict.props.className).not.toMatch(/\bborder-accent(Soft|Strong|Ink)?\b/);
     expect(screen.getByText(t('eligibility.eligible')).props.className).toMatch(/\btext-okInk\b/);
   });
 

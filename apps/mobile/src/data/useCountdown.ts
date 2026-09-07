@@ -1,9 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AppState, type AppStateStatus } from 'react-native';
 
-/** Toast + rail turn hazard from here down (spec section 5). */
+/** The timer box and its toast turn `accent` from here down (spec section 5). */
 export const WARN_5_MIN_SEC = 300;
-/** Toast + rail turn flag and marquee from here down. */
+/**
+ * Everything turns `danger` from here down: the `HeaderBand`, the timer box, the progress
+ * fill and the pinned toast. All static — the marqueeing rail this used to name left the
+ * attempt screen in Phase D.
+ */
 export const WARN_1_MIN_SEC = 60;
 /** Away for at least this long earns the resume dialog. */
 export const RESUME_AWAY_MS = 2000;

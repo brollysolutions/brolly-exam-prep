@@ -1,11 +1,21 @@
+import { colors } from '@tslprb/design-tokens';
 import { en, te } from '@tslprb/i18n';
 
 import { startEdge, startEdgeInset } from '../edge';
 
 describe('startEdge', () => {
+  // `accentStrong` is what three of the four call sites pass (Home's hero, Paper's key,
+  // Solutions' correct block); the colour is asserted as well as the side, so a rename can
+  // never quietly move the bar's tone the way the legacy `hivis` alias could.
   it('puts the bar on the left in LTR and the right in RTL', () => {
-    expect(startEdge(false, 'hivis')).toMatchObject({ borderLeftWidth: 3 });
-    expect(startEdge(true, 'hivis')).toMatchObject({ borderRightWidth: 3 });
+    expect(startEdge(false, 'accentStrong')).toEqual({
+      borderLeftWidth: 3,
+      borderLeftColor: colors.accentStrong,
+    });
+    expect(startEdge(true, 'accentStrong')).toEqual({
+      borderRightWidth: 3,
+      borderRightColor: colors.accentStrong,
+    });
   });
 });
 

@@ -34,7 +34,7 @@ const PREVIEW_H = 560;
 function Preview({ label, children }: { label: string; children: ReactNode }) {
   return (
     <Stack gap={2}>
-      <Text variant="caption" color="dim">
+      <Text variant="caption" color="ink3">
         {label}
       </Text>
       <View className="overflow-hidden rounded-md border border-line" style={{ height: PREVIEW_H }}>
@@ -61,7 +61,7 @@ export function ShellStates({ index }: { index: string }) {
 
   return (
     <Stack gap={3} className="mt-6">
-      <Kicker index={index} color="dim" uppercase>
+      <Kicker index={index} color="ink3" uppercase>
         {DEV.shell}
       </Kicker>
 

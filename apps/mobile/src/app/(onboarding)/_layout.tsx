@@ -9,7 +9,7 @@ export default function OnboardingLayout() {
     <Stack
       screenOptions={{
         headerShown: false,
-        contentStyle: { backgroundColor: colors.tar },
+        contentStyle: { backgroundColor: colors.canvas },
         animation: d.isRTL ? 'slide_from_left' : 'slide_from_right',
       }}
     />

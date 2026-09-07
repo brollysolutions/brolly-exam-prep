@@ -53,7 +53,7 @@ describe('SolutionsView', () => {
     for (const block of screen.getAllByTestId('solution-correct-answer')) {
       const kicker = within(block).getByText(i18n.t('solutions.correctAnswer'));
       expect(kicker.props.className).toMatch(/\btext-ink\b/);
-      expect(kicker.props.className).not.toMatch(/\btext-hivis\b/);
+      expect(kicker.props.className).not.toMatch(/\btext-accent(Soft|Strong|Ink)?\b/);
     }
     for (const block of screen.getAllByTestId('solution-your-answer')) {
       expect(within(block).getByText(i18n.t('solutions.yourAnswer')).props.className).toMatch(
@@ -130,12 +130,12 @@ describe('SolutionsView', () => {
     });
   });
 
-  // The `sand` alias was the last gold kicker in the app.
+  // A `sand` kicker headed this block until Phase D; nothing gold heads it now.
   it('heads the explanation with the paper viewer’s Why pill', async () => {
     await render(<SolutionsView rows={ROWS} initialFilter="wrong" />);
     const why = screen.getAllByText('Why')[0];
     expect(why.props.className).toMatch(/\btext-ink3\b/);
-    expect(String(why.props.className)).not.toMatch(/text-(sand|hivis|accentInk)\b/);
+    expect(String(why.props.className)).not.toMatch(/\btext-accent(Soft|Strong|Ink)?\b/);
   });
 
   it('draws the two filters as pills carrying their counts', async () => {
