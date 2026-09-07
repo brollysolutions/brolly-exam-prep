@@ -296,11 +296,13 @@ gallery sections plus the option-key face fix (`4a4c78b`), and this docs commit.
      it, and a label darker than the figure it names inverts the hierarchy. The `accentSoft`
      fill under an `accentStrong` edge is what says "warning"; ink carries the text, as it does
      on every other tint in the system. `DESIGN_SYSTEM.md`'s timer line is corrected to match.
-  2. **The unvisited palette cell keeps the `surface2` fill**, not the `surface` the Phase D
-     bullet names: the grid sits on a `surface` sheet, where `surface` measures **1.00:1** — a
-     cell, and a 14 px legend swatch, with no edge at all. `surface2` is 1.12 there, the same
-     "the fill is the boundary" model `Pill` and `StatTile` document. The border takes the
-     spec's `line`.
+  2. ~~**The unvisited palette cell keeps the `surface2` fill**~~ — **overturned in fix wave 1**
+     (D1/C1). The reasoning was right about `surface` on `surface` being 1.00:1 and wrong
+     about the remedy: the answer is not a quieter fill but a real boundary. The cell is
+     `surface` under a 1 px `outline` (**3.12:1**), the rest border every outlined control on
+     cream takes — and because `surface2` is the press fill those controls use, resting on
+     `surface2` had also left the most numerous cell in the grid with no press state at all.
+     The spec's `surface` stands; the border is `outline`, not the spec's `line` (1.19:1).
   3. **The marks pill is ink and `dangerInk`, not `accentInk` and `dangerInk`.** Gold text on
      the pill's `surface2` is 4.25:1, and gold in this app means the candidate's own input,
      which the exam's marking scheme is not. Ink rewards, red penalises.
@@ -323,11 +325,15 @@ gallery sections plus the option-key face fix (`4a4c78b`), and this docs commit.
   the Latin face on the ground that A–D is a glyph. It is not — `test.optionKeys` is A–D in en
   and అ–ఈ in te, and Inter draws the Telugu letters as tofu. The key is back in the language's
   own face and `AttemptView.te.test` pins it.
-- **Known, pre-existing, not this phase's**: the palette `Sheet` does not mount in the web
-  build. A `snapPoints: ['82%']` modal gets no container height there, so `present()` renders
-  nothing; the gallery's own content-sized `Sheet` (section 07) opens normally. Verified by
-  re-probing with the pre-F-31 `PaletteSheet.tsx` checked out, which behaves identically. The
-  palette's cells were reviewed instead through gallery section 10, where every state renders.
+- **Known, pre-existing, not this phase's — diagnosed wrongly here, fixed in fix wave 1**: the
+  palette `Sheet` did not mount. The cause was NOT the `snapPoints: ['82%']` percentage this
+  paragraph blamed — measured on the running build, `['82%']` and a pixel height mount
+  identically. `BottomSheetModal.dismiss()` on a modal that was never presented sets its
+  status to `DISMISSING` and calls `forceClose()` on a null ref, so nothing moves the status
+  on and `handlePortalRender` returns early for every later `present()`, permanently. The
+  gallery dismisses on mount and the attempt screen dismisses the palette whenever a dialog
+  opens, so an exit tap or a resume killed the palette for the rest of the paper — on every
+  platform, not only on web. `Sheet` now ignores a dismiss until it has been presented.
 - **Retired here**: `LOCK_GLYPH` (`AttemptView.tsx:38`), `Button variant="hazard"` on the
   attempt footer, and the `sand` kicker at `SolutionsView.tsx:144` — the last of that alias in
   the product. Phase E deletes the aliases themselves.
@@ -336,3 +342,81 @@ gallery sections plus the option-key face fix (`4a4c78b`), and this docs commit.
   presentational literals, not logic. Mobile **898 tests / 97 suites / 16 snapshots** (890 at
   commit 2, 882 at commit 1, 873 at the base); tokens 44; i18n 4. Three snapshots refreshed
   (`AttemptView.te` twice, `ResultView.te`, `SolutionsView.te`).
+
+
+## Phase D fix wave 1 — as fixed (2026-09-07)
+
+Six commits on `main` (`797c638`, `029007c`, `d8e4351`, `bcf0cd4`, `1e6b152`, `d1fcbad`).
+Everything below was measured on the running web build at 390 px in `en` and `te`, not computed.
+
+- **D1 / C1 — the unvisited palette cell is an outlined control.** `surface2` under `line` was
+  1.19:1 against the sheet and 1.07:1 against its own fill, and `surface2` is also the press fill
+  every outlined control on cream takes, so the most numerous cell in the grid had neither a
+  boundary nor a press state. `surface` under `outline` is **3.12:1**; observed in the open sheet,
+  a held cell now goes `rgb(250,246,236)` → `rgb(240,233,216)` → back. One mechanism, no
+  `pressBg` field.
+- **D2 — Solutions' filters are `lg`.** 40 px → **48 px** measured, because `hitSlop` is inert in
+  react-native-web and a filter's target is its box. They also take Library's semantics: a
+  `radiogroup` of `radio`s with a `checked` state.
+- **D3 — the chosen option is back on the axis.** Its key box measured **x=47** against its three
+  neighbours' **50**: the border grew one pixel and the padding handed back four. Now
+  `paddingHorizontal: spacing['4'] - 1` when selected, and all four rows measure **x=50**.
+- **D4 — the correct-verdict disc is `accentStrong`.** `rgb(194,155,56)` (**2.42:1** on the card)
+  → `rgb(161,127,42)` (**3.48:1**), against the wrong twin's 6.00. The ink ✓ on it is 4.49.
+- **D5 / D9 — three statements that were not true of the code**: `Screen`'s deleted `Rail` prop in
+  this document, a comment claiming the timer box stays 48 px (measured **55** in `en`, **56.8**
+  in `te` — it is a minimum the Telugu label grows), and a comment about marqueeing a rail that
+  left this screen last phase.
+- **D7 — a number's colour follows whose number it is.** Result's "Negative marks" stays
+  `accentInk`: a retrospective figure is the candidate's own result whatever its sign. The attempt
+  screen's `−0.25` is `dangerInk` because it is the paper's marking scheme, not a result.
+  Recorded in DESIGN_SYSTEM rather than changed.
+- **D10 — the critical band no longer moves the header.** Mounted into flow at sixty seconds it
+  pushed the header down by its own height: measured **+1 px** inside the frame at 61 s and
+  **+5 px** at 47 s. The band is always rendered and only its fill changes; both states now
+  measure **+5 px**.
+- **D11 — the measurement artefact is re-scoped and regenerated.** `progressFill` read
+  `document.querySelector('[data-testid="progress-fill"]')`, which matched the gallery's own
+  `ProgressRail` demo in section 09 rather than the attempt frame in section 13, and so recorded
+  gold at `warn1` and `auto` where the build renders red. Every read is now scoped to
+  `[data-testid="attempt-frame"]`; the regenerated artefact records `rgb(161,127,42)` at
+  progress/palette/warn5 and `rgb(185,28,28)` at warn1/auto. The old file is renamed
+  `measurements.SUPERSEDED.json` beside a note, so it cannot be cited.
+- **D13 — the question palette opens, and the review's diagnosis was wrong.** The percentage snap
+  point was never the cause: measured, `['82%']` and a pixel height mount identically. The cause is
+  that `BottomSheetModal.dismiss()` on a modal that was never presented sets its status to
+  `DISMISSING` and calls `forceClose()` on a null ref, after which `handlePortalRender` returns
+  early for every later `present()`, for the life of the screen. The gallery dismisses on mount and
+  the attempt screen dismisses the palette whenever a dialog opens, so an exit tap or a resume
+  killed the palette for the rest of the paper — **on every platform, not only on web**. `Sheet`
+  now ignores a dismiss until it has been presented, and clears the flag in `onDismiss` however the
+  sheet closed. The palette was then captured open in `en` and `te`: all five cell states in situ
+  for the first time in any phase.
+- **C2 — a destructive ask is red again.** Phase D's tone-pill remap sent `danger` to an `ink3`
+  label, quietening Profile's delete-account confirmation and the auto-submit card. `dangerInk` on
+  the pill's `surface2` is **5.35:1** (the `ink3` it replaced, 4.66); measured on the built dialog,
+  the label is `rgb(185,28,28)` over a `rgb(240,233,216)` pill with a `rgb(185,28,28)` dot, in both
+  languages. Applied as a new `Pill tone="danger"` — the pattern API forbids a caller overriding a
+  pattern's colour, so a missing variant is added instead of an override prop. `/dev/states` §05
+  now opens either dialog tone, which is why the state had gone unseen.
+- **C3 / C4** — the "four commits" counts corrected to five, and the Q pill's "Q" and its number
+  baseline-locked at all three call sites (`Pill`'s own Row centres, because it also carries 6 px
+  dots and icon leadings that have no baseline).
+
+**Tracked, not done in this wave** (recorded here so nothing is lost):
+
+- **D6** — at five minutes the timer wears the same `accentSoft` as the header's language
+  switcher. If Phase E touches the header, quiet the switcher so gold in that row means the clock.
+- **D8** — the all-correct Solutions empty state is titled "Nothing yet", which reads as an absence
+  rather than a success. It needs a new key pair, so it belongs to the standing native-copy review.
+- **D12** — the locked palette group's blanket `0.38` opacity puts its numerals under every
+  contrast floor. Prefer `ink3` on `surface2` plus the lock semantics. Now visible for the first
+  time in the captures (`palette-open-*.png`, the Telangana group).
+- **C5** — move `features/result/edge.ts` into `src/ui`: it has four importers across `ui` and
+  `features`, including attempt reaching into result. Phase E.
+- **C6** — `ResultView.tsx` sets `bottomInset={false}` unconditionally while the `ActionBar` that
+  owns the inset only renders in the loaded branch. Harmless, and it matches `TopicView`.
+
+**Gates**: `pnpm typecheck`, `pnpm lint`, `pnpm test` — mobile **910 tests / 98 suites / 16
+snapshots** (898 / 97 / 16 at `97c3e9a`), `@tslprb/design-tokens` 44, `@tslprb/i18n` 4.
+**0 new locale keys**; no route, store or product string change.
