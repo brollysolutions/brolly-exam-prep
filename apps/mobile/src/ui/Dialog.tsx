@@ -117,9 +117,19 @@ export function Dialog({
               </Row>
             )}
             <Stack gap={2} className="mt-4">
-              <Button size="lg" label={primary.label} onPress={primary.onPress} />
+              <Button
+                size="lg"
+                label={primary.label}
+                onPress={primary.onPress}
+                testID={testID ? `${testID}-primary` : undefined}
+              />
               {secondary && (
-                <Button variant="secondary" label={secondary.label} onPress={secondary.onPress} />
+                <Button
+                  variant="secondary"
+                  label={secondary.label}
+                  onPress={secondary.onPress}
+                  testID={testID ? `${testID}-secondary` : undefined}
+                />
               )}
             </Stack>
           </View>
