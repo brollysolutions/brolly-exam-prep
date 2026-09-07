@@ -51,6 +51,25 @@ describe('BackHeader', () => {
     expect(screen.getByTestId('filters')).toBeOnTheScreen();
   });
 
+  // The topic reader's title is a display-face line in its body that may wrap to two, so its
+  // bar carries the chevron and the language switcher alone (F-30 fix wave, D17). The bar keeps
+  // its shape: the spacer takes the `flex-1` the title had, and `trailing` stays at the far end.
+  it('takes the bar with no title at all, and still pushes trailing to the end', async () => {
+    await render(
+      <BackHeader
+        onBack={jest.fn()}
+        trailing={<RNText testID="switcher">EN / తె</RNText>}
+        testID="header"
+      />,
+    );
+    expect(screen.getByTestId('header-back')).toBeOnTheScreen();
+    expect(screen.getByTestId('switcher')).toBeOnTheScreen();
+    // The bar itself is unchanged: same surface, same hairline under it, same 48 px target.
+    expect(screen.getByTestId('header-back').props.className).toMatch(/\bh-touch w-touch\b/);
+    const spacer = screen.getByTestId('header').props.children[1];
+    expect(spacer.props.className).toMatch(/\bflex-1\b/);
+  });
+
   // The chevron is a symbol, not a word: it renders in the Latin face whatever the UI
   // language, or a face without U+2039 draws tofu.
   it('draws the chevron in the Latin face and hides it from the reader', async () => {

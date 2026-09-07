@@ -13,26 +13,27 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
   }
   testID="topic-screen"
 >
-  <RCTScrollView
+  <View
     className="flex-1"
-    contentContainerClassName="pb-6 px-4"
-    keyboardShouldPersistTaps="handled"
-    showsVerticalScrollIndicator={false}
   >
-    <View>
+    <View
+      className="border-b border-line bg-surface"
+    >
       <View
+        className="px-2 py-1"
         style={
           {
             "alignItems": "center",
             "flexDirection": "row",
             "flexWrap": undefined,
-            "gap": 12,
-            "justifyContent": "space-between",
+            "gap": 4,
+            "justifyContent": undefined,
           }
         }
         testID="topic-header"
       >
         <View
+          accessibilityLabel="వెనక్కి"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -52,7 +53,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
             }
           }
           accessible={true}
-          className="h-touch justify-center"
+          className="h-touch w-touch items-center justify-center rounded-sm"
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -64,402 +65,164 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-          testID="topic-back"
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 8,
-                "justifyContent": undefined,
-              }
-            }
-            testID="topic-back-row"
-          >
-            <Text
-              accessibilityElementsHidden={true}
-              className="text-ink3"
-              importantForAccessibility="no"
-              style={
-                {
-                  "fontFamily": "Inter_400Regular",
-                  "fontSize": 20,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 30,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-              testID="topic-back-chevron"
-            >
-              ‹
-            </Text>
-            <Text
-              className="text-ink2"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 24.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              వెనక్కి
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="radiogroup"
-          className="min-h-touch overflow-hidden rounded-sm border border-outline self-start"
-          style={
-            {
-              "alignItems": undefined,
-              "flexDirection": "row",
-              "flexWrap": undefined,
-              "gap": undefined,
-              "justifyContent": undefined,
-            }
-          }
-          testID="topic-lang"
-        >
-          <View
-            accessibilityLabel="EN"
-            accessibilityRole="radio"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            className="min-h-touch min-w-touch items-center justify-center px-3 border-line2 border-r"
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-          >
-            <Text
-              className="text-ink3"
-              style={
-                {
-                  "fontFamily": "Inter_700Bold",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 22.5,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              EN
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="తె"
-            accessibilityRole="radio"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": true,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            className="min-h-touch min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-          >
-            <Text
-              className="text-ink"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 24.8,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              తె
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        className="mt-4"
-        style={
-          {
-            "alignItems": undefined,
-            "flexDirection": "column",
-            "gap": 8,
-            "justifyContent": undefined,
-          }
-        }
-      >
-        <View
-          className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
-          style={
-            {
-              "justifyContent": "center",
-              "minHeight": 24,
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 4,
-                "justifyContent": undefined,
-              }
-            }
-          >
-            <Text
-              className="text-ink3"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              తెలంగాణ
-            </Text>
-          </View>
-        </View>
-        <Text
-          className="text-ink"
-          style={
-            {
-              "fontFamily": "NotoSerifTelugu_700Bold",
-              "fontSize": 24,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 36,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
-            }
-          }
-        >
-          తెలంగాణ ఉద్యమం, రాష్ట్ర ఏర్పాటు
-        </Text>
-        <View
-          style={
-            {
-              "alignItems": "baseline",
-              "flexDirection": "row",
-              "flexWrap": undefined,
-              "gap": 4,
-              "justifyContent": undefined,
-            }
-          }
-          testID="topic-minutes"
+          testID="topic-header-back"
         >
           <Text
-            accessibilityLanguage="en"
-            className="text-ink3"
+            accessibilityElementsHidden={true}
+            className="text-ink2"
+            importantForAccessibility="no"
             style={
               {
-                "fontFamily": "Inter_600SemiBold",
-                "fontSize": 12,
-                "fontVariant": [
-                  "tabular-nums",
-                ],
-                "letterSpacing": 0,
-                "lineHeight": 18,
-                "textAlign": "left",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
-              }
-            }
-          >
-            ⁦10⁩
-          </Text>
-          <Text
-            className="text-ink3"
-            style={
-              {
-                "fontFamily": "NotoSansTelugu_400Regular",
-                "fontSize": 12,
+                "fontFamily": "Inter_400Regular",
+                "fontSize": 20,
                 "fontVariant": undefined,
                 "letterSpacing": 0,
-                "lineHeight": 19.8,
+                "lineHeight": 30,
                 "textAlign": "left",
                 "textTransform": undefined,
                 "writingDirection": "ltr",
               }
             }
           >
-            నిమి
+            ‹
           </Text>
         </View>
-      </View>
-      <View
-        className="mt-7"
-        style={
-          {
-            "alignItems": undefined,
-            "flexDirection": "column",
-            "gap": 16,
-            "justifyContent": undefined,
-          }
-        }
-      >
         <View
-          className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
-          style={
-            {
-              "justifyContent": "center",
-              "minHeight": 24,
-            }
-          }
-          testID="study-block-heading"
+          className="flex-1"
+        />
+        <View
+          className="px-2"
         >
           <View
+            accessibilityRole="radiogroup"
+            className="min-h-touch overflow-hidden rounded-sm border border-outline self-start"
             style={
               {
-                "alignItems": "center",
+                "alignItems": undefined,
                 "flexDirection": "row",
                 "flexWrap": undefined,
-                "gap": 4,
+                "gap": undefined,
                 "justifyContent": undefined,
               }
             }
+            testID="topic-lang"
           >
-            <Text
-              className="text-ink3"
-              style={
+            <View
+              accessibilityLabel="EN"
+              accessibilityRole="radio"
+              accessibilityState={
                 {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 12,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 19.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              className="min-h-touch min-w-touch items-center justify-center px-3 border-line2 border-r"
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
             >
-              1956 నుండి 2014 జూన్ 2 వరకు
-            </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "Inter_700Bold",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 22.5,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                EN
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="తె"
+              accessibilityRole="radio"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": true,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              className="min-h-touch min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+            >
+              <Text
+                className="text-ink"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                తె
+              </Text>
+            </View>
           </View>
         </View>
-        <Text
-          className="text-ink2"
-          style={
-            {
-              "fontFamily": "NotoSansTelugu_400Regular",
-              "fontSize": 15,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 24.8,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
-            }
-          }
-          testID="study-block-para"
-        >
-          జెంటిల్‌మెన్స్ అగ్రిమెంట్‌లోని రక్షణల ఆధారంగా 1956లో తెలంగాణను ఆంధ్ర రాష్ట్రంతో కలిపి ఆంధ్రప్రదేశ్ ఏర్పాటు చేశారు. ఆ రక్షణలు అమలు కాలేదన్న భావనే మొత్తం ఉద్యమానికి మూలం.
-        </Text>
-        <Text
-          className="text-ink2"
-          style={
-            {
-              "fontFamily": "NotoSansTelugu_400Regular",
-              "fontSize": 15,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 24.8,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
-            }
-          }
-          testID="study-block-para"
-        >
-          మొదటి ప్రజా ఉద్యమం 1969లో వచ్చింది; విద్యార్థులు నడిపిన దాన్ని తెలంగాణ ప్రజా సమితి ముందుకు తీసుకెళ్లింది. అది అణచివేయబడినా, డిమాండ్ మాత్రం ఎప్పుడూ ఆగలేదు.
-        </Text>
-        <Text
-          className="text-ink2"
-          style={
-            {
-              "fontFamily": "NotoSansTelugu_400Regular",
-              "fontSize": 15,
-              "fontVariant": undefined,
-              "letterSpacing": 0,
-              "lineHeight": 24.8,
-              "textAlign": "left",
-              "textTransform": undefined,
-              "writingDirection": "ltr",
-            }
-          }
-          testID="study-block-para"
-        >
-          రాష్ట్ర సాధనే ఏకైక డిమాండ్‌గా 2001లో తెలంగాణ రాష్ట్ర సమితి ఏర్పడింది. కేంద్రం 2009 డిసెంబర్‌లో ప్రక్రియను ప్రకటించి, 2010లో శ్రీకృష్ణ కమిటీని నియమించింది; పార్లమెంటు 2014 ఫిబ్రవరిలో ఆంధ్రప్రదేశ్ పునర్విభజన చట్టాన్ని ఆమోదించింది.
-        </Text>
+      </View>
+    </View>
+    <RCTScrollView
+      className="flex-1"
+      contentContainerClassName="px-4 pb-6 pt-4"
+      keyboardShouldPersistTaps="handled"
+      showsVerticalScrollIndicator={false}
+      testID="topic-body"
+    >
+      <View>
         <View
           style={
             {
@@ -469,181 +232,219 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
               "justifyContent": undefined,
             }
           }
-          testID="study-block-bullets"
         >
           <View
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
             style={
               {
-                "alignItems": "baseline",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 12,
-                "justifyContent": undefined,
+                "justifyContent": "center",
+                "minHeight": 24,
               }
             }
           >
             <View
-              className="mt-2 h-1.5 w-1.5 rounded-full bg-accentStrong"
-            />
-            <Text
-              className="text-ink2 flex-1"
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 24.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
                 }
               }
             >
-              1956 — ఆంధ్రప్రదేశ్ ఏర్పాటు; జెంటిల్‌మెన్స్ అగ్రిమెంట్ తెలంగాణకు రక్షణలు నిర్దేశించింది.
-            </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                తెలంగాణ
+              </Text>
+            </View>
           </View>
+          <Text
+            className="text-ink"
+            style={
+              {
+                "fontFamily": "NotoSerifTelugu_700Bold",
+                "fontSize": 24,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 36,
+                "textAlign": "left",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+          >
+            తెలంగాణ ఉద్యమం, రాష్ట్ర ఏర్పాటు
+          </Text>
           <View
             style={
               {
                 "alignItems": "baseline",
                 "flexDirection": "row",
                 "flexWrap": undefined,
-                "gap": 12,
+                "gap": 4,
                 "justifyContent": undefined,
               }
             }
+            testID="topic-minutes"
           >
-            <View
-              className="mt-2 h-1.5 w-1.5 rounded-full bg-accentStrong"
-            />
             <Text
-              className="text-ink2 flex-1"
+              accessibilityLanguage="en"
+              className="text-ink3"
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
+                  "fontFamily": "Inter_600SemiBold",
+                  "fontSize": 12,
+                  "fontVariant": [
+                    "tabular-nums",
+                  ],
                   "letterSpacing": 0,
-                  "lineHeight": 24.8,
+                  "lineHeight": 18,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
               }
             >
-              1969 — మొదటి తెలంగాణ ఉద్యమం; తెలంగాణ ప్రజా సమితి నాయకత్వం.
+              ⁦10⁩
             </Text>
-          </View>
-          <View
-            style={
-              {
-                "alignItems": "baseline",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 12,
-                "justifyContent": undefined,
-              }
-            }
-          >
-            <View
-              className="mt-2 h-1.5 w-1.5 rounded-full bg-accentStrong"
-            />
             <Text
-              className="text-ink2 flex-1"
+              className="text-ink3"
               style={
                 {
                   "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 15,
+                  "fontSize": 12,
                   "fontVariant": undefined,
                   "letterSpacing": 0,
-                  "lineHeight": 24.8,
+                  "lineHeight": 19.8,
                   "textAlign": "left",
                   "textTransform": undefined,
                   "writingDirection": "ltr",
                 }
               }
             >
-              2001 — కె. చంద్రశేఖర రావు తెలంగాణ రాష్ట్ర సమితిని స్థాపించారు.
-            </Text>
-          </View>
-          <View
-            style={
-              {
-                "alignItems": "baseline",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 12,
-                "justifyContent": undefined,
-              }
-            }
-          >
-            <View
-              className="mt-2 h-1.5 w-1.5 rounded-full bg-accentStrong"
-            />
-            <Text
-              className="text-ink2 flex-1"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 24.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              2014 జూన్ 2 — తెలంగాణ భారతదేశంలో 29వ రాష్ట్రంగా ఏర్పడింది; పదేళ్ల వరకు హైదరాబాద్ ఉమ్మడి రాజధాని.
-            </Text>
-          </View>
-          <View
-            style={
-              {
-                "alignItems": "baseline",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 12,
-                "justifyContent": undefined,
-              }
-            }
-          >
-            <View
-              className="mt-2 h-1.5 w-1.5 rounded-full bg-accentStrong"
-            />
-            <Text
-              className="text-ink2 flex-1"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 24.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              కె. చంద్రశేఖర రావు మొదటి ముఖ్యమంత్రి, ఈ. ఎస్. ఎల్. నరసింహన్ మొదటి గవర్నర్ అయ్యారు.
+              నిమి
             </Text>
           </View>
         </View>
         <View
-          className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
+          className="mt-7"
           style={
             {
-              "borderLeftColor": "#a17f2a",
-              "borderLeftWidth": 3,
-              "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
-              "paddingLeft": 14,
+              "alignItems": undefined,
+              "flexDirection": "column",
+              "gap": 16,
+              "justifyContent": undefined,
             }
           }
-          testID="study-block-example"
         >
+          <View
+            className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+            style={
+              {
+                "justifyContent": "center",
+                "minHeight": 24,
+              }
+            }
+            testID="study-block-heading"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 4,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                1956 నుండి 2014 జూన్ 2 వరకు
+              </Text>
+            </View>
+          </View>
+          <Text
+            className="text-ink2"
+            style={
+              {
+                "fontFamily": "NotoSansTelugu_400Regular",
+                "fontSize": 15,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 24.8,
+                "textAlign": "left",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+            testID="study-block-para"
+          >
+            జెంటిల్‌మెన్స్ అగ్రిమెంట్‌లోని రక్షణల ఆధారంగా 1956లో తెలంగాణను ఆంధ్ర రాష్ట్రంతో కలిపి ఆంధ్రప్రదేశ్ ఏర్పాటు చేశారు. ఆ రక్షణలు అమలు కాలేదన్న భావనే మొత్తం ఉద్యమానికి మూలం.
+          </Text>
+          <Text
+            className="text-ink2"
+            style={
+              {
+                "fontFamily": "NotoSansTelugu_400Regular",
+                "fontSize": 15,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 24.8,
+                "textAlign": "left",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+            testID="study-block-para"
+          >
+            మొదటి ప్రజా ఉద్యమం 1969లో వచ్చింది; విద్యార్థులు నడిపిన దాన్ని తెలంగాణ ప్రజా సమితి ముందుకు తీసుకెళ్లింది. అది అణచివేయబడినా, డిమాండ్ మాత్రం ఎప్పుడూ ఆగలేదు.
+          </Text>
+          <Text
+            className="text-ink2"
+            style={
+              {
+                "fontFamily": "NotoSansTelugu_400Regular",
+                "fontSize": 15,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 24.8,
+                "textAlign": "left",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+            testID="study-block-para"
+          >
+            రాష్ట్ర సాధనే ఏకైక డిమాండ్‌గా 2001లో తెలంగాణ రాష్ట్ర సమితి ఏర్పడింది. కేంద్రం 2009 డిసెంబర్‌లో ప్రక్రియను ప్రకటించి, 2010లో శ్రీకృష్ణ కమిటీని నియమించింది; పార్లమెంటు 2014 ఫిబ్రవరిలో ఆంధ్రప్రదేశ్ పునర్విభజన చట్టాన్ని ఆమోదించింది.
+          </Text>
           <View
             style={
               {
@@ -653,289 +454,474 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
                 "justifyContent": undefined,
               }
             }
+            testID="study-block-bullets"
           >
             <View
-              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
               style={
                 {
-                  "justifyContent": "center",
-                  "minHeight": 24,
+                  "alignItems": "baseline",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 12,
+                  "justifyContent": undefined,
                 }
               }
             >
               <View
+                className="mt-2 h-1.5 w-1.5 rounded-full bg-accentStrong"
+              />
+              <Text
+                className="text-ink2 flex-1"
                 style={
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 4,
-                    "justifyContent": undefined,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                <Text
-                  className="text-ink3"
-                  style={
-                    {
-                      "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  ఉదాహరణ
-                </Text>
-              </View>
+                1956 — ఆంధ్రప్రదేశ్ ఏర్పాటు; జెంటిల్‌మెన్స్ అగ్రిమెంట్ తెలంగాణకు రక్షణలు నిర్దేశించింది.
+              </Text>
             </View>
-            <Text
-              className="text-ink2"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 24.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              ఒక ప్రామాణిక ప్రశ్న: "తెలంగాణ ఏ తేదీన, భారతదేశంలో ఎన్నో రాష్ట్రంగా ఏర్పడింది?" జవాబు 2014 జూన్ 2, 29వ రాష్ట్రంగా. పార్లమెంటు చట్టాన్ని 2014 ఫిబ్రవరిలో ఆమోదించిందని గుర్తుంచుకోండి — చట్టం, ఏర్పాటు రెండు వేర్వేరు తేదీలు; ఆ తేడానే పేపర్ ఇష్టపడుతుంది.
-            </Text>
-          </View>
-        </View>
-        <View
-          className="rounded-md bg-surface2 p-[17px]"
-          testID="study-block-tip"
-        >
-          <View
-            style={
-              {
-                "alignItems": undefined,
-                "flexDirection": "column",
-                "gap": 8,
-                "justifyContent": undefined,
-              }
-            }
-          >
             <View
-              className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
               style={
                 {
-                  "justifyContent": "center",
-                  "minHeight": 24,
+                  "alignItems": "baseline",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 12,
+                  "justifyContent": undefined,
                 }
               }
             >
               <View
+                className="mt-2 h-1.5 w-1.5 rounded-full bg-accentStrong"
+              />
+              <Text
+                className="text-ink2 flex-1"
                 style={
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 4,
-                    "justifyContent": undefined,
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
                   }
                 }
               >
-                <Text
-                  className="text-ink3"
+                1969 — మొదటి తెలంగాణ ఉద్యమం; తెలంగాణ ప్రజా సమితి నాయకత్వం.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "baseline",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 12,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <View
+                className="mt-2 h-1.5 w-1.5 rounded-full bg-accentStrong"
+              />
+              <Text
+                className="text-ink2 flex-1"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                2001 — కె. చంద్రశేఖర రావు తెలంగాణ రాష్ట్ర సమితిని స్థాపించారు.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "baseline",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 12,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <View
+                className="mt-2 h-1.5 w-1.5 rounded-full bg-accentStrong"
+              />
+              <Text
+                className="text-ink2 flex-1"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                2014 జూన్ 2 — తెలంగాణ భారతదేశంలో 29వ రాష్ట్రంగా ఏర్పడింది; పదేళ్ల వరకు హైదరాబాద్ ఉమ్మడి రాజధాని.
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "baseline",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 12,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <View
+                className="mt-2 h-1.5 w-1.5 rounded-full bg-accentStrong"
+              />
+              <Text
+                className="text-ink2 flex-1"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                కె. చంద్రశేఖర రావు మొదటి ముఖ్యమంత్రి, ఈ. ఎస్. ఎల్. నరసింహన్ మొదటి గవర్నర్ అయ్యారు.
+              </Text>
+            </View>
+          </View>
+          <View
+            className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
+            style={
+              {
+                "borderLeftColor": "#a17f2a",
+                "borderLeftWidth": 3,
+                "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+                "paddingLeft": 14,
+              }
+            }
+            testID="study-block-example"
+          >
+            <View
+              style={
+                {
+                  "alignItems": undefined,
+                  "flexDirection": "column",
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <View
+                className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+                style={
+                  {
+                    "justifyContent": "center",
+                    "minHeight": 24,
+                  }
+                }
+              >
+                <View
                   style={
                     {
-                      "fontFamily": "NotoSansTelugu_700Bold",
-                      "fontSize": 12,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.8,
-                      "textAlign": "left",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 4,
+                      "justifyContent": undefined,
                     }
                   }
                 >
-                  పరీక్ష చిట్కా
-                </Text>
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ఉదాహరణ
+                  </Text>
+                </View>
               </View>
+              <Text
+                className="text-ink2"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ఒక ప్రామాణిక ప్రశ్న: "తెలంగాణ ఏ తేదీన, భారతదేశంలో ఎన్నో రాష్ట్రంగా ఏర్పడింది?" జవాబు 2014 జూన్ 2, 29వ రాష్ట్రంగా. పార్లమెంటు చట్టాన్ని 2014 ఫిబ్రవరిలో ఆమోదించిందని గుర్తుంచుకోండి — చట్టం, ఏర్పాటు రెండు వేర్వేరు తేదీలు; ఆ తేడానే పేపర్ ఇష్టపడుతుంది.
+              </Text>
             </View>
-            <Text
-              className="text-ink2"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 24.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              కాలక్రమాన్ని ఒక్కసారి సంవత్సరాల నిలువు వరుసగా రాయండి. పరీక్షలో మీరు గుర్తుచేసుకోవాల్సింది కథను కాదు, వరుసను.
-            </Text>
           </View>
-        </View>
-      </View>
-      <View
-        className="mt-8"
-        style={
-          {
-            "alignItems": undefined,
-            "flexDirection": "column",
-            "gap": 8,
-            "justifyContent": undefined,
-          }
-        }
-      >
-        <View
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          className="items-center justify-center rounded-sm px-4 bg-ink"
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            {
-              "height": 56,
-            }
-          }
-          testID="topic-mark-read"
-        >
           <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 8,
-                "justifyContent": undefined,
-              }
-            }
+            className="rounded-md bg-surface2 p-[17px]"
+            testID="study-block-tip"
           >
-            <Text
-              className="text-onInk"
+            <View
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 16,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 26.4,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": undefined,
+                  "flexDirection": "column",
+                  "gap": 8,
+                  "justifyContent": undefined,
                 }
               }
             >
-              చదివినట్లు గుర్తించండి
-            </Text>
+              <View
+                className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+                style={
+                  {
+                    "justifyContent": "center",
+                    "minHeight": 24,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 4,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    పరీక్ష చిట్కా
+                  </Text>
+                </View>
+              </View>
+              <Text
+                className="text-ink2"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                కాలక్రమాన్ని ఒక్కసారి సంవత్సరాల నిలువు వరుసగా రాయండి. పరీక్షలో మీరు గుర్తుచేసుకోవాల్సింది కథను కాదు, వరుసను.
+              </Text>
+            </View>
           </View>
         </View>
         <View
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          className="items-center justify-center rounded-sm px-4 border border-outline"
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          className="mt-8"
           style={
             {
-              "height": 48,
+              "alignItems": undefined,
+              "flexDirection": "column",
+              "gap": 8,
+              "justifyContent": undefined,
             }
           }
-          testID="topic-practise"
         >
           <View
-            style={
+            accessibilityRole="button"
+            accessibilityState={
               {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 8,
-                "justifyContent": undefined,
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center rounded-sm px-4 bg-ink"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "height": 56,
+              }
+            }
+            testID="topic-mark-read"
           >
-            <Text
-              className="text-ink"
+            <View
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 24.8,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
                 }
               }
             >
-              టెస్టులు ప్రాక్టీస్ చేయండి
-            </Text>
+              <Text
+                className="text-onInk"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 16,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 26.4,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                చదివినట్లు గుర్తించండి
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center rounded-sm px-4 border border-outline"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "height": 48,
+              }
+            }
+            testID="topic-practise"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-ink"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                టెస్టులు ప్రాక్టీస్ చేయండి
+              </Text>
+            </View>
           </View>
         </View>
       </View>
-    </View>
-  </RCTScrollView>
+    </RCTScrollView>
+  </View>
 </View>
 `;

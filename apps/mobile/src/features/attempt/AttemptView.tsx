@@ -369,10 +369,16 @@ export function AttemptView({
               importantForAccessibility="no"
             />
           </PressBox>
+          {/* `quiet`, not the hub header's gold: at five minutes the timer box beside it wears
+              the same `accentSoft`, and two gold blocks in one row make the clock's change of
+              state something to notice rather than something that shouts. In this row gold is
+              the clock (F-31 fix wave, D6). The selected cell still marks itself, with the
+              2 px `accentStrong` bottom edge every segmented tone carries. */}
           <SegmentedChips
             value={lang}
             onChange={onLangChange}
             options={langOptions}
+            tone="quiet"
             testID="attempt-lang"
           />
           <View className="flex-1" />

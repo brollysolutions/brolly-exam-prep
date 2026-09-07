@@ -195,7 +195,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="min-h-touch min-w-touch items-center justify-center px-3 bg-accentSoft border-b-2 border-b-accentStrong"
+            className="min-h-touch min-w-touch items-center justify-center px-3 bg-surface2 border-b-2 border-b-accentStrong"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}

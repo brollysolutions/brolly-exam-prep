@@ -154,6 +154,21 @@ describe('AttemptView', () => {
       await renderView({ remainingSec: 60 });
       expect(screen.getByTestId('timer-box')).toHaveStyle({ backgroundColor: colors.dangerInk });
     });
+
+    // F-31 fix wave, D6 (applied in Phase E): the switcher shares this row with the clock, and
+    // at five minutes the clock puts on `accentSoft`. Two soft-gold blocks in one row make the
+    // change of state something to spot rather than something that announces itself, so the
+    // switcher takes the `quiet` tone. In this row, gold means the clock.
+    it('keeps the header switcher quiet so the gold in this row is the clock', async () => {
+      await renderView({ remainingSec: 250 });
+      const selected = screen.getByRole('radio', { name: 'EN' });
+      expect(selected.props.className).toMatch(/\bbg-surface2\b/);
+      expect(selected.props.className).not.toMatch(/\bbg-accentSoft\b/);
+      // Still plainly selected: the 2 px gold bottom edge every segmented tone carries.
+      expect(selected.props.className).toMatch(/\bborder-b-accentStrong\b/);
+      // And the timer beside it is the one soft-gold block in the row.
+      expect(screen.getByTestId('timer-box')).toHaveStyle({ backgroundColor: colors.accentSoft });
+    });
   });
 
   // The critical-time signal is three static marks, not a pulsing rule: the band over the

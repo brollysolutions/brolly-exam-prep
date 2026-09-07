@@ -3,10 +3,10 @@ import { colors, size } from '@tslprb/design-tokens';
 import type { Localized, StudyBlock, StudySection, StudyTopic } from '@tslprb/fixtures';
 import { LANGS, type Lang } from '@tslprb/i18n';
 import { useTranslation } from 'react-i18next';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 import {
-  BackRow,
+  BackHeader,
   Button,
   Card,
   cx,
@@ -179,18 +179,25 @@ export function TopicView({
     label: t(`lang.${l}Short`),
     lang: l,
   }));
+  // The leaf bar every other leaf screen wears, with no title in it: the topic's own title is
+  // a display-face line in the body that is allowed two lines, and squeezing it into an Inter
+  // 600 one-liner would be the same title said twice (F-30 fix wave, D17). The bar's job here
+  // is the 48 px chevron and the language switcher, on `surface` under a `line`.
   const header = (
-    <Row testID="topic-header" gap={3} align="center" justify="between">
-      <BackRow label={t('common.back')} onPress={onBack} testID="topic-back" />
-      <SegmentedChips value={lang} onChange={onLang} options={langOptions} testID="topic-lang" />
-    </Row>
+    <BackHeader
+      testID="topic-header"
+      onBack={onBack}
+      trailing={
+        <SegmentedChips value={lang} onChange={onLang} options={langOptions} testID="topic-lang" />
+      }
+    />
   );
 
   // An id that is not in the shelf: say so and offer the way back, nothing else. Not inside
   // the scroller — the waiting state centres in the space the topic would have filled.
   if (!topic || !section) {
     return (
-      <Screen padded bottomInset={false} testID="topic-screen">
+      <Screen bottomInset={false} testID="topic-screen">
         {header}
         <EmptyState
           testID="topic-not-found"
@@ -214,59 +221,68 @@ export function TopicView({
   }
 
   return (
-    <Screen scroll padded bottomInset={false} testID="topic-screen">
+    <Screen bottomInset={false} testID="topic-screen">
       {header}
+      {/* The bar is chrome and stays put; only the prose scrolls, as on every other leaf
+          screen. `pt-4` is the gap the header's own `mt-4` used to make. */}
+      <ScrollView
+        className="flex-1"
+        contentContainerClassName="px-4 pb-6 pt-4"
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+        testID="topic-body"
+      >
+        <Stack gap={2}>
+          <Pill label={t(section.labelKey)} />
+          {/* A display role: Playfair in English, Noto Serif Telugu in Telugu, two lines allowed. */}
+          <Text variant="title" weight="600">
+            {topic.title[lang]}
+          </Text>
+          <Measure testID="topic-minutes" value={topic.minutes} unit={t('study.minutes')} />
+        </Stack>
 
-      <Stack gap={2} className="mt-4">
-        <Pill label={t(section.labelKey)} />
-        {/* A display role: Playfair in English, Noto Serif Telugu in Telugu, two lines allowed. */}
-        <Text variant="title" weight="600">
-          {topic.title[lang]}
-        </Text>
-        <Measure testID="topic-minutes" value={topic.minutes} unit={t('study.minutes')} />
-      </Stack>
+        <Stack gap={4} className="mt-7">
+          {topic.blocks.map((block, i) => (
+            <Block key={i} block={block} lang={lang} />
+          ))}
+        </Stack>
 
-      <Stack gap={4} className="mt-7">
-        {topic.blocks.map((block, i) => (
-          <Block key={i} block={block} lang={lang} />
-        ))}
-      </Stack>
-
-      <Stack gap={2} className="mt-8">
-        {read ? (
-          // Already read: a badge, not a button. Re-pressing a completed action is a control
-          // that does nothing, and the ink fill belongs to what is still to do.
-          <Pill
-            testID="topic-read"
-            label={t('study.read')}
-            leading={
-              <Ionicons
-                name="checkmark-circle"
-                size={CHECK}
-                color={colors.ink}
-                accessibilityElementsHidden
-                importantForAccessibility="no"
-              />
-            }
-          />
-        ) : (
+        <Stack gap={2} className="mt-8">
+          {read ? (
+            // Already read: a badge, not a button. Re-pressing a completed action is a control
+            // that does nothing, and the ink fill belongs to what is still to do.
+            <Pill
+              testID="topic-read"
+              label={t('study.read')}
+              leading={
+                <Ionicons
+                  name="checkmark-circle"
+                  size={CHECK}
+                  color={colors.ink}
+                  accessibilityElementsHidden
+                  importantForAccessibility="no"
+                />
+              }
+            />
+          ) : (
+            <Button
+              size="lg"
+              label={t('study.markRead')}
+              onPress={onMarkRead}
+              testID="topic-mark-read"
+            />
+          )}
+          {/* Once the topic is read, drilling the section is the only thing left to do on this
+              page, so it takes over the ink fill the mark-read button was holding. */}
           <Button
-            size="lg"
-            label={t('study.markRead')}
-            onPress={onMarkRead}
-            testID="topic-mark-read"
+            variant={read ? 'primary' : 'secondary'}
+            size={read ? 'lg' : 'md'}
+            label={t('study.practise')}
+            onPress={onPractise}
+            testID="topic-practise"
           />
-        )}
-        {/* Once the topic is read, drilling the section is the only thing left to do on this
-            page, so it takes over the ink fill the mark-read button was holding. */}
-        <Button
-          variant={read ? 'primary' : 'secondary'}
-          size={read ? 'lg' : 'md'}
-          label={t('study.practise')}
-          onPress={onPractise}
-          testID="topic-practise"
-        />
-      </Stack>
+        </Stack>
+      </ScrollView>
     </Screen>
   );
 }

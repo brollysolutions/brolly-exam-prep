@@ -138,11 +138,18 @@ describe('TopicView', () => {
     expect(p.onLang).toHaveBeenCalledWith('te');
   });
 
-  it('goes back from the back row', async () => {
+  // Phase E (F-32, D17): the topic reader wears the same leaf bar as Paper, Updates, Affairs,
+  // Eligibility, Result and Solutions — `surface` under a `line`, a 48 px chevron target and
+  // the language switcher in the trailing slot. The bar carries NO title: the topic's own
+  // title is a display-face line in the body that is allowed to wrap to two.
+  it('goes back from the leaf bar, which carries no title of its own', async () => {
     const p = props();
     await render(<TopicView {...p} />);
-    await userEvent.press(screen.getByTestId('topic-back'));
+    await userEvent.press(screen.getByTestId('topic-header-back'));
     expect(p.onBack).toHaveBeenCalledTimes(1);
+    // The one title on the screen, in the display face, inside the scroller.
+    expect(screen.getAllByText(FOUND!.topic.title.en)).toHaveLength(1);
+    expect(screen.getByTestId('topic-lang')).toBeOnTheScreen();
   });
 
   it('says so, and offers a way out, when the id is not in the shelf', async () => {

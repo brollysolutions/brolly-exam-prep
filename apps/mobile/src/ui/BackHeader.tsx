@@ -11,7 +11,12 @@ import { Row } from './Row';
 import { Text } from './Text';
 
 export type BackHeaderProps = {
-  title: string;
+  /**
+   * Optional: a leaf screen whose own title carries the display face in the body — the topic
+   * reader — takes the bar for its chevron and its trailing slot alone, and leaves the title
+   * where it can wrap to two lines (F-30 fix wave, D17).
+   */
+  title?: string;
   onBack?: () => void;
   /**
    * After the title, at the end of the title row (a static "Sample data" pill). The row is a
@@ -64,9 +69,15 @@ export function BackHeader({
             {d.chevronPrev}
           </Glyph>
         </Pressable>
-        <Text variant="bodyLg" weight="600" className="flex-1" numberOfLines={1}>
-          {title}
-        </Text>
+        {/* Untitled, the bar still holds its shape: the spacer is what pushes `trailing` to
+            the far edge, and it is the same `flex-1` the title occupies when there is one. */}
+        {title === undefined ? (
+          <View className="flex-1" />
+        ) : (
+          <Text variant="bodyLg" weight="600" className="flex-1" numberOfLines={1}>
+            {title}
+          </Text>
+        )}
         {/* 8 px off the bar's edge: the chevron target has its own 12 px of `px-2` on the
             other side, and a pill flush to the frame reads as part of it. */}
         {trailing !== undefined && <View className="px-2">{trailing}</View>}
