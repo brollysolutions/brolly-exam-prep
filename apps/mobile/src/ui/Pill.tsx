@@ -105,7 +105,8 @@ const MIN_HEIGHT = spacing['6'];
 
 /**
  * The label that introduces a block, names a state, or counts a step — the `Kicker` row and the
- * `Chip tone="label"` tag rolled into one shape.
+ * old `Chip` `label` tag rolled into one shape. That tone is gone (Phase E, F-32): a `Chip` is
+ * always a bordered control or badge, and the quiet tag is this.
  *
  * It is a label, never a control: there is no `onPress` and no pressed state. A pressable
  * filter is `Chip shape="pill"`, which reports a button role and a selected state.
