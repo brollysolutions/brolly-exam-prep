@@ -76,7 +76,7 @@ describe('ProfileRoute', () => {
     leaveATrail();
     await render(<ProfileRoute />);
     await userEvent.press(screen.getByTestId('profile-logout'));
-    await userEvent.press(screen.getByText('Log out and erase'));
+    await userEvent.press(screen.getByTestId('profile-logout-dialog-primary'));
 
     expect(useSessionStore.getState().token).toBeUndefined();
     // A half-finished paper left on disk would drop the next person on a shared handset

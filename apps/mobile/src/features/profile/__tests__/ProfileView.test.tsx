@@ -119,9 +119,12 @@ describe('ProfileView', () => {
 
     expect(screen.getByTestId('profile-logout-dialog')).toBeOnTheScreen();
     expect(h.onLogout).not.toHaveBeenCalled();
+    // The button is the plain verb; the warning is the body's job, not the button's.
+    expect(screen.getByTestId('profile-logout-dialog-primary')).toHaveTextContent('Log out');
+    expect(screen.getByTestId('profile-logout-dialog-primary')).not.toHaveTextContent(/erase/i);
     expect(screen.getByText(/physical measurements/i)).toBeOnTheScreen();
 
-    await userEvent.press(screen.getByText('Log out and erase'));
+    await userEvent.press(screen.getByTestId('profile-logout-dialog-primary'));
 
     expect(h.onLogout).toHaveBeenCalledTimes(1);
     expect(screen.queryByTestId('profile-logout-dialog')).toBeNull();
@@ -131,7 +134,7 @@ describe('ProfileView', () => {
     const h = handlers();
     await render(<ProfileView {...base} lang="en" {...h} />);
     await userEvent.press(screen.getByTestId('profile-logout'));
-    await userEvent.press(screen.getByText('Cancel'));
+    await userEvent.press(screen.getByTestId('profile-logout-dialog-secondary'));
     expect(screen.queryByTestId('profile-logout-dialog')).toBeNull();
     expect(h.onLogout).not.toHaveBeenCalled();
   });
