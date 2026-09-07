@@ -169,60 +169,6 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={{}}
-          testID="library-filter-sectional"
-        >
-          <Text
-            className="text-ink3"
-            style={
-              {
-                "fontFamily": "NotoSansTelugu_600SemiBold",
-                "fontSize": 13,
-                "fontVariant": undefined,
-                "letterSpacing": 0,
-                "lineHeight": 21.5,
-                "textAlign": "center",
-                "textTransform": undefined,
-                "writingDirection": "ltr",
-              }
-            }
-          >
-            సెక్షనల్
-          </Text>
-        </View>
-        <View
-          accessibilityRole="radio"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": false,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          className="items-center justify-center border rounded-full min-h-touch py-2 px-4 border-outline"
-          collapsable={false}
-          focusable={true}
-          hitSlop={0}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={{}}
           testID="library-filter-previous"
         >
           <Text
