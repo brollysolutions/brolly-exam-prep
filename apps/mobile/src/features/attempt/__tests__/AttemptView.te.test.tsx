@@ -31,6 +31,7 @@ const props = {
   onPrev: noop,
   onNext: noop,
   onOpenPalette: noop,
+  onSubmit: noop,
 };
 
 describe('AttemptView (te)', () => {

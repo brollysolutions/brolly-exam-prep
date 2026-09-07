@@ -76,6 +76,11 @@ export type AttemptViewProps = {
   onPrev: () => void;
   onNext: () => void;
   onOpenPalette: () => void;
+  /**
+   * Hand the paper in. It asks first (`dialog-submit`), so this opens the question rather than
+   * ending the attempt; the palette sheet's own Submit opens the same one.
+   */
+  onSubmit: () => void;
   /** Banner + toast, in flow directly under the header. */
   notices?: ReactNode;
   /** Dialogs, palette sheet and the call overlay — handed to `Screen`'s overlay slot. */
@@ -316,6 +321,7 @@ export function AttemptView({
   onPrev,
   onNext,
   onOpenPalette,
+  onSubmit,
   notices,
   overlay,
   testID = 'attempt-screen',
@@ -594,6 +600,16 @@ export function AttemptView({
             onPress={onToggleMark}
             className="flex-1"
             testID="btn-mark"
+          />
+          {/* Handing the paper in used to live one tap deeper, inside the palette sheet, which
+              made the one irreversible action on the screen the hardest to find. It sits here in
+              every section now, outlined rather than filled: Next is pressed once per question
+              and keeps the ink, this is pressed once per paper — and it asks before it acts. */}
+          <Button
+            variant="secondary"
+            label={t('test.submit')}
+            onPress={onSubmit}
+            testID="btn-submit"
           />
         </Row>
       </ActionBar>

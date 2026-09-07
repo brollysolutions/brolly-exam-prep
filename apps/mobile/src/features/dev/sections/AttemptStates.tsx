@@ -208,6 +208,7 @@ export function AttemptStates({ index }: { index: string }) {
           onPrev={noop}
           onNext={noop}
           onOpenPalette={() => setId('palette')}
+          onSubmit={() => setId('submit')}
           notices={<AttemptNotices offline={config.offline} toast={config.toast} />}
           overlay={overlay}
           testID="attempt-demo"

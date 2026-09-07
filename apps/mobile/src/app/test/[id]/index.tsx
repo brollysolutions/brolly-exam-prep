@@ -366,6 +366,7 @@ function TestAttempt({ id }: { id: string }) {
         clearToast();
         sheet.current?.present();
       }}
+      onSubmit={() => openDialog('submit')}
       notices={<AttemptNotices offline={offline} toast={toast} />}
       overlay={overlay}
     />

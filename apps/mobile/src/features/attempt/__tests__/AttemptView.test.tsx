@@ -37,6 +37,7 @@ const callbacks = () => ({
   onPrev: jest.fn(),
   onNext: jest.fn(),
   onOpenPalette: jest.fn(),
+  onSubmit: jest.fn(),
 });
 
 async function renderView(over: Partial<AttemptViewProps> = {}) {
@@ -336,6 +337,25 @@ describe('AttemptView', () => {
     expect(screen.getByTestId('btn-palette').props.className).toMatch(/\bborder-outline\b/);
   });
 
+  // Handing the paper in was one tap deeper, inside the palette sheet: the only irreversible
+  // action on the screen was the hardest to reach. It now sits in the footer of every section.
+  it('offers Submit in the footer, outlined, without taking the ink from Next', async () => {
+    await renderView();
+    const submit = screen.getByTestId('btn-submit');
+    expect(submit).toBeOnTheScreen();
+    expect(submit).toHaveTextContent('Submit test');
+    expect(submit.props.className).toMatch(/\bborder-outline\b/);
+    expect(submit.props.className).not.toMatch(/\bbg-ink\b/);
+    expect(screen.getByTestId('btn-next').props.className).toMatch(/\bbg-ink\b/);
+  });
+
+  it('keeps Submit reachable in every section, not only the first', async () => {
+    await renderView({
+      attempt: { ...DEMO_ATTEMPT, current: 21, sectionUnlocked: { ...DEMO_ATTEMPT.sectionUnlocked } },
+    });
+    expect(screen.getByTestId('btn-submit')).toBeOnTheScreen();
+  });
+
   it('shows the answered / total tally on the palette button', async () => {
     await renderView();
     expect(screen.getByTestId('btn-palette')).toHaveTextContent(`Questions${num('8 / 40')}`);
@@ -350,6 +370,7 @@ describe('AttemptView', () => {
       ['btn-prev', cb.onPrev],
       ['btn-next', cb.onNext],
       ['btn-palette', cb.onOpenPalette],
+      ['btn-submit', cb.onSubmit],
     ] as const;
     for (const [testID, fn] of wiring) {
       await userEvent.press(screen.getByTestId(testID));
