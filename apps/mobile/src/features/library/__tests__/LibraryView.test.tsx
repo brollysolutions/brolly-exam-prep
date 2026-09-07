@@ -31,12 +31,21 @@ describe('LibraryView', () => {
 
   it('switches the list when a filter is chosen', async () => {
     await render(<LibraryView {...handlers()} />);
-    expect(screen.queryByTestId('library-row-sec-seating')).toBeNull();
-    await userEvent.press(screen.getByTestId('library-filter-sectional'));
-    expect(screen.getByTestId('library-row-sec-seating')).toBeOnTheScreen();
-    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+    expect(screen.queryByTestId('library-row-prev-2022')).toBeNull();
     await userEvent.press(screen.getByTestId('library-filter-previous'));
     expect(screen.getByTestId('library-row-prev-2022')).toBeOnTheScreen();
+    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+  });
+
+  // Two shelves and no third: the sectional drills were dropped in F-08's follow-up, so the
+  // chip that opened them must not come back with them.
+  it('offers the two shelves and nothing else', async () => {
+    await render(<LibraryView {...handlers()} />);
+    expect(screen.getByTestId('library-filter-full')).toBeOnTheScreen();
+    expect(screen.getByTestId('library-filter-previous')).toBeOnTheScreen();
+    expect(screen.queryByTestId('library-filter-sectional')).toBeNull();
+    expect(screen.queryByTestId('library-row-sec-seating')).toBeNull();
+    expect(screen.queryByTestId('library-row-sec-blood')).toBeNull();
   });
 
   it('opens a free test', async () => {
@@ -59,9 +68,9 @@ describe('LibraryView', () => {
 
   it('spends the gold fill on the chosen filter and nothing else', async () => {
     await render(<LibraryView {...handlers()} />);
-    // A shelf of solid-gold Free badges next to three filters is six primary actions.
+    // A shelf of solid-gold Free badges beside the filters is several primary actions at once.
     expect(screen.getByTestId('library-filter-full').props.className).toMatch(/\bbg-accentSoft\b/);
-    expect(screen.getByTestId('library-filter-sectional').props.className).not.toContain(
+    expect(screen.getByTestId('library-filter-previous').props.className).not.toContain(
       'bg-accentSoft',
     );
     expect(screen.getByTestId('library-badge-mock-07').props.className).not.toContain(
@@ -232,13 +241,11 @@ describe('LibraryView — previous papers', () => {
     expect(screen.getByTestId('library-filter-full')).toBeOnTheScreen();
   });
 
-  it('leaves the other shelves with the one whole-row action they had', async () => {
+  it('leaves the full-mock shelf with the one whole-row action it had', async () => {
     await render(<LibraryView {...handlers()} />);
+    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
     expect(screen.queryByTestId('library-practise-mock-07')).toBeNull();
     expect(screen.queryByTestId('library-view-mock-07')).toBeNull();
-    await userEvent.press(screen.getByTestId('library-filter-sectional'));
-    expect(screen.queryByTestId('library-practise-sec-seating')).toBeNull();
-    expect(screen.getByTestId('library-row-sec-seating')).toBeOnTheScreen();
   });
 });
 

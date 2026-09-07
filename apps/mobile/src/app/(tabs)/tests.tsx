@@ -6,7 +6,7 @@ import { useLangStore } from '@/data/lang';
 import { useRequireAuth } from '@/data/requireAuth';
 import { LibraryView } from '@/features/library/LibraryView';
 
-const KINDS: TestKind[] = ['full', 'sectional', 'previous'];
+const KINDS: TestKind[] = ['full', 'previous'];
 
 /**
  * `?kind=` off the URL, and nothing else: the value arrives from a link, so an unknown shelf
@@ -18,10 +18,11 @@ function asKind(value: string | string[] | undefined): TestKind | undefined {
 
 /** F-08 — the test library. Readable as a guest; sitting a paper is what asks for an account. */
 export default function LibraryRoute() {
-  // `?kind=previous` from Home's card (F-20), `?kind=sectional` from a study topic sending you
-  // here to drill its section (F-21). The Tests tab is already mounted when either links to it,
-  // so the shelf has to move on the link too — `LibraryView` adjusts its own state, which keeps
-  // the scroll position a remount would throw away.
+  // `?kind=previous` from Home's card (F-20). The Tests tab is already mounted when the card is
+  // pressed, so the shelf has to move on the link too — `LibraryView` adjusts its own state,
+  // which keeps the scroll position a remount would throw away. A study topic's Practise button
+  // sends the reader here without a `?kind=`, and an older build's `?kind=sectional` bookmark
+  // falls back to the default shelf: that shelf was dropped along with its drills.
   const { kind } = useLocalSearchParams<{ kind?: string }>();
   const lang = useLangStore((s) => s.lang);
   const { ensure } = useRequireAuth();

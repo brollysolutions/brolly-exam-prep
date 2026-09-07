@@ -146,7 +146,10 @@ describe('MockApi — results', () => {
     expect(result.rank).toBe(SAMPLE_RESULT.rank);
   });
 
-  it.each(['mock-07', 'mock-08', 'sec-blood'])(
+  // `sec-blood` sat here as the one-section paper until the sectional drills were dropped
+  // (2026-09-07); every paper in the bank now carries the four PWT sections, and a
+  // previous-year paper takes its place so both kinds are checked.
+  it.each(['mock-07', 'mock-08', 'prev-2022'])(
     'is internally coherent for %s: headline == sum of sections',
     async (testId) => {
       const { result } = await resultFor(testId);

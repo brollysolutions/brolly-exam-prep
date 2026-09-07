@@ -60,11 +60,11 @@ describe('StudyTopicRoute', () => {
     expect(useStudyStore.getState().isRead('st-re-blood')).toBe(true);
   });
 
-  it('sends the reader to the sectional shelf, ungated', async () => {
+  it('sends the reader to the test library, ungated', async () => {
     mockParams = { topic: 'st-re-blood' };
     await render(<StudyTopicRoute />);
     await userEvent.press(screen.getByTestId('topic-practise'));
-    expect(mockRouter.navigate).toHaveBeenCalledWith('/(tabs)/tests?kind=sectional');
+    expect(mockRouter.navigate).toHaveBeenCalledWith('/(tabs)/tests');
     expect(mockRouter.push).not.toHaveBeenCalled();
   });
 

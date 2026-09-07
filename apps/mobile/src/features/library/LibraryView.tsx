@@ -25,10 +25,9 @@ import {
   useAutoDismiss,
 } from '@/ui';
 
-/** Reading order of the three shelves; also the chip order. */
+/** Reading order of the two shelves; also the chip order. */
 const KINDS: { kind: TestKind; labelKey: string }[] = [
   { kind: 'full', labelKey: 'library.fullMocks' },
-  { kind: 'sectional', labelKey: 'library.sectional' },
   { kind: 'previous', labelKey: 'library.previousYear' },
 ];
 
@@ -78,8 +77,8 @@ function Size({ test }: { test: TestMeta }) {
 
 /**
  * What the row says about itself at its reading end: the best score you have on this paper,
- * and whether it will open. Both quiet pills — a shelf of gold Free badges beside three gold
- * filters would be six primary actions on one screen, so the gold stays on the active filter.
+ * and whether it will open. Both quiet pills — a shelf of gold Free badges beside gold filter
+ * chips would be several primary actions on one screen, so the gold stays on the active filter.
  *
  * A locked paper wears the lock icon the tab bar and `MarkerRow` already use, not the `⛌`
  * glyph, which no face outside the Latin one carries.
@@ -294,8 +293,8 @@ export function LibraryView({
 
         {/* One shelf, one card: a run of bordered boxes competed with the filters above it.
             The card hugs its rows and the scroller around it takes the height — a `flex-1`
-            card left two rows floating at the top of a screen-tall empty box. A shelf is four
-            papers at most, so the list is a scroller, not a `FlatList`. */}
+            card left two rows floating at the top of a screen-tall empty box. A shelf is a
+            couple of papers, so the list is a scroller, not a `FlatList`. */}
         {rows.length === 0 ? (
           // A shelf with nothing on it is not a failure, so there is no dot and nothing to
           // retry — the filters above are the way out, and the line says so (design D15).

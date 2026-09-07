@@ -66,12 +66,13 @@ describe('LibraryRoute', () => {
     expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
   });
 
-  // F-21 sends a reader here with `?kind=sectional`; the shelf has to follow that link too.
-  it('opens on the sectional shelf when the link asks for it', async () => {
+  // The sectional shelf is gone, but a bookmark or an older build still links to it. A stale
+  // `?kind=` is not an error: it lands on the default shelf like any other unknown name.
+  it('lands on the full mocks when a stale link still asks for the sectional shelf', async () => {
     mockParams = { kind: 'sectional' };
     await render(<LibraryRoute />);
-    expect(screen.getByTestId('library-row-sec-seating')).toBeOnTheScreen();
-    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+    expect(screen.queryByTestId('library-row-sec-seating')).toBeNull();
   });
 
   // The second press of Home's card sends the same `?kind=previous` as the first, so the

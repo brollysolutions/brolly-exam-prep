@@ -25,7 +25,7 @@ Out: real SMS OTP, payments, leaderboards, push, EAS builds, store submission, `
 | `(onboarding)/post` | Post | step "1 / 2", two selectable cards (Constable / SI-ASI), Continue |
 | `(onboarding)/category` | Category | Back, step "2 / 2", 6-card grid with PWT qualifying %, Start free mock test |
 | `(tabs)/index` | Home | greeting, next full mock card (Start now), last score, weak topics, streak, exam countdown, language chips |
-| `(tabs)/tests` | Library | segmented Full / Sectional / Previous year; rows with duration, questions, Free/Locked, best score |
+| `(tabs)/tests` | Library | segmented Full mocks / Previous year (Sectional dropped 2026-09-07); rows with duration, questions, Free/Locked, best score |
 | `test/[id]/index` | Attempt | header (exit ✕, language chips, timer box), section tabs (locked glyph), 6 px progress rail with ticks, Q badge + marks chip + Marked chip, question, 4 options with key glyphs, time-on-question, footer (Clear, Mark; Prev, Questions n/N, Next) |
 | same (sheet) | Palette | legend with counts, per-section groups (n/10), 6-col grid of 48 px cells in 5 states, current outline, dot for answered+marked, locked section dimmed, Submit |
 | same (overlays) | Dialogs | exit / submit (3 stat tiles) / resume / auto-submit; toasts 5-min (hazard) and 1-min (flag); locked-section toast; offline banner (sand); simulated incoming-call overlay (dev only) |

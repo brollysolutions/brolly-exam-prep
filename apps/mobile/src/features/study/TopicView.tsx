@@ -42,7 +42,7 @@ export type TopicViewProps = {
   read?: boolean;
   onBack: () => void;
   onMarkRead: () => void;
-  /** Sectional practice for this topic's section. Ungated — reading is free, so is drilling. */
+  /** Opens the test library. Ungated — reading is free, so is practising what you read. */
   onPractise: () => void;
 };
 
@@ -262,7 +262,7 @@ export function TopicView({
         <Button
           variant={read ? 'primary' : 'secondary'}
           size={read ? 'lg' : 'md'}
-          label={t('study.practiseSection')}
+          label={t('study.practise')}
           onPress={onPractise}
           testID="topic-practise"
         />

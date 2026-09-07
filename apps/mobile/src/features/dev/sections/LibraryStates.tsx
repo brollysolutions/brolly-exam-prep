@@ -9,7 +9,6 @@ import { Kicker, Stack, Text } from '@/ui';
 const DEV = {
   library: 'Test library (F-08 / F-22)',
   full: 'LibraryView — full mocks: a best score, a locked paper',
-  sectional: 'LibraryView — sectional drills',
   previous: 'LibraryView — previous papers: practise or read',
   empty: 'LibraryView — a shelf with nothing on it',
 } as const;
@@ -33,8 +32,8 @@ function Preview({ label, children }: { label: string; children: ReactNode }) {
 const noop = () => {};
 
 /**
- * F-08 / F-22 in the gallery. The three shelves are one screen with one piece of state, so the
- * only way to see them side by side is three copies opened on different kinds.
+ * F-08 / F-22 in the gallery. The two shelves are one screen with one piece of state, so the
+ * only way to see them side by side is two copies opened on different kinds.
  */
 export function LibraryStates({ index }: { index: string }) {
   const lang = useLangStore((s) => s.lang);
@@ -47,9 +46,6 @@ export function LibraryStates({ index }: { index: string }) {
 
       <Preview label={DEV.full}>
         <LibraryView lang={lang} initialKind="full" onOpen={noop} onViewPaper={noop} />
-      </Preview>
-      <Preview label={DEV.sectional}>
-        <LibraryView lang={lang} initialKind="sectional" onOpen={noop} onViewPaper={noop} />
       </Preview>
       <Preview label={DEV.previous}>
         <LibraryView lang={lang} initialKind="previous" onOpen={noop} onViewPaper={noop} />

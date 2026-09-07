@@ -182,7 +182,6 @@
   "library": {
     "title": "Tests",
     "fullMocks": "Full mocks",
-    "sectional": "Sectional",
     "previousYear": "Previous year",
     "empty": "No tests here yet. Try another filter.",
     "attempted": "Attempted",
@@ -215,7 +214,7 @@
     "topics": "topics",
     "read": "Read",
     "markRead": "Mark as read",
-    "practiseSection": "Practise this section",
+    "practise": "Practise papers",
     "example": "Worked example",
     "tip": "Exam tip",
     "notFound": "That topic is not in the study material."

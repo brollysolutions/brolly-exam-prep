@@ -41,7 +41,9 @@ export default function StudyTopicRoute() {
       }}
       // `navigate`, not `push`: the library is a tab that already exists in the stack, and a
       // second copy of it behind this screen would give the back button somewhere wrong to go.
-      onPractise={() => router.navigate('/(tabs)/tests?kind=sectional')}
+      // No `?kind=`: the sectional drills this once opened are gone, so the reader lands on the
+      // shelf the Tests tab opens on.
+      onPractise={() => router.navigate('/(tabs)/tests')}
     />
   );
 }
