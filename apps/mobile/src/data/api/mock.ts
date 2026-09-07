@@ -4,10 +4,8 @@ import type {
   AttemptCreate,
   LocalizedText,
   Ok,
-  OtpRequest,
-  OtpRequestResponse,
-  OtpVerify,
-  OtpVerifyResponse,
+  PhoneSignIn,
+  PhoneSignInResponse,
   Result,
   SectionScore,
   SubmitResponse,
@@ -150,7 +148,6 @@ type MockAttempt = { attempt: Attempt; testId: string; answers: Map<string, Answ
  * cold start, exactly as it will once the FastAPI service is real.
  */
 export class MockApi implements AppApi {
-  private readonly otps = new Map<string, string>();
   private readonly attempts = new Map<string, MockAttempt>();
   private readonly results = new Map<string, { testId: string; attemptId: string }>();
 
@@ -159,23 +156,14 @@ export class MockApi implements AppApi {
     return { status: 'ok' };
   }
 
-  async requestOtp(body: OtpRequest): Promise<OtpRequestResponse> {
+  /**
+   * The number is the whole credential (the OTP step went on 2026-09-07), so there is nothing
+   * to check: a number that has been seen before comes back to the same user id, and one that
+   * has not creates it. Same shape as the server's `POST /v1/auth/phone`.
+   */
+  async signInWithPhone(body: PhoneSignIn): Promise<PhoneSignInResponse> {
     await latency();
-    const request_id = nextId('otp');
-    this.otps.set(request_id, body.phone);
-    return { request_id, dev_code: DEV_OTP };
-  }
-
-  async verifyOtp(body: OtpVerify): Promise<OtpVerifyResponse> {
-    await latency();
-    const phone = this.otps.get(body.request_id);
-    if (phone === undefined) throw new ApiError(404, 'otp_not_found', 'Request expired');
-    // No SMS goes out in the mock, so any six digits are accepted and the code walks straight
-    // on to onboarding. The request still has to exist — an expired one is a different answer,
-    // and the screen has its own copy for it. The real check lives in `services/api`, which
-    // `HttpApi` talks to; `otp_invalid` handling in the route stays for that.
-    this.otps.delete(body.request_id);
-    return { token: nextId('tok'), user: { id: `usr-${phone}`, phone } };
+    return { token: nextId('tok'), user: { id: `usr-${body.phone}`, phone: body.phone } };
   }
 
   async listTests(): Promise<TestSummary[]> {

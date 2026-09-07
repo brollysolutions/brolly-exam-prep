@@ -6,10 +6,16 @@ import { getApi } from '@/data/api';
 import { withReturnTo } from '@/data/href';
 import { useSessionStore } from '@/data/session';
 import { LoginView } from '@/features/auth/LoginView';
-import { setOtpRequestId } from '@/features/auth/otpRequest';
 import { useAutoDismiss } from '@/ui';
 
-/** F-03 — asks for the phone number and requests the OTP for it. */
+/**
+ * F-03 — the number is the whole sign-in. The OTP screen that used to sit between this screen
+ * and onboarding was removed on 2026-09-07 at the product owner's request, so this one call
+ * both creates the account on a number's first sighting and signs it in on every later one.
+ *
+ * Nothing proves the number belongs to whoever typed it. That is the accepted trade-off for
+ * this phase and the reason the app must hold nothing behind it that a stranger may not see.
+ */
 export default function LoginRoute() {
   const { t } = useTranslation();
   const router = useRouter();
@@ -17,6 +23,7 @@ export default function LoginRoute() {
   const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
   const phone = useSessionStore((s) => s.phone);
   const setPhone = useSessionStore((s) => s.setPhone);
+  const setToken = useSessionStore((s) => s.setToken);
   // The screen now stands on top of a working app; only a first run or a deep link has
   // nothing behind it, and then there is nothing to offer a way back to.
   const canGoBack = router.canGoBack();
@@ -29,13 +36,13 @@ export default function LoginRoute() {
     setBusy(true);
     setError(null);
     try {
-      // The request id is the OTP screen's handle on this attempt. It lives in memory only, so
-      // it never reaches the web URL, the history stack or a shared link. A test build also
-      // hands back the code itself, which the OTP screen shows so nobody has to guess it.
-      const { request_id, dev_code } = await getApi().requestOtp({ phone: next });
-      setOtpRequestId(request_id, dev_code);
+      const { token } = await getApi().signInWithPhone({ phone: next });
       setPhone(next);
-      router.push(withReturnTo('/(auth)/otp', returnTo));
+      setToken(token);
+      // `replace`, not `push`: there is no step between the number and the questions any more,
+      // so the back gesture from onboarding should leave the sign-in chain rather than return
+      // to a form that has already done its work.
+      router.replace(withReturnTo('/(onboarding)/post', returnTo));
     } catch {
       setError(t('common.networkError'));
     } finally {

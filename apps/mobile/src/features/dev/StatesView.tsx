@@ -5,7 +5,6 @@ import { View } from 'react-native';
 
 import { useLangStore } from '@/data/lang';
 import { LoginView } from '@/features/auth/LoginView';
-import { OtpView } from '@/features/auth/OtpView';
 import { AttemptStates } from '@/features/dev/sections/AttemptStates';
 import { EligibilityStates } from '@/features/dev/sections/EligibilityStates';
 import { LibraryStates } from '@/features/dev/sections/LibraryStates';
@@ -26,7 +25,6 @@ import {
   Dialog,
   Keypad,
   Kicker,
-  OtpCells,
   PaletteCell,
   PhoneField,
   ProgressRail,
@@ -58,7 +56,7 @@ const DEV = {
   dialogOpen: 'Open dialog — accent (asks)',
   dialogDanger: 'Open dialog — danger (reports)',
   sheetBody: 'Sheet body — surface, 3 px gold edge, warm scrim.',
-  entry: 'Keypad + PhoneField + OTP',
+  entry: 'Keypad + PhoneField',
   progress: 'ProgressRail 40 % · danger 100 %',
   palette: 'PaletteCell',
   brand: 'Brand — lockup 28 / 40, splash 160',
@@ -66,7 +64,6 @@ const DEV = {
   railCritical: 'critical (pulse)',
   auth: 'Auth & onboarding',
   login: 'LoginView — filled + error toast',
-  otp: 'OtpView — partial code, resend ready, dev code hint',
   post: 'PostView — step 1/2, SI chosen',
   category: 'CategoryView — step 2/2, BC chosen',
   disabled: 'disabled',
@@ -325,7 +322,6 @@ export function StatesView() {
           onDelete={() => setPhone((p) => p.slice(0, -1))}
         />
         <Button size="lg" label={t('common.continue')} disabled={phone.length < 10} />
-        <OtpCells value="123" />
       </Section>
 
       <Section index="09" title={DEV.progress}>
@@ -362,17 +358,6 @@ export function StatesView() {
             initialPhone="9000012345"
             error={t('common.networkError')}
             onSubmit={() => {}}
-          />
-        </Preview>
-        <Preview label={DEV.otp}>
-          <OtpView
-            phone="9000012345"
-            initialCode="1234"
-            devCode="123456"
-            resendSeconds={0}
-            onVerify={() => false}
-            onResend={() => {}}
-            onChangeNumber={() => {}}
           />
         </Preview>
         <Preview label={DEV.post}>

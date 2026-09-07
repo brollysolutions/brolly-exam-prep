@@ -35,7 +35,6 @@ services:
     environment:
       DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://tslprb:tslprb@postgres:5432/tslprb}
       REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
-      OTP_DEV_MODE: ${OTP_DEV_MODE:-true}
       # Browsers reach the api through /api on the web origin (PUBLIC_URL), so that origin plus the
       # local web port and the Expo dev origins are allowed by default.
       CORS_ORIGINS: ${CORS_ORIGINS:-${PUBLIC_URL:-http://localhost:${WEB_HOST_PORT:-3201}},http://localhost:${WEB_HOST_PORT:-3201},http://localhost:8081,http://localhost:19006}
@@ -67,7 +66,6 @@ services:
     environment:
       DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://tslprb:tslprb@postgres:5432/tslprb}
       REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
-      OTP_DEV_MODE: ${OTP_DEV_MODE:-true}
     volumes:
       - ./services/api/app:/app/app
       - ./services/api/alembic:/app/alembic

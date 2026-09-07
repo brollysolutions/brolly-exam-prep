@@ -4,8 +4,7 @@ import {
   CategorySchema,
   fromApiCategory,
   toApiCategory,
-  OtpRequestResponseSchema,
-  OtpVerifyResponseSchema,
+  PhoneSignInResponseSchema,
   ResultSchema,
   TestSchema,
   TestSummarySchema,
@@ -18,33 +17,27 @@ import { apportion, MockApi } from '../api/mock';
 
 const api = new MockApi();
 
-describe('MockApi — OTP', () => {
-  it('issues a request id and exposes the dev code', async () => {
-    const res = await api.requestOtp({ phone: '9876543210' });
-    expect(OtpRequestResponseSchema.parse(res)).toBeTruthy();
-    expect(res.dev_code).toBe('123456');
-  });
-
-  it('accepts the dev code 123456 for any phone', async () => {
-    const { request_id } = await api.requestOtp({ phone: '9000000000' });
-    const res = await api.verifyOtp({ request_id, code: '123456' });
-    expect(OtpVerifyResponseSchema.parse(res)).toBeTruthy();
+describe('MockApi — sign-in', () => {
+  it('turns a number into a session, in the contract shape', async () => {
+    const res = await api.signInWithPhone({ phone: '9876543210' });
+    expect(PhoneSignInResponseSchema.parse(res)).toBeTruthy();
     expect(res.token).toBeTruthy();
-    expect(res.user.phone).toBe('9000000000');
+    expect(res.user.phone).toBe('9876543210');
   });
 
-  // No SMS goes out in the mock, so there is no code to get wrong.
-  it('accepts any other code just the same', async () => {
-    const { request_id } = await api.requestOtp({ phone: '9000000000' });
-    const res = await api.verifyOtp({ request_id, code: '000000' });
-    expect(OtpVerifyResponseSchema.parse(res)).toBeTruthy();
-    expect(res.user.phone).toBe('9000000000');
+  // The OTP step went on 2026-09-07: there is no code to send, to guess or to get wrong, and
+  // nothing to fail with. A number that reaches this call always comes back with a session.
+  it('gives the same number the same account, and a fresh token each time', async () => {
+    const first = await api.signInWithPhone({ phone: '9000000000' });
+    const second = await api.signInWithPhone({ phone: '9000000000' });
+    expect(first.user.id).toBe(second.user.id);
+    expect(first.token).not.toBe(second.token);
   });
 
-  it('rejects an unknown request id', async () => {
-    await expect(api.verifyOtp({ request_id: 'nope', code: '123456' })).rejects.toBeInstanceOf(
-      ApiError,
-    );
+  it('gives different numbers different accounts', async () => {
+    const one = await api.signInWithPhone({ phone: '9000000001' });
+    const two = await api.signInWithPhone({ phone: '9000000002' });
+    expect(one.user.id).not.toBe(two.user.id);
   });
 });
 

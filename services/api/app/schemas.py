@@ -26,21 +26,11 @@ class LocalizedOptions(BaseModel):
     te: list[str]
 
 
-# ---------------------------------------------------------------- OTP ----
+# ------------------------------------------------------------ Sign-in ----
 
 
-class OtpRequestIn(BaseModel):
+class PhoneSignInIn(BaseModel):
     phone: str = Field(..., min_length=10, max_length=15)
-
-
-class OtpRequestOut(BaseModel):
-    request_id: str
-    dev_code: str | None = None
-
-
-class OtpVerifyIn(BaseModel):
-    request_id: str
-    code: str = Field(..., min_length=4, max_length=6)
 
 
 class UserOut(BaseModel):
@@ -48,7 +38,7 @@ class UserOut(BaseModel):
     phone: str
 
 
-class OtpVerifyOut(BaseModel):
+class PhoneSignInOut(BaseModel):
     token: str
     user: UserOut
 

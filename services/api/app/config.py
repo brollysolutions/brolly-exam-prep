@@ -22,10 +22,6 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+asyncpg://tslprb:tslprb@localhost:5442/tslprb"
     redis_url: str = "redis://localhost:6379/0"
 
-    otp_dev_mode: bool = True
-    otp_dev_code: str = "123456"
-    otp_ttl_seconds: int = 300
-
     # Explicit dev origins by default -- never "*" together with credentials
     # (see app/main.py: allow_credentials is only enabled when this list
     # does not contain "*", since Starlette would otherwise reflect any
