@@ -272,7 +272,6 @@ export function StatesView() {
           <Chip label="lg 48" active size="lg" />
           <Chip label={t('result.qualified')} active shape="pill" size="md" />
           <Chip label={t('common.free')} shape="pill" size="md" onPress={() => {}} />
-          <Chip label={t('common.sampleData')} tone="label" />
         </Row>
       </Section>
 

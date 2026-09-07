@@ -9,11 +9,12 @@ import { Text } from './Text';
 /**
  * `accent` = 5-minute notice (soft gold, ink text), `danger` = last-minute warning (solid
  * `dangerInk`, cream text — the same pair as the ≤ 60 s timer, never `danger` with cream at
- * 2.5:1), `info` = a locked section (ink fill, cream text). `hazard` and `flag` are the old
- * names of `accent` and `danger`.
+ * 2.5:1), `info` = a locked section (ink fill, cream text).
+ *
+ * The pre-rebrand names `hazard` and `flag` were retired in Phase E (F-32); the attempt
+ * screen's three call sites moved to `accent` / `danger` / `info` in Phase D.
  */
-export type ToastTone = 'accent' | 'danger' | 'info' | 'hazard' | 'flag';
-type Tone = 'accent' | 'danger' | 'info';
+export type ToastTone = 'accent' | 'danger' | 'info';
 
 export type ToastProps = {
   text: string;
@@ -21,18 +22,15 @@ export type ToastProps = {
   testID?: string;
 };
 
-const canonical = (t: ToastTone): Tone => (t === 'hazard' ? 'accent' : t === 'flag' ? 'danger' : t);
-
-const fill: Record<Tone, string> = {
+const fill: Record<ToastTone, string> = {
   accent: 'bg-accentSoft',
   danger: 'bg-dangerInk',
   info: 'bg-ink',
 };
 
 /** Floating card directly under the header, 16 px inset, raised on the warm shadow. Slides down 180 ms. */
-export function Toast({ text, tone: toneProp = 'accent', testID }: ToastProps) {
+export function Toast({ text, tone = 'accent', testID }: ToastProps) {
   const m = useMotion();
-  const tone = canonical(toneProp);
   return (
     <Animated.View
       testID={testID}

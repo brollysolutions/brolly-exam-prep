@@ -19,17 +19,15 @@ import { Text } from './Text';
 
 /**
  * Status vocabulary: `accent` (gold) is the candidate's own input or the active filter,
- * `danger` is wrong / unanswered, `ok` is eligible / correct.
+ * `danger` is wrong / unanswered, `ok` is eligible / correct. A `Chip` is always a control or
+ * a badge with a boundary — **the quiet tag is `Pill`**, which draws the same label at the
+ * caption size the contrast floor asks for.
  *
- * `label` is **deprecated**: use `Pill` (the P1 pattern), which is the same quiet tag at the
- * caption size the contrast floor asks for, and which every product screen now uses — Phase C
- * moved the last three call sites ("Sample data" × 2, a notice's kind) plus the gallery one.
- * Only the dev gallery still renders it, to show what it was. It goes in Phase E with the
- * other legacy tones.
- * `hivis`, `hazard`, `sand` (→ accent) and `flag` (→ danger) are the old names, kept one cycle.
+ * Phase E (F-32) deleted the `label` tone with the pre-rebrand names `hivis`, `hazard`, `sand`
+ * (→ `accent`) and `flag` (→ `danger`). Phase C moved the last four product `label` call sites
+ * to `Pill`; the gallery's own demo of it went with the tone.
  */
-export type ChipTone = 'accent' | 'danger' | 'ok' | 'label' | 'hivis' | 'hazard' | 'flag' | 'sand';
-type Tone = 'accent' | 'danger' | 'ok';
+export type ChipTone = 'accent' | 'danger' | 'ok';
 export type ChipSize = 'sm' | 'md' | 'lg';
 
 export type ChipProps = Omit<PressableProps, 'style' | 'children'> & {
@@ -61,15 +59,12 @@ export type ChipProps = Omit<PressableProps, 'style' | 'children'> & {
   style?: StyleProp<ViewStyle>;
 };
 
-const canonical = (t: Exclude<ChipTone, 'label'>): Tone =>
-  t === 'hivis' || t === 'hazard' || t === 'sand' ? 'accent' : t === 'flag' ? 'danger' : t;
-
 /**
  * Active fills. Soft gold sits 1.38:1 from the canvas, so the selected accent chip also
  * carries a 2 px inner bottom edge in the 3.4:1 gold; the red and green tones already have a
  * boundary that reads (a 5.8:1 outline, a solid fill).
  */
-const fill: Record<Tone, string> = {
+const fill: Record<ChipTone, string> = {
   accent: 'bg-accentSoft border-accent border-b-2 border-b-accentStrong',
   danger: 'bg-dangerTint border-dangerInk',
   ok: 'bg-ok border-ok',
@@ -79,7 +74,7 @@ const fill: Record<Tone, string> = {
 const restBorder = 'border-outline';
 
 /** Label colour on each active fill; ink reads on gold and green, red text on the red tint. */
-const activeColor: Record<Tone, ColorName> = { accent: 'ink', danger: 'dangerInk', ok: 'ink' };
+const activeColor: Record<ChipTone, ColorName> = { accent: 'ink', danger: 'dangerInk', ok: 'ink' };
 
 /**
  * Minimum heights with vertical padding, never a fixed box: a tall face at chip size is a
@@ -92,33 +87,13 @@ const height: Record<ChipSize, string> = {
   lg: 'min-h-touch py-2 px-4',
 };
 
-/**
- * The tag tone. **Deprecated in favour of `Pill`** — a kicker on `surface2` with no border and
- * no gold, whose 10.5 px label sits below the caption floor `ink3` is held to; `Pill` draws the
- * same tag at 12 px. Kept for the gallery until Phase E deletes the legacy tones.
- */
-function LabelChip({
-  label,
-  className,
-  style,
-  ...rest
-}: Pick<ChipProps, 'label' | 'className' | 'style'> & ViewProps) {
-  return (
-    <View {...rest} className={cx('rounded-xs bg-surface2 px-2 py-0.5', className)} style={style}>
-      <Text variant="kicker" weight="600" color="ink3" align="center">
-        {label}
-      </Text>
-    </View>
-  );
-}
-
 /** Filter / status chip. Static when no `onPress` (e.g. the "Marked" badge). */
 export function Chip({
   label,
   leading,
   count,
   active = false,
-  tone: toneProp = 'accent',
+  tone = 'accent',
   size = 'sm',
   muted = false,
   shape = 'rect',
@@ -131,11 +106,6 @@ export function Chip({
   ...rest
 }: ChipProps) {
   const { pressed, handlers } = usePressed(onPressIn, onPressOut);
-  if (toneProp === 'label') {
-    // A tag is not a control whatever it is handed: the press stays with the card around it.
-    return <LabelChip {...(rest as ViewProps)} label={label} className={className} style={style} />;
-  }
-  const tone = canonical(toneProp);
   // One fill slot: the active fill, the pressed fill or a bare outline — never two `bg-*` classes.
   const surface = active
     ? fill[tone]

@@ -74,10 +74,7 @@ describe('Dialog', () => {
   // Gold is never the word: the gold pill's label is ink, never `accentInk` on a tint (4.14).
   it.each([
     ['accent', 'bg-accentTint', 'text-ink'],
-    ['hivis', 'bg-accentTint', 'text-ink'],
-    ['hazard', 'bg-accentTint', 'text-ink'],
     ['danger', 'bg-surface2', 'text-dangerInk'],
-    ['flag', 'bg-surface2', 'text-dangerInk'],
   ] as const)('tone %s fills its pill %s under a gold top edge', async (tone, fill, label) => {
     await render(
       <Dialog
@@ -104,7 +101,7 @@ describe('Dialog', () => {
     await render(
       <Dialog
         visible
-        tone="flag"
+        tone="danger"
         {...base}
         primary={{ label: 'Wait', onPress: () => {} }}
         testID="dlg"

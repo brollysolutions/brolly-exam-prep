@@ -24,11 +24,9 @@ describe('Toast', () => {
   it.each([
     // The 5-minute notice: soft gold with ink text.
     ['accent', 'bg-accentSoft', 'text-ink'],
-    ['hazard', 'bg-accentSoft', 'text-ink'],
     // One red for "critical" (D12): the last-minute warning is the solid dangerInk with cream
     // text, the same pair as the ≤ 60 s timer — never `danger` (#f87171) with cream at 2.5:1.
     ['danger', 'bg-dangerInk', 'text-onInk'],
-    ['flag', 'bg-dangerInk', 'text-onInk'],
     // A locked section: ink fill, cream text.
     ['info', 'bg-ink', 'text-onInk'],
   ] as const)('tone %s fills %s with %s text', async (tone, fill, color) => {

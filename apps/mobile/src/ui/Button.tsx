@@ -18,17 +18,11 @@ import { Text } from './Text';
  * `primary` is the one ink fill per screen. `secondary` and `ghost` are the quiet pair.
  * `danger` asks in a red outline (the app never commits in solid red). `accent` is the gold
  * outline that fills when `active` — the attempt screen's Mark button.
- * `dangerOutline` and `hazard` are the old names of `danger` and `accent`, kept one cycle.
+ *
+ * The pre-rebrand names `dangerOutline` and `hazard` were retired in Phase E (F-32); their
+ * last caller, the attempt footer's Mark, moved to `accent` in Phase D.
  */
-export type ButtonVariant =
-  | 'primary'
-  | 'secondary'
-  | 'ghost'
-  | 'danger'
-  | 'accent'
-  | 'dangerOutline'
-  | 'hazard';
-type Variant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'accent';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'accent';
 export type ButtonSize = 'md' | 'lg';
 
 export type ButtonProps = Omit<PressableProps, 'style' | 'children'> & {
@@ -50,11 +44,8 @@ export type ButtonProps = Omit<PressableProps, 'style' | 'children'> & {
   style?: StyleProp<ViewStyle>;
 };
 
-const canonical = (v: ButtonVariant): Variant =>
-  v === 'dangerOutline' ? 'danger' : v === 'hazard' ? 'accent' : v;
-
 /** Rest boundaries clear 3:1 on cream: `outline` for the quiet pair, the red and gold inks for the rest. */
-const box: Record<Variant, string> = {
+const box: Record<ButtonVariant, string> = {
   primary: 'bg-ink',
   secondary: 'border border-outline',
   ghost: '',
@@ -69,7 +60,7 @@ const box: Record<Variant, string> = {
  */
 const primaryDisabledBox = 'bg-surface2 border border-outline';
 
-const fg: Record<Variant, ColorName> = {
+const fg: Record<ButtonVariant, ColorName> = {
   primary: 'onInk',
   secondary: 'ink',
   ghost: 'ink2',
@@ -78,7 +69,7 @@ const fg: Record<Variant, ColorName> = {
 };
 
 /** Ripple tint per surface: cream on the ink fill, ink on the gold fill, gold tint on cream. */
-const ripple = (variant: Variant, active: boolean) =>
+const ripple = (variant: ButtonVariant, active: boolean) =>
   variant === 'primary'
     ? colors.pressTintOnDark
     : variant === 'accent' && active
@@ -87,7 +78,7 @@ const ripple = (variant: Variant, active: boolean) =>
 
 export function Button({
   label,
-  variant: variantProp = 'primary',
+  variant = 'primary',
   size = 'md',
   active = false,
   weight,
@@ -101,7 +92,6 @@ export function Button({
   ...rest
 }: ButtonProps) {
   const { pressed, handlers } = usePressed(onPressIn, onPressOut);
-  const variant = canonical(variantProp);
   const filledAccent = variant === 'accent' && active;
   const filled = variant === 'primary' || filledAccent;
   const primaryDisabled = disabled && variant === 'primary';

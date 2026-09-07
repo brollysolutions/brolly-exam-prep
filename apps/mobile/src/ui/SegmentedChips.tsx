@@ -19,9 +19,10 @@ export type SegmentedOption<V extends string> = {
  * `accent` is the header language switcher: one selected cell on the soft gold. `quiet` is for
  * a form picker — three of them stacked on the eligibility screen cannot each carry a gold
  * block beside the one ink action, so the selected cell is a raised `surface2` panel instead.
- * `hivis` is the old name of `accent`, kept one cycle.
+ *
+ * The pre-rebrand name `hivis` was retired in Phase E (F-32).
  */
-export type SegmentedTone = 'accent' | 'quiet' | 'hivis';
+export type SegmentedTone = 'accent' | 'quiet';
 
 export type SegmentedChipsProps<V extends string> = Omit<ViewProps, 'children'> & {
   value: V;
@@ -36,7 +37,7 @@ export type SegmentedChipsProps<V extends string> = Omit<ViewProps, 'children'> 
  * Soft gold is 1.38:1 from the canvas and surface2 1.08:1: neither fill alone marks the
  * selected cell on every cream, so it also carries a 2 px inner bottom edge in the 3.4:1 gold.
  */
-const selectedFill: Record<'accent' | 'quiet', string> = {
+const selectedFill: Record<SegmentedTone, string> = {
   accent: 'bg-accentSoft border-b-2 border-b-accentStrong',
   quiet: 'bg-surface2 border-b-2 border-b-accentStrong',
 };
@@ -88,13 +89,12 @@ export function SegmentedChips<V extends string>({
   value,
   onChange,
   options,
-  tone: toneProp = 'accent',
+  tone = 'accent',
   block = false,
   className,
   ...rest
 }: SegmentedChipsProps<V>) {
   const d = useDir();
-  const tone = toneProp === 'hivis' ? 'accent' : toneProp;
   const last = options.length - 1;
   return (
     <Row

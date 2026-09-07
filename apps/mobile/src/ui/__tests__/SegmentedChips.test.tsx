@@ -113,15 +113,6 @@ describe('SegmentedChips (form pickers)', () => {
     }
   });
 
-  it('keeps `hivis` as the old name of the accent tone', async () => {
-    await render(
-      <SegmentedChips value="pc" onChange={() => {}} options={posts} tone="hivis" testID="seg" />,
-    );
-    expect(screen.getByRole('radio', { name: 'Constable' }).props.className).toContain(
-      'bg-accentSoft',
-    );
-  });
-
   it('fills its row as a block, every segment an equal share', async () => {
     await render(
       <SegmentedChips value="pc" onChange={() => {}} options={posts} block testID="seg" />,

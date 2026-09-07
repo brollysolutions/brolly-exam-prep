@@ -158,18 +158,12 @@ test('ink4 is decorative only', () => {
   assert.ok(ratio(c.ink4, c.canvas) < AA);
 });
 
-test('every legacy alias that carries text still reads on cream', () => {
-  const l = t.legacyColors;
-  for (const name of ['chalk', 'chalk2', 'dim', 'steel', 'hivis', 'hazard', 'sand', 'flag', 'success']) {
-    assert.ok(ratio(l[name], c.canvas) >= AA, `${name} on canvas`);
-  }
-  // `text-tar` on a legacy `bg-hivis` fill (the old primary button) stays AA.
-  assert.ok(ratio(l.tar, l.hivis) >= AA);
-});
+// The legacy aliases this file used to measure were deleted in Phase E (F-32); the names each
+// resolved to are all pinned above, and `legacy.test.mjs` guards against their return.
 
-test('every colour, semantic or legacy, is a palette value', () => {
+test('every colour is a palette value', () => {
   const values = new Set(Object.values(t.palette).map((v) => v.toLowerCase()));
-  for (const [name, value] of Object.entries({ ...c, ...t.legacyColors })) {
+  for (const [name, value] of Object.entries(c)) {
     assert.ok(values.has(value.toLowerCase()), `${name} = ${value} is not in the palette`);
   }
 });

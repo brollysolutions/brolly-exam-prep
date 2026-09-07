@@ -58,7 +58,7 @@ export {
 } from './Placeholder';
 export { Pill, type PillProps, type PillTone } from './Pill';
 export { ProgressRail, type ProgressRailProps } from './ProgressRail';
-export { Rail, Rail as HazardRail, type RailProps, type RailTone } from './Rail';
+export { Rail, type RailProps, type RailTone } from './Rail';
 export { Row, type RowProps } from './Row';
 export { Screen, type ScreenProps } from './Screen';
 export { SegmentedChips, type SegmentedChipsProps, type SegmentedOption } from './SegmentedChips';

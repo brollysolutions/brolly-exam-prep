@@ -19,17 +19,17 @@ describe('Chip', () => {
     expect(screen.getByText('Marked').props.className).toMatch(/\btext-ink\b/);
   });
 
-  it('tones: danger is a red tint with red text, ok a green fill with ink, old names map', async () => {
+  // Three tones and no more: `label` and the pre-rebrand `hivis`/`hazard`/`sand`/`flag` names
+  // left with Phase E (F-32), and the compiler is what pins that now.
+  it('tones: danger is a red tint with red text, ok a green fill with ink', async () => {
     await render(<Chip label="Wrong" active tone="danger" testID="chip" />);
     expect(screen.getByTestId('chip').props.className).toMatch(/\bbg-dangerTint border-dangerInk\b/);
     expect(screen.getByText('Wrong').props.className).toMatch(/\btext-dangerInk\b/);
     await screen.rerender(<Chip label="Eligible" active tone="ok" testID="chip" />);
     expect(screen.getByTestId('chip').props.className).toMatch(/\bbg-ok\b/);
     expect(screen.getByText('Eligible').props.className).toMatch(/\btext-ink\b/);
-    await screen.rerender(<Chip label="Old" active tone="hazard" testID="chip" />);
+    await screen.rerender(<Chip label="Answered" active tone="accent" testID="chip" />);
     expect(screen.getByTestId('chip').props.className).toMatch(/\bbg-accentSoft\b/);
-    await screen.rerender(<Chip label="Old" active tone="flag" testID="chip" />);
-    expect(screen.getByTestId('chip').props.className).toMatch(/\bbg-dangerTint\b/);
   });
 
   // The rest border is `outline` (3.0:1, WCAG 1.4.11), not `line2` (1.5:1): a filter the
@@ -110,23 +110,15 @@ describe('Chip', () => {
     expect(screen.getByTestId('chip').props.className).toContain(cls);
   });
 
-  // A tag on a card ("Sample data", a notice kind) is quieter than the heading it sits beside:
-  // a kicker on surface2, no border, no gold, and never a control.
-  it('draws a label tone as a small, quiet, non-interactive tag', async () => {
-    const onPress = jest.fn();
-    await render(<Chip label="Sample data" tone="label" testID="chip" onPress={onPress} />);
-    const el = screen.getByTestId('chip');
-    expect(el.props.accessibilityRole).toBeUndefined();
-    expect(screen.queryByRole('button')).toBeNull();
-    expect(el.props.className).toMatch(/\bbg-surface2\b/);
-    expect(el.props.className).toMatch(/\brounded-xs\b/);
-    expect(el.props.className).not.toMatch(/\bbg-accentSoft\b/);
-    expect(el.props.className).not.toMatch(/\bborder-line\b/);
-    expect(el.props.className).not.toMatch(/\bmin-h-chip\b/);
-    // Fix1 review #5: a "Sample data" tag read at parity with the heading beside it (same
-    // kicker weight as a 700 title) — step it to 600 while keeping the surface2 fill.
-    const text = screen.getByText('Sample data');
-    expect(text).toHaveStyle({ fontSize: 10.5, fontFamily: 'Inter_600SemiBold' });
-    expect(text.props.className).toMatch(/\btext-ink3\b/);
+  // The `label` tone drew a borderless 10.5 px kicker on `surface2` — a tag, not a control,
+  // and below the caption floor `ink3` is held to. `Pill` has drawn every product tag since
+  // Phase C and Phase E (F-32) deleted the tone, so a `Chip` is now always a bordered box:
+  // there is no shape it can take that is not a control or a badge with a boundary.
+  it('always draws a bordered box, whatever tone it is given', async () => {
+    for (const tone of ['accent', 'danger', 'ok'] as const) {
+      await render(<Chip label="Tag" tone={tone} testID="chip" />);
+      expect(screen.getByTestId('chip').props.className).toMatch(/\bborder\b/);
+      expect(screen.getByText('Tag')).toHaveStyle({ fontSize: 13 });
+    }
   });
 });

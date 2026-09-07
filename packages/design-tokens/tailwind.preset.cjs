@@ -9,9 +9,8 @@ const fontSize = Object.fromEntries(Object.entries(t.text).map(([k, v]) => [k, p
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
-    // The two blocks share no key; the merge order is defensive (semantic last, so a future
-    // collision would resolve to the semantic value). The aliases go in Phase E of the rebrand.
-    colors: { transparent: 'transparent', current: 'currentColor', ...t.legacyColors, ...t.colors },
+    // Semantic names only: the hi-vis-on-tar aliases were deleted in Phase E of the rebrand.
+    colors: { transparent: 'transparent', current: 'currentColor', ...t.colors },
     spacing,
     borderRadius,
     fontSize,

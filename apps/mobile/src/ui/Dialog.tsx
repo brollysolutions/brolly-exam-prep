@@ -10,8 +10,11 @@ import { Stack } from './Stack';
 import { StatTile } from './StatTile';
 import { Text } from './Text';
 
-/** `accent` asks (exit, submit, resume), `danger` reports (auto-submit). `hivis`/`hazard`/`flag` are the old names. */
-export type DialogTone = 'accent' | 'danger' | 'hivis' | 'hazard' | 'flag';
+/**
+ * `accent` asks (exit, submit, resume), `danger` reports (auto-submit). The pre-rebrand
+ * names `hivis`, `hazard` and `flag` were retired in Phase E (F-32).
+ */
+export type DialogTone = 'accent' | 'danger';
 export type DialogAction = { label: string; onPress: () => void };
 export type DialogStat = { num: string | number; label: string };
 
@@ -43,7 +46,7 @@ export type DialogProps = {
  * `accentInk` on it measures 4.14 and on a quiet pill's `surface2` 4.25 — both under AA.
  */
 const tonePill = (tone: DialogTone): { tone: PillTone; dot: boolean; dotTone: PillDotTone } =>
-  tone === 'flag' || tone === 'danger'
+  tone === 'danger'
     ? { tone: 'danger', dot: true, dotTone: 'danger' }
     : { tone: 'gold', dot: false, dotTone: 'none' };
 

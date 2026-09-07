@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react-native';
 import { size } from '@tslprb/design-tokens';
 import { initI18n } from '@tslprb/i18n';
 
-import { HazardRail } from '../index';
 import { Rail } from '../Rail';
 
 const hidden = { includeHiddenElements: true };
@@ -70,9 +69,5 @@ describe('Rail', () => {
     await render(<Rail />);
     expect(screen.queryByTestId('rail')).toBeNull();
     expect(screen.getByTestId('rail', hidden).props.accessibilityElementsHidden).toBe(true);
-  });
-
-  it('keeps the HazardRail name as an alias one cycle', () => {
-    expect(HazardRail).toBe(Rail);
   });
 });

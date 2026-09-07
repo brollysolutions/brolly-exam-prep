@@ -74,13 +74,6 @@ describe('Button', () => {
     expect(screen.getByText('Mark').props.className).toMatch(/\btext-ink\b/);
   });
 
-  it('keeps the old variant names as aliases for one cycle', async () => {
-    await render(<Button label="Old" variant="hazard" testID="btn" />);
-    expect(screen.getByTestId('btn').props.className).toMatch(/\bborder-accentStrong\b/);
-    await screen.rerender(<Button label="Old" variant="dangerOutline" testID="btn" />);
-    expect(screen.getByTestId('btn').props.className).toMatch(/\bborder-dangerInk\b/);
-  });
-
   it('uses the 56 px height for lg and 48 for md, as an object style', async () => {
     await render(<Button label="Go" size="lg" testID="btn" />);
     const lg = screen.getByTestId('btn');

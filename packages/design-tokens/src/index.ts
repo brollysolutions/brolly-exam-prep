@@ -4,19 +4,17 @@ import raw from '../tokens.json';
 export const tokens = raw;
 
 /**
- * Semantic colours (Brolly on cream). `legacyColors` keeps the hi-vis-on-tar names alive as
- * aliases of brand values until Phase E renames every screen; `src/ui` uses semantic names only
- * (enforced by `test/legacy.test.mjs`).
+ * Semantic colours (Brolly on cream), and the only colour names there are. The hi-vis-on-tar
+ * aliases that let the pre-rebrand screens compile through Phases A-D were deleted in Phase E
+ * (F-32); `test/legacy.test.mjs` fails if one reappears anywhere in `apps/mobile/src`.
  */
 export const semanticColors = raw.colors;
-export const legacyColors = raw.legacyColors;
 /** The raw brand scale the semantic names are drawn from. Tests only; components use `colors`. */
 export const palette = raw.palette;
-export const colors = { ...raw.legacyColors, ...raw.colors };
+export const colors = raw.colors;
 
 export type ColorName = keyof typeof colors;
-export type SemanticColorName = keyof typeof raw.colors;
-export type LegacyColorName = keyof typeof raw.legacyColors;
+export type SemanticColorName = ColorName;
 export type SpaceName = keyof typeof raw.spacing;
 export type RadiusName = keyof typeof raw.radius;
 export type ShadowName = keyof typeof raw.shadow;
