@@ -24,7 +24,7 @@ export type HistoryState = { attempts: AttemptRecord[] };
 export type HistoryActions = {
   /** Written by the attempt route once the server has scored the paper. */
   record: (attempt: AttemptRecord) => void;
-  /** Clear the record. Used by tests; there is no product action that erases a result. */
+  /** Clear the record. Called by `signOut()`, and by the tests. */
   reset: () => void;
 };
 
@@ -36,9 +36,11 @@ export const HISTORY_STORAGE_KEY = 'tslprb.history';
 export const HISTORY_LIMIT = 50;
 
 /**
- * F-23 — the papers this handset has sat. Kept locally and NOT cleared by `signOut()`:
- * the numbers on Home are a record of practice, not of an account, and the server keeps
- * its own copy for the account anyway.
+ * F-23 — the papers this handset has sat. Cleared by `signOut()`: the scores on Home name
+ * how one person did, and the next person on a shared phone would read them as their own.
+ *
+ * There is no copy of this anywhere else yet — the API answers from fixtures and its tables
+ * are empty — so clearing it is permanent, which is why the profile screen asks first.
  */
 export const useHistoryStore = create<HistoryStore>()(
   persist(

@@ -108,11 +108,42 @@ describe('ProfileView', () => {
     expect(h.onLang).toHaveBeenCalledWith('te');
   });
 
-  it('logs out without asking', async () => {
+  // Signing out is destructive now — it erases this phone's practice record, and nothing is
+  // kept on a server — so the button asks, like the delete button beneath it.
+  it('asks before logging out, and says what is erased', async () => {
+    const h = handlers();
+    await render(<ProfileView {...base} lang="en" {...h} />);
+    expect(screen.queryByTestId('profile-logout-dialog')).toBeNull();
+
+    await userEvent.press(screen.getByTestId('profile-logout'));
+
+    expect(screen.getByTestId('profile-logout-dialog')).toBeOnTheScreen();
+    expect(h.onLogout).not.toHaveBeenCalled();
+    expect(screen.getByText(/physical measurements/i)).toBeOnTheScreen();
+
+    await userEvent.press(screen.getByText('Log out and erase'));
+
+    expect(h.onLogout).toHaveBeenCalledTimes(1);
+    expect(screen.queryByTestId('profile-logout-dialog')).toBeNull();
+  });
+
+  it('backs out of the log-out dialog without signing out', async () => {
     const h = handlers();
     await render(<ProfileView {...base} lang="en" {...h} />);
     await userEvent.press(screen.getByTestId('profile-logout'));
-    expect(h.onLogout).toHaveBeenCalledTimes(1);
+    await userEvent.press(screen.getByText('Cancel'));
+    expect(screen.queryByTestId('profile-logout-dialog')).toBeNull();
+    expect(h.onLogout).not.toHaveBeenCalled();
+  });
+
+  // One overlay, one question: the two exits must never be on screen together.
+  it('opens one exit dialog at a time', async () => {
+    await render(<ProfileView {...base} lang="en" {...handlers()} />);
+    await userEvent.press(screen.getByTestId('profile-logout'));
+    expect(screen.queryByTestId('profile-delete-dialog')).toBeNull();
+    await userEvent.press(screen.getByText('Cancel'));
+    await userEvent.press(screen.getByTestId('profile-delete'));
+    expect(screen.queryByTestId('profile-logout-dialog')).toBeNull();
   });
 
   it('asks before deleting the account, and only then deletes', async () => {
