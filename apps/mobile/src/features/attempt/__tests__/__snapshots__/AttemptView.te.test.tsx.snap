@@ -1529,6 +1529,75 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             </Text>
           </View>
         </View>
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="items-center justify-center rounded-sm px-4 border border-outline"
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "height": 48,
+            }
+          }
+          testID="btn-submit"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "flexWrap": undefined,
+                "gap": 8,
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <Text
+              className="text-ink"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_600SemiBold",
+                  "fontSize": 15,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 24.8,
+                  "textAlign": "center",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              టెస్ట్ సబ్మిట్ చేయండి
+            </Text>
+          </View>
+        </View>
       </View>
       <View
         className="mt-3"
