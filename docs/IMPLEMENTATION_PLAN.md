@@ -104,6 +104,7 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 6. Delete the leftover folder `..\Tsplrb-w4` (a OneDrive lock stopped the session from removing it).
 
 ## Follow-ups (not blocking)
+- The phone app icon and the native splash still carry the Brolly mark (`icon.png`, `adaptive-foreground.png`, `splash-logo.png`) while nothing in the UI names the maker (F-33). Deliberate — kept until there is replacement art — so treat a report of it as a request for art, not a bug.
 - `apps/web/.eslintrc.json` is legacy eslintrc driven by `next lint`, which prints a deprecation notice and goes away in Next 16 — migrate to flat config (code review F-23-25, M9).
 - `docs/PR_TRACKING.md` has no rows for F-23 / F-24 / F-25 until the PRs are actually opened against the GitHub repo (code review F-23-25, M10).
 - The unlit target-bar block on Home is `line2` (`line3` retired with the legacy names in F-32); a token-level 3:1 neutral for empty progress states is still to be added to `@tslprb/design-tokens`.
