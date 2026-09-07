@@ -42,7 +42,7 @@ Approved 2026-09-02. Full rationale and decisions: `docs/specs/2026-09-02-tslprb
 ## Phase 4 — Screens (one PR each; order below)
 - [x] F-15 exam pattern config + fixtures
 - [x] F-16 persistence + mock API adapter (reviewed)
-- [x] F-03 login · [x] F-04 OTP · [x] F-05 post · [x] F-06 category (reviewed; branch feat/F-03-06-auth-onboarding)
+- [x] F-03 login (phone-only sign-in since 2026-09-07) · [x] ~~F-04 OTP~~ removed 2026-09-07 · [x] F-05 post · [x] F-06 category (reviewed; branch feat/F-03-06-auth-onboarding)
 - [x] F-09 attempt core · [x] F-10 palette · [x] F-11 dialogs/toasts/banners/call overlay (reviewed; branch feat/F-09-11-test-attempt)
 - [x] F-12 result · [x] F-13 solutions (reviewed; branch feat/F-12-13-result-solutions)
 - [x] F-02 splash/onboarding · [x] F-07 home · [x] F-08 test library · [x] F-14 profile/settings (reviewed; branch feat/F-02-07-08-14-shell)

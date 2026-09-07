@@ -2,7 +2,7 @@ import { render, screen, userEvent } from '@testing-library/react-native';
 import { initI18n } from '@tslprb/i18n';
 
 import LoginRoute from '@/app/(auth)/login';
-import { resetApi } from '@/data/api';
+import { getApi, resetApi } from '@/data/api';
 import { useSessionStore } from '@/data/session';
 
 const mockRouter = {
@@ -37,15 +37,42 @@ beforeEach(() => {
 });
 
 describe('LoginRoute', () => {
-  it('carries the destination on to the code screen', async () => {
+  // The OTP screen went on 2026-09-07: the number is the whole sign-in, so the next screen
+  // is the first onboarding question and the session exists before it renders.
+  it('signs in on the number alone and carries the destination on to onboarding', async () => {
     mockParams = { returnTo: '/test/mock-07' };
     await render(<LoginRoute />);
     await type('9000012345');
     await userEvent.press(screen.getByTestId('login-continue'));
-    expect(mockRouter.push).toHaveBeenCalledWith({
-      pathname: '/(auth)/otp',
+
+    expect(useSessionStore.getState().token).toBeTruthy();
+    expect(useSessionStore.getState().phone).toBe('9000012345');
+    expect(mockRouter.replace).toHaveBeenCalledWith({
+      pathname: '/(onboarding)/post',
       params: { returnTo: '/test/mock-07' },
     });
+    // No intermediate screen to push to any more.
+    expect(mockRouter.push).not.toHaveBeenCalled();
+  });
+
+  it('signs in with no destination when nothing asked for the account', async () => {
+    await render(<LoginRoute />);
+    await type('9000012345');
+    await userEvent.press(screen.getByTestId('login-continue'));
+    expect(useSessionStore.getState().signedIn()).toBe(true);
+    expect(mockRouter.replace).toHaveBeenCalledWith('/(onboarding)/post');
+  });
+
+  // The number reaches the server, so the screen has to survive the server not being there.
+  it('keeps the candidate on the screen, signed out, when the call fails', async () => {
+    jest.spyOn(getApi(), 'signInWithPhone').mockRejectedValueOnce(new Error('offline'));
+    await render(<LoginRoute />);
+    await type('9000012345');
+    await userEvent.press(screen.getByTestId('login-continue'));
+
+    expect(useSessionStore.getState().signedIn()).toBe(false);
+    expect(mockRouter.replace).not.toHaveBeenCalled();
+    expect(await screen.findByText(/went wrong|network|try again/i)).toBeOnTheScreen();
   });
 
   // F-19 — the sign-in is a card on top of a working app, not the door to it.

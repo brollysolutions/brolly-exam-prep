@@ -2,7 +2,6 @@ import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import { initI18n } from '@tslprb/i18n';
 
 import { Keypad } from '../Keypad';
-import { OtpCells } from '../OtpCells';
 import { PhoneField } from '../PhoneField';
 
 /**
@@ -13,14 +12,6 @@ import { PhoneField } from '../PhoneField';
 describe('entry boxes', () => {
   beforeAll(() => {
     initI18n('en');
-  });
-
-  it('OtpCells: idle cells in the outline, the next empty one in gold', async () => {
-    await render(<OtpCells value="12" testID="otp" />);
-    expect(screen.getByTestId('otp-0').props.className).toMatch(/\bborder-outline\b/);
-    expect(screen.getByTestId('otp-2').props.className).toMatch(/\bborder-accentStrong\b/);
-    expect(screen.getByTestId('otp-2').props.className).not.toMatch(/\bborder-outline\b/);
-    expect(screen.getByTestId('otp-5').props.className).not.toMatch(/\bborder-line2\b/);
   });
 
   it('PhoneField: the prefix box and the empty value box rest in the outline; a filled value box is gold', async () => {

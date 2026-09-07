@@ -43,7 +43,6 @@ export {
   useReducedMotionSafe,
 } from './motion';
 export { iso, Num } from './Num';
-export { OtpCells, type OtpCellsProps } from './OtpCells';
 export { PageHeader, type PageHeaderProps } from './PageHeader';
 export { PaletteCell, type PaletteCellProps } from './PaletteCell';
 export { pressedClass, pressedStyle, usePressed, type PressHandlers } from './pressable';

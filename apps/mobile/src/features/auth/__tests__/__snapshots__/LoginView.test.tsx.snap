@@ -193,7 +193,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
                 }
               }
             >
-              OTP SMS ద్వారా వస్తుంది. ఇంటర్నెట్ అవసరం లేదు.
+              మీ ప్రాక్టీస్ ఈ ఫోన్‌లో ఉంచడానికి దీన్ని వాడతాం. కోడ్ లేదు, పాస్‌వర్డ్ లేదు.
             </Text>
           </View>
         </View>

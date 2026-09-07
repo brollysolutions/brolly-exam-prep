@@ -29,21 +29,11 @@
   "lang": { "en": "EN", "te": "తెలుగు", "enShort": "EN", "teShort": "తె", "label": "Language" },
   "auth": {
     "loginTitle": "Your phone number",
-    "loginSub": "The OTP arrives by SMS. No internet needed.",
+    "loginSub": "We use it to keep your practice on this phone. No code, no password.",
     "phoneHint": "10-digit number",
     "countryCode": "+91",
-    "otpTitle": "Enter the code",
-    "otpSub": "6-digit code sent to <num>{{phone}}</num>",
-    "otpAuto": "We fill it in automatically when the SMS arrives",
-    "resendIn": "<num>{{seconds}}</num>s until resend",
-    "resend": "Resend code",
-    "codeExpired": "That code has expired. Ask for a new one.",
-    "verify": "Verify",
-    "changeNumber": "Change number",
     "deleteDigit": "Delete digit",
-    "autofillHint": "Long-press to use autofill",
-    "devCodeHint": "Test build — enter code <num>{{code}}</num>",
-    "useDevCode": "Use this code"
+    "autofillHint": "Long-press to use autofill"
   },
   "onboarding": {
     "step": "{{n}} / {{total}}",

@@ -1,8 +1,7 @@
 import {
   AttemptSchema,
   OkSchema,
-  OtpRequestResponseSchema,
-  OtpVerifyResponseSchema,
+  PhoneSignInResponseSchema,
   ResultSchema,
   SubmitResponseSchema,
   TestSchema,
@@ -11,10 +10,8 @@ import {
   type Attempt,
   type AttemptCreate,
   type Ok,
-  type OtpRequest,
-  type OtpRequestResponse,
-  type OtpVerify,
-  type OtpVerifyResponse,
+  type PhoneSignIn,
+  type PhoneSignInResponse,
   type Result,
   type SubmitResponse,
   type Test,
@@ -107,12 +104,8 @@ export class HttpApi implements AppApi {
     return this.request('/health', HealthSchema);
   }
 
-  requestOtp(body: OtpRequest): Promise<OtpRequestResponse> {
-    return this.request('/v1/otp/request', OtpRequestResponseSchema, { method: 'POST', body });
-  }
-
-  verifyOtp(body: OtpVerify): Promise<OtpVerifyResponse> {
-    return this.request('/v1/otp/verify', OtpVerifyResponseSchema, { method: 'POST', body });
+  signInWithPhone(body: PhoneSignIn): Promise<PhoneSignInResponse> {
+    return this.request('/v1/auth/phone', PhoneSignInResponseSchema, { method: 'POST', body });
   }
 
   listTests(): Promise<TestSummary[]> {

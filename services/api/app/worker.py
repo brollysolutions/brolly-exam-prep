@@ -47,30 +47,6 @@ async def auto_submit_expired_attempts(ctx: dict) -> None:
         logger.exception("auto_submit_expired_attempts: skipped (DB unavailable or empty)")
 
 
-async def purge_expired_otps(ctx: dict) -> None:
-    """Every 10 minutes: delete expired OTP audit rows.
-
-    OTP verification itself uses an in-memory store (app/routers/otp.py) in
-    this phase, so this job currently only tidies up the audit table
-    (app.models.OtpCode) once OTP requests start being persisted there."""
-    try:
-        from app.models import OtpCode
-
-        now = datetime.now(UTC)
-        async with async_session_maker() as session:
-            result = await session.execute(select(OtpCode).where(OtpCode.expires_at <= now))
-            expired = result.scalars().all()
-            if not expired:
-                logger.info("purge_expired_otps: nothing to do")
-                return
-            for row in expired:
-                await session.delete(row)
-            await session.commit()
-            logger.info("purge_expired_otps: purged %d row(s)", len(expired))
-    except Exception:  # noqa: BLE001 - defensive: DB may not exist yet
-        logger.exception("purge_expired_otps: skipped (DB unavailable or empty)")
-
-
 async def recompute_leaderboard(ctx: dict) -> None:
     """Nightly at 02:00 IST: recompute per-test rank for all results.
 
@@ -96,10 +72,9 @@ async def recompute_leaderboard(ctx: dict) -> None:
 # 02:00 IST == 20:30 UTC (IST is UTC+5:30, so 02:00 IST the same calendar
 # day is 20:30 UTC the previous day).
 class WorkerSettings:
-    functions = [auto_submit_expired_attempts, purge_expired_otps, recompute_leaderboard]
+    functions = [auto_submit_expired_attempts, recompute_leaderboard]
     cron_jobs = [
         cron(auto_submit_expired_attempts, minute=set(range(60)), run_at_startup=False),
-        cron(purge_expired_otps, minute={0, 10, 20, 30, 40, 50}, run_at_startup=False),
         cron(recompute_leaderboard, hour={20}, minute={30}, run_at_startup=False),
     ]
     redis_settings = RedisSettings.from_dsn(settings.redis_url)

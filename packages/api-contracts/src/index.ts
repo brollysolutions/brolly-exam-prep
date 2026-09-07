@@ -71,24 +71,18 @@ export const LocalizedOptionsSchema = z.object({
 });
 export type LocalizedOptions = z.infer<typeof LocalizedOptionsSchema>;
 
-// -------------------------------------------------------------------- OTP --
+// ----------------------------------------------------------------- Sign-in --
 
-export const OtpRequestSchema = z.object({
+/**
+ * The number is the whole credential. There is no second factor: the OTP step was removed on
+ * the product owner's instruction (2026-09-07), so possession of a number is not proved — the
+ * account belongs to whoever types the digits. An SMS or a password is what would change that,
+ * and until one lands this endpoint must not guard anything a stranger may not see.
+ */
+export const PhoneSignInSchema = z.object({
   phone: z.string().min(10).max(15),
 });
-export type OtpRequest = z.infer<typeof OtpRequestSchema>;
-
-export const OtpRequestResponseSchema = z.object({
-  request_id: z.string(),
-  dev_code: z.string().nullable().optional(),
-});
-export type OtpRequestResponse = z.infer<typeof OtpRequestResponseSchema>;
-
-export const OtpVerifySchema = z.object({
-  request_id: z.string(),
-  code: z.string().min(4).max(6),
-});
-export type OtpVerify = z.infer<typeof OtpVerifySchema>;
+export type PhoneSignIn = z.infer<typeof PhoneSignInSchema>;
 
 export const UserSchema = z.object({
   id: z.string(),
@@ -96,11 +90,12 @@ export const UserSchema = z.object({
 });
 export type User = z.infer<typeof UserSchema>;
 
-export const OtpVerifyResponseSchema = z.object({
+/** The same shape the verify step used to return: a token, and who it belongs to. */
+export const PhoneSignInResponseSchema = z.object({
   token: z.string(),
   user: UserSchema,
 });
-export type OtpVerifyResponse = z.infer<typeof OtpVerifyResponseSchema>;
+export type PhoneSignInResponse = z.infer<typeof PhoneSignInResponseSchema>;
 
 // ------------------------------------------------------------------ Tests --
 
@@ -224,8 +219,7 @@ export type Result = z.infer<typeof ResultSchema>;
 export interface ApiClient {
   health(): Promise<{ status: string }>;
 
-  requestOtp(body: OtpRequest): Promise<OtpRequestResponse>;
-  verifyOtp(body: OtpVerify): Promise<OtpVerifyResponse>;
+  signInWithPhone(body: PhoneSignIn): Promise<PhoneSignInResponse>;
 
   listTests(): Promise<TestSummary[]>;
   getTest(id: string): Promise<Test>;

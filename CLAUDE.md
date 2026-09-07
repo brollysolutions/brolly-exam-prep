@@ -53,7 +53,7 @@ Invoke the listed skill(s) BEFORE starting work that matches. Process skills fir
 ## Definition of done (every feature PR)
 1. `pnpm typecheck && pnpm lint && pnpm test` green (hooks enforce this on edit/stop).
 2. Screen renders in en and te; no hard-coded hex or strings.
-3. Unit tests for logic (timer, palette counts, OTP countdown, direction helpers); snapshot in `te`.
+3. Unit tests for logic (timer, palette counts, sign-in, direction helpers); snapshot in `te`.
 4. Visually checked in the web preview or Expo Go in en and te.
 5. `docs/FEATURES.md` + `docs/PR_TRACKING.md` updated (the `track-pr` hook does it on `gh pr create/merge`; verify).
 
