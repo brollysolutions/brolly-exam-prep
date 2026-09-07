@@ -98,7 +98,7 @@ export function formatClock(totalSec: number): string {
  * changes. `accentInk` on `accentSoft` measures 3.34:1 — inside AA for the 23 px bold numeral
  * but under it for the 12 px label above it, and a label darker than the figure it names is
  * the hierarchy upside down. The critical box is `dangerInk` with `onInk` (5.79:1), never
- * `danger` with cream (2.77:1).
+ * `danger` with cream (2.48:1).
  */
 function TimerBox({ remainingSec, armed }: { remainingSec: number; armed: boolean }) {
   const { t } = useTranslation();

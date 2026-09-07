@@ -41,7 +41,7 @@ const SKELETON = ['chip', 'card', 'card', 'card'] as const;
 
 /**
  * The verdict on a card: a 28 px disc, `accentStrong` with an ink ✓ or `dangerInk` with a cream
- * ✕. Never a cream tick on `danger`, which measures 2.77:1.
+ * ✕. Never a cream tick on `danger`, which measures 2.48:1.
  *
  * The gold is `accentStrong`, not the brand `accent`: the two discs are twins and have to be
  * found equally well, and `accent` measured **2.42:1** on the card against its red twin's

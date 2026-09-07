@@ -135,7 +135,7 @@ describe('AttemptView', () => {
       expect(screen.getByTestId('timer-value').props.className).toMatch(/\btext-ink\b/);
     });
 
-    // The one red: `dangerInk` with `onInk` at 5.79:1, never `danger` with cream at 2.77.
+    // The one red: `dangerInk` with `onInk` at 5.79:1, never `danger` with cream at 2.48.
     it('fills solid dangerInk with cream digits at 47 s', async () => {
       await renderView({ remainingSec: 47 });
       expect(screen.getByTestId('timer-box')).toHaveStyle({

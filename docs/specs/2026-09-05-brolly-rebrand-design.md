@@ -421,3 +421,83 @@ Everything below was measured on the running web build at 390 px in `en` and `te
 snapshots** at the wave's tip `bd5a9e0` (898 / 97 / 16 at `97c3e9a`; **910** once F-08's
 unrelated Sectional removal merged into `main` alongside), `@tslprb/design-tokens` 44, `@tslprb/i18n` 4.
 **0 new locale keys**; no route, store or product string change.
+
+## Addendum — Phase E as built, and the rebrand closes (2026-09-07)
+
+Five commits on `main` (base `4901cf1`): the renames (`ff0669a`), the alias deletion
+(`1ccc754`), `edge.ts` into `src/ui` (`617a618`), the two tracked follow-ups (`c5a149c`) and
+the docs. Nothing pushed. **The Brolly rebrand is complete**: every screen, primitive, token
+and document is on the semantic vocabulary, and the hi-vis-on-tar names no longer exist.
+
+- **The rename was four call sites, not the ~55 files this plan budgeted.** Phases B, C and D
+  converted each screen as they rebuilt it, so what was left at the base was `colors.tar` in
+  the two stack layouts and `color="dim"` twice in the gallery's `ShellStates` — plus four
+  test assertions naming a legacy class. Every replacement resolves to the identical hex:
+  `tar`→`canvas` `#f7f2e6`, `dim`→`ink3` `#6f665b`. The full table is in `DESIGN_SYSTEM.md`.
+  The one place the identical-hex rule does not apply is `startEdge`'s direction test, which
+  asserted only the side: its `hivis` argument becomes `accentStrong`, the token three of the
+  four real callers pass, and the test now asserts the colour as well as the side so a future
+  rename cannot move the bar's tone in silence.
+- **A retired name now resolves to nothing, which is the point.** `legacyColors` is gone from
+  `tokens.json`, `src/index.ts`, `tailwind.preset.cjs` and `apps/mobile/tailwind.config.js`,
+  so `colors` is `raw.colors` and `ColorName` is the semantic set. `legacy.test.mjs` can no
+  longer derive the retired list, so it **owns** it — a hard-coded array with the replacement
+  table in its doc comment — scans all of `apps/mobile/src`, and asserts the alias block stays
+  deleted. Without that, a stray `bg-tar` would fail silently as an unstyled element rather
+  than loudly as a type error.
+- **The one-cycle aliases go with their last callers**, each of which had already moved:
+  `Button` `hazard`/`dangerOutline`, `Chip` `label`/`hivis`/`hazard`/`sand`/`flag` with the
+  `LabelChip` branch and the gallery's demo of it, `Dialog` `hivis`/`hazard`/`flag`, `Toast`
+  `hazard`/`flag`, `SegmentedChips` `hivis`, and the `HazardRail` re-export. **`Rail` and
+  `motion.pulse` stay**: the dev gallery renders `<Rail />` and `<Rail critical />` in section
+  09, and that pulse is the only breathing rule left in the app.
+- **The three tracked follow-ups landed.** C5: `features/result/edge.ts` → `src/ui/edge.ts`
+  with its test, re-exported from the barrel, so the attempt overlays stop reaching into
+  `result` and the four screens fold their second import away. D17: `BackHeader.title` becomes
+  optional and Topic takes the leaf bar — `surface` under a `line`, a 48 px labelled chevron,
+  the switcher in `trailing`, and **no title in the bar**, because the topic's own title is a
+  display-face line in the body that may wrap to two; untitled, a `flex-1` spacer holds the
+  slot so `trailing` still sits at the far edge. D6: the attempt header's switcher takes the
+  `quiet` segmented tone.
+- **Measured, on the running build at 390 px.** D6 at 250 s, `en` and `te`: the selected cell
+  is `rgb(240,233,216)` (`surface2`) under its 2 px `rgb(161,127,42)` (`accentStrong`) bottom
+  edge in an `rgb(147,139,128)` (`outline`) frame, 48 px tall, while the timer beside it is
+  `rgb(232,207,122)` (`accentSoft`) under an `accentStrong` border — the one soft-gold block in
+  the row. D17: the bar measures **59 px** in both languages, `rgb(250,246,236)` under a 1 px
+  `rgb(233,226,211)`, with a 48 × 48 chevron target and the switcher's right edge at x = 374.
+- **Before/after capture diff.** Fifteen screens (Home, Study, Tests, Topic, Paper, Updates,
+  Affairs, Eligibility, Profile, Welcome, Login, OTP, the open palette, Result, Solutions) in
+  `en` and `te` from a `--clear`-restarted server, byte-compared: **28 of 30 frames are
+  pixel-identical**, zero page errors, 40 palette cells in both languages. The two that moved
+  are Topic in each language, +9 CSS px tall — the leaf bar the phase deliberately gave it —
+  and with the body shifted by exactly that, the prose below the header is identical to within
+  105 pixels in `en` and 4 in `te` (0.005 % of the frame), all of them antialiasing on the
+  rounded ends of the "Worked example" pill and the footer badge. The attempt header's D6
+  change is outside that set (the gallery's palette capture covers the frame) and is recorded
+  by the measurements above and by the refreshed `AttemptView.te` snapshot, whose whole diff is
+  one class: `bg-accentSoft` → `bg-surface2`.
+- **One transient, chased down rather than explained away.** The first `after` pass recorded
+  `home.en` 63 CSS px shorter than the baseline. Re-captured four times with the same script
+  and the same warm-up, it measured 1344 px every time and was **byte-identical** to the
+  baseline on all four, as `home.te` had been throughout: the short frame was a page measured
+  before it had settled, not a change. The bad frame is kept beside the set as
+  `home.en.TRANSIENT.png`.
+
+**Still open after the rebrand** (nothing here is Phase E's to fix):
+
+- **The Expo Go / device pass**, outstanding since Phase A. Every measurement in this spec is a
+  browser measurement. Geometry will hold; the sheet's snap animation, the press fills, the
+  warm shadows on Android below API 28 and the `<Num>` timer crossing 9:59 → 10:00 deserve a
+  real device.
+- **The native Telugu copy review**, holding two items: D16, "62.25 Best" reading backwards in
+  English while the Telugu order is right; and D8, the all-correct Solutions state titled
+  "Nothing yet", which reads as an absence rather than a success and needs a new key pair.
+- **D12 — the locked palette group's blanket `0.38` opacity** puts its numerals under every
+  contrast floor. The remedy is `ink3` on `surface2` plus the lock semantics, not an opacity.
+  Visible since the palette started opening (`palette-open-*.png`, the Telangana group).
+- **C6 — `ResultView.tsx` sets `bottomInset={false}` unconditionally** while the `ActionBar`
+  that owns the inset renders only in the loaded branch. Harmless, and `TopicView` does the
+  same.
+- The standing pre-rebrand items: `Dialog onDismiss`, the web hydration mismatch, the
+  per-language line-height being one multiplier rather than per role, and the `apps/web`
+  flat-config lint migration.

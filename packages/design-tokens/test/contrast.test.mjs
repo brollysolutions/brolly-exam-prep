@@ -143,6 +143,26 @@ test('the selected card edge clears 3:1 on the cream outside it and its own tint
   assert.ok(ratio(c.accent, c.canvas) < NON_TEXT);
 });
 
+/**
+ * `danger` and `ok` are FILLS THAT CARRY INK, never cream. The design system, five source
+ * comments and two test comments all quoted 2.77 and 2.28 for cream on them — those are the
+ * ratios for pure WHITE. Cream (`onInk`, #f7f2e6) is 2.48 and 2.04, further under the floor,
+ * so every ruling held and only the printed numbers were wrong (Phase E, F-32). Pinned here so
+ * the next writer reads the number off a test instead of off a comment.
+ */
+test('cream never sits on danger or ok: both are under the 3:1 floor, ink carries them', () => {
+  const creamOnDanger = ratio(c.onInk, c.danger);
+  const creamOnOk = ratio(c.onInk, c.ok);
+  assert.ok(creamOnDanger < NON_TEXT, `cream on danger is ${creamOnDanger.toFixed(2)}:1`);
+  assert.ok(creamOnOk < NON_TEXT, `cream on ok is ${creamOnOk.toFixed(2)}:1`);
+  assert.equal(creamOnDanger.toFixed(2), '2.48');
+  assert.equal(creamOnOk.toFixed(2), '2.04');
+  // What the app draws instead: ink on both, and cream only on the two dark inks.
+  assert.ok(ratio(c.ink, c.danger) >= AA);
+  assert.ok(ratio(c.ink, c.ok) >= AA);
+  assert.ok(ratio(c.onInk, c.dangerInk) >= AA);
+});
+
 test('line and line2 are structure only: hairlines, dividers and grabbers, never a control edge', () => {
   // 1.15:1 and 1.5:1 on canvas — documented so nobody reaches for them as an outline.
   assert.ok(ratio(c.line, c.canvas) < NON_TEXT);

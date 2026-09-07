@@ -91,7 +91,7 @@ describe('SolutionsView', () => {
   // The verdict disc: `accentStrong` with an ink ✓, `dangerInk` with a cream ✕. The brand
   // `accent` measured 2.42:1 against the card behind it while its red twin was 6.00 — a mark
   // has to clear the 3:1 non-text floor on both, and `accentStrong` is 3.48 (ink on it 4.49).
-  // Never a cream tick on `danger`, which is 2.77:1.
+  // Never a cream tick on `danger`, which is 2.48:1.
   it('marks each card with a round badge in the two verdict colours', async () => {
     await render(<SolutionsView rows={ROWS} initialFilter="all" />);
     const right = screen.getAllByTestId('solution-badge-correct');

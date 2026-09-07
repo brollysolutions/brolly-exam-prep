@@ -148,7 +148,7 @@ const CALL_NUMBER = '+91 90000 12345';
 
 /**
  * One of the two 64 px round call actions. The glyph is INK on both fills: cream on `danger`
- * measures 2.77:1 and on `ok` 2.28, both under the 3:1 floor a mark has to clear, while ink is
+ * measures 2.48:1 and on `ok` 2.04, both under the 3:1 floor a mark has to clear, while ink is
  * 6.11 and 7.41.
  */
 function CallButton({
