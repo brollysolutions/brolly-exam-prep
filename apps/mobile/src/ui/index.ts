@@ -2,7 +2,6 @@ export { ActionBar, type ActionBarProps } from './ActionBar';
 export { Banner, type BannerProps } from './Banner';
 export { BackHeader, type BackHeaderProps } from './BackHeader';
 export { BackRow, type BackRowProps } from './BackRow';
-export { Brand, type BrandProps, type BrandVariant } from './Brand';
 export { Button, type ButtonProps, type ButtonSize, type ButtonVariant } from './Button';
 export { Card, type CardProps } from './Card';
 export { Chip, type ChipProps, type ChipSize, type ChipTone } from './Chip';

@@ -17,27 +17,14 @@ describe('PageHeader', () => {
     expect(title).toHaveStyle({ fontFamily: 'PlayfairDisplay_400Regular', fontSize: 26 });
   });
 
-  it('draws no lockup row unless there is a brand or something beside it', async () => {
+  // The lockup that used to open this row was removed on 2026-09-07, so a header with
+  // nothing beside its title draws no row at all rather than an empty one.
+  it('draws no top row unless something sits beside the title', async () => {
     await render(<PageHeader title="Profile" testID="header" />);
     expect(screen.queryByTestId('header-top')).toBeNull();
   });
 
-  it('puts the lockup and its trailing slot on one row', async () => {
-    await render(
-      <PageHeader
-        brand
-        brandTestID="home-brand"
-        trailing={<RNText testID="switcher">en</RNText>}
-        title="Ready?"
-        testID="header"
-      />,
-    );
-    expect(screen.getByTestId('home-brand')).toBeOnTheScreen();
-    expect(screen.getByTestId('switcher')).toBeOnTheScreen();
-    expect(screen.getByTestId('header-top')).toHaveStyle({ justifyContent: 'space-between' });
-  });
-
-  it('pushes a lone trailing slot to the reading end', async () => {
+  it('pushes the trailing slot to the reading end', async () => {
     await render(
       <PageHeader trailing={<RNText testID="switcher">en</RNText>} title="Step" testID="header" />,
     );

@@ -7,7 +7,6 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-na
 
 import {
   ActionBar,
-  Brand,
   Button,
   Num,
   Pill,
@@ -119,11 +118,6 @@ export function WelcomeView({ initialSlide = 1, onDone }: WelcomeViewProps) {
 
   return (
     <Screen testID="welcome-screen" bottomInset={false}>
-      {/* The full Brolly lockup: this is the one screen with room for it. */}
-      <View className="items-center pb-6 pt-8">
-        <Brand variant="splash" testID="welcome-brand" />
-      </View>
-
       <ScrollView
         ref={pager}
         testID="welcome-pager"

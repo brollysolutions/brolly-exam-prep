@@ -11,7 +11,7 @@ The app was built to the approved prototype's "hi-vis yellow on tar" identity. T
 | Identity in-app | Brolly logo in the header and splash; "TSLPRB"/"PWT" stay in copy as the exam name |
 | Primary buttons | Solid ink `#211c17` with cream text; gold marks active/selected/progress/badges |
 | Fonts | Inter for text; Playfair Display for screen titles and hero lines; Noto Sans Telugu for te; numbers in Inter (tabular) |
-| Brand mark | Umbrella glyph + "Brolly Solutions" in the header, full logo on splash/welcome; the navy/gold "B" tile only as the phone app icon |
+| Brand mark | ~~Umbrella glyph + "Brolly Solutions" in the header, full logo on splash/welcome~~ — **removed 2026-09-07** at the product owner's request; no name or logo appears in the app. The navy/gold "B" tile survives as the phone app icon and the native splash until replacement art exists |
 | Palette colours | Brand semantics: gold = answered, ink = marked, red outline = unanswered, plain = unvisited |
 | Delivery | Phases A → B → C → D → E run back to back, each reviewed and pushed on its own |
 
@@ -27,7 +27,7 @@ The app was built to the approved prototype's "hi-vis yellow on tar" identity. T
 - Single token source `packages/design-tokens/tokens.json` (34 colours, radii 2–6, `font.en/te`, 21 type roles, tracking, motion, hazard) → `src/index.ts` (`typography()`, `paletteState` hard-codes hivis/hazard) → `tailwind.preset.cjs`.
 - Fonts: `apps/mobile/src/app/_layout.tsx:3-52` (`FONTS` map + `useFonts`), packages `@expo-google-fonts/archivo`, `noto-sans-telugu`.
 - ~13 primitives whose variant names are colour names: `Button` (`primary` = `bg-hivis`, `hazard`, `danger`), `Chip` tones, `SegmentedChips` `hivis|quiet`, `Dialog` tones, `Toast`, `Card` selected state, `ProgressRail`, `PaletteCell` (`paletteState`), `Toggle`, `OtpCells`/`PhoneField` focus, `Sheet` top border, `Kicker` defaults, `HazardRail`, `Screen` `bg-tar`; tab bar colours in `src/app/(tabs)/_layout.tsx:48-53`.
-- Brand lockups: `HomeView.tsx:281`, `LoginView.tsx:63`, `WelcomeView.tsx:13-27` (`BrandBlock` plate), `StatesView.tsx:168`; `common.brand` = "TSLPRB".
+- Brand lockups: all removed on 2026-09-07 (F-33) along with `src/ui/Brand.tsx`, the `brand` prop on `PageHeader` and the `common.brand` string. This line records where they were: `HomeView.tsx`, `LoginView.tsx`, `WelcomeView.tsx`, `StatesView.tsx`.
 - `app.json`: `userInterfaceStyle: dark`, three `#0D0D0E` literals (adaptive icon, splash, root background); `_layout.tsx:65` `StatusBar style="light"`; `scripts/make-splash-icon.mjs` draws the old plate.
 - No theming layer, zero raw hex in `src`; `apps/web` inlines token colours with three magic numbers.
 - Tests: 16 snapshots (hexes serialised, `#FFE01B` ×16), 20 tests asserting `colors.X`/class names symbolically (survive a retokenise, break on renames), `Text.test.tsx` and `EligibilityView.test.tsx` assert the "TSLPRB" string.

@@ -64,11 +64,13 @@ describe('WelcomeView', () => {
     expect(slide().props.style.height).toBeUndefined();
   });
 
-  it('opens on the full Brolly logo, named in Latin', async () => {
+  // The logo and the company name came off the app on 2026-09-07 at the owner's request.
+  // The screen leads with what it is for instead, and carries no mark of who made it.
+  it('opens on the first slide, with no logo and no company name', async () => {
     await render(<WelcomeView onDone={jest.fn()} />);
-    expect(screen.getByTestId('welcome-brand')).toBeOnTheScreen();
-    expect(screen.getByRole('image', { name: 'Brolly Solutions' })).toBeOnTheScreen();
-    // The exam keeps its own name in the copy; the brand never claims it.
+    expect(screen.queryByTestId('welcome-brand')).toBeNull();
+    expect(screen.queryByRole('image', { name: 'Brolly Solutions' })).toBeNull();
+    expect(screen.queryByText(/Brolly/i)).toBeNull();
     expect(screen.getByText('Practise the real PWT')).toBeOnTheScreen();
   });
 });
@@ -98,8 +100,8 @@ describe('WelcomeView (te)', () => {
       'welcome-dot-2',
       'welcome-dot-3',
     ]);
-    // The brand keeps its Latin name in every language; the exam name stays in the Telugu copy.
-    expect(screen.getByRole('image', { name: 'Brolly Solutions' })).toBeOnTheScreen();
+    // Nothing names the maker in either language now.
+    expect(screen.queryByText(/Brolly/i)).toBeNull();
     // A Telugu title is a serif too: Noto Serif Telugu 700 on a 1.5 line-height (24 px type
     // on a 36 px line), since Playfair (the English display face) has no Telugu.
     const title = screen.getByTestId('welcome-title-1');

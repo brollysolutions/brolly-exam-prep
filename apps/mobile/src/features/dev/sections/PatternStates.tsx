@@ -24,7 +24,7 @@ const DEV = {
   patterns: 'Screen patterns (P1–P6)',
   pill: 'Pill — quiet · gold · ink, with a dot and a <Num> lead',
   pillTones: 'Pill — dot tones (gold · danger · ok · none) and align="center"',
-  pageHeader: 'PageHeader — brand + trailing, pill, Playfair title, ink3 subtitle',
+  pageHeader: 'PageHeader — trailing, pill, Playfair title, ink3 subtitle',
   pageHeaderPlain: 'PageHeader — title only (Profile)',
   backHeader: 'BackHeader — leaf bar, trailing pill, second row',
   statTile: 'StatTile — counted · quiet zero · nothing yet',
@@ -95,7 +95,6 @@ export function PatternStates({ index }: { index: string }) {
 
       <Label>{DEV.pageHeader}</Label>
       <PageHeader
-        brand
         trailing={<Pill label={DEV.today} tone="gold" dot />}
         pill={<Pill label={DEV.step} leading={<Num variant="caption">{'1 / 2'}</Num>} />}
         title="Which post are you preparing for?"
