@@ -19,8 +19,16 @@ export type SheetHandle = { present: () => void; dismiss: () => void };
 
 export type SheetProps = {
   title?: string;
-  /** Omit for content-sized sheets. */
-  snapPoints?: (string | number)[];
+  /**
+   * Fixed heights in pixels. Omit for content-sized sheets.
+   *
+   * **Pixels, never a percentage.** `@gorhom/bottom-sheet` resolves a `'82%'` snap point
+   * against a container height its web provider does not supply, so a percentage sheet never
+   * mounts in the browser at all — the question palette was missing from the web build for
+   * three phases before anyone opened it there (fix wave 1, D13). The type is what stops it
+   * coming back: a caller measures with `useWindowDimensions()` and passes the number.
+   */
+  snapPoints?: number[];
   /** Body scrolls inside the sheet (palette grid). */
   scroll?: boolean;
   /**
