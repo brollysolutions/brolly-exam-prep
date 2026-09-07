@@ -60,7 +60,7 @@ export type AttemptViewProps = {
   elapsedSec: number;
   /**
    * False until the attempt has a deadline. An unarmed screen reads `remainingSec: 0`, which
-   * must not flash the flag-red timer and marquee the rail before the paper has even started.
+   * must not raise the red timer box and the critical band before the paper has even started.
    */
   armed?: boolean;
   lang: Lang;
@@ -135,7 +135,9 @@ function TimerBox({ remainingSec, armed }: { remainingSec: number; armed: boolea
       >
         {t('test.timeLeft')}
       </Text>
-      {/* The prototype pins the numeral's line-height to 1.0 so the box stays 48 px tall. */}
+      {/* The numeral's line-height is pinned to 1.0 so the box is the label plus the digits
+          plus its own padding and nothing more — 55 px measured at 390 px, not the 48 the
+          prototype's flat box was (fix wave 1, D9). It is a MINIMUM the Telugu label grows. */}
       <Num variant="timer" color={fg} testID="timer-value" style={{ lineHeight: text.timer }}>
         {formatClock(remainingSec)}
       </Num>
@@ -217,16 +219,20 @@ function OptionRow({
         onPress();
       }}
       className={cx(
-        'min-h-key justify-center rounded-md py-3',
-        // Border grows 1 → 2 px when selected; padding gives the pixel back.
+        'min-h-key justify-center rounded-md px-4 py-3',
+        // Border grows 1 → 2 px when selected, so ONE pixel comes back off the padding, in the
+        // style below — the same sum `Card` does. Handing back four (`px-3`) put the chosen
+        // answer 3 px inside the rows above and below it (fix wave 1, D3).
         // One fill slot, never two `bg-*`: the tint, the press fill or the resting surface.
         selected
-          ? 'border-2 border-accentStrong bg-accentTint px-3'
-          : cx('border border-outline px-4', pressed ? pressedClass : 'bg-surface'),
+          ? 'border-2 border-accentStrong bg-accentTint'
+          : cx('border border-outline', pressed ? pressedClass : 'bg-surface'),
       )}
       // Flattened object, never a callback: a `style` function loses its statics on web.
+      // 15 + 2 px of border and 16 + 1 both land the key box on the same axis.
       style={StyleSheet.flatten([
         { minHeight: size.key },
+        selected ? { paddingHorizontal: spacing['4'] - 1 } : null,
         selected && pressed ? pressedStyle : null,
       ])}
     >
@@ -337,8 +343,11 @@ export function AttemptView({
     <Screen bottomInset={false} overlay={overlay} testID={testID}>
       {/* The last minute says so three times and none of them moves: this band, the solid red
           timer box and the red progress fill, with the pinned toast carrying the words. The
-          pulsing `Rail` that used to sit here is gone (ruling 2026-09-05, Phase D). */}
-      {critical && <HeaderBand />}
+          pulsing `Rail` that used to sit here is gone (ruling 2026-09-05, Phase D).
+          The band is ALWAYS rendered and only its fill changes: inserted into flow at the
+          sixty-second mark it pushed the clock it was warning about 4 px down the screen
+          (fix wave 1, D10). Motionless means the layout too, not just the paint. */}
+      <HeaderBand critical={critical} />
       <View
         className="border-b border-line bg-surface"
         style={shadowStyle('card')}
@@ -436,14 +445,16 @@ export function AttemptView({
           <Pill
             testID="q-badge"
             leading={
-              <>
+              // "Q" and its number sit on one baseline: two faces at one size, which the
+              // pattern's own centring Row cannot lock for them (fix wave 1, C4).
+              <Row gap={1} align="baseline">
                 <Text variant="caption" weight="700" color="ink3" tracking="kicker">
                   {t('test.qLabel')}
                 </Text>
                 <Num variant="caption" weight="700" color="ink3" tracking="none">
                   {current}
                 </Num>
-              </>
+              </Row>
             }
           />
           <MarksPill attempt={attempt} />

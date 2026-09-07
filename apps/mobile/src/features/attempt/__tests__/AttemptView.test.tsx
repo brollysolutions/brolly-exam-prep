@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { act, fireEvent, render, screen, userEvent, within } from '@testing-library/react-native';
-import { colors, size } from '@tslprb/design-tokens';
+import { colors, size, spacing } from '@tslprb/design-tokens';
 import { initI18n } from '@tslprb/i18n';
 
 import {
@@ -105,6 +105,17 @@ describe('AttemptView', () => {
       expect(screen.getByTestId('timer-value').props.className).toMatch(/\btext-ink\b/);
     });
 
+    // The gold state is armed-only too, not just the red one: a screen that has not started
+    // must not wear the five-minute warning because its `remainingSec` happens to read low.
+    it('stays quiet at 250 s while unarmed', async () => {
+      await renderView({ remainingSec: 250, armed: false });
+      expect(screen.getByTestId('timer-box')).toHaveStyle({
+        backgroundColor: colors.surface2,
+        borderColor: colors.line,
+      });
+      expect(screen.getByTestId('timer-value').props.className).toMatch(/\btext-ink\b/);
+    });
+
     it('is quiet at 301 s', async () => {
       await renderView({ remainingSec: 301 });
       expect(screen.getByTestId('timer-box')).toHaveStyle({
@@ -161,11 +172,28 @@ describe('AttemptView', () => {
 
     it('shows neither band nor red fill above the last minute, or before the clock is armed', async () => {
       await renderView({ remainingSec: 61 });
-      expect(screen.queryByTestId('header-band', { includeHiddenElements: true })).toBeNull();
+      expect(screen.getByTestId('header-band', { includeHiddenElements: true })).toHaveStyle({
+        backgroundColor: 'transparent',
+      });
       expect(screen.getByTestId('progress-fill').props.className).toMatch(/\bbg-accentStrong\b/);
 
       await renderView({ remainingSec: 0, armed: false });
-      expect(screen.queryByTestId('header-band', { includeHiddenElements: true })).toBeNull();
+      expect(screen.getByTestId('header-band', { includeHiddenElements: true })).toHaveStyle({
+        backgroundColor: 'transparent',
+      });
+    });
+
+    // The band is in flow at every moment of the paper and only its fill moves: it used to be
+    // MOUNTED at sixty seconds, which pushed the header — the clock included — 4 px down the
+    // screen at the one moment nobody can afford to re-find it (fix wave 1, D10).
+    it('holds the header still across the sixty-second mark: 4 px either side', async () => {
+      await renderView({ remainingSec: 61 });
+      const before = screen.getByTestId('header-band', { includeHiddenElements: true });
+      expect(before).toHaveStyle({ height: size.band });
+
+      await renderView({ remainingSec: 59 });
+      const after = screen.getByTestId('header-band', { includeHiddenElements: true });
+      expect(after).toHaveStyle({ height: size.band, backgroundColor: colors.dangerInk });
     });
   });
 
@@ -175,6 +203,23 @@ describe('AttemptView', () => {
     expect(option).toHaveStyle({ minHeight: size.key });
     // Not a `style` CALLBACK: statics inside one never reach the DOM on web.
     expect(typeof option.props.style).not.toBe('function');
+  });
+
+  // The selected row grows its border by ONE pixel, so it gives ONE pixel back. Handing
+  // back four (`px-4` → `px-3`) put the chosen answer's key 3 px inside its neighbours'
+  // axis — measured 47 against 50 on the build (fix wave 1, D3). The box owns both numbers.
+  it('keeps the chosen option on the same axis as the rest: one pixel back, not four', async () => {
+    // Q8 is answered (choice 2) in the demo attempt, so option-2 renders selected.
+    await renderView({ attempt: { ...DEMO_ATTEMPT, current: 8 }, question: DEMO_PAPER[7] });
+    const chosen = screen.getByTestId('option-2');
+    const other = screen.getByTestId('option-0');
+    expect(chosen.props.accessibilityState.checked).toBe(true);
+    expect(other.props.accessibilityState.checked).toBe(false);
+    // 15 + 2 px of border = 17; 16 + 1 = 17.
+    expect(chosen).toHaveStyle({ paddingHorizontal: spacing['4'] - 1 });
+    expect(chosen.props.className).toMatch(/\bborder-2\b/);
+    expect(other.props.className).toMatch(/\bpx-4\b/);
+    expect(chosen.props.className).not.toMatch(/\bpx-3\b/);
   });
 
   it('sizes the fixed footer buttons from the tokens', async () => {

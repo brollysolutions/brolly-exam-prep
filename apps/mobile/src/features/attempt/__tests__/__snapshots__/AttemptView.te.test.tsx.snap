@@ -17,6 +17,17 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
     className="flex-1"
   >
     <View
+      accessibilityElementsHidden={true}
+      importantForAccessibility="no-hide-descendants"
+      style={
+        {
+          "backgroundColor": "transparent",
+          "height": 4,
+        }
+      }
+      testID="header-band"
+    />
+    <View
       className="border-b border-line bg-surface"
       style={
         {
@@ -703,43 +714,55 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
                 }
               }
             >
-              <Text
-                className="text-ink3"
+              <View
                 style={
                   {
-                    "fontFamily": "NotoSansTelugu_700Bold",
-                    "fontSize": 12,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 19.8,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
+                    "alignItems": "baseline",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 4,
+                    "justifyContent": undefined,
                   }
                 }
               >
-                ప్ర
-              </Text>
-              <Text
-                accessibilityLanguage="en"
-                className="text-ink3"
-                style={
-                  {
-                    "fontFamily": "Inter_700Bold",
-                    "fontSize": 12,
-                    "fontVariant": [
-                      "tabular-nums",
-                    ],
-                    "letterSpacing": 0,
-                    "lineHeight": 18,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
+                <Text
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "NotoSansTelugu_700Bold",
+                      "fontSize": 12,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 19.8,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
                   }
-                }
-              >
-                ⁦12⁩
-              </Text>
+                >
+                  ప్ర
+                </Text>
+                <Text
+                  accessibilityLanguage="en"
+                  className="text-ink3"
+                  style={
+                    {
+                      "fontFamily": "Inter_700Bold",
+                      "fontSize": 12,
+                      "fontVariant": [
+                        "tabular-nums",
+                      ],
+                      "letterSpacing": 0,
+                      "lineHeight": 18,
+                      "textAlign": "left",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ⁦12⁩
+                </Text>
+              </View>
             </View>
           </View>
           <View
@@ -834,7 +857,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="min-h-key justify-center rounded-md py-3 border border-outline px-4 bg-surface"
+            className="min-h-key justify-center rounded-md px-4 py-3 border border-outline bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -931,7 +954,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="min-h-key justify-center rounded-md py-3 border border-outline px-4 bg-surface"
+            className="min-h-key justify-center rounded-md px-4 py-3 border border-outline bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1028,7 +1051,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="min-h-key justify-center rounded-md py-3 border border-outline px-4 bg-surface"
+            className="min-h-key justify-center rounded-md px-4 py-3 border border-outline bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1125,7 +1148,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="min-h-key justify-center rounded-md py-3 border border-outline px-4 bg-surface"
+            className="min-h-key justify-center rounded-md px-4 py-3 border border-outline bg-surface"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
