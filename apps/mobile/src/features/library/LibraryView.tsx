@@ -163,15 +163,16 @@ function TestRow({
  * the clock, and something to read with the answers already on it. One tap target cannot be
  * both, so the row states the paper and then offers the choice underneath.
  *
- * **Neither is the ink fill** (design review A1/D4). One ink primary per screen counts every
- * instance, and a shelf draws this pair once per row: two black blocks were 14 % of the card
- * at 15.1:1 while the thing that actually says where you are — the active filter chip — is
- * 1.38:1, so the repeated secondary action out-shouted the screen's own state. A repeated
- * per-row action is never the ink fill.
+ * **Practise is the ink fill and View paper is the outline**, by the product owner's ruling on
+ * 2026-09-07. Design review A1/D4 had demoted both — one ink primary per screen counts every
+ * instance, and a shelf draws this pair once per row, so two black blocks were 14 % of the card
+ * at 15.1:1 against an active filter chip at 1.38:1. The owner looked at both and chose the
+ * fill: sitting the paper is what the shelf is for, and an outline-against-nothing pair read as
+ * two weak choices rather than one strong one.
  *
- * Practise still leads, on the box rather than on the ink: boxed against unboxed is the rank
- * signal inside a repeated pair, which is what the "two identical outlines" objection was
- * really about. The filter chips overhead are navigation, not actions on this paper.
+ * So the "one ink primary per screen" rule now reads "per screen, or once per row in a repeated
+ * pair" — see `.claude/rules/mobile-ui.md`. The filter chips keep their gold, which is what the
+ * original objection was actually protecting: the shelf must still say which shelf it is.
  */
 function PreviousRow({
   test,
@@ -197,7 +198,7 @@ function PreviousRow({
       />
       <Row gap={2} className="pb-3">
         <Button
-          variant="secondary"
+          variant="primary"
           size="md"
           weight="700"
           label={t('library.practise')}
@@ -206,7 +207,7 @@ function PreviousRow({
           testID={`library-practise-${test.id}`}
         />
         <Button
-          variant="ghost"
+          variant="secondary"
           size="md"
           label={t('library.viewPaper')}
           onPress={onView}

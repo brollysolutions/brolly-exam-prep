@@ -188,34 +188,34 @@ describe('LibraryView — previous papers', () => {
     expect(screen.queryByTestId('library-locked-toast')).toBeNull();
   });
 
-  // One ink fill per screen counts every INSTANCE, and a shelf draws this pair once per row:
-  // two black blocks at 15.1:1 were 14 % of the card while the active filter chip — the thing
-  // that says which shelf you are on — is 1.38:1 (design review A1/D4). Neither is the fill.
-  it('keeps both controls 48 px and gives the shelf no ink fill at all', async () => {
+  // The owner's ruling of 2026-09-07: Practise carries the ink fill and View paper the outline.
+  // Sitting the paper is what the shelf is for, so the pair reads as one strong choice beside a
+  // quieter one rather than two weak ones (this reverses design review A1/D4).
+  it('keeps both controls 48 px, fills Practise and boxes View paper', async () => {
     await previous();
     const practise = screen.getByTestId('library-practise-prev-2022');
     const view = screen.getByTestId('library-view-prev-2022');
     expect(practise).toHaveStyle({ height: 48 });
     expect(view).toHaveStyle({ height: 48 });
-    expect(practise.props.className).not.toMatch(/\bbg-ink\b/);
+    expect(practise.props.className).toMatch(/\bbg-ink\b/);
     expect(view.props.className).not.toMatch(/\bbg-ink\b/);
-    // Rank inside the pair is the box, not the fill: Practise is the outlined one, View paper
-    // is bare. Weight still separates them, as it did.
-    expect(practise.props.className).toMatch(/\bborder-outline\b/);
-    expect(view.props.className).not.toMatch(/\bborder-outline\b/);
+    expect(view.props.className).toMatch(/\bborder-outline\b/);
     expect(within(practise).getByText('Practise').props.style.fontFamily).toContain('700Bold');
     expect(within(view).getByText('View paper').props.style.fontFamily).not.toContain('700Bold');
   });
 
-  // The screen's ink budget: with the pair demoted there is no `bg-ink` control anywhere on it.
-  it('leaves the whole Tests screen without a single ink-filled button', async () => {
+  // The fill repeats once per row, and nothing else on the screen takes it: the ink budget is
+  // spent on this pair, so a second filled control anywhere would leave the row competing.
+  it('spends the ink fill on Practise alone, once per paper', async () => {
     await previous();
     const filled = screen
       .getAllByRole('button')
       .filter(
         (n) => typeof n.props.className === 'string' && /\bbg-ink\b/.test(n.props.className),
       );
-    expect(filled).toHaveLength(0);
+    expect(filled).toHaveLength(2);
+    expect(screen.getByTestId('library-practise-prev-2022').props.className).toMatch(/\bbg-ink\b/);
+    expect(screen.getByTestId('library-practise-prev-2018').props.className).toMatch(/\bbg-ink\b/);
   });
 
   // Filling Practise must not cost the shelf its "which shelf am I on" mark.
