@@ -3,7 +3,7 @@ import { initI18n } from '@tslprb/i18n';
 
 import { DEMO_ATTEMPT } from '@/features/dev/sections/attemptDemo';
 
-import { PaletteSheet, paletteSheetHeight } from '../PaletteSheet';
+import { PaletteSheet } from '../PaletteSheet';
 
 /** `Num` wraps its digits in LRI…PDI isolation. */
 const num = (n: number | string) => `⁦${n}⁩`;
@@ -35,7 +35,13 @@ describe('PaletteSheet', () => {
 
   it('labels every legend row', async () => {
     await renderSheet();
-    for (const label of ['Answered', 'Not answered', 'Marked', 'Not visited', 'Answered + marked'])
+    for (const label of [
+      'Answered',
+      'Not answered',
+      'Marked',
+      'Not visited',
+      'Answered + marked',
+    ])
       expect(screen.getByText(label)).toBeOnTheScreen();
   });
 
@@ -69,30 +75,5 @@ describe('PaletteSheet', () => {
     const { onSubmit } = await renderSheet();
     fireEvent.press(screen.getByTestId('palette-submit'));
     expect(onSubmit).toHaveBeenCalledTimes(1);
-  });
-});
-
-/**
- * The sheet's height is measured, never a percentage: `@gorhom/bottom-sheet` resolves `'82%'`
- * against a container height its web provider does not supply, so the palette never mounted in
- * the browser build at all (fix wave 1, D13).
- */
-describe('paletteSheetHeight', () => {
-  it.each([
-    [844, 692],
-    [667, 547],
-    [932, 764],
-  ])('resolves 82 %% of a %d px window to %d px', (windowHeight, expected) => {
-    expect(paletteSheetHeight(windowHeight)).toBe(expected);
-  });
-
-  it('always returns a number, so no percentage string can reach the sheet again', () => {
-    for (const h of [568, 667, 740, 844, 932, 1024]) {
-      const snap = paletteSheetHeight(h);
-      expect(typeof snap).toBe('number');
-      expect(Number.isInteger(snap)).toBe(true);
-      expect(snap).toBeGreaterThan(0);
-      expect(snap).toBeLessThan(h);
-    }
   });
 });

@@ -5,9 +5,9 @@ import {
   spacing,
   type PaletteState,
 } from '@tslprb/design-tokens';
-import { forwardRef, useMemo, useState } from 'react';
+import { forwardRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View, useWindowDimensions, type LayoutChangeEvent } from 'react-native';
+import { View, type LayoutChangeEvent } from 'react-native';
 
 import type { AttemptState } from '@/data/attempt';
 import {
@@ -30,21 +30,8 @@ import {
   type SheetHandle,
 } from '@/ui';
 
-/** The prototype's sheet height, as a fraction of the window. */
-const SHEET_FRACTION = 0.82;
-
-/**
- * The sheet's height in pixels.
- *
- * The prototype specifies 82 % of the screen, and this used to be handed to
- * `@gorhom/bottom-sheet` as the string `'82%'`. A percentage snap point is resolved against a
- * container height the library's web provider never supplies, so `present()` set the state and
- * nothing mounted: the question palette did not exist in the browser build at all — no cells,
- * no legend, no `[aria-modal]` — from the day it was written until fix wave 1 (D13). Measuring
- * the window ourselves gives the same 82 % on every platform and mounts on all of them.
- */
-export const paletteSheetHeight = (windowHeight: number): number =>
-  Math.round(windowHeight * SHEET_FRACTION);
+/** The prototype's sheet height. */
+const SNAP = ['82%'];
 /** A locked group stays legible but visibly out of reach. */
 const LOCKED_OPACITY = 0.38;
 /** The prototype's grid: six equal columns, whatever the screen width. */
@@ -94,9 +81,6 @@ export const PaletteSheet = forwardRef<SheetHandle, PaletteSheetProps>(function 
   ref,
 ) {
   const { t } = useTranslation();
-  const { height } = useWindowDimensions();
-  // Measured, not `'82%'`: see `paletteSheetHeight`.
-  const snapPoints = useMemo(() => [paletteSheetHeight(height)], [height]);
   const tally = counts(attempt);
   const pattern = attempt.pattern;
   // Measured once per layout so the six columns divide the sheet evenly instead of wrapping
@@ -129,7 +113,7 @@ export const PaletteSheet = forwardRef<SheetHandle, PaletteSheetProps>(function 
     <Sheet
       ref={ref}
       title={t('test.palette')}
-      snapPoints={snapPoints}
+      snapPoints={SNAP}
       scroll
       footer={footer}
       onClose={onClose}

@@ -19,16 +19,8 @@ export type SheetHandle = { present: () => void; dismiss: () => void };
 
 export type SheetProps = {
   title?: string;
-  /**
-   * Fixed heights in pixels. Omit for content-sized sheets.
-   *
-   * **Pixels, never a percentage.** `@gorhom/bottom-sheet` resolves a `'82%'` snap point
-   * against a container height its web provider does not supply, so a percentage sheet never
-   * mounts in the browser at all — the question palette was missing from the web build for
-   * three phases before anyone opened it there (fix wave 1, D13). The type is what stops it
-   * coming back: a caller measures with `useWindowDimensions()` and passes the number.
-   */
-  snapPoints?: number[];
+  /** Omit for content-sized sheets. */
+  snapPoints?: (string | number)[];
   /** Body scrolls inside the sheet (palette grid). */
   scroll?: boolean;
   /**
@@ -51,9 +43,32 @@ export const Sheet = forwardRef<SheetHandle, SheetProps>(function Sheet(
   const { t } = useTranslation();
   const modal = useRef<BottomSheetModal>(null);
   const { pressed, handlers } = usePressed();
+  /**
+   * Has this sheet ever been presented?
+   *
+   * `dismiss()` on a sheet that was never presented does not close it — it POISONS it.
+   * `BottomSheetModal.dismiss` sets its internal status to `DISMISSING` and then calls
+   * `forceClose()` on a `BottomSheet` ref that is still null, so nothing ever moves the status
+   * on; and `handlePortalRender` returns early for a `DISMISSING` modal, so every later
+   * `present()` sets `mount: true` and renders nothing at all, for the life of the screen.
+   *
+   * That is why the question palette never opened: `AttemptStates`' effect dismisses on mount,
+   * and the real screen dismisses the palette whenever a dialog opens — so an exit tap or a
+   * resume before the first palette tap killed the palette for the rest of the screen, on
+   * EVERY platform, not only in the browser. The review's percentage-`snapPoints` diagnosis
+   * was wrong: `'82%'` mounts identically once this guard is in (fix wave 1, D13).
+   */
+  const presented = useRef(false);
   useImperativeHandle(ref, () => ({
-    present: () => modal.current?.present(),
-    dismiss: () => modal.current?.dismiss(),
+    present: () => {
+      presented.current = true;
+      modal.current?.present();
+    },
+    dismiss: () => {
+      if (!presented.current) return;
+      presented.current = false;
+      modal.current?.dismiss();
+    },
   }));
 
   const renderBackdrop = useCallback(
@@ -76,7 +91,12 @@ export const Sheet = forwardRef<SheetHandle, SheetProps>(function Sheet(
       ref={modal}
       snapPoints={snapPoints}
       enableDynamicSizing={!snapPoints}
-      onDismiss={onClose}
+      // However it closed — a button, the backdrop, a swipe — the sheet is no longer
+      // presented, so the next `dismiss()` must not reach a modal that has nothing open.
+      onDismiss={() => {
+        presented.current = false;
+        onClose?.();
+      }}
       handleComponent={Platform.OS === 'ios' ? undefined : null}
       handleIndicatorStyle={{ backgroundColor: colors.line2 }}
       handleStyle={{ backgroundColor: colors.surface }}
