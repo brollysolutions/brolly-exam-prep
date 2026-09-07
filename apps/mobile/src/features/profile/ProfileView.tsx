@@ -49,13 +49,22 @@ export type ProfileViewProps = {
   onSignIn: () => void;
   onEditPost: () => void;
   onEditCategory: () => void;
+  /**
+   * The *confirmed* sign-out. Signing out erases this phone's practice record — scores,
+   * streak, topics read, measurements — and none of it is stored anywhere else yet, so the
+   * screen asks before calling this.
+   */
   onLogout: () => void;
   /**
-   * Confirmed account deletion, phase 1: same local reset as sign-out; the
-   * account-deletion endpoint lands with F-17 phase 2.
+   * Confirmed account deletion, phase 1: everything sign-out erases plus the language and the
+   * welcome flag, leaving a fresh install. The account-deletion endpoint lands with the
+   * database (F-17 phase 2); until then there is no account on a server to delete.
    */
   onDelete: () => void;
 };
+
+/** Which destructive exit is waiting on a yes. One at a time: the screen has one overlay. */
+type PendingExit = 'logout' | 'delete';
 
 /**
  * F-14 — profile and settings. Two answers the app was given during onboarding, two
@@ -77,7 +86,7 @@ export function ProfileView({
   onDelete,
 }: ProfileViewProps) {
   const { t } = useTranslation();
-  const [confirming, setConfirming] = useState(false);
+  const [pending, setPending] = useState<PendingExit | undefined>(undefined);
   const langOptions = LANGS.map((l: Lang) => ({ value: l, label: t(`lang.${l}Short`), lang: l }));
   const categoryLabel = CATEGORIES.find((c) => c.id === category)?.labelKey;
   /** An answer the app has not been given yet, drawn rather than guessed. */
@@ -91,22 +100,42 @@ export function ProfileView({
       testID="profile-screen"
       overlay={
         !signedIn ? undefined : (
-          <Dialog
-            testID="profile-delete-dialog"
-            visible={confirming}
-            tone="danger"
-            kicker={t('profile.deleteAccount')}
-            title={t('profile.deleteTitle')}
-            body={t('profile.deleteConfirm')}
-            primary={{
-              label: t('profile.deleteYes'),
-              onPress: () => {
-                setConfirming(false);
-                onDelete();
-              },
-            }}
-            secondary={{ label: t('common.cancel'), onPress: () => setConfirming(false) }}
-          />
+          <>
+            {/* Gold, not red: this card asks, it does not deliver a verdict — the same tone
+                the attempt screen's "leave this paper?" wears. The words carry the warning,
+                because nothing signed out is recoverable from a server yet. */}
+            <Dialog
+              testID="profile-logout-dialog"
+              visible={pending === 'logout'}
+              kicker={t('profile.logout')}
+              title={t('profile.logoutTitle')}
+              body={t('profile.logoutConfirm')}
+              primary={{
+                label: t('profile.logoutYes'),
+                onPress: () => {
+                  setPending(undefined);
+                  onLogout();
+                },
+              }}
+              secondary={{ label: t('common.cancel'), onPress: () => setPending(undefined) }}
+            />
+            <Dialog
+              testID="profile-delete-dialog"
+              visible={pending === 'delete'}
+              tone="danger"
+              kicker={t('profile.deleteAccount')}
+              title={t('profile.deleteTitle')}
+              body={t('profile.deleteConfirm')}
+              primary={{
+                label: t('profile.deleteYes'),
+                onPress: () => {
+                  setPending(undefined);
+                  onDelete();
+                },
+              }}
+              secondary={{ label: t('common.cancel'), onPress: () => setPending(undefined) }}
+            />
+          </>
         )
       }
     >
@@ -172,18 +201,20 @@ export function ProfileView({
       <Section title={t('profile.sectionAccount')}>
         {signedIn ? (
           <Stack gap={3}>
+            {/* Both exits ask first. Signing out is no longer just dropping a token: it
+                erases the practice record this phone holds, and holds alone. */}
             <Button
               testID="profile-logout"
               variant="secondary"
               label={t('profile.logout')}
-              onPress={onLogout}
+              onPress={() => setPending('logout')}
             />
             {/* Solid red lives inside the dialog, where the press actually destroys something. */}
             <Button
               testID="profile-delete"
               variant="danger"
               label={t('profile.deleteAccount')}
-              onPress={() => setConfirming(true)}
+              onPress={() => setPending('delete')}
             />
           </Stack>
         ) : (

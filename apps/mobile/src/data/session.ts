@@ -31,8 +31,17 @@ export type SessionActions = {
   completeOnboarding: () => void;
   markWelcomeSeen: () => void;
   setNotifications: (on: boolean) => void;
-  /** Full reset of the person, not the handset: `seenWelcome` is deliberately kept. */
+  /**
+   * Full reset of the person, not the handset: `seenWelcome` is deliberately kept, and
+   * `notifications` returns to its default `true` — the reminder is a preference of whoever
+   * is signed in, and the next person on a shared phone does not inherit an opt-out.
+   */
   logout: () => void;
+  /**
+   * The handset as well as the person: `seenWelcome` goes too, so the app opens on the
+   * welcome slides as it did the day it was installed. Only `wipeLocalData()` calls this.
+   */
+  wipe: () => void;
   signedIn: () => boolean;
 };
 
@@ -72,6 +81,7 @@ export const useSessionStore = create<SessionStore>()(
       markWelcomeSeen: () => set({ seenWelcome: true }),
       setNotifications: (notifications) => set({ notifications }),
       logout: () => set({ ...initial, seenWelcome: get().seenWelcome }),
+      wipe: () => set({ ...initial }),
       signedIn: () => Boolean(get().token),
     }),
     {

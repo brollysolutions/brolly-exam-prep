@@ -49,9 +49,9 @@ const initial: EligibilityState = {
 /**
  * F-25 — the last PMT/PET measurements someone entered.
  *
- * Kept on the handset like the study marks and deliberately NOT cleared by `signOut()`: the
- * checker is free to guests, needs no account, and a body measurement belongs to the phone's
- * owner rather than to a token.
+ * Cleared by `signOut()`. The checker stays free and ungated, but height, chest and run times
+ * are the most personal thing the app holds, and the screen redraws them — and the verdict —
+ * for whoever opens it next. A shared handset is not one person.
  */
 export const useEligibilityStore = create<EligibilityStore>()(
   persist(

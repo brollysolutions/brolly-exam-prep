@@ -25,7 +25,7 @@ export type ActivityActions = {
    * a store is a cycle waiting for the next feature to close it.
    */
   bump: (kind: ActivityKind, now?: number) => void;
-  /** Clear the record. Used by tests; there is no product action that erases a day's work. */
+  /** Clear the record. Called by `signOut()`, and by the tests. */
   reset: () => void;
 };
 
@@ -70,9 +70,9 @@ function prune(byDay: Record<string, DayCounts>, now: number): Record<string, Da
 }
 
 /**
- * F-23 — what was done today, and how many days in a row. Deliberately NOT cleared by
- * `signOut()`: like the study marks and the language, a practice record belongs to the
- * handset, and the material it counts is free to guests anyway.
+ * F-23 — what was done today, and how many days in a row. Cleared by `signOut()`: a streak
+ * is a record of one person's practice, Home shows it to whoever opens the app, and these
+ * handsets are shared. The language stays; a practice record does not.
  */
 export const useActivityStore = create<ActivityStore>()(
   persist(

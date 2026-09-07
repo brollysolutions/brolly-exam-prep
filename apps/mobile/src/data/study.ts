@@ -15,7 +15,7 @@ export type StudyState = { read: Record<string, true> };
 export type StudyActions = {
   markRead: (id: string) => void;
   isRead: (id: string) => boolean;
-  /** Clear the marks. Used by tests; there is no product action that unreads a topic. */
+  /** Clear the marks. Called by `signOut()`, and by the tests. */
   reset: () => void;
 };
 
@@ -24,8 +24,9 @@ export type StudyStore = StudyState & StudyActions;
 export const STUDY_STORAGE_KEY = 'tslprb.study';
 
 /**
- * F-21 — study progress. Deliberately NOT cleared by `signOut()`: what you have read belongs
- * to the handset, like the language preference, and the material is free to guests anyway.
+ * F-21 — study progress. Cleared by `signOut()`: the ticks say what one person has read, and
+ * the Study tab shows them to anyone who opens it. The material stays free to guests; the
+ * record of who read it does not survive them signing out.
  *
  * `merge` takes only the `read` map from storage: an earlier build also persisted a
  * `lastRead` bookmark for a Continue card that no longer exists, and a blob that still

@@ -5,7 +5,7 @@ import { withReturnTo, type ReturnTarget } from '@/data/href';
 import { useLangStore } from '@/data/lang';
 import { useRequireAuth } from '@/data/requireAuth';
 import { useSessionStore } from '@/data/session';
-import { signOut } from '@/data/signOut';
+import { signOut, wipeLocalData } from '@/data/signOut';
 import { ProfileView } from '@/features/profile/ProfileView';
 
 const VERSION = Constants.expoConfig?.version ?? '0.0.0';
@@ -28,14 +28,27 @@ export default function ProfileRoute() {
   const { ensure, signedIn, onboarded } = useRequireAuth();
 
   /**
-   * Both exits use the shared `signOut()`, which clears the attempt store as well as the
-   * session: leaving a half-finished paper on disk would drop the next person on a shared
-   * handset straight into someone else's running test.
+   * Signing out erases the person from this handset, not just the token: the attempt, the
+   * eligibility measurements, the scores, the streak and the read marks all go, because every
+   * screen that shows them is open to a guest and these phones are shared. `ProfileView` asks
+   * before calling this — none of it is stored anywhere else yet.
    */
   const leave = () => {
     signOut();
     // Not to the login form: since F-19 there is an app to be signed out *into*.
     router.replace('/(tabs)');
+  };
+
+  /**
+   * "Delete everything" has to mean more than signing out, or the button lies. It clears the
+   * language and the welcome flag too, so the app is back to a fresh install — hence `/`
+   * rather than the tabs: the root route reads `seenWelcome` and shows the slides again.
+   *
+   * There is no account on a server to delete yet; that endpoint lands with the database.
+   */
+  const erase = () => {
+    wipeLocalData();
+    router.replace('/');
   };
 
   /**
@@ -62,7 +75,7 @@ export default function ProfileRoute() {
       onEditPost={() => edit('/(onboarding)/post')}
       onEditCategory={() => edit('/(onboarding)/category')}
       onLogout={leave}
-      onDelete={leave}
+      onDelete={erase}
     />
   );
 }
