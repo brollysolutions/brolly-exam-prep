@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import { FlatList, ScrollView, View, type ListRenderItemInfo } from 'react-native';
 
 import type { PaperQuestion } from '@/data/api';
-import { startEdge, startEdgeInset } from '@/features/result/edge';
 import {
   BackHeader,
   Card,
@@ -20,6 +19,8 @@ import {
   Screen,
   Skeleton,
   Stack,
+  startEdge,
+  startEdgeInset,
   Text,
 } from '@/ui';
 

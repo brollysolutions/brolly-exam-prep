@@ -11,7 +11,7 @@ import {
   type ViewStyle,
 } from 'react-native';
 
-import { startEdge as startEdgeStyle, startEdgeInset } from '@/features/result/edge';
+import { startEdge as startEdgeStyle, startEdgeInset } from './edge';
 
 import { cx } from './cx';
 import * as haptics from './haptics';

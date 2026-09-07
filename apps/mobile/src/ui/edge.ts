@@ -1,6 +1,15 @@
 import { colors, type ColorName } from '@tslprb/design-tokens';
 import type { ViewStyle } from 'react-native';
 
+/**
+ * The 3 px start edge, and the padding sum a box needs to keep its content on the axis of the
+ * boxes around it.
+ *
+ * It lived in `features/result/` until Phase E (F-32), which is where the score card's edge was
+ * first drawn. By then `Card` and four screens imported it — including the attempt overlays
+ * reaching across into `result` — so it belongs to the primitives it serves (C5).
+ */
+
 /** The prototype's `border-inline-start: 3px` accents. */
 export const EDGE_WIDTH = 3;
 

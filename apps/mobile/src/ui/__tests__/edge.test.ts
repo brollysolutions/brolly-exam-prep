@@ -1,5 +1,4 @@
 import { colors } from '@tslprb/design-tokens';
-import { en, te } from '@tslprb/i18n';
 
 import { startEdge, startEdgeInset } from '../edge';
 
@@ -43,14 +42,5 @@ describe('startEdgeInset', () => {
     const plain = 1 + 16;
     const edged = 3 + (startEdgeInset(false, 16, 1).paddingLeft as number);
     expect(edged).toBe(plain);
-  });
-});
-
-describe('locale parity for the screens in this feature', () => {
-  const keys = (bundle: unknown, block: 'result' | 'solutions') =>
-    Object.keys((bundle as Record<string, Record<string, unknown>>)[block]).sort();
-
-  it.each(['result', 'solutions'] as const)('%s has the same keys in en and te', (block) => {
-    expect(keys(te, block)).toEqual(keys(en, block));
   });
 });

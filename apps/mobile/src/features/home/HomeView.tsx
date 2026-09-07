@@ -4,7 +4,6 @@ import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, View } from 'react-native';
 
-import { startEdge } from '@/features/result/edge';
 import {
   Button,
   Card,
@@ -21,6 +20,7 @@ import {
   Screen,
   SegmentedChips,
   Stack,
+  startEdge,
   StatTile,
   Text,
   usePressed,

@@ -15,6 +15,7 @@ export {
   type DialogTone,
 } from './Dialog';
 export { Duration, useDurationUnits, type DurationProps } from './Duration';
+export { EDGE_WIDTH, startEdge, startEdgeInset } from './edge';
 export {
   durationParts,
   formatCount,

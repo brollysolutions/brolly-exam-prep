@@ -6,8 +6,21 @@ import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import type { PaletteCounts } from '@/data/attempt.selectors';
-import { startEdge, startEdgeInset } from '@/features/result/edge';
-import { Banner, cx, Dialog, Glyph, Kicker, Num, Row, Stack, Text, Toast, usePressed } from '@/ui';
+import {
+  Banner,
+  cx,
+  Dialog,
+  Glyph,
+  Kicker,
+  Num,
+  Row,
+  Stack,
+  startEdge,
+  startEdgeInset,
+  Text,
+  Toast,
+  usePressed,
+} from '@/ui';
 
 /** The four confirmation cards of the attempt screen (prototype `D` map). */
 export type AttemptDialogKind = 'exit' | 'submit' | 'resume' | 'auto';

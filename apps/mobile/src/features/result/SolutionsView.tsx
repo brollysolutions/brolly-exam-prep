@@ -19,10 +19,11 @@ import {
   Screen,
   Skeleton,
   Stack,
+  startEdge,
+  startEdgeInset,
   Text,
 } from '@/ui';
 
-import { startEdge, startEdgeInset } from './edge';
 import { filterSolutionRows, type SolutionFilter, type SolutionRow } from './solutions';
 
 export type SolutionsViewProps = {
