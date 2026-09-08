@@ -1,4 +1,4 @@
-# Applies to the repo-root build context (apps/mobile/Dockerfile → the `web` image).
+# Applies to the repo-root build context (apps/web/Dockerfile builds the website).
 .git
 .github
 .claude
@@ -8,9 +8,10 @@
 docs
 prototype
 services
-apps/web/src
-apps/web/public
-apps/web/*.config.*
+.agents
+.codex
+.pnpm-store
+.playwright-mcp
 **/node_modules
 **/.expo
 **/dist

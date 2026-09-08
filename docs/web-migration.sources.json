@@ -1,0 +1,97 @@
+[
+  {
+    "source": "apps/mobile/src/data/attempt.ts",
+    "target": "apps/web/data/attempt.ts",
+    "sourceSha256": "ab5eee28e322b7c4ab4c7b123400a7273ecfb9c45592db2e2585d16d2a17cdfc"
+  },
+  {
+    "source": "apps/mobile/src/data/attempt.selectors.ts",
+    "target": "apps/web/data/attempt.selectors.ts",
+    "sourceSha256": "4918431a51507c93fd782960f2ac53660ad81178d4bb69c2d9a8d4bb0cbe57fb"
+  },
+  {
+    "source": "apps/mobile/src/data/session.ts",
+    "target": "apps/web/data/session.ts",
+    "sourceSha256": "e7556c3e8f14ebfb7df03f657d0427bea809292a77c2f1d2e8d781fdb5c9a343"
+  },
+  {
+    "source": "apps/mobile/src/data/activity.ts",
+    "target": "apps/web/data/activity.ts",
+    "sourceSha256": "2ef0935eadaecaa20fb0f01a0617b3ecee2f6981aaa0c0c2d0e9af33dd6507ad"
+  },
+  {
+    "source": "apps/mobile/src/data/history.ts",
+    "target": "apps/web/data/history.ts",
+    "sourceSha256": "487a05e77c7bf60fdd470c9121b0166845269a91da6596d73f1528b8e94c4681"
+  },
+  {
+    "source": "apps/mobile/src/data/completedTests.ts",
+    "target": "apps/web/data/completedTests.ts",
+    "sourceSha256": "5f52e6a186ff1ee903c093be7cb281f5bf772ca9922f5de62290aba9d24dfe23"
+  },
+  {
+    "source": "apps/mobile/src/data/score.ts",
+    "target": "apps/web/data/score.ts",
+    "sourceSha256": "fd4f0329d684d5c86acc7f91538f5ddef2a3a65dc5bcf0816a2338bb4a168d4e"
+  },
+  {
+    "source": "apps/mobile/src/data/study.ts",
+    "target": "apps/web/data/study.ts",
+    "sourceSha256": "ed342e657e1313084744b6b8c997e158c7cc758f106755034914fbeaefd62817"
+  },
+  {
+    "source": "apps/mobile/src/data/eligibility.ts",
+    "target": "apps/web/data/eligibility.ts",
+    "sourceSha256": "4a9d286060231fc01f2213115ad534098ba27e4a0de873a47130f67a1480e5aa"
+  },
+  {
+    "source": "apps/mobile/src/data/importedAttempt.ts",
+    "target": "apps/web/data/importedAttempt.ts",
+    "sourceSha256": "d274af8f92b190c60d219ebf8bdaa8de133f32b6420311842adef52da940afcf"
+  },
+  {
+    "source": "apps/mobile/src/data/signOut.ts",
+    "target": "apps/web/data/signOut.ts",
+    "sourceSha256": "a8ac2fb1c9171c1edaee63418a3817aecd1c0610950dbf05ba14a11f06ae9f30"
+  },
+  {
+    "source": "apps/mobile/src/data/langOverride.ts",
+    "target": "apps/web/data/langOverride.ts",
+    "sourceSha256": "51653f346ec92033e9f90c35c19084cfe4ff086acb22d2209e7f05784267b40c"
+  },
+  {
+    "source": "apps/mobile/src/data/api/types.ts",
+    "target": "apps/web/data/api/types.ts",
+    "sourceSha256": "1e76d4a7312477ead021ebdb5a260780b003cd69e4c356df90f5f4f3e1ff3cad"
+  },
+  {
+    "source": "apps/mobile/src/data/api/http.ts",
+    "target": "apps/web/data/api/http.ts",
+    "sourceSha256": "85ff43ba169aefae6b229b79e4c14f30b8afc30d2fb5f9a1be79113005b9355a"
+  },
+  {
+    "source": "apps/mobile/src/data/api/mock.ts",
+    "target": "apps/web/data/api/mock.ts",
+    "sourceSha256": "159608b5ea13ae4603b87f49b52ece2eb4dbc76c150464165e7f18441815f440"
+  },
+  {
+    "source": "apps/mobile/src/features/eligibility/evaluate.ts",
+    "target": "apps/web/features/eligibility/evaluate.ts",
+    "sourceSha256": "eeb774d22518cc60e52ab902f2c4d29de563e83b4ecf0aff3be1e56ed6ed6de9"
+  },
+  {
+    "source": "apps/mobile/src/features/eligibility/runTime.ts",
+    "target": "apps/web/features/eligibility/runTime.ts",
+    "sourceSha256": "ce24b0efe9ee3c0f31224d8aedf435edd6ee1f2acfc6bc44f85b658ffacfff27"
+  },
+  {
+    "source": "apps/mobile/src/features/result/solutions.ts",
+    "target": "apps/web/features/result/solutions.ts",
+    "sourceSha256": "81aabbb31562cad5ae7dc491535486660ed25f10a1e724cea0a83f9a451aa82b"
+  },
+  {
+    "source": "apps/mobile/src/lib/day.ts",
+    "target": "apps/web/lib/day.ts",
+    "sourceSha256": "308ef5b9bd8467705b4929f5120f624f1874a1775467d9ac7e0dcadb8c6a2b1d"
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "installedAt": "2026-09-08",
+  "skills": {
+    "shadcn": {
+      "source": "shadcn-ui/ui",
+      "revision": "5c7072da672b0048bc6771e3204063a2537df91a",
+      "path": "skills/shadcn",
+      "upstreamEntrypointSha256": "deba6c5152d9835892fa7dffeb1fedbb689ddac7e59e14e57ec5eaf9463309e4",
+      "localEntrypointSha256": "533d0af93f4179b3a842a9b7b200c3cfa6ee72e2ee0ce71148ba2e2dd36267b1",
+      "adaptations": "Codex compatibility and application scope; see Local application configuration in SKILL.md"
+    },
+    "design-taste-frontend": {
+      "source": "Leonxlnx/taste-skill",
+      "revision": "ccbc15639c97057cbfcf32ecebc38ef716e4bb37",
+      "path": "skills/taste-skill",
+      "upstreamEntrypointSha256": "aa194351b246b8b4799099d4ed7b033d29eab6e6e3d58d8d2172978be7b3ec89",
+      "localEntrypointSha256": "feb6b63565e76c75fd21e4268a318012b50e4e274b8c0f6c5622d7e4ed7c1fcc",
+      "adaptations": "Codex compatibility and application scope; see Local application configuration in SKILL.md"
+    },
+    "refactoring-ui": {
+      "source": "wondelai/skills",
+      "revision": "eade5d170b3a593c5b6ebcaca898102134aee108",
+      "path": "plugins/ux-design/skills/refactoring-ui",
+      "upstreamEntrypointSha256": "1d0b8f0b2b2e61fc9ed8351716f5ff2b898e0fb1dad60a04500673205a07807b",
+      "localEntrypointSha256": "77f26f381db93c77632a40d3b7f7025afdfe9944832c3c43db511c61f72427ae",
+      "adaptations": "Codex compatibility and application scope; see Local application configuration in SKILL.md"
+    },
+    "ux-heuristics": {
+      "source": "wondelai/skills",
+      "revision": "eade5d170b3a593c5b6ebcaca898102134aee108",
+      "path": "plugins/ux-design/skills/ux-heuristics",
+      "upstreamEntrypointSha256": "cb1ea3de8b6e605614cc59b21d41830d2d82af22e51069bb4c5bb53790cd622b",
+      "localEntrypointSha256": "33b3388cbeae6ababc3bb18ca37f5202a97f58f89ab36d9951f5983b2408c999",
+      "adaptations": "Codex compatibility and application scope; see Local application configuration in SKILL.md"
+    }
+  }
+}

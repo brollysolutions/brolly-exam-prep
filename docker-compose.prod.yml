@@ -1,7 +1,7 @@
 # Production overlay for the public site: `pnpm docker:prod`
 # (= docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build).
 # A TLS reverse proxy on the server (Caddy, nginx, Traefik) terminates https://mocktest.brollyexamprep.com
-# and forwards to 127.0.0.1:3201; the browser reaches the api through /api on that origin (nginx proxies it
+# and forwards to 127.0.0.1:3201; the browser reaches the api through /api on that origin (Next.js proxies it
 # to the api service), so 8200 is for server-side tooling only. Compose interpolation cannot read values
 # from another compose file, so the public URL is restated here instead of via PUBLIC_URL.
 # Sign-in is the phone number alone (the OTP step was removed 2026-09-07): anyone who types a
@@ -19,6 +19,5 @@ services:
     restart: unless-stopped
   web:
     restart: unless-stopped
-    build:
-      args:
-        EXPO_PUBLIC_API_URL: ${EXPO_PUBLIC_API_URL:-https://mocktest.brollyexamprep.com/api}
+    environment:
+      API_INTERNAL_URL: http://api:8000

@@ -1,0 +1,121 @@
+[
+  {
+    "file": "BrollyExamPrep artamatic2.docx",
+    "sha256": "6623bdcfc2bff38af332d0b3d73ef8485ea74ce9a7d3751e58bd81debcf46dbf",
+    "section": "arithmetic",
+    "questions": 50,
+    "answerKeys": 50,
+    "solutions": 50,
+    "keysRecoveredFromExplicitSolution": [],
+    "reviewFlags": [
+      {
+        "question": 1,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 2,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 4,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 6,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 8,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 20,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 32,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 33,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 35,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 43,
+        "issue": "Source explanation contains wording requiring editorial review"
+      }
+    ]
+  },
+  {
+    "file": "BrollyExamPrep reasoing2.docx",
+    "sha256": "c3b02844d1b2e322efd1fa89c4f957d9dc6126b16fa8f02d0d9813c1b5fa7bb0",
+    "section": "reasoning",
+    "questions": 50,
+    "answerKeys": 50,
+    "solutions": 50,
+    "keysRecoveredFromExplicitSolution": [],
+    "reviewFlags": [
+      {
+        "question": 2,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 11,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 20,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 22,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 28,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 32,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 37,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 41,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 43,
+        "issue": "Source explanation contains wording requiring editorial review"
+      },
+      {
+        "question": 48,
+        "issue": "Source explanation contains wording requiring editorial review"
+      }
+    ]
+  },
+  {
+    "file": "BrollyExamPrep GS2.docx",
+    "sha256": "549a5f240c403a2ac11cd8220cd21080737836141067b6065793a7e96b9fbf92",
+    "section": "gs",
+    "questions": 100,
+    "answerKeys": 100,
+    "solutions": 100,
+    "keysRecoveredFromExplicitSolution": [
+      91
+    ],
+    "reviewFlags": [
+      {
+        "question": 1,
+        "issue": "Source explanation contains wording requiring editorial review"
+      }
+    ]
+  }
+]

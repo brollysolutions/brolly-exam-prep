@@ -1,0 +1,129 @@
+{
+  "file": "BrollyExamPrep constable 1.docx",
+  "sha256": "25817776f8ac1e8708de265ce01a3c07c76062e8a6297a4f14cdd6e67e085c20",
+  "testId": "pc-constable-01",
+  "questions": 200,
+  "durationMinutes": 180,
+  "sections": {
+    "english": 25,
+    "arithmetic": 35,
+    "reasoning": 40,
+    "gs": 100
+  },
+  "tableKeys": 170,
+  "solutions": 200,
+  "answerPolicy": "Use each detailed solution explicit Correct Answer; preserve source text without editorial corrections.",
+  "keysRecoveredFromExplicitSolution": [
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160
+  ],
+  "duplicateTableKeys": [
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200
+  ],
+  "keyConflicts": [
+    {
+      "question": 30,
+      "tableKey": "B",
+      "solutionKey": "A",
+      "used": "A"
+    },
+    {
+      "question": 35,
+      "tableKey": "A",
+      "solutionKey": "B",
+      "used": "B"
+    }
+  ],
+  "reviewFlags": [
+    {
+      "question": 26,
+      "issue": "Source explanation contains an unresolved calculation or consistency issue; preserved verbatim."
+    },
+    {
+      "question": 27,
+      "issue": "Source explanation contains an unresolved calculation or consistency issue; preserved verbatim."
+    },
+    {
+      "question": 28,
+      "issue": "Source explanation contains an unresolved calculation or consistency issue; preserved verbatim."
+    },
+    {
+      "question": 38,
+      "issue": "Source explanation contains an unresolved calculation or consistency issue; preserved verbatim."
+    },
+    {
+      "question": 81,
+      "issue": "Source explanation contains an unresolved calculation or consistency issue; preserved verbatim."
+    }
+  ],
+  "answerDistribution": {
+    "B": 131,
+    "A": 33,
+    "C": 33,
+    "D": 3
+  },
+  "sharedPassageQuestions": [
+    21,
+    22,
+    23,
+    24,
+    25
+  ]
+}

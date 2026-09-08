@@ -78,20 +78,16 @@ services:
   web:
     build:
       context: .
-      dockerfile: apps/mobile/Dockerfile
-      args:
-        EXPO_PUBLIC_API: ${EXPO_PUBLIC_API:-http}
-        # Baked into the bundle: the browser calls the api through nginx at PUBLIC_URL/api (same origin),
-        # so set PUBLIC_URL (default http://localhost:WEB_HOST_PORT) and rebuild web when it changes.
-        # docker-compose.prod.yml pins the public site's values.
-        EXPO_PUBLIC_API_URL: ${EXPO_PUBLIC_API_URL:-${PUBLIC_URL:-http://localhost:${WEB_HOST_PORT:-3201}}/api}
+      dockerfile: apps/web/Dockerfile
+    environment:
+      API_INTERNAL_URL: http://api:8000
     ports:
-      - "${WEB_HOST_PORT:-3201}:80"
+      - "${WEB_HOST_PORT:-3201}:3000"
     depends_on:
       api:
         condition: service_healthy
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/ >/dev/null || exit 1"]
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:3000/ >/dev/null || exit 1"]
       interval: 5s
       timeout: 5s
       retries: 10
