@@ -1,5 +1,6 @@
 import { act, render, screen, userEvent, within } from '@testing-library/react-native';
 import { initI18n, setLanguage } from '@tslprb/i18n';
+import { TESTS } from '@tslprb/fixtures';
 
 import { iso } from '@/ui';
 
@@ -32,20 +33,58 @@ describe('LibraryView', () => {
   it('switches the list when a filter is chosen', async () => {
     await render(<LibraryView {...handlers()} />);
     expect(screen.queryByTestId('library-row-prev-2022')).toBeNull();
+    await userEvent.press(screen.getByTestId('library-filter-si'));
+    expect(screen.getByTestId('library-row-si-brolly-01')).toBeOnTheScreen();
+    expect(screen.queryByTestId('library-empty')).toBeNull();
+    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+    await userEvent.press(screen.getByTestId('library-filter-pc'));
+    expect(screen.queryByTestId('library-row-si-brolly-01')).toBeNull();
+    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+    expect(screen.queryByTestId('library-row-mock-08')).toBeNull();
+    expect(screen.getByTestId('library-empty')).toBeOnTheScreen();
+    expect(screen.queryByTestId('library-row-prev-2022')).toBeNull();
     await userEvent.press(screen.getByTestId('library-filter-previous'));
     expect(screen.getByTestId('library-row-prev-2022')).toBeOnTheScreen();
     expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
   });
 
-  // Two shelves and no third: the sectional drills were dropped in F-08's follow-up, so the
-  // chip that opened them must not come back with them.
-  it('offers the two shelves and nothing else', async () => {
+  it('offers SI and Constable first, followed by the existing shelves', async () => {
     await render(<LibraryView {...handlers()} />);
+    expect(screen.getAllByRole('radio')).toEqual([
+      screen.getByRole('radio', { name: 'SI Mock Test' }),
+      screen.getByRole('radio', { name: 'Constable Mock Test' }),
+      screen.getByRole('radio', { name: 'Full Mock Test' }),
+      screen.getByRole('radio', { name: 'Previous year' }),
+    ]);
     expect(screen.getByTestId('library-filter-full')).toBeOnTheScreen();
     expect(screen.getByTestId('library-filter-previous')).toBeOnTheScreen();
     expect(screen.queryByTestId('library-filter-sectional')).toBeNull();
     expect(screen.queryByTestId('library-row-sec-seating')).toBeNull();
     expect(screen.queryByTestId('library-row-sec-blood')).toBeNull();
+  });
+
+  it('keeps both general mocks in Full mocks after leaving the empty Constable shelf', async () => {
+    const h = handlers();
+    await render(<LibraryView {...h} />);
+    await userEvent.press(screen.getByTestId('library-filter-pc'));
+    expect(screen.getByTestId('library-empty')).toBeOnTheScreen();
+    await userEvent.press(screen.getByTestId('library-filter-full'));
+    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+    expect(screen.getByTestId('library-row-mock-08')).toBeOnTheScreen();
+    await userEvent.press(screen.getByTestId('library-row-mock-07'));
+    expect(h.onOpen).toHaveBeenCalledWith('mock-07');
+    await userEvent.press(screen.getByTestId('library-row-mock-08'));
+    expect(h.onLocked).toHaveBeenCalledWith('mock-08');
+  });
+
+  it('still supports dedicated Constable papers without listing the two general mocks', async () => {
+    const general = TESTS.find((test) => test.id === 'mock-07')!;
+    const dedicated = { ...general, id: 'pc-dedicated', fullMocksOnly: false };
+    await render(<LibraryView {...handlers()} tests={[...TESTS, dedicated]} />);
+    await userEvent.press(screen.getByTestId('library-filter-pc'));
+    expect(screen.getByTestId('library-row-pc-dedicated')).toBeOnTheScreen();
+    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+    expect(screen.queryByTestId('library-row-mock-08')).toBeNull();
   });
 
   it('opens a free test', async () => {

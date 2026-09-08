@@ -33,6 +33,8 @@ export type ResultViewProps = {
   result?: ResultDetail;
   /** The load failed: the retry state replaces the body. */
   failed?: boolean;
+  /** Imported practice papers review every question, without sample analytics. */
+  reviewAll?: boolean;
   onBack?: () => void;
   onRetry?: () => void;
   onSeeWrong?: () => void;
@@ -198,6 +200,7 @@ function SectionPill({ index, label }: { index: string; label: string }) {
 export function ResultView({
   result,
   failed = false,
+  reviewAll = false,
   onBack,
   onRetry,
   onSeeWrong,
@@ -207,14 +210,49 @@ export function ResultView({
   const d = useDir();
   const units = useDurationUnits();
   const costRows = COST_ROWS[d.lang];
-  const rankText = result ? formatRank(result.rank, result.totalCandidates) : '';
-  const accuracyText = result ? `${result.accuracyPct}%` : '';
+
+  /**
+   * "Where you stand", in the prototype's order — but the rank line only when there IS a
+   * rank. A rank is a fact about every other candidate, so a paper marked on the handset
+   * has none, and the API returns `rank: null` for a fresh result too. The line is dropped
+   * rather than filled: printing the sample fixture's "1,284 / 9,033" under a real
+   * candidate's score is exactly the defect F-34 removed.
+   */
+  const standRows: { label: string; value: ReactNode; valueText: string }[] = [];
+  if (result) {
+    if (result.rank !== undefined && result.totalCandidates !== undefined) {
+      const rankText = formatRank(result.rank, result.totalCandidates);
+      standRows.push({
+        label: t('result.rank'),
+        value: <StandValue>{rankText}</StandValue>,
+        valueText: rankText,
+      });
+    }
+    const accuracyText = `${result.accuracyPct}%`;
+    standRows.push({
+      label: t('result.accuracy'),
+      value: <StandValue>{accuracyText}</StandValue>,
+      valueText: accuracyText,
+    });
+    standRows.push({
+      label: t('result.perQ'),
+      value: (
+        <Duration
+          seconds={result.avgSecondsPerQuestion}
+          variant="bodyLg"
+          weight="700"
+          className="shrink-0"
+        />
+      ),
+      valueText: formatDuration(result.avgSecondsPerQuestion, units),
+    });
+  }
 
   return (
     /* `ActionBar` owns the bottom inset, the way a tab scene's bar does. */
     <Screen bottomInset={false} testID="result-screen">
       <BackHeader
-        title={t('result.title', { n: result?.testTitleN ?? '' }).trim()}
+        title={result?.title?.[d.lang] ?? t('result.title', { n: result?.testTitleN ?? '' }).trim()}
         onBack={onBack}
         testID="result-header"
       />
@@ -247,74 +285,82 @@ export function ResultView({
                 </Num>
               </Row>
 
-              <Row gap={2} wrap align="center" className="mt-3">
-                {/* A verdict is a `Chip`: gold when it passed, the red tint under a red
+              {!reviewAll && (
+                <Row gap={2} wrap align="center" className="mt-3">
+                  {/* A verdict is a `Chip`: gold when it passed, the red tint under a red
                     outline when it did not (`dangerInk` on that tint is 5.27:1). */}
-                <Chip
-                  label={result.qualified ? t('result.qualified') : t('result.notQualified')}
-                  tone={result.qualified ? 'accent' : 'danger'}
-                  shape="pill"
-                  size="md"
-                  active
-                  testID="result-qualified"
-                />
-                <Row gap={1} align="baseline">
-                  <Text variant="small" color="ink3">
-                    {t('result.cutoff')}
-                  </Text>
-                  <Num variant="small" weight="600" color="ink3">
-                    {`${result.cutoffPct}%`}
-                  </Num>
+                  <Chip
+                    label={result.qualified ? t('result.qualified') : t('result.notQualified')}
+                    tone={result.qualified ? 'accent' : 'danger'}
+                    shape="pill"
+                    size="md"
+                    active
+                    testID="result-qualified"
+                  />
+                  <Row gap={1} align="baseline">
+                    <Text variant="small" color="ink3">
+                      {t('result.cutoff')}
+                    </Text>
+                    <Num variant="small" weight="600" color="ink3">
+                      {`${result.cutoffPct}%`}
+                    </Num>
+                  </Row>
                 </Row>
-              </Row>
+              )}
             </Card>
 
             <Stack gap={2} className="mt-7">
               <SectionPill index="01" label={t('result.r1')} />
               <Card>
-                <StandRow
-                  label={t('result.rank')}
-                  value={<StandValue>{rankText}</StandValue>}
-                  valueText={rankText}
-                  first
-                />
-                <StandRow
-                  label={t('result.accuracy')}
-                  value={<StandValue>{accuracyText}</StandValue>}
-                  valueText={accuracyText}
-                />
-                <StandRow
-                  label={t('result.perQ')}
-                  value={
-                    <Duration
-                      seconds={result.avgSecondsPerQuestion}
-                      variant="bodyLg"
-                      weight="700"
-                      className="shrink-0"
-                    />
-                  }
-                  valueText={formatDuration(result.avgSecondsPerQuestion, units)}
-                />
+                {standRows.map((row, i) => (
+                  <StandRow key={row.label} {...row} first={i === 0} />
+                ))}
               </Card>
             </Stack>
 
             <Stack gap={2} className="mt-7">
               <SectionPill index="02" label={t('result.r2')} />
               <Card>
-                {costRows.map(([label, value, note], i) => (
-                  <CostRow key={label} label={label} value={value} note={note} first={i === 0} />
-                ))}
+                {reviewAll
+                  ? [
+                      [t('result.right'), result.correct],
+                      [t('result.wrong'), result.wrong],
+                      [t('result.skipped'), result.skipped],
+                    ].map(([label, value], i) => (
+                      <StandRow
+                        key={label}
+                        label={String(label)}
+                        value={<StandValue>{String(value ?? 0)}</StandValue>}
+                        valueText={String(value ?? 0)}
+                        first={i === 0}
+                      />
+                    ))
+                  : costRows.map(([label, value, note], i) => (
+                      <CostRow
+                        key={label}
+                        label={label}
+                        value={value}
+                        note={note}
+                        first={i === 0}
+                      />
+                    ))}
               </Card>
             </Stack>
 
-            <Stack gap={2} className="mt-7">
-              <SectionPill index="03" label={t('result.r3')} />
-              <Stack gap={2}>
-                {result.actions.map((action) => (
-                  <ActionCard key={action.id} action={action} onPress={() => onAction?.(action)} />
-                ))}
+            {(!reviewAll || result.actions.length > 0) && (
+              <Stack gap={2} className="mt-7">
+                <SectionPill index="03" label={t('result.r3')} />
+                <Stack gap={2}>
+                  {result.actions.map((action) => (
+                    <ActionCard
+                      key={action.id}
+                      action={action}
+                      onPress={() => onAction?.(action)}
+                    />
+                  ))}
+                </Stack>
               </Stack>
-            </Stack>
+            )}
           </ScrollView>
 
           <ActionBar
@@ -322,7 +368,7 @@ export function ResultView({
             primary={
               <Button
                 size="lg"
-                label={t('result.seeWrong')}
+                label={t(reviewAll ? 'solutions.title' : 'result.seeWrong')}
                 onPress={onSeeWrong}
                 testID="result-cta"
               />

@@ -1,4 +1,5 @@
 import { FREE_MOCK_SHORT, PWT_CONSTABLE, type ExamPattern } from './exam-pattern';
+import { SI_MOCK_01_ID, SI_MOCK_01_PATTERN } from './si-mock';
 
 export type TestKind = 'full' | 'previous';
 
@@ -8,6 +9,8 @@ export type TestMeta = {
   /** i18n interpolation for `result.title` etc.; plain titles for previous-year papers */
   title: { en: string; te: string };
   pattern: ExamPattern;
+  /** Show a general full mock only on Full mocks, not on post-specific shelves. */
+  fullMocksOnly?: boolean;
   /**
    * The paper opens without a payment. Every previous-year paper is free: it was public the
    * day it was set, so viewing it costs nothing and practising it asks for an account
@@ -18,8 +21,15 @@ export type TestMeta = {
 };
 
 export const TESTS: TestMeta[] = [
-  { id: 'mock-07', kind: 'full', title: { en: 'PWT Full Mock 07', te: 'PWT ఫుల్ మాక్ 07' }, pattern: FREE_MOCK_SHORT, free: true, attempted: { bestScore: 62.25, attempts: 1 } },
-  { id: 'mock-08', kind: 'full', title: { en: 'PWT Full Mock 08', te: 'PWT ఫుల్ మాక్ 08' }, pattern: PWT_CONSTABLE, free: false },
+  {
+    id: SI_MOCK_01_ID,
+    kind: 'full',
+    title: { en: 'SI Mock Test 01', te: 'ఎస్ఐ మాక్ టెస్ట్ 01' },
+    pattern: SI_MOCK_01_PATTERN,
+    free: true,
+  },
+  { id: 'mock-07', kind: 'full', title: { en: 'PWT Full Mock 07', te: 'PWT ఫుల్ మాక్ 07' }, pattern: FREE_MOCK_SHORT, fullMocksOnly: true, free: true, attempted: { bestScore: 62.25, attempts: 1 } },
+  { id: 'mock-08', kind: 'full', title: { en: 'PWT Full Mock 08', te: 'PWT ఫుల్ మాక్ 08' }, pattern: PWT_CONSTABLE, fullMocksOnly: true, free: false },
   { id: 'prev-2022', kind: 'previous', title: { en: 'PWT 2022 — SCT PC', te: 'PWT 2022 — SCT PC' }, pattern: PWT_CONSTABLE, free: true },
   { id: 'prev-2018', kind: 'previous', title: { en: 'PWT 2018 — SCT PC', te: 'PWT 2018 — SCT PC' }, pattern: PWT_CONSTABLE, free: true },
 ];

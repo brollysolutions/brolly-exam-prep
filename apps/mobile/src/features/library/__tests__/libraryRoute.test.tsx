@@ -36,6 +36,27 @@ beforeEach(() => {
 });
 
 describe('LibraryRoute', () => {
+  it('remembers the SI public URL through sign-in', async () => {
+    await render(<LibraryRoute />);
+    await userEvent.press(screen.getByTestId('library-filter-si'));
+    await userEvent.press(screen.getByTestId('library-row-si-brolly-01'));
+    expect(mockRouter.push).toHaveBeenCalledWith({
+      pathname: '/(auth)/login',
+      params: { returnTo: '/tests/simocktest' },
+    });
+  });
+
+  it('opens the SI mock at /tests/simocktest for a signed-in candidate', async () => {
+    useSessionStore.getState().setToken('tok-1');
+    useSessionStore.getState().setPost('si');
+    useSessionStore.getState().setCategory('oc');
+    useSessionStore.getState().completeOnboarding();
+    await render(<LibraryRoute />);
+    await userEvent.press(screen.getByTestId('library-filter-si'));
+    await userEvent.press(screen.getByTestId('library-row-si-brolly-01'));
+    expect(mockRouter.push).toHaveBeenCalledWith('/tests/simocktest');
+  });
+
   it('lists the papers for a guest', async () => {
     await render(<LibraryRoute />);
     expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();

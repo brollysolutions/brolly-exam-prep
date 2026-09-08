@@ -1,20 +1,24 @@
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { act, render, screen, userEvent } from '@testing-library/react-native';
 import { initI18n } from '@tslprb/i18n';
+import { paperForTest, SI_MOCK_01_ID, TESTS } from '@tslprb/fixtures';
 import { AppState, BackHandler, type AppStateStatus } from 'react-native';
 
 import TestAttemptRoute from '@/app/test/[id]/index';
+import SIMockTestRoute from '@/app/tests/simocktest';
 import { useActivityStore } from '@/data/activity';
 import { MockApi, resetApi } from '@/data/api';
 import { useAttemptStore } from '@/data/attempt';
 import { useHistoryStore } from '@/data/history';
+import { useCompletedTestsStore } from '@/data/completedTests';
 import { useSessionStore } from '@/data/session';
 
 const mockReplace = jest.fn();
 const mockBack = jest.fn();
 const mockRedirect = jest.fn();
+let mockTestId = 'mock-07';
 jest.mock('expo-router', () => ({
-  useLocalSearchParams: () => ({ id: 'mock-07' }),
+  useLocalSearchParams: () => ({ id: mockTestId }),
   useRouter: () => ({ replace: mockReplace, back: mockBack, push: jest.fn() }),
   // `Redirect` renders nothing and just records where it would have gone.
   Redirect: ({ href }: { href: unknown }) => {
@@ -66,6 +70,8 @@ beforeEach(() => {
   mockReplace.mockClear();
   mockBack.mockClear();
   mockRedirect.mockClear();
+  mockTestId = 'mock-07';
+  useCompletedTestsStore.getState().reset();
   useSessionStore.getState().logout();
   signIn();
   appStateHandler = undefined;
@@ -91,10 +97,85 @@ afterEach(() => {
 
 /** Mount the route and wait until the store holds a running attempt. */
 async function mountRoute() {
-  await render(<TestAttemptRoute />);
+  await render(mockTestId === SI_MOCK_01_ID ? <SIMockTestRoute /> : <TestAttemptRoute />);
   await flush();
   return useAttemptStore.getState();
 }
+
+describe('imported SI mock attempt', () => {
+  const meta = TESTS.find((t) => t.id === SI_MOCK_01_ID)!;
+  const paper = paperForTest(meta);
+
+  it('redirects an old SI bookmark without starting a second attempt', async () => {
+    mockTestId = SI_MOCK_01_ID;
+    await render(<TestAttemptRoute />);
+    expect(mockRedirect).toHaveBeenCalledWith('/tests/simocktest');
+    expect(useAttemptStore.getState().status).toBe('idle');
+  });
+
+  it('retains the new URL as the return target when sign-in is required', async () => {
+    useSessionStore.getState().logout();
+    await render(<SIMockTestRoute />);
+    expect(mockRedirect).toHaveBeenCalledWith({
+      pathname: '/(auth)/login',
+      params: { returnTo: '/tests/simocktest' },
+    });
+    expect(useAttemptStore.getState().status).toBe('idle');
+  });
+
+  it('resumes the same stored SI attempt at the new URL after a reload', async () => {
+    useAttemptStore.getState().start(meta, { attemptId: 'si-resume', endsAt: T0 + 600_000 });
+    useAttemptStore.getState().answer(1, paper[0].correct);
+    useAttemptStore.getState().goto(51);
+    await render(<SIMockTestRoute />);
+    await flush();
+    expect(useAttemptStore.getState()).toMatchObject({
+      attemptId: 'si-resume',
+      current: 51,
+      endsAt: T0 + 600_000,
+      answers: { 1: paper[0].correct },
+    });
+    expect(screen.getByTestId('question-text')).toHaveTextContent(paper[50].text.en);
+  });
+
+  it('shows questions only, then stores the actual score on manual submission', async () => {
+    mockTestId = SI_MOCK_01_ID;
+    const create = jest.spyOn(MockApi.prototype, 'createAttempt');
+    await mountRoute();
+    expect(create).not.toHaveBeenCalled();
+    expect(screen.getByTestId('question-text')).toHaveTextContent(paper[0].text.en);
+    expect(screen.queryByText(paper[0].explanation.en)).toBeNull();
+    expect(screen.queryByTestId('solution-correct-answer')).toBeNull();
+    await userEvent.press(screen.getByTestId(`option-${paper[0].correct}`));
+    await userEvent.press(screen.getByTestId('btn-palette'));
+    await userEvent.press(screen.getByTestId('palette-submit'));
+    await userEvent.press(screen.getByText('Yes, submit'));
+    expect(useCompletedTestsStore.getState().tests[meta.id].result).toMatchObject({
+      score: 1,
+      maxScore: 200,
+      correct: 1,
+      wrong: 0,
+      skipped: 199,
+    });
+    expect(mockReplace).toHaveBeenCalledWith('/test/simocktest/result');
+  });
+
+  it('scores an expired resumed attempt even if the clock expires before the paper loads', async () => {
+    mockTestId = SI_MOCK_01_ID;
+    useAttemptStore.getState().start(meta, { attemptId: 'si-expired', endsAt: T0 + 1000 });
+    useAttemptStore.getState().answer(1, paper[0].correct);
+    jest.setSystemTime(T0 + 2000);
+    await mountRoute();
+    await act(async () => {
+      jest.advanceTimersByTime(1000);
+    });
+    await flush();
+    expect(useAttemptStore.getState().status).toBe('autoSubmitted');
+    expect(useAttemptStore.getState().attemptId).toBe('si-expired');
+    expect(useCompletedTestsStore.getState().tests[meta.id].result.score).toBe(1);
+    expect(screen.getByTestId('dialog-auto')).toBeOnTheScreen();
+  });
+});
 
 // F-19 — `ensure` covers every tap; a deep link is the one way in that never passes it.
 describe('test attempt route (gate)', () => {

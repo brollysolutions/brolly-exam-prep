@@ -25,8 +25,12 @@ import {
   useAutoDismiss,
 } from '@/ui';
 
-/** Reading order of the two shelves; also the chip order. */
-const KINDS: { kind: TestKind; labelKey: string }[] = [
+type LibraryFilter = TestKind | 'si' | 'pc';
+
+/** Reading order of the mock filters and paper shelves. */
+const KINDS: { kind: LibraryFilter; labelKey: string }[] = [
+  { kind: 'si', labelKey: 'library.siMockTest' },
+  { kind: 'pc', labelKey: 'library.constableMockTest' },
   { kind: 'full', labelKey: 'library.fullMocks' },
   { kind: 'previous', labelKey: 'library.previousYear' },
 ];
@@ -234,7 +238,7 @@ export function LibraryView({
   onLocked,
 }: LibraryViewProps) {
   const { t } = useTranslation();
-  const [kind, setKind] = useState<TestKind>(initialKind ?? 'full');
+  const [kind, setKind] = useState<LibraryFilter>(initialKind ?? 'full');
   // The Tests tab is mounted long before Home links to `?kind=previous`, so the request has to
   // be watched, not just read once — and watched by *navigation*, not by value, or a repeat of
   // the same link would be a no-op. React's own "adjust state when a prop changes" shape rather
@@ -250,7 +254,11 @@ export function LibraryView({
   const [lockedTick, setLockedTick] = useState(0);
   const locked = useAutoDismiss(lockedTick || null);
 
-  const rows = tests.filter((test) => test.kind === kind);
+  const rows = tests.filter((test) =>
+    kind === 'si' || kind === 'pc'
+      ? test.kind === 'full' && test.pattern.post === kind && !test.fullMocksOnly
+      : test.kind === kind,
+  );
 
   const press = (test: TestMeta) => {
     if (test.free) {

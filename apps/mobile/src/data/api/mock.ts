@@ -14,7 +14,8 @@ import type {
   WrongAnswer,
 } from '@tslprb/api-contracts';
 import {
-  buildPaper,
+  isImportedTest,
+  paperForTest,
   SAMPLE_RESULT,
   TESTS,
   type ExamPattern,
@@ -22,6 +23,9 @@ import {
   type TestMeta,
 } from '@tslprb/fixtures';
 import { en, te } from '@tslprb/i18n';
+
+import { useCompletedTestsStore } from '../completedTests';
+import { canReviewImportedTest } from '../importedAttempt';
 
 import { ApiError, type AppApi, type ResultDetail } from './types';
 
@@ -77,7 +81,7 @@ function findMeta(id: string): TestMeta {
   return meta;
 }
 
-const paperOf = (meta: TestMeta): PaperQuestion[] => buildPaper(meta.pattern.sections);
+const paperOf = (meta: TestMeta): PaperQuestion[] => paperForTest(meta);
 
 /**
  * SAMPLE_RESULT widened onto ResultDetail. The return annotation is the compile-time check
@@ -237,6 +241,10 @@ export class MockApi implements AppApi {
    */
   async getResultDetail(_id: string): Promise<ResultDetail> {
     await latency();
+    if (isImportedTest(_id)) {
+      if (!canReviewImportedTest(_id)) throw new ApiError(403, 'test_not_submitted');
+      return useCompletedTestsStore.getState().tests[_id].result;
+    }
     return sampleDetail();
   }
 

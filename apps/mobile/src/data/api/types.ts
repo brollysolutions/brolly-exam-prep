@@ -41,18 +41,34 @@ export type ResultDetail = {
   id: string;
   /** The "Full Mock 07" number, for the `result.title` interpolation. */
   testTitleN: number;
+  /** The paper's own title, when the caller knows it — a previous-year paper is not a mock. */
+  title?: LocalizedCopy;
   score: number;
   maxScore: number;
   cutoffPct: number;
   qualified: boolean;
-  rank: number;
-  totalCandidates: number;
+  /**
+   * Where this candidate came in the pool, and how big the pool was.
+   *
+   * BOTH OPTIONAL, and usually absent: a rank is a fact about every other candidate, so a
+   * handset marking its own paper cannot know one, and the API returns `rank: null` for a
+   * fresh result too. They are rendered only when they are present — carrying the sample
+   * fixture's "1,284 / 9,033" into a real candidate's result is what F-34 removed.
+   */
+  rank?: number;
+  totalCandidates?: number;
   accuracyPct: number;
   avgSecondsPerQuestion: number;
   /** Negative, or 0 when the pattern carries no negative marking. */
   negativeMarks: number;
+  correct: number;
   wrong: number;
   skipped: number;
+  /**
+   * "Do these three next". Empty when nothing is known to suggest: the drills are a fact
+   * about the catalogue, not about the marking, and a locally marked paper has no view of
+   * one. The screen renders the block only when there is something in it.
+   */
   actions: ResultAction[];
   review: ResultReviewRow[];
 };

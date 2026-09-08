@@ -177,19 +177,21 @@ function SolutionCard({ row }: { row: SolutionRow }) {
         </Text>
       </Stack>
 
-      <Row gap={1} wrap align="baseline" className="mt-3">
-        <Text variant="caption" color="ink3">
-          {t('solutions.yourTime')}
-        </Text>
-        <Duration seconds={row.seconds} testID="solution-your-time" />
-        <Glyph variant="caption" color="ink3">
-          ·
-        </Glyph>
-        <Text variant="caption" color="ink3">
-          {t('solutions.avgTime')}
-        </Text>
-        <Duration seconds={row.question.avgSeconds} testID="solution-avg-time" />
-      </Row>
+      {row.question.avgSeconds > 0 && (
+        <Row gap={1} wrap align="baseline" className="mt-3">
+          <Text variant="caption" color="ink3">
+            {t('solutions.yourTime')}
+          </Text>
+          <Duration seconds={row.seconds} testID="solution-your-time" />
+          <Glyph variant="caption" color="ink3">
+            ·
+          </Glyph>
+          <Text variant="caption" color="ink3">
+            {t('solutions.avgTime')}
+          </Text>
+          <Duration seconds={row.question.avgSeconds} testID="solution-avg-time" />
+        </Row>
+      )}
     </Card>
   );
 }

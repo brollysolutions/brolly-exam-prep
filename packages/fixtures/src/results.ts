@@ -11,6 +11,8 @@ export const SAMPLE_RESULT = {
   accuracyPct: 71,
   avgSecondsPerQuestion: 54,
   negativeMarks: -6.75,
+  /** 67 + 27 + 6 = the 100 questions; 67 of the 94 attempted is the 71% above. */
+  correct: 67,
   wrong: 27,
   skipped: 6,
   /** "Do these three next" — sectional drills */

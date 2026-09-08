@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react';
 
 import { useLangStore } from '@/data/lang';
 import { useRequireAuth } from '@/data/requireAuth';
+import { testAttemptHref } from '@/data/testRoutes';
 import { LibraryView } from '@/features/library/LibraryView';
 
 const KINDS: TestKind[] = ['full', 'previous'];
@@ -47,7 +48,7 @@ export default function LibraryRoute() {
       lang={lang}
       initialKind={asKind(kind)}
       kindKey={`${kind}:${visit}`}
-      onOpen={(id) => ensure(`/test/${id}`)}
+      onOpen={(id) => ensure(testAttemptHref(id))}
       // The object form, not `/paper/${id}`: expo-router encodes the param, so an id is never
       // pasted into a path (the same reason `withReturnTo` uses it).
       onViewPaper={(id) => router.push({ pathname: '/paper/[id]', params: { id } })}

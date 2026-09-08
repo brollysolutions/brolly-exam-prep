@@ -1,5 +1,6 @@
 import { ACTIVITY_STORAGE_KEY, useActivityStore } from './activity';
 import { ATTEMPT_STORAGE_KEY, useAttemptStore } from './attempt';
+import { COMPLETED_TESTS_STORAGE_KEY, useCompletedTestsStore } from './completedTests';
 import { ELIGIBILITY_STORAGE_KEY, useEligibilityStore } from './eligibility';
 import { HISTORY_STORAGE_KEY, useHistoryStore } from './history';
 import { LANG_STORAGE_KEY, useLangStore } from './lang';
@@ -14,6 +15,7 @@ import { STUDY_STORAGE_KEY, useStudyStore } from './study';
 export const ALL_STORAGE_KEYS = [
   SESSION_STORAGE_KEY,
   ATTEMPT_STORAGE_KEY,
+  COMPLETED_TESTS_STORAGE_KEY,
   ELIGIBILITY_STORAGE_KEY,
   HISTORY_STORAGE_KEY,
   ACTIVITY_STORAGE_KEY,
@@ -25,6 +27,7 @@ export const ALL_STORAGE_KEYS = [
 const PERSISTED = [
   useSessionStore,
   useAttemptStore,
+  useCompletedTestsStore,
   useEligibilityStore,
   useHistoryStore,
   useActivityStore,
@@ -55,6 +58,7 @@ const PERSISTED = [
 export function signOut(): void {
   useSessionStore.getState().logout();
   useAttemptStore.getState().reset();
+  useCompletedTestsStore.getState().reset();
   useEligibilityStore.getState().reset();
   useHistoryStore.getState().reset();
   useActivityStore.getState().reset();

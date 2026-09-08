@@ -1,3 +1,4 @@
+import { isImportedTest } from '@tslprb/fixtures';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 
@@ -20,6 +21,8 @@ export default function PaperRoute() {
   const [attempt, setAttempt] = useState(0);
 
   const load = useCallback(async () => {
+    // Imported mock solutions are available only through the submitted-test review flow.
+    if (isImportedTest(id)) throw new Error('Mock tests are not previous-year papers');
     const api = getApi();
     const [meta, questions] = await Promise.all([api.getTestMeta(id), api.getPaper(id)]);
     return { meta, questions };

@@ -97,6 +97,21 @@ describe('ResultView', () => {
     expect(screen.getByLabelText('Avg time per question 54s')).toBeOnTheScreen();
   });
 
+  /**
+   * F-34 — a rank is a fact about every other candidate, so a paper marked on the handset
+   * has none and the API returns `rank: null` for a fresh result. The line goes; it is
+   * never filled with the sample fixture's pool.
+   */
+  it('drops the rank line when the rank and the pool are unknown', async () => {
+    const local: ResultDetail = { ...RESULT, rank: undefined, totalCandidates: undefined };
+    await render(<ResultView result={local} />);
+    expect(screen.getAllByTestId('result-stand-row')).toHaveLength(2);
+    expect(screen.queryByText('Rank')).toBeNull();
+    expect(screen.queryByText(/1,284/)).toBeNull();
+    // The row that leads now is accuracy, so it must not draw a divider against the card.
+    expect(screen.getAllByTestId('result-stand-row')[0].props.className).not.toMatch(/border-t/);
+  });
+
   it('calls back for the CTA and for a drill card', async () => {
     const onSeeWrong = jest.fn();
     const onAction = jest.fn();

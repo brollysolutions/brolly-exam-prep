@@ -86,6 +86,114 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
           accessibilityState={
             {
               "busy": undefined,
+              "checked": false,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="items-center justify-center border rounded-full min-h-touch py-2 px-4 border-outline"
+          collapsable={false}
+          focusable={true}
+          hitSlop={0}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={{}}
+          testID="library-filter-si"
+        >
+          <Text
+            className="text-ink3"
+            style={
+              {
+                "fontFamily": "NotoSansTelugu_600SemiBold",
+                "fontSize": 13,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 21.5,
+                "textAlign": "center",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+          >
+            ఎస్ఐ మాక్ టెస్ట్
+          </Text>
+        </View>
+        <View
+          accessibilityRole="radio"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": false,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          className="items-center justify-center border rounded-full min-h-touch py-2 px-4 border-outline"
+          collapsable={false}
+          focusable={true}
+          hitSlop={0}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={{}}
+          testID="library-filter-pc"
+        >
+          <Text
+            className="text-ink3"
+            style={
+              {
+                "fontFamily": "NotoSansTelugu_600SemiBold",
+                "fontSize": 13,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 21.5,
+                "textAlign": "center",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+          >
+            కానిస్టేబుల్ మాక్ టెస్ట్
+          </Text>
+        </View>
+        <View
+          accessibilityRole="radio"
+          accessibilityState={
+            {
+              "busy": undefined,
               "checked": true,
               "disabled": undefined,
               "expanded": undefined,
@@ -132,7 +240,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
               }
             }
           >
-            ఫుల్ మాక్స్
+            ఫుల్ మాక్ టెస్ట్
           </Text>
         </View>
         <View
@@ -206,7 +314,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
             }
           >
             <View
-              accessibilityLabel="PWT ఫుల్ మాక్ 07 ⁦40⁩ ప్రశ్నలు ⁦60⁩ నిమి ఉత్తమం ⁦62.25⁩ ఉచితం"
+              accessibilityLabel="ఎస్ఐ మాక్ టెస్ట్ 01 ⁦200⁩ ప్రశ్నలు ⁦190⁩ నిమి ఉచితం"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -227,6 +335,266 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
               }
               accessible={true}
               className="min-h-touchLg justify-center py-2"
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              testID="library-row-si-brolly-01"
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 12,
+                    "justifyContent": undefined,
+                  }
+                }
+                testID="library-row-si-brolly-01-row"
+              >
+                <View
+                  className="flex-1"
+                  style={
+                    {
+                      "alignItems": undefined,
+                      "flexDirection": "column",
+                      "gap": 4,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    className="text-ink"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_600SemiBold",
+                        "fontSize": 15,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 24.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ఎస్ఐ మాక్ టెస్ట్ 01
+                  </Text>
+                  <View
+                    style={
+                      {
+                        "alignItems": "baseline",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                        "gap": 8,
+                        "justifyContent": undefined,
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "alignItems": "baseline",
+                          "flexDirection": "row",
+                          "flexWrap": undefined,
+                          "gap": 4,
+                          "justifyContent": undefined,
+                        }
+                      }
+                    >
+                      <Text
+                        accessibilityLanguage="en"
+                        className="text-ink3"
+                        style={
+                          {
+                            "fontFamily": "Inter_600SemiBold",
+                            "fontSize": 12,
+                            "fontVariant": [
+                              "tabular-nums",
+                            ],
+                            "letterSpacing": 0,
+                            "lineHeight": 18,
+                            "textAlign": "left",
+                            "textTransform": undefined,
+                            "writingDirection": "ltr",
+                          }
+                        }
+                      >
+                        ⁦200⁩
+                      </Text>
+                      <Text
+                        className="text-ink3"
+                        style={
+                          {
+                            "fontFamily": "NotoSansTelugu_400Regular",
+                            "fontSize": 12,
+                            "fontVariant": undefined,
+                            "letterSpacing": 0,
+                            "lineHeight": 19.8,
+                            "textAlign": "left",
+                            "textTransform": undefined,
+                            "writingDirection": "ltr",
+                          }
+                        }
+                      >
+                        ప్రశ్నలు
+                      </Text>
+                    </View>
+                    <Text
+                      className="text-ink3"
+                      style={
+                        {
+                          "fontFamily": "Inter_400Regular",
+                          "fontSize": 12,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 18,
+                          "textAlign": "left",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ·
+                    </Text>
+                    <View
+                      style={
+                        {
+                          "alignItems": "baseline",
+                          "flexDirection": "row",
+                          "flexWrap": undefined,
+                          "gap": 4,
+                          "justifyContent": undefined,
+                        }
+                      }
+                    >
+                      <Text
+                        accessibilityLanguage="en"
+                        className="text-ink3"
+                        style={
+                          {
+                            "fontFamily": "Inter_600SemiBold",
+                            "fontSize": 12,
+                            "fontVariant": [
+                              "tabular-nums",
+                            ],
+                            "letterSpacing": 0,
+                            "lineHeight": 18,
+                            "textAlign": "left",
+                            "textTransform": undefined,
+                            "writingDirection": "ltr",
+                          }
+                        }
+                      >
+                        ⁦190⁩
+                      </Text>
+                      <Text
+                        className="text-ink3"
+                        style={
+                          {
+                            "fontFamily": "NotoSansTelugu_400Regular",
+                            "fontSize": 12,
+                            "fontVariant": undefined,
+                            "letterSpacing": 0,
+                            "lineHeight": 19.8,
+                            "textAlign": "left",
+                            "textTransform": undefined,
+                            "writingDirection": "ltr",
+                          }
+                        }
+                      >
+                        నిమి
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "alignSelf": "flex-start",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 8,
+                      "justifyContent": undefined,
+                      "minHeight": 24.8,
+                    }
+                  }
+                  testID="library-row-si-brolly-01-end"
+                >
+                  <View
+                    className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+                    style={
+                      {
+                        "justifyContent": "center",
+                        "minHeight": 24,
+                      }
+                    }
+                    testID="library-badge-si-brolly-01"
+                  >
+                    <View
+                      style={
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "flexWrap": undefined,
+                          "gap": 4,
+                          "justifyContent": undefined,
+                        }
+                      }
+                    >
+                      <Text
+                        className="text-ink3"
+                        style={
+                          {
+                            "fontFamily": "NotoSansTelugu_700Bold",
+                            "fontSize": 12,
+                            "fontVariant": undefined,
+                            "letterSpacing": 0,
+                            "lineHeight": 19.8,
+                            "textAlign": "left",
+                            "textTransform": undefined,
+                            "writingDirection": "ltr",
+                          }
+                        }
+                      >
+                        ఉచితం
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityLabel="PWT ఫుల్ మాక్ 07 ⁦40⁩ ప్రశ్నలు ⁦60⁩ నిమి ఉత్తమం ⁦62.25⁩ ఉచితం"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              className="min-h-touchLg justify-center py-2 border-t border-line"
               collapsable={false}
               focusable={true}
               onBlur={[Function]}

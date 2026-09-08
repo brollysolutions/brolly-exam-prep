@@ -117,6 +117,7 @@
     "accuracy": "Accuracy",
     "negMarks": "Negative marks",
     "wrong": "Wrong",
+    "right": "Correct",
     "skipped": "Skipped",
     "perQ": "Avg time per question",
     "seeWrong": "Wrong answers + explanation",
@@ -170,7 +171,9 @@
   },
   "library": {
     "title": "Tests",
-    "fullMocks": "Full mocks",
+    "siMockTest": "SI Mock Test",
+    "constableMockTest": "Constable Mock Test",
+    "fullMocks": "Full Mock Test",
     "previousYear": "Previous year",
     "empty": "No tests here yet. Try another filter.",
     "attempted": "Attempted",
