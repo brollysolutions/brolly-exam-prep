@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 const allowed =
-  /^\/(?:health|v1\/(?:auth\/phone|tests(?:\/[^/]+)?|attempts(?:\/[^/]+(?:\/(?:answers|submit))?)?|results\/[^/]+))$/;
+  /^\/(?:health|v1\/(?:tests(?:\/[^/]+)?|attempts(?:\/[^/]+(?:\/(?:answers|submit))?)?|results\/[^/]+))$/;
 
 async function proxy(request: NextRequest, context: { params: Promise<{ path: string[] }> }) {
   const { path } = await context.params;

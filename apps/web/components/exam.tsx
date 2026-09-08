@@ -8,7 +8,6 @@ import { firstQuestionOf, type Question } from '@tslprb/fixtures';
 import { TESTS, isImportedTest } from '@/lib/test-catalog';
 import { useAttemptStore, type Choice } from '@/data/attempt';
 import { cellState, counts, isSectionLocked, sectionOf } from '@/data/attempt.selectors';
-import { useSessionStore, isOnboarded } from '@/data/session';
 import { useLangStore } from '@/data/lang';
 import { useCompletedTestsStore } from '@/data/completedTests';
 import { useActivityStore } from '@/data/activity';
@@ -19,26 +18,15 @@ import {
   filterSolutionRows,
   type SolutionFilter,
 } from '@/features/result/solutions';
-import { attemptHref, resultHref, solutionsHref, withReturn } from '@/lib/routes';
+import { attemptHref, solutionsHref } from '@/lib/routes';
 import { BackLink, Button, Empty, Modal, Notice, PageTitle, useCopy } from './web-ui';
 
-function useGate(destination: string) {
-  const session = useSessionStore();
-  const router = useRouter();
-  const ready = Boolean(session.token) && isOnboarded(session);
-  useEffect(() => {
-    if (!ready) router.replace(withReturn(session.token ? '/post' : '/login', destination));
-  }, [ready, session.token, router, destination]);
-  return ready;
-}
 const clock = (sec: number) =>
   `${String(Math.floor(sec / 3600)).padStart(2, '0')}:${String(Math.floor(sec / 60) % 60).padStart(2, '0')}:${String(sec % 60).padStart(2, '0')}`;
 
 export function Exam({ id }: { id: string }) {
-  const ready = useGate(attemptHref(id));
   const { t } = useTranslation();
   const meta = TESTS.find((test) => test.id === id);
-  if (!ready) return <Notice>{t('common.signIn')}…</Notice>;
   if (!meta || !meta.free)
     return (
       <>
@@ -528,7 +516,6 @@ export function Results({
   autoSubmitted?: boolean;
   onRetake?: () => void;
 }) {
-  const ready = useGate(solutions ? solutionsHref(id) : resultHref(id));
   const { t } = useTranslation();
   const copy = useCopy();
   const lang = useLangStore((s) => s.lang);
@@ -541,7 +528,6 @@ export function Results({
   const [page, setPage] = useState(0);
   const [showSolutions, setShowSolutions] = useState(solutions);
   useEffect(() => {
-    if (!ready) return;
     let live = true;
     void getApi()
       .getPaper(id)
@@ -558,8 +544,7 @@ export function Results({
     return () => {
       live = false;
     };
-  }, [id, ready, retry]);
-  if (!ready) return null;
+  }, [id, retry]);
   if (attempt.testId === id && attempt.status === 'running')
     return (
       <>

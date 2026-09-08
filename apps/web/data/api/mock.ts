@@ -4,8 +4,6 @@ import type {
   AttemptCreate,
   LocalizedText,
   Ok,
-  PhoneSignIn,
-  PhoneSignInResponse,
   Result,
   SectionScore,
   SubmitResponse,
@@ -26,9 +24,6 @@ import { useCompletedTestsStore } from '../completedTests';
 import { canReviewImportedTest } from '../importedAttempt';
 
 import { ApiError, type AppApi, type ResultDetail } from './types';
-
-/** The dev OTP accepted for any phone (mirrors services/api's dev code, spec 10). */
-export const DEV_OTP = '123456';
 
 const MIN_LATENCY_MS = 150;
 const MAX_LATENCY_MS = 400;
@@ -156,16 +151,6 @@ export class MockApi implements AppApi {
   async health(): Promise<{ status: string }> {
     await latency();
     return { status: 'ok' };
-  }
-
-  /**
-   * The number is the whole credential (the OTP step went on 2026-09-07), so there is nothing
-   * to check: a number that has been seen before comes back to the same user id, and one that
-   * has not creates it. Same shape as the server's `POST /v1/auth/phone`.
-   */
-  async signInWithPhone(body: PhoneSignIn): Promise<PhoneSignInResponse> {
-    await latency();
-    return { token: nextId('tok'), user: { id: `usr-${body.phone}`, phone: body.phone } };
   }
 
   async listTests(): Promise<TestSummary[]> {

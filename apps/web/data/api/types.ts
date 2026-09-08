@@ -78,7 +78,7 @@ export type ResultDetail = {
  * express: the exam pattern that drives section locking, the answer key the solutions
  * screen needs, and the analysis payload above.
  */
-export interface AppApi extends ApiClient {
+export interface AppApi extends Omit<ApiClient, 'signInWithPhone'> {
   listTestMetas(): Promise<TestMeta[]>;
   getTestMeta(id: string): Promise<TestMeta>;
   getPaper(testId: string): Promise<PaperQuestion[]>;

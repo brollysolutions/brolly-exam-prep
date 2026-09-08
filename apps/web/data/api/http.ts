@@ -1,7 +1,6 @@
 import {
   AttemptSchema,
   OkSchema,
-  PhoneSignInResponseSchema,
   ResultSchema,
   SubmitResponseSchema,
   TestSchema,
@@ -10,8 +9,6 @@ import {
   type Attempt,
   type AttemptCreate,
   type Ok,
-  type PhoneSignIn,
-  type PhoneSignInResponse,
   type Result,
   type SubmitResponse,
   type Test,
@@ -28,8 +25,6 @@ const TestSummaryListSchema = z.array(TestSummarySchema);
 
 export type HttpApiOptions = {
   baseUrl?: string;
-  /** Read at request time so a sign-in mid-session is picked up without rebuilding the client. */
-  getToken?: () => string | undefined;
 };
 
 /**
@@ -44,7 +39,7 @@ export type HttpApiOptions = {
  * `MockApi` uses — exactly like `getResultDetail`, so the catalogue, the paper and the
  * analysis still render against a real backend (F-27 runs the web build with
  * `EXPO_PUBLIC_API=http`). The attempt lifecycle (`createAttempt`, `patchAttemptAnswer`,
- * `submitAttempt`, `getResult`) and the OTP calls do go over the wire. Replace the three
+ * `submitAttempt`, `getResult`) goes over the wire. Replace the three
  * fixture reads when `GET /v1/tests/{id}/paper` lands. Until then the ids these reads hand
  * out (`mock-07`, `q-ar-001#n`) are not the API's (`test-pwt-07`, `q-arith-*`), so
  * `POST /v1/attempts` 404s and the attempt route falls back to its offline start.
@@ -57,13 +52,11 @@ export type HttpApiOptions = {
  */
 export class HttpApi implements AppApi {
   private readonly baseUrl: string;
-  private readonly getToken: () => string | undefined;
   private fallbackApi?: MockApi;
 
   constructor(options: HttpApiOptions = {}) {
     const base = options.baseUrl ?? '/api';
     this.baseUrl = base.replace(/\/+$/, '');
-    this.getToken = options.getToken ?? (() => undefined);
   }
 
   /** Built on first use only, so an http-only app never pays for the fixture bundle. */
@@ -79,8 +72,6 @@ export class HttpApi implements AppApi {
   ): Promise<T> {
     const headers: Record<string, string> = { Accept: 'application/json' };
     if (init?.body !== undefined) headers['Content-Type'] = 'application/json';
-    const token = this.getToken();
-    if (token) headers.Authorization = `Bearer ${token}`;
 
     let res: Response;
     try {
@@ -102,10 +93,6 @@ export class HttpApi implements AppApi {
 
   health(): Promise<{ status: string }> {
     return this.request('/health', HealthSchema);
-  }
-
-  signInWithPhone(body: PhoneSignIn): Promise<PhoneSignInResponse> {
-    return this.request('/v1/auth/phone', PhoneSignInResponseSchema, { method: 'POST', body });
   }
 
   listTests(): Promise<TestSummary[]> {

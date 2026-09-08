@@ -34,3 +34,10 @@ export function returnHref(value: string | null | undefined): string {
 
 export const withReturn = (page: string, destination: string) =>
   `${page}?returnTo=${encodeURIComponent(returnHref(destination))}`;
+
+/** Old login bookmarks now lead straight to their local destination. */
+export function loginReturnHref(value: string | null | undefined): string {
+  const destination = returnHref(value || '/tests');
+  const pathname = decodeURIComponent(new URL(destination, 'https://local.invalid').pathname);
+  return /^\/login(?:\/|$)/.test(pathname) ? '/tests' : destination;
+}
