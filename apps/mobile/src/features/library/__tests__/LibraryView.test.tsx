@@ -6,6 +6,9 @@ import { iso } from '@/ui';
 
 import { LibraryView } from '../LibraryView';
 
+// Explicit samples keep badge and locked-paper coverage independent of the live shelf.
+const sampleTests = TESTS.map((test) => ({ ...test, listed: true }));
+
 const handlers = () => ({
   lang: 'en' as const,
   onOpen: jest.fn(),
@@ -19,7 +22,7 @@ describe('LibraryView', () => {
   });
 
   it('opens on the full mocks and shows their size and badge', async () => {
-    await render(<LibraryView {...handlers()} />);
+    await render(<LibraryView {...handlers()} tests={sampleTests} />);
     expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
     expect(screen.getByTestId('library-badge-mock-07')).toHaveTextContent('Free');
     expect(screen.getByTestId('library-badge-mock-08')).toHaveTextContent(/Locked/);
@@ -63,23 +66,23 @@ describe('LibraryView', () => {
     expect(screen.queryByTestId('library-row-sec-blood')).toBeNull();
   });
 
-  it('keeps both general mocks in Full mocks after leaving the empty Constable shelf', async () => {
+  it('keeps retired mocks off Full mocks after switching shelves', async () => {
     const h = handlers();
     await render(<LibraryView {...h} />);
+    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+    expect(screen.queryByTestId('library-row-mock-08')).toBeNull();
     await userEvent.press(screen.getByTestId('library-filter-pc'));
     expect(screen.getByTestId('library-empty')).toBeOnTheScreen();
     await userEvent.press(screen.getByTestId('library-filter-full'));
-    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
-    expect(screen.getByTestId('library-row-mock-08')).toBeOnTheScreen();
-    await userEvent.press(screen.getByTestId('library-row-mock-07'));
-    expect(h.onOpen).toHaveBeenCalledWith('mock-07');
-    await userEvent.press(screen.getByTestId('library-row-mock-08'));
-    expect(h.onLocked).toHaveBeenCalledWith('mock-08');
+    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+    expect(screen.queryByTestId('library-row-mock-08')).toBeNull();
+    await userEvent.press(screen.getByTestId('library-row-si-brolly-01'));
+    expect(h.onOpen).toHaveBeenCalledWith('si-brolly-01');
   });
 
   it('still supports dedicated Constable papers without listing the two general mocks', async () => {
     const general = TESTS.find((test) => test.id === 'mock-07')!;
-    const dedicated = { ...general, id: 'pc-dedicated', fullMocksOnly: false };
+    const dedicated = { ...general, id: 'pc-dedicated', fullMocksOnly: false, listed: true };
     await render(<LibraryView {...handlers()} tests={[...TESTS, dedicated]} />);
     await userEvent.press(screen.getByTestId('library-filter-pc'));
     expect(screen.getByTestId('library-row-pc-dedicated')).toBeOnTheScreen();
@@ -90,14 +93,14 @@ describe('LibraryView', () => {
   it('opens a free test', async () => {
     const h = handlers();
     await render(<LibraryView {...h} />);
-    await userEvent.press(screen.getByTestId('library-row-mock-07'));
-    expect(h.onOpen).toHaveBeenCalledWith('mock-07');
+    await userEvent.press(screen.getByTestId('library-row-si-brolly-01'));
+    expect(h.onOpen).toHaveBeenCalledWith('si-brolly-01');
     expect(h.onLocked).not.toHaveBeenCalled();
   });
 
   it('explains a locked test instead of opening it', async () => {
     const h = handlers();
-    await render(<LibraryView {...h} />);
+    await render(<LibraryView {...h} tests={sampleTests} />);
     expect(screen.queryByTestId('library-locked-toast')).toBeNull();
     await userEvent.press(screen.getByTestId('library-row-mock-08'));
     expect(h.onLocked).toHaveBeenCalledWith('mock-08');
@@ -112,7 +115,7 @@ describe('LibraryView', () => {
     expect(screen.getByTestId('library-filter-previous').props.className).not.toContain(
       'bg-accentSoft',
     );
-    expect(screen.getByTestId('library-badge-mock-07').props.className).not.toContain(
+    expect(screen.getByTestId('library-badge-si-brolly-01').props.className).not.toContain(
       'bg-accentSoft',
     );
   });
@@ -121,7 +124,7 @@ describe('LibraryView', () => {
   // title the same ink, and the lock is the icon the tab bar and the pattern already use — the
   // `⛌` glyph was a character no face outside the Latin one carries (F-30).
   it('marks a locked paper with a lock, not by dimming its title', async () => {
-    await render(<LibraryView {...handlers()} />);
+    await render(<LibraryView {...handlers()} tests={sampleTests} />);
     expect(screen.getByText('PWT Full Mock 08').props.className).toMatch(/\btext-ink\b/);
     expect(screen.getByText('PWT Full Mock 07').props.className).toMatch(/\btext-ink\b/);
     expect(screen.getByTestId('library-badge-mock-08')).toHaveTextContent(/Locked$/);
@@ -141,7 +144,7 @@ describe('LibraryView', () => {
   it('opens on the shelf it is asked for', async () => {
     await render(<LibraryView initialKind="previous" {...handlers()} />);
     expect(screen.getByTestId('library-row-prev-2018')).toBeOnTheScreen();
-    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+    expect(screen.queryByTestId('library-row-si-brolly-01')).toBeNull();
   });
 
   // The Tests tab is already mounted when Home links to `?kind=previous`, so a shelf that
@@ -149,12 +152,12 @@ describe('LibraryView', () => {
   it('moves to the shelf a later request names', async () => {
     const h = handlers();
     const view = await render(<LibraryView kindKey="undefined:1" {...h} />);
-    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+    expect(screen.getByTestId('library-row-si-brolly-01')).toBeOnTheScreen();
     await act(async () => {
       view.rerender(<LibraryView initialKind="previous" kindKey="previous:2" {...h} />);
     });
     expect(screen.getByTestId('library-row-prev-2022')).toBeOnTheScreen();
-    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+    expect(screen.queryByTestId('library-row-si-brolly-01')).toBeNull();
   });
 
   // A chip pressed after the link is the candidate's own choice, and outlives it: the same
@@ -165,11 +168,11 @@ describe('LibraryView', () => {
       <LibraryView initialKind="previous" kindKey="previous:1" {...h} />,
     );
     await userEvent.press(screen.getByTestId('library-filter-full'));
-    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+    expect(screen.getByTestId('library-row-si-brolly-01')).toBeOnTheScreen();
     await act(async () => {
       view.rerender(<LibraryView initialKind="previous" kindKey="previous:1" {...h} />);
     });
-    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+    expect(screen.getByTestId('library-row-si-brolly-01')).toBeOnTheScreen();
   });
 
   // The bug the key exists for: pressing Home's card a second time repeats `?kind=previous`
@@ -180,12 +183,12 @@ describe('LibraryView', () => {
       <LibraryView initialKind="previous" kindKey="previous:1" {...h} />,
     );
     await userEvent.press(screen.getByTestId('library-filter-full'));
-    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+    expect(screen.getByTestId('library-row-si-brolly-01')).toBeOnTheScreen();
     await act(async () => {
       view.rerender(<LibraryView initialKind="previous" kindKey="previous:2" {...h} />);
     });
     expect(screen.getByTestId('library-row-prev-2022')).toBeOnTheScreen();
-    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+    expect(screen.queryByTestId('library-row-si-brolly-01')).toBeNull();
   });
 });
 
@@ -282,9 +285,9 @@ describe('LibraryView — previous papers', () => {
 
   it('leaves the full-mock shelf with the one whole-row action it had', async () => {
     await render(<LibraryView {...handlers()} />);
-    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
-    expect(screen.queryByTestId('library-practise-mock-07')).toBeNull();
-    expect(screen.queryByTestId('library-view-mock-07')).toBeNull();
+    expect(screen.getByTestId('library-row-si-brolly-01')).toBeOnTheScreen();
+    expect(screen.queryByTestId('library-practise-si-brolly-01')).toBeNull();
+    expect(screen.queryByTestId('library-view-si-brolly-01')).toBeNull();
   });
 });
 
@@ -304,7 +307,7 @@ describe('LibraryView (te)', () => {
   it('renders the Telugu rows and matches the snapshot', async () => {
     await render(<LibraryView {...handlers()} lang="te" />);
     expect(screen.getByTestId('library-filters')).toHaveStyle({ flexDirection: 'row' });
-    expect(screen.getByText('PWT ఫుల్ మాక్ 07')).toBeOnTheScreen();
+    expect(screen.getByText(TESTS.find((test) => test.id === 'si-brolly-01')!.title.te)).toBeOnTheScreen();
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });

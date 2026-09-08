@@ -11,6 +11,8 @@ export type TestMeta = {
   pattern: ExamPattern;
   /** Show a general full mock only on Full mocks, not on post-specific shelves. */
   fullMocksOnly?: boolean;
+  /** False for retired papers kept available to existing attempts and direct links. */
+  listed?: boolean;
   /**
    * The paper opens without a payment. Every previous-year paper is free: it was public the
    * day it was set, so viewing it costs nothing and practising it asks for an account
@@ -28,8 +30,8 @@ export const TESTS: TestMeta[] = [
     pattern: SI_MOCK_01_PATTERN,
     free: true,
   },
-  { id: 'mock-07', kind: 'full', title: { en: 'PWT Full Mock 07', te: 'PWT ఫుల్ మాక్ 07' }, pattern: FREE_MOCK_SHORT, fullMocksOnly: true, free: true, attempted: { bestScore: 62.25, attempts: 1 } },
-  { id: 'mock-08', kind: 'full', title: { en: 'PWT Full Mock 08', te: 'PWT ఫుల్ మాక్ 08' }, pattern: PWT_CONSTABLE, fullMocksOnly: true, free: false },
+  { id: 'mock-07', kind: 'full', title: { en: 'PWT Full Mock 07', te: 'PWT ఫుల్ మాక్ 07' }, pattern: FREE_MOCK_SHORT, fullMocksOnly: true, listed: false, free: true, attempted: { bestScore: 62.25, attempts: 1 } },
+  { id: 'mock-08', kind: 'full', title: { en: 'PWT Full Mock 08', te: 'PWT ఫుల్ మాక్ 08' }, pattern: PWT_CONSTABLE, fullMocksOnly: true, listed: false, free: false },
   { id: 'prev-2022', kind: 'previous', title: { en: 'PWT 2022 — SCT PC', te: 'PWT 2022 — SCT PC' }, pattern: PWT_CONSTABLE, free: true },
   { id: 'prev-2018', kind: 'previous', title: { en: 'PWT 2018 — SCT PC', te: 'PWT 2018 — SCT PC' }, pattern: PWT_CONSTABLE, free: true },
 ];

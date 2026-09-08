@@ -254,10 +254,12 @@ export function LibraryView({
   const [lockedTick, setLockedTick] = useState(0);
   const locked = useAutoDismiss(lockedTick || null);
 
-  const rows = tests.filter((test) =>
-    kind === 'si' || kind === 'pc'
-      ? test.kind === 'full' && test.pattern.post === kind && !test.fullMocksOnly
-      : test.kind === kind,
+  const rows = tests.filter(
+    (test) =>
+      test.listed !== false &&
+      (kind === 'si' || kind === 'pc'
+        ? test.kind === 'full' && test.pattern.post === kind && !test.fullMocksOnly
+        : test.kind === kind),
   );
 
   const press = (test: TestMeta) => {

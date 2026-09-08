@@ -59,24 +59,16 @@ describe('LibraryRoute', () => {
 
   it('lists the papers for a guest', async () => {
     await render(<LibraryRoute />);
-    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+    expect(screen.getByTestId('library-row-si-brolly-01')).toBeOnTheScreen();
   });
 
   it('asks for a sign-in when a free paper is opened, and remembers which one', async () => {
     await render(<LibraryRoute />);
-    await userEvent.press(screen.getByTestId('library-row-mock-07'));
+    await userEvent.press(screen.getByTestId('library-row-si-brolly-01'));
     expect(mockRouter.push).toHaveBeenCalledWith({
       pathname: '/(auth)/login',
-      params: { returnTo: '/test/mock-07' },
+      params: { returnTo: '/tests/simocktest' },
     });
-  });
-
-  // A paywall is not a reason to make someone sign in: the toast is the whole answer.
-  it('leaves a locked paper to its toast and asks for nothing', async () => {
-    await render(<LibraryRoute />);
-    await userEvent.press(screen.getByTestId('library-row-mock-08'));
-    expect(screen.getByTestId('library-locked-toast')).toBeOnTheScreen();
-    expect(mockRouter.push).not.toHaveBeenCalled();
   });
 
   // F-20's Home card links to `/(tabs)/tests?kind=previous`; the shelf has to honour it.
@@ -84,7 +76,7 @@ describe('LibraryRoute', () => {
     mockParams = { kind: 'previous' };
     await render(<LibraryRoute />);
     expect(screen.getByTestId('library-row-prev-2022')).toBeOnTheScreen();
-    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+    expect(screen.queryByTestId('library-row-si-brolly-01')).toBeNull();
   });
 
   // The sectional shelf is gone, but a bookmark or an older build still links to it. A stale
@@ -92,7 +84,7 @@ describe('LibraryRoute', () => {
   it('lands on the full mocks when a stale link still asks for the sectional shelf', async () => {
     mockParams = { kind: 'sectional' };
     await render(<LibraryRoute />);
-    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+    expect(screen.getByTestId('library-row-si-brolly-01')).toBeOnTheScreen();
     expect(screen.queryByTestId('library-row-sec-seating')).toBeNull();
   });
 
@@ -102,18 +94,18 @@ describe('LibraryRoute', () => {
     mockParams = { kind: 'previous' };
     await render(<LibraryRoute />);
     await userEvent.press(screen.getByTestId('library-filter-full'));
-    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+    expect(screen.getByTestId('library-row-si-brolly-01')).toBeOnTheScreen();
     await act(async () => {
       mockFocusTab?.();
     });
     expect(screen.getByTestId('library-row-prev-2022')).toBeOnTheScreen();
-    expect(screen.queryByTestId('library-row-mock-07')).toBeNull();
+    expect(screen.queryByTestId('library-row-si-brolly-01')).toBeNull();
   });
 
   it('falls back to the full mocks when the link names a shelf that does not exist', async () => {
     mockParams = { kind: 'nonsense' };
     await render(<LibraryRoute />);
-    expect(screen.getByTestId('library-row-mock-07')).toBeOnTheScreen();
+    expect(screen.getByTestId('library-row-si-brolly-01')).toBeOnTheScreen();
   });
 
   // Reading a paper is not an attempt: there is nothing to score and nothing to keep, so
@@ -144,7 +136,7 @@ describe('LibraryRoute', () => {
     useSessionStore.getState().setCategory('oc');
     useSessionStore.getState().completeOnboarding();
     await render(<LibraryRoute />);
-    await userEvent.press(screen.getByTestId('library-row-mock-07'));
-    expect(mockRouter.push).toHaveBeenCalledWith('/test/mock-07');
+    await userEvent.press(screen.getByTestId('library-row-si-brolly-01'));
+    expect(mockRouter.push).toHaveBeenCalledWith('/tests/simocktest');
   });
 });
