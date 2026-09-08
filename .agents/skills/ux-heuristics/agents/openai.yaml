@@ -1,0 +1,3 @@
+interface:
+  display_name: "ux-heuristics"
+  short_description: "Usability reviews for application flows"

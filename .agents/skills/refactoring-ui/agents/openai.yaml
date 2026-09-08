@@ -1,0 +1,3 @@
+interface:
+  display_name: "refactoring-ui"
+  short_description: "Visual hierarchy and spacing improvements"

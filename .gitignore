@@ -1,4 +1,5 @@
 node_modules/
+.pnpm-store/
 .expo/
 dist/
 build/
@@ -21,6 +22,7 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .maestro/screenshots/
+.playwright-mcp/
 *.orig
 
 # local design-review captures (not committed)
