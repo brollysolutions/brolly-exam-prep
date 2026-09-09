@@ -42,7 +42,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
           {
             "alignItems": "center",
             "flexDirection": "row",
-            "flexWrap": undefined,
+            "flexWrap": "wrap",
             "gap": 8,
             "justifyContent": undefined,
           }
@@ -1345,293 +1345,37 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
         </View>
       </View>
     </RCTScrollView>
-    <View
+    <RCTScrollView
       className="bg-surface px-4 pt-3 border-t border-line"
       style={
         {
           "boxShadow": "0 -8px 32px -16px rgba(33,28,23,0.30)",
+          "flexGrow": 0,
+          "maxHeight": 533.6,
           "paddingBottom": 16,
         }
       }
       testID="attempt-footer"
     >
-      <View
-        style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "flexWrap": undefined,
-            "gap": 8,
-            "justifyContent": undefined,
-          }
-        }
-      >
+      <View>
         <View
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          className="items-center justify-center rounded-sm px-4"
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            {
-              "height": 48,
-              "width": 92,
-            }
-          }
-          testID="btn-clear"
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 8,
-                "justifyContent": undefined,
-              }
-            }
-          >
-            <Text
-              className="text-ink2"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 24.8,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              క్లియర్
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          className="items-center justify-center rounded-sm px-4 border border-outline flex-1"
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            {
-              "height": 48,
-            }
-          }
-          testID="btn-mark"
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 8,
-                "justifyContent": undefined,
-              }
-            }
-          >
-            <Text
-              className="text-ink"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 24.8,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              రివ్యూకి గుర్తు పెట్టు
-            </Text>
-            <Text
-              accessibilityElementsHidden={true}
-              allowFontScaling={false}
-              importantForAccessibility="no"
-              selectable={false}
-              style={
-                [
-                  {
-                    "color": "#211c17",
-                    "fontSize": 18,
-                  },
-                  undefined,
-                  {
-                    "fontFamily": "ionicons",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                  {},
-                ]
-              }
-              testID="btn-mark-icon"
-            >
-              
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          className="items-center justify-center rounded-sm px-4 border border-outline"
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            {
-              "height": 48,
-            }
-          }
-          testID="btn-submit"
-        >
-          <View
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "flexWrap": undefined,
-                "gap": 8,
-                "justifyContent": undefined,
-              }
-            }
-          >
-            <Text
-              className="text-ink"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 24.8,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              టెస్ట్ సబ్మిట్ చేయండి
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        className="mt-3"
-        style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "flexWrap": undefined,
-            "gap": 12,
-            "justifyContent": undefined,
-          }
-        }
-        testID="attempt-footer-row"
-      >
-        <View
-          className="flex-1"
           style={
             {
               "alignItems": "center",
               "flexDirection": "row",
-              "flexWrap": undefined,
+              "flexWrap": "wrap",
               "gap": 8,
               "justifyContent": undefined,
             }
           }
         >
           <View
-            accessibilityLabel="మునుపటిది"
             accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1645,7 +1389,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="h-touchLg w-touchLg items-center justify-center rounded-sm border border-outline"
+            className="items-center justify-center rounded-sm px-4"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1657,35 +1401,55 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            testID="btn-prev"
+            style={
+              {
+                "flexGrow": 1,
+                "minHeight": 48,
+                "minWidth": 48,
+                "paddingVertical": 8,
+              }
+            }
+            testID="btn-clear"
           >
-            <Text
-              className="text-ink"
+            <View
               style={
                 {
-                  "fontFamily": "Inter_400Regular",
-                  "fontSize": 20,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 30,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                  "maxWidth": "100%",
                 }
               }
-              testID="chevron-prev"
             >
-              ‹
-            </Text>
+              <Text
+                className="text-ink2"
+                style={
+                  {
+                    "flexShrink": 1,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                క్లియర్
+              </Text>
+            </View>
           </View>
           <View
-            accessibilityLabel="ప్రశ్నలు 8/40"
             accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1699,7 +1463,7 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
             accessible={true}
-            className="h-touchLg flex-1 items-center justify-center rounded-sm border border-outline"
+            className="items-center justify-center rounded-sm px-4 border border-outline"
             collapsable={false}
             focusable={true}
             onBlur={[Function]}
@@ -1711,88 +1475,161 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            testID="btn-palette"
+            style={
+              {
+                "flexBasis": "100%",
+                "flexGrow": 1,
+                "minHeight": 48,
+                "paddingVertical": 8,
+              }
+            }
+            testID="btn-mark"
           >
-            <Text
-              className="text-ink"
+            <View
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_600SemiBold",
-                  "fontSize": 15,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 24.8,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                  "maxWidth": "100%",
                 }
               }
             >
-              ప్రశ్నలు
-            </Text>
-            <Text
-              accessibilityLanguage="en"
-              className="text-ink3"
+              <Text
+                className="text-ink"
+                style={
+                  {
+                    "flexShrink": 1,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                రివ్యూకి గుర్తు పెట్టు
+              </Text>
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no"
+                selectable={false}
+                style={
+                  [
+                    {
+                      "color": "#211c17",
+                      "fontSize": 18,
+                    },
+                    undefined,
+                    {
+                      "fontFamily": "ionicons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    {},
+                  ]
+                }
+                testID="btn-mark-icon"
+              >
+                
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center rounded-sm px-4 border border-outline"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "flexGrow": 1,
+                "minHeight": 48,
+                "paddingVertical": 8,
+              }
+            }
+            testID="btn-submit"
+          >
+            <View
               style={
                 {
-                  "fontFamily": "Inter_400Regular",
-                  "fontSize": 12,
-                  "fontVariant": [
-                    "tabular-nums",
-                  ],
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                  "maxWidth": "100%",
                 }
               }
             >
-              ⁦8 / 40⁩
-            </Text>
+              <Text
+                className="text-ink"
+                style={
+                  {
+                    "flexShrink": 1,
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                టెస్ట్ సబ్మిట్ చేయండి
+              </Text>
+            </View>
           </View>
         </View>
         <View
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          className="items-center justify-center rounded-sm px-4 bg-ink"
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          className="mt-3"
           style={
             {
-              "height": 56,
-              "width": 112,
+              "alignItems": "stretch",
+              "flexDirection": "column",
+              "flexWrap": undefined,
+              "gap": 12,
+              "justifyContent": undefined,
             }
           }
-          testID="btn-next"
+          testID="attempt-footer-row"
         >
           <View
+            className="flex-1"
             style={
               {
                 "alignItems": "center",
@@ -1803,45 +1640,228 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
               }
             }
           >
-            <Text
-              className="text-onInk"
+            <View
+              accessibilityLabel="మునుపటిది"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              className="h-touchLg w-touchLg items-center justify-center rounded-sm border border-outline"
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              testID="btn-prev"
+            >
+              <Text
+                className="text-ink"
+                style={
+                  {
+                    "fontFamily": "Inter_400Regular",
+                    "fontSize": 20,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 30,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+                testID="chevron-prev"
+              >
+                ‹
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="ప్రశ్నలు 8/40"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              className="min-h-touchLg flex-1 items-center justify-center rounded-sm border border-outline px-2 py-2"
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              testID="btn-palette"
+            >
+              <Text
+                className="text-ink"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_600SemiBold",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ప్రశ్నలు
+              </Text>
+              <Text
+                accessibilityLanguage="en"
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "Inter_400Regular",
+                    "fontSize": 12,
+                    "fontVariant": [
+                      "tabular-nums",
+                    ],
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ⁦8 / 40⁩
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            className="items-center justify-center rounded-sm px-4 bg-ink"
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignSelf": "stretch",
+                "minHeight": 56,
+                "paddingVertical": 8,
+              }
+            }
+            testID="btn-next"
+          >
+            <View
               style={
                 {
-                  "fontFamily": "NotoSansTelugu_700Bold",
-                  "fontSize": 16,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 26.4,
-                  "textAlign": "center",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                  "maxWidth": "100%",
                 }
               }
             >
-              తర్వాత
-            </Text>
-            <Text
-              className="text-onInk"
-              style={
-                {
-                  "fontFamily": "Inter_400Regular",
-                  "fontSize": 20,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 30,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
+              <Text
+                className="text-onInk"
+                style={
+                  {
+                    "flexShrink": 1,
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 16,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 26.4,
+                    "textAlign": "center",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
                 }
-              }
-              testID="chevron-next"
-            >
-              ›
-            </Text>
+              >
+                తర్వాత
+              </Text>
+              <Text
+                className="text-onInk"
+                style={
+                  {
+                    "fontFamily": "Inter_400Regular",
+                    "fontSize": 20,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 30,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+                testID="chevron-next"
+              >
+                ›
+              </Text>
+            </View>
           </View>
         </View>
       </View>
-    </View>
+    </RCTScrollView>
   </View>
 </View>
 `;

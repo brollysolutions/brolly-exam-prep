@@ -28,7 +28,7 @@ export type ButtonSize = 'md' | 'lg';
 export type ButtonProps = Omit<PressableProps, 'style' | 'children'> & {
   label: string;
   variant?: ButtonVariant;
-  /** md = 48 px (secondary actions), lg = 56 px (the one primary action per screen). */
+  /** Minimum heights: md = 48 px, lg = 56 px. Labels may wrap and grow the control. */
   size?: ButtonSize;
   /** Accent variant only: filled state (e.g. "Marked"). */
   active?: boolean;
@@ -122,20 +122,21 @@ export function Button({
         disabled && !primaryDisabled && 'opacity-40',
         className,
       )}
-      // One flattened object, never a callback: see `usePressed`. The height lives here rather
+      // One flattened object, never a callback: see `usePressed`. The minimum height lives here rather
       // than in a class so it survives css-interop on web and is assertable in tests.
       style={StyleSheet.flatten([
-        { height: size === 'lg' ? sizes.touchLg : sizes.touch },
+        { minHeight: size === 'lg' ? sizes.touchLg : sizes.touch, paddingVertical: 8 },
         style,
         pressed && !disabled && filled ? pressedStyle : null,
       ])}
     >
-      <Row gap={2} align="center">
+      <Row gap={2} align="center" style={{ maxWidth: '100%' }}>
         <Text
           variant={size === 'lg' ? 'bodyLg' : 'body'}
           weight={weight ?? (size === 'lg' ? '700' : '600')}
           color={color}
           align="center"
+          style={{ flexShrink: 1 }}
         >
           {label}
         </Text>

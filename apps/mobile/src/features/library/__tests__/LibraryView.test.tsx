@@ -164,9 +164,7 @@ describe('LibraryView', () => {
   // visit re-rendering (a language change, a store write) must not undo it.
   it('leaves a chip the candidate pressed alone when nothing new is asked for', async () => {
     const h = handlers();
-    const view = await render(
-      <LibraryView initialKind="previous" kindKey="previous:1" {...h} />,
-    );
+    const view = await render(<LibraryView initialKind="previous" kindKey="previous:1" {...h} />);
     await userEvent.press(screen.getByTestId('library-filter-full'));
     expect(screen.getByTestId('library-row-si-brolly-01')).toBeOnTheScreen();
     await act(async () => {
@@ -179,9 +177,7 @@ describe('LibraryView', () => {
   // verbatim, so only the visit tells the two navigations apart.
   it('honours a repeat of the same link once the candidate has moved off it', async () => {
     const h = handlers();
-    const view = await render(
-      <LibraryView initialKind="previous" kindKey="previous:1" {...h} />,
-    );
+    const view = await render(<LibraryView initialKind="previous" kindKey="previous:1" {...h} />);
     await userEvent.press(screen.getByTestId('library-filter-full'));
     expect(screen.getByTestId('library-row-si-brolly-01')).toBeOnTheScreen();
     await act(async () => {
@@ -237,8 +233,8 @@ describe('LibraryView — previous papers', () => {
     await previous();
     const practise = screen.getByTestId('library-practise-prev-2022');
     const view = screen.getByTestId('library-view-prev-2022');
-    expect(practise).toHaveStyle({ height: 48 });
-    expect(view).toHaveStyle({ height: 48 });
+    expect(practise).toHaveStyle({ minHeight: 48 });
+    expect(view).toHaveStyle({ minHeight: 48 });
     expect(practise.props.className).toMatch(/\bbg-ink\b/);
     expect(view.props.className).not.toMatch(/\bbg-ink\b/);
     expect(view.props.className).toMatch(/\bborder-outline\b/);
@@ -252,9 +248,7 @@ describe('LibraryView — previous papers', () => {
     await previous();
     const filled = screen
       .getAllByRole('button')
-      .filter(
-        (n) => typeof n.props.className === 'string' && /\bbg-ink\b/.test(n.props.className),
-      );
+      .filter((n) => typeof n.props.className === 'string' && /\bbg-ink\b/.test(n.props.className));
     expect(filled).toHaveLength(2);
     expect(screen.getByTestId('library-practise-prev-2022').props.className).toMatch(/\bbg-ink\b/);
     expect(screen.getByTestId('library-practise-prev-2018').props.className).toMatch(/\bbg-ink\b/);
@@ -307,7 +301,9 @@ describe('LibraryView (te)', () => {
   it('renders the Telugu rows and matches the snapshot', async () => {
     await render(<LibraryView {...handlers()} lang="te" />);
     expect(screen.getByTestId('library-filters')).toHaveStyle({ flexDirection: 'row' });
-    expect(screen.getByText(TESTS.find((test) => test.id === 'si-brolly-01')!.title.te)).toBeOnTheScreen();
+    expect(
+      screen.getByText(TESTS.find((test) => test.id === 'si-brolly-01')!.title.te),
+    ).toBeOnTheScreen();
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });

@@ -1,4 +1,4 @@
-import { isImportedTest } from '@tslprb/fixtures';
+import { TESTS, isImportedTest } from '@tslprb/fixtures';
 import { Redirect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 
@@ -33,6 +33,7 @@ function ResultContent({ id }: { id: string }) {
 
   return (
     <ResultView
+      demo={TESTS.find((test) => test.id === id)?.demo}
       reviewAll={isImportedTest(id)}
       result={done ? data : undefined}
       failed={failed}

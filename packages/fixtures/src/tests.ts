@@ -6,6 +6,8 @@ export type TestKind = 'full' | 'previous';
 export type TestMeta = {
   id: string;
   kind: TestKind;
+  /** Generated demonstration content, with repeated sample questions. */
+  demo?: boolean;
   /** i18n interpolation for `result.title` etc.; plain titles for previous-year papers */
   title: { en: string; te: string };
   pattern: ExamPattern;
@@ -30,8 +32,41 @@ export const TESTS: TestMeta[] = [
     pattern: SI_MOCK_01_PATTERN,
     free: true,
   },
-  { id: 'mock-07', kind: 'full', title: { en: 'PWT Full Mock 07', te: 'PWT ఫుల్ మాక్ 07' }, pattern: FREE_MOCK_SHORT, fullMocksOnly: true, listed: false, free: true, attempted: { bestScore: 62.25, attempts: 1 } },
-  { id: 'mock-08', kind: 'full', title: { en: 'PWT Full Mock 08', te: 'PWT ఫుల్ మాక్ 08' }, pattern: PWT_CONSTABLE, fullMocksOnly: true, listed: false, free: false },
-  { id: 'prev-2022', kind: 'previous', title: { en: 'PWT 2022 — SCT PC', te: 'PWT 2022 — SCT PC' }, pattern: PWT_CONSTABLE, free: true },
-  { id: 'prev-2018', kind: 'previous', title: { en: 'PWT 2018 — SCT PC', te: 'PWT 2018 — SCT PC' }, pattern: PWT_CONSTABLE, free: true },
+  {
+    id: 'mock-07',
+    demo: true,
+    kind: 'full',
+    title: { en: 'PWT Full Mock 07', te: 'PWT ఫుల్ మాక్ 07' },
+    pattern: FREE_MOCK_SHORT,
+    fullMocksOnly: true,
+    listed: false,
+    free: true,
+    attempted: { bestScore: 62.25, attempts: 1 },
+  },
+  {
+    id: 'mock-08',
+    demo: true,
+    kind: 'full',
+    title: { en: 'PWT Full Mock 08', te: 'PWT ఫుల్ మాక్ 08' },
+    pattern: PWT_CONSTABLE,
+    fullMocksOnly: true,
+    listed: false,
+    free: false,
+  },
+  {
+    id: 'prev-2022',
+    demo: true,
+    kind: 'previous',
+    title: { en: 'PWT 2022 — SCT PC (demo)', te: 'PWT 2022 — SCT PC (నమూనా)' },
+    pattern: PWT_CONSTABLE,
+    free: true,
+  },
+  {
+    id: 'prev-2018',
+    demo: true,
+    kind: 'previous',
+    title: { en: 'PWT 2018 — SCT PC (demo)', te: 'PWT 2018 — SCT PC (నమూనా)' },
+    pattern: PWT_CONSTABLE,
+    free: true,
+  },
 ];

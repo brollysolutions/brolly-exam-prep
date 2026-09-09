@@ -1,0 +1,11 @@
+Application audit implementation — 2026-09-09
+
+Phase 1: F01–F04 implemented (save recovery/status, demo disclosure, sample schedule/news, exam focus).
+Phase 2: F05–F10 implemented (exam layout, spoken profile values, Telugu typography, targets, input errors, accurate copy).
+Phase 3: study density, statistic alignment, empty history, reminder availability, loading copy, and login busy feedback implemented.
+Native risks: adaptive controls/tabs/palette and native modal cancellation/isolation implemented; device accessibility verification remains pending because no device is connected.
+Additional verification fix: retain submitted results on reload until the user explicitly retakes.
+Tokens: unchanged. Component contracts documented in DESIGN_SYSTEM.md.
+Detailed evidence and final checks: APPLICATION_AUDIT_FIXES_2026-09-09.md.
+Validation: mobile 933/933 tests, 15/15 snapshots, web 22/22 tests, locale 4/4 tests; both apps typecheck/lint passed; web production build passed; browser offline, recovery, focus, bilingual reflow, and validation checks passed.
+Updated local preview: http://localhost:3203. No deployment performed.

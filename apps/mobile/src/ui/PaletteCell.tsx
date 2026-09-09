@@ -58,7 +58,7 @@ export function PaletteCell({
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`${t('test.qLabel')} ${n}`}
+      accessibilityLabel={`${t('test.qLabel')} ${n}, ${t(`test.${({ nv: 'notVisited', na: 'notAnswered', a: 'answered', m: 'marked', am: 'both' } as const)[state]}`)}`}
       accessibilityState={{ selected: current, disabled: !!disabled }}
       android_ripple={{ color: colors.accentTint }}
       {...rest}
@@ -74,7 +74,8 @@ export function PaletteCell({
       style={StyleSheet.flatten([
         {
           width: sizes.cell,
-          height: sizes.cell,
+          minHeight: sizes.cell,
+          paddingVertical: 8,
           borderRadius: radius.sm,
           backgroundColor: pressed && outlined ? colors.surface2 : s.bg,
           borderColor: s.border,

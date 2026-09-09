@@ -36,7 +36,7 @@ describe('PaperRoute', () => {
     await render(<PaperRoute />);
     await flush();
     // Nothing to sit, so nothing to sign in for: the paper itself is the whole screen.
-    expect(screen.getByText('PWT 2022 — SCT PC')).toBeOnTheScreen();
+    expect(screen.getByText('PWT 2022 — SCT PC (demo)')).toBeOnTheScreen();
     expect(screen.getByTestId('paper-list')).toBeOnTheScreen();
     expect(screen.getByTestId('paper-card-1')).toBeOnTheScreen();
   });

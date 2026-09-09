@@ -102,7 +102,8 @@ export function LoginView({
           <Button
             testID="login-continue"
             size="lg"
-            label={t('common.continue')}
+            label={t(busy ? 'audit.signingIn' : 'common.continue')}
+            accessibilityState={{ disabled: !ready, busy }}
             disabled={!ready}
             onPress={() => onSubmit(phone)}
           />

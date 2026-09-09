@@ -21,6 +21,8 @@ import {
 import { attemptHref, solutionsHref } from '@/lib/routes';
 import { BackLink, Button, Empty, Modal, Notice, PageTitle, useCopy } from './web-ui';
 
+import { useStorageStatus } from './storage-notice';
+
 const clock = (sec: number) =>
   `${String(Math.floor(sec / 3600)).padStart(2, '0')}:${String(Math.floor(sec / 60) % 60).padStart(2, '0')}:${String(sec % 60).padStart(2, '0')}`;
 
@@ -42,6 +44,7 @@ function Attempt({ id }: { id: string }) {
   const copy = useCopy();
   const router = useRouter();
   const attempt = useAttemptStore();
+  const storageStatus = useStorageStatus();
   const lang = useLangStore((s) => s.lang);
   const [paper, setPaper] = useState<Question[]>([]);
   const [failed, setFailed] = useState(false);
@@ -58,6 +61,33 @@ function Attempt({ id }: { id: string }) {
   const remaining = Math.max(0, Math.ceil(((attempt.endsAt ?? now) - now) / 1000));
   const loaded = paper.length === meta.pattern.totalQuestions;
   const syncChain = useRef(Promise.resolve());
+  const questionHeading = useRef<HTMLLegendElement>(null);
+  const controls = useRef<HTMLDivElement>(null);
+  const focusPending = useRef(false);
+  const currentQuestion = attempt.current;
+  useEffect(() => {
+    const node = controls.current;
+    const main = node?.closest<HTMLElement>('.exam-main');
+    if (!node || !main) return;
+    const observer = new ResizeObserver(() => {
+      main.style.setProperty('--exam-controls-height', `${node.getBoundingClientRect().height}px`);
+    });
+    observer.observe(node);
+    return () => {
+      observer.disconnect();
+      main.style.removeProperty('--exam-controls-height');
+    };
+  }, [loaded, active, finished]);
+  useEffect(() => {
+    if (!focusPending.current || palette) return;
+    // Wait for the palette dialog to restore its opener before focusing the new question.
+    const frame = requestAnimationFrame(() => {
+      questionHeading.current?.focus({ preventScroll: true });
+      questionHeading.current?.scrollIntoView({ block: 'start' });
+      focusPending.current = false;
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [currentQuestion, palette]);
 
   const start = useCallback(
     async (isCurrent: () => boolean = () => true) => {
@@ -94,7 +124,13 @@ function Attempt({ id }: { id: string }) {
         if (current.status === 'running') {
           if (current.testId !== id) setConflict(true);
           else if ((current.endsAt ?? 0) > Date.now()) setDialog('resume');
-        } else await start(() => live);
+        } else if (
+          current.testId !== id ||
+          !['submitted', 'autoSubmitted'].includes(current.status)
+        ) {
+          // Reloading a submitted paper shows its result; retaking is an explicit action.
+          await start(() => live);
+        }
       })
       .catch(() => {
         if (live) setFailed(true);
@@ -214,8 +250,10 @@ function Attempt({ id }: { id: string }) {
   const go = (n: number) => {
     if (!canWrite()) return;
     const state = useAttemptStore.getState();
+    focusPending.current = true;
     const outcome = state.goto(n);
     if (outcome === 'locked') {
+      focusPending.current = false;
       const section = meta.pattern.sections[sectionOf(state, n)];
       setMessage(
         t('test.lockedMsg', {
@@ -337,6 +375,7 @@ function Attempt({ id }: { id: string }) {
           <strong>{clock(remaining)}</strong>
         </div>
       </div>
+      {meta.demo && <Notice>{t('audit.demoPaperNote')}</Notice>}
       {offline && <Notice>{t('test.offline')}</Notice>}
       {remaining <= 300 && (
         <Notice error={remaining <= 60}>{t(remaining <= 60 ? 'test.warn1' : 'test.warn5')}</Notice>
@@ -367,7 +406,12 @@ function Attempt({ id }: { id: string }) {
             </span>
           </div>
           <fieldset className="answer-group">
-            <legend className="question-text">{q.text[lang]}</legend>
+            <legend ref={questionHeading} tabIndex={-1} className="question-text">
+              <span className="sr-only">
+                {t('test.qLabel')} {attempt.current} / {paper.length}.{' '}
+              </span>
+              {q.text[lang]}
+            </legend>
             {q.options[lang].map((option, index) => (
               <label
                 className="answer-option"
@@ -410,27 +454,34 @@ function Attempt({ id }: { id: string }) {
               {t(attempt.marked[attempt.current] ? 'test.unmark' : 'test.mark')}
             </Button>
           </div>
-          <div className="question-footer">
-            <Button
-              variant="outline"
-              disabled={attempt.current === 1}
-              onClick={() => go(attempt.current - 1)}
-            >
-              {t('test.previous')}
-            </Button>
-            <Button
-              className="mobile-palette-button"
-              variant="outline"
-              onClick={() => setPalette(true)}
-            >
-              {t('test.palette')}
-            </Button>
-            <Button
-              disabled={attempt.current === paper.length}
-              onClick={() => go(attempt.current + 1)}
-            >
-              {t('test.next')}
-            </Button>
+          <div ref={controls} className="exam-controls">
+            <div className="question-footer">
+              <Button
+                variant="outline"
+                disabled={attempt.current === 1}
+                onClick={() => go(attempt.current - 1)}
+              >
+                {t('test.previous')}
+              </Button>
+              <Button
+                className="mobile-palette-button"
+                variant="outline"
+                onClick={() => setPalette(true)}
+              >
+                {t('test.palette')}
+              </Button>
+              <Button
+                disabled={attempt.current === paper.length}
+                onClick={() => go(attempt.current + 1)}
+              >
+                {t('test.next')}
+              </Button>
+            </div>
+            <div className="mobile-submit">
+              <Button onClick={() => setDialog('submit')}>
+                {t('test.submit')} ({totals.answered}/{paper.length})
+              </Button>
+            </div>
           </div>
         </section>
         <aside className="panel palette-panel">
@@ -444,25 +495,40 @@ function Attempt({ id }: { id: string }) {
           </Button>
         </aside>
       </div>
-      <div className="mobile-submit">
-        <Button onClick={() => setDialog('submit')}>
-          {t('test.submit')} ({totals.answered}/{paper.length})
-        </Button>
-      </div>
       {palette && (
         <Modal title={t('test.palette')} onClose={() => setPalette(false)}>
           {paletteContent}
         </Modal>
       )}
       {dialog && (
-        <Modal title={t(`test.${dialog}Title`)} onClose={() => setDialog(null)}>
+        <Modal
+          title={
+            dialog === 'resume'
+              ? copy('Continue your test', 'మీ పరీక్షను కొనసాగించండి')
+              : t(`test.${dialog}Title`)
+          }
+          onClose={() => setDialog(null)}
+        >
           <p>
-            {dialog === 'submit'
+            {storageStatus === 'temporary'
               ? copy(
-                  'Your answers will be final. A result will be saved in this browser even if you are offline.',
-                  'మీ సమాధానాలు తుది నిర్ణయం అవుతాయి. ఆఫ్‌లైన్‌లో ఉన్నా ఫలితం ఈ బ్రౌజర్‌లో సేవ్ అవుతుంది.',
+                  'Recent answers are held in this tab only. Retry saving before leaving or reloading. Submitting finalizes your answers but cannot guarantee a saved result until storage works again.',
+                  'ఇటీవలి సమాధానాలు ఈ ట్యాబ్‌లో మాత్రమే ఉన్నాయి. వెళ్లే ముందు లేదా రీలోడ్ చేసే ముందు సేవ్ చేయడానికి మళ్లీ ప్రయత్నించండి. సమర్పణతో సమాధానాలు ఖరారవుతాయి; నిల్వ మళ్లీ పని చేసే వరకు ఫలితం సేవ్ అవుతుందని హామీ లేదు.',
                 )
-              : t(`test.${dialog}Body`)}
+              : dialog === 'submit'
+                ? copy(
+                    'Your answers will be final. A result will be saved in this browser even if you are offline.',
+                    'మీ సమాధానాలు తుది నిర్ణయం అవుతాయి. ఆఫ్‌లైన్‌లో ఉన్నా ఫలితం ఈ బ్రౌజర్‌లో సేవ్ అవుతుంది.',
+                  )
+                : dialog === 'resume'
+                  ? copy(
+                      'The timer kept running. Continue from the last saved question.',
+                      'టైమర్ కొనసాగుతూనే ఉంది. చివరిగా సేవ్ చేసిన ప్రశ్న నుండి కొనసాగించండి.',
+                    )
+                  : copy(
+                      'The timer will keep running. You can return to this saved attempt in this browser.',
+                      'టైమర్ కొనసాగుతూనే ఉంటుంది. ఈ బ్రౌజర్‌లో సేవ్ చేసిన ఈ ప్రయత్నానికి తిరిగి రావచ్చు.',
+                    )}
           </p>
           {dialog === 'submit' && (
             <dl className="stats">
@@ -520,6 +586,7 @@ export function Results({
   const copy = useCopy();
   const lang = useLangStore((s) => s.lang);
   const attempt = useAttemptStore();
+  const storageStatus = useStorageStatus();
   const completed = useCompletedTestsStore((s) => s.tests[id]);
   const [paper, setPaper] = useState<Question[]>([]);
   const [failed, setFailed] = useState(false);
@@ -591,6 +658,7 @@ export function Results({
         title={showSolutions ? t('solutions.title') : title}
         sub={showSolutions ? title : copy('Practice result', 'సాధన ఫలితం')}
       />
+      {TESTS.find((test) => test.id === id)?.demo && <Notice>{t('audit.demoPaperNote')}</Notice>}
       {autoSubmitted && <Notice>{t('test.autoTitle')}</Notice>}
       {!showSolutions ? (
         <>
@@ -636,10 +704,15 @@ export function Results({
                 </div>
               </dl>
               <p className="muted">
-                {copy(
-                  'Saved locally in this browser. No rank is available.',
-                  'ఈ బ్రౌజర్‌లో స్థానికంగా సేవ్ చేయబడింది. ర్యాంక్ అందుబాటులో లేదు.',
-                )}
+                {storageStatus === 'temporary'
+                  ? copy(
+                      'This result is held in this tab only. Retry saving before leaving. No rank is available.',
+                      'ఈ ఫలితం ఈ ట్యాబ్‌లో మాత్రమే ఉంది. వెళ్లే ముందు సేవ్ చేయడానికి మళ్లీ ప్రయత్నించండి. ర్యాంక్ అందుబాటులో లేదు.',
+                    )
+                  : copy(
+                      'Saved locally in this browser. No rank is available.',
+                      'ఈ బ్రౌజర్‌లో స్థానికంగా సేవ్ చేయబడింది. ర్యాంక్ అందుబాటులో లేదు.',
+                    )}
               </p>
             </section>
           </div>

@@ -58,7 +58,7 @@ describe('Placeholder — the three waiting states', () => {
     expect(screen.getByText('The result did not load.')).toBeOnTheScreen();
     const retry = screen.getByTestId('error-retry');
     expect(retry.props.className).toMatch(/\bborder-outline\b/);
-    expect(retry).toHaveStyle({ height: 48 });
+    expect(retry).toHaveStyle({ minHeight: 48 });
     await userEvent.press(retry);
     expect(onRetry).toHaveBeenCalledTimes(1);
   });

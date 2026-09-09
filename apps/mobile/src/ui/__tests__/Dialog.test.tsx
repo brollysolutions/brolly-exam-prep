@@ -1,4 +1,4 @@
-import { render, screen, userEvent } from '@testing-library/react-native';
+import { fireEvent, render, screen, userEvent } from '@testing-library/react-native';
 import { initI18n } from '@tslprb/i18n';
 
 import { Dialog } from '../Dialog';
@@ -12,6 +12,34 @@ const base = {
 const num = (n: number) => `⁦${n}⁩`;
 
 describe('Dialog', () => {
+  it('hardware Back cancels without invoking either decision action', async () => {
+    const dismiss = jest.fn();
+    const commit = jest.fn();
+    const leave = jest.fn();
+    await render(
+      <Dialog
+        visible
+        {...base}
+        testID="dlg"
+        onDismiss={dismiss}
+        primary={{ label: 'Submit', onPress: commit }}
+        secondary={{ label: 'Leave', onPress: leave }}
+      />,
+    );
+    await fireEvent(screen.getByTestId('dlg'), 'requestClose');
+    expect(dismiss).toHaveBeenCalledTimes(1);
+    expect(commit).not.toHaveBeenCalled();
+    expect(leave).not.toHaveBeenCalled();
+  });
+
+  it('hardware Back never infers a dismissal from an action when none is supplied', async () => {
+    const commit = jest.fn();
+    await render(
+      <Dialog visible {...base} testID="dlg" primary={{ label: 'Acknowledge', onPress: commit }} />,
+    );
+    await fireEvent(screen.getByTestId('dlg'), 'requestClose');
+    expect(commit).not.toHaveBeenCalled();
+  });
   beforeAll(() => {
     initI18n('en');
   });

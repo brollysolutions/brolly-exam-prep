@@ -1,13 +1,7 @@
-import {
-  paletteState,
-  radius,
-  size,
-  spacing,
-  type PaletteState,
-} from '@tslprb/design-tokens';
+import { paletteState, radius, size, spacing, type PaletteState } from '@tslprb/design-tokens';
 import { forwardRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View, type LayoutChangeEvent } from 'react-native';
+import { View, useWindowDimensions, type LayoutChangeEvent } from 'react-native';
 
 import type { AttemptState } from '@/data/attempt';
 import {
@@ -87,8 +81,16 @@ export const PaletteSheet = forwardRef<SheetHandle, PaletteSheetProps>(function 
   // at the cell's intrinsic 48 px and leaving a ragged right edge on wider phones.
   const [gridWidth, setGridWidth] = useState(0);
   const onGridLayout = (e: LayoutChangeEvent) => setGridWidth(e.nativeEvent.layout.width);
+  const { fontScale } = useWindowDimensions();
+  const minimumCell = Math.max(size.cell, Math.ceil(36 * fontScale + 12));
+  const columns = Math.max(
+    1,
+    Math.min(COLUMNS, Math.floor((gridWidth + GRID_GAP) / (minimumCell + GRID_GAP))),
+  );
   const columnWidth =
-    gridWidth > 0 ? (gridWidth - GRID_GAP * (COLUMNS - 1)) / COLUMNS : undefined;
+    gridWidth > 0
+      ? Math.max(minimumCell, (gridWidth - GRID_GAP * (columns - 1)) / columns)
+      : minimumCell;
 
   const legend: { state: PaletteState; label: string; count: number }[] = [
     { state: 'a', label: t('test.answered'), count: tally.answered },
@@ -168,7 +170,7 @@ export const PaletteSheet = forwardRef<SheetHandle, PaletteSheetProps>(function 
                       dot={state === 'am'}
                       disabled={locked}
                       onPress={() => onGoto(n)}
-                      style={columnWidth === undefined ? undefined : { width: columnWidth }}
+                      style={{ width: columnWidth, minHeight: minimumCell }}
                       testID={`palette-cell-${n}`}
                     />
                   );

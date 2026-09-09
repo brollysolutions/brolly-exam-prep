@@ -3,10 +3,10 @@ import { colors } from '@tslprb/design-tokens';
 import { useLang, useTypography } from '@tslprb/i18n';
 import { Tabs } from 'expo-router/js-tabs';
 import { useTranslation } from 'react-i18next';
-import { Pressable } from 'react-native';
+import { Pressable, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { haptics } from '@/ui';
+import { haptics, Text } from '@/ui';
 
 /**
  * F-07 — the app shell.
@@ -46,6 +46,8 @@ export default function TabsLayout() {
   const { t } = useTranslation();
   const lang = useLang();
   const insets = useSafeAreaInsets();
+  const { fontScale } = useWindowDimensions();
+  const labelLines = fontScale > 1.3 ? 2 : 1;
   // The label font has to follow the in-app language like every other string on screen.
   const label = useTypography('caption', '600');
 
@@ -65,7 +67,10 @@ export default function TabsLayout() {
           elevation: 0,
           // The bar owns the bottom inset; `Screen bottomInset={false}` keeps the scenes from
           // padding for it a second time.
-          height: BAR_HEIGHT[lang] + insets.bottom,
+          height:
+            BAR_HEIGHT[lang] +
+            Math.max(0, LABEL_LINE_HEIGHT[lang] * (fontScale * labelLines - 1)) +
+            insets.bottom,
         },
         tabBarItemStyle: { paddingVertical: 6, paddingBottom: 6 + insets.bottom },
         // Tracking is Latin-only; the tab label follows the UI language's face on its own line.
@@ -75,6 +80,16 @@ export default function TabsLayout() {
           lineHeight: LABEL_LINE_HEIGHT[lang],
           letterSpacing: 0,
         },
+        tabBarLabel: ({ color, children }) => (
+          <Text
+            variant="caption"
+            weight="600"
+            align="center"
+            style={{ color, lineHeight: LABEL_LINE_HEIGHT[lang] }}
+          >
+            {children}
+          </Text>
+        ),
         // The stock button ripples plain white; this one carries the gold tint and a
         // selection tick, like every other pressable in the app.
         tabBarButton: ({ children, style, onPress, ref: _ref, ...rest }) => (

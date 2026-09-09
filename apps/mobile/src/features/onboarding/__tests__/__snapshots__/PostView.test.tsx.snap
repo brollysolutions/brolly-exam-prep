@@ -385,7 +385,8 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               {
-                "height": 56,
+                "minHeight": 56,
+                "paddingVertical": 8,
               }
             }
             testID="post-continue"
@@ -398,6 +399,7 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
                   "flexWrap": undefined,
                   "gap": 8,
                   "justifyContent": undefined,
+                  "maxWidth": "100%",
                 }
               }
             >
@@ -405,6 +407,7 @@ exports[`PostView (te) renders the Telugu copy and matches the snapshot 1`] = `
                 className="text-onInk"
                 style={
                   {
+                    "flexShrink": 1,
                     "fontFamily": "NotoSansTelugu_700Bold",
                     "fontSize": 16,
                     "fontVariant": undefined,

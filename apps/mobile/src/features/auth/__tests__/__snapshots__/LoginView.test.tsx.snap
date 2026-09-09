@@ -904,7 +904,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
             accessibilityRole="button"
             accessibilityState={
               {
-                "busy": undefined,
+                "busy": false,
                 "checked": undefined,
                 "disabled": false,
                 "expanded": undefined,
@@ -934,7 +934,8 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
             onStartShouldSetResponder={[Function]}
             style={
               {
-                "height": 56,
+                "minHeight": 56,
+                "paddingVertical": 8,
               }
             }
             testID="login-continue"
@@ -947,6 +948,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
                   "flexWrap": undefined,
                   "gap": 8,
                   "justifyContent": undefined,
+                  "maxWidth": "100%",
                 }
               }
             >
@@ -954,6 +956,7 @@ exports[`LoginView (te) renders the Telugu copy and keeps the phone row physical
                 className="text-onInk"
                 style={
                   {
+                    "flexShrink": 1,
                     "fontFamily": "NotoSansTelugu_700Bold",
                     "fontSize": 16,
                     "fontVariant": undefined,

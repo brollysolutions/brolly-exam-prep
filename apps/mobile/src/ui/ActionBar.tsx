@@ -1,6 +1,6 @@
 import { shadowStyle, spacing } from '@tslprb/design-tokens';
 import type { ReactNode } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { cx } from './cx';
@@ -30,6 +30,8 @@ export type ActionBarProps = {
    * button that cannot grow into it.
    */
   grow?: boolean;
+  /** Stack navigation controls when text or the available width needs more room. */
+  stacked?: boolean;
   className?: string;
   testID?: string;
 };
@@ -55,17 +57,21 @@ export function ActionBar({
   secondary,
   bordered = true,
   grow = true,
+  stacked = false,
   className,
   testID,
 }: ActionBarProps) {
   const insets = useSafeAreaInsets();
+  const { height } = useWindowDimensions();
+  const Container = stacked ? ScrollView : View;
   return (
-    <View
+    <Container
       testID={testID}
       className={cx('bg-surface px-4 pt-3', bordered && 'border-t border-line', className)}
       // Flattened on purpose: css-interop mutates array styles on web (see Text).
       style={StyleSheet.flatten([
         { paddingBottom: PAD + insets.bottom },
+        stacked ? { maxHeight: height * 0.4, flexGrow: 0 } : null,
         bordered ? shadowStyle('sheet') : null,
       ])}
     >
@@ -74,11 +80,12 @@ export function ActionBar({
         testID={testID ? `${testID}-row` : undefined}
         gap={3}
         align="center"
+        style={stacked ? { flexDirection: 'column', alignItems: 'stretch' } : undefined}
         className={children !== undefined ? 'mt-3' : undefined}
       >
         {secondary}
         {grow ? <View className="flex-1">{primary}</View> : primary}
       </Row>
-    </View>
+    </Container>
   );
 }

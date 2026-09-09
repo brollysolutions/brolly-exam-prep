@@ -25,7 +25,13 @@
     "sampleData": "Sample data",
     "nothingYet": "Nothing yet"
   },
-  "lang": { "en": "EN", "te": "తెలుగు", "enShort": "EN", "teShort": "తె", "label": "Language" },
+  "lang": {
+    "en": "EN",
+    "te": "తెలుగు",
+    "enShort": "EN",
+    "teShort": "తె",
+    "label": "Language"
+  },
   "auth": {
     "loginTitle": "Your phone number",
     "loginSub": "We use it to keep your practice on this phone. No code, no password.",
@@ -46,7 +52,14 @@
     "catSub": "The PWT qualifying percentage depends on your category.",
     "catQual": "PWT qualifying",
     "startTest": "Start free mock test",
-    "cats": { "oc": "OC", "ews": "EWS", "bc": "BC", "sc": "SC", "st": "ST", "exs": "Ex-servicemen" },
+    "cats": {
+      "oc": "OC",
+      "ews": "EWS",
+      "bc": "BC",
+      "sc": "SC",
+      "st": "ST",
+      "exs": "Ex-servicemen"
+    },
     "welcome1Title": "Practise the real PWT",
     "welcome1Sub": "200 questions, 3 hours, the same sections and marking as the official test.",
     "welcome2Title": "Works without internet",
@@ -101,8 +114,19 @@
     "callAccept": "Accept call",
     "qLabel": "Q",
     "section": "Section",
-    "sections": { "arithmetic": "Arithmetic", "reasoning": "Reasoning", "gs": "General Studies", "telangana": "Telangana", "english": "English" },
-    "optionKeys": ["A", "B", "C", "D"]
+    "sections": {
+      "arithmetic": "Arithmetic",
+      "reasoning": "Reasoning",
+      "gs": "General Studies",
+      "telangana": "Telangana",
+      "english": "English"
+    },
+    "optionKeys": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
   },
   "result": {
     "title": "PWT Full Mock {{n}}",
@@ -121,7 +145,7 @@
     "skipped": "Skipped",
     "perQ": "Avg time per question",
     "seeWrong": "Wrong answers + explanation",
-        "errorKicker": "Problem",
+    "errorKicker": "Problem",
     "loadError": "The result did not load.",
     "retry": "Try again"
   },
@@ -214,7 +238,12 @@
     "tip": "Exam tip",
     "notFound": "That topic is not in the study material."
   },
-  "tabs": { "home": "Home", "study": "Study", "tests": "Tests", "profile": "Profile" },
+  "tabs": {
+    "home": "Home",
+    "study": "Study",
+    "tests": "Tests",
+    "profile": "Profile"
+  },
   "updates": {
     "title": "TSLPRB updates",
     "kind": {
@@ -273,5 +302,16 @@
     "unverified": "Unconfirmed",
     "unverifiedNote": "Some of these figures are not yet confirmed against the notification.",
     "disclaimer": "Standards as per the {{year}} notification; confirm with the latest TSLPRB notification."
+  },
+  "audit": {
+    "demoPaper": "Demo paper",
+    "demoPaperNote": "Demo practice with repeated sample questions. This is not the original previous-year paper.",
+    "sampleSchedule": "Sample schedule — not an official exam date",
+    "notSelected": "Not selected",
+    "invalidMeasure": "Enter a number greater than zero in {{unit}}.",
+    "invalid": "Invalid entry",
+    "invalidRun": "Enter whole numbers for minutes and seconds, with a total greater than zero.",
+    "loadingPaper": "Loading paper…",
+    "signingIn": "Signing in…"
   }
 }

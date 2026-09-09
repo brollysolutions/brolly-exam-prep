@@ -32,6 +32,7 @@ export default function PaperRoute() {
 
   return (
     <PaperView
+      demo={paper?.meta.demo}
       title={paper?.meta.title[lang]}
       questions={paper?.questions}
       sections={paper?.meta.pattern.sections}

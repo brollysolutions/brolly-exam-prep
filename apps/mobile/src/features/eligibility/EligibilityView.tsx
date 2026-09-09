@@ -11,7 +11,7 @@ import {
   type StandardsGroup,
 } from '@tslprb/fixtures';
 import { useDir } from '@tslprb/i18n';
-import { useRef, useState } from 'react';
+import { useRef, useState, type Ref } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   ScrollView,
@@ -43,6 +43,7 @@ import {
 } from '@/ui';
 
 import type { EligibilityRow, Evaluation, MeasureValues, Verdict } from './evaluate';
+import { parseMeasure } from './evaluate';
 import { formatRunTime, isLongRun, joinRunTime, splitRunTime } from './runTime';
 
 /** The unit each standard is measured in; also the `eligibility.*` key that names it. */
@@ -96,7 +97,7 @@ const INPUT_STYLE = StyleSheet.flatten([
   typography('en', 'field', '600'),
   {
     color: colors.ink,
-    height: sizes.touchLg,
+    minHeight: sizes.touchLg,
     padding: 0,
     textAlignVertical: 'center' as const,
     writingDirection: 'ltr' as const,
@@ -124,6 +125,8 @@ function MeasureInput({
   placeholder,
   accessibilityLabel,
   whole = false,
+  error,
+  inputRef,
   testID,
 }: {
   value: string;
@@ -132,6 +135,8 @@ function MeasureInput({
   accessibilityLabel: string;
   /** Whole numbers only (minutes, seconds): a number pad, no decimal key. */
   whole?: boolean;
+  error?: string;
+  inputRef?: Ref<TextInput>;
   testID: string;
 }) {
   const d = useDir();
@@ -141,13 +146,16 @@ function MeasureInput({
   return (
     <View
       className={cx(
-        'h-touchLg flex-1 justify-center rounded-md bg-surface',
+        'min-h-touchLg flex-1 justify-center rounded-md bg-surface',
         // The focus ring grows 1 -> 2 px and the padding gives the pixel back, so the digits
         // never shift under the caret. One padding slot and one border slot, never two.
         focused ? 'border-2 border-accentStrong px-[11px]' : 'border border-outline px-3',
       )}
     >
       <TextInput
+        ref={inputRef}
+        accessibilityHint={error}
+        aria-invalid={Boolean(error)}
         testID={testID}
         value={value}
         onChangeText={onChange}
@@ -174,6 +182,7 @@ function MeasureField({
   standard,
   value,
   onChange,
+  inputRef,
   testID,
 }: {
   label: string;
@@ -181,8 +190,14 @@ function MeasureField({
   standard: number;
   value: string;
   onChange: (value: string) => void;
+  inputRef?: Ref<TextInput>;
   testID: string;
 }) {
+  const { t } = useTranslation();
+  const error =
+    value.trim() && parseMeasure(value) === undefined
+      ? t('audit.invalidMeasure', { unit })
+      : undefined;
   return (
     <Stack gap={1}>
       <Row gap={2} align="baseline">
@@ -195,6 +210,8 @@ function MeasureField({
       </Row>
       <Row>
         <MeasureInput
+          inputRef={inputRef}
+          error={error}
           testID={testID}
           value={value}
           onChange={onChange}
@@ -203,6 +220,11 @@ function MeasureField({
           accessibilityLabel={`${label} (${unit})`}
         />
       </Row>
+      {error && (
+        <Text variant="small" color="dangerInk" accessibilityLiveRegion="polite">
+          {error}
+        </Text>
+      )}
     </Stack>
   );
 }
@@ -220,12 +242,16 @@ function RunTimeField({
   standard,
   value,
   onChange,
+  inputRef,
+  onInvalidChange,
   testID,
 }: {
   label: string;
   standard: number;
   value: string;
   onChange: (value: string) => void;
+  inputRef?: Ref<TextInput>;
+  onInvalidChange: (invalid: boolean) => void;
   testID: string;
 }) {
   const { t } = useTranslation();
@@ -240,8 +266,17 @@ function RunTimeField({
   }
   const edit = (next: { min: string; sec: string }) => {
     setParts(next);
+    onInvalidChange(
+      Boolean(next.min.trim() || next.sec.trim()) &&
+        parseMeasure(joinRunTime(next.min, next.sec)) === undefined,
+    );
     onChange(joinRunTime(next.min, next.sec));
   };
+  const error =
+    (parts.min.trim() || parts.sec.trim()) &&
+    parseMeasure(joinRunTime(parts.min, parts.sec)) === undefined
+      ? t('audit.invalidRun')
+      : undefined;
   const hint = splitRunTime(String(standard));
   const minutes = t('eligibility.min');
   const seconds = t('eligibility.sec');
@@ -254,6 +289,8 @@ function RunTimeField({
         <Stack gap={1} className="flex-1">
           <MeasureInput
             testID={`${testID}-min`}
+            inputRef={inputRef}
+            error={error}
             value={parts.min}
             onChange={(min) => edit({ ...parts, min })}
             placeholder={hint.min}
@@ -267,6 +304,7 @@ function RunTimeField({
         <Stack gap={1} className="flex-1">
           <MeasureInput
             testID={`${testID}-sec`}
+            error={error}
             value={parts.sec}
             onChange={(sec) => edit({ ...parts, sec })}
             placeholder={hint.sec}
@@ -278,6 +316,11 @@ function RunTimeField({
           </Text>
         </Stack>
       </Row>
+      {error && (
+        <Text variant="small" color="dangerInk" accessibilityLiveRegion="polite">
+          {error}
+        </Text>
+      )}
     </Stack>
   );
 }
@@ -323,17 +366,20 @@ function ResultRow({
   label,
   unit,
   last,
+  invalid = false,
 }: {
   row: EligibilityRow;
   label: string;
   unit: string;
   last: boolean;
+  invalid?: boolean;
 }) {
   const { t } = useTranslation();
   const d = useDir();
   const tone = rowTone(row.pass);
-  const state =
-    row.pass === true
+  const state = invalid
+    ? t('audit.invalid')
+    : row.pass === true
       ? t('eligibility.pass')
       : row.pass === false
         ? t('eligibility.fail')
@@ -370,7 +416,11 @@ function ResultRow({
         <Text variant="caption" color="ink3">
           {t('eligibility.yours')}
         </Text>
-        {row.actual === undefined ? (
+        {invalid ? (
+          <Text variant="caption" color="dangerInk">
+            {t('audit.invalid')}
+          </Text>
+        ) : row.actual === undefined ? (
           <Glyph variant="caption" color="ink3">
             —
           </Glyph>
@@ -510,6 +560,17 @@ export function EligibilityView({
    * otherwise from its first `onLayout` — a frame later, so the layout has settled.
    */
   const scroller = useRef<ScrollView>(null);
+  const inputs = useRef<Partial<Record<StandardKey, TextInput | null>>>({});
+  const [invalidRuns, setInvalidRuns] = useState<Partial<Record<StandardKey, boolean>>>({});
+  const selection = `${post}:${gender}`;
+  const [previousSelection, setPreviousSelection] = useState(selection);
+  if (previousSelection !== selection) {
+    setPreviousSelection(selection);
+    setInvalidRuns({});
+  }
+  const invalid = (key: StandardKey) =>
+    (Boolean(values[key]?.trim()) && parseMeasure(values[key]) === undefined) ||
+    Boolean(isLongRun(key) && invalidRuns[key]);
   const verdictY = useRef<number | undefined>(undefined);
   const scrollWanted = useRef(false);
   const scrollToVerdict = () => {
@@ -522,6 +583,12 @@ export function EligibilityView({
   };
   const check = () => {
     onCheck();
+    const firstInvalid = entries.find(({ key }) => invalid(key));
+    if (firstInvalid) {
+      scrollWanted.current = false;
+      inputs.current[firstInvalid.key]?.focus();
+      return;
+    }
     scrollWanted.current = true;
     if (result) scrollToVerdict();
   };
@@ -534,6 +601,10 @@ export function EligibilityView({
     isLongRun(key) ? (
       <RunTimeField
         key={key}
+        inputRef={(node) => {
+          inputs.current[key] = node;
+        }}
+        onInvalidChange={(bad) => setInvalidRuns((previous) => ({ ...previous, [key]: bad }))}
         testID={`eligibility-field-${key}`}
         label={labelOf(key)}
         standard={standard.value}
@@ -543,6 +614,9 @@ export function EligibilityView({
     ) : (
       <MeasureField
         key={key}
+        inputRef={(node) => {
+          inputs.current[key] = node;
+        }}
         testID={`eligibility-field-${key}`}
         label={labelOf(key)}
         unit={unitOf(key)}
@@ -664,6 +738,7 @@ export function EligibilityView({
                 {result.rows.map((row, i) => (
                   <ResultRow
                     key={row.key}
+                    invalid={invalid(row.key)}
                     row={row}
                     label={labelOf(row.key)}
                     unit={unitOf(row.key)}

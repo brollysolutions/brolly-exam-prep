@@ -11,6 +11,7 @@ import { Home, Library, Profile, Onboarding, Welcome } from './screens';
 import { Study, Topic, News, Eligibility, Paper } from './content-screens';
 import { Exam, Results } from './exam';
 import { Button, useCopy } from './web-ui';
+import { StorageNotice } from './storage-notice';
 
 const initialLang = webLangOverride() ?? useLangStore.getState().lang;
 initI18n(initialLang);
@@ -119,21 +120,36 @@ function Application({ route, id }: { route: string; id?: string }) {
           {route !== 'exam' && (
             <nav aria-label={copy('Main navigation', 'ప్రధాన నావిగేషన్')}>
               {nav.map(([href, label]) => (
-                <Link key={href} href={href} aria-current={
-                  pathname === href || (href !== '/' && pathname.startsWith(href)) ? 'page' : undefined
-                }>{label}</Link>
+                <Link
+                  key={href}
+                  href={href}
+                  aria-current={
+                    pathname === href || (href !== '/' && pathname.startsWith(href))
+                      ? 'page'
+                      : undefined
+                  }
+                >
+                  {label}
+                </Link>
               ))}
             </nav>
           )}
           <div className="header-actions">
-            <Button variant="outline" onClick={() => setLang(lang === 'en' ? 'te' : 'en')}
-              aria-label={copy('Switch to Telugu', 'Switch to English')}>
+            <Button
+              variant="outline"
+              onClick={() => setLang(lang === 'en' ? 'te' : 'en')}
+              aria-label={copy('Switch to Telugu', 'Switch to English')}
+            >
               {lang === 'en' ? 'తెలుగు' : 'English'}
             </Button>
           </div>
         </div>
       </header>
-      <main id="main-content" className={route === 'exam' ? 'main-content exam-main' : 'main-content'}>
+      <main
+        id="main-content"
+        className={route === 'exam' ? 'main-content exam-main' : 'main-content'}
+      >
+        <StorageNotice />
         {content}
       </main>
     </div>

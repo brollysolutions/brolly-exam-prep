@@ -1,3 +1,4 @@
+import { Dimensions } from 'react-native';
 import { render } from '@testing-library/react-native';
 import { colors } from '@tslprb/design-tokens';
 import { act, type ReactNode } from 'react';
@@ -90,7 +91,8 @@ describe('tab bar', () => {
   // 2 px of slack before the inset is added.
   it('adds the bottom inset to its own height rather than sitting inside it', async () => {
     await render(<TabsLayout />);
-    expect(barStyle().height).toBe(68 + BOTTOM_INSET);
+    const scale = Dimensions.get('window').fontScale;
+    expect(barStyle().height).toBe(68 + 16 * (scale * (scale > 1.3 ? 2 : 1) - 1) + BOTTOM_INSET);
     expect(itemStyle().paddingBottom).toBe(6 + BOTTOM_INSET);
   });
 
@@ -101,7 +103,10 @@ describe('tab bar', () => {
         await setLanguage(lang);
       });
       await render(<TabsLayout />);
-      expect(barStyle().height).toBe(height + BOTTOM_INSET);
+      const scale = Dimensions.get('window').fontScale;
+      expect(barStyle().height).toBe(
+        height + (lang === 'te' ? 19 : 16) * (scale * (scale > 1.3 ? 2 : 1) - 1) + BOTTOM_INSET,
+      );
       // Tracking is Latin-only.
       expect(options.tabBarLabelStyle).toMatchObject({ letterSpacing: 0 });
     },
@@ -112,16 +117,19 @@ describe('tab bar', () => {
   it.each<[Lang, number, string]>([
     ['en', 16, 'Inter_600SemiBold'],
     ['te', 19, 'NotoSansTelugu_600SemiBold'],
-  ])('sets the %s label on its own %s px line, never the body line-height', async (lang, line, family) => {
-    await act(async () => {
-      await setLanguage(lang);
-    });
-    await render(<TabsLayout />);
-    expect(options.tabBarLabelStyle).toEqual({
-      fontFamily: family,
-      fontSize: 12,
-      lineHeight: line,
-      letterSpacing: 0,
-    });
-  });
+  ])(
+    'sets the %s label on its own %s px line, never the body line-height',
+    async (lang, line, family) => {
+      await act(async () => {
+        await setLanguage(lang);
+      });
+      await render(<TabsLayout />);
+      expect(options.tabBarLabelStyle).toEqual({
+        fontFamily: family,
+        fontSize: 12,
+        lineHeight: line,
+        letterSpacing: 0,
+      });
+    },
+  );
 });

@@ -2,20 +2,10 @@ import { colors, motion, spacing } from '@tslprb/design-tokens';
 import { useDir } from '@tslprb/i18n';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, useWindowDimensions, View } from 'react-native';
+import { ScrollView, useWindowDimensions } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-import {
-  ActionBar,
-  Button,
-  Num,
-  Pill,
-  Row,
-  Screen,
-  Stack,
-  Text,
-  useReducedMotionSafe,
-} from '@/ui';
+import { ActionBar, Button, Num, Pill, Row, Screen, Stack, Text, useReducedMotionSafe } from '@/ui';
 
 /** The three things a candidate needs to believe before signing up. */
 const SLIDES = [1, 2, 3] as const;

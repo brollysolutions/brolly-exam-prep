@@ -1,5 +1,7 @@
 import { shadowStyle } from '@tslprb/design-tokens';
-import { StyleSheet, View } from 'react-native';
+import { useRef } from 'react';
+import { AccessibilityInfo, Modal, ScrollView, View, useWindowDimensions } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated from 'react-native-reanimated';
 
 import { Button } from './Button';
@@ -28,6 +30,8 @@ export type DialogProps = {
   stats?: DialogStat[];
   primary: DialogAction;
   secondary?: DialogAction;
+  /** Safe cancellation only. Never infer it from the potentially destructive actions. */
+  onDismiss?: () => void;
   testID?: string;
 };
 
@@ -59,10 +63,6 @@ const tonePill = (tone: DialogTone): { tone: PillTone; dot: boolean; dotTone: Pi
  * instead of the whole overlay blinking on. Both go through `useMotion()`, which resolves to
  * `undefined` under reduced motion and leaves an instant change.
  */
-// TODO(follow-up): `onDismiss` — hardware back (BackHandler) and a scrim tap should close the
-// card. Today every caller wires its own `BackHandler` listener and the scrim is inert, so the
-// only way out is a button. Add the prop here and drop the per-screen listeners.
-
 export function Dialog({
   visible,
   tone = 'accent',
@@ -72,69 +72,97 @@ export function Dialog({
   stats,
   primary,
   secondary,
+  onDismiss,
   testID,
 }: DialogProps) {
   const m = useMotion();
+  const heading = useRef<View>(null);
+  const insets = useSafeAreaInsets();
+  const { height, fontScale } = useWindowDimensions();
   if (!visible) return null;
   const pill = tonePill(tone);
   return (
-    <Animated.View
+    <Modal
       testID={testID}
-      entering={m.fadeIn()}
-      exiting={m.fadeOut()}
-      accessibilityViewIsModal
-      // NativeWind does not style Animated.View; it only carries the fill + animation.
-      style={StyleSheet.absoluteFill}
+      visible={visible}
+      transparent
+      animationType="none"
+      onRequestClose={() => onDismiss?.()}
+      onShow={() => {
+        if (heading.current) AccessibilityInfo.sendAccessibilityEvent(heading.current, 'focus');
+      }}
     >
-      <View className="flex-1 justify-end bg-scrimHeavy p-4">
+      <View
+        className="flex-1 justify-end bg-scrimHeavy px-4"
+        style={{ paddingTop: insets.top + 16, paddingBottom: insets.bottom + 16 }}
+        accessibilityViewIsModal
+      >
         {/* The card slides up out of the edge it is anchored to; the scrim above only fades. */}
-        <Animated.View entering={m.slideUp()} exiting={m.slideOut()}>
-          {/* The top edge is always gold; the pill carries the tone. */}
-          <View
-            testID={testID ? `${testID}-card` : undefined}
-            className="rounded-lg border border-line border-t-3 border-t-accentStrong bg-surface p-4"
-            style={shadowStyle('sheet')}
-          >
-            <Pill
-              testID={testID ? `${testID}-pill` : undefined}
-              label={kicker}
-              tone={pill.tone}
-              dot={pill.dot}
-              dotTone={pill.dotTone}
-            />
-            {/* The display face: a dialog is the one thing on screen while it is open. */}
-            <Text variant="title" className="mt-2">
-              {title}
-            </Text>
-            <Text variant="body" color="ink2" className="mt-2">
-              {body}
-            </Text>
-            {stats && stats.length > 0 && (
-              <Row gap={2} className="mt-3">
-                {stats.map((s) => (
-                  <StatTile key={s.label} value={s.num} label={s.label} align="center" />
-                ))}
-              </Row>
-            )}
-            <Stack gap={2} className="mt-4">
-              <Button
-                size="lg"
-                label={primary.label}
-                onPress={primary.onPress}
-                testID={testID ? `${testID}-primary` : undefined}
+        <Animated.View
+          entering={m.slideUp()}
+          exiting={m.slideOut()}
+          style={{ maxHeight: height - insets.top - insets.bottom - 32 }}
+        >
+          <ScrollView bounces={false} keyboardShouldPersistTaps="handled">
+            {/* The top edge is always gold; the pill carries the tone. */}
+            <View
+              testID={testID ? `${testID}-card` : undefined}
+              className="rounded-lg border border-line border-t-3 border-t-accentStrong bg-surface p-4"
+              style={shadowStyle('sheet')}
+            >
+              <Pill
+                testID={testID ? `${testID}-pill` : undefined}
+                label={kicker}
+                tone={pill.tone}
+                dot={pill.dot}
+                dotTone={pill.dotTone}
               />
-              {secondary && (
-                <Button
-                  variant="secondary"
-                  label={secondary.label}
-                  onPress={secondary.onPress}
-                  testID={testID ? `${testID}-secondary` : undefined}
-                />
+              {/* The display face: a dialog is the one thing on screen while it is open. */}
+              <View ref={heading} accessible accessibilityRole="header" accessibilityLabel={title}>
+                <Text variant="title" className="mt-2">
+                  {title}
+                </Text>
+              </View>
+              <Text variant="body" color="ink2" className="mt-2">
+                {body}
+              </Text>
+              {stats && stats.length > 0 && (
+                <Row
+                  gap={2}
+                  className="mt-3"
+                  style={fontScale > 1.5 ? { flexDirection: 'column' } : undefined}
+                >
+                  {stats.map((s) => (
+                    <StatTile
+                      key={s.label}
+                      value={s.num}
+                      label={s.label}
+                      align="center"
+                      className={fontScale > 1.5 ? 'flex-none self-stretch' : undefined}
+                    />
+                  ))}
+                </Row>
               )}
-            </Stack>
-          </View>
+              <Stack gap={2} className="mt-4">
+                <Button
+                  size="lg"
+                  label={primary.label}
+                  onPress={primary.onPress}
+                  testID={testID ? `${testID}-primary` : undefined}
+                />
+                {secondary && (
+                  <Button
+                    variant="secondary"
+                    label={secondary.label}
+                    onPress={secondary.onPress}
+                    testID={testID ? `${testID}-secondary` : undefined}
+                  />
+                )}
+              </Stack>
+            </View>
+          </ScrollView>
         </Animated.View>
       </View>
-    </Animated.View>
+    </Modal>
   );
 }

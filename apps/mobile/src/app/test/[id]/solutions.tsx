@@ -1,4 +1,4 @@
-import { isImportedTest } from '@tslprb/fixtures';
+import { TESTS, isImportedTest } from '@tslprb/fixtures';
 import { Redirect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 
@@ -34,6 +34,7 @@ function SolutionsContent({ id }: { id: string }) {
 
   return (
     <SolutionsView
+      demo={TESTS.find((test) => test.id === id)?.demo}
       initialFilter={isImportedTest(id) ? 'all' : 'wrong'}
       rows={done ? data : undefined}
       failed={failed}

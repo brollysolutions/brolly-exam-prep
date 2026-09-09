@@ -31,16 +31,18 @@ describe('ProfileView', () => {
     await render(<ProfileView {...base} lang="en" {...handlers()} />);
     expect(screen.getByTestId('profile-post')).toHaveTextContent(/SI \/ ASI/);
     expect(screen.getByTestId('profile-category')).toHaveTextContent(/BC/);
+    expect(screen.getByRole('button', { name: /Post.*SI \/ ASI/ })).toBeOnTheScreen();
+    expect(screen.getByRole('button', { name: /Category.*BC/ })).toBeOnTheScreen();
     expect(screen.getByTestId('profile-version')).toHaveTextContent('Version 1.0.0');
     expect(screen.getByTestId('profile-language')).toHaveTextContent(/Language/);
   });
 
-  it('leaves a dash where an answer is missing rather than guessing', async () => {
+  it('labels missing preferences as Not selected', async () => {
     await render(
       <ProfileView signedIn notifications={false} version="1.0.0" lang="en" {...handlers()} />,
     );
-    expect(screen.getByTestId('profile-post')).toHaveTextContent(/—/);
-    expect(screen.getByTestId('profile-category')).toHaveTextContent(/—/);
+    expect(screen.getByTestId('profile-post')).toHaveTextContent(/Not selected/);
+    expect(screen.getByTestId('profile-category')).toHaveTextContent(/Not selected/);
   });
 
   it('sends you back to the onboarding steps to change an answer', async () => {
@@ -209,7 +211,7 @@ describe('ProfileView (signed out)', () => {
   it('leaves the unanswered exam rows tappable — the tap is what asks for the account', async () => {
     const h = handlers();
     await render(<ProfileView {...guest} lang="en" {...h} />);
-    expect(screen.getByTestId('profile-post')).toHaveTextContent(/—/);
+    expect(screen.getByTestId('profile-post')).toHaveTextContent(/Not selected/);
     await userEvent.press(screen.getByTestId('profile-post'));
     expect(h.onEditPost).toHaveBeenCalledTimes(1);
   });

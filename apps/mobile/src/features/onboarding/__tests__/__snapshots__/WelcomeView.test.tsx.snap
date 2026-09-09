@@ -425,7 +425,8 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
           onStartShouldSetResponder={[Function]}
           style={
             {
-              "height": 48,
+              "minHeight": 48,
+              "paddingVertical": 8,
             }
           }
           testID="welcome-skip"
@@ -438,6 +439,7 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
+                "maxWidth": "100%",
               }
             }
           >
@@ -445,6 +447,7 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
               className="text-ink2"
               style={
                 {
+                  "flexShrink": 1,
                   "fontFamily": "NotoSansTelugu_600SemiBold",
                   "fontSize": 15,
                   "fontVariant": undefined,
@@ -497,7 +500,8 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
             onStartShouldSetResponder={[Function]}
             style={
               {
-                "height": 56,
+                "minHeight": 56,
+                "paddingVertical": 8,
               }
             }
             testID="welcome-primary"
@@ -510,6 +514,7 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
                   "flexWrap": undefined,
                   "gap": 8,
                   "justifyContent": undefined,
+                  "maxWidth": "100%",
                 }
               }
             >
@@ -517,6 +522,7 @@ exports[`WelcomeView (te) renders the Telugu pages left-to-right and matches the
                 className="text-onInk"
                 style={
                   {
+                    "flexShrink": 1,
                     "fontFamily": "NotoSansTelugu_700Bold",
                     "fontSize": 16,
                     "fontVariant": undefined,

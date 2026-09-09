@@ -98,6 +98,7 @@ export function AttemptDialogs({
     <>
       <Dialog
         visible={kind === 'exit'}
+        onDismiss={onDismiss}
         tone="accent"
         kicker={t('test.exitKicker')}
         title={t('test.exitTitle')}
@@ -108,6 +109,7 @@ export function AttemptDialogs({
       />
       <Dialog
         visible={kind === 'submit'}
+        onDismiss={onDismiss}
         tone="accent"
         kicker={t('test.submitKicker')}
         title={t('test.submitTitle')}
@@ -123,6 +125,7 @@ export function AttemptDialogs({
       />
       <Dialog
         visible={kind === 'resume'}
+        onDismiss={onDismiss}
         tone="accent"
         kicker={t('test.resumeKicker')}
         title={t('test.resumeTitle')}

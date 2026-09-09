@@ -4,7 +4,14 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, type FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CATEGORIES, STUDY_TOPICS, EXAM_INFO, latestNotices, type CategoryId, type Post } from '@tslprb/fixtures';
+import {
+  CATEGORIES,
+  STUDY_TOPICS,
+  EXAM_INFO,
+  latestNotices,
+  type CategoryId,
+  type Post,
+} from '@tslprb/fixtures';
 import { TESTS } from '@/lib/test-catalog';
 import { useSessionStore } from '@/data/session';
 import { useLangStore } from '@/data/lang';
@@ -15,10 +22,13 @@ import { useCompletedTestsStore } from '@/data/completedTests';
 import { attemptHref, returnHref, resultHref } from '@/lib/routes';
 import { BackLink, Button, Empty, Notice, PageTitle, useCopy } from './web-ui';
 
+import { useStorageStatus } from './storage-notice';
+
 export function Home() {
   const { t } = useTranslation();
   const copy = useCopy();
   const lang = useLangStore((s) => s.lang);
+  const storageStatus = useStorageStatus();
   const history = useHistoryStore();
   const activity = useActivityStore();
   const read = useStudyStore((s) => s.read);
@@ -35,9 +45,15 @@ export function Home() {
           <p className="eyebrow">Brolly Exam Prep</p>
           <h2>{copy('A little practice. Every day.', 'ప్రతిరోజూ కొద్దిగా సాధన.')}</h2>
           <p>{t('home.targetDone', today)}</p>
-          <progress aria-label={t('home.todayTarget')} value={Math.min(today.done, today.target)} max={today.target} />
+          <progress
+            aria-label={t('home.todayTarget')}
+            value={Math.min(today.done, today.target)}
+            max={today.target}
+          />
           <div className="actions">
-            <Button asChild><Link href="/tests">{t('library.title')}</Link></Button>
+            <Button asChild>
+              <Link href="/tests">{t('library.title')}</Link>
+            </Button>
             <Link href="/study">{t('study.title')} →</Link>
           </div>
           {streakDays(activity) > 0 && <p>{t('home.streak', { days: streakDays(activity) })}</p>}
@@ -45,28 +61,62 @@ export function Home() {
         <section className="panel">
           <h2>{t('home.progress')}</h2>
           <dl className="stats">
-            <div><dt>{t('home.papersPractised')}</dt><dd>{history.attempts.length}</dd></div>
-            <div><dt>{t('home.bestScore')}</dt><dd>{best === undefined ? '—' : `${Math.round(best)}%`}</dd></div>
-            <div><dt>{t('home.topicsRead')}</dt><dd>{STUDY_TOPICS.filter((topic) => read[topic.id]).length}</dd></div>
+            <div>
+              <dt>{t('home.papersPractised')}</dt>
+              <dd>{history.attempts.length}</dd>
+            </div>
+            <div>
+              <dt>{t('home.bestScore')}</dt>
+              <dd>{best === undefined ? '—' : `${Math.round(best)}%`}</dd>
+            </div>
+            <div>
+              <dt>{t('home.topicsRead')}</dt>
+              <dd>{STUDY_TOPICS.filter((topic) => read[topic.id]).length}</dd>
+            </div>
           </dl>
-          <p className="muted">{copy('Progress is saved in this browser.', 'పురోగతి ఈ బ్రౌజర్‌లో సేవ్ అవుతుంది.')}</p>
+          <p className="muted">
+            {storageStatus === 'persistent'
+              ? copy('Progress is saved in this browser.', 'పురోగతి ఈ బ్రౌజర్‌లో సేవ్ అవుతుంది.')
+              : copy(
+                  'Progress is currently held in this tab only.',
+                  'పురోగతి ప్రస్తుతం ఈ ట్యాబ్‌లో మాత్రమే ఉంది.',
+                )}
+          </p>
         </section>
       </div>
       <section className="section">
-        <div className="section-heading"><h2>{t('home.updates')}</h2><Link href="/updates">{t('home.allUpdates')} →</Link></div>
+        <div className="section-heading">
+          <h2>{t('home.updates')}</h2>
+          <Link href="/updates">{t('home.allUpdates')} →</Link>
+        </div>
         <p className="sample-label">{t('common.sampleData')}</p>
         {latestNotices(3).map((notice) => (
-          <Link className="content-row" href={`/updates?open=${encodeURIComponent(notice.id)}`} key={notice.id}>
-            <div><small>{notice.date}</small><h3>{notice.title[lang]}</h3></div>
+          <Link
+            className="content-row"
+            href={`/updates?open=${encodeURIComponent(notice.id)}`}
+            key={notice.id}
+          >
+            <div>
+              <small>{notice.date}</small>
+              <h3>{notice.title[lang]}</h3>
+            </div>
             <span aria-hidden="true">→</span>
           </Link>
         ))}
       </section>
       <div className="link-grid section">
-        <Link className="link-panel" href="/eligibility"><h2>{t('home.physical')}</h2><p>{t('home.physicalSub')}</p></Link>
-        <Link className="link-panel" href="/affairs"><h2>{t('home.affairs')}</h2><p>{t('common.sampleData')}</p></Link>
+        <Link className="link-panel" href="/eligibility">
+          <h2>{t('home.physical')}</h2>
+          <p>{t('home.physicalSub')}</p>
+        </Link>
+        <Link className="link-panel" href="/affairs">
+          <h2>{t('home.affairs')}</h2>
+          <p>{t('common.sampleData')}</p>
+        </Link>
       </div>
-      <p className="muted">{EXAM_INFO.label[lang]} · {EXAM_INFO.pwtDate} · {t('common.sampleData')}</p>
+      <p className="muted">
+        {EXAM_INFO.label[lang]} · {EXAM_INFO.pwtDate} · {t('common.sampleData')}
+      </p>
     </>
   );
 }
@@ -123,6 +173,7 @@ export function Library() {
               <div className="test-card-copy">
                 <span className="badge">{t(test.free ? 'common.free' : 'common.locked')}</span>
                 <h2>{test.title[lang]}</h2>
+                {test.demo && <p className="sample-label">{t('audit.demoPaperNote')}</p>}
                 <p>
                   {t('common.questions', { count: test.pattern.totalQuestions })} ·{' '}
                   {t('common.minutes', { count: test.pattern.durationMinutes })}
@@ -169,6 +220,7 @@ export function Library() {
 
 export function Onboarding({ step }: { step: 'post' | 'category' }) {
   const { t } = useTranslation();
+  const copy = useCopy();
   const router = useRouter();
   const params = useSearchParams();
   const session = useSessionStore();
@@ -193,7 +245,14 @@ export function Onboarding({ step }: { step: 'post' | 'category' }) {
       <BackLink href="/profile" />
       <PageTitle
         title={t(step === 'post' ? 'onboarding.postTitle' : 'onboarding.catTitle')}
-        sub={t(step === 'post' ? 'onboarding.postSub' : 'onboarding.catSub')}
+        sub={
+          step === 'post'
+            ? copy(
+                'Sets your default physical standards. Choose any test from the Tests page. You can change this later.',
+                'మీ డిఫాల్ట్ శారీరక ప్రమాణాలను సెట్ చేస్తుంది. పరీక్షల పేజీ నుండి ఏ పరీక్షనైనా ఎంచుకోవచ్చు. దీన్ని తర్వాత మార్చవచ్చు.',
+              )
+            : t('onboarding.catSub')
+        }
       />
       <form onSubmit={submit} className="form-stack">
         <fieldset>
@@ -248,21 +307,35 @@ export function Profile() {
   const lang = useLangStore((s) => s.lang);
   const setLang = useLangStore((s) => s.setLang);
   const history = useHistoryStore((s) => s.attempts);
+  const storageStatus = useStorageStatus();
   return (
     <>
       <PageTitle title={t('profile.title')} />
       <div className="profile-grid">
         <section className="panel">
           <h2>{copy('Practice preferences', 'సాధన ప్రాధాన్యతలు')}</h2>
-          <p>{copy('Your progress is saved in this browser.', 'మీ పురోగతి ఈ బ్రౌజర్‌లో సేవ్ అవుతుంది.')}</p>
+          <p>
+            {storageStatus === 'persistent'
+              ? copy(
+                  'Your progress is saved in this browser.',
+                  'మీ పురోగతి ఈ బ్రౌజర్‌లో సేవ్ అవుతుంది.',
+                )
+              : copy(
+                  'Your recent changes are held in this tab only.',
+                  'మీ ఇటీవలి మార్పులు ఈ ట్యాబ్‌లో మాత్రమే ఉన్నాయి.',
+                )}
+          </p>
           <Link className="content-row" href="/post?returnTo=%2Fprofile">
             <span>{t('profile.post')}</span>
-            <strong>{session.post ? t(`onboarding.${session.post}Title`) : '—'} →</strong>
+            <strong>
+              {session.post ? t(`onboarding.${session.post}Title`) : t('audit.notSelected')} →
+            </strong>
           </Link>
           <Link className="content-row" href="/category?returnTo=%2Fprofile">
             <span>{t('profile.category')}</span>
             <strong>
-              {session.category ? t(`onboarding.cats.${session.category}`) : '—'} →
+              {session.category ? t(`onboarding.cats.${session.category}`) : t('audit.notSelected')}{' '}
+              →
             </strong>
           </Link>
           <label className="content-row">
@@ -272,18 +345,11 @@ export function Profile() {
               <option value="te">తెలుగు</option>
             </select>
           </label>
-          <label className="content-row">
-            {t('profile.notifications')}
-            <input
-              type="checkbox"
-              checked={session.notifications}
-              onChange={(e) => session.setNotifications(e.target.checked)}
-            />
-          </label>
+          <h3 className="section">{t('profile.notifications')}</h3>
           <p className="muted">
             {copy(
-              'Reminder preference is saved locally; browser notifications are not scheduled.',
-              'రిమైండర్ ప్రాధాన్యత స్థానికంగా సేవ్ అవుతుంది; బ్రౌజర్ నోటిఫికేషన్లు షెడ్యూల్ చేయబడవు.',
+              'Reminders are not available on this website yet.',
+              'ఈ వెబ్‌సైట్‌లో రిమైండర్లు ఇంకా అందుబాటులో లేవు.',
             )}
           </p>
         </section>
@@ -304,7 +370,17 @@ export function Profile() {
               </div>
             ))
           ) : (
-            <Empty>{t('common.nothingYet')}</Empty>
+            <Empty>
+              <p>
+                {copy(
+                  'Complete a test to see your practice history here.',
+                  'మీ సాధన చరిత్రను ఇక్కడ చూడటానికి ఒక పరీక్షను పూర్తి చేయండి.',
+                )}
+              </p>
+              <Button asChild>
+                <Link href="/tests">{t('library.title')}</Link>
+              </Button>
+            </Empty>
           )}
         </section>
       </div>
@@ -328,7 +404,15 @@ export function Welcome() {
                 'Review your score, answers, and explanations after submission.',
                 'సమర్పించిన తర్వాత స్కోరు, సమాధానాలు మరియు వివరణలను సమీక్షించండి.',
               )
-            : t(`onboarding.welcome${step}Sub`)}
+            : step === 1
+              ? copy(
+                  'Each test card shows its question count, duration, and marking rules. Check these before starting.',
+                  'ప్రతి పరీక్ష కార్డులో ప్రశ్నల సంఖ్య, సమయం, మార్కుల నియమాలు ఉంటాయి. ప్రారంభించే ముందు వాటిని చూడండి.',
+                )
+              : copy(
+                  'Once a paper has loaded, you can answer and submit offline. Progress saves in this browser when storage is available; a warning appears if saving fails.',
+                  'ప్రశ్నపత్రం లోడ్ అయిన తర్వాత ఆఫ్‌లైన్‌లో సమాధానాలు ఇచ్చి సమర్పించవచ్చు. నిల్వ అందుబాటులో ఉంటే పురోగతి ఈ బ్రౌజర్‌లో సేవ్ అవుతుంది; సేవ్ కాకపోతే హెచ్చరిక కనిపిస్తుంది.',
+                )}
         </p>
         <p>{step} / 3</p>
         <div className="actions">

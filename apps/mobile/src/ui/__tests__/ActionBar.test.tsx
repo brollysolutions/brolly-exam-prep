@@ -83,7 +83,7 @@ describe('ActionBar', () => {
       .filter((node) => /\bbg-ink\b/.test(String(node.props.className)));
     expect(fills).toHaveLength(1);
     expect(fills[0]).toHaveTextContent('Get started');
-    expect(fills[0]).toHaveStyle({ height: 56 });
+    expect(fills[0]).toHaveStyle({ minHeight: 56 });
   });
 
   // The actions follow the reading direction, so the quiet partner leads and the primary
