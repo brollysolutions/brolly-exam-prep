@@ -1,5 +1,11 @@
 # Website visual refresh
 
+Logo decision, 2026-09-09: use only the user-supplied yellow umbrella artwork
+throughout the website. `public/brand/brolly-umbrella.png` and `app/icon.png`
+contain the same original image. Do not substitute the navy/gold B monogram or
+create a different logo. Header images load directly from the public brand path
+so the existing service worker can cache them for offline use.
+
 2026-09-08, branch `web`.
 
 The user requested the visual style of https://brollyexamprep.com/ with all
