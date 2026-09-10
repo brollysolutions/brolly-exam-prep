@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { TestMeta } from '@tslprb/fixtures';
+import type { TestMeta } from '@tslprb/fixtures/src/runtime';
 import { useLangStore } from '@/data/lang';
 import type { AttemptState } from '@/data/attempt';
 import { cellState, sectionCounts } from '@/data/attempt.selectors';

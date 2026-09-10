@@ -1,4 +1,4 @@
-import type { Affair, Notice } from '@tslprb/fixtures';
+import type { Affair, Notice } from '@tslprb/fixtures/src/runtime';
 import { LANGS, useDir, type Lang } from '@tslprb/i18n';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';

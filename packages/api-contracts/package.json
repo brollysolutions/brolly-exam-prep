@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "types": "src/index.ts",
   "scripts": {
-    "gen": "openapi-typescript http://localhost:8000/openapi.json -o src/generated/openapi.d.ts",
+    "gen": "openapi-typescript ../../services/api/openapi.json -o src/generated/openapi.d.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

@@ -1,5 +1,5 @@
 import { text as textSizes } from '@tslprb/design-tokens';
-import { COST_ROWS } from '@tslprb/fixtures';
+import { COST_ROWS } from '@tslprb/fixtures/src/runtime';
 import { useDir } from '@tslprb/i18n';
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';

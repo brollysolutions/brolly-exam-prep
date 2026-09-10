@@ -1,9 +1,8 @@
 """SQLAlchemy 2.0 async ORM models for the real (Postgres-backed) schema.
 
-These are not yet wired up to the routers -- endpoints in this phase serve
-tests/attempts/results from in-memory fixtures (see app/fixtures.py) and OTP
-from an in-memory store (see app/routers/otp.py). The models + migration
-below define the target schema for the next phase.
+PracticeAttempt persists the anonymous practice flow, including versioned paper,
+answers and result snapshots. The normalized legacy tables remain for the worker
+and future authenticated-account features; content is published as server JSON.
 
 Question/section text and options are stored as JSONB keyed by language code
 ("en" | "te"), e.g. {"en": "...", "te": "..."}.
@@ -15,6 +14,7 @@ import uuid
 from datetime import datetime
 
 from sqlalchemy import (
+    JSON,
     Boolean,
     DateTime,
     Float,
@@ -36,9 +36,10 @@ def _uuid_pk() -> Mapped[uuid.UUID]:
 
 class User(Base):
     __tablename__ = "users"
+    __table_args__ = (UniqueConstraint("phone", name="uq_users_phone"),)
 
     id: Mapped[uuid.UUID] = _uuid_pk()
-    phone: Mapped[str] = mapped_column(String(15), unique=True, index=True, nullable=False)
+    phone: Mapped[str] = mapped_column(String(15), index=True, nullable=False)
     post: Mapped[str | None] = mapped_column(String(8), nullable=True)  # 'pc' | 'si'
     category: Mapped[str | None] = mapped_column(String(8), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
@@ -52,9 +53,10 @@ class OtpCode(Base):
     kept so a future phase can persist + audit sent codes."""
 
     __tablename__ = "otp_codes"
+    __table_args__ = (UniqueConstraint("request_id", name="uq_otp_codes_request_id"),)
 
     id: Mapped[uuid.UUID] = _uuid_pk()
-    request_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), unique=True, index=True)
+    request_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), index=True)
     phone: Mapped[str] = mapped_column(String(15), index=True, nullable=False)
     code: Mapped[str] = mapped_column(String(6), nullable=False)
     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
@@ -64,9 +66,10 @@ class OtpCode(Base):
 
 class Test(Base):
     __tablename__ = "tests"
+    __table_args__ = (UniqueConstraint("slug", name="uq_tests_slug"),)
 
     id: Mapped[uuid.UUID] = _uuid_pk()
-    slug: Mapped[str] = mapped_column(String(64), unique=True, index=True, nullable=False)
+    slug: Mapped[str] = mapped_column(String(64), index=True, nullable=False)
     title: Mapped[str] = mapped_column(String(255), nullable=False)
     post: Mapped[str] = mapped_column(String(8), nullable=False, default="pc")  # 'pc' | 'si'
     duration_minutes: Mapped[int] = mapped_column(Integer, nullable=False)
@@ -164,10 +167,11 @@ class Answer(Base):
 
 class Result(Base):
     __tablename__ = "results"
+    __table_args__ = (UniqueConstraint("attempt_id", name="uq_results_attempt_id"),)
 
     id: Mapped[uuid.UUID] = _uuid_pk()
     attempt_id: Mapped[uuid.UUID] = mapped_column(
-        ForeignKey("attempts.id", ondelete="CASCADE"), unique=True, index=True
+        ForeignKey("attempts.id", ondelete="CASCADE"), index=True
     )
     test_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("tests.id", ondelete="CASCADE"), index=True
@@ -183,3 +187,18 @@ class Result(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
     attempt: Mapped[Attempt] = relationship(back_populates="result")
+
+
+class PracticeAttempt(Base):
+    """Anonymous practice capability with an immutable paper and result snapshot."""
+
+    __tablename__ = "practice_attempts"
+
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    test_id: Mapped[str] = mapped_column(String(64), index=True)
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    ends_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    status: Mapped[str] = mapped_column(String(20), default="in_progress")
+    snapshot: Mapped[dict] = mapped_column(JSON)
+    answers: Mapped[dict] = mapped_column(JSON, default=dict)
+    result: Mapped[dict | None] = mapped_column(JSON, nullable=True)

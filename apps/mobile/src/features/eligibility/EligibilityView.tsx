@@ -9,7 +9,7 @@ import {
   type Standard,
   type StandardKey,
   type StandardsGroup,
-} from '@tslprb/fixtures';
+} from '@tslprb/fixtures/src/runtime';
 import { useDir } from '@tslprb/i18n';
 import { useRef, useState, type Ref } from 'react';
 import { useTranslation } from 'react-i18next';

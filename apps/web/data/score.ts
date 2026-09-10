@@ -1,4 +1,4 @@
-import type { ExamPattern, Question as PaperQuestion } from '@tslprb/fixtures';
+import type { ExamPattern, Question as PaperQuestion } from '@tslprb/fixtures/src/runtime';
 
 import type { LocalizedCopy, ResultDetail, ResultReviewRow } from './api/types';
 import type { Choice } from './attempt';

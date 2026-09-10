@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { colors, size } from '@tslprb/design-tokens';
-import type { Localized, StudyBlock, StudySection, StudyTopic } from '@tslprb/fixtures';
+import type { Localized, StudyBlock, StudySection, StudyTopic } from '@tslprb/fixtures/src/runtime';
 import { LANGS, type Lang } from '@tslprb/i18n';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';

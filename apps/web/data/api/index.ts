@@ -3,6 +3,6 @@ export * from './types';
 export { HttpApi } from './http';
 
 // Browser calls use the same origin in both local development and Docker.
-// Fixture-backed catalogue/papers are retained inside HttpApi until the API serves them.
+// All published content and practice results are served by the API.
 const api = new HttpApi({ baseUrl: '/api' });
 export const getApi = () => api;

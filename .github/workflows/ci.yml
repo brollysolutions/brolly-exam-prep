@@ -36,13 +36,25 @@ jobs:
 
   api:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: tslprb
+          POSTGRES_PASSWORD: tslprb
+          POSTGRES_DB: tslprb
+        ports: ["5442:5432"]
+        options: >-
+          --health-cmd "pg_isready -U tslprb"
+          --health-interval 5s --health-timeout 5s --health-retries 10
     defaults:
       run:
         working-directory: services/api
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
-      - run: uv sync --frozen || uv sync
+      - run: uv sync --frozen --extra dev
+      - run: uv run alembic upgrade head
       - run: uv run ruff check .
       - run: uv run pytest -q
 

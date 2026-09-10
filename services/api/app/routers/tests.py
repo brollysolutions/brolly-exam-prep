@@ -1,19 +1,33 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter
 
-from app import fixtures
-from app.schemas import TestDetail, TestSummary
+from app import catalog
+from app.schemas import PaperQuestionOut, TestDetail, TestMetaOut, TestSummary
 
 router = APIRouter(prefix="/v1/tests", tags=["tests"])
 
 
 @router.get("", response_model=list[TestSummary])
-async def list_tests() -> list[TestSummary]:
-    return [TestSummary(**fixtures.test_summary(t)) for t in fixtures.TESTS_BY_ID.values()]
+async def list_tests():
+    return [catalog.summary(entry) for entry in catalog.CATALOG.values()]
+
+
+@router.get("/catalog", response_model=list[TestMetaOut], response_model_exclude_none=True)
+async def list_catalog():
+    return [entry["meta"] for entry in catalog.CATALOG.values()]
+
+
+@router.get("/{test_id}/meta", response_model=TestMetaOut, response_model_exclude_none=True)
+async def get_meta(test_id: str):
+    return catalog.get_entry(test_id)["meta"]
+
+
+@router.get(
+    "/{test_id}/paper", response_model=list[PaperQuestionOut], response_model_exclude_none=True
+)
+async def get_paper(test_id: str):
+    return catalog.public_paper(catalog.get_entry(test_id))
 
 
 @router.get("/{test_id}", response_model=TestDetail)
-async def get_test(test_id: str) -> TestDetail:
-    test = fixtures.TESTS_BY_ID.get(test_id)
-    if test is None:
-        raise HTTPException(status.HTTP_404_NOT_FOUND, "Test not found")
-    return TestDetail(**fixtures.test_detail(test))
+async def get_test(test_id: str):
+    return catalog.detail(catalog.get_entry(test_id))

@@ -99,3 +99,19 @@ it('locks the old solutions again during a retake', async () => {
   expect(mockRedirect).toHaveBeenCalled();
   expect(screen.queryByTestId('solutions-screen')).toBeNull();
 });
+
+jest.mock('@/data/api', () => {
+  const actual = jest.requireActual('@/data/api');
+  const { useCompletedTestsStore } = jest.requireActual('@/data/completedTests');
+  const { TESTS, paperForTest } = jest.requireActual('@tslprb/fixtures');
+  return {
+    ...actual,
+    getApi: () => ({
+      getResultDetail: async (id: string) =>
+        Object.values(useCompletedTestsStore.getState().tests)
+          .map((row: any) => row.result)
+          .find((row: any) => row.id === id),
+      getReviewPaper: async () => paperForTest(TESTS[0]),
+    }),
+  };
+});

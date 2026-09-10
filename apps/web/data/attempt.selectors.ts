@@ -1,5 +1,5 @@
 import type { PaletteState } from '@tslprb/design-tokens';
-import { sectionIndexOf, type ExamPattern } from '@tslprb/fixtures';
+import { sectionIndexOf, type ExamPattern } from '@tslprb/fixtures/src/runtime';
 
 import type { AttemptState } from './attempt';
 

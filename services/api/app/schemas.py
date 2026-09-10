@@ -97,6 +97,7 @@ class AnswerPatchIn(BaseModel):
     question_id: str
     choice: int | None = None
     marked: bool = False
+    seconds: float = Field(default=0, ge=0)
 
 
 class OkOut(BaseModel):
@@ -140,3 +141,198 @@ class ResultOut(BaseModel):
     accuracy: float
     per_section: list[SectionScore]
     wrong: list[WrongAnswer]
+
+
+SectionId = Literal["arithmetic", "reasoning", "gs", "telangana", "english"]
+
+
+class PatternSection(BaseModel):
+    id: SectionId
+    labelKey: str
+    questions: int
+    unlockAfter: SectionId | None = None
+
+
+class ExamPatternOut(BaseModel):
+    id: str
+    post: Post
+    totalQuestions: int
+    durationMinutes: int
+    marksPerCorrect: float
+    negativePerWrong: float
+    qualifyingOnly: bool
+    sections: list[PatternSection]
+    verified: bool
+    source: str
+
+
+class TestMetaOut(BaseModel):
+    id: str
+    kind: Literal["full", "previous"]
+    title: LocalizedText
+    pattern: ExamPatternOut
+    free: bool
+    demo: bool | None = None
+    fullMocksOnly: bool | None = None
+    listed: bool | None = None
+
+
+class PaperQuestionOut(BaseModel):
+    id: str
+    section: SectionId
+    text: LocalizedText
+    options: LocalizedOptions
+    avgSeconds: float
+    correct: int | None = None
+    explanation: LocalizedText | None = None
+
+
+class SubmitIn(BaseModel):
+    # Offline practice snapshot; saved atomically with the result. Retrying is idempotent.
+    answers: list[AnswerPatchIn] | None = Field(default=None, max_length=1000)
+    elapsed_seconds: float | None = Field(default=None, ge=0)
+
+
+class ReviewRowOut(BaseModel):
+    questionNo: int
+    your: int | None
+    seconds: float
+
+
+class ResultActionOut(BaseModel):
+    id: str
+    title: LocalizedText
+    sub: LocalizedText
+
+
+class ResultDetailOut(BaseModel):
+    id: str
+    testTitleN: int
+    title: LocalizedText
+    score: float
+    maxScore: float
+    cutoffPct: float
+    qualified: bool
+    accuracyPct: float
+    avgSecondsPerQuestion: float
+    negativeMarks: float
+    correct: int
+    wrong: int
+    skipped: int
+    actions: list[ResultActionOut]
+    review: list[ReviewRowOut]
+
+
+class StudyTextBlock(BaseModel):
+    kind: Literal["heading", "para", "formula", "example", "tip"]
+    text: LocalizedText
+
+
+class StudyBulletsBlock(BaseModel):
+    kind: Literal["bullets"]
+    items: list[LocalizedText]
+
+
+class StudyTopicOut(BaseModel):
+    id: str
+    section: SectionId
+    title: LocalizedText
+    minutes: float
+    blocks: list[StudyTextBlock | StudyBulletsBlock]
+
+
+class StudySectionOut(BaseModel):
+    id: SectionId
+    labelKey: str
+    topics: list[StudyTopicOut]
+
+
+class NoticeOut(BaseModel):
+    id: str
+    kind: Literal["notification", "admitCard", "examDate", "result", "pet"]
+    date: str
+    title: LocalizedText
+    body: LocalizedText
+    link: str | None = None
+
+
+class AffairOut(BaseModel):
+    id: str
+    date: str
+    category: Literal["india", "telangana", "world", "sports", "awards"]
+    headline: LocalizedText
+    summary: LocalizedText
+
+
+class ExamInfoOut(BaseModel):
+    pwtDate: str
+    label: LocalizedText
+
+
+class CategoryOut(BaseModel):
+    id: Literal["oc", "ews", "bc", "sc", "st", "exs"]
+    labelKey: str
+    qualifyingPct: float
+
+
+class PatternsOut(BaseModel):
+    pc: ExamPatternOut
+    si: ExamPatternOut
+    short: ExamPatternOut
+
+
+class StandardOut(BaseModel):
+    value: float
+    dir: Literal["min", "max"]
+    verified: bool
+
+
+class ChestOut(BaseModel):
+    unexpanded: StandardOut
+    expansion: StandardOut
+
+
+class PhysicalStandardsOut(BaseModel):
+    post: Post
+    gender: Literal["male", "female"]
+    group: Literal["general", "st"]
+    height: StandardOut
+    chest: ChestOut | None = None
+    run1600m: StandardOut | None = None
+    run800m: StandardOut | None = None
+    run100m: StandardOut | None = None
+    longJump: StandardOut
+    shotPut: StandardOut
+    shotKg: float
+
+
+class GroupStandardsOut(BaseModel):
+    general: PhysicalStandardsOut
+    st: PhysicalStandardsOut
+
+
+class GenderStandardsOut(BaseModel):
+    male: GroupStandardsOut
+    female: GroupStandardsOut
+
+
+class PostStandardsOut(BaseModel):
+    pc: GenderStandardsOut
+    si: GenderStandardsOut
+
+
+class CostRowsOut(BaseModel):
+    en: list[list[str]]
+    te: list[list[str]]
+
+
+class AppContentOut(BaseModel):
+    studySections: list[StudySectionOut]
+    notices: list[NoticeOut]
+    affairs: list[AffairOut]
+    examInfo: ExamInfoOut
+    categories: list[CategoryOut]
+    patterns: PatternsOut
+    physicalStandards: PostStandardsOut
+    standardsNotificationYear: int
+    costRows: CostRowsOut

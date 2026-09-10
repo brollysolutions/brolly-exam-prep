@@ -68,13 +68,16 @@ async def test_the_old_otp_endpoints_are_gone(client):
 async def test_full_attempt_flow_still_works_alongside_sign_in(client):
     """Sanity check that the attempt/submit/result flow (fixtures, not DB)
     works end to end -- exercises the whole scaffold."""
-    attempt_resp = await client.post("/v1/attempts", json={"test_id": "test-pwt-07"})
+    from app.catalog import CATALOG
+
+    question = CATALOG["si-brolly-01"]["paper"][0]
+    attempt_resp = await client.post("/v1/attempts", json={"test_id": "si-brolly-01"})
     assert attempt_resp.status_code == 200
     attempt = attempt_resp.json()
 
     patch_resp = await client.patch(
         f"/v1/attempts/{attempt['id']}/answers",
-        json={"question_id": "q-arith-train-speed", "choice": 2, "marked": False},
+        json={"question_id": question["id"], "choice": question["correct"], "marked": False},
     )
     assert patch_resp.status_code == 200
 

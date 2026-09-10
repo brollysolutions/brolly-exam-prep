@@ -6,10 +6,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     """Application settings, sourced from environment variables / .env.
 
-    Every field has a sane local-dev default so the app (and the test suite)
-    can boot without a running Postgres or Redis instance -- routers in this
-    phase serve tests/attempts/results from in-memory fixtures, and OTP uses
-    its own in-memory store, so no I/O happens at import/startup time.
+    Content/health can boot without a database connection. Practice attempt and
+    result routes require PostgreSQL with the current Alembic migrations applied.
     """
 
     model_config = SettingsConfigDict(

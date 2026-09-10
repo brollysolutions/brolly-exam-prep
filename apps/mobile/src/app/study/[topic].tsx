@@ -1,4 +1,4 @@
-import { findStudyTopic } from '@tslprb/fixtures';
+import { findStudyTopic } from '@tslprb/fixtures/src/runtime';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 
 import { useActivityStore } from '@/data/activity';

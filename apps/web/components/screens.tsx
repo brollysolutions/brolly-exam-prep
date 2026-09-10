@@ -11,8 +11,8 @@ import {
   latestNotices,
   type CategoryId,
   type Post,
-} from '@tslprb/fixtures';
-import { TESTS } from '@/lib/test-catalog';
+} from '@tslprb/fixtures/src/runtime';
+import { TESTS } from '@tslprb/fixtures/src/runtime';
 import { useSessionStore } from '@/data/session';
 import { useLangStore } from '@/data/lang';
 import { useStudyStore } from '@/data/study';

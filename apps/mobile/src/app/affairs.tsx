@@ -1,4 +1,4 @@
-import { latestAffairs } from '@tslprb/fixtures';
+import { latestAffairs } from '@tslprb/fixtures/src/runtime';
 import { useRouter } from 'expo-router';
 
 import { useLangStore } from '@/data/lang';

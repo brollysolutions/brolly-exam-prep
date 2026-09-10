@@ -12,6 +12,7 @@ import { Study, Topic, News, Eligibility, Paper } from './content-screens';
 import { Exam, Results } from './exam';
 import { Button, useCopy } from './web-ui';
 import { StorageNotice } from './storage-notice';
+import { CatalogGate } from './catalog-gate';
 
 const initialLang = webLangOverride() ?? useLangStore.getState().lang;
 initI18n(initialLang);
@@ -158,7 +159,9 @@ function Application({ route, id }: { route: string; id?: string }) {
 export default function Website(props: { route: string; id?: string }) {
   return (
     <I18nextProvider i18n={i18n}>
-      <Application {...props} />
+      <CatalogGate>
+        <Application {...props} />
+      </CatalogGate>
     </I18nextProvider>
   );
 }

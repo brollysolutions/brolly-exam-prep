@@ -1,3 +1,4 @@
+import { useSubmissions } from '@/data/complete';
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { act, render, screen, userEvent } from '@testing-library/react-native';
 import { initI18n } from '@tslprb/i18n';
@@ -7,12 +8,25 @@ import { AppState, BackHandler, type AppStateStatus } from 'react-native';
 import TestAttemptRoute from '@/app/test/[id]/index';
 import SIMockTestRoute from '@/app/tests/simocktest';
 import { useActivityStore } from '@/data/activity';
-import { MockApi, resetApi } from '@/data/api';
+import { resetApi } from '@/data/api';
+import { MockApi } from '@/data/api/mock';
 import { useAttemptStore } from '@/data/attempt';
 import { useHistoryStore } from '@/data/history';
 import { useCompletedTestsStore } from '@/data/completedTests';
 import { useSessionStore } from '@/data/session';
 
+jest.mock('@/data/api', () => {
+  const actual = jest.requireActual('@/data/api');
+  const { MockApi } = jest.requireActual('@/data/api/mock');
+  let instance = new MockApi();
+  return {
+    ...actual,
+    getApi: () => instance,
+    resetApi: () => {
+      instance = new MockApi();
+    },
+  };
+});
 const mockReplace = jest.fn();
 const mockBack = jest.fn();
 const mockRedirect = jest.fn();
@@ -71,6 +85,7 @@ beforeEach(() => {
   mockBack.mockClear();
   mockRedirect.mockClear();
   mockTestId = 'mock-07';
+  useSubmissions.getState().reset();
   useCompletedTestsStore.getState().reset();
   useSessionStore.getState().logout();
   signIn();
@@ -124,13 +139,13 @@ describe('imported SI mock attempt', () => {
   });
 
   it('resumes the same stored SI attempt at the new URL after a reload', async () => {
-    useAttemptStore.getState().start(meta, { attemptId: 'si-resume', endsAt: T0 + 600_000 });
+    useAttemptStore.getState().start(meta, { attemptId: 'local-si-resume', endsAt: T0 + 600_000 });
     useAttemptStore.getState().answer(1, paper[0].correct);
     useAttemptStore.getState().goto(51);
     await render(<SIMockTestRoute />);
     await flush();
     expect(useAttemptStore.getState()).toMatchObject({
-      attemptId: 'si-resume',
+      attemptId: 'local-si-resume',
       current: 51,
       endsAt: T0 + 600_000,
       answers: { 1: paper[0].correct },
@@ -142,7 +157,7 @@ describe('imported SI mock attempt', () => {
     mockTestId = SI_MOCK_01_ID;
     const create = jest.spyOn(MockApi.prototype, 'createAttempt');
     await mountRoute();
-    expect(create).not.toHaveBeenCalled();
+    expect(create).toHaveBeenCalledWith({ test_id: SI_MOCK_01_ID });
     expect(screen.getByTestId('question-text')).toHaveTextContent(paper[0].text.en);
     expect(screen.queryByText(paper[0].explanation.en)).toBeNull();
     expect(screen.queryByTestId('solution-correct-answer')).toBeNull();
@@ -150,6 +165,7 @@ describe('imported SI mock attempt', () => {
     await userEvent.press(screen.getByTestId('btn-palette'));
     await userEvent.press(screen.getByTestId('palette-submit'));
     await userEvent.press(screen.getByText('Yes, submit'));
+    await flush();
     expect(useCompletedTestsStore.getState().tests[meta.id].result).toMatchObject({
       score: 1,
       maxScore: 200,
@@ -162,7 +178,7 @@ describe('imported SI mock attempt', () => {
 
   it('scores an expired resumed attempt even if the clock expires before the paper loads', async () => {
     mockTestId = SI_MOCK_01_ID;
-    useAttemptStore.getState().start(meta, { attemptId: 'si-expired', endsAt: T0 + 1000 });
+    useAttemptStore.getState().start(meta, { attemptId: 'local-si-expired', endsAt: T0 + 1000 });
     useAttemptStore.getState().answer(1, paper[0].correct);
     jest.setSystemTime(T0 + 2000);
     await mountRoute();
@@ -171,7 +187,7 @@ describe('imported SI mock attempt', () => {
     });
     await flush();
     expect(useAttemptStore.getState().status).toBe('autoSubmitted');
-    expect(useAttemptStore.getState().attemptId).toBe('si-expired');
+    expect(useAttemptStore.getState().attemptId).toBe('local-si-expired');
     expect(useCompletedTestsStore.getState().tests[meta.id].result.score).toBe(1);
     expect(screen.getByTestId('dialog-auto')).toBeOnTheScreen();
   });
@@ -294,7 +310,8 @@ describe('test attempt route', () => {
     await userEvent.press(screen.getByTestId('attempt-load-error-retry'));
     await flush();
 
-    expect(getPaper).toHaveBeenCalledTimes(2);
+    // Initial failure, retry, then the immutable server-attempt snapshot.
+    expect(getPaper).toHaveBeenCalledTimes(3);
     expect(screen.queryByTestId('attempt-load-error')).toBeNull();
     expect(useAttemptStore.getState().status).toBe('running');
     expect(screen.getByTestId('question-text')).not.toHaveTextContent('');

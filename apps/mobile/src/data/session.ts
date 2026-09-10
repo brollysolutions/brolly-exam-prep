@@ -1,4 +1,4 @@
-import type { CategoryId, Post } from '@tslprb/fixtures';
+import type { CategoryId, Post } from '@tslprb/fixtures/src/runtime';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 

@@ -88,3 +88,16 @@ describe('LoginRoute', () => {
     expect(screen.queryByTestId('login-back')).toBeNull();
   });
 });
+
+jest.mock('@/data/api', () => {
+  const actual = jest.requireActual('@/data/api');
+  const { MockApi } = jest.requireActual('@/data/api/mock');
+  let api = new MockApi();
+  return {
+    ...actual,
+    getApi: () => api,
+    resetApi: () => {
+      api = new MockApi();
+    },
+  };
+});

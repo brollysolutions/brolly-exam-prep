@@ -4,7 +4,7 @@ import { persist } from 'zustand/middleware';
 import type { ResultDetail } from './api/types';
 import { persistedJSONStorage } from './storage';
 
-export type CompletedTest = { attemptId: string; result: ResultDetail };
+export type CompletedTest = { attemptId: string; result: ResultDetail; completedAt?: number };
 export const COMPLETED_TESTS_STORAGE_KEY = 'tslprb.completedTests';
 
 /** Latest completed imported paper, retained across reloads and cleared on sign-out. */

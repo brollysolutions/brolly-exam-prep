@@ -2,10 +2,10 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { firstQuestionOf, type Question } from '@tslprb/fixtures';
-import { TESTS, isImportedTest } from '@/lib/test-catalog';
+import { firstQuestionOf, type Question } from '@tslprb/fixtures/src/runtime';
+import { TESTS } from '@tslprb/fixtures/src/runtime';
 import { useAttemptStore, type Choice } from '@/data/attempt';
 import {
   cellState,
@@ -17,8 +17,8 @@ import {
 import { useLangStore } from '@/data/lang';
 import { useCompletedTestsStore } from '@/data/completedTests';
 import { useActivityStore } from '@/data/activity';
-import { getApi } from '@/data/api';
-import { saveCompletedAttempt } from '@/data/complete';
+import { getApi, ApiError, type PaperQuestion } from '@/data/api';
+import { saveCompletedAttempt, loadCompletedResult } from '@/data/complete';
 import {
   buildSolutionRows,
   filterSolutionRows,
@@ -62,7 +62,7 @@ function Attempt({ id }: { id: string }) {
   const attempt = useAttemptStore();
   const storageStatus = useStorageStatus();
   const lang = useLangStore((s) => s.lang);
-  const [paper, setPaper] = useState<Question[]>([]);
+  const [paper, setPaper] = useState<PaperQuestion[]>([]);
   const [failed, setFailed] = useState(false);
   const [retry, setRetry] = useState(0);
   const [now, setNow] = useState(Date.now);
@@ -76,7 +76,14 @@ function Attempt({ id }: { id: string }) {
   const [resource, setResource] = useState<'instructions' | 'paper' | null>(null);
   const [sidebarHidden, setSidebarHidden] = useState(false);
   const [message, setMessage] = useState('');
-  const meta = TESTS.find((test) => test.id === id)!;
+  const catalogMeta = TESTS.find((test) => test.id === id)!;
+  const meta = useMemo(
+    () =>
+      attempt.testId === id && attempt.pattern
+        ? { ...catalogMeta, pattern: attempt.pattern }
+        : catalogMeta,
+    [attempt.testId, attempt.pattern, id, catalogMeta],
+  );
   const active = attempt.testId === id && attempt.status === 'running';
   const remaining = Math.max(0, Math.ceil(((attempt.endsAt ?? now) - now) / 1000));
   const loaded = paper.length === meta.pattern.totalQuestions;
@@ -107,19 +114,29 @@ function Attempt({ id }: { id: string }) {
     async (isCurrent: () => boolean = () => true) => {
       if (!isCurrent()) return;
       if (useAttemptStore.getState().status === 'running') return;
-      if (isImportedTest(id)) {
-        useAttemptStore.getState().start(meta);
-        return;
-      }
       try {
-        const created = await getApi().createAttempt({ test_id: id });
+        const api = getApi();
+        const created = await api.createAttempt({ test_id: id });
+        const [snapshotMeta, snapshotPaper] = await Promise.all([
+          api.getAttemptMeta(created.id),
+          api.getAttemptPaper(created.id),
+        ]);
         if (!isCurrent()) return;
         // Never let a delayed response replace an attempt started while it was in flight.
         const current = useAttemptStore.getState();
-        if (current.status !== 'running')
-          current.start(meta, { attemptId: created.id, endsAt: Date.parse(created.ends_at) });
-      } catch {
+        if (current.status !== 'running') {
+          setPaper(snapshotPaper);
+          current.start(snapshotMeta, {
+            attemptId: created.id,
+            endsAt: Date.parse(created.ends_at),
+          });
+        }
+      } catch (error) {
         if (!isCurrent()) return;
+        if (!(error instanceof ApiError) || (error.status !== 0 && error.status < 500)) {
+          setFailed(true);
+          return;
+        }
         const current = useAttemptStore.getState();
         if (current.status !== 'running') current.start(meta);
       }
@@ -129,8 +146,15 @@ function Attempt({ id }: { id: string }) {
 
   useEffect(() => {
     let live = true;
-    void getApi()
-      .getPaper(id)
+    const state = useAttemptStore.getState();
+    const loading =
+      state.testId === id &&
+      state.status === 'running' &&
+      state.attemptId &&
+      !state.attemptId.startsWith('local-')
+        ? getApi().getAttemptPaper(state.attemptId)
+        : getApi().getPaper(id);
+    void loading
       .then((questions) => {
         if (!live) return;
         setPaper(questions);
@@ -155,29 +179,11 @@ function Attempt({ id }: { id: string }) {
       if (current.testId !== id || current.status !== 'running' || !loaded) return;
       if (automatic || (current.endsAt ?? Infinity) <= Date.now()) current.autoSubmit();
       else current.submit();
-      saveCompletedAttempt(paper);
+      void saveCompletedAttempt(paper).catch(() => undefined);
       setDialog(null);
       setResource(null);
       setPalette(false);
       setFinished(true);
-      if (current.attemptId && !isImportedTest(id) && !current.attemptId.startsWith('local-')) {
-        const attemptId = current.attemptId;
-        // Flush the final snapshot in order before submission so quick edits cannot race it.
-        syncChain.current = syncChain.current
-          .catch(() => undefined)
-          .then(async () => {
-            for (let n = 1; n <= paper.length; n++) {
-              if (current.visited[n] || current.answers[n] !== undefined || current.marked[n])
-                await getApi().patchAttemptAnswer(attemptId, {
-                  question_id: paper[n - 1].id,
-                  choice: current.answers[n] ?? null,
-                  marked: current.marked[n] === true,
-                });
-            }
-            await getApi().submitAttempt(attemptId);
-          })
-          .catch(() => undefined);
-      }
     },
     [id, loaded, paper],
   );
@@ -234,8 +240,7 @@ function Attempt({ id }: { id: string }) {
   const patch = (n: number) => {
     const state = useAttemptStore.getState();
     const question = paper[n - 1];
-    if (isImportedTest(id) || !state.attemptId || state.attemptId.startsWith('local-') || !question)
-      return;
+    if (!state.attemptId || state.attemptId.startsWith('local-') || !question) return;
     const attemptId = state.attemptId;
     const body = {
       question_id: question.id,
@@ -738,8 +743,8 @@ function Attempt({ id }: { id: string }) {
                 )
               : dialog === 'submit'
                 ? copy(
-                    'Your answers will be final. A result will be saved in this browser even if you are offline.',
-                    'మీ సమాధానాలు తుది నిర్ణయం అవుతాయి. ఆఫ్‌లైన్‌లో ఉన్నా ఫలితం ఈ బ్రౌజర్‌లో సేవ్ అవుతుంది.',
+                    'Your answers will be final. If offline, reconnect to receive your result.',
+                    'మీ సమాధానాలు ఖరారవుతాయి. ఆఫ్‌లైన్‌లో ఉంటే, ఫలితం కోసం మళ్లీ ఇంటర్నెట్‌కు కనెక్ట్ అవ్వండి.',
                   )
                 : dialog === 'resume'
                   ? copy(
@@ -798,13 +803,12 @@ export function Results({
   const [showSolutions, setShowSolutions] = useState(solutions);
   useEffect(() => {
     let live = true;
-    void getApi()
-      .getPaper(id)
+    void loadCompletedResult(id)
+      .then((result) => getApi().getReviewPaper(result.id))
       .then((questions) => {
         if (live) {
           setPaper(questions);
           setFailed(false);
-          if (useAttemptStore.getState().testId === id) saveCompletedAttempt(questions);
         }
       })
       .catch(() => {
@@ -832,7 +836,12 @@ export function Results({
   if (failed)
     return (
       <>
-        <Notice error>{t('result.loadError')}</Notice>
+        <Notice error>
+          {copy(
+            'Unable to load the result. If you submitted offline, reconnect and retry; your queued answers are kept on this device.',
+            'ఫలితం లోడ్ కాలేదు. ఆఫ్‌లైన్‌లో సమర్పిస్తే, ఇంటర్నెట్‌కు కనెక్ట్ అయ్యి మళ్లీ ప్రయత్నించండి; మీ సమాధానాలు ఈ పరికరంలో నిల్వ ఉన్నాయి.',
+          )}
+        </Notice>
         <Button onClick={() => setRetry(retry + 1)}>{t('result.retry')}</Button>
       </>
     );

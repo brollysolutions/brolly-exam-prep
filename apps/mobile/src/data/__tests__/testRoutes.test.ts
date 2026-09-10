@@ -10,7 +10,7 @@ it('uses the requested SI attempt and review URLs without changing the stored te
   expect(testIdFromRoute(SI_MOCK_01_ID)).toBe(SI_MOCK_01_ID);
 });
 
-it.each(['mock-07', 'mock-08', 'prev-2022'])('leaves %s URLs and identifiers unchanged', (id) => {
+it.each(['mock-07', 'mock-08', 'prev-2022', 'si-brolly-02', 'pc-constable-01'])('leaves %s URLs and identifiers unchanged', (id) => {
   expect(testAttemptHref(id)).toBe(`/test/${id}`);
   expect(testResultHref(id)).toBe(`/test/${id}/result`);
   expect(testSolutionsHref(id)).toBe(`/test/${id}/solutions`);

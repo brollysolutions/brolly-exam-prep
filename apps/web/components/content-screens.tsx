@@ -12,13 +12,12 @@ import {
   standardsFor,
   standardEntries,
   STANDARDS_NOTIFICATION_YEAR,
-  type Question,
   type Post,
   type Gender,
   type StandardsGroup,
   type StandardKey,
-} from '@tslprb/fixtures';
-import { TESTS } from '@/lib/test-catalog';
+} from '@tslprb/fixtures/src/runtime';
+import { TESTS } from '@tslprb/fixtures/src/runtime';
 import { useLangStore } from '@/data/lang';
 import { useStudyStore } from '@/data/study';
 import { useActivityStore } from '@/data/activity';
@@ -318,7 +317,7 @@ export function Eligibility() {
 export function Paper({ id }: { id: string }) {
   const { t } = useTranslation();
   const lang = useLangStore((s) => s.lang);
-  const [paper, setPaper] = useState<Question[]>([]);
+  const [paper, setPaper] = useState<import('@/data/api').PaperQuestion[]>([]);
   const [failed, setFailed] = useState(false);
   const [page, setPage] = useState(0);
   const meta = TESTS.find((test) => test.id === id);
@@ -371,11 +370,13 @@ export function Paper({ id }: { id: string }) {
                     <li key={i}>{option}</li>
                   ))}
                 </ol>
-                <details>
-                  <summary>{t('solutions.correctAnswer')}</summary>
-                  <p>{q.options[lang][q.correct]}</p>
-                  <p>{q.explanation[lang]}</p>
-                </details>
+                {q.correct !== undefined && q.explanation && (
+                  <details>
+                    <summary>{t('solutions.correctAnswer')}</summary>
+                    <p>{q.options[lang][q.correct]}</p>
+                    <p>{q.explanation[lang]}</p>
+                  </details>
+                )}
               </article>
             ))}
           </div>

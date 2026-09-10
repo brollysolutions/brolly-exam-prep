@@ -3,7 +3,7 @@ import {
   studySectionMinutes,
   type StudySection,
   type StudyTopic,
-} from '@tslprb/fixtures';
+} from '@tslprb/fixtures/src/runtime';
 import { type Lang } from '@tslprb/i18n';
 import { useTranslation } from 'react-i18next';
 

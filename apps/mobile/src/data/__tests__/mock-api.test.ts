@@ -159,10 +159,7 @@ describe('MockApi — results', () => {
         expect(s.correct + s.wrong + s.skipped).toBe(pattern.sections[i].questions);
         expect(s.correct).toBeGreaterThanOrEqual(0);
       });
-      const questions = result.per_section.reduce(
-        (n, s) => n + s.correct + s.wrong + s.skipped,
-        0,
-      );
+      const questions = result.per_section.reduce((n, s) => n + s.correct + s.wrong + s.skipped, 0);
       expect(questions).toBe(pattern.totalQuestions);
 
       // the qualified flag agrees with the cut-off it is shown next to
@@ -213,24 +210,37 @@ describe('HttpApi', () => {
     expect(new HttpApi({ baseUrl: 'http://localhost:8000/' })).toBeInstanceOf(HttpApi);
   });
 
-  it('serves the catalogue and the paper from the fixture bank without touching the network', async () => {
-    const fetchSpy = jest.spyOn(globalThis, 'fetch');
-    const http = new HttpApi({ baseUrl: 'http://localhost:8000' });
-    await expect(http.listTestMetas()).resolves.toEqual(TESTS);
-    await expect(http.getTestMeta('mock-07')).resolves.toEqual(
-      TESTS.find((t) => t.id === 'mock-07'),
+  it('loads catalogue, metadata, and public questions from the server', async () => {
+    const meta = TESTS.find((t) => t.id === 'mock-07')!;
+    const mock = new MockApi();
+    const paper = (await mock.getPaper(meta.id)).map(
+      ({ correct: _key, explanation: _why, ...q }) => q,
     );
-    const paper = await http.getPaper('mock-07');
-    expect(paper).toHaveLength(FREE_MOCK_SHORT.totalQuestions);
-    // Never derived from /v1/tests: that shape has no pattern, locks or answer key.
-    expect(fetchSpy).not.toHaveBeenCalled();
-    await expect(http.getTestMeta('nope')).rejects.toMatchObject({ status: 404 });
+    const fetchSpy = jest
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValueOnce({ ok: true, json: async () => TESTS } as Response)
+      .mockResolvedValueOnce({ ok: true, json: async () => meta } as Response)
+      .mockResolvedValueOnce({ ok: true, json: async () => paper } as Response);
+    const http = new HttpApi({ baseUrl: 'http://localhost:8000' });
+    expect((await http.listTestMetas()).map((t) => t.id)).toEqual(TESTS.map((t) => t.id));
+    expect((await http.getTestMeta(meta.id)).pattern).toEqual(meta.pattern);
+    expect(await http.getPaper(meta.id)).toEqual(paper);
+    expect(fetchSpy.mock.calls.map((call) => call[0])).toEqual([
+      'http://localhost:8000/v1/tests/catalog',
+      'http://localhost:8000/v1/tests/mock-07/meta',
+      'http://localhost:8000/v1/tests/mock-07/paper',
+    ]);
     fetchSpy.mockRestore();
   });
 
-  it('still serves the fixture analysis so the result screen renders', async () => {
+  it('requests analysis by result id and does not substitute a sample on failure', async () => {
+    const fetchSpy = jest
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue({ ok: false, status: 404 } as Response);
     const http = new HttpApi({ baseUrl: 'http://localhost:8000' });
-    await expect(http.getResultDetail('res-1')).resolves.toEqual(SAMPLE_RESULT);
+    await expect(http.getResultDetail('missing')).rejects.toMatchObject({ status: 404 });
+    expect(fetchSpy.mock.calls[0][0]).toBe('http://localhost:8000/v1/results/missing/detail');
+    fetchSpy.mockRestore();
   });
 });
 
@@ -253,7 +263,7 @@ describe('category spelling', () => {
 });
 
 describe('getApi', () => {
-  it('returns MockApi unless EXPO_PUBLIC_API is http', () => {
-    expect(getApi()).toBeInstanceOf(MockApi);
+  it('uses HTTP without a build-time toggle', () => {
+    expect(getApi()).toBeInstanceOf(HttpApi);
   });
 });

@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { colors, size } from '@tslprb/design-tokens';
-import { TESTS, type TestKind, type TestMeta } from '@tslprb/fixtures';
+import { TESTS, type TestKind, type TestMeta } from '@tslprb/fixtures/src/runtime';
 import type { Lang } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';

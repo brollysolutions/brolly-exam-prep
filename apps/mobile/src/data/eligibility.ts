@@ -1,4 +1,4 @@
-import type { Gender, Post, StandardKey, StandardsGroup } from '@tslprb/fixtures';
+import type { Gender, Post, StandardKey, StandardsGroup } from '@tslprb/fixtures/src/runtime';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 

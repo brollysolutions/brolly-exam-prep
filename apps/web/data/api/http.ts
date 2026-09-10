@@ -1,4 +1,10 @@
 import {
+  AppContentSchema,
+  TestMetaSchema,
+  PaperQuestionSchema,
+  ReviewPaperQuestionSchema,
+  ResultDetailSchema,
+  type SubmitInput,
   AttemptSchema,
   OkSchema,
   ResultSchema,
@@ -14,11 +20,11 @@ import {
   type Test,
   type TestSummary,
 } from '@tslprb/api-contracts';
-import type { Question as PaperQuestion, TestMeta } from '@tslprb/fixtures';
+import type { Question, TestMeta } from '@tslprb/fixtures/src/runtime';
 import { z } from 'zod';
 
-import { MockApi } from './mock';
-import { ApiError, type AppApi, type ResultDetail } from './types';
+import { useApiCache } from '../apiCache';
+import { ApiError, type AppApi, type ResultDetail, type PaperQuestion } from './types';
 
 const HealthSchema = z.object({ status: z.string() });
 const TestSummaryListSchema = z.array(TestSummarySchema);
@@ -27,42 +33,35 @@ export type HttpApiOptions = {
   baseUrl?: string;
 };
 
-/**
- * Thin fetch client against services/api. Responses are validated with the shared zod
- * schemas so a drifting backend fails loudly here rather than deep inside a screen.
- *
- * The AppApi extras have no /v1 endpoint yet. `/v1/tests` carries no exam pattern, no
- * section locks and no answer key, so `listTestMetas`, `getTestMeta` and `getPaper` are
- * NOT derived from it (an earlier version invented Telugu titles by copying the English
- * one and guessed a pattern from the post, which would have shipped silently wrong
- * section locks). They are served from the fixture bank the app ships — the same one
- * `MockApi` uses — exactly like `getResultDetail`, so the catalogue, the paper and the
- * analysis still render against a real backend (F-27 runs the web build with
- * `EXPO_PUBLIC_API=http`). The attempt lifecycle (`createAttempt`, `patchAttemptAnswer`,
- * `submitAttempt`, `getResult`) goes over the wire. Replace the three
- * fixture reads when `GET /v1/tests/{id}/paper` lands. Until then the ids these reads hand
- * out (`mock-07`, `q-ar-001#n`) are not the API's (`test-pwt-07`, `q-arith-*`), so
- * `POST /v1/attempts` 404s and the attempt route falls back to its offline start.
- *
- * Category spelling: the app and @tslprb/fixtures use lower-case ids ("oc", "exs"); the
- * wire uses "OC" / "ExS". No /v1 request or response carries a category yet, so there is
- * nothing to convert today — when one appears, call `toApiCategory` / `fromApiCategory`
- * from @tslprb/api-contracts *here*, in this class, and nowhere else. Neither spelling
- * belongs in a store or a screen.
- */
+/** Validated server API. Offline reads use only previously downloaded responses. */
 export class HttpApi implements AppApi {
   private readonly baseUrl: string;
-  private fallbackApi?: MockApi;
 
   constructor(options: HttpApiOptions = {}) {
     const base = options.baseUrl ?? '/api';
     this.baseUrl = base.replace(/\/+$/, '');
   }
 
-  /** Built on first use only, so an http-only app never pays for the fixture bundle. */
-  private get fallback(): MockApi {
-    this.fallbackApi ??= new MockApi();
-    return this.fallbackApi;
+  private async read<T>(path: string, schema: z.ZodType<T>): Promise<T> {
+    const key = `${this.baseUrl}:${path}`;
+    const epoch = useApiCache.getState().epoch;
+    try {
+      const data = await this.request(path, schema);
+      if (useApiCache.getState().epoch === epoch) useApiCache.getState().put(key, data);
+      return data;
+    } catch (error) {
+      // Never hide a missing/closed resource, invalid response, or permission error.
+      if (!(error instanceof ApiError) || (error.status !== 0 && error.status < 500)) throw error;
+      const cached = useApiCache.getState().entries[key];
+      if (cached) {
+        try {
+          return schema.parse(cached);
+        } catch {
+          /* discard corrupt cache */
+        }
+      }
+      throw error;
+    }
   }
 
   private async request<T>(
@@ -73,15 +72,20 @@ export class HttpApi implements AppApi {
     const headers: Record<string, string> = { Accept: 'application/json' };
     if (init?.body !== undefined) headers['Content-Type'] = 'application/json';
 
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 20_000);
     let res: Response;
     try {
       res = await fetch(`${this.baseUrl}${path}`, {
+        signal: controller.signal,
         method: init?.method ?? 'GET',
         headers,
         body: init?.body === undefined ? undefined : JSON.stringify(init.body),
       });
     } catch (cause) {
       throw new ApiError(0, 'network_error', cause instanceof Error ? cause.message : 'Offline');
+    } finally {
+      clearTimeout(timeout);
     }
     if (!res.ok) {
       throw new ApiError(res.status, 'http_error', `${init?.method ?? 'GET'} ${path} failed`);
@@ -114,11 +118,11 @@ export class HttpApi implements AppApi {
     });
   }
 
-  submitAttempt(attemptId: string): Promise<SubmitResponse> {
+  submitAttempt(attemptId: string, body?: SubmitInput): Promise<SubmitResponse> {
     return this.request(
       `/v1/attempts/${encodeURIComponent(attemptId)}/submit`,
       SubmitResponseSchema,
-      { method: 'POST' },
+      { method: 'POST', body },
     );
   }
 
@@ -126,22 +130,41 @@ export class HttpApi implements AppApi {
     return this.request(`/v1/results/${encodeURIComponent(id)}`, ResultSchema);
   }
 
-  // --- AppApi extras: not served by /v1 yet (fixture bank, see the class comment) -----
+  getContent() {
+    return this.read('/v1/content', AppContentSchema);
+  }
+
+  getAttemptMeta(id: string): Promise<TestMeta> {
+    return this.read(`/v1/attempts/${encodeURIComponent(id)}/meta`, TestMetaSchema);
+  }
 
   listTestMetas(): Promise<TestMeta[]> {
-    return this.fallback.listTestMetas();
+    return this.read('/v1/tests/catalog', z.array(TestMetaSchema));
   }
 
   getTestMeta(id: string): Promise<TestMeta> {
-    return this.fallback.getTestMeta(id);
+    return this.read(`/v1/tests/${encodeURIComponent(id)}/meta`, TestMetaSchema);
   }
 
   getPaper(testId: string): Promise<PaperQuestion[]> {
-    return this.fallback.getPaper(testId);
+    return this.read(`/v1/tests/${encodeURIComponent(testId)}/paper`, z.array(PaperQuestionSchema));
   }
 
-  /** Fixture analysis: the endpoint does not exist, but the result screen must still render. */
-  getResultDetail(id: string): Promise<ResultDetail> {
-    return this.fallback.getResultDetail(id);
+  getAttemptPaper(attemptId: string): Promise<PaperQuestion[]> {
+    return this.read(
+      `/v1/attempts/${encodeURIComponent(attemptId)}/paper`,
+      z.array(PaperQuestionSchema),
+    );
+  }
+
+  getReviewPaper(resultId: string): Promise<Question[]> {
+    return this.read(
+      `/v1/results/${encodeURIComponent(resultId)}/paper`,
+      z.array(ReviewPaperQuestionSchema),
+    );
+  }
+
+  getResultDetail(resultId: string): Promise<ResultDetail> {
+    return this.read(`/v1/results/${encodeURIComponent(resultId)}/detail`, ResultDetailSchema);
   }
 }

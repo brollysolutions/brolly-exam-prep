@@ -1,5 +1,5 @@
 import { colors, spacing } from '@tslprb/design-tokens';
-import type { SectionSpec } from '@tslprb/fixtures';
+import type { SectionSpec } from '@tslprb/fixtures/src/runtime';
 import { useDir, type Lang } from '@tslprb/i18n';
 import { useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -198,7 +198,7 @@ function QuestionCard({
       <Stack gap={2} className="mt-3 border-t border-line pt-3">
         <Pill label={t('paper.why')} />
         <Text variant="body" color="ink2">
-          {question.explanation[lang]}
+          {question.explanation?.[lang]}
         </Text>
       </Stack>
     </Card>

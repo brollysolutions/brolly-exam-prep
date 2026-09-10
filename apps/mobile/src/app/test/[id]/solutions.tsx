@@ -1,8 +1,9 @@
-import { TESTS, isImportedTest } from '@tslprb/fixtures';
+import { SI_MOCK_01_ID, TESTS, isImportedTest } from '@tslprb/fixtures/src/runtime';
 import { Redirect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 
 import { getApi } from '@/data/api';
+import { loadCompletedResult } from '@/data/complete';
 import { testIdFromRoute, testSolutionsHref } from '@/data/testRoutes';
 import { SolutionsView } from '@/features/result/SolutionsView';
 import { SubmittedTestGate } from '@/features/result/SubmittedTestGate';
@@ -12,7 +13,7 @@ import { useLoad } from '@/features/result/useLoad';
 /** F-13 — answers & explanation: the review rows joined to the paper they were marked against. */
 export default function SolutionsRoute() {
   const { id: routeId } = useLocalSearchParams<{ id: string }>();
-  if (isImportedTest(routeId)) return <Redirect href={testSolutionsHref(routeId)} />;
+  if (routeId === SI_MOCK_01_ID) return <Redirect href={testSolutionsHref(routeId)} />;
   const id = testIdFromRoute(routeId);
   return (
     <SubmittedTestGate id={id}>
@@ -27,7 +28,8 @@ function SolutionsContent({ id }: { id: string }) {
 
   const load = useCallback(async () => {
     const api = getApi();
-    const [detail, paper] = await Promise.all([api.getResultDetail(id), api.getPaper(id)]);
+    const detail = await loadCompletedResult(id);
+    const paper = await api.getReviewPaper(detail.id);
     return buildSolutionRows(detail.review, paper);
   }, [id]);
   const { done, data, failed } = useLoad(`${id}:${attempt}`, load);

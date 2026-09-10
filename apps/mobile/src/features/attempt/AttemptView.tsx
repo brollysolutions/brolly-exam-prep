@@ -8,7 +8,7 @@ import {
   text,
   type ColorName,
 } from '@tslprb/design-tokens';
-import { TESTS } from '@tslprb/fixtures';
+import { TESTS } from '@tslprb/fixtures/src/runtime';
 import { DemoNotice } from '@/ui/DemoNotice';
 import { LANGS, useDir, type Lang } from '@tslprb/i18n';
 import type { ReactNode } from 'react';
