@@ -1,15 +1,14 @@
-import { firstQuestionOf, isImportedTest } from '@tslprb/fixtures';
+import { firstQuestionOf } from '@tslprb/fixtures/src/runtime';
 import { Redirect, useRouter } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BackHandler } from 'react-native';
 
 import { useActivityStore } from '@/data/activity';
-import { getApi, type PaperQuestion } from '@/data/api';
+import { getApi, ApiError, type PaperQuestion } from '@/data/api';
 import { useAttemptStore, type Choice, type GotoResult } from '@/data/attempt';
 import { counts, elapsedOnCurrentSec, sectionOf } from '@/data/attempt.selectors';
-import { useHistoryStore } from '@/data/history';
-import { completeImportedAttempt } from '@/data/importedAttempt';
+import { saveCompletedAttempt } from '@/data/complete';
 import { useLangStore } from '@/data/lang';
 import { gateHref, useRequireAuth } from '@/data/requireAuth';
 import { testAttemptHref, testResultHref } from '@/data/testRoutes';
@@ -101,12 +100,16 @@ function TestAttempt({ id }: { id: string }) {
       const api = getApi();
       let meta;
       try {
-        const [loadedMeta, questions] = await Promise.all([api.getTestMeta(id), api.getPaper(id)]);
+        const remoteResume = resumingId && !resumingId.startsWith('local-');
+        const [loadedMeta, questions] = await Promise.all([
+          remoteResume ? api.getAttemptMeta(resumingId) : api.getTestMeta(id),
+          remoteResume ? api.getAttemptPaper(resumingId) : api.getPaper(id),
+        ]);
         if (cancelled) return;
         meta = loadedMeta;
         setPaper(questions);
         // An already-expired resumed clock can submit while the paper is loading.
-        if (resumingId) completeImportedAttempt(questions);
+        if (resumingId) void saveCompletedAttempt(questions).catch(() => undefined);
         setFailed(false);
       } catch {
         // Creating the attempt is allowed to fail (offline start below); loading the paper
@@ -118,17 +121,22 @@ function TestAttempt({ id }: { id: string }) {
       // A running attempt on this same test is resumed, never restarted.
       if (state.testId === id && state.status === 'running') return;
       if (resumingId && state.attemptId === resumingId) return;
-      if (isImportedTest(id)) {
-        state.start(meta);
-        return;
-      }
       try {
         const created = await api.createAttempt({ test_id: id });
+        const [snapshotMeta, snapshotPaper] = await Promise.all([
+          api.getAttemptMeta(created.id),
+          api.getAttemptPaper(created.id),
+        ]);
         if (cancelled) return;
         useAttemptStore
           .getState()
-          .start(meta, { attemptId: created.id, endsAt: Date.parse(created.ends_at) });
-      } catch {
+          .start(snapshotMeta, { attemptId: created.id, endsAt: Date.parse(created.ends_at) });
+        setPaper(snapshotPaper);
+      } catch (error) {
+        if (!(error instanceof ApiError) || (error.status !== 0 && error.status < 500)) {
+          if (!cancelled) setFailed(true);
+          return;
+        }
         // Offline start: a local attempt id and a deadline computed from the pattern.
         if (!cancelled) useAttemptStore.getState().start(meta);
       }
@@ -153,7 +161,7 @@ function TestAttempt({ id }: { id: string }) {
     },
     onExpire: () => {
       useAttemptStore.getState().autoSubmit();
-      completeImportedAttempt(paper);
+      void saveCompletedAttempt(paper).catch(() => undefined);
       clearToast();
       openDialog('auto');
     },
@@ -187,8 +195,7 @@ function TestAttempt({ id }: { id: string }) {
     (n: number, choice: number | null, marked: boolean) => {
       const state = useAttemptStore.getState();
       const question = paper[n - 1];
-      if (isImportedTest(state.testId)) return;
-      if (!state.attemptId || !question) return;
+      if (!state.attemptId || state.attemptId.startsWith('local-') || !question) return;
       void getApi()
         .patchAttemptAnswer(state.attemptId, { question_id: question.id, choice, marked })
         .catch(() => undefined);
@@ -283,7 +290,7 @@ function TestAttempt({ id }: { id: string }) {
   );
 
   const openResult = useCallback(() => {
-    completeImportedAttempt(paper);
+    void saveCompletedAttempt(paper).catch(() => undefined);
     router.replace(testResultHref(id));
   }, [id, paper, router]);
 
@@ -291,33 +298,10 @@ function TestAttempt({ id }: { id: string }) {
     const state = useAttemptStore.getState();
     haptics.success();
     state.submit();
-    completeImportedAttempt(paper);
+    void saveCompletedAttempt(paper).catch(() => undefined);
     setDialog(null);
-    if (state.attemptId && !isImportedTest(state.testId)) {
-      const testId = state.testId ?? id;
-      // F-23 — Home's "papers practised" and "best score" come from this row.
-      //
-      // The score is asked for rather than computed: the server owns the marking scheme, and
-      // a second opinion on this handset would be a second answer key to keep in step. Both
-      // calls stay best-effort — the result screen loads on its own, so a failure here costs
-      // one line on Home, not the paper. An attempt submitted with no network is therefore
-      // not counted until the real API can be asked again.
-      void getApi()
-        .submitAttempt(state.attemptId)
-        .then(async ({ result_id }) => {
-          const result = await getApi().getResult(result_id);
-          useHistoryStore.getState().record({
-            id: result_id,
-            testId,
-            score: result.score,
-            maxScore: result.max_score,
-            at: Date.now(),
-          });
-        })
-        .catch(() => undefined);
-    }
     openResult();
-  }, [id, openResult, paper]);
+  }, [openResult, paper]);
 
   // ----------------------------------------------------------------- render
 
@@ -353,7 +337,7 @@ function TestAttempt({ id }: { id: string }) {
     </>
   );
 
-  if (failed && !attempt.pattern)
+  if (failed)
     return (
       <Screen testID="attempt-screen">
         <LoadError onRetry={() => setLoadAttempt((n) => n + 1)} testID="attempt-load-error" />

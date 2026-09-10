@@ -1,4 +1,4 @@
-import { SI_MOCK_01_ID } from '@tslprb/fixtures';
+import { SI_MOCK_01_ID } from '@tslprb/fixtures/src/runtime';
 
 import { TestAttemptScreen } from '@/features/attempt/TestAttemptScreen';
 

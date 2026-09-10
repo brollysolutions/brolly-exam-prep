@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { colors, size } from '@tslprb/design-tokens';
-import { TESTS, type TestKind, type TestMeta } from '@tslprb/fixtures';
+import { TESTS, type TestKind, type TestMeta } from '@tslprb/fixtures/src/runtime';
 import type { Lang } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -24,6 +24,8 @@ import {
   Toast,
   useAutoDismiss,
 } from '@/ui';
+
+import { DemoNotice } from '@/ui/DemoNotice';
 
 type LibraryFilter = TestKind | 'si' | 'pc';
 
@@ -92,6 +94,7 @@ function Badges({ test }: { test: TestMeta }) {
   const locked = !test.free;
   return (
     <>
+      {test.demo && <Pill label={t('audit.demoPaper')} />}
       {test.attempted && (
         <Pill
           testID={`library-best-${test.id}`}
@@ -127,6 +130,7 @@ function Badges({ test }: { test: TestMeta }) {
 function rowName(test: TestMeta, lang: Lang, t: (key: string) => string): string {
   return [
     test.title[lang],
+    test.demo ? t('audit.demoPaperNote') : null,
     `${iso(test.pattern.totalQuestions)} ${t('common.questionsUnit')}`,
     `${iso(test.pattern.durationMinutes)} ${t('common.minutesUnit')}`,
     test.attempted ? `${t('library.bestScore')} ${iso(test.attempted.bestScore)}` : null,
@@ -200,6 +204,7 @@ function PreviousRow({
         meta={<Size test={test} />}
         trailing={<Badges test={test} />}
       />
+      {test.demo && <DemoNotice />}
       <Row gap={2} className="pb-3">
         <Button
           variant="primary"

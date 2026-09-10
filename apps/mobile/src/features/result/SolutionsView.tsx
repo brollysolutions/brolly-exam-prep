@@ -26,7 +26,10 @@ import {
 
 import { filterSolutionRows, type SolutionFilter, type SolutionRow } from './solutions';
 
+import { DemoNotice } from '@/ui/DemoNotice';
+
 export type SolutionsViewProps = {
+  demo?: boolean;
   /** Omit while the paper and review are loading; the skeleton shows instead. */
   rows?: SolutionRow[];
   /** The load failed: the retry state replaces the body. */
@@ -217,6 +220,7 @@ function AllCorrect() {
  * gallery and the tests render the same component the route does.
  */
 export function SolutionsView({
+  demo = false,
   rows,
   failed = false,
   initialFilter = 'wrong',
@@ -270,6 +274,7 @@ export function SolutionsView({
       ) : (
         <FlatList
           data={visible}
+          ListHeaderComponent={demo ? <DemoNotice /> : undefined}
           keyExtractor={(row) => String(row.questionNo)}
           renderItem={({ item }) => <SolutionCard row={item} />}
           ItemSeparatorComponent={Separator}

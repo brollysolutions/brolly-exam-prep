@@ -1,4 +1,3 @@
-import { isImportedTest } from '@tslprb/fixtures';
 import { Redirect } from 'expo-router';
 import type { ReactNode } from 'react';
 
@@ -10,7 +9,10 @@ import { testAttemptHref } from '@/data/testRoutes';
 export function SubmittedTestGate({ id, children }: { id: string; children: ReactNode }) {
   const running = useAttemptStore((s) => s.testId === id && s.status === 'running');
   const completed = useCompletedTestsStore((s) => s.tests[id]);
-  if (isImportedTest(id) && (running || !completed)) {
+  const submitted = useAttemptStore(
+    (s) => s.testId === id && ['submitted', 'autoSubmitted'].includes(s.status),
+  );
+  if (running || (!completed && !submitted)) {
     return <Redirect href={testAttemptHref(id)} />;
   }
   return children;

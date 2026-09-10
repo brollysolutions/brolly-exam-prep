@@ -238,10 +238,13 @@ describe('AttemptView', () => {
     expect(chosen.props.className).not.toMatch(/\bpx-3\b/);
   });
 
-  it('sizes the fixed footer buttons from the tokens', async () => {
+  it('keeps scalable footer controls above the minimum touch size', async () => {
     await renderView();
-    expect(screen.getByTestId('btn-clear')).toHaveStyle({ width: size.clearBtn });
-    expect(screen.getByTestId('btn-next')).toHaveStyle({ width: size.nextBtn });
+    expect(screen.getByTestId('btn-clear')).toHaveStyle({
+      minWidth: size.touch,
+      minHeight: size.touch,
+    });
+    expect(screen.getByTestId('btn-next')).toHaveStyle({ minHeight: size.touchLg });
   });
 
   it('shows "No negative marking" for the free mock', async () => {
@@ -351,7 +354,11 @@ describe('AttemptView', () => {
 
   it('keeps Submit reachable in every section, not only the first', async () => {
     await renderView({
-      attempt: { ...DEMO_ATTEMPT, current: 21, sectionUnlocked: { ...DEMO_ATTEMPT.sectionUnlocked } },
+      attempt: {
+        ...DEMO_ATTEMPT,
+        current: 21,
+        sectionUnlocked: { ...DEMO_ATTEMPT.sectionUnlocked },
+      },
     });
     expect(screen.getByTestId('btn-submit')).toBeOnTheScreen();
   });

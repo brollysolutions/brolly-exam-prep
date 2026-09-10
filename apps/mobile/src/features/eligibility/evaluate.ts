@@ -6,7 +6,7 @@ import {
   type Post,
   type StandardKey,
   type StandardsGroup,
-} from '@tslprb/fixtures';
+} from '@tslprb/fixtures/src/runtime';
 
 /** What the candidate typed, already parsed. Every measurement is optional: the form is a draft. */
 export type EligibilityInput = {

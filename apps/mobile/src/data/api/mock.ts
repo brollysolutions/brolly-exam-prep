@@ -1,3 +1,5 @@
+import { scoreAttempt } from '../score';
+import * as fixtureContent from '@tslprb/fixtures';
 import type {
   AnswerPatchInput,
   Attempt,
@@ -9,6 +11,7 @@ import type {
   Result,
   SectionScore,
   SubmitResponse,
+  SubmitInput,
   Test,
   TestSummary,
   WrongAnswer,
@@ -152,6 +155,7 @@ type MockAttempt = { attempt: Attempt; testId: string; answers: Map<string, Answ
  * cold start, exactly as it will once the FastAPI service is real.
  */
 export class MockApi implements AppApi {
+  private readonly detailedResults = new Map<string, ResultDetail>();
   private readonly attempts = new Map<string, MockAttempt>();
   private readonly results = new Map<string, { testId: string; attemptId: string }>();
 
@@ -190,6 +194,32 @@ export class MockApi implements AppApi {
     return findMeta(id);
   }
 
+  async getContent() {
+    const f = fixtureContent;
+    return JSON.parse(
+      JSON.stringify({
+        studySections: f.STUDY_SECTIONS,
+        notices: f.NOTICES,
+        affairs: f.AFFAIRS,
+        examInfo: f.EXAM_INFO,
+        categories: f.CATEGORIES,
+        patterns: { pc: f.PWT_CONSTABLE, si: f.PWT_SI, short: f.FREE_MOCK_SHORT },
+        physicalStandards: f.PHYSICAL_STANDARDS,
+        standardsNotificationYear: f.STANDARDS_NOTIFICATION_YEAR,
+        costRows: f.COST_ROWS,
+      }),
+    );
+  }
+  getAttemptMeta(id: string) {
+    return this.getTestMeta(this.attempts.get(id)?.testId ?? id);
+  }
+  getReviewPaper(id: string) {
+    return this.getPaper(this.results.get(id)?.testId ?? id);
+  }
+  getAttemptPaper(id: string) {
+    return this.getPaper(this.attempts.get(id)?.testId ?? id);
+  }
+
   async getPaper(testId: string): Promise<PaperQuestion[]> {
     await latency();
     return paperOf(findMeta(testId));
@@ -218,13 +248,35 @@ export class MockApi implements AppApi {
     return { ok: true };
   }
 
-  async submitAttempt(attemptId: string): Promise<SubmitResponse> {
+  async submitAttempt(attemptId: string, body?: SubmitInput): Promise<SubmitResponse> {
     await latency();
     const row = this.attempts.get(attemptId);
     if (!row) throw new ApiError(404, 'attempt_not_found', `No attempt ${attemptId}`);
     row.attempt = { ...row.attempt, status: 'submitted' };
     const result_id = nextId('res');
     this.results.set(result_id, { testId: row.testId, attemptId });
+    if (body) {
+      const meta = findMeta(row.testId);
+      const paper = paperOf(meta);
+      const answers: Record<number, 0 | 1 | 2 | 3> = {};
+      for (const answer of body.answers ?? []) {
+        const index = paper.findIndex((q) => q.id === answer.question_id);
+        if (index >= 0 && answer.choice != null)
+          answers[index + 1] = answer.choice as 0 | 1 | 2 | 3;
+      }
+      this.detailedResults.set(
+        result_id,
+        scoreAttempt({
+          id: result_id,
+          testTitleN: 1,
+          title: meta.title,
+          paper,
+          pattern: meta.pattern,
+          answers,
+          elapsedSec: body.elapsed_seconds ?? 0,
+        }),
+      );
+    }
     return { result_id };
   }
 
@@ -240,6 +292,7 @@ export class MockApi implements AppApi {
    * `getResult`, which is the contract endpoint and 404s on an unknown id.
    */
   async getResultDetail(_id: string): Promise<ResultDetail> {
+    if (this.detailedResults.has(_id)) return this.detailedResults.get(_id)!;
     await latency();
     if (isImportedTest(_id)) {
       if (!canReviewImportedTest(_id)) throw new ApiError(403, 'test_not_submitted');

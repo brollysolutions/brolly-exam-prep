@@ -36,7 +36,7 @@ describe('PaperRoute', () => {
     await render(<PaperRoute />);
     await flush();
     // Nothing to sit, so nothing to sign in for: the paper itself is the whole screen.
-    expect(screen.getByText('PWT 2022 — SCT PC')).toBeOnTheScreen();
+    expect(screen.getByText('PWT 2022 — SCT PC (demo)')).toBeOnTheScreen();
     expect(screen.getByTestId('paper-list')).toBeOnTheScreen();
     expect(screen.getByTestId('paper-card-1')).toBeOnTheScreen();
   });
@@ -49,4 +49,17 @@ describe('PaperRoute', () => {
     expect(screen.getByText('That paper could not be opened.')).toBeOnTheScreen();
     expect(screen.queryByTestId('paper-list')).toBeNull();
   });
+});
+
+jest.mock('@/data/api', () => {
+  const actual = jest.requireActual('@/data/api');
+  const { MockApi } = jest.requireActual('@/data/api/mock');
+  let api = new MockApi();
+  return {
+    ...actual,
+    getApi: () => api,
+    resetApi: () => {
+      api = new MockApi();
+    },
+  };
 });

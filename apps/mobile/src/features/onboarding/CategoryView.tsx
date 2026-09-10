@@ -1,4 +1,4 @@
-import { CATEGORIES, type CategoryId } from '@tslprb/fixtures';
+import { CATEGORIES, type CategoryId } from '@tslprb/fixtures/src/runtime';
 import { useDir } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';

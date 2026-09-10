@@ -1,4 +1,4 @@
-import type { Affair, Notice } from '@tslprb/fixtures';
+import type { Affair, Notice } from '@tslprb/fixtures/src/runtime';
 import { LANGS, useDir, type Lang } from '@tslprb/i18n';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -231,6 +231,7 @@ export function HomeView({
    * day's target are invisible to anyone not looking at them.
    */
   const heroLabel = [
+    t('audit.sampleSchedule'),
     examLine,
     examState === 'held' ? examLabel : dateLine,
     ...(streakDays > 0 ? [streakLine] : []),
@@ -281,6 +282,9 @@ export function HomeView({
             a single column, so nothing lined up with anything (design review D15). The only
             margin left is the break before the rule. */}
         <Stack gap={2}>
+          <Text variant="caption" color="ink3">
+            {t('audit.sampleSchedule')}
+          </Text>
           {examState === 'ahead' ? (
             <>
               <Pill label={t('home.examIn')} dot />
@@ -321,6 +325,9 @@ export function HomeView({
       {/* -------------------------------------------------------------- updates */}
       {notices.length > 0 && (
         <View testID="home-updates" className="mt-7">
+          <Text variant="caption" color="ink3">
+            {t('common.sampleData')}
+          </Text>
           <SectionHead
             title={t('home.updates')}
             link={t('home.allUpdates')}
@@ -373,6 +380,9 @@ export function HomeView({
       {/* --------------------------------------------------------------- affairs */}
       {affairs.length > 0 && (
         <View testID="home-affairs" className="mt-7">
+          <Text variant="caption" color="ink3">
+            {t('common.sampleData')}
+          </Text>
           <SectionHead
             title={t('home.affairs')}
             link={t('home.more')}

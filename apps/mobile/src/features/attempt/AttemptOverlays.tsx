@@ -1,6 +1,6 @@
 import { radius, size, spacing } from '@tslprb/design-tokens';
 import { useDir } from '@tslprb/i18n';
-import type { ExamPattern } from '@tslprb/fixtures';
+import type { ExamPattern } from '@tslprb/fixtures/src/runtime';
 import type { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, View } from 'react-native';
@@ -98,6 +98,7 @@ export function AttemptDialogs({
     <>
       <Dialog
         visible={kind === 'exit'}
+        onDismiss={onDismiss}
         tone="accent"
         kicker={t('test.exitKicker')}
         title={t('test.exitTitle')}
@@ -108,6 +109,7 @@ export function AttemptDialogs({
       />
       <Dialog
         visible={kind === 'submit'}
+        onDismiss={onDismiss}
         tone="accent"
         kicker={t('test.submitKicker')}
         title={t('test.submitTitle')}
@@ -123,6 +125,7 @@ export function AttemptDialogs({
       />
       <Dialog
         visible={kind === 'resume'}
+        onDismiss={onDismiss}
         tone="accent"
         kicker={t('test.resumeKicker')}
         title={t('test.resumeTitle')}

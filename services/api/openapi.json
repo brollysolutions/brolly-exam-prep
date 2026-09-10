@@ -1,0 +1,2254 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "TSLPRB API",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object",
+                  "title": "Response Health Health Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/content": {
+      "get": {
+        "tags": [
+          "content"
+        ],
+        "summary": "Get Content",
+        "operationId": "get_content_v1_content_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppContentOut"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/auth/phone": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Sign In With Phone",
+        "description": "Sign in, creating the account on first sight of a number.\n\nOne endpoint rather than a create/sign-in pair: to the candidate there is\nno difference, and asking an app to know which one it needs would put the\nquestion back on screen that removing the OTP step took off it.",
+        "operationId": "sign_in_with_phone_v1_auth_phone_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PhoneSignInIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhoneSignInOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tests": {
+      "get": {
+        "tags": [
+          "tests"
+        ],
+        "summary": "List Tests",
+        "operationId": "list_tests_v1_tests_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TestSummary"
+                  },
+                  "type": "array",
+                  "title": "Response List Tests V1 Tests Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tests/catalog": {
+      "get": {
+        "tags": [
+          "tests"
+        ],
+        "summary": "List Catalog",
+        "operationId": "list_catalog_v1_tests_catalog_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TestMetaOut"
+                  },
+                  "type": "array",
+                  "title": "Response List Catalog V1 Tests Catalog Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tests/{test_id}/meta": {
+      "get": {
+        "tags": [
+          "tests"
+        ],
+        "summary": "Get Meta",
+        "operationId": "get_meta_v1_tests__test_id__meta_get",
+        "parameters": [
+          {
+            "name": "test_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Test Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestMetaOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tests/{test_id}/paper": {
+      "get": {
+        "tags": [
+          "tests"
+        ],
+        "summary": "Get Paper",
+        "operationId": "get_paper_v1_tests__test_id__paper_get",
+        "parameters": [
+          {
+            "name": "test_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Test Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaperQuestionOut"
+                  },
+                  "title": "Response Get Paper V1 Tests  Test Id  Paper Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tests/{test_id}": {
+      "get": {
+        "tags": [
+          "tests"
+        ],
+        "summary": "Get Test",
+        "operationId": "get_test_v1_tests__test_id__get",
+        "parameters": [
+          {
+            "name": "test_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Test Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestDetail"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts": {
+      "post": {
+        "tags": [
+          "attempts"
+        ],
+        "summary": "Create Attempt",
+        "operationId": "create_attempt_v1_attempts_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttemptCreateIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttemptOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts/{attempt_id}": {
+      "get": {
+        "tags": [
+          "attempts"
+        ],
+        "summary": "Get Attempt",
+        "operationId": "get_attempt_v1_attempts__attempt_id__get",
+        "parameters": [
+          {
+            "name": "attempt_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Attempt Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttemptOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts/{attempt_id}/paper": {
+      "get": {
+        "tags": [
+          "attempts"
+        ],
+        "summary": "Get Attempt Paper",
+        "operationId": "get_attempt_paper_v1_attempts__attempt_id__paper_get",
+        "parameters": [
+          {
+            "name": "attempt_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Attempt Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaperQuestionOut"
+                  },
+                  "title": "Response Get Attempt Paper V1 Attempts  Attempt Id  Paper Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts/{attempt_id}/meta": {
+      "get": {
+        "tags": [
+          "attempts"
+        ],
+        "summary": "Get Attempt Meta",
+        "operationId": "get_attempt_meta_v1_attempts__attempt_id__meta_get",
+        "parameters": [
+          {
+            "name": "attempt_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Attempt Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestMetaOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts/{attempt_id}/answers": {
+      "patch": {
+        "tags": [
+          "attempts"
+        ],
+        "summary": "Patch Answer",
+        "operationId": "patch_answer_v1_attempts__attempt_id__answers_patch",
+        "parameters": [
+          {
+            "name": "attempt_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Attempt Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnswerPatchIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OkOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts/{attempt_id}/submit": {
+      "post": {
+        "tags": [
+          "attempts"
+        ],
+        "summary": "Submit Attempt",
+        "operationId": "submit_attempt_v1_attempts__attempt_id__submit_post",
+        "parameters": [
+          {
+            "name": "attempt_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Attempt Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SubmitIn"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/results/{result_id}": {
+      "get": {
+        "tags": [
+          "results"
+        ],
+        "summary": "Get Result",
+        "operationId": "get_result_v1_results__result_id__get",
+        "parameters": [
+          {
+            "name": "result_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Result Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/results/{result_id}/detail": {
+      "get": {
+        "tags": [
+          "results"
+        ],
+        "summary": "Get Detail",
+        "operationId": "get_detail_v1_results__result_id__detail_get",
+        "parameters": [
+          {
+            "name": "result_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Result Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultDetailOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/results/{result_id}/paper": {
+      "get": {
+        "tags": [
+          "results"
+        ],
+        "summary": "Get Review Paper",
+        "operationId": "get_review_paper_v1_results__result_id__paper_get",
+        "parameters": [
+          {
+            "name": "result_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Result Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaperQuestionOut"
+                  },
+                  "title": "Response Get Review Paper V1 Results  Result Id  Paper Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AffairOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "date": {
+            "type": "string",
+            "title": "Date"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "india",
+              "telangana",
+              "world",
+              "sports",
+              "awards"
+            ],
+            "title": "Category"
+          },
+          "headline": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/LocalizedText"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "date",
+          "category",
+          "headline",
+          "summary"
+        ],
+        "title": "AffairOut"
+      },
+      "AnswerPatchIn": {
+        "properties": {
+          "question_id": {
+            "type": "string",
+            "title": "Question Id"
+          },
+          "choice": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Choice"
+          },
+          "marked": {
+            "type": "boolean",
+            "title": "Marked",
+            "default": false
+          },
+          "seconds": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Seconds",
+            "default": 0
+          }
+        },
+        "type": "object",
+        "required": [
+          "question_id"
+        ],
+        "title": "AnswerPatchIn"
+      },
+      "AppContentOut": {
+        "properties": {
+          "studySections": {
+            "items": {
+              "$ref": "#/components/schemas/StudySectionOut"
+            },
+            "type": "array",
+            "title": "Studysections"
+          },
+          "notices": {
+            "items": {
+              "$ref": "#/components/schemas/NoticeOut"
+            },
+            "type": "array",
+            "title": "Notices"
+          },
+          "affairs": {
+            "items": {
+              "$ref": "#/components/schemas/AffairOut"
+            },
+            "type": "array",
+            "title": "Affairs"
+          },
+          "examInfo": {
+            "$ref": "#/components/schemas/ExamInfoOut"
+          },
+          "categories": {
+            "items": {
+              "$ref": "#/components/schemas/CategoryOut"
+            },
+            "type": "array",
+            "title": "Categories"
+          },
+          "patterns": {
+            "$ref": "#/components/schemas/PatternsOut"
+          },
+          "physicalStandards": {
+            "$ref": "#/components/schemas/PostStandardsOut"
+          },
+          "standardsNotificationYear": {
+            "type": "integer",
+            "title": "Standardsnotificationyear"
+          },
+          "costRows": {
+            "$ref": "#/components/schemas/CostRowsOut"
+          }
+        },
+        "type": "object",
+        "required": [
+          "studySections",
+          "notices",
+          "affairs",
+          "examInfo",
+          "categories",
+          "patterns",
+          "physicalStandards",
+          "standardsNotificationYear",
+          "costRows"
+        ],
+        "title": "AppContentOut"
+      },
+      "AttemptCreateIn": {
+        "properties": {
+          "test_id": {
+            "type": "string",
+            "title": "Test Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "test_id"
+        ],
+        "title": "AttemptCreateIn"
+      },
+      "AttemptOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "test_id": {
+            "type": "string",
+            "title": "Test Id"
+          },
+          "started_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Started At"
+          },
+          "ends_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Ends At"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "in_progress",
+              "submitted",
+              "auto_submitted"
+            ],
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "test_id",
+          "started_at",
+          "ends_at",
+          "status"
+        ],
+        "title": "AttemptOut"
+      },
+      "CategoryOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "oc",
+              "ews",
+              "bc",
+              "sc",
+              "st",
+              "exs"
+            ],
+            "title": "Id"
+          },
+          "labelKey": {
+            "type": "string",
+            "title": "Labelkey"
+          },
+          "qualifyingPct": {
+            "type": "number",
+            "title": "Qualifyingpct"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "labelKey",
+          "qualifyingPct"
+        ],
+        "title": "CategoryOut"
+      },
+      "ChestOut": {
+        "properties": {
+          "unexpanded": {
+            "$ref": "#/components/schemas/StandardOut"
+          },
+          "expansion": {
+            "$ref": "#/components/schemas/StandardOut"
+          }
+        },
+        "type": "object",
+        "required": [
+          "unexpanded",
+          "expansion"
+        ],
+        "title": "ChestOut"
+      },
+      "CostRowsOut": {
+        "properties": {
+          "en": {
+            "items": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "En"
+          },
+          "te": {
+            "items": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Te"
+          }
+        },
+        "type": "object",
+        "required": [
+          "en",
+          "te"
+        ],
+        "title": "CostRowsOut"
+      },
+      "ExamInfoOut": {
+        "properties": {
+          "pwtDate": {
+            "type": "string",
+            "title": "Pwtdate"
+          },
+          "label": {
+            "$ref": "#/components/schemas/LocalizedText"
+          }
+        },
+        "type": "object",
+        "required": [
+          "pwtDate",
+          "label"
+        ],
+        "title": "ExamInfoOut"
+      },
+      "ExamPatternOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "post": {
+            "type": "string",
+            "enum": [
+              "pc",
+              "si"
+            ],
+            "title": "Post"
+          },
+          "totalQuestions": {
+            "type": "integer",
+            "title": "Totalquestions"
+          },
+          "durationMinutes": {
+            "type": "integer",
+            "title": "Durationminutes"
+          },
+          "marksPerCorrect": {
+            "type": "number",
+            "title": "Markspercorrect"
+          },
+          "negativePerWrong": {
+            "type": "number",
+            "title": "Negativeperwrong"
+          },
+          "qualifyingOnly": {
+            "type": "boolean",
+            "title": "Qualifyingonly"
+          },
+          "sections": {
+            "items": {
+              "$ref": "#/components/schemas/PatternSection"
+            },
+            "type": "array",
+            "title": "Sections"
+          },
+          "verified": {
+            "type": "boolean",
+            "title": "Verified"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "post",
+          "totalQuestions",
+          "durationMinutes",
+          "marksPerCorrect",
+          "negativePerWrong",
+          "qualifyingOnly",
+          "sections",
+          "verified",
+          "source"
+        ],
+        "title": "ExamPatternOut"
+      },
+      "GenderStandardsOut": {
+        "properties": {
+          "male": {
+            "$ref": "#/components/schemas/GroupStandardsOut"
+          },
+          "female": {
+            "$ref": "#/components/schemas/GroupStandardsOut"
+          }
+        },
+        "type": "object",
+        "required": [
+          "male",
+          "female"
+        ],
+        "title": "GenderStandardsOut"
+      },
+      "GroupStandardsOut": {
+        "properties": {
+          "general": {
+            "$ref": "#/components/schemas/PhysicalStandardsOut"
+          },
+          "st": {
+            "$ref": "#/components/schemas/PhysicalStandardsOut"
+          }
+        },
+        "type": "object",
+        "required": [
+          "general",
+          "st"
+        ],
+        "title": "GroupStandardsOut"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "LocalizedOptions": {
+        "properties": {
+          "en": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "En"
+          },
+          "te": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Te"
+          }
+        },
+        "type": "object",
+        "required": [
+          "en",
+          "te"
+        ],
+        "title": "LocalizedOptions"
+      },
+      "LocalizedText": {
+        "properties": {
+          "en": {
+            "type": "string",
+            "title": "En"
+          },
+          "te": {
+            "type": "string",
+            "title": "Te"
+          }
+        },
+        "type": "object",
+        "required": [
+          "en",
+          "te"
+        ],
+        "title": "LocalizedText"
+      },
+      "NoticeOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "notification",
+              "admitCard",
+              "examDate",
+              "result",
+              "pet"
+            ],
+            "title": "Kind"
+          },
+          "date": {
+            "type": "string",
+            "title": "Date"
+          },
+          "title": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "body": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "link": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Link"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "date",
+          "title",
+          "body"
+        ],
+        "title": "NoticeOut"
+      },
+      "OkOut": {
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "title": "Ok",
+            "default": true
+          }
+        },
+        "type": "object",
+        "title": "OkOut"
+      },
+      "PaperQuestionOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "section": {
+            "type": "string",
+            "enum": [
+              "arithmetic",
+              "reasoning",
+              "gs",
+              "telangana",
+              "english"
+            ],
+            "title": "Section"
+          },
+          "text": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "options": {
+            "$ref": "#/components/schemas/LocalizedOptions"
+          },
+          "avgSeconds": {
+            "type": "number",
+            "title": "Avgseconds"
+          },
+          "correct": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Correct"
+          },
+          "explanation": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LocalizedText"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "section",
+          "text",
+          "options",
+          "avgSeconds"
+        ],
+        "title": "PaperQuestionOut"
+      },
+      "PatternSection": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "arithmetic",
+              "reasoning",
+              "gs",
+              "telangana",
+              "english"
+            ],
+            "title": "Id"
+          },
+          "labelKey": {
+            "type": "string",
+            "title": "Labelkey"
+          },
+          "questions": {
+            "type": "integer",
+            "title": "Questions"
+          },
+          "unlockAfter": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "arithmetic",
+                  "reasoning",
+                  "gs",
+                  "telangana",
+                  "english"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unlockafter"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "labelKey",
+          "questions"
+        ],
+        "title": "PatternSection"
+      },
+      "PatternsOut": {
+        "properties": {
+          "pc": {
+            "$ref": "#/components/schemas/ExamPatternOut"
+          },
+          "si": {
+            "$ref": "#/components/schemas/ExamPatternOut"
+          },
+          "short": {
+            "$ref": "#/components/schemas/ExamPatternOut"
+          }
+        },
+        "type": "object",
+        "required": [
+          "pc",
+          "si",
+          "short"
+        ],
+        "title": "PatternsOut"
+      },
+      "PhoneSignInIn": {
+        "properties": {
+          "phone": {
+            "type": "string",
+            "maxLength": 15,
+            "minLength": 10,
+            "title": "Phone"
+          }
+        },
+        "type": "object",
+        "required": [
+          "phone"
+        ],
+        "title": "PhoneSignInIn"
+      },
+      "PhoneSignInOut": {
+        "properties": {
+          "token": {
+            "type": "string",
+            "title": "Token"
+          },
+          "user": {
+            "$ref": "#/components/schemas/UserOut"
+          }
+        },
+        "type": "object",
+        "required": [
+          "token",
+          "user"
+        ],
+        "title": "PhoneSignInOut"
+      },
+      "PhysicalStandardsOut": {
+        "properties": {
+          "post": {
+            "type": "string",
+            "enum": [
+              "pc",
+              "si"
+            ],
+            "title": "Post"
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "male",
+              "female"
+            ],
+            "title": "Gender"
+          },
+          "group": {
+            "type": "string",
+            "enum": [
+              "general",
+              "st"
+            ],
+            "title": "Group"
+          },
+          "height": {
+            "$ref": "#/components/schemas/StandardOut"
+          },
+          "chest": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ChestOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "run1600m": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StandardOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "run800m": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StandardOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "run100m": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StandardOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "longJump": {
+            "$ref": "#/components/schemas/StandardOut"
+          },
+          "shotPut": {
+            "$ref": "#/components/schemas/StandardOut"
+          },
+          "shotKg": {
+            "type": "number",
+            "title": "Shotkg"
+          }
+        },
+        "type": "object",
+        "required": [
+          "post",
+          "gender",
+          "group",
+          "height",
+          "longJump",
+          "shotPut",
+          "shotKg"
+        ],
+        "title": "PhysicalStandardsOut"
+      },
+      "PostStandardsOut": {
+        "properties": {
+          "pc": {
+            "$ref": "#/components/schemas/GenderStandardsOut"
+          },
+          "si": {
+            "$ref": "#/components/schemas/GenderStandardsOut"
+          }
+        },
+        "type": "object",
+        "required": [
+          "pc",
+          "si"
+        ],
+        "title": "PostStandardsOut"
+      },
+      "QuestionOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "section_id": {
+            "type": "string",
+            "title": "Section Id"
+          },
+          "order_index": {
+            "type": "integer",
+            "title": "Order Index"
+          },
+          "text": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "options": {
+            "$ref": "#/components/schemas/LocalizedOptions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "section_id",
+          "order_index",
+          "text",
+          "options"
+        ],
+        "title": "QuestionOut",
+        "description": "Public question shape -- no correct_index / explanation."
+      },
+      "ResultActionOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "title": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "sub": {
+            "$ref": "#/components/schemas/LocalizedText"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "sub"
+        ],
+        "title": "ResultActionOut"
+      },
+      "ResultDetailOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "testTitleN": {
+            "type": "integer",
+            "title": "Testtitlen"
+          },
+          "title": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "score": {
+            "type": "number",
+            "title": "Score"
+          },
+          "maxScore": {
+            "type": "number",
+            "title": "Maxscore"
+          },
+          "cutoffPct": {
+            "type": "number",
+            "title": "Cutoffpct"
+          },
+          "qualified": {
+            "type": "boolean",
+            "title": "Qualified"
+          },
+          "accuracyPct": {
+            "type": "number",
+            "title": "Accuracypct"
+          },
+          "avgSecondsPerQuestion": {
+            "type": "number",
+            "title": "Avgsecondsperquestion"
+          },
+          "negativeMarks": {
+            "type": "number",
+            "title": "Negativemarks"
+          },
+          "correct": {
+            "type": "integer",
+            "title": "Correct"
+          },
+          "wrong": {
+            "type": "integer",
+            "title": "Wrong"
+          },
+          "skipped": {
+            "type": "integer",
+            "title": "Skipped"
+          },
+          "actions": {
+            "items": {
+              "$ref": "#/components/schemas/ResultActionOut"
+            },
+            "type": "array",
+            "title": "Actions"
+          },
+          "review": {
+            "items": {
+              "$ref": "#/components/schemas/ReviewRowOut"
+            },
+            "type": "array",
+            "title": "Review"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "testTitleN",
+          "title",
+          "score",
+          "maxScore",
+          "cutoffPct",
+          "qualified",
+          "accuracyPct",
+          "avgSecondsPerQuestion",
+          "negativeMarks",
+          "correct",
+          "wrong",
+          "skipped",
+          "actions",
+          "review"
+        ],
+        "title": "ResultDetailOut"
+      },
+      "ResultOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "test_id": {
+            "type": "string",
+            "title": "Test Id"
+          },
+          "attempt_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Attempt Id"
+          },
+          "score": {
+            "type": "number",
+            "title": "Score"
+          },
+          "max_score": {
+            "type": "number",
+            "title": "Max Score"
+          },
+          "cutoff": {
+            "type": "number",
+            "title": "Cutoff"
+          },
+          "qualified": {
+            "type": "boolean",
+            "title": "Qualified"
+          },
+          "rank": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rank"
+          },
+          "accuracy": {
+            "type": "number",
+            "title": "Accuracy"
+          },
+          "per_section": {
+            "items": {
+              "$ref": "#/components/schemas/SectionScore"
+            },
+            "type": "array",
+            "title": "Per Section"
+          },
+          "wrong": {
+            "items": {
+              "$ref": "#/components/schemas/WrongAnswer"
+            },
+            "type": "array",
+            "title": "Wrong"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "test_id",
+          "score",
+          "max_score",
+          "cutoff",
+          "qualified",
+          "rank",
+          "accuracy",
+          "per_section",
+          "wrong"
+        ],
+        "title": "ResultOut"
+      },
+      "ReviewRowOut": {
+        "properties": {
+          "questionNo": {
+            "type": "integer",
+            "title": "Questionno"
+          },
+          "your": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Your"
+          },
+          "seconds": {
+            "type": "number",
+            "title": "Seconds"
+          }
+        },
+        "type": "object",
+        "required": [
+          "questionNo",
+          "your",
+          "seconds"
+        ],
+        "title": "ReviewRowOut"
+      },
+      "SectionOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "order_index": {
+            "type": "integer",
+            "title": "Order Index"
+          },
+          "questions": {
+            "items": {
+              "$ref": "#/components/schemas/QuestionOut"
+            },
+            "type": "array",
+            "title": "Questions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "order_index",
+          "questions"
+        ],
+        "title": "SectionOut"
+      },
+      "SectionScore": {
+        "properties": {
+          "section_id": {
+            "type": "string",
+            "title": "Section Id"
+          },
+          "name": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "correct": {
+            "type": "integer",
+            "title": "Correct"
+          },
+          "wrong": {
+            "type": "integer",
+            "title": "Wrong"
+          },
+          "skipped": {
+            "type": "integer",
+            "title": "Skipped"
+          },
+          "marks": {
+            "type": "number",
+            "title": "Marks"
+          }
+        },
+        "type": "object",
+        "required": [
+          "section_id",
+          "name",
+          "correct",
+          "wrong",
+          "skipped",
+          "marks"
+        ],
+        "title": "SectionScore"
+      },
+      "StandardOut": {
+        "properties": {
+          "value": {
+            "type": "number",
+            "title": "Value"
+          },
+          "dir": {
+            "type": "string",
+            "enum": [
+              "min",
+              "max"
+            ],
+            "title": "Dir"
+          },
+          "verified": {
+            "type": "boolean",
+            "title": "Verified"
+          }
+        },
+        "type": "object",
+        "required": [
+          "value",
+          "dir",
+          "verified"
+        ],
+        "title": "StandardOut"
+      },
+      "StudyBulletsBlock": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "bullets",
+            "title": "Kind"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/LocalizedText"
+            },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": [
+          "kind",
+          "items"
+        ],
+        "title": "StudyBulletsBlock"
+      },
+      "StudySectionOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "arithmetic",
+              "reasoning",
+              "gs",
+              "telangana",
+              "english"
+            ],
+            "title": "Id"
+          },
+          "labelKey": {
+            "type": "string",
+            "title": "Labelkey"
+          },
+          "topics": {
+            "items": {
+              "$ref": "#/components/schemas/StudyTopicOut"
+            },
+            "type": "array",
+            "title": "Topics"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "labelKey",
+          "topics"
+        ],
+        "title": "StudySectionOut"
+      },
+      "StudyTextBlock": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "heading",
+              "para",
+              "formula",
+              "example",
+              "tip"
+            ],
+            "title": "Kind"
+          },
+          "text": {
+            "$ref": "#/components/schemas/LocalizedText"
+          }
+        },
+        "type": "object",
+        "required": [
+          "kind",
+          "text"
+        ],
+        "title": "StudyTextBlock"
+      },
+      "StudyTopicOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "section": {
+            "type": "string",
+            "enum": [
+              "arithmetic",
+              "reasoning",
+              "gs",
+              "telangana",
+              "english"
+            ],
+            "title": "Section"
+          },
+          "title": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "minutes": {
+            "type": "number",
+            "title": "Minutes"
+          },
+          "blocks": {
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/StudyTextBlock"
+                },
+                {
+                  "$ref": "#/components/schemas/StudyBulletsBlock"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Blocks"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "section",
+          "title",
+          "minutes",
+          "blocks"
+        ],
+        "title": "StudyTopicOut"
+      },
+      "SubmitIn": {
+        "properties": {
+          "answers": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/AnswerPatchIn"
+                },
+                "type": "array",
+                "maxItems": 1000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Answers"
+          },
+          "elapsed_seconds": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Elapsed Seconds"
+          }
+        },
+        "type": "object",
+        "title": "SubmitIn"
+      },
+      "SubmitOut": {
+        "properties": {
+          "result_id": {
+            "type": "string",
+            "title": "Result Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result_id"
+        ],
+        "title": "SubmitOut"
+      },
+      "TestDetail": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "slug": {
+            "type": "string",
+            "title": "Slug"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "post": {
+            "type": "string",
+            "enum": [
+              "pc",
+              "si"
+            ],
+            "title": "Post"
+          },
+          "duration_minutes": {
+            "type": "integer",
+            "title": "Duration Minutes"
+          },
+          "total_marks": {
+            "type": "number",
+            "title": "Total Marks"
+          },
+          "section_count": {
+            "type": "integer",
+            "title": "Section Count"
+          },
+          "question_count": {
+            "type": "integer",
+            "title": "Question Count"
+          },
+          "sections": {
+            "items": {
+              "$ref": "#/components/schemas/SectionOut"
+            },
+            "type": "array",
+            "title": "Sections"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "slug",
+          "title",
+          "post",
+          "duration_minutes",
+          "total_marks",
+          "section_count",
+          "question_count",
+          "sections"
+        ],
+        "title": "TestDetail"
+      },
+      "TestMetaOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "full",
+              "previous"
+            ],
+            "title": "Kind"
+          },
+          "title": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "pattern": {
+            "$ref": "#/components/schemas/ExamPatternOut"
+          },
+          "free": {
+            "type": "boolean",
+            "title": "Free"
+          },
+          "demo": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Demo"
+          },
+          "fullMocksOnly": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fullmocksonly"
+          },
+          "listed": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Listed"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "title",
+          "pattern",
+          "free"
+        ],
+        "title": "TestMetaOut"
+      },
+      "TestSummary": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "slug": {
+            "type": "string",
+            "title": "Slug"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "post": {
+            "type": "string",
+            "enum": [
+              "pc",
+              "si"
+            ],
+            "title": "Post"
+          },
+          "duration_minutes": {
+            "type": "integer",
+            "title": "Duration Minutes"
+          },
+          "total_marks": {
+            "type": "number",
+            "title": "Total Marks"
+          },
+          "section_count": {
+            "type": "integer",
+            "title": "Section Count"
+          },
+          "question_count": {
+            "type": "integer",
+            "title": "Question Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "slug",
+          "title",
+          "post",
+          "duration_minutes",
+          "total_marks",
+          "section_count",
+          "question_count"
+        ],
+        "title": "TestSummary"
+      },
+      "UserOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "phone": {
+            "type": "string",
+            "title": "Phone"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "phone"
+        ],
+        "title": "UserOut"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "WrongAnswer": {
+        "properties": {
+          "question_id": {
+            "type": "string",
+            "title": "Question Id"
+          },
+          "text": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "options": {
+            "$ref": "#/components/schemas/LocalizedOptions"
+          },
+          "your_choice": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Your Choice"
+          },
+          "correct_choice": {
+            "type": "integer",
+            "title": "Correct Choice"
+          },
+          "explanation": {
+            "$ref": "#/components/schemas/LocalizedText"
+          }
+        },
+        "type": "object",
+        "required": [
+          "question_id",
+          "text",
+          "options",
+          "your_choice",
+          "correct_choice",
+          "explanation"
+        ],
+        "title": "WrongAnswer"
+      }
+    }
+  }
+}

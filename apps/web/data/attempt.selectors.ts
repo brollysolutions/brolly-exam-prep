@@ -1,5 +1,5 @@
 import type { PaletteState } from '@tslprb/design-tokens';
-import { sectionIndexOf, type ExamPattern } from '@tslprb/fixtures';
+import { sectionIndexOf, type ExamPattern } from '@tslprb/fixtures/src/runtime';
 
 import type { AttemptState } from './attempt';
 
@@ -57,6 +57,20 @@ export function counts(state: AttemptState): PaletteCounts {
     }
   }
   return { answered, notAnswered, marked, notVisited: total - visited };
+}
+
+/** Section totals for the final confirmation. Review flags overlap answer counts. */
+export function sectionCounts(state: AttemptState, sectionIndex: number): PaletteCounts {
+  const result: PaletteCounts = { answered: 0, notAnswered: 0, marked: 0, notVisited: 0 };
+  if (!state.pattern) return result;
+  const { first, last } = sectionRange(state.pattern, sectionIndex);
+  for (let n = first; n <= last; n++) {
+    if (state.answers[n] !== undefined) result.answered++;
+    else if (state.visited[n] || state.marked[n]) result.notAnswered++;
+    else result.notVisited++;
+    if (state.marked[n]) result.marked++;
+  }
+  return result;
 }
 
 /** Section index (0-based) holding a 1-based question number; -1 when unarmed. */

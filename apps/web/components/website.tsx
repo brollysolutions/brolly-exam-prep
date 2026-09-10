@@ -7,11 +7,12 @@ import { I18nextProvider } from 'react-i18next';
 import { i18n, initI18n } from '@/lib/i18n';
 import { useLangStore } from '@/data/lang';
 import { webLangOverride } from '@/data/langOverride';
-import { useSessionStore } from '@/data/session';
-import { Home, Library, Profile, SignIn, Onboarding, Welcome } from './screens';
+import { Home, Library, Profile, Onboarding, Welcome } from './screens';
 import { Study, Topic, News, Eligibility, Paper } from './content-screens';
 import { Exam, Results } from './exam';
 import { Button, useCopy } from './web-ui';
+import { StorageNotice } from './storage-notice';
+import { CatalogGate } from './catalog-gate';
 
 const initialLang = webLangOverride() ?? useLangStore.getState().lang;
 initI18n(initialLang);
@@ -21,7 +22,6 @@ function Application({ route, id }: { route: string; id?: string }) {
   const copy = useCopy();
   const lang = useLangStore((s) => s.lang);
   const setLang = useLangStore((s) => s.setLang);
-  const signedIn = useSessionStore((s) => Boolean(s.token));
   const pathname = usePathname();
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -68,9 +68,6 @@ function Application({ route, id }: { route: string; id?: string }) {
   switch (route) {
     case 'tests':
       content = <Library />;
-      break;
-    case 'login':
-      content = <SignIn />;
       break;
     case 'welcome':
       content = <Welcome />;
@@ -124,24 +121,36 @@ function Application({ route, id }: { route: string; id?: string }) {
           {route !== 'exam' && (
             <nav aria-label={copy('Main navigation', 'ప్రధాన నావిగేషన్')}>
               {nav.map(([href, label]) => (
-                <Link key={href} href={href} aria-current={
-                  pathname === href || (href !== '/' && pathname.startsWith(href)) ? 'page' : undefined
-                }>{label}</Link>
+                <Link
+                  key={href}
+                  href={href}
+                  aria-current={
+                    pathname === href || (href !== '/' && pathname.startsWith(href))
+                      ? 'page'
+                      : undefined
+                  }
+                >
+                  {label}
+                </Link>
               ))}
             </nav>
           )}
           <div className="header-actions">
-            <Button variant="outline" onClick={() => setLang(lang === 'en' ? 'te' : 'en')}
-              aria-label={copy('Switch to Telugu', 'Switch to English')}>
+            <Button
+              variant="outline"
+              onClick={() => setLang(lang === 'en' ? 'te' : 'en')}
+              aria-label={copy('Switch to Telugu', 'Switch to English')}
+            >
               {lang === 'en' ? 'తెలుగు' : 'English'}
             </Button>
-            {!signedIn && route !== 'login' && route !== 'exam' && (
-              <Link className="sign-in-link" href="/login">{copy('Sign in', 'సైన్ ఇన్')}</Link>
-            )}
           </div>
         </div>
       </header>
-      <main id="main-content" className={route === 'exam' ? 'main-content exam-main' : 'main-content'}>
+      <main
+        id="main-content"
+        className={route === 'exam' ? 'main-content exam-main' : 'main-content'}
+      >
+        <StorageNotice />
         {content}
       </main>
     </div>
@@ -150,7 +159,9 @@ function Application({ route, id }: { route: string; id?: string }) {
 export default function Website(props: { route: string; id?: string }) {
   return (
     <I18nextProvider i18n={i18n}>
-      <Application {...props} />
+      <CatalogGate>
+        <Application {...props} />
+      </CatalogGate>
     </I18nextProvider>
   );
 }

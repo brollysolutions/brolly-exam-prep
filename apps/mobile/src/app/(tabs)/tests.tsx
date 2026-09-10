@@ -1,4 +1,4 @@
-import type { TestKind } from '@tslprb/fixtures';
+import type { TestKind } from '@tslprb/fixtures/src/runtime';
 import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 

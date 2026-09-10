@@ -1,5 +1,5 @@
 import { colors, spacing } from '@tslprb/design-tokens';
-import type { SectionSpec } from '@tslprb/fixtures';
+import type { SectionSpec } from '@tslprb/fixtures/src/runtime';
 import { useDir, type Lang } from '@tslprb/i18n';
 import { useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -24,7 +24,10 @@ import {
   Text,
 } from '@/ui';
 
+import { DemoNotice } from '@/ui/DemoNotice';
+
 export type PaperViewProps = {
+  demo?: boolean;
   /** The paper's own title, from `TESTS`. Falls back to the generic screen title. */
   title?: string;
   /** Omit while the paper is loading; the skeleton shows instead. */
@@ -195,7 +198,7 @@ function QuestionCard({
       <Stack gap={2} className="mt-3 border-t border-line pt-3">
         <Pill label={t('paper.why')} />
         <Text variant="body" color="ink2">
-          {question.explanation[lang]}
+          {question.explanation?.[lang]}
         </Text>
       </Stack>
     </Card>
@@ -212,6 +215,7 @@ const Separator = () => <View className="h-3" />;
  * Pure, so the route, the tests and the dev gallery render the same component.
  */
 export function PaperView({
+  demo = false,
   title,
   questions,
   sections = [],
@@ -325,6 +329,7 @@ export function PaperView({
         <FlatList
           ref={list}
           data={questions}
+          ListHeaderComponent={demo ? <DemoNotice /> : undefined}
           keyExtractor={(question, index) => `${index + 1}-${question.id}`}
           renderItem={renderItem}
           ItemSeparatorComponent={Separator}

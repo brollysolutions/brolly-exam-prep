@@ -4,8 +4,7 @@
 # and forwards to 127.0.0.1:3201; the browser reaches the api through /api on that origin (Next.js proxies it
 # to the api service), so 8200 is for server-side tooling only. Compose interpolation cannot read values
 # from another compose file, so the public URL is restated here instead of via PUBLIC_URL.
-# Sign-in is the phone number alone (the OTP step was removed 2026-09-07): anyone who types a
-# number gets that account. Keep this site to a trusted audience until a second factor exists.
+# The website requires no login. Practice answers and results remain browser-local.
 services:
   postgres:
     restart: unless-stopped

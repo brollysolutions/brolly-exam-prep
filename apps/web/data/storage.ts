@@ -1,88 +1,87 @@
 import { createJSONStorage, type StateStorage } from 'zustand/middleware';
 
-/**
- * Web build of the storage adapter. Metro picks `.web.ts` over `.ts` on web, so this file
- * replaces `storage.ts` there and `expo-sqlite/kv-store` is never bundled for the browser.
- *
- * Why not the SQLite adapter on web: `expo-sqlite/kv-store` boots a wasm Web Worker that
- * Metro's static/SSR renderer cannot chunk ("Worker chunk not found …/expo-sqlite/web/worker.ts"),
- * and even when it loads, its sync API falls back to memory. `localStorage` is synchronous,
- * survives reloads, and is what a browser expects.
- *
- * Same surface as `storage.ts` so every persisted store imports `./storage` unchanged.
- */
 export type SyncKvStore = {
   getItemSync: (key: string) => string | null;
   setItemSync: (key: string, value: string) => void;
   removeItemSync: (key: string) => void;
 };
-
-const hasLocalStorage = () => {
-  try {
-    return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
-  } catch {
-    return false;
-  }
+export type StorageStatus = 'persistent' | 'temporary';
+export type ReliableStorage = StateStorage & {
+  subscribe: (listener: () => void) => () => void;
+  getStatus: () => StorageStatus;
+  retry: () => boolean;
 };
 
-export function createKvStorage(store: SyncKvStore): StateStorage {
-  const memory = new Map<string, string>();
-  let degraded = false;
+/** Cache reads and retain failed writes/deletions until retry saves them durably. */
+export function createKvStorage(store: SyncKvStore): ReliableStorage {
+  const memory = new Map<string, string | null>();
+  const pending = new Map<string, string | null>();
+  const listeners = new Set<() => void>();
+  let status: StorageStatus = 'persistent';
+  const publish = (next: StorageStatus) => {
+    if (status === next) return;
+    status = next;
+    listeners.forEach((listener) => listener());
+  };
+  const write = (name: string, value: string | null) => {
+    if (value === null) store.removeItemSync(name);
+    else store.setItemSync(name, value);
+  };
+  const change = (name: string, value: string | null) => {
+    memory.set(name, value);
+    pending.set(name, value);
+    try {
+      write(name, value);
+      pending.delete(name);
+    } catch {
+      publish('temporary');
+    }
+  };
   return {
-    getItem: (name) => {
-      if (degraded) return memory.get(name) ?? null;
+    subscribe(listener) {
+      listeners.add(listener);
+      return () => {
+        listeners.delete(listener);
+      };
+    },
+    getStatus: () => status,
+    getItem(name) {
+      if (pending.has(name)) return memory.get(name) ?? null;
       try {
-        return store.getItemSync(name);
+        const value = store.getItemSync(name);
+        memory.set(name, value);
+        return value;
       } catch {
-        degraded = true;
+        publish('temporary');
         return memory.get(name) ?? null;
       }
     },
-    setItem: (name, value) => {
-      if (degraded) {
-        memory.set(name, value);
-        return;
-      }
+    setItem: change,
+    removeItem: (name) => change(name, null),
+    retry() {
       try {
-        store.setItemSync(name, value);
+        for (const [name, value] of pending) {
+          write(name, value);
+          pending.delete(name);
+        }
+        const probe = 'tslprb.storage-check';
+        const previous = store.getItemSync(probe);
+        store.setItemSync(probe, '1');
+        write(probe, previous);
+        publish('persistent');
+        return true;
       } catch {
-        degraded = true;
-        memory.set(name, value);
-      }
-    },
-    removeItem: (name) => {
-      if (degraded) {
-        memory.delete(name);
-        return;
-      }
-      try {
-        store.removeItemSync(name);
-      } catch {
-        degraded = true;
-        memory.delete(name);
+        publish('temporary');
+        return false;
       }
     },
   };
 }
 
-/** `localStorage` behind the sync kv interface; throws (→ memory latch) when unavailable, e.g. during static rendering. */
 const browserStore: SyncKvStore = {
-  getItemSync: (key) => {
-    if (!hasLocalStorage()) throw new Error('localStorage unavailable');
-    return window.localStorage.getItem(key);
-  },
-  setItemSync: (key, value) => {
-    if (!hasLocalStorage()) throw new Error('localStorage unavailable');
-    window.localStorage.setItem(key, value);
-  },
-  removeItemSync: (key) => {
-    if (!hasLocalStorage()) throw new Error('localStorage unavailable');
-    window.localStorage.removeItem(key);
-  },
+  getItemSync: (key) => window.localStorage.getItem(key),
+  setItemSync: (key, value) => window.localStorage.setItem(key, value),
+  removeItemSync: (key) => window.localStorage.removeItem(key),
 };
-
-/** The one storage adapter every persisted store in `src/data` shares (web flavour). */
-export const kvStorage: StateStorage = createKvStorage(browserStore);
-
-/** `createJSONStorage(() => kvStorage)` — pass straight to `persist({ storage })`. */
+export const kvStorage = createKvStorage(browserStore);
 export const persistedJSONStorage = () => createJSONStorage(() => kvStorage);

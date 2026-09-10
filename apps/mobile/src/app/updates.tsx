@@ -1,4 +1,4 @@
-import { latestNotices } from '@tslprb/fixtures';
+import { latestNotices } from '@tslprb/fixtures/src/runtime';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Linking } from 'react-native';
 

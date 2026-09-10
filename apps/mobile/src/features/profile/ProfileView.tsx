@@ -1,4 +1,4 @@
-import { CATEGORIES, type CategoryId, type Post } from '@tslprb/fixtures';
+import { CATEGORIES, type CategoryId, type Post } from '@tslprb/fixtures/src/runtime';
 import { LANGS, type Lang } from '@tslprb/i18n';
 import { type ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -90,7 +90,7 @@ export function ProfileView({
   const langOptions = LANGS.map((l: Lang) => ({ value: l, label: t(`lang.${l}Short`), lang: l }));
   const categoryLabel = CATEGORIES.find((c) => c.id === category)?.labelKey;
   /** An answer the app has not been given yet, drawn rather than guessed. */
-  const EM_DASH = '—';
+  const EM_DASH = t('audit.notSelected');
 
   return (
     <Screen
@@ -107,6 +107,7 @@ export function ProfileView({
             <Dialog
               testID="profile-logout-dialog"
               visible={pending === 'logout'}
+              onDismiss={() => setPending(undefined)}
               kicker={t('profile.logout')}
               title={t('profile.logoutTitle')}
               body={t('profile.logoutConfirm')}
@@ -122,6 +123,7 @@ export function ProfileView({
             <Dialog
               testID="profile-delete-dialog"
               visible={pending === 'delete'}
+              onDismiss={() => setPending(undefined)}
               tone="danger"
               kicker={t('profile.deleteAccount')}
               title={t('profile.deleteTitle')}
@@ -148,7 +150,7 @@ export function ProfileView({
           title={t('profile.post')}
           onPress={onEditPost}
           chevron
-          accessibilityLabel={t('profile.post')}
+          trailingLabel={post ? t(POST_TITLE[post]) : EM_DASH}
           trailing={
             <Text variant="body" color="ink3">
               {post ? t(POST_TITLE[post]) : EM_DASH}
@@ -160,7 +162,7 @@ export function ProfileView({
           title={t('profile.category')}
           onPress={onEditCategory}
           chevron
-          accessibilityLabel={t('profile.category')}
+          trailingLabel={categoryLabel ? t(categoryLabel) : EM_DASH}
           trailing={
             <Text variant="body" color="ink3">
               {categoryLabel ? t(categoryLabel) : EM_DASH}

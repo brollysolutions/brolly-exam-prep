@@ -1,6 +1,6 @@
 /* Public application shells/assets only. API responses and browser storage are never cached. */
 const CACHE = 'brolly-next-website-v1';
-const offline = '<!doctype html><html lang="en"><meta name="viewport" content="width=device-width"><title>Offline</title><body><h1>You are offline / మీరు ఆఫ్‌లైన్‌లో ఉన్నారు</h1><p>Your answers remain saved in this browser. Reconnect to open a page you have not visited.</p><a href="/tests">Tests / పరీక్షలు</a></body></html>';
+const offline = '<!doctype html><html lang="en"><meta name="viewport" content="width=device-width"><title>Offline</title><body><h1>You are offline / మీరు ఆఫ్‌లైన్‌లో ఉన్నారు</h1><p>Reconnect to open a page you have not visited. Previously saved progress can be resumed when browser storage is available.</p><p lang="te">మీరు సందర్శించని పేజీని తెరవడానికి మళ్లీ కనెక్ట్ అవ్వండి. బ్రౌజర్ నిల్వ అందుబాటులో ఉంటే గతంలో సేవ్ చేసిన పురోగతిని కొనసాగించవచ్చు.</p><a href="/tests">Tests / పరీక్షలు</a></body></html>';
 const asset = url => url.origin === self.location.origin && /^(?:\/_next\/static\/|\/fonts\/|\/brand\/)/.test(url.pathname);
 self.addEventListener('install', event => { event.waitUntil(self.skipWaiting()); });
 self.addEventListener('activate', event => { event.waitUntil(self.clients.claim()); });

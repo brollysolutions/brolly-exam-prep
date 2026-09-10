@@ -1,4 +1,4 @@
-import type { Affair } from '@tslprb/fixtures';
+import type { Affair } from '@tslprb/fixtures/src/runtime';
 import type { Lang } from '@tslprb/i18n';
 import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native';

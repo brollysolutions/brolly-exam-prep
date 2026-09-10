@@ -1,3 +1,5 @@
+import { useSubmissions, SUBMISSIONS_STORAGE_KEY } from './complete';
+import { useApiCache, API_CACHE_STORAGE_KEY } from './apiCache';
 import { ACTIVITY_STORAGE_KEY, useActivityStore } from './activity';
 import { ATTEMPT_STORAGE_KEY, useAttemptStore } from './attempt';
 import { COMPLETED_TESTS_STORAGE_KEY, useCompletedTestsStore } from './completedTests';
@@ -13,6 +15,8 @@ import { STUDY_STORAGE_KEY, useStudyStore } from './study';
  * `src/data` and fails if one of them is missing here.
  */
 export const ALL_STORAGE_KEYS = [
+  SUBMISSIONS_STORAGE_KEY,
+  API_CACHE_STORAGE_KEY,
   SESSION_STORAGE_KEY,
   ATTEMPT_STORAGE_KEY,
   COMPLETED_TESTS_STORAGE_KEY,
@@ -25,6 +29,8 @@ export const ALL_STORAGE_KEYS = [
 
 /** The persisted stores, in the order a wipe should empty them. */
 const PERSISTED = [
+  useSubmissions,
+  useApiCache,
   useSessionStore,
   useAttemptStore,
   useCompletedTestsStore,
@@ -56,6 +62,8 @@ const PERSISTED = [
  * instead would replay the welcome slides on the next cold boot.
  */
 export function signOut(): void {
+  useSubmissions.getState().reset();
+  useApiCache.getState().reset();
   useSessionStore.getState().logout();
   useAttemptStore.getState().reset();
   useCompletedTestsStore.getState().reset();

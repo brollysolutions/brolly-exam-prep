@@ -24,7 +24,7 @@ describe('PaletteCell', () => {
         borderColor: s.border,
         borderWidth: s.borderWidth,
         width: size.cell,
-        height: size.cell,
+        minHeight: size.cell,
       });
       // Not a `style` CALLBACK: css-interop cannot see inside one, so on web the cell rendered
       // with no fill or border at all (review round 1). The object form is the regression guard.
@@ -35,7 +35,7 @@ describe('PaletteCell', () => {
 
   it('merges a layout override (the palette grid column width) over the defaults', async () => {
     await render(<PaletteCell n={7} state="a" style={{ width: 51 }} testID="cell" />);
-    expect(screen.getByTestId('cell')).toHaveStyle({ width: 51, height: size.cell });
+    expect(screen.getByTestId('cell')).toHaveStyle({ width: 51, minHeight: size.cell });
   });
 
   // Brand semantics: gold = the candidate's own input, ink = a deliberate flag, red = missing.
@@ -89,7 +89,7 @@ describe('PaletteCell', () => {
   it('is a labelled button that reports presses', async () => {
     const onPress = jest.fn();
     await render(<PaletteCell n={12} state="nv" onPress={onPress} />);
-    const cell = screen.getByLabelText('Q 12');
+    const cell = screen.getByLabelText(/^Q 12, /);
     expect(cell.props.accessibilityRole).toBe('button');
     await userEvent.press(cell);
     expect(onPress).toHaveBeenCalledTimes(1);

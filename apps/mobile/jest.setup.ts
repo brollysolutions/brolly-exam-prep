@@ -47,3 +47,19 @@ jest.mock('expo-sqlite/kv-store', () => {
   };
   return { __esModule: true, default: store, Storage: store, AsyncStorage: store };
 });
+
+// Component fixtures are supplied explicitly; release bundles boot from the API.
+require('@tslprb/fixtures/src/runtime').setCatalog(require('@tslprb/fixtures').TESTS);
+
+const f = require('@tslprb/fixtures');
+require('@tslprb/fixtures/src/runtime').setContent({
+  studySections: f.STUDY_SECTIONS,
+  notices: f.NOTICES,
+  affairs: f.AFFAIRS,
+  examInfo: f.EXAM_INFO,
+  categories: f.CATEGORIES,
+  patterns: { pc: f.PWT_CONSTABLE, si: f.PWT_SI, short: f.FREE_MOCK_SHORT },
+  physicalStandards: f.PHYSICAL_STANDARDS,
+  standardsNotificationYear: f.STANDARDS_NOTIFICATION_YEAR,
+  costRows: f.COST_ROWS,
+});

@@ -1,4 +1,9 @@
-import { EXAM_INFO, latestAffairs, latestNotices, STUDY_TOPICS } from '@tslprb/fixtures';
+import {
+  EXAM_INFO,
+  latestAffairs,
+  latestNotices,
+  STUDY_TOPICS,
+} from '@tslprb/fixtures/src/runtime';
 import { useRouter } from 'expo-router';
 
 import { streakDays, todayProgress, useActivityStore } from '@/data/activity';

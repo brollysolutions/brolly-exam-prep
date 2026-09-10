@@ -705,10 +705,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
               }
             >
               <View
-                className="h-touchLg flex-1 justify-center rounded-md bg-surface border border-outline px-3"
+                className="min-h-touchLg flex-1 justify-center rounded-md bg-surface border border-outline px-3"
               >
                 <TextInput
                   accessibilityLabel="ఎత్తు (సెం.మీ)"
+                  aria-invalid={false}
                   inputMode="decimal"
                   keyboardType="decimal-pad"
                   maxLength={6}
@@ -723,9 +724,9 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                       "color": "#211c17",
                       "fontFamily": "Inter_600SemiBold",
                       "fontSize": 22,
-                      "height": 56,
                       "letterSpacing": 0,
                       "lineHeight": 33,
+                      "minHeight": 56,
                       "outlineStyle": "none",
                       "padding": 0,
                       "textAlign": "left",
@@ -789,10 +790,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                 }
               >
                 <View
-                  className="h-touchLg flex-1 justify-center rounded-md bg-surface border border-outline px-3"
+                  className="min-h-touchLg flex-1 justify-center rounded-md bg-surface border border-outline px-3"
                 >
                   <TextInput
                     accessibilityLabel="⁦800⁩ మీ. పరుగు (నిమి)"
+                    aria-invalid={false}
                     inputMode="numeric"
                     keyboardType="number-pad"
                     maxLength={3}
@@ -807,9 +809,9 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                         "color": "#211c17",
                         "fontFamily": "Inter_600SemiBold",
                         "fontSize": 22,
-                        "height": 56,
                         "letterSpacing": 0,
                         "lineHeight": 33,
+                        "minHeight": 56,
                         "outlineStyle": "none",
                         "padding": 0,
                         "textAlign": "left",
@@ -851,10 +853,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                 }
               >
                 <View
-                  className="h-touchLg flex-1 justify-center rounded-md bg-surface border border-outline px-3"
+                  className="min-h-touchLg flex-1 justify-center rounded-md bg-surface border border-outline px-3"
                 >
                   <TextInput
                     accessibilityLabel="⁦800⁩ మీ. పరుగు (సెక.)"
+                    aria-invalid={false}
                     inputMode="numeric"
                     keyboardType="number-pad"
                     maxLength={3}
@@ -869,9 +872,9 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                         "color": "#211c17",
                         "fontFamily": "Inter_600SemiBold",
                         "fontSize": 22,
-                        "height": 56,
                         "letterSpacing": 0,
                         "lineHeight": 33,
+                        "minHeight": 56,
                         "outlineStyle": "none",
                         "padding": 0,
                         "textAlign": "left",
@@ -971,10 +974,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
               }
             >
               <View
-                className="h-touchLg flex-1 justify-center rounded-md bg-surface border border-outline px-3"
+                className="min-h-touchLg flex-1 justify-center rounded-md bg-surface border border-outline px-3"
               >
                 <TextInput
                   accessibilityLabel="లాంగ్ జంప్ (మీ)"
+                  aria-invalid={false}
                   inputMode="decimal"
                   keyboardType="decimal-pad"
                   maxLength={6}
@@ -989,9 +993,9 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                       "color": "#211c17",
                       "fontFamily": "Inter_600SemiBold",
                       "fontSize": 22,
-                      "height": 56,
                       "letterSpacing": 0,
                       "lineHeight": 33,
+                      "minHeight": 56,
                       "outlineStyle": "none",
                       "padding": 0,
                       "textAlign": "left",
@@ -1073,10 +1077,11 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
               }
             >
               <View
-                className="h-touchLg flex-1 justify-center rounded-md bg-surface border border-outline px-3"
+                className="min-h-touchLg flex-1 justify-center rounded-md bg-surface border border-outline px-3"
               >
                 <TextInput
                   accessibilityLabel="షాట్ పుట్ (మీ)"
+                  aria-invalid={false}
                   inputMode="decimal"
                   keyboardType="decimal-pad"
                   maxLength={6}
@@ -1091,9 +1096,9 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                       "color": "#211c17",
                       "fontFamily": "Inter_600SemiBold",
                       "fontSize": 22,
-                      "height": 56,
                       "letterSpacing": 0,
                       "lineHeight": 33,
+                      "minHeight": 56,
                       "outlineStyle": "none",
                       "padding": 0,
                       "textAlign": "left",
@@ -1142,7 +1147,8 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
           onStartShouldSetResponder={[Function]}
           style={
             {
-              "height": 56,
+              "minHeight": 56,
+              "paddingVertical": 8,
             }
           }
           testID="eligibility-check"
@@ -1155,6 +1161,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
+                "maxWidth": "100%",
               }
             }
           >
@@ -1162,6 +1169,7 @@ exports[`EligibilityView (te) sets the screen in Telugu while the digits stay La
               className="text-onInk"
               style={
                 {
+                  "flexShrink": 1,
                   "fontFamily": "NotoSansTelugu_700Bold",
                   "fontSize": 16,
                   "fontVariant": undefined,

@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { colors, size } from '@tslprb/design-tokens';
-import type { Post } from '@tslprb/fixtures';
+import type { Post } from '@tslprb/fixtures/src/runtime';
 import { useDir } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';

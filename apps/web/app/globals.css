@@ -3,6 +3,7 @@
 @import './fonts.css';
 @import './website.css';
 @import './brolly-theme.css';
+@import './exam-workspace.css';
 
 /* Values come from @tslprb/design-tokens via lib/theme.ts on the root element. */
 @theme inline {

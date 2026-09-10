@@ -815,7 +815,8 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
             onStartShouldSetResponder={[Function]}
             style={
               {
-                "height": 56,
+                "minHeight": 56,
+                "paddingVertical": 8,
               }
             }
             testID="topic-mark-read"
@@ -828,6 +829,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
                   "flexWrap": undefined,
                   "gap": 8,
                   "justifyContent": undefined,
+                  "maxWidth": "100%",
                 }
               }
             >
@@ -835,6 +837,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
                 className="text-onInk"
                 style={
                   {
+                    "flexShrink": 1,
                     "fontFamily": "NotoSansTelugu_700Bold",
                     "fontSize": 16,
                     "fontVariant": undefined,
@@ -884,7 +887,8 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
             onStartShouldSetResponder={[Function]}
             style={
               {
-                "height": 48,
+                "minHeight": 48,
+                "paddingVertical": 8,
               }
             }
             testID="topic-practise"
@@ -897,6 +901,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
                   "flexWrap": undefined,
                   "gap": 8,
                   "justifyContent": undefined,
+                  "maxWidth": "100%",
                 }
               }
             >
@@ -904,6 +909,7 @@ exports[`TopicView (te) sets the page in the Telugu face, keeps the block accent
                 className="text-ink"
                 style={
                   {
+                    "flexShrink": 1,
                     "fontFamily": "NotoSansTelugu_600SemiBold",
                     "fontSize": 15,
                     "fontVariant": undefined,

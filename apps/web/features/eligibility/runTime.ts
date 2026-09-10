@@ -1,4 +1,4 @@
-import type { StandardKey } from '@tslprb/fixtures';
+import type { StandardKey } from '@tslprb/fixtures/src/runtime';
 
 /**
  * F-25 — the long runs are typed as minutes and seconds, stored as seconds.

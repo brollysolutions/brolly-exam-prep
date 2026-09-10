@@ -74,20 +74,20 @@ describe('Button', () => {
     expect(screen.getByText('Mark').props.className).toMatch(/\btext-ink\b/);
   });
 
-  it('uses the 56 px height for lg and 48 for md, as an object style', async () => {
+  it('uses the 56 px minimum height for lg and 48 for md, as an object style', async () => {
     await render(<Button label="Go" size="lg" testID="btn" />);
     const lg = screen.getByTestId('btn');
-    expect(lg).toHaveStyle({ height: size.touchLg });
+    expect(lg).toHaveStyle({ minHeight: size.touchLg });
     // Not a `style` CALLBACK: css-interop drops statics declared inside one, which shrank the
     // footer buttons on the web export (review round 1).
     expect(typeof lg.props.style).not.toBe('function');
 
     await screen.rerender(<Button label="Go" testID="btn" />);
-    expect(screen.getByTestId('btn')).toHaveStyle({ height: size.touch });
+    expect(screen.getByTestId('btn')).toHaveStyle({ minHeight: size.touch });
   });
 
   it('keeps a caller-supplied width instead of losing it inside a style callback', async () => {
     await render(<Button label="Clear" testID="btn" style={{ width: size.clearBtn }} />);
-    expect(screen.getByTestId('btn')).toHaveStyle({ width: 92, height: size.touch });
+    expect(screen.getByTestId('btn')).toHaveStyle({ width: 92, minHeight: size.touch });
   });
 });

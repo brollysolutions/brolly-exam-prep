@@ -165,7 +165,7 @@ describe('ProfileRoute (guest)', () => {
 
   it('turns an exam row into the same sign-in, not an edit of nothing', async () => {
     await render(<ProfileRoute />);
-    expect(screen.getByTestId('profile-post')).toHaveTextContent(/—/);
+    expect(screen.getByTestId('profile-post')).toHaveTextContent(/Not selected/);
     await userEvent.press(screen.getByTestId('profile-post'));
     expect(mockRouter.push).toHaveBeenCalledWith({
       pathname: '/(auth)/login',

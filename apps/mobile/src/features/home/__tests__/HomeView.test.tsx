@@ -98,6 +98,7 @@ describe('HomeView — countdown hero', () => {
     expect(screen.getByTestId('home-hero').props.accessible).toBe(true);
     expect(screen.getByTestId('home-hero').props.accessibilityLabel).toBe(
       [
+        'Sample schedule — not an official exam date',
         `${iso('45')} days to PWT`,
         `Preliminary Written Test · ${iso('18-10-2026')}`,
         `${iso('4')}-day streak`,
@@ -224,7 +225,7 @@ describe('HomeView — the three shelves', () => {
     await render(<HomeView {...props} lang="en" />);
     expect(screen.getByTestId('home-physical-action').props.className).toMatch(/\bbg-ink\b/);
     // The one primary action per screen is the 56 px size, per Button's own contract.
-    expect(screen.getByTestId('home-physical-action')).toHaveStyle({ height: 56 });
+    expect(screen.getByTestId('home-physical-action')).toHaveStyle({ minHeight: 56 });
     // The selected language chip is a soft gold state, not an ink action.
     const inkFills = screen
       .getAllByRole('button')
@@ -236,11 +237,11 @@ describe('HomeView — the three shelves', () => {
   // A heading and a tag beside it read as one object, and the pill under the tag was the
   // heading itself: the "Sample data" tag lives on Updates and Affairs, where the seeded
   // content is (design review D3). What is left on Home is a heading and its link.
-  it('leaves the section heads a name and a way past, and nothing else', async () => {
+  it('labels sample news while keeping the section links', async () => {
     await render(<HomeView {...props} lang="en" />);
     expect(screen.queryByTestId('sample-data-updates')).toBeNull();
     expect(screen.queryByTestId('sample-data-affairs')).toBeNull();
-    expect(screen.queryAllByText('Sample data')).toHaveLength(0);
+    expect(screen.getAllByText('Sample data')).toHaveLength(2);
     expect(screen.getByText('TSLPRB updates')).toBeOnTheScreen();
     expect(screen.getByTestId('home-updates-all')).toBeOnTheScreen();
   });

@@ -12,18 +12,18 @@ import {
   standardsFor,
   standardEntries,
   STANDARDS_NOTIFICATION_YEAR,
-  type Question,
   type Post,
   type Gender,
   type StandardsGroup,
-} from '@tslprb/fixtures';
-import { TESTS } from '@/lib/test-catalog';
+  type StandardKey,
+} from '@tslprb/fixtures/src/runtime';
+import { TESTS } from '@tslprb/fixtures/src/runtime';
 import { useLangStore } from '@/data/lang';
 import { useStudyStore } from '@/data/study';
 import { useActivityStore } from '@/data/activity';
 import { useEligibilityStore } from '@/data/eligibility';
 import { useSessionStore } from '@/data/session';
-import { evaluate, toInput } from '@/features/eligibility/evaluate';
+import { evaluate, toInput, parseMeasure } from '@/features/eligibility/evaluate';
 import { getApi } from '@/data/api';
 import { attemptHref } from '@/lib/routes';
 import { BackLink, Button, Empty, Notice, PageTitle, useCopy } from './web-ui';
@@ -189,6 +189,8 @@ export function Eligibility() {
   const standards = standardsFor(post, gender, group);
   const entries = standardEntries(standards);
   const result = evaluate(toInput(post, gender, group, state.values));
+  const invalid = (key: StandardKey) =>
+    Boolean(state.values[key]?.trim()) && parseMeasure(state.values[key]) === undefined;
   const label = (key: string) =>
     key.startsWith('run')
       ? t('eligibility.run', { m: key.replace(/\D/g, '') })
@@ -209,6 +211,8 @@ export function Eligibility() {
           onSubmit={(e) => {
             e.preventDefault();
             state.check();
+            const firstInvalid = entries.find(({ key }) => invalid(key));
+            if (firstInvalid) document.getElementById(firstInvalid.key)?.focus();
           }}
         >
           <div className="picker-grid">
@@ -250,8 +254,14 @@ export function Eligibility() {
                 type="text"
                 value={state.values[key] ?? ''}
                 onChange={(e) => state.setValue(key, e.target.value)}
-                aria-describedby={`${key}-hint`}
+                aria-invalid={invalid(key) || undefined}
+                aria-describedby={`${key}-hint${invalid(key) ? ` ${key}-error` : ''}`}
               />
+              {invalid(key) && (
+                <small className="error-text" id={`${key}-error`}>
+                  {t('audit.invalidMeasure', { unit: unit(key) })}
+                </small>
+              )}
               <small id={`${key}-hint`}>
                 {t('eligibility.required')}: {standard.dir === 'min' ? '≥' : '≤'} {standard.value}{' '}
                 {unit(key)}
@@ -276,11 +286,13 @@ export function Eligibility() {
                   className={row.pass === false ? 'error-text' : row.pass ? 'success-text' : ''}
                 >
                   {t(
-                    row.pass === undefined
-                      ? 'eligibility.notEntered'
-                      : row.pass
-                        ? 'eligibility.pass'
-                        : 'eligibility.fail',
+                    invalid(row.key)
+                      ? 'audit.invalid'
+                      : row.pass === undefined
+                        ? 'eligibility.notEntered'
+                        : row.pass
+                          ? 'eligibility.pass'
+                          : 'eligibility.fail',
                   )}
                   {!row.verified && <small>{t('eligibility.unverified')}</small>}
                 </strong>
@@ -305,7 +317,7 @@ export function Eligibility() {
 export function Paper({ id }: { id: string }) {
   const { t } = useTranslation();
   const lang = useLangStore((s) => s.lang);
-  const [paper, setPaper] = useState<Question[]>([]);
+  const [paper, setPaper] = useState<import('@/data/api').PaperQuestion[]>([]);
   const [failed, setFailed] = useState(false);
   const [page, setPage] = useState(0);
   const meta = TESTS.find((test) => test.id === id);
@@ -339,10 +351,11 @@ export function Paper({ id }: { id: string }) {
           <Link href={attemptHref(id)}>{t('library.practise')}</Link>
         </Button>
       </PageTitle>
+      {meta.demo && <Notice>{t('audit.demoPaperNote')}</Notice>}
       {failed ? (
         <Notice error>{t('paper.notFound')}</Notice>
       ) : paper.length === 0 ? (
-        <Notice>{t('common.nothingYet')}</Notice>
+        <Notice>{t('audit.loadingPaper')}</Notice>
       ) : (
         <>
           <div className="reading question-list">
@@ -357,11 +370,13 @@ export function Paper({ id }: { id: string }) {
                     <li key={i}>{option}</li>
                   ))}
                 </ol>
-                <details>
-                  <summary>{t('solutions.correctAnswer')}</summary>
-                  <p>{q.options[lang][q.correct]}</p>
-                  <p>{q.explanation[lang]}</p>
-                </details>
+                {q.correct !== undefined && q.explanation && (
+                  <details>
+                    <summary>{t('solutions.correctAnswer')}</summary>
+                    <p>{q.options[lang][q.correct]}</p>
+                    <p>{q.explanation[lang]}</p>
+                  </details>
+                )}
               </article>
             ))}
           </div>

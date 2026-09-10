@@ -1,5 +1,5 @@
 import { colors, motion } from '@tslprb/design-tokens';
-import type { Notice } from '@tslprb/fixtures';
+import type { Notice } from '@tslprb/fixtures/src/runtime';
 import { dir, useDir, type Lang } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';

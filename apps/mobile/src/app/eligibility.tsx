@@ -1,4 +1,4 @@
-import { standardsFor } from '@tslprb/fixtures';
+import { standardsFor } from '@tslprb/fixtures/src/runtime';
 import { useRouter } from 'expo-router';
 import { useMemo } from 'react';
 

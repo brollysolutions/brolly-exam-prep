@@ -4,7 +4,7 @@ import type { PaperQuestion, ResultReviewRow } from '@/data/api';
 export type SolutionRow = {
   /** 1-based number in the paper, as printed on the card. */
   questionNo: number;
-  question: PaperQuestion;
+  question: PaperQuestion & { correct: 0 | 1 | 2 | 3; explanation: { en: string; te: string } };
   /** The option the candidate picked, or `null` when the question was skipped. */
   your: number | null;
   /** The key, straight off `question.correct`. */
@@ -31,11 +31,11 @@ export function buildSolutionRows(
   return review
     .flatMap((row) => {
       const question = paper[row.questionNo - 1];
-      if (!question) return [];
+      if (!question || question.correct === undefined || !question.explanation) return [];
       return [
         {
           questionNo: row.questionNo,
-          question,
+          question: question as SolutionRow['question'],
           your: row.your,
           correct: question.correct,
           seconds: row.seconds,

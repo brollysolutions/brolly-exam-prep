@@ -1,4 +1,4 @@
-import type { ExamPattern, TestMeta } from '@tslprb/fixtures';
+import type { ExamPattern, TestMeta } from '@tslprb/fixtures/src/runtime';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 

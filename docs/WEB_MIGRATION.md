@@ -34,13 +34,14 @@ non-root runtime user.
 | --- | --- |
 | `/` | Home and local progress |
 | `/tests` | Test catalogue and SI/PC/full/previous filters |
-| `/login`, `/welcome`, `/post`, `/category` | Phone sign-in and onboarding |
+| `/login` | Compatibility redirect to the requested page or `/tests` |
+| `/welcome`, `/post`, `/category` | Welcome and optional preparation preferences |
 | `/tests/simocktest` | Imported 200-question SI practice paper |
 | `/test/[id]` | Other existing practice papers |
 | `/test/[id]/result`, `/test/[id]/solutions` | Saved result and explanations |
 | `/paper/[id]` | Previous-paper reader |
 | `/study`, `/study/[topic]` | Study catalogue, content, and read marks |
-| `/profile` | Preferences, practice history, sign-out, local-data wipe |
+| `/profile` | Preferences, practice history, local-data wipe |
 | `/updates`, `/affairs` | Existing sample notices and current affairs |
 | `/eligibility` | Existing PMT/PET checker and its source caveats |
 
@@ -59,14 +60,14 @@ The exam resumes its original timestamp deadline and saved answers after reload.
 Answers cannot change after expiry; expiry submits once the paper has loaded.
 Section unlocks and answer/mark palette states retain the original rules.
 Completed attempts are scored locally, and repeated completion is idempotent.
-Results do not invent ranks. Sign-out clears personal preparation data; the
-explicit browser-data wipe also removes welcome and language preferences.
+Results do not invent ranks. The explicit browser-data wipe removes local
+preparation data, welcome and language preferences.
 
 In production, a service worker caches public shells, scripts, styles, and
 English/Telugu fonts. It warms the main routes and caches visited pages. After
 the initial online cache completes, an open exam can be reloaded and submitted
 offline, with results and explanations saved in the browser. Unvisited uncached
-pages show an offline recovery screen. Initial login still requires the API.
+pages show an offline recovery screen. No login or authentication API is required.
 Service workers require HTTPS or localhost and are disabled in development.
 
 API answer/submission synchronization is best effort, with sequential updates
@@ -76,8 +77,12 @@ and bearer tokens are not stored in the service-worker cache.
 
 ## Existing content and backend boundaries
 
-Phone sign-in uses the existing `/v1/auth/phone` endpoint; this migration does
-not introduce SMS/OTP verification. Tests and question papers still use the
+Web login was removed at the user's request on 2026-09-08. Tests, results and
+optional profile preferences require no phone, token or onboarding. Old `/login`
+links redirect safely to their local `returnTo` destination (default `/tests`).
+The web client no longer calls phone authentication or sends saved bearer tokens.
+Submission and retake review gates remain active. The backend/mobile auth API
+is unchanged. Tests and question papers still use the
 shared fixture bank because the backend does not serve the complete bilingual
 paper/pattern contract. The imported SI paper retains its supplied questions;
 other fixture papers retain their demonstration question bank. Some fixture
@@ -104,7 +109,11 @@ covers legacy storage recovery, deadline enforcement, section locks, idempotent
 completion, paper identity, sign-out/wipe behavior, and safe return URLs.
 Docker builds also perform the production compile and TypeScript validation.
 
-Verified locally on 2026-09-08: seven regression tests, ESLint, TypeScript, and
+After login removal: all 18 tests, TypeScript and the standalone Docker build
+passed. Local HTTP checks confirmed direct test/profile access and safe redirects
+from old login links. The public deployment has not been updated by this change.
+
+Earlier migration verification on 2026-09-08: seven regression tests, ESLint, TypeScript, and
 the standalone Docker production build passed. Browser checks covered phone
 sign-in/onboarding, answer recovery with an unchanged deadline, Telugu switching,
 mobile question navigation, submission and retakes, study read persistence,

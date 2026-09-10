@@ -1,7 +1,11 @@
-import type { AnswerPatchInput, ApiClient } from '@tslprb/api-contracts';
-import type { Question as PaperQuestion, TestMeta } from '@tslprb/fixtures';
+import type {
+  AnswerPatchInput,
+  ApiClient,
+  PublicPaperQuestion as PaperQuestion,
+} from '@tslprb/api-contracts';
+import type { Question, TestMeta } from '@tslprb/fixtures/src/runtime';
 
-export type { PaperQuestion };
+export type { PublicPaperQuestion as PaperQuestion } from '@tslprb/api-contracts';
 
 /** The two-language string every fixture carries. */
 export type LocalizedCopy = { en: string; te: string };
@@ -78,10 +82,14 @@ export type ResultDetail = {
  * express: the exam pattern that drives section locking, the answer key the solutions
  * screen needs, and the analysis payload above.
  */
-export interface AppApi extends ApiClient {
+export interface AppApi extends Omit<ApiClient, 'signInWithPhone'> {
+  getContent(): Promise<import('@tslprb/api-contracts').AppContent>;
+  getAttemptMeta(id: string): Promise<TestMeta>;
   listTestMetas(): Promise<TestMeta[]>;
   getTestMeta(id: string): Promise<TestMeta>;
   getPaper(testId: string): Promise<PaperQuestion[]>;
+  getReviewPaper(resultId: string): Promise<Question[]>;
+  getAttemptPaper(attemptId: string): Promise<PaperQuestion[]>;
   getResultDetail(id: string): Promise<ResultDetail>;
 }
 

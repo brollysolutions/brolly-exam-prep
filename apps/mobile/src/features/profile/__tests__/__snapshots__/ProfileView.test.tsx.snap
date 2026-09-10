@@ -120,7 +120,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
           }
         >
           <View
-            accessibilityLabel="పోస్ట్"
+            accessibilityLabel="పోస్ట్ ఎస్‌ఐ / ఏఎస్‌ఐ"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -249,7 +249,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
             </View>
           </View>
           <View
-            accessibilityLabel="కేటగిరీ"
+            accessibilityLabel="కేటగిరీ బీసీ"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -849,7 +849,8 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
               onStartShouldSetResponder={[Function]}
               style={
                 {
-                  "height": 48,
+                  "minHeight": 48,
+                  "paddingVertical": 8,
                 }
               }
               testID="profile-logout"
@@ -862,6 +863,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": undefined,
+                    "maxWidth": "100%",
                   }
                 }
               >
@@ -869,6 +871,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                   className="text-ink"
                   style={
                     {
+                      "flexShrink": 1,
                       "fontFamily": "NotoSansTelugu_600SemiBold",
                       "fontSize": 15,
                       "fontVariant": undefined,
@@ -918,7 +921,8 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
               onStartShouldSetResponder={[Function]}
               style={
                 {
-                  "height": 48,
+                  "minHeight": 48,
+                  "paddingVertical": 8,
                 }
               }
               testID="profile-delete"
@@ -931,6 +935,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                     "flexWrap": undefined,
                     "gap": 8,
                     "justifyContent": undefined,
+                    "maxWidth": "100%",
                   }
                 }
               >
@@ -938,6 +943,7 @@ exports[`ProfileView (te) renders the Telugu setting rows and matches the snapsh
                   className="text-dangerInk"
                   style={
                     {
+                      "flexShrink": 1,
                       "fontFamily": "NotoSansTelugu_600SemiBold",
                       "fontSize": 15,
                       "fontVariant": undefined,

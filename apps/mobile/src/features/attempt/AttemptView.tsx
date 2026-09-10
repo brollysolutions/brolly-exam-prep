@@ -8,10 +8,12 @@ import {
   text,
   type ColorName,
 } from '@tslprb/design-tokens';
+import { TESTS } from '@tslprb/fixtures/src/runtime';
+import { DemoNotice } from '@/ui/DemoNotice';
 import { LANGS, useDir, type Lang } from '@tslprb/i18n';
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, View, useWindowDimensions } from 'react-native';
 
 import type { PaperQuestion } from '@/data/api';
 import type { AttemptState, Choice } from '@/data/attempt';
@@ -125,11 +127,7 @@ function TimerBox({ remainingSec, armed }: { remainingSec: number; armed: boolea
           : warning
             ? colors.accentSoft
             : colors.surface2,
-        borderColor: critical
-          ? colors.dangerInk
-          : warning
-            ? colors.accentStrong
-            : colors.line,
+        borderColor: critical ? colors.dangerInk : warning ? colors.accentStrong : colors.line,
       }}
     >
       <Text
@@ -329,6 +327,8 @@ export function AttemptView({
   const { t } = useTranslation();
   const d = useDir();
 
+  const { fontScale, width } = useWindowDimensions();
+  const roomyControls = fontScale > 1.3 || width < 320;
   const sections = attempt.pattern?.sections ?? [];
   const current = attempt.current;
   const currentSection = sectionOf(attempt, current);
@@ -359,7 +359,7 @@ export function AttemptView({
         style={shadowStyle('card')}
         testID="attempt-header"
       >
-        <Row align="center" gap={2} className="px-2 py-1" testID="attempt-header-row">
+        <Row align="center" gap={2} wrap className="px-2 py-1" testID="attempt-header-row">
           <PressBox
             accessibilityLabel={t('test.exit')}
             onPress={onExit}
@@ -452,6 +452,7 @@ export function AttemptView({
         contentContainerStyle={{ padding: spacing['4'], paddingBottom: spacing['5'] }}
         testID="attempt-body"
       >
+        {TESTS.find((test) => test.id === attempt.testId)?.demo && <DemoNotice />}
         <Row gap={2} wrap align="center">
           {/* The same Q pill the paper viewer heads its cards with. */}
           <Pill
@@ -530,6 +531,7 @@ export function AttemptView({
       <ActionBar
         testID="attempt-footer"
         grow={false}
+        stacked={roomyControls}
         secondary={
           <Row gap={2} align="center" className="flex-1">
             <PressBox
@@ -547,9 +549,9 @@ export function AttemptView({
               accessibilityLabel={`${t('test.palette')} ${tally.answered}/${total}`}
               onPress={onOpenPalette}
               testID="btn-palette"
-              className="h-touchLg flex-1 items-center justify-center rounded-sm border border-outline"
+              className="min-h-touchLg flex-1 items-center justify-center rounded-sm border border-outline px-2 py-2"
             >
-              <Text variant="body" weight="600">
+              <Text variant="body" weight="600" align="center">
                 {t('test.palette')}
               </Text>
               <Num variant="caption" weight="400" color="ink3">
@@ -568,17 +570,17 @@ export function AttemptView({
               </Glyph>
             }
             onPress={onNext}
-            style={{ width: size.nextBtn }}
+            style={roomyControls ? { alignSelf: 'stretch' } : { width: size.nextBtn }}
             testID="btn-next"
           />
         }
       >
-        <Row gap={2} align="center">
+        <Row gap={2} align="center" wrap>
           <Button
             variant="ghost"
             label={t('test.clear')}
             onPress={onClear}
-            style={{ width: size.clearBtn }}
+            style={{ minWidth: size.touch, flexGrow: 1 }}
             testID="btn-clear"
           />
           {/* Marking is a flag, not a second decision: the box stays outlined either way and
@@ -598,7 +600,7 @@ export function AttemptView({
               />
             }
             onPress={onToggleMark}
-            className="flex-1"
+            style={{ flexGrow: 1, flexBasis: roomyControls ? '100%' : 120 }}
             testID="btn-mark"
           />
           {/* Handing the paper in used to live one tap deeper, inside the palette sheet, which
@@ -609,6 +611,7 @@ export function AttemptView({
             variant="secondary"
             label={t('test.submit')}
             onPress={onSubmit}
+            style={{ flexGrow: 1 }}
             testID="btn-submit"
           />
         </Row>

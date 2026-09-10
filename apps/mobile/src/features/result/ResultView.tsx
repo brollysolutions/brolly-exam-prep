@@ -1,5 +1,5 @@
 import { text as textSizes } from '@tslprb/design-tokens';
-import { COST_ROWS } from '@tslprb/fixtures';
+import { COST_ROWS } from '@tslprb/fixtures/src/runtime';
 import { useDir } from '@tslprb/i18n';
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -28,7 +28,10 @@ import {
   useDurationUnits,
 } from '@/ui';
 
+import { DemoNotice } from '@/ui/DemoNotice';
+
 export type ResultViewProps = {
+  demo?: boolean;
   /** Omit while the analysis is loading; the skeleton shows instead. */
   result?: ResultDetail;
   /** The load failed: the retry state replaces the body. */
@@ -198,6 +201,7 @@ function SectionPill({ index, label }: { index: string; label: string }) {
  * render the same component the route does.
  */
 export function ResultView({
+  demo = false,
   result,
   failed = false,
   reviewAll = false,
@@ -268,6 +272,7 @@ export function ResultView({
             {/* The screen's one gold-edged card. `accentStrong` (3.48:1 on the card), not the
                 brand `accent`, which is 2.42 there. */}
             <Card startEdge="accentStrong" testID="result-score-card">
+              {demo && <DemoNotice />}
               <Pill label={t('result.yourScore')} />
               {/* Physical: a score always reads "62.25 / 100", never mirrored. */}
               <Row physical align="baseline" gap={2} className="mt-2" testID="result-score-row">

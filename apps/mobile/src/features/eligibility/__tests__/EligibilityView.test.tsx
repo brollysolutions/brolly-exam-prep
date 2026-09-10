@@ -67,6 +67,24 @@ beforeEach(() => {
 });
 
 describe('EligibilityView — the form', () => {
+  it('distinguishes invalid measurements from blank fields and clears the error after correction', async () => {
+    const settings = props({ values: { height: 'abc' } });
+    await render(<EligibilityView {...settings} />);
+    expect(screen.getByTestId('eligibility-field-height').props['aria-invalid']).toBe(true);
+    expect(screen.getByText(i18n.t('audit.invalidMeasure', { unit: 'cm' }))).toBeOnTheScreen();
+    expect(screen.getByTestId('eligibility-field-chest').props['aria-invalid']).toBe(false);
+    await screen.rerender(<EligibilityView {...settings} values={{ height: '172' }} />);
+    expect(screen.queryByText(i18n.t('audit.invalidMeasure', { unit: 'cm' }))).toBeNull();
+  });
+
+  it('shows an error for invalid run parts even though the seconds value is blank', async () => {
+    await render(<EligibilityView {...props()} />);
+    await fireEvent.changeText(runField('run1600m', 'min'), 'abc');
+    expect(screen.getByText(t('audit.invalidRun'))).toBeOnTheScreen();
+    expect(runField('run1600m', 'min').props['aria-invalid']).toBe(true);
+    await fireEvent.changeText(runField('run1600m', 'min'), '7');
+    expect(screen.queryByText(t('audit.invalidRun'))).toBeNull();
+  });
   it('opens on the title, the disclaimer and no verdict', async () => {
     await render(<EligibilityView {...props()} />);
     expect(screen.getByText(t('eligibility.title'))).toBeOnTheScreen();
@@ -199,9 +217,7 @@ describe('EligibilityView — the form', () => {
     const missed = { ...PASSING, height: '160' };
     await render(<EligibilityView {...props({ values: missed, result: result(missed) })} />);
     expect(screen.getByText(t('eligibility.improve')).props.className).toMatch(/\btext-ink2\b/);
-    expect(screen.getByText(t('eligibility.improve')).props.className).not.toMatch(
-      /\btext-ink3\b/,
-    );
+    expect(screen.getByText(t('eligibility.improve')).props.className).not.toMatch(/\btext-ink3\b/);
     const dot = screen.getByTestId('eligibility-improve-height-dot');
     expect(dot.props.className).toMatch(/\bbg-ink\b/);
     expect(dot.props.className).not.toMatch(/\bbg-accentStrong\b/);
@@ -325,18 +341,14 @@ describe('EligibilityView — the verdict', () => {
     let verdict = screen.getByTestId('eligibility-verdict');
     expect(verdict.props.className).toMatch(/\bborder-dangerInk\b/);
     expect(verdict.props.className).toMatch(/\bbg-dangerTint\b/);
-    expect(screen.getByText(t('eligibility.notYet')).props.className).toMatch(
-      /\btext-dangerInk\b/,
-    );
+    expect(screen.getByText(t('eligibility.notYet')).props.className).toMatch(/\btext-dangerInk\b/);
 
     const partial = { height: '172' };
     await render(<EligibilityView {...props({ values: partial, result: result(partial) })} />);
     verdict = screen.getByTestId('eligibility-verdict');
     expect(verdict.props.className).toMatch(/\bborder-outline\b/);
     expect(verdict.props.className).toMatch(/\bbg-surface2\b/);
-    expect(screen.getByText(t('eligibility.incomplete')).props.className).toMatch(
-      /\btext-ink3\b/,
-    );
+    expect(screen.getByText(t('eligibility.incomplete')).props.className).toMatch(/\btext-ink3\b/);
   });
 
   // The verdict is the page's answer, so it is the page's headline: a display role, which
@@ -366,9 +378,7 @@ describe('EligibilityView — the verdict', () => {
   it('rules between the rows and gives the marks their own column', async () => {
     await render(<EligibilityView {...props({ values: PASSING, result: result(PASSING) })} />);
     expect(screen.getByTestId('eligibility-row-height').props.className).toMatch(/\bborder-b\b/);
-    expect(screen.getByTestId('eligibility-row-shotPut').props.className).not.toContain(
-      'border-b',
-    );
+    expect(screen.getByTestId('eligibility-row-shotPut').props.className).not.toContain('border-b');
     expect(screen.getByTestId('eligibility-mark-height').props.className).toMatch(/\bw-6\b/);
   });
 

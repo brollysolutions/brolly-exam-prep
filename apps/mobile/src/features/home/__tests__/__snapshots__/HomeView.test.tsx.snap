@@ -207,7 +207,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         </View>
       </View>
       <View
-        accessibilityLabel="PWTకి ⁦45⁩ రోజులు · Preliminary Written Test · ⁦18-10-2026⁩ · ⁦4⁩ రోజుల స్ట్రీక్ · ⁦20⁩లో ⁦12⁩ పూర్తి"
+        accessibilityLabel="నమూనా షెడ్యూల్ — అధికారిక పరీక్ష తేదీ కాదు · PWTకి ⁦45⁩ రోజులు · Preliminary Written Test · ⁦18-10-2026⁩ · ⁦4⁩ రోజుల స్ట్రీక్ · ⁦20⁩లో ⁦12⁩ పూర్తి"
         accessible={true}
         className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface mt-7"
         style={
@@ -229,6 +229,23 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
             }
           }
         >
+          <Text
+            className="text-ink3"
+            style={
+              {
+                "fontFamily": "NotoSansTelugu_400Regular",
+                "fontSize": 12,
+                "fontVariant": undefined,
+                "letterSpacing": 0,
+                "lineHeight": 19.8,
+                "textAlign": "left",
+                "textTransform": undefined,
+                "writingDirection": "ltr",
+              }
+            }
+          >
+            నమూనా షెడ్యూల్ — అధికారిక పరీక్ష తేదీ కాదు
+          </Text>
           <View
             className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
             style={
@@ -518,6 +535,23 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         className="mt-7"
         testID="home-updates"
       >
+        <Text
+          className="text-ink3"
+          style={
+            {
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 12,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 19.8,
+              "textAlign": "left",
+              "textTransform": undefined,
+              "writingDirection": "ltr",
+            }
+          }
+        >
+          నమూనా డేటా
+        </Text>
         <View
           style={
             {
@@ -1165,7 +1199,8 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
           onStartShouldSetResponder={[Function]}
           style={
             {
-              "height": 56,
+              "minHeight": 56,
+              "paddingVertical": 8,
             }
           }
           testID="home-physical-action"
@@ -1178,6 +1213,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
                 "flexWrap": undefined,
                 "gap": 8,
                 "justifyContent": undefined,
+                "maxWidth": "100%",
               }
             }
           >
@@ -1185,6 +1221,7 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
               className="text-onInk"
               style={
                 {
+                  "flexShrink": 1,
                   "fontFamily": "NotoSansTelugu_700Bold",
                   "fontSize": 16,
                   "fontVariant": undefined,
@@ -1205,6 +1242,23 @@ exports[`HomeView (te) renders the Telugu copy, keeps the counts Latin, and matc
         className="mt-7"
         testID="home-affairs"
       >
+        <Text
+          className="text-ink3"
+          style={
+            {
+              "fontFamily": "NotoSansTelugu_400Regular",
+              "fontSize": 12,
+              "fontVariant": undefined,
+              "letterSpacing": 0,
+              "lineHeight": 19.8,
+              "textAlign": "left",
+              "textTransform": undefined,
+              "writingDirection": "ltr",
+            }
+          }
+        >
+          నమూనా డేటా
+        </Text>
         <View
           style={
             {

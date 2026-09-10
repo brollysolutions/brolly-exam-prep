@@ -1,4 +1,4 @@
-import { isImportedTest } from '@tslprb/fixtures';
+import { isImportedTest } from '@tslprb/fixtures/src/runtime';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 
@@ -32,6 +32,7 @@ export default function PaperRoute() {
 
   return (
     <PaperView
+      demo={paper?.meta.demo}
       title={paper?.meta.title[lang]}
       questions={paper?.questions}
       sections={paper?.meta.pattern.sections}
