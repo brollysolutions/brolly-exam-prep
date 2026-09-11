@@ -1,10 +1,10 @@
-# TSLPRB API (F-17 scaffold)
+# TSLPRB API 0.2.0
 
 FastAPI + SQLAlchemy 2 (async) + Alembic + pydantic v2, managed with `uv`.
 Scheduler is an `arq` worker on Redis (see `app/worker.py`). Dev OTP is
 always `123456` when `OTP_DEV_MODE=true` -- see `.claude/rules/api.md`.
 
-In this phase, `/v1/tests`, `/v1/attempts` and `/v1/results` are served from
+In this phase, `/v1/content`, `/v1/tests`, `/v1/attempts` and `/v1/results` are served from
 in-memory fixtures (`app/fixtures.py`) rather than the database, so the API
 and its test suite run without Postgres or Redis. `/v1/otp/*` also uses an
 in-memory store. The real schema (`app/models.py` + the Alembic migration)
@@ -69,17 +69,29 @@ migration -- add a new revision instead.
 ## API surface (all under `/v1` except `/health`)
 
 - `GET /health`
-- `POST /v1/otp/request` `{phone}` -> `{request_id, dev_code?}`
-- `POST /v1/otp/verify` `{request_id, code}` -> `{token, user: {id, phone}}`
+- `GET /v1/content` -> non-test study/news/eligibility content
+- `POST /v1/auth/phone` `{phone}` -> `{token, user: {id, phone}}`
 - `GET /v1/tests` -> list of test summaries
+- `GET /v1/tests/catalog` -> app test metadata catalog
+- `GET /v1/tests/{id}/meta` -> app test metadata
+- `GET /v1/tests/{id}/paper` -> public paper without answer keys
 - `GET /v1/tests/{id}` -> test with sections + questions (no correct answers)
 - `POST /v1/attempts` `{test_id}` -> attempt with `ends_at`
+- `GET /v1/attempts/{id}` -> owned attempt + saved answers
+- `GET /v1/attempts/{id}/paper` -> owned paper without answer keys
+- `GET /v1/attempts/{id}/meta` -> owned test metadata
 - `PATCH /v1/attempts/{id}/answers` `{question_id, choice|null, marked}` -> `{ok}`
 - `POST /v1/attempts/{id}/submit` -> `{result_id}`
 - `GET /v1/results/{id}` -> score, cutoff, qualified, rank, accuracy, per-section, wrong list with explanations
+- `GET /v1/results/{id}/detail` -> owned rich result analysis
+- `GET /v1/results/{id}/paper` -> owned submitted paper with answer key and explanations
+
+Attempt and result routes require the `Authorization: Bearer <token>` returned by
+`POST /v1/auth/phone`. The current token and ownership repositories remain process-local.
 
 A canned demo result matching the prototype's result screen (score
-62.25/100) is always available at `GET /v1/results/result-sample-01`.
+62.25/100) is available to a signed-in reviewer at
+`GET /v1/results/result-sample-01`.
 
 ## Regenerating API contracts
 

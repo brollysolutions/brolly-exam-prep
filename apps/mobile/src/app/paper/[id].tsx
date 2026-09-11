@@ -1,11 +1,10 @@
-import { isImportedTest } from '@tslprb/fixtures';
+import { isImportedTest } from '@/data/content';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 
-import { getApi } from '@/data/api';
 import { useLangStore } from '@/data/lang';
+import { getPublicReadCache, useCachedLoad } from '@/data/offline';
 import { PaperView } from '@/features/paper/PaperView';
-import { useLoad } from '@/features/result/useLoad';
 
 /**
  * F-22 — a previous year's question paper with the answers on it.
@@ -23,11 +22,10 @@ export default function PaperRoute() {
   const load = useCallback(async () => {
     // Imported mock solutions are available only through the submitted-test review flow.
     if (isImportedTest(id)) throw new Error('Mock tests are not previous-year papers');
-    const api = getApi();
-    const [meta, questions] = await Promise.all([api.getTestMeta(id), api.getPaper(id)]);
-    return { meta, questions };
+    const cache = await getPublicReadCache();
+    return cache.readTestBundle(id);
   }, [id]);
-  const { done, data, failed } = useLoad(`${id}:${attempt}`, load);
+  const { done, data, failed } = useCachedLoad(`${id}:${attempt}`, load);
   const paper = done ? data : undefined;
 
   return (

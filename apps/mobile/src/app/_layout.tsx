@@ -17,15 +17,17 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { colors } from '@tslprb/design-tokens';
 import { initI18n } from '@tslprb/i18n';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { useLangStore } from '@/data/lang';
+import { AnswerSyncCoordinator } from '@/data/offline';
 import { webLangOverride } from '@/data/langOverride';
+import { testResultHref } from '@/data/testRoutes';
 
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
@@ -58,6 +60,15 @@ const FONTS = {
   NotoSerifTelugu_700Bold,
 };
 
+function OfflineSyncCoordinator() {
+  const router = useRouter();
+  const onSubmitted = useCallback(
+    (resultId: string) => router.replace(testResultHref(resultId)),
+    [router],
+  );
+  return <AnswerSyncCoordinator onSubmitted={onSubmitted} />;
+}
+
 export default function RootLayout() {
   const [loaded, error] = useFonts(FONTS);
   const ready = loaded || !!error;
@@ -72,6 +83,7 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.canvas }}>
       <SafeAreaProvider>
         <BottomSheetModalProvider>
+          <OfflineSyncCoordinator />
           <StatusBar style="dark" />
           <Stack
             screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.canvas } }}

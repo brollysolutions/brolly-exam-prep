@@ -1,4 +1,9 @@
-import { CATEGORIES, type CategoryId, type Post } from '@tslprb/fixtures';
+import {
+  CATEGORIES,
+  type CategoryId,
+  type ContentCategory,
+  type Post,
+} from '@/data/content';
 import { LANGS, type Lang } from '@tslprb/i18n';
 import { type ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -35,6 +40,7 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
 export type ProfileViewProps = {
   post?: Post;
   category?: CategoryId;
+  categories?: ContentCategory[];
   /**
    * F-19: a guest gets the same settings and an invitation instead of an account section.
    * There is nothing to log out of and nothing to delete, so neither exit is offered.
@@ -73,6 +79,7 @@ type PendingExit = 'logout' | 'delete';
 export function ProfileView({
   post,
   category,
+  categories = CATEGORIES,
   signedIn,
   lang,
   notifications,
@@ -88,7 +95,7 @@ export function ProfileView({
   const { t } = useTranslation();
   const [pending, setPending] = useState<PendingExit | undefined>(undefined);
   const langOptions = LANGS.map((l: Lang) => ({ value: l, label: t(`lang.${l}Short`), lang: l }));
-  const categoryLabel = CATEGORIES.find((c) => c.id === category)?.labelKey;
+  const categoryLabel = categories.find((candidate) => candidate.id === category)?.labelKey;
   /** An answer the app has not been given yet, drawn rather than guessed. */
   const EM_DASH = '—';
 

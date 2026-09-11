@@ -1,14 +1,24 @@
+import type { AttemptDetail } from '@tslprb/api-contracts';
 import type { ExamPattern, TestMeta } from '@tslprb/fixtures';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { isSectionLocked, sectionOf } from './attempt.selectors';
 import { persistedJSONStorage } from './storage';
+import type { PaperQuestion } from './api/types';
+import type { LocalAnswer, LocalAttempt } from './offline/repositories';
 
 export type Choice = 0 | 1 | 2 | 3;
 
 /** Spec section 5: idle -> running -> submitted | autoSubmitted. */
-export type AttemptStatus = 'idle' | 'running' | 'submitted' | 'autoSubmitted';
+export type AttemptStatus =
+  | 'idle'
+  | 'running'
+  | 'pendingSubmit'
+  | 'submitting'
+  | 'syncFailed'
+  | 'submitted'
+  | 'autoSubmitted';
 
 /** `goto`/`next`/`prev` outcome, so screens know whether to raise the locked toast. */
 export type GotoResult = 'ok' | 'locked' | 'invalid';
@@ -18,7 +28,11 @@ export type GotoResult = 'ok' | 'locked' | 'invalid';
  * attempt.selectors.ts is a pure function of it and screens can render from a literal.
  */
 export type AttemptState = {
+  /** Application-owned SQLite identity. */
   attemptId?: string;
+  /** FastAPI identity when this local attempt was also created online. */
+  serverAttemptId?: string;
+  resultId?: string;
   testId?: string;
   pattern?: ExamPattern;
   /** Epoch ms deadline. All timer maths is `endsAt - now`; never a decrementing counter. */
@@ -42,14 +56,24 @@ export type AttemptState = {
 };
 
 export type StartOptions = {
-  /** Server-issued attempt id; a local one is generated when omitted. */
+  /** Local SQLite attempt id; a process-local one is generated when omitted. */
   attemptId?: string;
+  /** Server-issued attempt id, independent from the local identity. */
+  serverAttemptId?: string;
   /** Server-issued deadline; `now + durationMinutes` when omitted. */
   endsAt?: number;
 };
 
 export type AttemptActions = {
   start: (test: TestMeta, options?: StartOptions) => void;
+  resumeServer: (test: TestMeta, attempt: AttemptDetail, paper: PaperQuestion[]) => void;
+  hydrateLocal: (
+    test: TestMeta,
+    attempt: LocalAttempt,
+    answers: LocalAnswer[],
+    paper: PaperQuestion[],
+  ) => void;
+  setResultId: (resultId: string) => void;
   goto: (n: number) => GotoResult;
   answer: (n: number, choice: Choice) => void;
   clear: (n: number) => void;
@@ -58,6 +82,9 @@ export type AttemptActions = {
   prev: () => GotoResult;
   submit: () => void;
   autoSubmit: () => void;
+  requestSubmission: (auto?: boolean) => void;
+  beginSubmission: () => void;
+  completeSubmission: (resultId: string, auto: boolean) => void;
   reset: () => void;
 };
 
@@ -67,6 +94,8 @@ export const ATTEMPT_STORAGE_KEY = 'tslprb.attempt';
 
 const idle: AttemptState = {
   attemptId: undefined,
+  serverAttemptId: undefined,
+  resultId: undefined,
   testId: undefined,
   pattern: undefined,
   endsAt: undefined,
@@ -105,6 +134,7 @@ export const useAttemptStore = create<AttemptStore>()(
         const base: AttemptState = {
           ...idle,
           attemptId: options?.attemptId ?? `local-${test.id}-${now.toString(36)}`,
+          serverAttemptId: options?.serverAttemptId,
           testId: test.id,
           pattern: test.pattern,
           endsAt: options?.endsAt ?? now + test.pattern.durationMinutes * 60_000,
@@ -115,6 +145,111 @@ export const useAttemptStore = create<AttemptStore>()(
         };
         set({ ...base, sectionUnlocked: withUnlocks(base) });
       },
+
+      resumeServer: (test, attempt, paper) => {
+        const previous = get();
+        const byId = new Map(paper.map((question, index) => [question.id, index + 1]));
+        const answers: Record<number, Choice> = {};
+        const marked: Record<number, true> = {};
+        const visited: Record<number, true> = {};
+        for (const answer of attempt.answers) {
+          const number = byId.get(answer.question_id);
+          if (number === undefined) continue;
+          visited[number] = true;
+          if (answer.choice !== null && answer.choice >= 0 && answer.choice <= 3)
+            answers[number] = answer.choice as Choice;
+          if (answer.marked) marked[number] = true;
+        }
+        const current =
+          previous.attemptId === attempt.id && previous.current <= test.pattern.totalQuestions
+            ? previous.current
+            : 1;
+        visited[current] = true;
+        const base: AttemptState = {
+          ...idle,
+          attemptId:
+            previous.serverAttemptId === attempt.id && previous.attemptId
+              ? previous.attemptId
+              : attempt.id,
+          serverAttemptId: attempt.id,
+          resultId:
+            previous.serverAttemptId === attempt.id || previous.attemptId === attempt.id
+              ? previous.resultId
+              : undefined,
+          testId: attempt.test_id,
+          pattern: test.pattern,
+          endsAt: Date.parse(attempt.ends_at),
+          current,
+          answers,
+          marked,
+          visited,
+          sectionUnlocked:
+            previous.attemptId === attempt.id ? previous.sectionUnlocked : [],
+          status:
+            attempt.status === 'in_progress'
+              ? 'running'
+              : attempt.status === 'auto_submitted'
+                ? 'autoSubmitted'
+                : 'submitted',
+          currentEnteredAt:
+            previous.attemptId === attempt.id ? previous.currentEnteredAt : Date.now(),
+        };
+        set({ ...base, sectionUnlocked: withUnlocks(base) });
+      },
+
+      hydrateLocal: (test, attempt, localAnswers, paper) => {
+        const byId = new Map(paper.map((question, index) => [question.id, index + 1]));
+        const answers: Record<number, Choice> = {};
+        const marked: Record<number, true> = {};
+        const visited: Record<number, true> = {};
+        for (const answer of localAnswers) {
+          const number = byId.get(answer.questionId);
+          if (number === undefined) continue;
+          if (answer.visited) visited[number] = true;
+          if (answer.choice !== null) answers[number] = answer.choice as Choice;
+          if (answer.marked) marked[number] = true;
+        }
+        const byStableId = attempt.currentQuestionId
+          ? byId.get(attempt.currentQuestionId)
+          : undefined;
+        const current =
+          byStableId ??
+          (attempt.currentQuestion <= test.pattern.totalQuestions ? attempt.currentQuestion : 1);
+        visited[current] = true;
+        const expired = attempt.endsAt <= Date.now();
+        const base: AttemptState = {
+          ...idle,
+          attemptId: attempt.id,
+          serverAttemptId: attempt.serverAttemptId,
+          resultId: attempt.resultId,
+          testId: attempt.testId,
+          pattern: test.pattern,
+          endsAt: attempt.endsAt,
+          current,
+          answers,
+          marked,
+          visited,
+          sectionUnlocked: attempt.sectionUnlocked,
+          status:
+            attempt.status === 'submitted'
+              ? 'submitted'
+              : attempt.status === 'auto_submitted' || (expired && attempt.status === 'running')
+                ? 'autoSubmitted'
+                : attempt.status === 'submitting'
+                  ? 'submitting'
+                  : attempt.status === 'sync_failed'
+                    ? 'syncFailed'
+                    : attempt.status === 'pending_submit'
+                    ? attempt.submissionAuto
+                      ? 'autoSubmitted'
+                      : 'pendingSubmit'
+                : 'running',
+          currentEnteredAt: attempt.currentEnteredAt ?? Date.now(),
+        };
+        set({ ...base, sectionUnlocked: withUnlocks(base) });
+      },
+
+      setResultId: (resultId) => set({ resultId }),
 
       goto: (n) => {
         const state = get();
@@ -177,6 +312,19 @@ export const useAttemptStore = create<AttemptStore>()(
         set({ status: 'autoSubmitted' });
       },
 
+      requestSubmission: (auto = false) => {
+        if (get().status !== 'running') return;
+        set({ status: auto ? 'autoSubmitted' : 'pendingSubmit' });
+      },
+
+      beginSubmission: () => {
+        if (!['pendingSubmit', 'autoSubmitted'].includes(get().status)) return;
+        set({ status: 'submitting' });
+      },
+
+      completeSubmission: (resultId, auto) =>
+        set({ resultId, status: auto ? 'autoSubmitted' : 'submitted' }),
+
       reset: () => set({ ...idle }),
     }),
     {
@@ -184,6 +332,8 @@ export const useAttemptStore = create<AttemptStore>()(
       storage: persistedJSONStorage(),
       partialize: (s): AttemptState => ({
         attemptId: s.attemptId,
+        serverAttemptId: s.serverAttemptId,
+        resultId: s.resultId,
         testId: s.testId,
         pattern: s.pattern,
         endsAt: s.endsAt,

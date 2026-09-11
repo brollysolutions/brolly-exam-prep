@@ -1,6 +1,7 @@
 import Constants from 'expo-constants';
 import { useRouter } from 'expo-router';
 
+import { useContentData } from '@/data/content';
 import { withReturnTo, type ReturnTarget } from '@/data/href';
 import { useLangStore } from '@/data/lang';
 import { useRequireAuth } from '@/data/requireAuth';
@@ -18,6 +19,7 @@ const HERE: ReturnTarget = '/(tabs)/profile';
 
 /** F-14 — profile and settings. */
 export default function ProfileRoute() {
+  const content = useContentData();
   const router = useRouter();
   const lang = useLangStore((s) => s.lang);
   const setLang = useLangStore((s) => s.setLang);
@@ -64,6 +66,7 @@ export default function ProfileRoute() {
     <ProfileView
       post={post}
       category={category}
+      categories={content.categories}
       signedIn={signedIn}
       lang={lang}
       notifications={notifications}

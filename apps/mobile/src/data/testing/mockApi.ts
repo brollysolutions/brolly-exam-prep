@@ -1,15 +1,21 @@
 import type {
   AnswerPatchInput,
   Attempt,
+  AttemptDetail,
   AttemptCreate,
+  Content,
   LocalizedText,
   Ok,
   PhoneSignIn,
   PhoneSignInResponse,
   Result,
+  ResultDetail as ApiResultDetail,
+  ReviewQuestion,
   SectionScore,
   SubmitResponse,
   Test,
+  TestMeta as ApiTestMeta,
+  PaperQuestion as ApiPaperQuestion,
   TestSummary,
   WrongAnswer,
 } from '@tslprb/api-contracts';
@@ -19,15 +25,23 @@ import {
   SAMPLE_RESULT,
   TESTS,
   type ExamPattern,
-  type Question as PaperQuestion,
+  type Question as FixtureQuestion,
   type TestMeta,
 } from '@tslprb/fixtures';
 import { en, te } from '@tslprb/i18n';
 
 import { useCompletedTestsStore } from '../completedTests';
+import { useAttemptStore } from '../attempt';
 import { canReviewImportedTest } from '../importedAttempt';
 
-import { ApiError, type AppApi, type ResultDetail } from './types';
+import {
+  ApiError,
+  type AppApi,
+  type PaperQuestion,
+  type ResultDetail,
+  type ReviewPaperQuestion,
+} from '../api/types';
+import { mapPaperQuestion, mapResultDetail, mapReviewQuestion, mapTestMeta } from '../api/mappers';
 
 /** The dev OTP accepted for any phone (mirrors services/api's dev code, spec 10). */
 export const DEV_OTP = '123456';
@@ -81,7 +95,48 @@ function findMeta(id: string): TestMeta {
   return meta;
 }
 
-const paperOf = (meta: TestMeta): PaperQuestion[] => paperForTest(meta);
+const paperOf = (meta: TestMeta): FixtureQuestion[] => paperForTest(meta);
+
+function toApiMeta(meta: TestMeta): ApiTestMeta {
+  return {
+    id: meta.id,
+    kind: meta.kind,
+    title: meta.title,
+    pattern: {
+      id: meta.pattern.id,
+      post: meta.pattern.post,
+      total_questions: meta.pattern.totalQuestions,
+      duration_minutes: meta.pattern.durationMinutes,
+      marks_per_correct: meta.pattern.marksPerCorrect,
+      negative_per_wrong: meta.pattern.negativePerWrong,
+      qualifying_only: meta.pattern.qualifyingOnly,
+      sections: meta.pattern.sections.map((section) => ({
+        id: section.id,
+        label_key: section.labelKey,
+        questions: section.questions,
+        unlock_after: section.unlockAfter ?? null,
+      })),
+      verified: meta.pattern.verified,
+      source: meta.pattern.source,
+    },
+    full_mocks_only: meta.fullMocksOnly ?? false,
+    listed: meta.listed ?? true,
+    free: meta.free,
+    attempted: meta.attempted
+      ? { best_score: meta.attempted.bestScore, attempts: meta.attempted.attempts }
+      : null,
+  };
+}
+
+function toApiPaper(question: FixtureQuestion): ApiPaperQuestion {
+  return {
+    id: question.id,
+    section: question.section,
+    text: question.text,
+    options: { en: [...question.options.en], te: [...question.options.te] },
+    avg_seconds: question.avgSeconds,
+  };
+}
 
 /**
  * SAMPLE_RESULT widened onto ResultDetail. The return annotation is the compile-time check
@@ -99,6 +154,32 @@ const sampleDetail = (): ResultDetail => ({
   })),
   review: SAMPLE_RESULT.review.map((r) => ({ ...r })),
 });
+
+function toApiResultDetail(detail: ResultDetail): ApiResultDetail {
+  return {
+    id: detail.id,
+    test_title_n: detail.testTitleN,
+    title: detail.title ?? null,
+    score: detail.score,
+    max_score: detail.maxScore,
+    cutoff_pct: detail.cutoffPct,
+    qualified: detail.qualified,
+    rank: detail.rank ?? null,
+    total_candidates: detail.totalCandidates ?? null,
+    accuracy_pct: detail.accuracyPct,
+    avg_seconds_per_question: detail.avgSecondsPerQuestion,
+    negative_marks: detail.negativeMarks,
+    correct: detail.correct,
+    wrong: detail.wrong,
+    skipped: detail.skipped,
+    actions: detail.actions,
+    review: detail.review.map((row) => ({
+      question_no: row.questionNo,
+      your: row.your,
+      seconds: row.seconds,
+    })),
+  };
+}
 
 /**
  * Largest-remainder apportionment: splits `total` across `weights` so the parts are as
@@ -160,6 +241,21 @@ export class MockApi implements AppApi {
     return { status: 'ok' };
   }
 
+  async getContent(): Promise<Content> {
+    await latency();
+    return {
+      version: 'mock',
+      notices: [],
+      affairs: [],
+      study_sections: [],
+      exam_info: { pwt_date: '', label: { en: '', te: '' } },
+      categories: [],
+      cost_rows: { en: [], te: [] },
+      physical_standards: [],
+      standards_notification_year: 0,
+    };
+  }
+
   /**
    * The number is the whole credential (the OTP step went on 2026-09-07), so there is nothing
    * to check: a number that has been seen before comes back to the same user id, and one that
@@ -180,19 +276,35 @@ export class MockApi implements AppApi {
     return toTest(findMeta(id));
   }
 
-  async listTestMetas(): Promise<TestMeta[]> {
+  async listTestCatalog(): Promise<ApiTestMeta[]> {
     await latency();
-    return TESTS;
+    return TESTS.map(toApiMeta);
+  }
+
+  async getTestMetaResponse(id: string): Promise<ApiTestMeta> {
+    await latency();
+    return toApiMeta(findMeta(id));
+  }
+
+  async getTestPaper(id: string): Promise<ApiPaperQuestion[]> {
+    await latency();
+    return paperOf(findMeta(id)).map(toApiPaper);
+  }
+
+  async listTestMetas(): Promise<TestMeta[]> {
+    return (await this.listTestCatalog()).map(mapTestMeta);
   }
 
   async getTestMeta(id: string): Promise<TestMeta> {
-    await latency();
-    return findMeta(id);
+    return mapTestMeta(await this.getTestMetaResponse(id));
   }
 
   async getPaper(testId: string): Promise<PaperQuestion[]> {
-    await latency();
-    return paperOf(findMeta(testId));
+    if (isImportedTest(testId)) {
+      await latency();
+      return paperOf(findMeta(testId));
+    }
+    return (await this.getTestPaper(testId)).map(mapPaperQuestion);
   }
 
   async createAttempt(body: AttemptCreate): Promise<Attempt> {
@@ -218,6 +330,40 @@ export class MockApi implements AppApi {
     return { ok: true };
   }
 
+  async getAttempt(id: string): Promise<AttemptDetail> {
+    await latency();
+    const row = this.attempts.get(id);
+    if (!row) throw new ApiError(404, 'attempt_not_found', `No attempt ${id}`);
+    return {
+      ...row.attempt,
+      answers: [...row.answers.values()].map((answer) => ({
+        question_id: answer.question_id,
+        choice: answer.choice ?? null,
+        marked: answer.marked ?? false,
+      })),
+    };
+  }
+
+  async getAttemptPaper(id: string): Promise<ApiPaperQuestion[]> {
+    const row = this.attempts.get(id);
+    if (!row) throw new ApiError(404, 'attempt_not_found', `No attempt ${id}`);
+    return this.getTestPaper(row.testId);
+  }
+
+  async getAttemptMeta(id: string): Promise<ApiTestMeta> {
+    const row = this.attempts.get(id);
+    if (!row) throw new ApiError(404, 'attempt_not_found', `No attempt ${id}`);
+    return this.getTestMetaResponse(row.testId);
+  }
+
+  async getAttemptPaperData(id: string): Promise<PaperQuestion[]> {
+    return (await this.getAttemptPaper(id)).map(mapPaperQuestion);
+  }
+
+  async getAttemptMetaData(id: string): Promise<TestMeta> {
+    return mapTestMeta(await this.getAttemptMeta(id));
+  }
+
   async submitAttempt(attemptId: string): Promise<SubmitResponse> {
     await latency();
     const row = this.attempts.get(attemptId);
@@ -239,13 +385,60 @@ export class MockApi implements AppApi {
    * The demo has a single analysis payload, so every id resolves to it — unlike
    * `getResult`, which is the contract endpoint and 404s on an unknown id.
    */
-  async getResultDetail(_id: string): Promise<ResultDetail> {
+  async getResultDetailResponse(id: string): Promise<ApiResultDetail> {
     await latency();
-    if (isImportedTest(_id)) {
-      if (!canReviewImportedTest(_id)) throw new ApiError(403, 'test_not_submitted');
-      return useCompletedTestsStore.getState().tests[_id].result;
+    if (isImportedTest(id)) {
+      if (!canReviewImportedTest(id)) throw new ApiError(403, 'test_not_submitted');
+      return toApiResultDetail(useCompletedTestsStore.getState().tests[id].result);
     }
-    return sampleDetail();
+    if (!this.results.has(id)) throw new ApiError(404, 'result_not_found', `No result ${id}`);
+    return toApiResultDetail({ ...sampleDetail(), id });
+  }
+
+  async getResultPaper(id: string): Promise<ReviewQuestion[]> {
+    await latency();
+    let testId: string;
+    let answers = new Map<string, AnswerPatchInput>();
+    if (isImportedTest(id)) {
+      if (!canReviewImportedTest(id)) throw new ApiError(403, 'test_not_submitted');
+      testId = id;
+      const state = useAttemptStore.getState();
+      const importedPaper = paperOf(findMeta(testId));
+      answers = new Map(
+        importedPaper.map((question, index) => [
+          question.id,
+          {
+            question_id: question.id,
+            choice: state.answers[index + 1] ?? null,
+            marked: state.marked[index + 1] === true,
+          },
+        ]),
+      );
+    } else {
+      const result = this.results.get(id);
+      if (!result) throw new ApiError(404, 'result_not_found', `No result ${id}`);
+      testId = result.testId;
+      answers = this.attempts.get(result.attemptId)?.answers ?? answers;
+    }
+    return paperOf(findMeta(testId)).map((question, index) => {
+      const answer = answers.get(question.id);
+      return {
+        ...toApiPaper(question),
+        your_choice: answer?.choice ?? null,
+        marked: answer?.marked ?? false,
+        correct_choice: question.correct,
+        explanation: question.explanation,
+        seconds: SAMPLE_RESULT.review[index]?.seconds ?? question.avgSeconds,
+      };
+    });
+  }
+
+  async getResultDetail(id: string): Promise<ResultDetail> {
+    return mapResultDetail(await this.getResultDetailResponse(id));
+  }
+
+  async getReviewPaper(id: string): Promise<ReviewPaperQuestion[]> {
+    return (await this.getResultPaper(id)).map(mapReviewQuestion);
   }
 
   /**

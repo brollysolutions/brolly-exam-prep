@@ -6,7 +6,7 @@ import {
   type Post,
   type StandardKey,
   type StandardsGroup,
-} from '@tslprb/fixtures';
+} from '@/data/content';
 
 /** What the candidate typed, already parsed. Every measurement is optional: the form is a draft. */
 export type EligibilityInput = {
@@ -125,7 +125,7 @@ export function evaluate(
   const improve = rows.filter((r) => r.pass === false).map((r) => r.key);
   const verdict: Verdict = improve.length
     ? 'notYet'
-    : rows.some((r) => r.pass === undefined)
+    : rows.length === 0 || rows.some((r) => r.pass === undefined)
       ? 'incomplete'
       : 'eligible';
 

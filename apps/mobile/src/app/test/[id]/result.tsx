@@ -1,12 +1,15 @@
-import { isImportedTest } from '@tslprb/fixtures';
+import { isImportedTest, useContentData } from '@/data/content';
 import { Redirect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { getApi } from '@/data/api';
+import { useCompletedTestsStore } from '@/data/completedTests';
+import { getResultReadCache, useCachedLoad } from '@/data/offline';
+import { offlineUserId, useSessionStore } from '@/data/session';
 import { testIdFromRoute, testResultHref, testSolutionsHref } from '@/data/testRoutes';
+import { useNetwork } from '@/data/useNetwork';
 import { ResultView } from '@/features/result/ResultView';
 import { SubmittedTestGate } from '@/features/result/SubmittedTestGate';
-import { useLoad } from '@/features/result/useLoad';
 
 /** F-12 — result & analysis for one test. `id` is the test id, as in the spec's route table. */
 export default function ResultRoute() {
@@ -22,10 +25,21 @@ export default function ResultRoute() {
 
 function ResultContent({ id }: { id: string }) {
   const router = useRouter();
+  const { t } = useTranslation();
   const [attempt, setAttempt] = useState(0);
+  const { offline } = useNetwork();
+  const userId = useSessionStore(offlineUserId);
+  const content = useContentData();
+  const importedResult = useCompletedTestsStore((state) => state.tests[id]?.result);
 
-  const load = useCallback(() => getApi().getResultDetail(id), [id]);
-  const { done, data, failed } = useLoad(`${id}:${attempt}`, load);
+  const load = useCallback(async () => {
+    if (isImportedTest(id) && importedResult) {
+      return { fresh: Promise.resolve(importedResult) };
+    }
+    if (!userId) return { fresh: Promise.reject(new Error('No result cache owner')) };
+    return (await getResultReadCache()).readDetail({ userId }, id, { refresh: !offline });
+  }, [id, importedResult, offline, userId]);
+  const { done, data, failed } = useCachedLoad(`${id}:${attempt}`, load);
 
   const openSolutions = useCallback(() => {
     router.push(testSolutionsHref(id));
@@ -35,7 +49,9 @@ function ResultContent({ id }: { id: string }) {
     <ResultView
       reviewAll={isImportedTest(id)}
       result={done ? data : undefined}
+      costRows={content.costRows}
       failed={failed}
+      failureMessage={offline ? t('result.offlineNotCached') : undefined}
       onBack={() => router.back()}
       onRetry={() => setAttempt((n) => n + 1)}
       onSeeWrong={openSolutions}

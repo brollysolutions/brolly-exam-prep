@@ -1,4 +1,4 @@
-import { SI_MOCK_01_ID } from '@tslprb/fixtures';
+import { SI_MOCK_01_ID } from '@/data/content';
 
 import { TestAttemptScreen } from '@/features/attempt/TestAttemptScreen';
 

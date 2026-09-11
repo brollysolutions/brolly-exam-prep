@@ -1,6 +1,11 @@
 import Storage from 'expo-sqlite/kv-store';
 
-import { SESSION_STORAGE_KEY, useSessionStore } from '../session';
+import {
+  hasBackendIdentity,
+  offlineUserId,
+  SESSION_STORAGE_KEY,
+  useSessionStore,
+} from '../session';
 
 const read = () => useSessionStore.getState();
 
@@ -21,12 +26,14 @@ describe('session store', () => {
 
   it('records the onboarding answers', () => {
     read().setPhone('9876543210');
+    read().setUserId('user-1');
     read().setToken('tok-1');
     read().setPost('si');
     read().setCategory('bc');
     read().completeOnboarding();
     expect(read()).toMatchObject({
       phone: '9876543210',
+      userId: 'user-1',
       token: 'tok-1',
       post: 'si',
       category: 'bc',
@@ -42,6 +49,7 @@ describe('session store', () => {
 
   it('logout resets identity and onboarding answers', () => {
     read().setPhone('9876543210');
+    read().setUserId('user-1');
     read().setToken('tok-1');
     read().setPost('pc');
     read().setCategory('sc');
@@ -51,12 +59,29 @@ describe('session store', () => {
 
     expect(read()).toMatchObject({
       phone: undefined,
+      userId: undefined,
       token: undefined,
       post: undefined,
       category: undefined,
       onboarded: false,
     });
     expect(read().signedIn()).toBe(false);
+  });
+
+  it('treats only a userId + token session as a backend identity', () => {
+    // A phone-only (legacy/degraded) session is NOT a backend identity: it may play and store
+    // locally but must never drive a server attempt create/submit.
+    expect(hasBackendIdentity({ ...read(), phone: '2222222222', token: 'tok-1' })).toBe(false);
+    expect(offlineUserId({ ...read(), phone: '2222222222', token: 'tok-1' })).toBe(
+      'phone:2222222222',
+    );
+    // A token with no userId is still not a backend identity.
+    expect(hasBackendIdentity({ ...read(), token: 'tok-1' })).toBe(false);
+    // A userId with no token is not yet authenticated.
+    expect(hasBackendIdentity({ ...read(), userId: 'user-1' })).toBe(false);
+    // Only both together qualify, and the scope key is the stable user form.
+    expect(hasBackendIdentity({ ...read(), userId: 'user-1', token: 'tok-1' })).toBe(true);
+    expect(offlineUserId({ ...read(), userId: 'user-1', token: 'tok-1' })).toBe('user:user-1');
   });
 
   it('persists through the shared kv storage', () => {

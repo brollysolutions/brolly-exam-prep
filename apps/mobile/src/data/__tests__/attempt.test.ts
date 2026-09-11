@@ -187,6 +187,17 @@ describe('submit, autoSubmit and reset', () => {
     expect(snapshot().status).toBe('submitted');
   });
 
+  it('locks a durable pending submission and completes it with the server result id', () => {
+    store().requestSubmission(false);
+    expect(snapshot().status).toBe('pendingSubmit');
+    store().answer(1, 2);
+    expect(snapshot().answers[1]).toBeUndefined();
+    store().beginSubmission();
+    expect(snapshot().status).toBe('submitting');
+    store().completeSubmission('result-1', false);
+    expect(snapshot()).toMatchObject({ status: 'submitted', resultId: 'result-1' });
+  });
+
   it('reset returns the store to idle', () => {
     store().answer(1, 1);
     store().reset();

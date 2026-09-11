@@ -2,9 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers import attempts, auth, health, results, tests
+from app.routers import attempts, auth, content, health, results, tests
 
-app = FastAPI(title="TSLPRB API", version="0.1.0")
+app = FastAPI(title="TSLPRB API", version="0.2.0")
 
 _cors_origins = settings.cors_origin_list
 # Never combine a wildcard origin with allow_credentials=True: Starlette's
@@ -22,6 +22,7 @@ app.add_middleware(
 
 app.include_router(health.router)
 app.include_router(auth.router)
+app.include_router(content.router)
 app.include_router(tests.router)
 app.include_router(attempts.router)
 app.include_router(results.router)

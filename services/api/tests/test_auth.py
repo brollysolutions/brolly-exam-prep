@@ -68,21 +68,26 @@ async def test_the_old_otp_endpoints_are_gone(client):
 async def test_full_attempt_flow_still_works_alongside_sign_in(client):
     """Sanity check that the attempt/submit/result flow (fixtures, not DB)
     works end to end -- exercises the whole scaffold."""
-    attempt_resp = await client.post("/v1/attempts", json={"test_id": "test-pwt-07"})
+    sign_in = await client.post("/v1/auth/phone", json={"phone": "9000044444"})
+    headers = {"Authorization": f"Bearer {sign_in.json()['token']}"}
+    attempt_resp = await client.post(
+        "/v1/attempts", json={"test_id": "test-pwt-07"}, headers=headers
+    )
     assert attempt_resp.status_code == 200
     attempt = attempt_resp.json()
 
     patch_resp = await client.patch(
         f"/v1/attempts/{attempt['id']}/answers",
         json={"question_id": "q-arith-train-speed", "choice": 2, "marked": False},
+        headers=headers,
     )
     assert patch_resp.status_code == 200
 
-    submit_resp = await client.post(f"/v1/attempts/{attempt['id']}/submit")
+    submit_resp = await client.post(f"/v1/attempts/{attempt['id']}/submit", headers=headers)
     assert submit_resp.status_code == 200
     result_id = submit_resp.json()["result_id"]
 
-    result_resp = await client.get(f"/v1/results/{result_id}")
+    result_resp = await client.get(f"/v1/results/{result_id}", headers=headers)
     assert result_resp.status_code == 200
     result = result_resp.json()
     assert result["score"] >= 1.0  # got the one answered question correct

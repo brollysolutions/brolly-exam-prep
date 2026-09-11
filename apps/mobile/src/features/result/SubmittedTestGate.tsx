@@ -1,4 +1,4 @@
-import { isImportedTest } from '@tslprb/fixtures';
+import { isImportedTest } from '@/data/content';
 import { Redirect } from 'expo-router';
 import type { ReactNode } from 'react';
 

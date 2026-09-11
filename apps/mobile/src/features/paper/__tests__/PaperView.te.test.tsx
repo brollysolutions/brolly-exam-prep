@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react-native';
-import { colors } from '@tslprb/design-tokens';
 import { buildPaper, type SectionSpec } from '@tslprb/fixtures';
 import { initI18n } from '@tslprb/i18n';
 
@@ -7,7 +6,6 @@ import { useLangStore } from '@/data/lang';
 
 import { PaperView } from '../PaperView';
 
-/** One question per section: enough to check the face, small enough to read as a snapshot. */
 const SECTIONS: SectionSpec[] = [
   { id: 'reasoning', labelKey: 'test.sections.reasoning', questions: 1 },
   { id: 'gs', labelKey: 'test.sections.gs', questions: 1 },
@@ -20,21 +18,19 @@ describe('PaperView (te)', () => {
     initI18n('te');
   });
 
-  it('sets the paper in Telugu and keeps the correct-answer bar on the left edge', async () => {
+  it('renders Telugu public questions without answer-key decoration', async () => {
     await render(
       <PaperView title="PWT 2022 — SCT PC" questions={QUESTIONS} sections={SECTIONS} lang="te" />,
     );
-    expect(screen.getByTestId('paper-header')).toHaveStyle({ flexDirection: 'row' });
-    // The 3 px gold edge follows the reading start, the left-hand side. `accentStrong` (3.4:1)
-    // is the edge token; `accentInk` is the gold that carries words (F-30).
-    QUESTIONS.forEach((question, i) => {
-      const marked = screen.getByTestId(`paper-option-${i + 1}-${question.correct}`);
-      expect(marked).toHaveStyle({ borderLeftWidth: 3, borderLeftColor: colors.accentStrong });
-      expect(marked).not.toHaveStyle({ borderRightWidth: 3 });
-    });
     const stem = screen.getByTestId('paper-stem-1');
     expect(stem).toHaveTextContent(QUESTIONS[0].text.te);
     expect(stem).toHaveStyle({ fontFamily: 'NotoSansTelugu_400Regular' });
+    expect(
+      screen.queryByTestId(`paper-tick-1-${QUESTIONS[0].correct}`, {
+        includeHiddenElements: true,
+      }),
+    ).toBeNull();
+    expect(screen.queryByText(QUESTIONS[0].explanation.te)).toBeNull();
     expect(screen.toJSON()).toMatchSnapshot();
   });
 });

@@ -1,10 +1,31 @@
-import type { AnswerPatchInput, ApiClient } from '@tslprb/api-contracts';
-import type { Question as PaperQuestion, TestMeta } from '@tslprb/fixtures';
-
-export type { PaperQuestion };
+import type { AnswerPatchInput, ApiV2Client } from '@tslprb/api-contracts';
+import type { TestMeta } from '@tslprb/fixtures';
 
 /** The two-language string every fixture carries. */
 export type LocalizedCopy = { en: string; te: string };
+
+export type LocalizedOptions = {
+  en: [string, string, string, string];
+  te: [string, string, string, string];
+};
+
+/** Safe question delivered before submission. There is deliberately no answer key here. */
+export type PaperQuestion = {
+  id: string;
+  section: string;
+  text: LocalizedCopy;
+  options: LocalizedOptions;
+  avgSeconds: number;
+};
+
+/** Authorized review question returned only for a submitted result owned by this user. */
+export type ReviewPaperQuestion = PaperQuestion & {
+  yourChoice: number | null;
+  marked: boolean;
+  correct: number;
+  explanation: LocalizedCopy;
+  seconds: number;
+};
 
 /** One "do these three next" drill card on the result screen. */
 export type ResultAction = {
@@ -74,15 +95,18 @@ export type ResultDetail = {
 };
 
 /**
- * `ApiClient` (one method per /v1 endpoint) plus the app-only reads the contract cannot
- * express: the exam pattern that drives section locking, the answer key the solutions
- * screen needs, and the analysis payload above.
+ * The complete v0.2 wire client plus camelCase reads used by the existing mobile UI. Keeping
+ * both surfaces here lets HttpApi validate snake_case payloads before mapping them once at the
+ * boundary instead of leaking wire naming into screens and stores.
  */
-export interface AppApi extends ApiClient {
+export interface AppApi extends ApiV2Client {
   listTestMetas(): Promise<TestMeta[]>;
   getTestMeta(id: string): Promise<TestMeta>;
   getPaper(testId: string): Promise<PaperQuestion[]>;
+  getAttemptMetaData(attemptId: string): Promise<TestMeta>;
+  getAttemptPaperData(attemptId: string): Promise<PaperQuestion[]>;
   getResultDetail(id: string): Promise<ResultDetail>;
+  getReviewPaper(resultId: string): Promise<ReviewPaperQuestion[]>;
 }
 
 export type { AnswerPatchInput };

@@ -23,7 +23,14 @@ import {
 } from '@/ui';
 
 /** The four confirmation cards of the attempt screen (prototype `D` map). */
-export type AttemptDialogKind = 'exit' | 'submit' | 'resume' | 'auto';
+export type AttemptDialogKind =
+  | 'exit'
+  | 'submit'
+  | 'resume'
+  | 'auto'
+  | 'pending'
+  | 'submitting'
+  | 'submitError';
 
 export type AttemptToast = {
   text: string;
@@ -74,6 +81,8 @@ export function AttemptNotices({ offline = false, toast }: AttemptNoticesProps) 
 export type AttemptDialogsProps = {
   kind: AttemptDialogKind | null;
   counts: PaletteCounts;
+  /** Durable SQLite submission error, shown only by the existing permanent-error dialog. */
+  submitErrorDetail?: string;
   /** Close the dialog and go back to the paper (Stay / Go back / Continue). */
   onDismiss: () => void;
   /** Exit dialog, secondary: leave the attempt. */
@@ -88,6 +97,7 @@ export type AttemptDialogsProps = {
 export function AttemptDialogs({
   kind,
   counts,
+  submitErrorDetail,
   onDismiss,
   onLeave,
   onSubmit,
@@ -138,6 +148,37 @@ export function AttemptDialogs({
         body={t('test.autoBody')}
         primary={{ label: t('test.seeQueue'), onPress: onSeeResult }}
         testID="dialog-auto"
+      />
+      <Dialog
+        visible={kind === 'pending'}
+        tone="accent"
+        kicker={t('test.pendingKicker')}
+        title={t('test.pendingTitle')}
+        body={t('test.pendingBody')}
+        primary={{ label: t('test.backToTests'), onPress: onLeave }}
+        secondary={{ label: t('test.retrySubmit'), onPress: onSeeResult }}
+        testID="dialog-pending-submit"
+      />
+      <Dialog
+        visible={kind === 'submitting'}
+        tone="accent"
+        kicker={t('test.submittingKicker')}
+        title={t('test.submittingTitle')}
+        body={t('test.submittingBody')}
+        testID="dialog-submitting"
+      />
+      <Dialog
+        visible={kind === 'submitError'}
+        tone="danger"
+        kicker={t('test.submitErrorKicker')}
+        title={t('test.submitErrorTitle')}
+        body={
+          submitErrorDetail
+            ? `${t('test.submitErrorBody')}\n\n${t('test.submitErrorReason', { reason: submitErrorDetail })}`
+            : t('test.submitErrorBody')
+        }
+        primary={{ label: t('test.backToTests'), onPress: onLeave }}
+        testID="dialog-submit-error"
       />
     </>
   );

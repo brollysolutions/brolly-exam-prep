@@ -133,10 +133,64 @@ export const TestSchema = TestSummarySchema.extend({
 });
 export type Test = z.infer<typeof TestSchema>;
 
+export const SectionSpecSchema = z.object({
+  id: z.string(),
+  label_key: z.string(),
+  questions: z.number().int().nonnegative(),
+  unlock_after: z.string().nullable().optional(),
+});
+export type SectionSpec = z.infer<typeof SectionSpecSchema>;
+
+export const ExamPatternSchema = z.object({
+  id: z.string(),
+  post: PostSchema,
+  total_questions: z.number().int().nonnegative(),
+  duration_minutes: z.number().int().positive(),
+  marks_per_correct: z.number(),
+  negative_per_wrong: z.number().nonnegative(),
+  qualifying_only: z.boolean(),
+  sections: z.array(SectionSpecSchema),
+  verified: z.boolean(),
+  source: z.string(),
+});
+export type ExamPattern = z.infer<typeof ExamPatternSchema>;
+
+export const AttemptedSummarySchema = z.object({
+  best_score: z.number(),
+  attempts: z.number().int().nonnegative(),
+});
+
+export const TestMetaSchema = z.object({
+  id: z.string(),
+  kind: z.enum(["full", "previous"]),
+  title: LocalizedTextSchema,
+  pattern: ExamPatternSchema,
+  full_mocks_only: z.boolean().default(false),
+  listed: z.boolean().default(true),
+  free: z.boolean(),
+  attempted: AttemptedSummarySchema.nullable().optional(),
+});
+export type TestMeta = z.infer<typeof TestMetaSchema>;
+
+export const PaperQuestionSchema = z.object({
+  id: z.string(),
+  section: z.string(),
+  text: LocalizedTextSchema,
+  options: LocalizedOptionsSchema,
+  avg_seconds: z.number().int().nonnegative(),
+});
+export type PaperQuestion = z.infer<typeof PaperQuestionSchema>;
+
 // --------------------------------------------------------------- Attempts --
 
 export const AttemptCreateSchema = z.object({
   test_id: z.string(),
+  /**
+   * Optional client-owned idempotency key (the device's local attempt id). A retried
+   * create with the same key returns the same server attempt, so an offline-created
+   * attempt can be backfilled with a server id without risking a duplicate POST.
+   */
+  client_attempt_id: z.string().optional(),
 });
 export type AttemptCreate = z.infer<typeof AttemptCreateSchema>;
 
@@ -148,6 +202,18 @@ export const AttemptSchema = z.object({
   status: z.enum(["in_progress", "submitted", "auto_submitted"]),
 });
 export type Attempt = z.infer<typeof AttemptSchema>;
+
+export const AttemptAnswerSchema = z.object({
+  question_id: z.string(),
+  choice: z.number().int().nullable(),
+  marked: z.boolean(),
+});
+export type AttemptAnswer = z.infer<typeof AttemptAnswerSchema>;
+
+export const AttemptDetailSchema = AttemptSchema.extend({
+  answers: z.array(AttemptAnswerSchema),
+});
+export type AttemptDetail = z.infer<typeof AttemptDetailSchema>;
 
 export const AnswerPatchSchema = z.object({
   question_id: z.string(),
@@ -209,6 +275,125 @@ export const ResultSchema = z.object({
 });
 export type Result = z.infer<typeof ResultSchema>;
 
+export const ResultActionSchema = z.object({
+  id: z.string(),
+  title: LocalizedTextSchema,
+  sub: LocalizedTextSchema,
+});
+
+export const ResultReviewRowSchema = z.object({
+  question_no: z.number().int().positive(),
+  your: z.number().int().nullable(),
+  seconds: z.number().int().nonnegative(),
+});
+
+export const ResultDetailSchema = z.object({
+  id: z.string(),
+  test_title_n: z.number().int().nonnegative(),
+  title: LocalizedTextSchema.nullable().optional(),
+  score: z.number(),
+  max_score: z.number(),
+  cutoff_pct: z.number(),
+  qualified: z.boolean(),
+  rank: z.number().int().nullable().optional(),
+  total_candidates: z.number().int().nullable().optional(),
+  accuracy_pct: z.number(),
+  avg_seconds_per_question: z.number(),
+  negative_marks: z.number(),
+  correct: z.number().int().nonnegative(),
+  wrong: z.number().int().nonnegative(),
+  skipped: z.number().int().nonnegative(),
+  actions: z.array(ResultActionSchema),
+  review: z.array(ResultReviewRowSchema),
+});
+export type ResultDetail = z.infer<typeof ResultDetailSchema>;
+
+export const ReviewQuestionSchema = PaperQuestionSchema.extend({
+  your_choice: z.number().int().nullable(),
+  marked: z.boolean(),
+  correct_choice: z.number().int(),
+  explanation: LocalizedTextSchema,
+  seconds: z.number().int().nonnegative(),
+});
+export type ReviewQuestion = z.infer<typeof ReviewQuestionSchema>;
+
+// ---------------------------------------------------------------- Content --
+
+export const NoticeSchema = z.object({
+  id: z.string(),
+  kind: z.enum(["notification", "admit_card", "exam_date", "result", "pet"]),
+  date: z.string(),
+  title: LocalizedTextSchema,
+  body: LocalizedTextSchema,
+  link: z.string().nullable().optional(),
+});
+
+export const AffairSchema = z.object({
+  id: z.string(),
+  date: z.string(),
+  category: z.enum(["india", "telangana", "world", "sports", "awards"]),
+  headline: LocalizedTextSchema,
+  summary: LocalizedTextSchema,
+});
+
+export const StudyBlockSchema = z.object({
+  kind: z.enum(["heading", "para", "bullets", "formula", "example", "tip"]),
+  text: LocalizedTextSchema.nullable().optional(),
+  items: z.array(LocalizedTextSchema).nullable().optional(),
+});
+
+export const StudyTopicSchema = z.object({
+  id: z.string(),
+  section: z.string(),
+  title: LocalizedTextSchema,
+  minutes: z.number().int().nonnegative(),
+  blocks: z.array(StudyBlockSchema),
+});
+
+export const StudySectionSchema = z.object({
+  id: z.string(),
+  label_key: z.string(),
+  topics: z.array(StudyTopicSchema),
+});
+
+export const StandardSchema = z.object({
+  value: z.number(),
+  dir: z.enum(["min", "max"]),
+  verified: z.boolean(),
+});
+
+export const PhysicalStandardsSchema = z.object({
+  post: PostSchema,
+  gender: z.enum(["male", "female"]),
+  group: z.enum(["general", "st"]),
+  height: StandardSchema,
+  chest: z
+    .object({ unexpanded: StandardSchema, expansion: StandardSchema })
+    .nullable()
+    .optional(),
+  run_1600m: StandardSchema.nullable().optional(),
+  run_800m: StandardSchema.nullable().optional(),
+  run_100m: StandardSchema.nullable().optional(),
+  long_jump: StandardSchema,
+  shot_put: StandardSchema,
+  shot_kg: z.number(),
+});
+
+export const ContentSchema = z.object({
+  version: z.string(),
+  notices: z.array(NoticeSchema),
+  affairs: z.array(AffairSchema),
+  study_sections: z.array(StudySectionSchema),
+  exam_info: z.object({ pwt_date: z.string(), label: LocalizedTextSchema }),
+  categories: z.array(
+    z.object({ id: z.string(), label_key: z.string(), qualifying_pct: z.number() }),
+  ),
+  cost_rows: z.record(z.array(z.array(z.string()))),
+  physical_standards: z.array(PhysicalStandardsSchema),
+  standards_notification_year: z.number().int(),
+});
+export type Content = z.infer<typeof ContentSchema>;
+
 // ------------------------------------------------------------- ApiClient --
 
 /**
@@ -229,4 +414,20 @@ export interface ApiClient {
   submitAttempt(attemptId: string): Promise<SubmitResponse>;
 
   getResult(id: string): Promise<Result>;
+}
+
+/**
+ * Complete v0.2 HTTP surface. The `*Response` suffix distinguishes raw snake_case wire
+ * projections from the fixture-shaped methods that existing app adapters map to camelCase.
+ */
+export interface ApiV2Client extends ApiClient {
+  getContent(): Promise<Content>;
+  listTestCatalog(): Promise<TestMeta[]>;
+  getTestMetaResponse(id: string): Promise<TestMeta>;
+  getTestPaper(id: string): Promise<PaperQuestion[]>;
+  getAttempt(id: string): Promise<AttemptDetail>;
+  getAttemptPaper(id: string): Promise<PaperQuestion[]>;
+  getAttemptMeta(id: string): Promise<TestMeta>;
+  getResultDetailResponse(id: string): Promise<ResultDetail>;
+  getResultPaper(id: string): Promise<ReviewQuestion[]>;
 }

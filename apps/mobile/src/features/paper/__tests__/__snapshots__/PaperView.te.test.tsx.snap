@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer bar on the left edge 1`] = `
+exports[`PaperView (te) renders Telugu public questions without answer-key decoration 1`] = `
 <View
   className="flex-1 bg-canvas"
   style={
@@ -601,16 +601,8 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                 </View>
               </View>
               <View
-                accessibilityLabel="ఇ · 100 · సరైన జవాబు"
+                accessibilityLabel="ఇ · 100"
                 className="rounded-sm px-3 py-2"
-                style={
-                  {
-                    "backgroundColor": "rgba(194,155,56,0.14)",
-                    "borderLeftColor": "#a17f2a",
-                    "borderLeftWidth": 3,
-                    "paddingLeft": 9,
-                  }
-                }
                 testID="paper-option-1-2"
               >
                 <View
@@ -626,7 +618,7 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                 >
                   <Text
                     accessibilityElementsHidden={true}
-                    className="text-ink"
+                    className="text-ink3"
                     importantForAccessibility="no"
                     style={
                       {
@@ -645,11 +637,11 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                   </Text>
                   <Text
                     accessibilityElementsHidden={true}
-                    className="text-ink flex-1"
+                    className="text-ink2 flex-1"
                     importantForAccessibility="no"
                     style={
                       {
-                        "fontFamily": "NotoSansTelugu_600SemiBold",
+                        "fontFamily": "NotoSansTelugu_400Regular",
                         "fontSize": 15,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
@@ -662,31 +654,6 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                   >
                     100
                   </Text>
-                  <View
-                    className="h-5 w-5 items-center justify-center rounded-full bg-accentStrong"
-                    testID="paper-disc-1-2"
-                  >
-                    <Text
-                      accessibilityElementsHidden={true}
-                      className="text-ink"
-                      importantForAccessibility="no"
-                      style={
-                        {
-                          "fontFamily": "Inter_700Bold",
-                          "fontSize": 13,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 19.5,
-                          "textAlign": "left",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        }
-                      }
-                      testID="paper-tick-1-2"
-                    >
-                      ✓
-                    </Text>
-                  </View>
                 </View>
               </View>
               <View
@@ -745,74 +712,6 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                   </Text>
                 </View>
               </View>
-            </View>
-            <View
-              className="mt-3 border-t border-line pt-3"
-              style={
-                {
-                  "alignItems": undefined,
-                  "flexDirection": "column",
-                  "gap": 8,
-                  "justifyContent": undefined,
-                }
-              }
-            >
-              <View
-                className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
-                style={
-                  {
-                    "justifyContent": "center",
-                    "minHeight": 24,
-                  }
-                }
-              >
-                <View
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "flexWrap": undefined,
-                      "gap": 4,
-                      "justifyContent": undefined,
-                    }
-                  }
-                >
-                  <Text
-                    className="text-ink3"
-                    style={
-                      {
-                        "fontFamily": "NotoSansTelugu_700Bold",
-                        "fontSize": 12,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 19.8,
-                        "textAlign": "left",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
-                      }
-                    }
-                  >
-                    ఎందుకు
-                  </Text>
-                </View>
-              </View>
-              <Text
-                className="text-ink2"
-                style={
-                  {
-                    "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 15,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 24.8,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                ఇచ్చిన వాటిలో 8, 27, 64, 125 అన్నీ ఘనాలు (2³, 3³, 4³, 5³). 100 మాత్రం ఒక వర్గం (10²) — ఘనం కాదు. కాబట్టి 100 సరిపోదు.
-              </Text>
             </View>
           </View>
           <View
@@ -991,16 +890,8 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                 </View>
               </View>
               <View
-                accessibilityLabel="ఆ · గోదావరి · సరైన జవాబు"
+                accessibilityLabel="ఆ · గోదావరి"
                 className="rounded-sm px-3 py-2"
-                style={
-                  {
-                    "backgroundColor": "rgba(194,155,56,0.14)",
-                    "borderLeftColor": "#a17f2a",
-                    "borderLeftWidth": 3,
-                    "paddingLeft": 9,
-                  }
-                }
                 testID="paper-option-2-1"
               >
                 <View
@@ -1016,7 +907,7 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                 >
                   <Text
                     accessibilityElementsHidden={true}
-                    className="text-ink"
+                    className="text-ink3"
                     importantForAccessibility="no"
                     style={
                       {
@@ -1035,11 +926,11 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                   </Text>
                   <Text
                     accessibilityElementsHidden={true}
-                    className="text-ink flex-1"
+                    className="text-ink2 flex-1"
                     importantForAccessibility="no"
                     style={
                       {
-                        "fontFamily": "NotoSansTelugu_600SemiBold",
+                        "fontFamily": "NotoSansTelugu_400Regular",
                         "fontSize": 15,
                         "fontVariant": undefined,
                         "letterSpacing": 0,
@@ -1052,31 +943,6 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                   >
                     గోదావరి
                   </Text>
-                  <View
-                    className="h-5 w-5 items-center justify-center rounded-full bg-accentStrong"
-                    testID="paper-disc-2-1"
-                  >
-                    <Text
-                      accessibilityElementsHidden={true}
-                      className="text-ink"
-                      importantForAccessibility="no"
-                      style={
-                        {
-                          "fontFamily": "Inter_700Bold",
-                          "fontSize": 13,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 19.5,
-                          "textAlign": "left",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        }
-                      }
-                      testID="paper-tick-2-1"
-                    >
-                      ✓
-                    </Text>
-                  </View>
                 </View>
               </View>
               <View
@@ -1191,74 +1057,6 @@ exports[`PaperView (te) sets the paper in Telugu and keeps the correct-answer ba
                   </Text>
                 </View>
               </View>
-            </View>
-            <View
-              className="mt-3 border-t border-line pt-3"
-              style={
-                {
-                  "alignItems": undefined,
-                  "flexDirection": "column",
-                  "gap": 8,
-                  "justifyContent": undefined,
-                }
-              }
-            >
-              <View
-                className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
-                style={
-                  {
-                    "justifyContent": "center",
-                    "minHeight": 24,
-                  }
-                }
-              >
-                <View
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "flexWrap": undefined,
-                      "gap": 4,
-                      "justifyContent": undefined,
-                    }
-                  }
-                >
-                  <Text
-                    className="text-ink3"
-                    style={
-                      {
-                        "fontFamily": "NotoSansTelugu_700Bold",
-                        "fontSize": 12,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 19.8,
-                        "textAlign": "left",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
-                      }
-                    }
-                  >
-                    ఎందుకు
-                  </Text>
-                </View>
-              </View>
-              <Text
-                className="text-ink2"
-                style={
-                  {
-                    "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 15,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 24.8,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                గోదావరి నదిని దక్షిణ గంగా అని పిలుస్తారు. ఇది తెలంగాణ గుండా ప్రవహించే అతిపెద్ద నది.
-              </Text>
             </View>
           </View>
         </View>

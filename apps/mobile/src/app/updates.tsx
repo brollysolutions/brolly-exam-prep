@@ -1,4 +1,4 @@
-import { latestNotices } from '@tslprb/fixtures';
+import { latestNotices, useContentData } from '@/data/content';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Linking } from 'react-native';
 
@@ -9,8 +9,6 @@ import { UpdatesView } from '@/features/news/UpdatesView';
  * Sorted once at module scope: the feed is a fixture, so re-sorting it on every render would
  * only hand the list a new array to diff. When the API lands this becomes a query.
  */
-const FEED = latestNotices();
-
 /**
  * F-24 — the Board's notice board.
  *
@@ -20,13 +18,14 @@ const FEED = latestNotices();
  * `?open=<id>` is what a tapped card on Home sends: the list opens with that notice expanded.
  */
 export default function UpdatesRoute() {
+  const content = useContentData();
   const router = useRouter();
   const { open } = useLocalSearchParams<{ open?: string }>();
   const lang = useLangStore((s) => s.lang);
 
   return (
     <UpdatesView
-      notices={FEED}
+      notices={latestNotices(undefined, content.notices)}
       lang={lang}
       openId={open}
       onBack={() => router.back()}

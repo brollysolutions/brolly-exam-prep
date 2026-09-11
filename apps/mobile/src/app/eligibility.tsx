@@ -1,4 +1,4 @@
-import { standardsFor } from '@tslprb/fixtures';
+import { standardsFor, useContentData } from '@/data/content';
 import { useRouter } from 'expo-router';
 import { useMemo } from 'react';
 
@@ -17,6 +17,7 @@ import { evaluate, toInput } from '@/features/eligibility/evaluate';
  * because checking a friend's numbers must not change your own exam settings.
  */
 export default function EligibilityRoute() {
+  const content = useContentData();
   const router = useRouter();
   const sessionPost = useSessionStore((s) => s.post);
   const sessionCategory = useSessionStore((s) => s.category);
@@ -35,13 +36,14 @@ export default function EligibilityRoute() {
   const post = storedPost ?? sessionPost ?? 'pc';
   const gender = storedGender ?? 'male';
   const group = storedGroup ?? (sessionCategory === 'st' ? 'st' : 'general');
+  const standards = useMemo(
+    () => standardsFor(post, gender, group, content.physicalStandards),
+    [content.physicalStandards, gender, group, post],
+  );
 
   const result = useMemo(
-    () =>
-      checked
-        ? evaluate(toInput(post, gender, group, values), standardsFor(post, gender, group))
-        : undefined,
-    [checked, post, gender, group, values],
+    () => (checked ? evaluate(toInput(post, gender, group, values), standards) : undefined),
+    [checked, post, gender, group, values, standards],
   );
 
   return (
@@ -51,6 +53,8 @@ export default function EligibilityRoute() {
       group={group}
       values={values}
       result={result}
+      standards={standards}
+      standardsNotificationYear={content.standardsNotificationYear}
       onPost={setPost}
       onGender={setGender}
       onGroup={setGroup}

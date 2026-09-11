@@ -13,7 +13,9 @@ import { CATEGORIES, FREE_MOCK_SHORT, PWT_CONSTABLE, SAMPLE_RESULT, TESTS } from
 
 import { ApiError, getApi } from '../api';
 import { HttpApi } from '../api/http';
-import { apportion, MockApi } from '../api/mock';
+import { apportion, MockApi } from '../testing/mockApi';
+
+jest.unmock('@/data/api');
 
 const api = new MockApi();
 
@@ -63,11 +65,12 @@ describe('MockApi — tests', () => {
     expect(meta.pattern.sections[3]).toMatchObject({ id: 'telangana', unlockAfter: 'gs' });
   });
 
-  it('builds a paper with answer keys for the solutions screen', async () => {
+  it('does not expose answer keys through the public paper method', async () => {
     const paper = await api.getPaper('mock-07');
     expect(paper).toHaveLength(40);
     expect(paper[0]).toMatchObject({ section: 'arithmetic' });
-    expect(typeof paper[0].correct).toBe('number');
+    expect(paper[0]).not.toHaveProperty('correct');
+    expect(paper[0]).not.toHaveProperty('explanation');
   });
 
   it('rejects an unknown test id', async () => {
@@ -198,9 +201,11 @@ describe('MockApi — results', () => {
     await expect(api.getResult('res-nope')).rejects.toBeInstanceOf(ApiError);
   });
 
-  it('returns the SAMPLE_RESULT shape for the analysis screen', async () => {
-    const detail = await api.getResultDetail(SAMPLE_RESULT.id);
-    expect(detail).toEqual(SAMPLE_RESULT);
+  it('returns the analysis shape for a submitted result id', async () => {
+    const attempt = await api.createAttempt({ test_id: 'mock-07' });
+    const { result_id } = await api.submitAttempt(attempt.id);
+    const detail = await api.getResultDetail(result_id);
+    expect(detail).toMatchObject({ ...SAMPLE_RESULT, id: result_id });
     expect(detail.actions).toHaveLength(SAMPLE_RESULT.actions.length);
     // widened, not the fixture's frozen literal: a screen can build its own
     detail.review.push({ questionNo: 99, your: null, seconds: 4 });
@@ -213,25 +218,6 @@ describe('HttpApi', () => {
     expect(new HttpApi({ baseUrl: 'http://localhost:8000/' })).toBeInstanceOf(HttpApi);
   });
 
-  it('serves the catalogue and the paper from the fixture bank without touching the network', async () => {
-    const fetchSpy = jest.spyOn(globalThis, 'fetch');
-    const http = new HttpApi({ baseUrl: 'http://localhost:8000' });
-    await expect(http.listTestMetas()).resolves.toEqual(TESTS);
-    await expect(http.getTestMeta('mock-07')).resolves.toEqual(
-      TESTS.find((t) => t.id === 'mock-07'),
-    );
-    const paper = await http.getPaper('mock-07');
-    expect(paper).toHaveLength(FREE_MOCK_SHORT.totalQuestions);
-    // Never derived from /v1/tests: that shape has no pattern, locks or answer key.
-    expect(fetchSpy).not.toHaveBeenCalled();
-    await expect(http.getTestMeta('nope')).rejects.toMatchObject({ status: 404 });
-    fetchSpy.mockRestore();
-  });
-
-  it('still serves the fixture analysis so the result screen renders', async () => {
-    const http = new HttpApi({ baseUrl: 'http://localhost:8000' });
-    await expect(http.getResultDetail('res-1')).resolves.toEqual(SAMPLE_RESULT);
-  });
 });
 
 describe('category spelling', () => {
@@ -253,7 +239,7 @@ describe('category spelling', () => {
 });
 
 describe('getApi', () => {
-  it('returns MockApi unless EXPO_PUBLIC_API is http', () => {
-    expect(getApi()).toBeInstanceOf(MockApi);
+  it('returns HttpApi without a bundled content fallback', () => {
+    expect(getApi()).toBeInstanceOf(HttpApi);
   });
 });

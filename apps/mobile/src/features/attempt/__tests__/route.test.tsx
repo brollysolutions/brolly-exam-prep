@@ -7,11 +7,26 @@ import { AppState, BackHandler, type AppStateStatus } from 'react-native';
 import TestAttemptRoute from '@/app/test/[id]/index';
 import SIMockTestRoute from '@/app/tests/simocktest';
 import { useActivityStore } from '@/data/activity';
-import { MockApi, resetApi } from '@/data/api';
+import { resetApi } from '@/data/api';
+import { MockApi } from '@/data/testing/mockApi';
 import { useAttemptStore } from '@/data/attempt';
 import { useHistoryStore } from '@/data/history';
 import { useCompletedTestsStore } from '@/data/completedTests';
 import { useSessionStore } from '@/data/session';
+
+const durableMock = jest.requireMock<{
+  __mockDurableAttemptService: {
+    findLatest: jest.Mock;
+    restore: jest.Mock;
+    saveProgress: jest.Mock;
+  };
+}>('@/data/offline/durableAttempts').__mockDurableAttemptService;
+const syncRequestMock = jest.requireMock<{
+  requestAnswerSyncForCurrentUser: jest.Mock;
+}>('@/data/offline/answerSync').requestAnswerSyncForCurrentUser;
+const submissionRequestMock = jest.requireMock<{
+  requestCurrentAttemptSubmission: jest.Mock;
+}>('@/data/offline/submissionSync').requestCurrentAttemptSubmission;
 
 const mockReplace = jest.fn();
 const mockBack = jest.fn();
@@ -212,6 +227,73 @@ describe('test attempt route (gate)', () => {
 });
 
 describe('test attempt route', () => {
+  it('hydrates the exact question and answers from the durable local attempt', async () => {
+    useSessionStore.getState().setUserId('user-1');
+    const meta = TESTS.find((test) => test.id === 'mock-07')!;
+    const paper = paperForTest(meta);
+    const local = {
+      userId: 'user:user-1',
+      id: 'local-resume-1',
+      testId: meta.id,
+      serverAttemptId: 'server-resume-1',
+      startedAt: T0,
+      endsAt: T0 + 600_000,
+      status: 'running',
+      currentQuestion: 2,
+      currentQuestionId: paper[1].id,
+      currentEnteredAt: T0 + 5_000,
+      sectionUnlocked: [true, true, true, false],
+      createdAt: T0,
+      updatedAt: T0 + 5_000,
+    };
+    durableMock.findLatest.mockResolvedValueOnce(local);
+    durableMock.restore.mockResolvedValueOnce({
+      attempt: local,
+      meta,
+      paper,
+      answers: [
+        {
+          userId: 'user:user-1',
+          attemptId: local.id,
+          questionId: paper[0].id,
+          questionNo: 1,
+          choice: 2,
+          marked: true,
+          visited: true,
+          revision: 1,
+          syncState: 'dirty',
+          updatedAt: T0 + 4_000,
+        },
+      ],
+    });
+
+    await render(<TestAttemptRoute />);
+    await flush();
+
+    expect(useAttemptStore.getState()).toMatchObject({
+      attemptId: local.id,
+      serverAttemptId: local.serverAttemptId,
+      current: 2,
+      answers: { 1: 2 },
+      marked: { 1: true },
+      visited: { 1: true, 2: true },
+      endsAt: local.endsAt,
+    });
+    expect(screen.getByTestId('question-text')).toHaveTextContent(paper[1].text.en);
+
+    await userEvent.press(screen.getByTestId('option-3'));
+    await flush();
+    expect(durableMock.saveProgress).toHaveBeenCalledWith(
+      expect.objectContaining({
+        attemptId: local.id,
+        currentQuestionId: paper[1].id,
+        choice: 3,
+        queueAnswerSync: true,
+      }),
+    );
+    expect(syncRequestMock).toHaveBeenCalledTimes(1);
+  });
+
   it('starts the attempt from the mock API and arms the clock', async () => {
     const state = await mountRoute();
     expect(state.status).toBe('running');
@@ -332,10 +414,37 @@ describe('test attempt route (what it writes for Home)', () => {
     await userEvent.press(screen.getByText('Yes, submit'));
     await flush();
 
+    const resultId = useAttemptStore.getState().resultId;
+    expect(resultId).toMatch(/^res-/);
+    expect(mockReplace).toHaveBeenCalledWith(`/test/${resultId}/result`);
     const [row] = useHistoryStore.getState().attempts;
     expect(row).toBeDefined();
     expect(row.testId).toBe('mock-07');
     expect(row.maxScore).toBeGreaterThan(0);
     expect(row.score).toBeLessThanOrEqual(row.maxScore);
+  });
+
+  it('saves a manual submission locally when offline without inventing a result', async () => {
+    submissionRequestMock.mockResolvedValueOnce({
+      completed: [],
+      pending: 1,
+      failed: 0,
+      permanentFailures: 0,
+      skipped: 0,
+      pausedForAuth: false,
+      offline: true,
+    });
+    await mountRoute();
+    await userEvent.press(screen.getByTestId('btn-palette'));
+    await userEvent.press(screen.getByTestId('palette-submit'));
+    await userEvent.press(screen.getByText('Yes, submit'));
+    await flush();
+
+    expect(screen.getByTestId('dialog-pending-submit')).toBeOnTheScreen();
+    expect(useAttemptStore.getState()).toMatchObject({
+      status: 'pendingSubmit',
+      resultId: undefined,
+    });
+    expect(mockReplace).not.toHaveBeenCalled();
   });
 });

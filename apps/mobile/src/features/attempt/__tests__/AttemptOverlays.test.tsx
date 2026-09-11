@@ -113,12 +113,42 @@ describe('AttemptDialogs', () => {
     expect(h.onLeave).not.toHaveBeenCalled();
   });
 
-  it('auto: opens the result on primary', async () => {
+  it('auto: explains that a connection is required and retries the result on primary', async () => {
     const h = await renderDialogs('auto');
     expect(screen.getByText('Time up')).toBeOnTheScreen();
-    expect(screen.getByText('The test submitted itself')).toBeOnTheScreen();
-    await userEvent.press(screen.getByText('Wait for the result'));
+    expect(screen.getByText('Time is up')).toBeOnTheScreen();
+    expect(
+      screen.getByText(
+        'Your answers remain saved on this phone. Connect to the internet to submit and receive the result.',
+      ),
+    ).toBeOnTheScreen();
+    await userEvent.press(screen.getByText('Try for result'));
     expect(h.onSeeResult).toHaveBeenCalledTimes(1);
+  });
+
+  it('pending: confirms the durable save and offers a safe exit or retry', async () => {
+    const h = await renderDialogs('pending');
+    expect(screen.getByText('Submission pending')).toBeOnTheScreen();
+    expect(
+      screen.getByText('Test saved. It will be submitted when internet is available.'),
+    ).toBeOnTheScreen();
+    await userEvent.press(screen.getByText('Try again'));
+    expect(h.onSeeResult).toHaveBeenCalledTimes(1);
+    await userEvent.press(screen.getByText('Back to tests'));
+    expect(h.onLeave).toHaveBeenCalledTimes(1);
+  });
+
+  it('submitting: shows a non-interactive progress state', async () => {
+    await renderDialogs('submitting');
+    expect(screen.getByText('Submitting your test...')).toBeOnTheScreen();
+    expect(screen.queryByRole('button')).toBeNull();
+  });
+
+  it('permanent submission error preserves the test and offers a safe exit', async () => {
+    const h = await renderDialogs('submitError');
+    expect(screen.getByText('Your test is still saved')).toBeOnTheScreen();
+    await userEvent.press(screen.getByText('Back to tests'));
+    expect(h.onLeave).toHaveBeenCalledTimes(1);
   });
 });
 

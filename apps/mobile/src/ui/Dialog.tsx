@@ -26,7 +26,7 @@ export type DialogProps = {
   body: string;
   /** Equal-width tiles (answered / not answered / marked). */
   stats?: DialogStat[];
-  primary: DialogAction;
+  primary?: DialogAction;
   secondary?: DialogAction;
   testID?: string;
 };
@@ -116,13 +116,13 @@ export function Dialog({
                 ))}
               </Row>
             )}
-            <Stack gap={2} className="mt-4">
-              <Button
+            {(primary || secondary) && <Stack gap={2} className="mt-4">
+              {primary && <Button
                 size="lg"
                 label={primary.label}
                 onPress={primary.onPress}
                 testID={testID ? `${testID}-primary` : undefined}
-              />
+              />}
               {secondary && (
                 <Button
                   variant="secondary"
@@ -131,7 +131,7 @@ export function Dialog({
                   testID={testID ? `${testID}-secondary` : undefined}
                 />
               )}
-            </Stack>
+            </Stack>}
           </View>
         </Animated.View>
       </View>

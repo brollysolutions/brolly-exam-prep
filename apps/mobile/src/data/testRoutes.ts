@@ -1,4 +1,4 @@
-import { isImportedTest, SI_MOCK_01_ID } from '@tslprb/fixtures';
+import { isImportedTest, SI_MOCK_01_ID } from '@/data/content';
 import type { ReturnTarget } from './href';
 
 export const SI_MOCK_ATTEMPT_PATH = '/tests/simocktest';

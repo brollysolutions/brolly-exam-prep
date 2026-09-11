@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { getApi } from '@/data/api';
 import { withReturnTo } from '@/data/href';
+import { reconcileSignedInUserScope } from '@/data/offline';
 import { useSessionStore } from '@/data/session';
 import { LoginView } from '@/features/auth/LoginView';
 import { useAutoDismiss } from '@/ui';
@@ -23,6 +24,7 @@ export default function LoginRoute() {
   const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
   const phone = useSessionStore((s) => s.phone);
   const setPhone = useSessionStore((s) => s.setPhone);
+  const setUserId = useSessionStore((s) => s.setUserId);
   const setToken = useSessionStore((s) => s.setToken);
   // The screen now stands on top of a working app; only a first run or a deep link has
   // nothing behind it, and then there is nothing to offer a way back to.
@@ -36,9 +38,13 @@ export default function LoginRoute() {
     setBusy(true);
     setError(null);
     try {
-      const { token } = await getApi().signInWithPhone({ phone: next });
+      const { token, user } = await getApi().signInWithPhone({ phone: next });
       setPhone(next);
+      setUserId(user.id);
       setToken(token);
+      // Adopt any offline data this number played before it had a backend user id, so a
+      // local-only attempt created under the phone-only scope can now reach the server.
+      void reconcileSignedInUserScope(next, user.id).catch(() => undefined);
       // `replace`, not `push`: there is no step between the number and the questions any more,
       // so the back gesture from onboarding should leave the sign-in chain rather than return
       // to a form that has already done its work.

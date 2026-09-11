@@ -1,4 +1,4 @@
-import { latestAffairs } from '@tslprb/fixtures';
+import { latestAffairs, useContentData } from '@/data/content';
 import { useRouter } from 'expo-router';
 
 import { useLangStore } from '@/data/lang';
@@ -8,8 +8,6 @@ import { AffairsView } from '@/features/news/AffairsView';
  * Sorted once at module scope: the digest is a fixture, so re-sorting it on every render
  * would only hand the list a new array to diff. When the API lands this becomes a query.
  */
-const FEED = latestAffairs();
-
 /**
  * F-24 — today's current affairs, grouped by day.
  *
@@ -17,8 +15,15 @@ const FEED = latestAffairs();
  * buys a saved attempt rather than the reading.
  */
 export default function AffairsRoute() {
+  const content = useContentData();
   const router = useRouter();
   const lang = useLangStore((s) => s.lang);
 
-  return <AffairsView affairs={FEED} lang={lang} onBack={() => router.back()} />;
+  return (
+    <AffairsView
+      affairs={latestAffairs(undefined, content.affairs)}
+      lang={lang}
+      onBack={() => router.back()}
+    />
+  );
 }

@@ -1,7 +1,7 @@
 import { paperForTest, SI_MOCK_01_ID, TESTS } from '@tslprb/fixtures';
 import { initI18n } from '@tslprb/i18n';
 
-import { MockApi } from '../api/mock';
+import { MockApi } from '../testing/mockApi';
 import { useAttemptStore, type Choice } from '../attempt';
 import { useCompletedTestsStore } from '../completedTests';
 import { useHistoryStore } from '../history';

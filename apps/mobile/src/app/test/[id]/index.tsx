@@ -1,4 +1,4 @@
-import { isImportedTest } from '@tslprb/fixtures';
+import { isImportedTest } from '@/data/content';
 import { Redirect, useLocalSearchParams } from 'expo-router';
 
 import { SI_MOCK_ATTEMPT_PATH } from '@/data/testRoutes';

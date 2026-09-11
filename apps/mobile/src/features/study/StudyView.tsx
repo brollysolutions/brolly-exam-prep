@@ -3,7 +3,7 @@ import {
   studySectionMinutes,
   type StudySection,
   type StudyTopic,
-} from '@tslprb/fixtures';
+} from '@/data/content';
 import { type Lang } from '@tslprb/i18n';
 import { useTranslation } from 'react-i18next';
 
@@ -26,6 +26,7 @@ export type StudyViewProps = {
   lang: Lang;
   /** Topic ids already marked read, as the store holds them. */
   read?: Record<string, true>;
+  sections?: StudySection[];
   onOpen: (id: string) => void;
 };
 
@@ -135,12 +136,12 @@ function Section({
  *
  * Free for guests: an account buys you a saved attempt, not the syllabus.
  */
-export function StudyView({ lang, read = {}, onOpen }: StudyViewProps) {
+export function StudyView({ lang, read = {}, sections = STUDY_SECTIONS, onOpen }: StudyViewProps) {
   const { t } = useTranslation();
   return (
     <Screen scroll padded bottomInset={false} testID="study-screen">
       <PageHeader testID="study-header" title={t('study.title')} />
-      {STUDY_SECTIONS.map((section, i) => (
+      {sections.map((section, i) => (
         <Section
           key={section.id}
           section={section}

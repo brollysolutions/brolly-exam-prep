@@ -5,11 +5,12 @@ import {
   standardsFor,
   STANDARDS_NOTIFICATION_YEAR,
   type Gender,
+  type PhysicalStandards,
   type Post,
   type Standard,
   type StandardKey,
   type StandardsGroup,
-} from '@tslprb/fixtures';
+} from '@/data/content';
 import { useDir } from '@tslprb/i18n';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -461,6 +462,8 @@ export type EligibilityViewProps = {
   values: MeasureValues;
   /** The verdict to show; omitted until Check has been pressed. */
   result?: Evaluation;
+  standards?: PhysicalStandards;
+  standardsNotificationYear?: number;
   onPost: (post: Post) => void;
   onGender: (gender: Gender) => void;
   onGroup: (group: StandardsGroup) => void;
@@ -485,6 +488,8 @@ export function EligibilityView({
   group,
   values,
   result,
+  standards: suppliedStandards,
+  standardsNotificationYear,
   onPost,
   onGender,
   onGroup,
@@ -494,7 +499,7 @@ export function EligibilityView({
 }: EligibilityViewProps) {
   const { t } = useTranslation();
   const m = useMotion();
-  const standards = standardsFor(post, gender, group);
+  const standards = suppliedStandards ?? standardsFor(post, gender, group);
   const entries = standardEntries(standards);
   const labelOf = (key: StandardKey) => {
     const metres = RUN_M[key];
@@ -645,6 +650,7 @@ export function EligibilityView({
           testID="eligibility-check"
           size="lg"
           label={t('eligibility.check')}
+          disabled={entries.length === 0}
           onPress={check}
           className="mt-7"
         />
@@ -676,7 +682,11 @@ export function EligibilityView({
         )}
 
         <Text testID="eligibility-disclaimer" variant="caption" color="ink3" className="mt-7">
-          {t('eligibility.disclaimer', { year: iso(STANDARDS_NOTIFICATION_YEAR) })}
+          {standardsNotificationYear ?? STANDARDS_NOTIFICATION_YEAR
+            ? t('eligibility.disclaimer', {
+                year: iso(standardsNotificationYear ?? STANDARDS_NOTIFICATION_YEAR),
+              })
+            : '\u2014'}
         </Text>
       </ScrollView>
     </Screen>

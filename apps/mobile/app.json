@@ -8,6 +8,8 @@
     "scheme": "tslprb",
     "userInterfaceStyle": "light",
     "android": {
+      "package": "com.brollyexamprep.app",
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#0a1e3a",
         "foregroundImage": "./assets/images/android-icon-foreground.png",

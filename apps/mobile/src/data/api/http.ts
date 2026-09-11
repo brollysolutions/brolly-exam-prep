@@ -1,82 +1,75 @@
 import {
+  AttemptDetailSchema,
   AttemptSchema,
+  ContentSchema,
   OkSchema,
+  PaperQuestionSchema,
   PhoneSignInResponseSchema,
+  ResultDetailSchema,
   ResultSchema,
+  ReviewQuestionSchema,
   SubmitResponseSchema,
+  TestMetaSchema,
   TestSchema,
   TestSummarySchema,
   type AnswerPatchInput,
   type Attempt,
   type AttemptCreate,
+  type AttemptDetail,
+  type Content,
   type Ok,
+  type PaperQuestion as ApiPaperQuestion,
   type PhoneSignIn,
   type PhoneSignInResponse,
   type Result,
+  type ResultDetail as ApiResultDetail,
+  type ReviewQuestion,
   type SubmitResponse,
   type Test,
+  type TestMeta as ApiTestMeta,
   type TestSummary,
 } from '@tslprb/api-contracts';
-import type { Question as PaperQuestion, TestMeta } from '@tslprb/fixtures';
+import type { TestMeta } from '@tslprb/fixtures';
 import { z } from 'zod';
 
-import { MockApi } from './mock';
-import { ApiError, type AppApi, type ResultDetail } from './types';
+import { mapPaperQuestion, mapResultDetail, mapReviewQuestion, mapTestMeta } from './mappers';
+import {
+  ApiError,
+  type AppApi,
+  type PaperQuestion,
+  type ResultDetail,
+  type ReviewPaperQuestion,
+} from './types';
 
 const HealthSchema = z.object({ status: z.string() });
 const TestSummaryListSchema = z.array(TestSummarySchema);
+const TestMetaListSchema = z.array(TestMetaSchema);
+const PaperQuestionListSchema = z.array(PaperQuestionSchema);
+const ReviewQuestionListSchema = z.array(ReviewQuestionSchema);
+
+const DEFAULT_API_URL = 'https://mocktest.brollyexamprep.com/api';
 
 export type HttpApiOptions = {
   baseUrl?: string;
-  /** Read at request time so a sign-in mid-session is picked up without rebuilding the client. */
   getToken?: () => string | undefined;
 };
 
-/**
- * Thin fetch client against services/api. Responses are validated with the shared zod
- * schemas so a drifting backend fails loudly here rather than deep inside a screen.
- *
- * The AppApi extras have no /v1 endpoint yet. `/v1/tests` carries no exam pattern, no
- * section locks and no answer key, so `listTestMetas`, `getTestMeta` and `getPaper` are
- * NOT derived from it (an earlier version invented Telugu titles by copying the English
- * one and guessed a pattern from the post, which would have shipped silently wrong
- * section locks). They are served from the fixture bank the app ships — the same one
- * `MockApi` uses — exactly like `getResultDetail`, so the catalogue, the paper and the
- * analysis still render against a real backend (F-27 runs the web build with
- * `EXPO_PUBLIC_API=http`). The attempt lifecycle (`createAttempt`, `patchAttemptAnswer`,
- * `submitAttempt`, `getResult`) and the OTP calls do go over the wire. Replace the three
- * fixture reads when `GET /v1/tests/{id}/paper` lands. Until then the ids these reads hand
- * out (`mock-07`, `q-ar-001#n`) are not the API's (`test-pwt-07`, `q-arith-*`), so
- * `POST /v1/attempts` 404s and the attempt route falls back to its offline start.
- *
- * Category spelling: the app and @tslprb/fixtures use lower-case ids ("oc", "exs"); the
- * wire uses "OC" / "ExS". No /v1 request or response carries a category yet, so there is
- * nothing to convert today — when one appears, call `toApiCategory` / `fromApiCategory`
- * from @tslprb/api-contracts *here*, in this class, and nowhere else. Neither spelling
- * belongs in a store or a screen.
- */
+/** Strict fetch client for the complete FastAPI v0.2 surface. */
 export class HttpApi implements AppApi {
   private readonly baseUrl: string;
   private readonly getToken: () => string | undefined;
-  private fallbackApi?: MockApi;
 
   constructor(options: HttpApiOptions = {}) {
-    const base = options.baseUrl ?? process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8000';
+    const base = options.baseUrl ?? process.env.EXPO_PUBLIC_API_URL ?? DEFAULT_API_URL;
     this.baseUrl = base.replace(/\/+$/, '');
     this.getToken = options.getToken ?? (() => undefined);
   }
 
-  /** Built on first use only, so an http-only app never pays for the fixture bundle. */
-  private get fallback(): MockApi {
-    this.fallbackApi ??= new MockApi();
-    return this.fallbackApi;
-  }
-
-  private async request<T>(
+  private async request<Schema extends z.ZodTypeAny>(
     path: string,
-    schema: z.ZodType<T>,
+    schema: Schema,
     init?: { method?: string; body?: unknown },
-  ): Promise<T> {
+  ): Promise<z.output<Schema>> {
     const headers: Record<string, string> = { Accept: 'application/json' };
     if (init?.body !== undefined) headers['Content-Type'] = 'application/json';
     const token = this.getToken();
@@ -139,22 +132,70 @@ export class HttpApi implements AppApi {
     return this.request(`/v1/results/${encodeURIComponent(id)}`, ResultSchema);
   }
 
-  // --- AppApi extras: not served by /v1 yet (fixture bank, see the class comment) -----
-
-  listTestMetas(): Promise<TestMeta[]> {
-    return this.fallback.listTestMetas();
+  getContent(): Promise<Content> {
+    return this.request('/v1/content', ContentSchema);
   }
 
-  getTestMeta(id: string): Promise<TestMeta> {
-    return this.fallback.getTestMeta(id);
+  listTestCatalog(): Promise<ApiTestMeta[]> {
+    return this.request('/v1/tests/catalog', TestMetaListSchema);
   }
 
-  getPaper(testId: string): Promise<PaperQuestion[]> {
-    return this.fallback.getPaper(testId);
+  getTestMetaResponse(id: string): Promise<ApiTestMeta> {
+    return this.request(`/v1/tests/${encodeURIComponent(id)}/meta`, TestMetaSchema);
   }
 
-  /** Fixture analysis: the endpoint does not exist, but the result screen must still render. */
-  getResultDetail(id: string): Promise<ResultDetail> {
-    return this.fallback.getResultDetail(id);
+  getTestPaper(id: string): Promise<ApiPaperQuestion[]> {
+    return this.request(`/v1/tests/${encodeURIComponent(id)}/paper`, PaperQuestionListSchema);
+  }
+
+  getAttempt(id: string): Promise<AttemptDetail> {
+    return this.request(`/v1/attempts/${encodeURIComponent(id)}`, AttemptDetailSchema);
+  }
+
+  getAttemptPaper(id: string): Promise<ApiPaperQuestion[]> {
+    return this.request(
+      `/v1/attempts/${encodeURIComponent(id)}/paper`,
+      PaperQuestionListSchema,
+    );
+  }
+
+  getAttemptMeta(id: string): Promise<ApiTestMeta> {
+    return this.request(`/v1/attempts/${encodeURIComponent(id)}/meta`, TestMetaSchema);
+  }
+
+  getResultDetailResponse(id: string): Promise<ApiResultDetail> {
+    return this.request(`/v1/results/${encodeURIComponent(id)}/detail`, ResultDetailSchema);
+  }
+
+  getResultPaper(id: string): Promise<ReviewQuestion[]> {
+    return this.request(`/v1/results/${encodeURIComponent(id)}/paper`, ReviewQuestionListSchema);
+  }
+
+  async listTestMetas(): Promise<TestMeta[]> {
+    return (await this.listTestCatalog()).map(mapTestMeta);
+  }
+
+  async getTestMeta(id: string): Promise<TestMeta> {
+    return mapTestMeta(await this.getTestMetaResponse(id));
+  }
+
+  async getPaper(testId: string): Promise<PaperQuestion[]> {
+    return (await this.getTestPaper(testId)).map(mapPaperQuestion);
+  }
+
+  async getAttemptMetaData(attemptId: string): Promise<TestMeta> {
+    return mapTestMeta(await this.getAttemptMeta(attemptId));
+  }
+
+  async getAttemptPaperData(attemptId: string): Promise<PaperQuestion[]> {
+    return (await this.getAttemptPaper(attemptId)).map(mapPaperQuestion);
+  }
+
+  async getResultDetail(id: string): Promise<ResultDetail> {
+    return mapResultDetail(await this.getResultDetailResponse(id));
+  }
+
+  async getReviewPaper(resultId: string): Promise<ReviewPaperQuestion[]> {
+    return (await this.getResultPaper(resultId)).map(mapReviewQuestion);
   }
 }

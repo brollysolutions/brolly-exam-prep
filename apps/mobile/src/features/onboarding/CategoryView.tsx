@@ -1,4 +1,4 @@
-import { CATEGORIES, type CategoryId } from '@tslprb/fixtures';
+import { CATEGORIES, type CategoryId, type ContentCategory } from '@/data/content';
 import { useDir } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -20,14 +20,10 @@ import {
 
 const COLUMNS = 2;
 
-/** CATEGORIES laid out two per row, in reading order. */
-const ROWS = Array.from({ length: Math.ceil(CATEGORIES.length / COLUMNS) }, (_, i) =>
-  CATEGORIES.slice(i * COLUMNS, i * COLUMNS + COLUMNS),
-);
-
 export type CategoryViewProps = {
   /** The category already on file, if the user is revisiting the step. */
   initialCategory?: CategoryId;
+  categories?: ContentCategory[];
   onSubmit: (category: CategoryId) => void;
   onBack: () => void;
 };
@@ -37,10 +33,18 @@ export type CategoryViewProps = {
  * against, so each card carries its own number rather than hiding it in a footnote — the
  * percentage is the tile's figure (`<Num variant="stat">`), not a footnote under the label.
  */
-export function CategoryView({ initialCategory, onSubmit, onBack }: CategoryViewProps) {
+export function CategoryView({
+  initialCategory,
+  categories = CATEGORIES,
+  onSubmit,
+  onBack,
+}: CategoryViewProps) {
   const { t } = useTranslation();
   const d = useDir();
   const [category, setCategory] = useState<CategoryId | undefined>(initialCategory);
+  const rows = Array.from({ length: Math.ceil(categories.length / COLUMNS) }, (_, i) =>
+    categories.slice(i * COLUMNS, i * COLUMNS + COLUMNS),
+  );
 
   return (
     // The `ActionBar` at the foot owns the bottom inset, the way the tab bar does (I1).
@@ -73,7 +77,7 @@ export function CategoryView({ initialCategory, onSubmit, onBack }: CategoryView
         />
 
         <Stack testID="category-grid" gap={2} className="mt-5">
-          {ROWS.map((row, i) => (
+          {rows.map((row, i) => (
             <Row key={i} testID={`category-row-${i}`} gap={2} align="stretch">
               {row.map((c) => (
                 <Card
@@ -87,7 +91,7 @@ export function CategoryView({ initialCategory, onSubmit, onBack }: CategoryView
                 >
                   {/* The figure the whole step exists to set, at tile size. */}
                   <Num variant="stat" color="ink" className="mt-1">
-                    {`${c.qualifyingPct}%`}
+                    {c.qualifyingPct ?? '\u2014'}
                   </Num>
                   <Text variant="caption" color="ink3">
                     {t('onboarding.catQual')}

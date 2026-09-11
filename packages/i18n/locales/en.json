@@ -75,7 +75,7 @@
     "locked": "Locked",
     "lockedMsg": "The {{section}} section unlocks after you finish {{previous}}.",
     "warn5": "5 minutes left",
-    "warn1": "1 minute left — the test will submit itself.",
+    "warn1": "1 minute left",
     "exitKicker": "Warning",
     "exitTitle": "Leave the test?",
     "exitBody": "The timer keeps running while you are away. Every answer so far is saved on this phone.",
@@ -83,7 +83,7 @@
     "leave": "Leave",
     "submitKicker": "Final step",
     "submitTitle": "Submit the test?",
-    "submitBody": "You cannot change answers after submitting. Submission works without internet — the result appears once you are back online.",
+    "submitBody": "You cannot change answers after submitting. Internet is required to submit and receive the result.",
     "submitYes": "Yes, submit",
     "submitNo": "Go back",
     "resumeKicker": "Welcome back",
@@ -91,9 +91,21 @@
     "resumeBody": "The timer kept running while the app was in the background. All your answers were saved. Continue from the same question.",
     "resume": "Continue",
     "autoKicker": "Time up",
-    "autoTitle": "The test submitted itself",
-    "autoBody": "No answer was lost. You are offline, so the submission is queued — it will send the moment you get signal.",
-    "seeQueue": "Wait for the result",
+    "autoTitle": "Time is up",
+    "autoBody": "Your answers remain saved on this phone. Connect to the internet to submit and receive the result.",
+    "seeQueue": "Try for result",
+    "pendingKicker": "Saved on this phone",
+    "pendingTitle": "Submission pending",
+    "pendingBody": "Test saved. It will be submitted when internet is available.",
+    "submittingKicker": "Final step",
+    "submittingTitle": "Submitting your test...",
+    "submittingBody": "Your synchronized answers are being submitted. Please keep the app open.",
+    "submitErrorKicker": "Submission needs attention",
+    "submitErrorTitle": "Your test is still saved",
+    "submitErrorBody": "The server could not safely complete this submission automatically. Your answers remain on this phone.",
+    "submitErrorReason": "Reason: {{reason}}",
+    "backToTests": "Back to tests",
+    "retrySubmit": "Try again",
     "callNote": "A call does not close the test. The timer runs, your answers stay saved.",
     "incomingCall": "INCOMING CALL",
     "simulatedCall": "Simulated OS-level interruption",
@@ -123,6 +135,7 @@
     "seeWrong": "Wrong answers + explanation",
         "errorKicker": "Problem",
     "loadError": "The result did not load.",
+    "offlineNotCached": "This result has not been downloaded yet. Connect to the internet and try again.",
     "retry": "Try again"
   },
   "solutions": {
@@ -134,7 +147,8 @@
     "why": "Why",
     "yourTime": "Your time",
     "avgTime": "Average",
-    "allCorrect": "No wrong answers in this test."
+    "allCorrect": "No wrong answers in this test.",
+    "offlineNotCached": "This review has not been downloaded yet. Connect to the internet and try again."
   },
   "paper": {
     "title": "Question paper",
@@ -167,7 +181,9 @@
     "topicsRead": "Topics read",
     "papersPractised": "Papers practised",
     "bestScore": "Best score",
-    "signInToKeep": "Sign in to keep this when you change phones"
+    "signInToKeep": "Sign in to keep this when you change phones",
+    "unfinishedTest": "Unfinished test",
+    "resumeQuestion": "Continue from question {{question}}"
   },
   "library": {
     "title": "Tests",

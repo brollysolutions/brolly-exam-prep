@@ -5,21 +5,27 @@ import { buildSolutionRows, filterSolutionRows } from '../solutions';
 describe('buildSolutionRows', () => {
   const paper = buildPaper(FREE_MOCK_SHORT.sections);
   const review = SAMPLE_RESULT.review.map((r) => ({ ...r }));
-  const rows = buildSolutionRows(review, paper);
+  const reviewPaper = review.map((row) => ({
+    ...paper[row.questionNo - 1],
+    yourChoice: row.your,
+    marked: false,
+    seconds: row.seconds,
+  }));
+  const rows = buildSolutionRows(reviewPaper);
 
   it('joins every review row to its 1-based question in the paper', () => {
     expect(rows).toHaveLength(review.length);
-    expect(rows[0].question).toBe(paper[rows[0].questionNo - 1]);
+    expect(rows[0].question).toBe(reviewPaper[0]);
   });
 
   it('reads in paper order, not fixture order', () => {
-    expect(rows.map((r) => r.questionNo)).toEqual([3, 6, 12, 15]);
+    expect(rows.map((r) => r.questionNo)).toEqual([1, 2, 3, 4]);
   });
 
   it('takes the answer key from the paper question, not the review row', () => {
     for (const row of rows) {
-      expect(row.correct).toBe(paper[row.questionNo - 1].correct);
-      expect(row.isCorrect).toBe(row.your === paper[row.questionNo - 1].correct);
+      expect(row.correct).toBe(reviewPaper[row.questionNo - 1].correct);
+      expect(row.isCorrect).toBe(row.your === reviewPaper[row.questionNo - 1].correct);
     }
   });
 
@@ -30,12 +36,14 @@ describe('buildSolutionRows', () => {
   });
 
   it('treats a skipped question as wrong', () => {
-    const skipped = buildSolutionRows([{ questionNo: 1, your: null, seconds: 9 }], paper);
+    const skipped = buildSolutionRows([
+      { ...paper[0], yourChoice: null, marked: false, seconds: 9 },
+    ]);
     expect(skipped[0].isCorrect).toBe(false);
     expect(skipped[0].correct).toBe(paper[0].correct);
   });
 
-  it('drops review rows the paper does not contain', () => {
-    expect(buildSolutionRows([{ questionNo: 9999, your: 0, seconds: 1 }], paper)).toEqual([]);
+  it('numbers cards in authorized review-paper order', () => {
+    expect(rows.map((row) => row.questionNo)).toEqual([1, 2, 3, 4]);
   });
 });

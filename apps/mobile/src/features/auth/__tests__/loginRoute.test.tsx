@@ -46,6 +46,7 @@ describe('LoginRoute', () => {
     await userEvent.press(screen.getByTestId('login-continue'));
 
     expect(useSessionStore.getState().token).toBeTruthy();
+    expect(useSessionStore.getState().userId).toBe('usr-9000012345');
     expect(useSessionStore.getState().phone).toBe('9000012345');
     expect(mockRouter.replace).toHaveBeenCalledWith({
       pathname: '/(onboarding)/post',

@@ -30,11 +30,11 @@ describe('CategoryView', () => {
     expect(screen.getByTestId('category-card-sc').props.accessibilityState.checked).toBe(false);
   });
 
-  it('renders all six categories with their qualifying percentage', async () => {
+  it('keeps category choices without bundled qualifying percentages', async () => {
     await render(<CategoryView onSubmit={jest.fn()} {...noops()} />);
     expect(screen.getByTestId('category-card-exs')).toBeOnTheScreen();
-    expect(within(screen.getByTestId('category-card-bc')).getByText(iso('35%'))).toBeOnTheScreen();
-    expect(within(screen.getByTestId('category-card-oc')).getByText(iso('40%'))).toBeOnTheScreen();
+    expect(within(screen.getByTestId('category-card-bc')).getByText(iso('\u2014'))).toBeOnTheScreen();
+    expect(within(screen.getByTestId('category-card-oc')).getByText(iso('\u2014'))).toBeOnTheScreen();
   });
 
   it('submits the chosen category', async () => {

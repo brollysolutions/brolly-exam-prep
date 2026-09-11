@@ -40,6 +40,11 @@ export type HomeProgress = {
   bestPct?: number;
 };
 
+export type HomeUnfinishedAttempt = {
+  title: string;
+  currentQuestion: number;
+};
+
 /**
  * Blocks in the day's target bar. Ten, not twenty: at 20 questions a block is two answers,
  * which is a visible step on a 320 px screen where a twentieth would be a hairline.
@@ -165,6 +170,8 @@ export type HomeViewProps = {
   notices: Notice[];
   affairs: Affair[];
   progress: HomeProgress;
+  unfinishedAttempt?: HomeUnfinishedAttempt;
+  onResumeAttempt?: () => void;
   onSignIn: () => void;
   onOpenUpdates: () => void;
   /** A tapped notice card opens THAT notice on `/updates`, not the top of the list. */
@@ -195,6 +202,8 @@ export function HomeView({
   notices,
   affairs,
   progress,
+  unfinishedAttempt,
+  onResumeAttempt,
   onSignIn,
   onOpenUpdates,
   onOpenNotice,
@@ -216,12 +225,12 @@ export function HomeView({
   const examState =
     daysToExam > 0 ? 'ahead' : daysToExam === 0 ? 'today' : ('held' as 'ahead' | 'today' | 'held');
   const examLine =
-    examState === 'ahead'
+    !examDate ? '\u2014' : examState === 'ahead'
       ? t('home.examCountdown', { days: iso(daysToExam) })
       : examState === 'today'
         ? t('home.examToday')
         : t('home.examHeld', { date: iso(examDate) });
-  const dateLine = t('home.examDate', { label: examLabel, date: iso(examDate) });
+  const dateLine = examDate ? t('home.examDate', { label: examLabel, date: iso(examDate) }) : '\u2014';
   const streakLine = t('home.streak', { count: streakDays, days: iso(streakDays) });
   const targetLine = t('home.targetDone', { done: iso(today.done), target: iso(today.target) });
 
@@ -317,6 +326,26 @@ export function HomeView({
           <TargetBar done={today.done} target={today.target} />
         </Stack>
       </Card>
+
+      {unfinishedAttempt && onResumeAttempt && (
+        <Card testID="home-continue" className="mt-7">
+          <Pill label={t('home.unfinishedTest')} dot />
+          <Text variant="bodyLg" weight="600" className="mt-2">
+            {unfinishedAttempt.title}
+          </Text>
+          <Text variant="caption" color="ink3" className="mt-1">
+            {t('home.resumeQuestion', { question: iso(unfinishedAttempt.currentQuestion) })}
+          </Text>
+          <Button
+            testID="home-continue-action"
+            variant="secondary"
+            size="lg"
+            label={t('common.continue')}
+            onPress={onResumeAttempt}
+            className="mt-4"
+          />
+        </Card>
+      )}
 
       {/* -------------------------------------------------------------- updates */}
       {notices.length > 0 && (

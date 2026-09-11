@@ -2,7 +2,7 @@ import { buildPaper, FREE_MOCK_SHORT, SAMPLE_RESULT } from '@tslprb/fixtures';
 import type { ReactNode } from 'react';
 import { View } from 'react-native';
 
-import type { ResultDetail } from '@/data/api';
+import type { ResultDetail, ReviewPaperQuestion } from '@/data/api';
 import { ResultView } from '@/features/result/ResultView';
 import { SolutionsView } from '@/features/result/SolutionsView';
 import { buildSolutionRows } from '@/features/result/solutions';
@@ -45,7 +45,17 @@ const BELOW_CUTOFF: ResultDetail = {
   avgSecondsPerQuestion: 82,
 };
 
-const ROWS = buildSolutionRows(QUALIFIED.review, buildPaper(FREE_MOCK_SHORT.sections));
+const DEV_PAPER = buildPaper(FREE_MOCK_SHORT.sections);
+const DEV_REVIEW_PAPER: ReviewPaperQuestion[] = QUALIFIED.review.map((review) => {
+  const question = DEV_PAPER[review.questionNo - 1];
+  return {
+    ...question,
+    yourChoice: review.your,
+    marked: false,
+    seconds: review.seconds,
+  };
+});
+const ROWS = buildSolutionRows(DEV_REVIEW_PAPER);
 /** Every answer right: the wrong filter has nothing to show and the P6 empty state takes over. */
 const ALL_RIGHT = ROWS.filter((r) => r.isCorrect);
 

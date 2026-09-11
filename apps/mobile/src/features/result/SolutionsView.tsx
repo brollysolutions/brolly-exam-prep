@@ -31,6 +31,7 @@ export type SolutionsViewProps = {
   rows?: SolutionRow[];
   /** The load failed: the retry state replaces the body. */
   failed?: boolean;
+  failureMessage?: string;
   /** Which chip starts active. The chips are self-managed from there. */
   initialFilter?: SolutionFilter;
   onBack?: () => void;
@@ -219,6 +220,7 @@ function AllCorrect() {
 export function SolutionsView({
   rows,
   failed = false,
+  failureMessage,
   initialFilter = 'wrong',
   onBack,
   onRetry,
@@ -264,7 +266,7 @@ export function SolutionsView({
       </BackHeader>
 
       {failed ? (
-        <LoadError onRetry={onRetry} testID="solutions-error" />
+        <LoadError message={failureMessage} onRetry={onRetry} testID="solutions-error" />
       ) : !rows ? (
         <Skeleton blocks={[...SKELETON]} testID="solutions-skeleton" />
       ) : (

@@ -1,4 +1,4 @@
-import { colors, spacing } from '@tslprb/design-tokens';
+import { spacing } from '@tslprb/design-tokens';
 import type { SectionSpec } from '@tslprb/fixtures';
 import { useDir, type Lang } from '@tslprb/i18n';
 import { useCallback, useRef } from 'react';
@@ -10,7 +10,6 @@ import {
   BackHeader,
   Card,
   Chip,
-  Glyph,
   LoadError,
   Measure,
   Num,
@@ -19,8 +18,6 @@ import {
   Screen,
   Skeleton,
   Stack,
-  startEdge,
-  startEdgeInset,
   Text,
 } from '@/ui';
 
@@ -69,42 +66,24 @@ function Option({
   index,
   glyph,
   label,
-  correct,
-  correctLabel,
 }: {
   questionNo: number;
   index: number;
   glyph: string;
   label: string;
-  correct: boolean;
-  correctLabel: string;
 }) {
-  const d = useDir();
   return (
     <View
       testID={`paper-option-${questionNo}-${index}`}
-      accessibilityLabel={correct ? `${glyph} · ${label} · ${correctLabel}` : `${glyph} · ${label}`}
+      accessibilityLabel={`${glyph} · ${label}`}
       className="rounded-sm px-3 py-2"
-      // Tint and mirrored bar are object styles, never a class: css-interop accumulates a
-      // dynamic className next to a style array, and RN's `borderStartWidth` follows
-      // `I18nManager` rather than the in-app language (`startEdge`). The box draws no border of
-      // its own, so all three of the bar's pixels come back off the `px-3` (`startEdgeInset`).
-      style={
-        correct
-          ? {
-              backgroundColor: colors.accentTint,
-              ...startEdge(d.isRTL, 'accentStrong'),
-              ...startEdgeInset(d.isRTL, spacing['3']),
-            }
-          : undefined
-      }
     >
       <Row gap={3} align="center">
         <Text
           variant="small"
           weight="700"
           // Ink, not gold, on the gold tint (4.14:1 — fix wave 1, C2); the edge carries the mark.
-          color={correct ? 'ink' : 'ink3'}
+          color="ink3"
           lang="en"
           accessibilityElementsHidden
           importantForAccessibility="no"
@@ -113,31 +92,14 @@ function Option({
         </Text>
         <Text
           variant="body"
-          weight={correct ? '600' : '400'}
-          color={correct ? 'ink' : 'ink2'}
+          weight="400"
+          color="ink2"
           className="flex-1"
           accessibilityElementsHidden
           importantForAccessibility="no"
         >
           {label}
         </Text>
-        {correct && (
-          <View
-            testID={`paper-disc-${questionNo}-${index}`}
-            className="h-5 w-5 items-center justify-center rounded-full bg-accentStrong"
-          >
-            <Glyph
-              variant="small"
-              weight="700"
-              color="ink"
-              testID={`paper-tick-${questionNo}-${index}`}
-              accessibilityElementsHidden
-              importantForAccessibility="no"
-            >
-              ✓
-            </Glyph>
-          </View>
-        )}
       </Row>
     </View>
   );
@@ -155,7 +117,6 @@ function QuestionCard({
 }) {
   const { t } = useTranslation();
   const optionKeys = t('test.optionKeys', { returnObjects: true }) as unknown as string[];
-  const correctLabel = t('solutions.correctAnswer');
   return (
     <Card testID={`paper-card-${questionNo}`}>
       <Pill
@@ -186,17 +147,8 @@ function QuestionCard({
             index={i}
             glyph={optionKeys[i] ?? ''}
             label={label}
-            correct={i === question.correct}
-            correctLabel={correctLabel}
           />
         ))}
-      </Stack>
-
-      <Stack gap={2} className="mt-3 border-t border-line pt-3">
-        <Pill label={t('paper.why')} />
-        <Text variant="body" color="ink2">
-          {question.explanation[lang]}
-        </Text>
       </Stack>
     </Card>
   );

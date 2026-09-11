@@ -3,6 +3,7 @@ import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 
 import { useLangStore } from '@/data/lang';
+import { getPublicReadCache, useCachedLoad } from '@/data/offline';
 import { useRequireAuth } from '@/data/requireAuth';
 import { testAttemptHref } from '@/data/testRoutes';
 import { LibraryView } from '@/features/library/LibraryView';
@@ -28,6 +29,12 @@ export default function LibraryRoute() {
   const lang = useLangStore((s) => s.lang);
   const { ensure } = useRequireAuth();
   const router = useRouter();
+  const [catalogAttempt, setCatalogAttempt] = useState(0);
+  const loadCatalog = useCallback(async () => {
+    const cache = await getPublicReadCache();
+    return cache.readTestCatalog();
+  }, []);
+  const catalog = useCachedLoad(`catalog:${catalogAttempt}`, loadCatalog);
   // Pressing Home's card twice sends the *same* `?kind=previous` both times, so a shelf that
   // watched the value would ignore every request after the first — the candidate would tap the
   // card and stay on whatever chip they had chosen. The counter makes each arrival on this tab
@@ -48,6 +55,9 @@ export default function LibraryRoute() {
       lang={lang}
       initialKind={asKind(kind)}
       kindKey={`${kind}:${visit}`}
+      tests={catalog.done ? catalog.data : undefined}
+      failed={catalog.failed}
+      onRetry={() => setCatalogAttempt((attempt) => attempt + 1)}
       onOpen={(id) => ensure(testAttemptHref(id))}
       // The object form, not `/paper/${id}`: expo-router encodes the param, so an id is never
       // pasted into a path (the same reason `withReturnTo` uses it).

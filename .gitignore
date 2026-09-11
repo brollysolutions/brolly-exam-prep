@@ -10,6 +10,7 @@ coverage/
 .env
 .env.*
 !.env.example
+!apps/mobile/.env
 *.log
 .DS_Store
 Thumbs.db

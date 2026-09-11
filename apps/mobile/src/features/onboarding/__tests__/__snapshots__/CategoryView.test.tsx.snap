@@ -306,7 +306,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                   }
                 }
               >
-                ⁦40%⁩
+                ⁦—⁩
               </Text>
               <Text
                 className="text-ink3"
@@ -400,7 +400,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                   }
                 }
               >
-                ⁦40%⁩
+                ⁦—⁩
               </Text>
               <Text
                 className="text-ink3"
@@ -507,7 +507,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                   }
                 }
               >
-                ⁦35%⁩
+                ⁦—⁩
               </Text>
               <Text
                 className="text-ink3"
@@ -601,7 +601,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                   }
                 }
               >
-                ⁦30%⁩
+                ⁦—⁩
               </Text>
               <Text
                 className="text-ink3"
@@ -708,7 +708,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                   }
                 }
               >
-                ⁦30%⁩
+                ⁦—⁩
               </Text>
               <Text
                 className="text-ink3"
@@ -802,7 +802,7 @@ exports[`CategoryView (te) renders the Telugu grid and matches the snapshot 1`] 
                   }
                 }
               >
-                ⁦30%⁩
+                ⁦—⁩
               </Text>
               <Text
                 className="text-ink3"

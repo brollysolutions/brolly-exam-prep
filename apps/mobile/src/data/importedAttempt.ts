@@ -1,4 +1,6 @@
-import { isImportedTest, TESTS, type Question } from '@tslprb/fixtures';
+import { isImportedTest, type Question } from '@/data/content';
+import { paperForTest, TESTS as FIXTURE_TESTS, type TestMeta } from '@tslprb/fixtures';
+import type { PaperQuestion, ReviewPaperQuestion } from './api';
 
 import { useAttemptStore } from './attempt';
 import { useCompletedTestsStore } from './completedTests';
@@ -13,12 +15,55 @@ export function canReviewImportedTest(id: string): boolean {
 }
 
 /** Called immediately after manual or timed submission, before navigating to results. */
-export function completeImportedAttempt(paper: readonly Question[]): void {
+type ScorableQuestion = PaperQuestion & Question;
+
+function isScorablePaper(paper: readonly PaperQuestion[]): paper is readonly ScorableQuestion[] {
+  return paper.every(
+    (question) =>
+      'correct' in question &&
+      typeof question.correct === 'number' &&
+      'explanation' in question &&
+      typeof question.explanation === 'object' &&
+      ['arithmetic', 'reasoning', 'gs', 'telangana', 'english'].includes(question.section),
+  );
+}
+
+/** The explicitly imported SI practice paper is the only production fixture-backed test. */
+export function getImportedTestMeta(id: string): TestMeta | undefined {
+  if (!isImportedTest(id)) return undefined;
+  return FIXTURE_TESTS.find((test) => test.id === id);
+}
+
+export function getImportedPaper(id: string): Question[] {
+  const meta = getImportedTestMeta(id);
+  return meta ? paperForTest(meta) : [];
+}
+
+export function getImportedReviewPaper(id: string): ReviewPaperQuestion[] {
+  const completed = useCompletedTestsStore.getState().tests[id];
+  if (!completed || !canReviewImportedTest(id)) return [];
+  const paper = getImportedPaper(id);
+  return completed.result.review.flatMap((review) => {
+    const question = paper[review.questionNo - 1];
+    if (!question) return [];
+    return [
+      {
+        ...question,
+        yourChoice: review.your,
+        marked: false,
+        seconds: review.seconds,
+      },
+    ];
+  });
+}
+
+export function completeImportedAttempt(paper: readonly PaperQuestion[]): void {
   const state = useAttemptStore.getState();
-  if (!isImportedTest(state.testId) || !state.attemptId) return;
+  if (!state.testId || !isImportedTest(state.testId) || !state.attemptId) return;
   if (state.status !== 'submitted' && state.status !== 'autoSubmitted') return;
-  const meta = TESTS.find((test) => test.id === state.testId);
+  const meta = getImportedTestMeta(state.testId);
   if (!meta || paper.length !== meta.pattern.totalQuestions) return;
+  if (!isScorablePaper(paper)) return;
   if (paper.some((q) => !q.id.startsWith(`${meta.id}-`))) return;
   const previous = useCompletedTestsStore.getState().tests[meta.id];
   if (previous?.attemptId === state.attemptId) return;

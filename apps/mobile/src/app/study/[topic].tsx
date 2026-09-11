@@ -1,4 +1,4 @@
-import { findStudyTopic } from '@tslprb/fixtures';
+import { findStudyTopic, useContentData } from '@/data/content';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 
 import { useActivityStore } from '@/data/activity';
@@ -12,6 +12,7 @@ import { TopicView } from '@/features/study/TopicView';
  * link should say what went wrong where the user is looking.
  */
 export default function StudyTopicRoute() {
+  const content = useContentData();
   const { topic: id } = useLocalSearchParams<{ topic: string }>();
   const router = useRouter();
   const lang = useLangStore((s) => s.lang);
@@ -19,7 +20,7 @@ export default function StudyTopicRoute() {
   const read = useStudyStore((s) => (id ? Boolean(s.read[id]) : false));
   const markRead = useStudyStore((s) => s.markRead);
 
-  const found = findStudyTopic(id);
+  const found = findStudyTopic(id, content.studySections);
   const foundId = found?.topic.id;
 
   return (

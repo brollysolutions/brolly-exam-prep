@@ -308,6 +308,44 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
       data={
         [
           {
+            "correct": 0,
+            "isCorrect": false,
+            "question": {
+              "avgSeconds": 55,
+              "correct": 0,
+              "explanation": {
+                "en": "Each letter moves one step forward in the alphabet: P→Q, O→P, L→M, I→J, C→D, E→F. Applying the same rule, GUARD becomes HVBSE.",
+                "te": "ప్రతి అక్షరాన్ని ఇంగ్లిష్ వర్ణమాలలో ఒక స్థానం ముందుకు జరపాలి: P→Q, O→P, L→M, I→J, C→D, E→F. అదే నియమంతో GUARD → HVBSE.",
+              },
+              "id": "q-re-002#12",
+              "marked": false,
+              "options": {
+                "en": [
+                  "HVBSE",
+                  "HVBRE",
+                  "HUBSE",
+                  "GVBSE",
+                ],
+                "te": [
+                  "HVBSE",
+                  "HVBRE",
+                  "HUBSE",
+                  "GVBSE",
+                ],
+              },
+              "seconds": 124,
+              "section": "reasoning",
+              "text": {
+                "en": "In a code language POLICE is written as QPMJDF. How is GUARD written in the same language?",
+                "te": "ఒక సంకేత భాషలో POLICE అనే పదాన్ని QPMJDF అని రాస్తే, అదే భాషలో GUARD అనే పదాన్ని ఎలా రాస్తారు?",
+              },
+              "yourChoice": 2,
+            },
+            "questionNo": 2,
+            "seconds": 124,
+            "your": 2,
+          },
+          {
             "correct": 2,
             "isCorrect": false,
             "question": {
@@ -318,6 +356,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 "te": "స్తంభాన్ని దాటడానికి రైలు తన పొడవునే ప్రయాణించాలి. వేగం = 180 ÷ 9 = 20 మీ/సె. కి.మీ/గం లోకి మార్చడానికి 18/5 తో గుణించాలి: 20 × 18/5 = 72.",
               },
               "id": "q-ar-001#3",
+              "marked": false,
               "options": {
                 "en": [
                   "60 km/h",
@@ -332,50 +371,17 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                   "80 కి.మీ/గం",
                 ],
               },
+              "seconds": 107,
               "section": "arithmetic",
               "text": {
                 "en": "A train 180 metres long crosses a pole in 9 seconds. What is its speed in kilometres per hour?",
                 "te": "180 మీటర్ల పొడవున్న రైలు ఒక స్తంభాన్ని 9 సెకన్లలో దాటుతుంది. దాని వేగం గంటకు ఎన్ని కిలోమీటర్లు?",
               },
+              "yourChoice": 1,
             },
             "questionNo": 3,
             "seconds": 107,
             "your": 1,
-          },
-          {
-            "correct": 0,
-            "isCorrect": false,
-            "question": {
-              "avgSeconds": 55,
-              "correct": 0,
-              "explanation": {
-                "en": "Each letter moves one step forward in the alphabet: P→Q, O→P, L→M, I→J, C→D, E→F. Applying the same rule, GUARD becomes HVBSE.",
-                "te": "ప్రతి అక్షరాన్ని ఇంగ్లిష్ వర్ణమాలలో ఒక స్థానం ముందుకు జరపాలి: P→Q, O→P, L→M, I→J, C→D, E→F. అదే నియమంతో GUARD → HVBSE.",
-              },
-              "id": "q-re-002#12",
-              "options": {
-                "en": [
-                  "HVBSE",
-                  "HVBRE",
-                  "HUBSE",
-                  "GVBSE",
-                ],
-                "te": [
-                  "HVBSE",
-                  "HVBRE",
-                  "HUBSE",
-                  "GVBSE",
-                ],
-              },
-              "section": "reasoning",
-              "text": {
-                "en": "In a code language POLICE is written as QPMJDF. How is GUARD written in the same language?",
-                "te": "ఒక సంకేత భాషలో POLICE అనే పదాన్ని QPMJDF అని రాస్తే, అదే భాషలో GUARD అనే పదాన్ని ఎలా రాస్తారు?",
-              },
-            },
-            "questionNo": 12,
-            "seconds": 124,
-            "your": 2,
           },
           {
             "correct": 2,
@@ -388,6 +394,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                 "te": "ఇచ్చిన వాటిలో 8, 27, 64, 125 అన్నీ ఘనాలు (2³, 3³, 4³, 5³). 100 మాత్రం ఒక వర్గం (10²) — ఘనం కాదు. కాబట్టి 100 సరిపోదు.",
               },
               "id": "q-re-001#15",
+              "marked": false,
               "options": {
                 "en": [
                   "27",
@@ -402,13 +409,15 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                   "125",
                 ],
               },
+              "seconds": 19,
               "section": "reasoning",
               "text": {
                 "en": "Find the odd one out: 8, 27, 64, 100, 125",
                 "te": "క్రింది వాటిలో సరిపోని దానిని గుర్తించండి: 8, 27, 64, 100, 125",
               },
+              "yourChoice": 1,
             },
-            "questionNo": 15,
+            "questionNo": 4,
             "seconds": 19,
             "your": 1,
           },
@@ -432,6 +441,554 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
       viewabilityConfigCallbackPairs={[]}
     >
       <View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
+            style={
+              {
+                "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
+              }
+            }
+            testID="solution-card"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "flexWrap": undefined,
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <View
+                className="h-7 w-7 shrink-0 items-center justify-center rounded-full bg-dangerInk"
+                testID="solution-badge-wrong"
+              >
+                <Text
+                  accessibilityElementsHidden={true}
+                  className="text-onInk"
+                  importantForAccessibility="no"
+                  style={
+                    {
+                      "fontFamily": "Inter_700Bold",
+                      "fontSize": 13,
+                      "fontVariant": undefined,
+                      "letterSpacing": 0,
+                      "lineHeight": 19.5,
+                      "textAlign": "center",
+                      "textTransform": undefined,
+                      "writingDirection": "ltr",
+                    }
+                  }
+                >
+                  ✕
+                </Text>
+              </View>
+              <View
+                className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+                style={
+                  {
+                    "justifyContent": "center",
+                    "minHeight": 24,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 4,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "baseline",
+                        "flexDirection": "row",
+                        "flexWrap": undefined,
+                        "gap": 4,
+                        "justifyContent": undefined,
+                      }
+                    }
+                  >
+                    <Text
+                      className="text-ink3"
+                      style={
+                        {
+                          "fontFamily": "NotoSansTelugu_700Bold",
+                          "fontSize": 12,
+                          "fontVariant": undefined,
+                          "letterSpacing": 0,
+                          "lineHeight": 19.8,
+                          "textAlign": "left",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ప్ర
+                    </Text>
+                    <Text
+                      accessibilityLanguage="en"
+                      className="text-ink3"
+                      style={
+                        {
+                          "fontFamily": "Inter_700Bold",
+                          "fontSize": 12,
+                          "fontVariant": [
+                            "tabular-nums",
+                          ],
+                          "letterSpacing": 0,
+                          "lineHeight": 18,
+                          "textAlign": "left",
+                          "textTransform": undefined,
+                          "writingDirection": "ltr",
+                        }
+                      }
+                    >
+                      ⁦2⁩
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <Text
+              className="text-ink mt-3"
+              style={
+                {
+                  "fontFamily": "NotoSansTelugu_400Regular",
+                  "fontSize": 16,
+                  "fontVariant": undefined,
+                  "letterSpacing": 0,
+                  "lineHeight": 26.4,
+                  "textAlign": "left",
+                  "textTransform": undefined,
+                  "writingDirection": "ltr",
+                }
+              }
+            >
+              ఒక సంకేత భాషలో POLICE అనే పదాన్ని QPMJDF అని రాస్తే, అదే భాషలో GUARD అనే పదాన్ని ఎలా రాస్తారు?
+            </Text>
+            <View
+              className="mt-3 rounded-sm px-3 py-2"
+              style={
+                {
+                  "backgroundColor": "rgba(185,28,28,0.08)",
+                  "borderLeftColor": "#b91c1c",
+                  "borderLeftWidth": 3,
+                  "paddingLeft": 9,
+                }
+              }
+              testID="solution-your-answer"
+            >
+              <Text
+                className="text-ink"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                మీ జవాబు
+              </Text>
+              <Text
+                className="text-ink mt-1"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+                testID="solution-your-answer-text"
+              >
+                ఇ · HUBSE
+              </Text>
+            </View>
+            <View
+              className="mt-2 rounded-sm px-3 py-2"
+              style={
+                {
+                  "backgroundColor": "rgba(194,155,56,0.14)",
+                  "borderLeftColor": "#a17f2a",
+                  "borderLeftWidth": 3,
+                  "paddingLeft": 9,
+                }
+              }
+              testID="solution-correct-answer"
+            >
+              <Text
+                className="text-ink"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_700Bold",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                సరైన జవాబు
+              </Text>
+              <Text
+                className="text-ink mt-1"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+                testID="solution-correct-answer-text"
+              >
+                అ · HVBSE
+              </Text>
+            </View>
+            <View
+              className="mt-3 border-t border-line pt-3"
+              style={
+                {
+                  "alignItems": undefined,
+                  "flexDirection": "column",
+                  "gap": 8,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <View
+                className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
+                style={
+                  {
+                    "justifyContent": "center",
+                    "minHeight": 24,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": 4,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_700Bold",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ఎందుకు
+                  </Text>
+                </View>
+              </View>
+              <Text
+                className="text-ink2"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 15,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 24.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ప్రతి అక్షరాన్ని ఇంగ్లిష్ వర్ణమాలలో ఒక స్థానం ముందుకు జరపాలి: P→Q, O→P, L→M, I→J, C→D, E→F. అదే నియమంతో GUARD → HVBSE.
+              </Text>
+            </View>
+            <View
+              className="mt-3"
+              style={
+                {
+                  "alignItems": "baseline",
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                  "gap": 4,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                మీ సమయం
+              </Text>
+              <View
+                accessibilityLabel="2 ని 04 సె"
+                accessible={true}
+                style={
+                  {
+                    "alignItems": "baseline",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+                testID="solution-your-time"
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "baseline",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": undefined,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "Inter_600SemiBold",
+                        "fontSize": 12,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 18,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ⁦2⁩
+                  </Text>
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_600SemiBold",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                     ని
+                  </Text>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "baseline",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": undefined,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "Inter_600SemiBold",
+                        "fontSize": 12,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 18,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ⁦04⁩
+                  </Text>
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_600SemiBold",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                     సె
+                  </Text>
+                </View>
+              </View>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "Inter_400Regular",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                ·
+              </Text>
+              <Text
+                className="text-ink3"
+                style={
+                  {
+                    "fontFamily": "NotoSansTelugu_400Regular",
+                    "fontSize": 12,
+                    "fontVariant": undefined,
+                    "letterSpacing": 0,
+                    "lineHeight": 19.8,
+                    "textAlign": "left",
+                    "textTransform": undefined,
+                    "writingDirection": "ltr",
+                  }
+                }
+              >
+                సగటు
+              </Text>
+              <View
+                accessibilityLabel="55 సె"
+                accessible={true}
+                style={
+                  {
+                    "alignItems": "baseline",
+                    "flexDirection": "row",
+                    "flexWrap": undefined,
+                    "gap": 4,
+                    "justifyContent": undefined,
+                  }
+                }
+                testID="solution-avg-time"
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "baseline",
+                      "flexDirection": "row",
+                      "flexWrap": undefined,
+                      "gap": undefined,
+                      "justifyContent": undefined,
+                    }
+                  }
+                >
+                  <Text
+                    accessibilityLanguage="en"
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "Inter_600SemiBold",
+                        "fontSize": 12,
+                        "fontVariant": [
+                          "tabular-nums",
+                        ],
+                        "letterSpacing": 0,
+                        "lineHeight": 18,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                    ⁦55⁩
+                  </Text>
+                  <Text
+                    className="text-ink3"
+                    style={
+                      {
+                        "fontFamily": "NotoSansTelugu_600SemiBold",
+                        "fontSize": 12,
+                        "fontVariant": undefined,
+                        "letterSpacing": 0,
+                        "lineHeight": 19.8,
+                        "textAlign": "left",
+                        "textTransform": undefined,
+                        "writingDirection": "ltr",
+                      }
+                    }
+                  >
+                     సె
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            className="h-3"
+          />
+        </View>
         <View
           onFocusCapture={[Function]}
           onLayout={[Function]}
@@ -1095,555 +1652,7 @@ exports[`SolutionsView (te) renders in Telugu and matches the snapshot 1`] = `
                         }
                       }
                     >
-                      ⁦12⁩
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <Text
-              className="text-ink mt-3"
-              style={
-                {
-                  "fontFamily": "NotoSansTelugu_400Regular",
-                  "fontSize": 16,
-                  "fontVariant": undefined,
-                  "letterSpacing": 0,
-                  "lineHeight": 26.4,
-                  "textAlign": "left",
-                  "textTransform": undefined,
-                  "writingDirection": "ltr",
-                }
-              }
-            >
-              ఒక సంకేత భాషలో POLICE అనే పదాన్ని QPMJDF అని రాస్తే, అదే భాషలో GUARD అనే పదాన్ని ఎలా రాస్తారు?
-            </Text>
-            <View
-              className="mt-3 rounded-sm px-3 py-2"
-              style={
-                {
-                  "backgroundColor": "rgba(185,28,28,0.08)",
-                  "borderLeftColor": "#b91c1c",
-                  "borderLeftWidth": 3,
-                  "paddingLeft": 9,
-                }
-              }
-              testID="solution-your-answer"
-            >
-              <Text
-                className="text-ink"
-                style={
-                  {
-                    "fontFamily": "NotoSansTelugu_700Bold",
-                    "fontSize": 12,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 19.8,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                మీ జవాబు
-              </Text>
-              <Text
-                className="text-ink mt-1"
-                style={
-                  {
-                    "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 15,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 24.8,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-                testID="solution-your-answer-text"
-              >
-                ఇ · HUBSE
-              </Text>
-            </View>
-            <View
-              className="mt-2 rounded-sm px-3 py-2"
-              style={
-                {
-                  "backgroundColor": "rgba(194,155,56,0.14)",
-                  "borderLeftColor": "#a17f2a",
-                  "borderLeftWidth": 3,
-                  "paddingLeft": 9,
-                }
-              }
-              testID="solution-correct-answer"
-            >
-              <Text
-                className="text-ink"
-                style={
-                  {
-                    "fontFamily": "NotoSansTelugu_700Bold",
-                    "fontSize": 12,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 19.8,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                సరైన జవాబు
-              </Text>
-              <Text
-                className="text-ink mt-1"
-                style={
-                  {
-                    "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 15,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 24.8,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-                testID="solution-correct-answer-text"
-              >
-                అ · HVBSE
-              </Text>
-            </View>
-            <View
-              className="mt-3 border-t border-line pt-3"
-              style={
-                {
-                  "alignItems": undefined,
-                  "flexDirection": "column",
-                  "gap": 8,
-                  "justifyContent": undefined,
-                }
-              }
-            >
-              <View
-                className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
-                style={
-                  {
-                    "justifyContent": "center",
-                    "minHeight": 24,
-                  }
-                }
-              >
-                <View
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "flexWrap": undefined,
-                      "gap": 4,
-                      "justifyContent": undefined,
-                    }
-                  }
-                >
-                  <Text
-                    className="text-ink3"
-                    style={
-                      {
-                        "fontFamily": "NotoSansTelugu_700Bold",
-                        "fontSize": 12,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 19.8,
-                        "textAlign": "left",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
-                      }
-                    }
-                  >
-                    ఎందుకు
-                  </Text>
-                </View>
-              </View>
-              <Text
-                className="text-ink2"
-                style={
-                  {
-                    "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 15,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 24.8,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                ప్రతి అక్షరాన్ని ఇంగ్లిష్ వర్ణమాలలో ఒక స్థానం ముందుకు జరపాలి: P→Q, O→P, L→M, I→J, C→D, E→F. అదే నియమంతో GUARD → HVBSE.
-              </Text>
-            </View>
-            <View
-              className="mt-3"
-              style={
-                {
-                  "alignItems": "baseline",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 4,
-                  "justifyContent": undefined,
-                }
-              }
-            >
-              <Text
-                className="text-ink3"
-                style={
-                  {
-                    "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 12,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 19.8,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                మీ సమయం
-              </Text>
-              <View
-                accessibilityLabel="2 ని 04 సె"
-                accessible={true}
-                style={
-                  {
-                    "alignItems": "baseline",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 4,
-                    "justifyContent": undefined,
-                  }
-                }
-                testID="solution-your-time"
-              >
-                <View
-                  style={
-                    {
-                      "alignItems": "baseline",
-                      "flexDirection": "row",
-                      "flexWrap": undefined,
-                      "gap": undefined,
-                      "justifyContent": undefined,
-                    }
-                  }
-                >
-                  <Text
-                    accessibilityLanguage="en"
-                    className="text-ink3"
-                    style={
-                      {
-                        "fontFamily": "Inter_600SemiBold",
-                        "fontSize": 12,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "letterSpacing": 0,
-                        "lineHeight": 18,
-                        "textAlign": "left",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
-                      }
-                    }
-                  >
-                    ⁦2⁩
-                  </Text>
-                  <Text
-                    className="text-ink3"
-                    style={
-                      {
-                        "fontFamily": "NotoSansTelugu_600SemiBold",
-                        "fontSize": 12,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 19.8,
-                        "textAlign": "left",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
-                      }
-                    }
-                  >
-                     ని
-                  </Text>
-                </View>
-                <View
-                  style={
-                    {
-                      "alignItems": "baseline",
-                      "flexDirection": "row",
-                      "flexWrap": undefined,
-                      "gap": undefined,
-                      "justifyContent": undefined,
-                    }
-                  }
-                >
-                  <Text
-                    accessibilityLanguage="en"
-                    className="text-ink3"
-                    style={
-                      {
-                        "fontFamily": "Inter_600SemiBold",
-                        "fontSize": 12,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "letterSpacing": 0,
-                        "lineHeight": 18,
-                        "textAlign": "left",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
-                      }
-                    }
-                  >
-                    ⁦04⁩
-                  </Text>
-                  <Text
-                    className="text-ink3"
-                    style={
-                      {
-                        "fontFamily": "NotoSansTelugu_600SemiBold",
-                        "fontSize": 12,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 19.8,
-                        "textAlign": "left",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
-                      }
-                    }
-                  >
-                     సె
-                  </Text>
-                </View>
-              </View>
-              <Text
-                className="text-ink3"
-                style={
-                  {
-                    "fontFamily": "Inter_400Regular",
-                    "fontSize": 12,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 18,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                ·
-              </Text>
-              <Text
-                className="text-ink3"
-                style={
-                  {
-                    "fontFamily": "NotoSansTelugu_400Regular",
-                    "fontSize": 12,
-                    "fontVariant": undefined,
-                    "letterSpacing": 0,
-                    "lineHeight": 19.8,
-                    "textAlign": "left",
-                    "textTransform": undefined,
-                    "writingDirection": "ltr",
-                  }
-                }
-              >
-                సగటు
-              </Text>
-              <View
-                accessibilityLabel="55 సె"
-                accessible={true}
-                style={
-                  {
-                    "alignItems": "baseline",
-                    "flexDirection": "row",
-                    "flexWrap": undefined,
-                    "gap": 4,
-                    "justifyContent": undefined,
-                  }
-                }
-                testID="solution-avg-time"
-              >
-                <View
-                  style={
-                    {
-                      "alignItems": "baseline",
-                      "flexDirection": "row",
-                      "flexWrap": undefined,
-                      "gap": undefined,
-                      "justifyContent": undefined,
-                    }
-                  }
-                >
-                  <Text
-                    accessibilityLanguage="en"
-                    className="text-ink3"
-                    style={
-                      {
-                        "fontFamily": "Inter_600SemiBold",
-                        "fontSize": 12,
-                        "fontVariant": [
-                          "tabular-nums",
-                        ],
-                        "letterSpacing": 0,
-                        "lineHeight": 18,
-                        "textAlign": "left",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
-                      }
-                    }
-                  >
-                    ⁦55⁩
-                  </Text>
-                  <Text
-                    className="text-ink3"
-                    style={
-                      {
-                        "fontFamily": "NotoSansTelugu_600SemiBold",
-                        "fontSize": 12,
-                        "fontVariant": undefined,
-                        "letterSpacing": 0,
-                        "lineHeight": 19.8,
-                        "textAlign": "left",
-                        "textTransform": undefined,
-                        "writingDirection": "ltr",
-                      }
-                    }
-                  >
-                     సె
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View
-            className="h-3"
-          />
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            className="justify-center rounded-md min-h-16 border border-line p-4 bg-surface"
-            style={
-              {
-                "boxShadow": "0 6px 20px -12px rgba(33,28,23,0.25)",
-              }
-            }
-            testID="solution-card"
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "flexWrap": undefined,
-                  "gap": 8,
-                  "justifyContent": undefined,
-                }
-              }
-            >
-              <View
-                className="h-7 w-7 shrink-0 items-center justify-center rounded-full bg-dangerInk"
-                testID="solution-badge-wrong"
-              >
-                <Text
-                  accessibilityElementsHidden={true}
-                  className="text-onInk"
-                  importantForAccessibility="no"
-                  style={
-                    {
-                      "fontFamily": "Inter_700Bold",
-                      "fontSize": 13,
-                      "fontVariant": undefined,
-                      "letterSpacing": 0,
-                      "lineHeight": 19.5,
-                      "textAlign": "center",
-                      "textTransform": undefined,
-                      "writingDirection": "ltr",
-                    }
-                  }
-                >
-                  ✕
-                </Text>
-              </View>
-              <View
-                className="self-start rounded-full border px-2 py-0.5 bg-surface2 border-line"
-                style={
-                  {
-                    "justifyContent": "center",
-                    "minHeight": 24,
-                  }
-                }
-              >
-                <View
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "flexWrap": undefined,
-                      "gap": 4,
-                      "justifyContent": undefined,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "alignItems": "baseline",
-                        "flexDirection": "row",
-                        "flexWrap": undefined,
-                        "gap": 4,
-                        "justifyContent": undefined,
-                      }
-                    }
-                  >
-                    <Text
-                      className="text-ink3"
-                      style={
-                        {
-                          "fontFamily": "NotoSansTelugu_700Bold",
-                          "fontSize": 12,
-                          "fontVariant": undefined,
-                          "letterSpacing": 0,
-                          "lineHeight": 19.8,
-                          "textAlign": "left",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        }
-                      }
-                    >
-                      ప్ర
-                    </Text>
-                    <Text
-                      accessibilityLanguage="en"
-                      className="text-ink3"
-                      style={
-                        {
-                          "fontFamily": "Inter_700Bold",
-                          "fontSize": 12,
-                          "fontVariant": [
-                            "tabular-nums",
-                          ],
-                          "letterSpacing": 0,
-                          "lineHeight": 18,
-                          "textAlign": "left",
-                          "textTransform": undefined,
-                          "writingDirection": "ltr",
-                        }
-                      }
-                    >
-                      ⁦15⁩
+                      ⁦4⁩
                     </Text>
                   </View>
                 </View>

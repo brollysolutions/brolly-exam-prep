@@ -22,7 +22,8 @@ from __future__ import annotations
 import secrets
 import uuid
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException, Security, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 from app.schemas import PhoneSignInIn, PhoneSignInOut, UserOut
 
@@ -32,6 +33,19 @@ router = APIRouter(prefix="/v1/auth", tags=["auth"])
 _USERS_BY_PHONE: dict[str, dict] = {}
 # opaque session token -> user dict
 _TOKENS: dict[str, dict] = {}
+_bearer = HTTPBearer(auto_error=False)
+
+
+async def require_user(
+    credentials: HTTPAuthorizationCredentials | None = Security(_bearer),
+) -> dict:
+    """Resolve the current in-memory session for protected attempt/result routes."""
+    if credentials is None or credentials.scheme.lower() != "bearer":
+        raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Authentication required")
+    user = _TOKENS.get(credentials.credentials)
+    if user is None:
+        raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Invalid session")
+    return user
 
 
 def _get_or_create_user(phone: str) -> dict:

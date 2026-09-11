@@ -15,6 +15,7 @@ causing "-6.75" negative marks, i.e. 0.25 per wrong answer):
 
 from __future__ import annotations
 
+import re
 import uuid
 from datetime import UTC, datetime, timedelta
 from typing import Any
@@ -212,12 +213,23 @@ def test_detail(test: dict[str, Any]) -> dict[str, Any]:
 ATTEMPTS: dict[str, dict[str, Any]] = {}
 ATTEMPT_ANSWERS: dict[str, dict[str, dict[str, Any]]] = {}
 RESULTS: dict[str, dict[str, Any]] = {}
+# (user_id, client_attempt_id) -> server attempt id. Makes POST /v1/attempts
+# idempotent: a client that retries an ambiguous create with the same key gets
+# the same server attempt back instead of a duplicate.
+ATTEMPTS_BY_CLIENT_KEY: dict[tuple[str, str], str] = {}
 
 
-def create_attempt(test_id: str) -> dict[str, Any] | None:
+def create_attempt(
+    test_id: str, user_id: str, client_attempt_id: str | None = None
+) -> dict[str, Any] | None:
     test = TESTS_BY_ID.get(test_id)
     if test is None:
         return None
+    if client_attempt_id is not None:
+        existing_id = ATTEMPTS_BY_CLIENT_KEY.get((user_id, client_attempt_id))
+        existing = ATTEMPTS.get(existing_id) if existing_id else None
+        if existing is not None:
+            return existing
     attempt_id = str(uuid.uuid4())
     started_at = datetime.now(UTC)
     ends_at = started_at + timedelta(minutes=test["duration_minutes"])
@@ -227,9 +239,12 @@ def create_attempt(test_id: str) -> dict[str, Any] | None:
         "started_at": started_at,
         "ends_at": ends_at,
         "status": "in_progress",
+        "user_id": user_id,
     }
     ATTEMPTS[attempt_id] = attempt
     ATTEMPT_ANSWERS[attempt_id] = {}
+    if client_attempt_id is not None:
+        ATTEMPTS_BY_CLIENT_KEY[(user_id, client_attempt_id)] = attempt_id
     return attempt
 
 
@@ -328,6 +343,7 @@ def submit_attempt(attempt_id: str) -> dict[str, Any] | None:
         "accuracy": accuracy,
         "per_section": per_section,
         "wrong": wrong,
+        "user_id": attempt.get("user_id"),
     }
     RESULTS[result_id] = result
     return result
@@ -405,4 +421,152 @@ RESULTS[SAMPLE_RESULT_ID] = {
     "accuracy": round((69 / 96) * 100, 2),
     "per_section": _SAMPLE_PER_SECTION,
     "wrong": _SAMPLE_WRONG,
+    "user_id": None,
 }
+
+
+# ---------------------------------------------- Extended read projections --
+
+_SECTION_IDS = {
+    "sec-arithmetic": "arithmetic",
+    "sec-reasoning": "reasoning",
+    "sec-general-studies": "gs",
+    "sec-telangana": "telangana",
+}
+
+
+def get_test_meta(test_id: str) -> dict[str, Any] | None:
+    test = TESTS_BY_ID.get(test_id)
+    if test is None:
+        return None
+    scale = (test["total_marks"] / len(QUESTIONS)) if QUESTIONS else 1.0
+    sections = []
+    for section in SECTIONS:
+        sid = _SECTION_IDS.get(section["id"], section["id"])
+        sections.append(
+            {
+                "id": sid,
+                "label_key": f"test.sections.{sid}",
+                "questions": len(question_ids_for_section(section["id"])),
+                "unlock_after": None,
+            }
+        )
+    return {
+        "id": test_id,
+        "kind": "full",
+        "title": {"en": test["title"], "te": test["title"]},
+        "pattern": {
+            "id": f"{test_id}-pattern",
+            "post": test["post"],
+            "total_questions": len(QUESTIONS),
+            "duration_minutes": test["duration_minutes"],
+            "marks_per_correct": MARK_CORRECT * scale,
+            "negative_per_wrong": abs(MARK_WRONG * scale),
+            "qualifying_only": True,
+            "sections": sections,
+            "verified": False,
+            "source": "services/api fixture bank",
+        },
+        "full_mocks_only": True,
+        "listed": True,
+        "free": True,
+        "attempted": None,
+    }
+
+
+def get_public_paper(test_id: str) -> list[dict[str, Any]] | None:
+    if test_id not in TESTS_BY_ID:
+        return None
+    return [
+        {
+            "id": question["id"],
+            "section": _SECTION_IDS.get(question["section_id"], question["section_id"]),
+            "text": question["text"],
+            "options": question["options"],
+            "avg_seconds": 0,
+        }
+        for question in QUESTIONS
+    ]
+
+
+def get_attempt_detail(attempt_id: str) -> dict[str, Any] | None:
+    attempt = ATTEMPTS.get(attempt_id)
+    if attempt is None:
+        return None
+    answers = ATTEMPT_ANSWERS.get(attempt_id, {})
+    return {
+        **{k: attempt[k] for k in ("id", "test_id", "started_at", "ends_at", "status")},
+        "answers": [
+            {
+                "question_id": question_id,
+                "choice": answer.get("choice"),
+                "marked": answer.get("marked", False),
+            }
+            for question_id, answer in answers.items()
+        ],
+    }
+
+
+def get_result_detail(result_id: str) -> dict[str, Any] | None:
+    result = RESULTS.get(result_id)
+    if result is None:
+        return None
+    per_section = result["per_section"]
+    correct = sum(row["correct"] for row in per_section)
+    wrong = sum(row["wrong"] for row in per_section)
+    skipped = sum(row["skipped"] for row in per_section)
+    attempt_id = result.get("attempt_id")
+    answers = ATTEMPT_ANSWERS.get(attempt_id, {}) if attempt_id else {}
+    paper = get_public_paper(result["test_id"]) or []
+    review = [
+        {
+            "question_no": index,
+            "your": answers.get(question["id"], {}).get("choice"),
+            "seconds": 0,
+        }
+        for index, question in enumerate(paper, start=1)
+    ]
+    match = re.search(r"(\d+)$", TESTS_BY_ID[result["test_id"]]["title"])
+    scale = (result["max_score"] / len(QUESTIONS)) if QUESTIONS else 1.0
+    return {
+        "id": result_id,
+        "test_title_n": int(match.group(1)) if match else 0,
+        "title": get_test_meta(result["test_id"])["title"],
+        "score": result["score"],
+        "max_score": result["max_score"],
+        "cutoff_pct": (result["cutoff"] / result["max_score"] * 100)
+        if result["max_score"]
+        else 0,
+        "qualified": result["qualified"],
+        "rank": result["rank"],
+        "total_candidates": None,
+        "accuracy_pct": result["accuracy"],
+        "avg_seconds_per_question": 0,
+        "negative_marks": wrong * MARK_WRONG * scale,
+        "correct": correct,
+        "wrong": wrong,
+        "skipped": skipped,
+        "actions": [],
+        "review": review,
+    }
+
+
+def get_review_paper(result_id: str) -> list[dict[str, Any]] | None:
+    result = RESULTS.get(result_id)
+    if result is None:
+        return None
+    attempt_id = result.get("attempt_id")
+    answers = ATTEMPT_ANSWERS.get(attempt_id, {}) if attempt_id else {}
+    public = get_public_paper(result["test_id"]) or []
+    by_id = {question["id"]: question for question in QUESTIONS}
+    return [
+        {
+            **question,
+            "your_choice": answers.get(question["id"], {}).get("choice"),
+            "marked": answers.get(question["id"], {}).get("marked", False),
+            "correct_choice": by_id[question["id"]]["correct_index"],
+            "explanation": by_id[question["id"]]["explanation"],
+            "seconds": 0,
+        }
+        for question in public
+    ]

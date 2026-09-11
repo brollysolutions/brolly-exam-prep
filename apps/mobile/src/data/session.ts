@@ -8,6 +8,8 @@ export type { CategoryId, Post };
 
 /** Everything the app knows about who is using it. Language lives in `lang.ts`. */
 export type SessionState = {
+  /** Stable backend identity retained solely for correctly scoped local user data. */
+  userId?: string;
   phone?: string;
   token?: string;
   post?: Post;
@@ -24,6 +26,7 @@ export type SessionState = {
 };
 
 export type SessionActions = {
+  setUserId: (userId: string) => void;
   setPhone: (phone: string) => void;
   setToken: (token: string) => void;
   setPost: (post: Post) => void;
@@ -60,6 +63,7 @@ export const isOnboarded = (s: SessionState): boolean =>
 export const SESSION_STORAGE_KEY = 'tslprb.session';
 
 const initial: SessionState = {
+  userId: undefined,
   phone: undefined,
   token: undefined,
   post: undefined,
@@ -73,6 +77,7 @@ export const useSessionStore = create<SessionStore>()(
   persist(
     (set, get) => ({
       ...initial,
+      setUserId: (userId) => set({ userId }),
       setPhone: (phone) => set({ phone }),
       setToken: (token) => set({ token }),
       setPost: (post) => set({ post }),
@@ -88,6 +93,7 @@ export const useSessionStore = create<SessionStore>()(
       name: SESSION_STORAGE_KEY,
       storage: persistedJSONStorage(),
       partialize: (s): SessionState => ({
+        userId: s.userId,
         phone: s.phone,
         token: s.token,
         post: s.post,
@@ -99,3 +105,23 @@ export const useSessionStore = create<SessionStore>()(
     },
   ),
 );
+
+/**
+ * Stable owner key for application-owned SQLite rows. The phone fallback supports sessions
+ * created before the backend user id began being retained; new sign-ins always use `userId`.
+ */
+export function offlineUserId(session: SessionState): string | undefined {
+  if (session.userId) return `user:${session.userId}`;
+  if (session.phone) return `phone:${session.phone}`;
+  return undefined;
+}
+
+/**
+ * True only when the session is backed by a real server user id AND a token — never the
+ * phone-only offline fallback. Server-side attempt creation and submission require this, so a
+ * legacy/degraded phone-only session can play and store locally but can never drive a backend
+ * write. A new sign-in always satisfies it.
+ */
+export function hasBackendIdentity(session: SessionState): boolean {
+  return Boolean(session.userId && session.token);
+}

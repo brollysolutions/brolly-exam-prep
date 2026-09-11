@@ -1,5 +1,5 @@
 import { text as textSizes } from '@tslprb/design-tokens';
-import { COST_ROWS } from '@tslprb/fixtures';
+import { COST_ROWS, type CostRows } from '@/data/content';
 import { useDir } from '@tslprb/i18n';
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -33,8 +33,11 @@ export type ResultViewProps = {
   result?: ResultDetail;
   /** The load failed: the retry state replaces the body. */
   failed?: boolean;
+  failureMessage?: string;
   /** Imported practice papers review every question, without sample analytics. */
   reviewAll?: boolean;
+  /** Content-service rows used by the marks-cost card. */
+  costRows?: CostRows;
   onBack?: () => void;
   onRetry?: () => void;
   onSeeWrong?: () => void;
@@ -200,7 +203,9 @@ function SectionPill({ index, label }: { index: string; label: string }) {
 export function ResultView({
   result,
   failed = false,
+  failureMessage,
   reviewAll = false,
+  costRows: suppliedCostRows = COST_ROWS,
   onBack,
   onRetry,
   onSeeWrong,
@@ -209,7 +214,7 @@ export function ResultView({
   const { t } = useTranslation();
   const d = useDir();
   const units = useDurationUnits();
-  const costRows = COST_ROWS[d.lang];
+  const costRows = suppliedCostRows[d.lang];
 
   /**
    * "Where you stand", in the prototype's order — but the rank line only when there IS a
@@ -258,7 +263,7 @@ export function ResultView({
       />
 
       {failed ? (
-        <LoadError onRetry={onRetry} testID="result-error" />
+        <LoadError message={failureMessage} onRetry={onRetry} testID="result-error" />
       ) : !result ? (
         <Skeleton blocks={[...SKELETON]} testID="result-skeleton" />
       ) : (

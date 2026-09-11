@@ -20,6 +20,7 @@ jest.mock('expo-router', () => ({
     return null;
   },
 }));
+jest.mock('expo-network', () => ({ useNetworkState: () => ({ isConnected: true }) }));
 
 const meta = TESTS.find((t) => t.id === SI_MOCK_01_ID)!;
 const paper = paperForTest(meta);

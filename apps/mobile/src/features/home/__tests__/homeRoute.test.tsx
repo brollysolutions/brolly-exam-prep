@@ -10,6 +10,10 @@ import { useSessionStore } from '@/data/session';
 import { useStudyStore } from '@/data/study';
 import { iso } from '@/ui';
 
+const durableMock = jest.requireMock<{
+  __mockDurableAttemptService: { findLatest: jest.Mock };
+}>('@/data/offline/durableAttempts').__mockDurableAttemptService;
+
 const mockRouter = { push: jest.fn(), replace: jest.fn(), navigate: jest.fn(), back: jest.fn() };
 
 /**
@@ -107,6 +111,33 @@ describe('HomeRoute — no Continue card', () => {
     await render(<HomeRoute />);
     expect(screen.queryByTestId('sample-data-updates')).toBeNull();
     expect(screen.queryByTestId('sample-data-affairs')).toBeNull();
+  });
+});
+
+describe('HomeRoute — durable resume', () => {
+  it('shows and opens the signed-in user\'s latest unfinished SQLite attempt', async () => {
+    signIn();
+    useSessionStore.getState().setUserId('user-1');
+    durableMock.findLatest.mockResolvedValueOnce({
+      userId: 'user:user-1',
+      id: 'local-resume-1',
+      testId: 'mock-07',
+      startedAt: 1,
+      endsAt: Date.now() + 60_000,
+      status: 'running',
+      currentQuestion: 7,
+      currentQuestionId: 'mock-07-q07',
+      sectionUnlocked: [true, true, true, false],
+      createdAt: 1,
+      updatedAt: 2,
+    });
+
+    await render(<HomeRoute />);
+    const action = await screen.findByTestId('home-continue-action');
+    expect(screen.getByTestId('home-continue')).toHaveTextContent(has('Full Mock 07'));
+    expect(screen.getByTestId('home-continue')).toHaveTextContent(has(iso('7')));
+    await userEvent.press(action);
+    expect(mockRouter.push).toHaveBeenCalledWith('/test/mock-07');
   });
 });
 

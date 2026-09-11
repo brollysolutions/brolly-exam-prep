@@ -342,6 +342,31 @@ describe('HomeView — the three shelves', () => {
   });
 });
 
+describe('HomeView — durable resume', () => {
+  beforeAll(() => {
+    initI18n('en');
+  });
+
+  it('uses a compact secondary action for an unfinished attempt', async () => {
+    const onResumeAttempt = jest.fn();
+    await render(
+      <HomeView
+        {...props}
+        lang="en"
+        unfinishedAttempt={{ title: 'PWT Full Mock 07', currentQuestion: 7 }}
+        onResumeAttempt={onResumeAttempt}
+      />,
+    );
+
+    expect(screen.getByTestId('home-continue')).toHaveTextContent(/PWT Full Mock 07/);
+    expect(screen.getByTestId('home-continue')).toHaveTextContent(/question.*7/i);
+    const action = screen.getByTestId('home-continue-action');
+    expect(action.props.className).not.toMatch(/\bbg-ink\b/);
+    await userEvent.press(action);
+    expect(onResumeAttempt).toHaveBeenCalledTimes(1);
+  });
+});
+
 describe('HomeView — progress', () => {
   beforeAll(() => {
     initI18n('en');

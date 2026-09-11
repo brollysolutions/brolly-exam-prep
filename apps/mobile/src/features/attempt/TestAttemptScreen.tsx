@@ -1,4 +1,4 @@
-import { firstQuestionOf, isImportedTest } from '@tslprb/fixtures';
+import { firstQuestionOf, isImportedTest } from '@/data/content';
 import { Redirect, useRouter } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -9,9 +9,21 @@ import { getApi, type PaperQuestion } from '@/data/api';
 import { useAttemptStore, type Choice, type GotoResult } from '@/data/attempt';
 import { counts, elapsedOnCurrentSec, sectionOf } from '@/data/attempt.selectors';
 import { useHistoryStore } from '@/data/history';
-import { completeImportedAttempt } from '@/data/importedAttempt';
+import {
+  completeImportedAttempt,
+  getImportedPaper,
+  getImportedTestMeta,
+} from '@/data/importedAttempt';
 import { useLangStore } from '@/data/lang';
+import {
+  getDurableAttemptService,
+  getPublicReadCache,
+  requestAnswerSyncForCurrentUser,
+  requestCurrentAttemptSubmission,
+  resolveCachedRead,
+} from '@/data/offline';
 import { gateHref, useRequireAuth } from '@/data/requireAuth';
+import { offlineUserId, useSessionStore } from '@/data/session';
 import { testAttemptHref, testResultHref } from '@/data/testRoutes';
 import { useCountdown } from '@/data/useCountdown';
 import { useNetwork } from '@/data/useNetwork';
@@ -60,6 +72,7 @@ function TestAttempt({ id }: { id: string }) {
   const [failed, setFailed] = useState(false);
   const [loadAttempt, setLoadAttempt] = useState(0);
   const [dialog, setDialog] = useState<AttemptDialogKind | null>(null);
+  const [submissionError, setSubmissionError] = useState<string>();
   const [toast, setToast] = useState<AttemptToast | null>(null);
   const sheet = useRef<SheetHandle>(null);
   const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -99,11 +112,118 @@ function TestAttempt({ id }: { id: string }) {
       initial.testId === id && initial.status === 'running' ? initial.attemptId : undefined;
     void (async () => {
       const api = getApi();
-      let meta;
-      try {
-        const [loadedMeta, questions] = await Promise.all([api.getTestMeta(id), api.getPaper(id)]);
+      if (isImportedTest(id)) {
+        const meta = getImportedTestMeta(id);
+        const questions = getImportedPaper(id);
+        if (!meta || questions.length === 0) {
+          if (!cancelled) setFailed(true);
+          return;
+        }
         if (cancelled) return;
-        meta = loadedMeta;
+        setPaper(questions);
+        setFailed(false);
+        if (resumingId) completeImportedAttempt(questions);
+        const state = useAttemptStore.getState();
+        if (
+          resumingId &&
+          state.status === 'running' &&
+          state.endsAt !== undefined &&
+          state.endsAt <= Date.now()
+        ) {
+          state.autoSubmit();
+          completeImportedAttempt(questions);
+          setDialog('auto');
+          return;
+        }
+        if (state.testId === id && state.status === 'running') return;
+        state.start(meta);
+        return;
+      }
+
+      const userId = offlineUserId(useSessionStore.getState());
+      const scope = userId ? { userId } : undefined;
+      const durable = scope
+        ? await getDurableAttemptService().catch(() => undefined)
+        : undefined;
+
+      if (durable && scope) {
+        try {
+          const local = await durable.findLatest(scope, id);
+          if (local) {
+            const restored = await durable.restore(scope, local.id);
+            if (!restored || cancelled) return;
+            setPaper(restored.paper);
+            useAttemptStore
+              .getState()
+              .hydrateLocal(restored.meta, restored.attempt, restored.answers, restored.paper);
+            if (local.status !== 'running') {
+              setSubmissionError(
+                local.status === 'sync_failed' ? local.submissionLastError : undefined,
+              );
+              setDialog(
+                local.status === 'sync_failed'
+                  ? 'submitError'
+                  : local.submissionAuto
+                    ? 'auto'
+                    : 'pending',
+              );
+            } else if (useAttemptStore.getState().status === 'autoSubmitted') {
+              if (local.status === 'running') {
+                void requestCurrentAttemptSubmission(local.id, true).catch(() => undefined);
+              }
+              setDialog('auto');
+            }
+            setFailed(false);
+            return;
+          }
+        } catch {
+          // Keep the local row intact. The public cache/network path below gets one chance to
+          // reconstruct a paper before the existing load error is shown.
+        }
+      }
+
+      const legacyServerId = initial.serverAttemptId ?? resumingId;
+      if (resumingId && legacyServerId && !legacyServerId.startsWith('local-')) {
+        try {
+          const [serverAttempt, serverMeta, serverPaper] = await Promise.all([
+            api.getAttempt(legacyServerId),
+            api.getAttemptMetaData(legacyServerId),
+            api.getAttemptPaperData(legacyServerId),
+          ]);
+          if (cancelled) return;
+          setPaper(serverPaper);
+          useAttemptStore.getState().resumeServer(serverMeta, serverAttempt, serverPaper);
+          if (durable && scope) {
+            const adopted = await durable.adopt({
+              scope,
+              test: serverMeta,
+              paper: serverPaper,
+              state: useAttemptStore.getState(),
+            });
+            const restored = await durable.restore(scope, adopted.id);
+            if (restored && !cancelled) {
+              useAttemptStore
+                .getState()
+                .hydrateLocal(restored.meta, restored.attempt, restored.answers, restored.paper);
+            }
+          }
+          setFailed(false);
+          return;
+        } catch {
+          // The persisted local state remains usable if the server cannot be reached. The
+          // public paper fallback below is only a reload, not offline reconciliation.
+        }
+      }
+
+      let meta;
+      let questions;
+      try {
+        const cache = await getPublicReadCache();
+        [meta, questions] = await Promise.all([
+          resolveCachedRead(cache.readTestMeta(id)),
+          resolveCachedRead(cache.readTestPaper(id)),
+        ]);
+        if (cancelled) return;
         setPaper(questions);
         // An already-expired resumed clock can submit while the paper is loading.
         if (resumingId) completeImportedAttempt(questions);
@@ -116,27 +236,138 @@ function TestAttempt({ id }: { id: string }) {
       }
       const state = useAttemptStore.getState();
       // A running attempt on this same test is resumed, never restarted.
-      if (state.testId === id && state.status === 'running') return;
-      if (resumingId && state.attemptId === resumingId) return;
-      if (isImportedTest(id)) {
-        state.start(meta);
+      if (state.testId === id && state.status === 'running') {
+        if (durable && scope) {
+          try {
+            const adopted = await durable.adopt({ scope, test: meta, paper: questions, state });
+            const restored = await durable.restore(scope, adopted.id);
+            if (restored && !cancelled) {
+              useAttemptStore
+                .getState()
+                .hydrateLocal(restored.meta, restored.attempt, restored.answers, restored.paper);
+            }
+          } catch {
+            // The existing Zustand attempt remains usable if its one-time SQLite adoption fails.
+          }
+        }
         return;
       }
+      if (resumingId && state.attemptId === resumingId) return;
+
+      let startMeta = meta;
+      let startPaper = questions;
+      let serverAttemptId: string | undefined;
+      let startedAt: number | undefined;
+      let endsAt: number | undefined;
       try {
         const created = await api.createAttempt({ test_id: id });
         if (cancelled) return;
-        useAttemptStore
-          .getState()
-          .start(meta, { attemptId: created.id, endsAt: Date.parse(created.ends_at) });
+        serverAttemptId = created.id;
+        startedAt = Date.parse(created.started_at);
+        endsAt = Date.parse(created.ends_at);
+        try {
+          const [serverAttempt, serverMeta, serverPaper] = await Promise.all([
+            api.getAttempt(created.id),
+            api.getAttemptMetaData(created.id),
+            api.getAttemptPaperData(created.id),
+          ]);
+          if (cancelled) return;
+          startMeta = serverMeta;
+          startPaper = serverPaper;
+          startedAt = Date.parse(serverAttempt.started_at);
+          endsAt = Date.parse(serverAttempt.ends_at);
+        } catch {
+          // Creation succeeded, so its id/deadline remain authoritative even if optional
+          // follow-up reads fail.
+        }
       } catch {
-        // Offline start: a local attempt id and a deadline computed from the pattern.
-        if (!cancelled) useAttemptStore.getState().start(meta);
+        // A cached public paper is enough to create a durable local-only attempt.
       }
+      if (cancelled) return;
+      setPaper(startPaper);
+      if (durable && scope) {
+        try {
+          const local = await durable.create({
+            scope,
+            test: startMeta,
+            paper: startPaper,
+            serverAttemptId,
+            startedAt,
+            endsAt,
+          });
+          if (cancelled) return;
+          useAttemptStore.getState().hydrateLocal(startMeta, local, [], startPaper);
+          return;
+        } catch {
+          // SQLite failure must not break the established online attempt path.
+        }
+      }
+      useAttemptStore.getState().start(startMeta, {
+        attemptId: serverAttemptId,
+        serverAttemptId,
+        endsAt,
+      });
     })();
     return () => {
       cancelled = true;
     };
   }, [id, loadAttempt]);
+
+  const openResult = useCallback(
+    (resultId?: string) => {
+      completeImportedAttempt(paper);
+      const target = isImportedTest(id)
+        ? id
+        : (resultId ?? useAttemptStore.getState().resultId);
+      if (target) router.replace(testResultHref(target));
+    },
+    [id, paper, router],
+  );
+
+  const submitServerAttempt = useCallback(async (auto: boolean) => {
+    const state = useAttemptStore.getState();
+    if (state.resultId)
+      return {
+        resultId: state.resultId,
+        permanentFailure: false,
+        failureReason: undefined,
+      };
+    if (!state.attemptId || isImportedTest(state.testId))
+      return {
+        resultId: undefined,
+        permanentFailure: false,
+        failureReason: undefined,
+      };
+
+    const testId = state.testId ?? id;
+    const summary = await requestCurrentAttemptSubmission(state.attemptId, auto);
+    const completed = summary?.completed.find(
+      (item) => item.localAttemptId === state.attemptId,
+    );
+    if (!completed) {
+      return {
+        resultId: undefined,
+        permanentFailure: (summary?.permanentFailures ?? 0) > 0,
+        failureReason: summary?.failureReason,
+      };
+    }
+    const result_id = completed.resultId;
+    const current = useAttemptStore.getState();
+    current.completeSubmission(result_id, auto);
+    void getApi()
+      .getResult(result_id)
+      .then((result) => {
+        useHistoryStore.getState().record({
+          id: result_id,
+          testId,
+          score: result.score,
+          maxScore: result.max_score,
+          at: Date.now(),
+        });
+      })
+      .catch(() => undefined);
+    return { resultId: result_id, permanentFailure: false, failureReason: undefined };
+  }, [id]);
 
   // ------------------------------------------------------------------- clock
 
@@ -152,8 +383,16 @@ function TestAttempt({ id }: { id: string }) {
       showToast({ key: 'warn1', text: t('test.warn1'), tone: 'danger' });
     },
     onExpire: () => {
-      useAttemptStore.getState().autoSubmit();
+      const state = useAttemptStore.getState();
+      state.autoSubmit();
       completeImportedAttempt(paper);
+      if (!isImportedTest(id)) {
+        void (async () => {
+          if (!state.attemptId) return;
+          const outcome = await submitServerAttempt(true).catch(() => undefined);
+          if (outcome?.resultId) openResult(outcome.resultId);
+        })();
+      }
       clearToast();
       openDialog('auto');
     },
@@ -182,19 +421,31 @@ function TestAttempt({ id }: { id: string }) {
 
   // ---------------------------------------------------------------- actions
 
-  /** Best-effort sync of one answer row; the attempt is fully playable offline. */
-  const patchAnswer = useCallback(
-    (n: number, choice: number | null, marked: boolean) => {
-      const state = useAttemptStore.getState();
-      const question = paper[n - 1];
-      if (isImportedTest(state.testId)) return;
-      if (!state.attemptId || !question) return;
-      void getApi()
-        .patchAttemptAnswer(state.attemptId, { question_id: question.id, choice, marked })
-        .catch(() => undefined);
-    },
-    [paper],
-  );
+  const persistCurrent = useCallback((queueAnswerSync = false) => {
+    const state = useAttemptStore.getState();
+    const question = paper[state.current - 1];
+    const userId = offlineUserId(useSessionStore.getState());
+    if (!userId || !state.attemptId || !question || isImportedTest(state.testId)) return;
+    void getDurableAttemptService()
+      .then((durable) =>
+        durable.saveProgress({
+          scope: { userId },
+          attemptId: state.attemptId as string,
+          currentQuestion: state.current,
+          currentQuestionId: question.id,
+          currentEnteredAt: state.currentEnteredAt,
+          sectionUnlocked: state.sectionUnlocked,
+          choice: state.answers[state.current] ?? null,
+          marked: state.marked[state.current] === true,
+          visited: state.visited[state.current] === true,
+          queueAnswerSync,
+        }),
+      )
+      .then(() => {
+        if (queueAnswerSync) void requestAnswerSyncForCurrentUser().catch(() => undefined);
+      })
+      .catch(() => undefined);
+  }, [paper]);
 
   const handleGoto = useCallback(
     (result: GotoResult, sectionIndex: number) => {
@@ -211,9 +462,12 @@ function TestAttempt({ id }: { id: string }) {
         );
         return;
       }
-      if (result === 'ok') clearToast();
+      if (result === 'ok') {
+        clearToast();
+        persistCurrent();
+      }
     },
-    [clearToast, showToast, t],
+    [clearToast, persistCurrent, showToast, t],
   );
 
   const onLockedTap = useCallback(
@@ -244,24 +498,24 @@ function TestAttempt({ id }: { id: string }) {
       // cycle waiting for the next feature to close it (F-23).
       if (!wasAnswered && useAttemptStore.getState().answers[n] !== undefined)
         useActivityStore.getState().bump('answered');
-      patchAnswer(n, choice, state.marked[n] === true);
+      persistCurrent(true);
     },
-    [patchAnswer],
+    [persistCurrent],
   );
 
   const onClear = useCallback(() => {
     const state = useAttemptStore.getState();
     const n = state.current;
     state.clear(n);
-    patchAnswer(n, null, state.marked[n] === true);
-  }, [patchAnswer]);
+    persistCurrent(true);
+  }, [persistCurrent]);
 
   const onToggleMark = useCallback(() => {
     const state = useAttemptStore.getState();
     const n = state.current;
     state.toggleMark(n);
-    patchAnswer(n, state.answers[n] ?? null, useAttemptStore.getState().marked[n] === true);
-  }, [patchAnswer]);
+    persistCurrent(true);
+  }, [persistCurrent]);
 
   const onNext = useCallback(() => {
     const state = useAttemptStore.getState();
@@ -282,18 +536,20 @@ function TestAttempt({ id }: { id: string }) {
     [handleGoto],
   );
 
-  const openResult = useCallback(() => {
-    completeImportedAttempt(paper);
-    router.replace(testResultHref(id));
-  }, [id, paper, router]);
-
   const onSubmit = useCallback(() => {
     const state = useAttemptStore.getState();
     haptics.success();
-    state.submit();
-    completeImportedAttempt(paper);
+    setSubmissionError(undefined);
     setDialog(null);
-    if (state.attemptId && !isImportedTest(state.testId)) {
+    if (isImportedTest(state.testId)) {
+      state.submit();
+      completeImportedAttempt(paper);
+      openResult(id);
+      return;
+    }
+    if (state.attemptId) {
+      state.requestSubmission(false);
+      openDialog('submitting');
       const testId = state.testId ?? id;
       // F-23 — Home's "papers practised" and "best score" come from this row.
       //
@@ -302,22 +558,29 @@ function TestAttempt({ id }: { id: string }) {
       // calls stay best-effort — the result screen loads on its own, so a failure here costs
       // one line on Home, not the paper. An attempt submitted with no network is therefore
       // not counted until the real API can be asked again.
-      void getApi()
-        .submitAttempt(state.attemptId)
-        .then(async ({ result_id }) => {
-          const result = await getApi().getResult(result_id);
+      void submitServerAttempt(false)
+        .then(async (outcome) => {
+          const resultId = outcome.resultId;
+          if (!resultId) {
+            setSubmissionError(
+              outcome.permanentFailure ? outcome.failureReason : undefined,
+            );
+            openDialog(outcome.permanentFailure ? 'submitError' : 'pending');
+            return;
+          }
+          openResult(resultId);
+          const result = await getApi().getResult(resultId);
           useHistoryStore.getState().record({
-            id: result_id,
+            id: resultId,
             testId,
             score: result.score,
             maxScore: result.max_score,
             at: Date.now(),
           });
         })
-        .catch(() => undefined);
+        .catch(() => openDialog('pending'));
     }
-    openResult();
-  }, [id, openResult, paper]);
+  }, [id, openDialog, openResult, paper, submitServerAttempt]);
 
   // ----------------------------------------------------------------- render
 
@@ -339,15 +602,39 @@ function TestAttempt({ id }: { id: string }) {
       <AttemptDialogs
         kind={dialog}
         counts={counts(attempt)}
+        submitErrorDetail={submissionError}
         onDismiss={() => setDialog(null)}
         onLeave={() => {
           setDialog(null);
-          router.back();
+          if (dialog === 'pending' || dialog === 'submitError') {
+            router.replace('/(tabs)/tests');
+          } else {
+            router.back();
+          }
         }}
         onSubmit={onSubmit}
         onSeeResult={() => {
+          setSubmissionError(undefined);
           setDialog(null);
-          openResult();
+          if (isImportedTest(id)) {
+            openResult(id);
+            return;
+          }
+          const auto = useAttemptStore.getState().status === 'autoSubmitted';
+          useAttemptStore.getState().beginSubmission();
+          openDialog('submitting');
+          void submitServerAttempt(auto)
+            .then((outcome) => {
+              if (outcome.resultId) {
+                openResult(outcome.resultId);
+              } else {
+                setSubmissionError(
+                  outcome.permanentFailure ? outcome.failureReason : undefined,
+                );
+                openDialog(outcome.permanentFailure ? 'submitError' : 'pending');
+              }
+            })
+            .catch(() => openDialog('pending'));
         }}
       />
     </>

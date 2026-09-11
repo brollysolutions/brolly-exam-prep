@@ -7,9 +7,14 @@ import { useLangStore } from '@/data/lang';
 import { SolutionsView } from '../SolutionsView';
 import { buildSolutionRows } from '../solutions';
 
+const PAPER = buildPaper(FREE_MOCK_SHORT.sections);
 const ROWS = buildSolutionRows(
-  SAMPLE_RESULT.review.map((r) => ({ ...r })),
-  buildPaper(FREE_MOCK_SHORT.sections),
+  SAMPLE_RESULT.review.map((row) => ({
+    ...PAPER[row.questionNo - 1],
+    yourChoice: row.your,
+    marked: false,
+    seconds: row.seconds,
+  })),
 );
 
 describe('SolutionsView (te)', () => {

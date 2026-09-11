@@ -1,33 +1,27 @@
 import { useSessionStore } from '../session';
 import { HttpApi } from './http';
-import { MockApi } from './mock';
 import type { AppApi } from './types';
 
 export { HttpApi, type HttpApiOptions } from './http';
-export { apportion, DEV_OTP, MockApi } from './mock';
 export {
   ApiError,
   type AnswerPatchInput,
   type AppApi,
   type LocalizedCopy,
   type PaperQuestion,
+  type ReviewPaperQuestion,
   type ResultAction,
   type ResultDetail,
   type ResultReviewRow,
 } from './types';
+export { mapPaperQuestion, mapResultDetail, mapReviewQuestion, mapTestMeta } from './mappers';
 
 let instance: AppApi | undefined;
 
-/**
- * The single API adapter the app talks to. `EXPO_PUBLIC_API=http` swaps in the real fetch
- * client; anything else (the default, and every test run) uses the fixture-backed mock.
- */
+/** The mobile app uses the remote API without bundled demo content. */
 export function getApi(): AppApi {
   if (!instance) {
-    instance =
-      process.env.EXPO_PUBLIC_API === 'http'
-        ? new HttpApi({ getToken: () => useSessionStore.getState().token })
-        : new MockApi();
+    instance = new HttpApi({ getToken: () => useSessionStore.getState().token });
   }
   return instance;
 }

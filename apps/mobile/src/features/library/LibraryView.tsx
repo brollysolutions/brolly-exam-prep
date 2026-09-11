@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { colors, size } from '@tslprb/design-tokens';
-import { TESTS, type TestKind, type TestMeta } from '@tslprb/fixtures';
+import { TESTS, type TestKind, type TestMeta } from '@/data/content';
 import type { Lang } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -15,6 +15,7 @@ import {
   iso,
   MarkerRow,
   Measure,
+  LoadError,
   Num,
   PageHeader,
   Pill,
@@ -45,6 +46,8 @@ export type LibraryViewProps = {
    * render the shelf with nothing on it, which no combination of the real fixtures produces.
    */
   tests?: TestMeta[];
+  failed?: boolean;
+  onRetry?: () => void;
   /**
    * Shelf the screen opens on, from `?kind=`. The Tests tab is already mounted when Home
    * links to it, so a later request moves the shelf too — see the sync below.
@@ -231,6 +234,8 @@ function PreviousRow({
 export function LibraryView({
   lang,
   tests = TESTS,
+  failed = false,
+  onRetry,
   initialKind,
   kindKey,
   onOpen,
@@ -306,7 +311,9 @@ export function LibraryView({
             The card hugs its rows and the scroller around it takes the height — a `flex-1`
             card left two rows floating at the top of a screen-tall empty box. A shelf is a
             couple of papers, so the list is a scroller, not a `FlatList`. */}
-        {rows.length === 0 ? (
+        {failed ? (
+          <LoadError testID="library-load-error" onRetry={onRetry} />
+        ) : rows.length === 0 ? (
           // A shelf with nothing on it is not a failure, so there is no dot and nothing to
           // retry — the filters above are the way out, and the line says so (design D15).
           <EmptyState testID="library-empty" message={t('library.empty')} />
