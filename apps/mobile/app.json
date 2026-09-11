@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "TSLPRB Prep",
+    "name": "Telangana Police Constable & SI Exam Preparation",
     "slug": "tslprb-prep",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,7 +8,7 @@
     "scheme": "tslprb",
     "userInterfaceStyle": "light",
     "android": {
-      "package": "com.brollyexamprep.app",
+      "package": "com.telanganapoliceexampreparation.app",
       "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#0a1e3a",
