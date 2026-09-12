@@ -26,9 +26,14 @@ async def test_entire_catalog_preserves_bilingual_papers_and_keys(client):
                 assert "correct" not in public and "explanation" not in public
 
 
-@pytest.mark.parametrize("test_id", ["si-brolly-01", "si-brolly-02", "pc-constable-01"])
+@pytest.mark.parametrize(
+    "test_id",
+    ["si-brolly-01", "si-brolly-02", "si-brolly-03", "pc-constable-01", "pc-constable-02"],
+)
 async def test_server_submission_and_review_are_persisted_and_idempotent(client, test_id):
     entry = CATALOG[test_id]
+    if entry["meta"]["pattern"]["post"] == "si":
+        assert entry["meta"]["pattern"]["durationMinutes"] == 180
     response = await client.post("/v1/attempts", json={"test_id": test_id})
     assert response.status_code == 200
     attempt = response.json()
@@ -108,3 +113,37 @@ async def test_attempt_keeps_its_paper_when_catalog_changes(client, monkeypatch)
     assert (await client.get(path + "/paper")).json()[0]["text"] == entry["paper"][0]["text"]
     await client.post(path + "/submit")
     assert (await client.get(f"/v1/results/{attempt['id']}/paper")).json() == entry["paper"]
+
+
+async def test_invalid_numeric_inputs_return_422_and_do_not_close_the_attempt(client):
+    attempt = (await client.post("/v1/attempts", json={"test_id": "si-brolly-01"})).json()
+    path = f"/v1/attempts/{attempt['id']}"
+    question_id = CATALOG["si-brolly-01"]["paper"][0]["id"]
+    for choice in [True, "1", 1.5]:
+        response = await client.patch(
+            path + "/answers", json={"question_id": question_id, "choice": choice}
+        )
+        assert response.status_code == 422
+    for raw in ['"Infinity"', "1e309", '"NaN"']:
+        response = await client.post(
+            path + "/submit",
+            content='{"elapsed_seconds":' + raw + "}",
+            headers={"Content-Type": "application/json"},
+        )
+        assert response.status_code == 422
+        response = await client.patch(
+            path + "/answers",
+            content='{"question_id":"' + question_id + '","seconds":' + raw + "}",
+            headers={"Content-Type": "application/json"},
+        )
+        assert response.status_code == 422
+    assert (await client.get(path)).json()["status"] == "in_progress"
+    assert (
+        await client.post(path + "/submit", json={"answers": [], "elapsed_seconds": 15})
+    ).status_code == 200
+
+
+async def test_openapi_review_contract_requires_solutions(client):
+    schema = (await client.get("/openapi.json")).json()
+    review = schema["components"]["schemas"]["ReviewPaperQuestionOut"]
+    assert {"correct", "explanation"} <= set(review["required"])

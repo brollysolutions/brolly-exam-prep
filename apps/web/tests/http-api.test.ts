@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { afterEach, test } from 'node:test';
+import { afterEach, mock, test } from 'node:test';
 import { HttpApi } from '../data/api/http';
 import { useApiCache } from '../data/apiCache';
 import { TESTS, paperForTest } from '../lib/test-catalog';
@@ -8,6 +8,47 @@ const originalFetch = globalThis.fetch;
 afterEach(() => {
   globalThis.fetch = originalFetch;
   useApiCache.getState().reset();
+  mock.timers.reset();
+});
+
+test('response-body connection failure falls back to the last downloaded catalogue', async () => {
+  const api = new HttpApi({ baseUrl: '/api' });
+  globalThis.fetch = async () => Response.json(TESTS);
+  const downloaded = await api.listTestMetas();
+  globalThis.fetch = async () =>
+    new Response(
+      new ReadableStream({
+        start(controller) {
+          controller.error(new TypeError('connection lost during download'));
+        },
+      }),
+    );
+  assert.deepEqual(await api.listTestMetas(), downloaded);
+  globalThis.fetch = async () => new Response('<html>proxy error</html>');
+  await assert.rejects(api.listTestMetas(), { code: 'schema_mismatch' });
+});
+
+test('a body that stalls after HTTP headers times out and returns downloaded data', async () => {
+  const api = new HttpApi({ baseUrl: '/api' });
+  globalThis.fetch = async () => Response.json(TESTS);
+  const downloaded = await api.listTestMetas();
+  mock.timers.enable({ apis: ['setTimeout'] });
+  globalThis.fetch = async (_input, init) =>
+    new Response(
+      new ReadableStream({
+        start(controller) {
+          init?.signal?.addEventListener('abort', () =>
+            controller.error(new DOMException('Aborted', 'AbortError')),
+          );
+        },
+      }),
+    );
+  const request = api.listTestMetas();
+  // Let headers arrive; the timeout must cover the body too.
+  await Promise.resolve();
+  await Promise.resolve();
+  mock.timers.tick(20_000);
+  assert.deepEqual(await request, downloaded);
 });
 
 test('catalogue and complete public paper come from HTTP, preserving Telugu and section rules', async () => {

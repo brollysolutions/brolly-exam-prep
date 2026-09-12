@@ -67,7 +67,6 @@ export type AttemptViewProps = {
   armed?: boolean;
   lang: Lang;
   onLangChange: (lang: Lang) => void;
-  onExit: () => void;
   /** An unlocked section tab: jump to its first question. */
   onSectionPress: (sectionIndex: number) => void;
   /** A locked section tab: raise the locked toast. */
@@ -310,7 +309,6 @@ export function AttemptView({
   armed = true,
   lang,
   onLangChange,
-  onExit,
   onSectionPress,
   onLockedTap,
   onAnswer,
@@ -360,21 +358,6 @@ export function AttemptView({
         testID="attempt-header"
       >
         <Row align="center" gap={2} wrap className="px-2 py-1" testID="attempt-header-row">
-          <PressBox
-            accessibilityLabel={t('test.exit')}
-            onPress={onExit}
-            testID="btn-exit"
-            className="h-touch w-touch items-center justify-center rounded-sm"
-          >
-            {/* The icon, not a ✕ glyph: a close cross is a symbol every platform draws. */}
-            <Ionicons
-              name="close"
-              size={size.iconLg}
-              color={colors.ink2}
-              accessibilityElementsHidden
-              importantForAccessibility="no"
-            />
-          </PressBox>
           {/* `quiet`, not the hub header's gold: at five minutes the timer box beside it wears
               the same `accentSoft`, and two gold blocks in one row make the clock's change of
               state something to notice rather than something that shouts. In this row gold is

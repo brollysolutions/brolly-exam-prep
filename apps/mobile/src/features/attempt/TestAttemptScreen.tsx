@@ -24,7 +24,7 @@ import {
 import { AttemptView } from '@/features/attempt/AttemptView';
 import { PaletteSheet } from '@/features/attempt/PaletteSheet';
 import { useAttemptGuards } from '@/features/attempt/useAttemptGuards';
-import { haptics, LoadError, Screen, type SheetHandle } from '@/ui';
+import { Button, haptics, LoadError, Screen, Skeleton, Stack, Text, type SheetHandle } from '@/ui';
 
 /** A locked-section notice clears itself; the timer warnings stay until the next one lands. */
 const LOCKED_TOAST_MS = 4000;
@@ -41,7 +41,7 @@ export function TestAttemptScreen({ id }: { id: string }) {
   const { signedIn, onboarded } = useRequireAuth();
   if (!signedIn || !onboarded)
     return <Redirect href={gateHref(testAttemptHref(id), { signedIn, onboarded })} />;
-  return <TestAttempt id={id} />;
+  return <TestAttempt key={id} id={id} />;
 }
 
 /** Test attempt (F-09/10/11): wires the attempt store, the mock API, the clock and the router. */
@@ -52,6 +52,11 @@ function TestAttempt({ id }: { id: string }) {
   const lang = useLangStore((s) => s.lang);
   const setLang = useLangStore((s) => s.setLang);
   const { offline } = useNetwork();
+  const [submittedOnEntry] = useState(() => {
+    const state = useAttemptStore.getState();
+    return state.testId === id && ['submitted', 'autoSubmitted'].includes(state.status);
+  });
+  const conflict = attempt.status === 'running' && attempt.testId !== id;
 
   const [paper, setPaper] = useState<PaperQuestion[]>([]);
   // The paper never arrived. Bumping `attempt` re-runs the load; the screen is otherwise
@@ -62,8 +67,9 @@ function TestAttempt({ id }: { id: string }) {
   const [toast, setToast] = useState<AttemptToast | null>(null);
   const sheet = useRef<SheetHandle>(null);
   const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const syncChain = useRef(Promise.resolve());
 
-  const running = attempt.status === 'running';
+  const running = attempt.testId === id && attempt.status === 'running';
   useAttemptGuards(running);
 
   // ------------------------------------------------------------------ notices
@@ -91,7 +97,7 @@ function TestAttempt({ id }: { id: string }) {
   // --------------------------------------------------------------- paper + start
 
   useEffect(() => {
-    if (!id) return;
+    if (!id || conflict || submittedOnEntry) return;
     let cancelled = false;
     const initial = useAttemptStore.getState();
     const resumingId =
@@ -128,6 +134,8 @@ function TestAttempt({ id }: { id: string }) {
           api.getAttemptPaper(created.id),
         ]);
         if (cancelled) return;
+        const current = useAttemptStore.getState();
+        if (current.attemptId !== initial.attemptId || current.status === 'running') return;
         useAttemptStore
           .getState()
           .start(snapshotMeta, { attemptId: created.id, endsAt: Date.parse(created.ends_at) });
@@ -138,18 +146,20 @@ function TestAttempt({ id }: { id: string }) {
           return;
         }
         // Offline start: a local attempt id and a deadline computed from the pattern.
-        if (!cancelled) useAttemptStore.getState().start(meta);
+        const current = useAttemptStore.getState();
+        if (!cancelled && current.attemptId === initial.attemptId && current.status !== 'running')
+          current.start(meta);
       }
     })();
     return () => {
       cancelled = true;
     };
-  }, [id, loadAttempt]);
+  }, [id, loadAttempt, conflict, submittedOnEntry]);
 
   // ------------------------------------------------------------------- clock
 
   const { remainingSec } = useCountdown({
-    endsAt: attempt.endsAt,
+    endsAt: attempt.testId === id ? attempt.endsAt : undefined,
     enabled: running,
     onWarn5: () => {
       haptics.warning();
@@ -195,12 +205,25 @@ function TestAttempt({ id }: { id: string }) {
     (n: number, choice: number | null, marked: boolean) => {
       const state = useAttemptStore.getState();
       const question = paper[n - 1];
-      if (!state.attemptId || state.attemptId.startsWith('local-') || !question) return;
-      void getApi()
-        .patchAttemptAnswer(state.attemptId, { question_id: question.id, choice, marked })
+      if (
+        state.testId !== id ||
+        state.status !== 'running' ||
+        (state.endsAt !== undefined && Date.now() >= state.endsAt) ||
+        !state.attemptId ||
+        state.attemptId.startsWith('local-') ||
+        !question
+      )
+        return;
+      const attemptId = state.attemptId;
+      syncChain.current = syncChain.current
+        .catch(() => undefined)
+        .then(() =>
+          getApi().patchAttemptAnswer(attemptId, { question_id: question.id, choice, marked }),
+        )
+        .then(() => undefined)
         .catch(() => undefined);
     },
-    [paper],
+    [id, paper],
   );
 
   const handleGoto = useCallback(
@@ -337,10 +360,34 @@ function TestAttempt({ id }: { id: string }) {
     </>
   );
 
+  if (submittedOnEntry) return <Redirect href={testResultHref(id)} />;
+
+  if (conflict)
+    return (
+      <Screen>
+        <Stack gap={4} className="p-4">
+          <Text variant="title">{t('test.conflictTitle')}</Text>
+          <Text>{t('test.conflictBody')}</Text>
+          <Button
+            label={t('test.resumeExisting')}
+            onPress={() => router.replace(testAttemptHref(attempt.testId!))}
+          />
+          <Button label={t('common.back')} variant="secondary" onPress={() => router.back()} />
+        </Stack>
+      </Screen>
+    );
+
   if (failed)
     return (
       <Screen testID="attempt-screen">
         <LoadError onRetry={() => setLoadAttempt((n) => n + 1)} testID="attempt-load-error" />
+      </Screen>
+    );
+
+  if (attempt.testId !== id || paper.length !== attempt.pattern?.totalQuestions)
+    return (
+      <Screen>
+        <Skeleton blocks={['kicker', 'card', 'row', 'row']} />
       </Screen>
     );
 
@@ -353,7 +400,6 @@ function TestAttempt({ id }: { id: string }) {
       armed={attempt.endsAt !== undefined}
       lang={lang}
       onLangChange={setLang}
-      onExit={() => openDialog('exit')}
       onSectionPress={onSectionPress}
       onLockedTap={onLockedTap}
       onAnswer={onAnswer}

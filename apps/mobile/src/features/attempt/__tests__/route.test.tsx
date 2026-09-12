@@ -228,6 +228,35 @@ describe('test attempt route (gate)', () => {
 });
 
 describe('test attempt route', () => {
+  it('preserves a running paper when a different test link opens', async () => {
+    const meta = TESTS.find((test) => test.id === SI_MOCK_01_ID)!;
+    useAttemptStore.getState().start(meta, { attemptId: 'local-existing', endsAt: T0 + 60_000 });
+    useAttemptStore.getState().answer(1, 2);
+    const create = jest.spyOn(MockApi.prototype, 'createAttempt');
+    await render(<TestAttemptRoute />);
+    await flush();
+    expect(create).not.toHaveBeenCalled();
+    expect(useAttemptStore.getState()).toMatchObject({
+      attemptId: 'local-existing',
+      testId: SI_MOCK_01_ID,
+      answers: { 1: 2 },
+    });
+    await userEvent.press(screen.getByRole('button', { name: 'Resume test' }));
+    expect(mockReplace).toHaveBeenCalledWith('/tests/simocktest');
+  });
+
+  it('does not start another attempt when reopening a submitted test', async () => {
+    const meta = TESTS.find((test) => test.id === 'mock-07')!;
+    useAttemptStore.getState().start(meta, { attemptId: 'local-submitted' });
+    useAttemptStore.getState().submit();
+    const create = jest.spyOn(MockApi.prototype, 'createAttempt');
+    await render(<TestAttemptRoute />);
+    await flush();
+    expect(create).not.toHaveBeenCalled();
+    expect(useAttemptStore.getState().attemptId).toBe('local-submitted');
+    expect(mockRedirect).toHaveBeenCalledWith('/test/mock-07/result');
+  });
+
   it('starts the attempt from the mock API and arms the clock', async () => {
     const state = await mountRoute();
     expect(state.status).toBe('running');

@@ -2,7 +2,17 @@
 
 Source of truth: `packages/design-tokens/tokens.json` (Tailwind preset + TS object via `src/index.ts`). This page explains intent. Rebranded 2026-09-05 (F-28) to Brolly Solutions' identity; the spec is `docs/specs/2026-09-05-brolly-rebrand-design.md`.
 
+Exam headers omit dedicated exit controls on web and mobile (12 September 2026).
+Native hardware-back confirmation remains; web fullscreen and submission controls
+retain their existing behavior.
+
 ## Identity
+
+The mobile `StorageNotice` is an application-level recovery control: token-based
+surface/text, a secondary Retry saving button, and a scrollable area capped at 35%
+of viewport height. It remains visible above initial catalogue loading and uses
+English/Telugu locale keys. Result screens expose Practise again as an explicit
+secondary action; entering another test preserves the running attempt.
 Warm and restrained: cream surfaces, charcoal ink, gold spent only where it means something. One ink-filled primary action per screen; gold marks what the candidate did (answered, selected, active filter, progress); ink marks a deliberate flag (marked for review); red is wrong / missing / critical; green is eligible / correct. Soft radii (4–16 px), 1 px hairlines for structure, warm ink shadows for elevation. Playfair Display carries titles and the wordmark; Inter carries everything else; Noto Sans Telugu carries Telugu text and Noto Serif Telugu its titles. The umbrella lockup is the in-app brand mark; "TSLPRB" and "PWT" stay in copy as the exam's name.
 
 ## Colour tokens

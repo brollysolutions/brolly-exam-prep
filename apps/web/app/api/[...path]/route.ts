@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 const allowed =
-  /^\/(?:health|v1\/(?:content|auth\/phone|tests(?:\/[^/]+(?:\/(?:meta|paper))?)?|attempts(?:\/[^/]+(?:\/(?:answers|submit|paper|meta))?)?|results\/[^/]+(?:\/(?:detail|paper))?))$/;
+  /^\/(?:health|openapi\.json|v1\/(?:content|auth\/phone|tests(?:\/[^/]+(?:\/(?:meta|paper))?)?|attempts(?:\/[^/]+(?:\/(?:answers|submit|paper|meta))?)?|results\/[^/]+(?:\/(?:detail|paper))?))$/;
 
 async function proxy(request: NextRequest, context: { params: Promise<{ path: string[] }> }) {
   const { path } = await context.params;
@@ -25,6 +25,15 @@ async function proxy(request: NextRequest, context: { params: Promise<{ path: st
       body: ['GET', 'HEAD'].includes(request.method) ? undefined : await request.text(),
       signal: AbortSignal.timeout(30_000),
     });
+    if (pathname === '/openapi.json' && upstream.ok) {
+      const schema = await upstream.json();
+      return Response.json(
+        { ...schema, servers: [{ url: '/api' }] },
+        {
+          headers: { 'Cache-Control': 'no-store' },
+        },
+      );
+    }
     return new Response(upstream.body, {
       status: upstream.status,
       headers: {

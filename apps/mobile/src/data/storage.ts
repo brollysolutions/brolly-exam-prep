@@ -1,72 +1,84 @@
 import Storage from 'expo-sqlite/kv-store';
 import { createJSONStorage, type StateStorage } from 'zustand/middleware';
 
-/**
- * The slice of `expo-sqlite/kv-store` we depend on: the *synchronous* API, so zustand's
- * `persist` rehydrates during `create()` and the first render already sees stored state
- * (no flash of defaults on the root layout).
- */
 export type SyncKvStore = {
   getItemSync: (key: string) => string | null;
   setItemSync: (key: string, value: string) => void;
   removeItemSync: (key: string) => void;
 };
+export type StorageStatus = 'persistent' | 'temporary';
+export const STORAGE_PROBE_KEY = 'tslprb.storage-check';
+export type ReliableStorage = StateStorage & {
+  subscribe: (listener: () => void) => () => void;
+  getStatus: () => StorageStatus;
+  retry: () => boolean;
+};
 
-/**
- * Wraps a sync kv store in zustand's `StateStorage`.
- *
- * The native module is absent on web without the SQLite wasm build and in some test
- * runners, where every call throws. The first throw latches this adapter as `degraded`
- * and every later read *and* write goes to an in-process Map, so a store can never end up
- * half in SQLite and half in memory (writing to memory then reading back a stale SQLite
- * value, say). The latch is per adapter, so one store degrading does not affect another.
- *
- * Nothing survives a reload once degraded -- that is the honest failure mode for a
- * platform with no storage, and it is strictly better than mixed sources of truth.
- */
-export function createKvStorage(store: SyncKvStore): StateStorage {
-  const memory = new Map<string, string>();
-  let degraded = false;
-
+/** Cache reads and retain failed writes/deletions until retry saves them durably. */
+export function createKvStorage(store: SyncKvStore): ReliableStorage {
+  const memory = new Map<string, string | null>();
+  const pending = new Map<string, string | null>();
+  const listeners = new Set<() => void>();
+  let status: StorageStatus = 'persistent';
+  const publish = (next: StorageStatus) => {
+    if (status === next) return;
+    status = next;
+    listeners.forEach((listener) => listener());
+  };
+  const write = (name: string, value: string | null) => {
+    if (value === null) store.removeItemSync(name);
+    else store.setItemSync(name, value);
+  };
+  const change = (name: string, value: string | null) => {
+    memory.set(name, value);
+    pending.set(name, value);
+    try {
+      write(name, value);
+      pending.delete(name);
+    } catch {
+      publish('temporary');
+    }
+  };
   return {
-    getItem: (name) => {
-      if (degraded) return memory.get(name) ?? null;
+    subscribe(listener) {
+      listeners.add(listener);
+      return () => {
+        listeners.delete(listener);
+      };
+    },
+    getStatus: () => status,
+    getItem(name) {
+      if (pending.has(name)) return memory.get(name) ?? null;
       try {
-        return store.getItemSync(name);
+        const value = store.getItemSync(name);
+        memory.set(name, value);
+        return value;
       } catch {
-        degraded = true;
+        publish('temporary');
         return memory.get(name) ?? null;
       }
     },
-    setItem: (name, value) => {
-      if (degraded) {
-        memory.set(name, value);
-        return;
-      }
+    setItem: change,
+    removeItem: (name) => change(name, null),
+    retry() {
       try {
-        store.setItemSync(name, value);
+        for (const [name, value] of pending) {
+          write(name, value);
+          pending.delete(name);
+        }
+        const probe = STORAGE_PROBE_KEY;
+        const previous = store.getItemSync(probe);
+        store.setItemSync(probe, '1');
+        write(probe, previous);
+        publish('persistent');
+        return true;
       } catch {
-        degraded = true;
-        memory.set(name, value);
-      }
-    },
-    removeItem: (name) => {
-      if (degraded) {
-        memory.delete(name);
-        return;
-      }
-      try {
-        store.removeItemSync(name);
-      } catch {
-        degraded = true;
-        memory.delete(name);
+        publish('temporary');
+        return false;
       }
     },
   };
 }
 
-/** The one storage adapter every persisted store in `src/data` shares. */
-export const kvStorage: StateStorage = createKvStorage(Storage);
-
-/** `createJSONStorage(() => kvStorage)` — pass straight to `persist({ storage })`. */
+export const kvStorage = createKvStorage(Storage);
 export const persistedJSONStorage = () => createJSONStorage(() => kvStorage);

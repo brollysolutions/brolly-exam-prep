@@ -56,6 +56,13 @@ async def test_a_short_number_is_rejected(client):
     assert resp.status_code == 422
 
 
+async def test_phone_rejects_letters_and_spaces_but_accepts_country_code(client):
+    for phone in ["abcdefghij", "98765 43210", "++919876543210"]:
+        assert (await client.post("/v1/auth/phone", json={"phone": phone})).status_code == 422
+    response = await client.post("/v1/auth/phone", json={"phone": "+919876543210"})
+    assert response.status_code == 200
+
+
 async def test_the_old_otp_endpoints_are_gone(client):
     """They were public, so their absence is worth pinning: a stale client or a
     stray call must 404 rather than find a second way in."""

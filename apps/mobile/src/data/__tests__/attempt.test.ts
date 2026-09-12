@@ -34,6 +34,39 @@ afterEach(() => {
 });
 
 describe('start', () => {
+  it('accumulates question timing across revisits and freezes it at submission', () => {
+    jest.spyOn(Date, 'now').mockReturnValue(T0 + 10_000);
+    store().goto(2);
+    jest.spyOn(Date, 'now').mockReturnValue(T0 + 25_000);
+    store().goto(1);
+    jest.spyOn(Date, 'now').mockReturnValue(T0 + 30_000);
+    store().submit();
+    expect(store().questionSeconds).toEqual({ 1: 15, 2: 15 });
+    expect(store().submittedAt).toBe(T0 + 30_000);
+    jest.spyOn(Date, 'now').mockReturnValue(T0 + 60_000);
+    store().submit();
+    expect(store().submittedAt).toBe(T0 + 30_000);
+  });
+
+  it('caps question time and submission time at the deadline after background expiry', () => {
+    store().start(FREE_MOCK, { endsAt: T0 + 20_000 });
+    jest.spyOn(Date, 'now').mockReturnValue(T0 + 90_000);
+    store().autoSubmit();
+    expect(store().questionSeconds).toEqual({ 1: 20 });
+    expect(store().submittedAt).toBe(T0 + 20_000);
+  });
+
+  it('rejects answer, clear and review writes at the deadline before the timer callback runs', () => {
+    store().answer(1, 2);
+    jest.spyOn(Date, 'now').mockReturnValue(store().endsAt!);
+    store().answer(1, 0);
+    store().answer(2, 1);
+    store().clear(1);
+    store().toggleMark(1);
+    expect(store().answers).toEqual({ 1: 2 });
+    expect(store().marked).toEqual({});
+  });
+
   it('arms the attempt with a deadline, not a counter', () => {
     const s = snapshot();
     expect(s.status).toBe('running');
@@ -290,7 +323,12 @@ describe('selectors', () => {
         totalQuestions: 10,
         sections: [
           { id: 'gs', labelKey: 'test.sections.gs', questions: 0 },
-          { id: 'telangana', labelKey: 'test.sections.telangana', questions: 10, unlockAfter: 'gs' },
+          {
+            id: 'telangana',
+            labelKey: 'test.sections.telangana',
+            questions: 10,
+            unlockAfter: 'gs',
+          },
         ],
       },
       answers: {},

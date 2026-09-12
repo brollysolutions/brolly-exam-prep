@@ -153,6 +153,14 @@ function Application({ route, id }: { route: string; id?: string }) {
         <StorageNotice />
         {content}
       </main>
+      {route !== 'exam' && (
+        <footer className="site-policy-footer">
+          <nav aria-label={copy('Privacy and account support', 'గోప్యత మరియు ఖాతా సహాయం')}>
+            <Link href="/privacy-policy">{copy('Privacy Policy', 'గోప్యతా విధానం')}</Link>
+            <Link href="/account-deletion">{copy('Account Deletion', 'ఖాతా తొలగింపు')}</Link>
+          </nav>
+        </footer>
+      )}
     </div>
   );
 }

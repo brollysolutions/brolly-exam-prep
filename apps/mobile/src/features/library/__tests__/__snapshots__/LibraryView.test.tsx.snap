@@ -314,7 +314,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
             }
           >
             <View
-              accessibilityLabel="ఎస్ఐ మాక్ టెస్ట్ 01 ⁦200⁩ ప్రశ్నలు ⁦190⁩ నిమి ఉచితం"
+              accessibilityLabel="ఎస్ఐ మాక్ టెస్ట్ 01 ⁦200⁩ ప్రశ్నలు ⁦180⁩ నిమి ఉచితం"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -494,7 +494,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
                           }
                         }
                       >
-                        ⁦190⁩
+                        ⁦180⁩
                       </Text>
                       <Text
                         className="text-ink3"

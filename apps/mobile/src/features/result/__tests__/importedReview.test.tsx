@@ -11,10 +11,11 @@ import { completeImportedAttempt } from '@/data/importedAttempt';
 
 const mockRedirect = jest.fn();
 const mockPush = jest.fn();
+const mockReplace = jest.fn();
 let mockRouteId = 'simocktest';
 jest.mock('expo-router', () => ({
   useLocalSearchParams: () => ({ id: mockRouteId }),
-  useRouter: () => ({ push: mockPush, back: jest.fn() }),
+  useRouter: () => ({ push: mockPush, replace: mockReplace, back: jest.fn() }),
   Redirect: ({ href }: { href: unknown }) => {
     mockRedirect(href);
     return null;
@@ -34,6 +35,7 @@ beforeAll(() => initI18n('en'));
 beforeEach(() => {
   mockRedirect.mockClear();
   mockPush.mockClear();
+  mockReplace.mockClear();
   mockRouteId = 'simocktest';
   useAttemptStore.getState().reset();
   useCompletedTestsStore.getState().reset();
@@ -65,6 +67,17 @@ it('shows the saved score, correct title and review-all action without sample an
   expect(screen.queryByTestId('result-qualified')).toBeNull();
   await userEvent.press(screen.getByTestId('result-cta'));
   expect(mockPush).toHaveBeenCalledWith('/test/simocktest/solutions');
+});
+
+it('starts a retake only after the explicit practice-again action', async () => {
+  submit();
+  await render(<ResultRoute />);
+  const retake = await screen.findByRole('button', { name: 'Practise again' });
+  expect(useAttemptStore.getState().status).toBe('submitted');
+  await userEvent.press(retake);
+  expect(useAttemptStore.getState().status).toBe('idle');
+  expect(mockReplace).toHaveBeenCalledWith('/tests/simocktest');
+  expect(useCompletedTestsStore.getState().tests[meta.id].result.score).toBe(1);
 });
 
 it.each([

@@ -74,25 +74,34 @@ export class HttpApi implements AppApi {
 
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 20_000);
-    let res: Response;
     try {
-      res = await fetch(`${this.baseUrl}${path}`, {
+      const res = await fetch(`${this.baseUrl}${path}`, {
         signal: controller.signal,
         method: init?.method ?? 'GET',
         headers,
         body: init?.body === undefined ? undefined : JSON.stringify(init.body),
       });
+      if (!res.ok) {
+        throw new ApiError(res.status, 'http_error', `${init?.method ?? 'GET'} ${path} failed`);
+      }
+      let body: unknown;
+      try {
+        body = await res.json();
+      } catch (cause) {
+        if (cause instanceof SyntaxError)
+          throw new ApiError(res.status, 'schema_mismatch', 'Response is not valid JSON');
+        throw cause;
+      }
+      const parsed = schema.safeParse(body);
+      if (!parsed.success) throw new ApiError(res.status, 'schema_mismatch', parsed.error.message);
+      return parsed.data;
     } catch (cause) {
+      if (cause instanceof ApiError) throw cause;
       throw new ApiError(0, 'network_error', cause instanceof Error ? cause.message : 'Offline');
     } finally {
+      // Keep the deadline active until the response body has finished downloading.
       clearTimeout(timeout);
     }
-    if (!res.ok) {
-      throw new ApiError(res.status, 'http_error', `${init?.method ?? 'GET'} ${path} failed`);
-    }
-    const parsed = schema.safeParse(await res.json());
-    if (!parsed.success) throw new ApiError(res.status, 'schema_mismatch', parsed.error.message);
-    return parsed.data;
   }
 
   health(): Promise<{ status: string }> {

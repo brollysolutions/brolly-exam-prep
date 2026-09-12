@@ -1,9 +1,15 @@
-import { SI_MOCK_01_ID, TESTS, isImportedTest } from '@tslprb/fixtures/src/runtime';
+import { SI_MOCK_01_ID, TESTS } from '@tslprb/fixtures/src/runtime';
 import { Redirect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 
 import { loadCompletedResult } from '@/data/complete';
-import { testIdFromRoute, testResultHref, testSolutionsHref } from '@/data/testRoutes';
+import { useAttemptStore } from '@/data/attempt';
+import {
+  testAttemptHref,
+  testIdFromRoute,
+  testResultHref,
+  testSolutionsHref,
+} from '@/data/testRoutes';
 import { ResultView } from '@/features/result/ResultView';
 import { SubmittedTestGate } from '@/features/result/SubmittedTestGate';
 import { useLoad } from '@/features/result/useLoad';
@@ -34,7 +40,7 @@ function ResultContent({ id }: { id: string }) {
   return (
     <ResultView
       demo={TESTS.find((test) => test.id === id)?.demo}
-      reviewAll={isImportedTest(id)}
+      reviewAll
       result={done ? data : undefined}
       failed={failed}
       onBack={() => router.back()}
@@ -42,6 +48,15 @@ function ResultContent({ id }: { id: string }) {
       onSeeWrong={openSolutions}
       // Every drill card leads to the wrong answers for now; the sectional drills land later.
       onAction={openSolutions}
+      onRetake={
+        done && data
+          ? () => {
+              const current = useAttemptStore.getState();
+              if (current.status !== 'running') current.reset();
+              router.replace(testAttemptHref(id));
+            }
+          : undefined
+      }
     />
   );
 }

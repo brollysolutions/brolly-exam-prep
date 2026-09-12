@@ -42,6 +42,7 @@ export type ResultViewProps = {
   onRetry?: () => void;
   onSeeWrong?: () => void;
   onAction?: (action: ResultAction) => void;
+  onRetake?: () => void;
 };
 
 /** The shape of the loaded screen: kicker, score, chip row, six stat rows, three cards. */
@@ -209,6 +210,7 @@ export function ResultView({
   onRetry,
   onSeeWrong,
   onAction,
+  onRetake,
 }: ResultViewProps) {
   const { t } = useTranslation();
   const d = useDir();
@@ -370,6 +372,12 @@ export function ResultView({
 
           <ActionBar
             testID="result-actions"
+            stacked={!!onRetake}
+            secondary={
+              onRetake && (
+                <Button variant="secondary" label={t('result.practiseAgain')} onPress={onRetake} />
+              )
+            }
             primary={
               <Button
                 size="lg"

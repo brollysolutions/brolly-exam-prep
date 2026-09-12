@@ -1,0 +1,120 @@
+.page {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+}
+.header,
+.footer {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.header {
+  border-bottom: 1px solid var(--border);
+}
+.brand {
+  font-weight: 800;
+  text-decoration: none !important;
+}
+.content {
+  max-width: 800px;
+  margin-inline: auto;
+  padding: 48px 24px 64px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.eyebrow {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+.content h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 12px 0 20px;
+}
+.intro {
+  font-size: 1.125rem;
+}
+.date {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  margin: 16px 0 28px;
+}
+.content h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 12px;
+}
+.content section {
+  margin-top: 32px;
+}
+.content h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 20px 0 8px;
+}
+.content p {
+  margin-bottom: 12px;
+}
+.content ul,
+.content ol {
+  padding-left: 24px;
+  margin: 12px 0;
+}
+.content ul {
+  list-style: disc;
+}
+.content ol {
+  list-style: decimal;
+}
+.content li {
+  margin: 10px 0;
+}
+.page a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.page a:focus-visible,
+.page summary:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.header a,
+.footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-size);
+}
+.content details {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--brand-radius-md);
+  background: var(--accent);
+}
+.content details {
+  margin: 24px 0;
+}
+.content summary {
+  cursor: pointer;
+  font-weight: 700;
+  min-height: var(--touch-size);
+  align-content: center;
+}
+.footer {
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+}
+.footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}

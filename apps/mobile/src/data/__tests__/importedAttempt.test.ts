@@ -27,7 +27,7 @@ it('imports 200 distinct bilingual questions, four options and explanations in 5
   expect(
     ['arithmetic', 'reasoning', 'gs'].map((s) => paper.filter((q) => q.section === s).length),
   ).toEqual([50, 50, 100]);
-  expect(meta.pattern.durationMinutes).toBe(190);
+  expect(meta.pattern.durationMinutes).toBe(180);
   for (const q of paper) {
     expect(q.correct).toBeGreaterThanOrEqual(0);
     expect(q.correct).toBeLessThan(4);

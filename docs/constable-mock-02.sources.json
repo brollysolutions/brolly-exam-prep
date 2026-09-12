@@ -1,0 +1,414 @@
+{
+  "file": "BrollyExamPrep constable 2.docx",
+  "sha256": "49e38453db768147b81094d8ab77dada8d138c26a82aedce944381d01cbaacb3",
+  "testId": "pc-constable-02",
+  "questions": 200,
+  "durationMinutes": 180,
+  "sourceHeading": "HIGH-STANDARD FULL-LENGTH MOCK TEST 01",
+  "titlePolicy": "Use Constable Mock Test 02 as requested; source heading says Test 01.",
+  "sections": {
+    "english": 25,
+    "arithmetic": 35,
+    "reasoning": 40,
+    "gs": 100
+  },
+  "tableKeys": 200,
+  "solutions": 200,
+  "englishQuestionsReusedInTelugu": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "sharedPassageQuestions": [
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "answerPolicy": "Correct unambiguous option-letter mismatches using the source explanation. Otherwise retain detailed solution letters, flagging unresolved source issues. Question/option/explanation wording is preserved.",
+  "keyConflicts": [
+    {
+      "question": 3,
+      "tableKey": "C",
+      "solutionKey": "A"
+    },
+    {
+      "question": 4,
+      "tableKey": "C",
+      "solutionKey": "B"
+    },
+    {
+      "question": 5,
+      "tableKey": "C",
+      "solutionKey": "A"
+    },
+    {
+      "question": 7,
+      "tableKey": "C",
+      "solutionKey": "B"
+    },
+    {
+      "question": 9,
+      "tableKey": "D",
+      "solutionKey": "B"
+    },
+    {
+      "question": 11,
+      "tableKey": "B",
+      "solutionKey": "A"
+    },
+    {
+      "question": 12,
+      "tableKey": "C",
+      "solutionKey": "B"
+    },
+    {
+      "question": 15,
+      "tableKey": "A",
+      "solutionKey": "B"
+    },
+    {
+      "question": 16,
+      "tableKey": "B",
+      "solutionKey": "C"
+    },
+    {
+      "question": 19,
+      "tableKey": "C",
+      "solutionKey": "B"
+    },
+    {
+      "question": 20,
+      "tableKey": "A",
+      "solutionKey": "B"
+    },
+    {
+      "question": 24,
+      "tableKey": "B",
+      "solutionKey": "C"
+    },
+    {
+      "question": 25,
+      "tableKey": "B",
+      "solutionKey": "C"
+    },
+    {
+      "question": 26,
+      "tableKey": "C",
+      "solutionKey": "B"
+    },
+    {
+      "question": 27,
+      "tableKey": "D",
+      "solutionKey": "B"
+    },
+    {
+      "question": 28,
+      "tableKey": "B",
+      "solutionKey": "C"
+    },
+    {
+      "question": 29,
+      "tableKey": "A",
+      "solutionKey": "B"
+    },
+    {
+      "question": 31,
+      "tableKey": "D",
+      "solutionKey": "B"
+    },
+    {
+      "question": 32,
+      "tableKey": "D",
+      "solutionKey": "B"
+    },
+    {
+      "question": 33,
+      "tableKey": "A",
+      "solutionKey": "B"
+    },
+    {
+      "question": 34,
+      "tableKey": "C",
+      "solutionKey": "A"
+    },
+    {
+      "question": 36,
+      "tableKey": "C",
+      "solutionKey": "B"
+    },
+    {
+      "question": 37,
+      "tableKey": "B",
+      "solutionKey": "C"
+    },
+    {
+      "question": 39,
+      "tableKey": "A",
+      "solutionKey": "B"
+    },
+    {
+      "question": 41,
+      "tableKey": "B",
+      "solutionKey": "C"
+    },
+    {
+      "question": 43,
+      "tableKey": "B",
+      "solutionKey": "C"
+    }
+  ],
+  "keyCorrections": [
+    {
+      "question": 2,
+      "key": "A",
+      "reason": "The explanation explicitly selects Option A: did ... than.",
+      "sourceSolutionKey": "B"
+    },
+    {
+      "question": 3,
+      "key": "B",
+      "reason": "Beat around the bush is option B.",
+      "sourceSolutionKey": "A"
+    },
+    {
+      "question": 4,
+      "key": "C",
+      "reason": "Delve into requires into, option C.",
+      "sourceSolutionKey": "B"
+    },
+    {
+      "question": 5,
+      "key": "C",
+      "reason": "The explanation identifies disputable, option C.",
+      "sourceSolutionKey": "A"
+    },
+    {
+      "question": 9,
+      "key": "D",
+      "reason": "The explanation identifies Acquittal, option D.",
+      "sourceSolutionKey": "B"
+    },
+    {
+      "question": 11,
+      "key": "B",
+      "reason": "The explanation identifies Furtive, option B.",
+      "sourceSolutionKey": "A"
+    },
+    {
+      "question": 12,
+      "key": "C",
+      "reason": "The explanation identifies Frugal : Extravagant, option C.",
+      "sourceSolutionKey": "B"
+    },
+    {
+      "question": 15,
+      "key": "A",
+      "reason": "The explanation identifies ought to, option A.",
+      "sourceSolutionKey": "B"
+    },
+    {
+      "question": 16,
+      "key": "B",
+      "reason": "The explanation identifies Adverb, option B.",
+      "sourceSolutionKey": "C"
+    },
+    {
+      "question": 19,
+      "key": "C",
+      "reason": "The explanation identifies Slapdash, option C.",
+      "sourceSolutionKey": "B"
+    },
+    {
+      "question": 20,
+      "key": "A",
+      "reason": "The explanation spells Bureaucracy, option A.",
+      "sourceSolutionKey": "B"
+    },
+    {
+      "question": 24,
+      "key": "B",
+      "reason": "The explanation identifies Penalizing, option B.",
+      "sourceSolutionKey": "C"
+    },
+    {
+      "question": 25,
+      "key": "B",
+      "reason": "The explanation identifies the procedural rigor title, option B.",
+      "sourceSolutionKey": "C"
+    },
+    {
+      "question": 26,
+      "key": "C",
+      "reason": "The source calculation gives 3600, option C.",
+      "sourceSolutionKey": "B"
+    },
+    {
+      "question": 28,
+      "key": "B",
+      "reason": "The source calculation gives 38 * 48 = 1824, option B.",
+      "sourceSolutionKey": "C"
+    },
+    {
+      "question": 29,
+      "key": "A",
+      "reason": "The source calculation gives a 36% loss, option A.",
+      "sourceSolutionKey": "B"
+    },
+    {
+      "question": 31,
+      "key": "A",
+      "reason": "The source calculation gives 45% of 1200 = 540, option A.",
+      "sourceSolutionKey": "B"
+    },
+    {
+      "question": 32,
+      "key": "C",
+      "reason": "The source explanation concludes income is Rs 30,000, option C.",
+      "sourceSolutionKey": "B"
+    },
+    {
+      "question": 33,
+      "key": "A",
+      "reason": "The source calculation gives 84 / 7 = 12 days, option A.",
+      "sourceSolutionKey": "B"
+    },
+    {
+      "question": 34,
+      "key": "C",
+      "reason": "The source calculation gives 600 / 50 = 12 seconds, option C.",
+      "sourceSolutionKey": "A"
+    },
+    {
+      "question": 36,
+      "key": "C",
+      "reason": "The source equations give the son's age as 30 years, option C.",
+      "sourceSolutionKey": "B"
+    },
+    {
+      "question": 37,
+      "key": "B",
+      "reason": "The source calculation gives one third of Rs 72,000 = Rs 24,000, option B.",
+      "sourceSolutionKey": "C"
+    },
+    {
+      "question": 39,
+      "key": "A",
+      "reason": "The source calculation gives Rs 4,775.40, option A.",
+      "sourceSolutionKey": "B"
+    },
+    {
+      "question": 41,
+      "key": "B",
+      "reason": "The source calculation gives 120 / 7 = 17 1/7 minutes, option B.",
+      "sourceSolutionKey": "C"
+    },
+    {
+      "question": 43,
+      "key": "B",
+      "reason": "The source calculation gives 960 square metres, option B.",
+      "sourceSolutionKey": "C"
+    },
+    {
+      "question": 53,
+      "key": "A",
+      "reason": "The source calculation gives remainder 5, option A.",
+      "sourceSolutionKey": "C"
+    }
+  ],
+  "reviewFlags": [
+    {
+      "question": 2,
+      "issue": "The source requests an underlined phrase but contains no underline formatting."
+    },
+    {
+      "question": 5,
+      "issue": "The source requests an underlined word but contains no underline formatting; explanation refers to irrefutable."
+    },
+    {
+      "question": 16,
+      "issue": "The source requests an underlined word but contains no underline formatting; explanation refers to promptly."
+    },
+    {
+      "question": 27,
+      "issue": "The expression evaluates to 94/3, absent from the options. Explanation stops mid-calculation then asserts 28. Source key B retained; author correction needed."
+    },
+    {
+      "question": 32,
+      "issue": "The explanation's displayed cross-multiplication has a sign error, although the concluding income of Rs 30,000 is consistent with the two equations."
+    },
+    {
+      "question": 64,
+      "issue": "The example code and alternating-shift explanation are inconsistent; the selected option applies +2 to every letter of CONSTABLE. Author review needed."
+    },
+    {
+      "question": 65,
+      "issue": "The pedigree describes the wife's paternal aunt, whereas the source solution says maternal aunt. Source key D retained for author review."
+    },
+    {
+      "question": 68,
+      "issue": "The explanation's circular order does not satisfy the stated opposite and second-right constraints. Author review needed."
+    },
+    {
+      "question": 74,
+      "issue": "The stated third-letter +3 rule does not match the supplied IRK term or the keyed KPN option. Author review needed."
+    },
+    {
+      "question": 75,
+      "issue": "The explanation computes 56, which is absent from the options, then asserts an unexplained adjustment to 55. Source key C retained."
+    },
+    {
+      "question": 79,
+      "issue": "The circular seating clues allow multiple arrangements; the source gives B without resolving the ambiguity."
+    },
+    {
+      "question": 81,
+      "issue": "The explanation computes 36 then contradicts itself by asserting 40. Source key C retained for author review."
+    },
+    {
+      "question": 82,
+      "issue": "The keyed answer matches twice the sum of the first two columns, but the source explanation uses an unexplained subtraction of 23."
+    },
+    {
+      "question": 86,
+      "issue": "The source explanation gives both South-West and South-East; the stated 135-degree clockwise rotation yields South-East. Source key A retained for author review."
+    },
+    {
+      "question": 89,
+      "issue": "All four options can be composed from TRANQUILLITY; the explanation's missing-letter claim is self-contradictory. Source key C retained."
+    },
+    {
+      "question": 90,
+      "issue": "The sum-of-letter-ranks rule gives INK = 34, not the source example's 33; the keyed PAD = 21 is consistent with that rule."
+    }
+  ],
+  "answerDistribution": {
+    "B": 110,
+    "A": 47,
+    "C": 34,
+    "D": 9
+  }
+}

@@ -23,7 +23,8 @@
     "questionsUnit": "questions",
     "minutesUnit": "min",
     "sampleData": "Sample data",
-    "nothingYet": "Nothing yet"
+    "nothingYet": "Nothing yet",
+    "loadingTests": "Loading tests…"
   },
   "lang": {
     "en": "EN",
@@ -121,12 +122,10 @@
       "telangana": "Telangana",
       "english": "English"
     },
-    "optionKeys": [
-      "A",
-      "B",
-      "C",
-      "D"
-    ]
+    "optionKeys": ["A", "B", "C", "D"],
+    "conflictTitle": "A test is already running",
+    "conflictBody": "Resume and submit your current test before starting another. Your answers and timer are kept.",
+    "resumeExisting": "Resume test"
   },
   "result": {
     "title": "PWT Full Mock {{n}}",
@@ -147,7 +146,8 @@
     "seeWrong": "Wrong answers + explanation",
     "errorKicker": "Problem",
     "loadError": "The result did not load.",
-    "retry": "Try again"
+    "retry": "Try again",
+    "practiseAgain": "Practise again"
   },
   "solutions": {
     "title": "Answers & explanation",
@@ -313,5 +313,10 @@
     "invalidRun": "Enter whole numbers for minutes and seconds, with a total greater than zero.",
     "loadingPaper": "Loading paper…",
     "signingIn": "Signing in…"
+  },
+  "storage": {
+    "unavailable": "Saving on this device is unavailable. Keep the app open: recent answers may be lost if you close it.",
+    "retry": "Retry saving",
+    "stillUnavailable": "Still unable to save. Free some device storage, then retry without closing the app."
   }
 }

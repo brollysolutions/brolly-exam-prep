@@ -12,7 +12,12 @@ import {
 import { I18nextProvider } from 'react-i18next';
 import { initI18n } from '../lib/i18n';
 import { loginReturnHref } from '../lib/routes';
-import { CONSTABLE_MOCK_01_ID, SI_MOCK_02_ID } from '../lib/test-ids';
+import {
+  CONSTABLE_MOCK_01_ID,
+  CONSTABLE_MOCK_02_ID,
+  SI_MOCK_02_ID,
+  SI_MOCK_03_ID,
+} from '../lib/test-ids';
 import { SI_MOCK_01_ID } from '@tslprb/fixtures';
 import { Exam, Results } from '../components/exam';
 import { Onboarding, Profile } from '../components/screens';
@@ -67,7 +72,13 @@ function renderGuest(content: ReactNode) {
 }
 
 test('anonymous visitors reach each imported exam without a phone or onboarding gate', () => {
-  for (const id of [SI_MOCK_01_ID, SI_MOCK_02_ID, CONSTABLE_MOCK_01_ID]) {
+  for (const id of [
+    SI_MOCK_01_ID,
+    SI_MOCK_02_ID,
+    SI_MOCK_03_ID,
+    CONSTABLE_MOCK_01_ID,
+    CONSTABLE_MOCK_02_ID,
+  ]) {
     const html = renderGuest(createElement(Exam, { id }));
     assert.match(html, /Loading your paper/);
     assert.doesNotMatch(html, /Sign in|Your phone number|href="\/login/);

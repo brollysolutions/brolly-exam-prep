@@ -8,7 +8,7 @@ Imported on 2026-09-07 from the three user-supplied local DOCX files. The source
 | BrollyExamPrep reasoning 1.docx | 51–100 | 50 | 50 minutes |
 | BrollyExamPrep GS1.docx | 101–200 | 100 | 90 minutes |
 
-One free paper, `si-brolly-01`, appears under **SI Mock Test** and **Full mocks**. Constable filtering excludes it. The combined practice preset uses 190 minutes, +1 per correct answer, no negative marking, and freely navigable sections. This is not an official exam blueprint or qualifying decision.
+One free paper, `si-brolly-01`, appears under **SI Mock Test** and **Full mocks**. Constable filtering excludes it. The combined practice preset uses 180 minutes, +1 per correct answer, no negative marking, and freely navigable sections. This is not an official exam blueprint or qualifying decision.
 
 ## Content review
 

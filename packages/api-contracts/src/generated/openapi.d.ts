@@ -646,6 +646,23 @@ export interface components {
             /** Wrong */
             wrong: components["schemas"]["WrongAnswer"][];
         };
+        /** ReviewPaperQuestionOut */
+        ReviewPaperQuestionOut: {
+            /** Id */
+            id: string;
+            /**
+             * Section
+             * @enum {string}
+             */
+            section: "arithmetic" | "reasoning" | "gs" | "telangana" | "english";
+            text: components["schemas"]["LocalizedText"];
+            options: components["schemas"]["LocalizedOptions"];
+            /** Avgseconds */
+            avgSeconds: number;
+            /** Correct */
+            correct: number;
+            explanation: components["schemas"]["LocalizedText"];
+        };
         /** ReviewRowOut */
         ReviewRowOut: {
             /** Questionno */
@@ -1339,7 +1356,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["PaperQuestionOut"][];
+                    "application/json": components["schemas"]["ReviewPaperQuestionOut"][];
                 };
             };
             /** @description Validation Error */

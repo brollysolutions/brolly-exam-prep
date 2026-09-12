@@ -11,8 +11,14 @@ async def test_list_tests(client):
     resp = await client.get("/v1/tests")
     assert resp.status_code == 200
     body = resp.json()
-    assert len(body) == 7
-    assert {"si-brolly-01", "si-brolly-02", "pc-constable-01"} <= {t["id"] for t in body}
+    assert len(body) == 9
+    assert {
+        "si-brolly-01",
+        "si-brolly-02",
+        "si-brolly-03",
+        "pc-constable-01",
+        "pc-constable-02",
+    } <= {t["id"] for t in body}
 
 
 async def test_get_test_detail_has_no_correct_answers(client):

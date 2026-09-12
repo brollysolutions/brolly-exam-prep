@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { firstQuestionOf, type Question } from '@tslprb/fixtures/src/runtime';
@@ -58,7 +57,6 @@ export function Exam({ id }: { id: string }) {
 function Attempt({ id }: { id: string }) {
   const { t } = useTranslation();
   const copy = useCopy();
-  const router = useRouter();
   const attempt = useAttemptStore();
   const storageStatus = useStorageStatus();
   const lang = useLangStore((s) => s.lang);
@@ -67,7 +65,7 @@ function Attempt({ id }: { id: string }) {
   const [retry, setRetry] = useState(0);
   const [now, setNow] = useState(Date.now);
   const [offline, setOffline] = useState(() => !navigator.onLine);
-  const [dialog, setDialog] = useState<'submit' | 'exit' | 'resume' | null>(null);
+  const [dialog, setDialog] = useState<'submit' | 'resume' | null>(null);
   const [palette, setPalette] = useState(false);
   const [conflict, setConflict] = useState(false);
   const [finished, setFinished] = useState(false);
@@ -149,7 +147,7 @@ function Attempt({ id }: { id: string }) {
     const state = useAttemptStore.getState();
     const loading =
       state.testId === id &&
-      state.status === 'running' &&
+      state.status !== 'idle' &&
       state.attemptId &&
       !state.attemptId.startsWith('local-')
         ? getApi().getAttemptPaper(state.attemptId)
@@ -461,9 +459,6 @@ function Attempt({ id }: { id: string }) {
           <small>{t('test.timeLeft')}</small>
           <strong>{clock(remaining)}</strong>
         </div>
-        <Button variant="ghost" onClick={() => setDialog('exit')}>
-          {copy('Exit test', 'బయటకు')}
-        </Button>
       </ExamHeader>
       <div className="cbt-alerts">
         {meta.demo && <Notice>{t('audit.demoPaperNote')}</Notice>}
@@ -729,9 +724,7 @@ function Attempt({ id }: { id: string }) {
           title={
             dialog === 'resume'
               ? copy('Continue your test', 'మీ పరీక్షను కొనసాగించండి')
-              : dialog === 'submit'
-                ? copy('Submit your test', 'మీ పరీక్షను సమర్పించండి')
-                : t('test.exitTitle')
+              : copy('Submit your test', 'మీ పరీక్షను సమర్పించండి')
           }
           onClose={() => setDialog(null)}
         >
@@ -746,30 +739,18 @@ function Attempt({ id }: { id: string }) {
                     'Your answers will be final. If offline, reconnect to receive your result.',
                     'మీ సమాధానాలు ఖరారవుతాయి. ఆఫ్‌లైన్‌లో ఉంటే, ఫలితం కోసం మళ్లీ ఇంటర్నెట్‌కు కనెక్ట్ అవ్వండి.',
                   )
-                : dialog === 'resume'
-                  ? copy(
-                      'The timer kept running. Continue from the last saved question.',
-                      'టైమర్ కొనసాగుతూనే ఉంది. చివరిగా సేవ్ చేసిన ప్రశ్న నుండి కొనసాగించండి.',
-                    )
-                  : copy(
-                      'The timer will keep running. You can return to this saved attempt in this browser.',
-                      'టైమర్ కొనసాగుతూనే ఉంటుంది. ఈ బ్రౌజర్‌లో సేవ్ చేసిన ఈ ప్రయత్నానికి తిరిగి రావచ్చు.',
-                    )}
+                : copy(
+                    'The timer kept running. Continue from the last saved question.',
+                    'టైమర్ కొనసాగుతూనే ఉంది. చివరిగా సేవ్ చేసిన ప్రశ్న నుండి కొనసాగించండి.',
+                  )}
           </p>
           {dialog === 'submit' && <SubmitSummary attempt={attempt} />}
           <div className="actions cbt-dialog-actions">
             <Button variant="outline" onClick={() => setDialog(null)}>
-              {dialog === 'submit'
-                ? copy('Close', 'మూసివేయి')
-                : t(dialog === 'exit' ? 'test.stay' : 'test.resume')}
+              {dialog === 'submit' ? copy('Close', 'మూసివేయి') : t('test.resume')}
             </Button>
             {dialog === 'submit' && (
               <Button onClick={() => finish(false)}>{t('test.submitYes')}</Button>
-            )}
-            {dialog === 'exit' && (
-              <Button variant="destructive" onClick={() => router.push('/tests')}>
-                {t('test.leave')}
-              </Button>
             )}
           </div>
         </Modal>

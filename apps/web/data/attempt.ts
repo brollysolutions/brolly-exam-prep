@@ -39,6 +39,8 @@ export type AttemptState = {
   status: AttemptStatus;
   /** Epoch ms the candidate landed on `current`, for "time on this question". */
   currentEnteredAt?: number;
+  questionSeconds?: Record<number, number>;
+  submittedAt?: number;
 };
 
 export type StartOptions = {
@@ -77,6 +79,8 @@ const idle: AttemptState = {
   sectionUnlocked: [],
   status: 'idle',
   currentEnteredAt: undefined,
+  questionSeconds: {},
+  submittedAt: undefined,
 };
 
 /** Sticky: a section that has ever been unlocked stays unlocked for the rest of the attempt. */
@@ -94,6 +98,17 @@ function writable(state: AttemptState, n: number): boolean {
   if (state.endsAt !== undefined && Date.now() >= state.endsAt) return false;
   if (n < 1 || n > state.pattern.totalQuestions) return false;
   return !isSectionLocked(state, sectionOf(state, n));
+}
+
+/** Accumulate real time over repeated visits; never count time after the deadline. */
+function questionTimes(state: AttemptState, now = Date.now()): Record<number, number> {
+  const seconds = { ...state.questionSeconds };
+  if (state.status === 'running' && state.currentEnteredAt !== undefined) {
+    const end = Math.min(now, state.endsAt ?? now);
+    seconds[state.current] =
+      (seconds[state.current] ?? 0) + Math.max(0, end - state.currentEnteredAt) / 1000;
+  }
+  return seconds;
 }
 
 export const useAttemptStore = create<AttemptStore>()(
@@ -125,6 +140,7 @@ export const useAttemptStore = create<AttemptStore>()(
         if (n === state.current) return 'ok';
         if (isSectionLocked(state, sectionOf(state, n))) return 'locked';
         set({
+          questionSeconds: questionTimes(state),
           current: n,
           visited: { ...state.visited, [n]: true },
           currentEnteredAt: Date.now(),
@@ -170,12 +186,24 @@ export const useAttemptStore = create<AttemptStore>()(
 
       submit: () => {
         if (get().status !== 'running') return;
-        set({ status: 'submitted' });
+        const state = get();
+        const now = Date.now();
+        set({
+          status: state.endsAt !== undefined && now >= state.endsAt ? 'autoSubmitted' : 'submitted',
+          submittedAt: Math.min(now, state.endsAt ?? now),
+          questionSeconds: questionTimes(state, now),
+        });
       },
 
       autoSubmit: () => {
         if (get().status !== 'running') return;
-        set({ status: 'autoSubmitted' });
+        const state = get();
+        const now = Date.now();
+        set({
+          status: 'autoSubmitted',
+          submittedAt: Math.min(now, state.endsAt ?? now),
+          questionSeconds: questionTimes(state, now),
+        });
       },
 
       reset: () => set({ ...idle }),
@@ -195,6 +223,8 @@ export const useAttemptStore = create<AttemptStore>()(
         sectionUnlocked: s.sectionUnlocked,
         status: s.status,
         currentEnteredAt: s.currentEnteredAt,
+        questionSeconds: s.questionSeconds,
+        submittedAt: s.submittedAt,
       }),
     },
   ),

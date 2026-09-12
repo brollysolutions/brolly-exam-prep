@@ -30,7 +30,7 @@ class LocalizedOptions(BaseModel):
 
 
 class PhoneSignInIn(BaseModel):
-    phone: str = Field(..., min_length=10, max_length=15)
+    phone: str = Field(..., min_length=10, max_length=16, pattern=r"^\+?[0-9]{10,15}$")
 
 
 class UserOut(BaseModel):
@@ -95,9 +95,9 @@ class AttemptOut(BaseModel):
 
 class AnswerPatchIn(BaseModel):
     question_id: str
-    choice: int | None = None
+    choice: int | None = Field(default=None, strict=True, ge=0, le=3)
     marked: bool = False
-    seconds: float = Field(default=0, ge=0)
+    seconds: float = Field(default=0, ge=0, allow_inf_nan=False)
 
 
 class OkOut(BaseModel):
@@ -187,10 +187,15 @@ class PaperQuestionOut(BaseModel):
     explanation: LocalizedText | None = None
 
 
+class ReviewPaperQuestionOut(PaperQuestionOut):
+    correct: int
+    explanation: LocalizedText
+
+
 class SubmitIn(BaseModel):
     # Offline practice snapshot; saved atomically with the result. Retrying is idempotent.
     answers: list[AnswerPatchIn] | None = Field(default=None, max_length=1000)
-    elapsed_seconds: float | None = Field(default=None, ge=0)
+    elapsed_seconds: float | None = Field(default=None, ge=0, allow_inf_nan=False)
 
 
 class ReviewRowOut(BaseModel):

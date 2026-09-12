@@ -50,28 +50,49 @@ describe('createKvStorage', () => {
     expect(s.getItem('k')).toBeNull();
   });
 
-  it('latches degraded on the first throw so reads and writes stay on one source', () => {
+  it('keeps pending writes readable until they are saved after recovery', () => {
     let live = false;
+    const disk = new Map<string, string>();
     const flaky = {
       getItemSync: (k: string) => {
         if (!live) throw new Error('not ready');
-        return `sqlite:${k}`;
+        return disk.get(k) ?? null;
       },
-      setItemSync: () => {
+      setItemSync: (key: string, value: string) => {
         if (!live) throw new Error('not ready');
+        disk.set(key, value);
       },
-      removeItemSync: () => {
+      removeItemSync: (key: string) => {
         if (!live) throw new Error('not ready');
+        disk.delete(key);
       },
     };
     const s = createKvStorage(flaky);
 
-    s.setItem('k', 'memory-value'); // throws once, latches degraded
-    live = true; // the native module "recovers" — the adapter must not follow it back
+    s.setItem('k', 'memory-value');
+    live = true;
 
     expect(s.getItem('k')).toBe('memory-value');
+    expect(s.retry()).toBe(true);
+    expect(disk.get('k')).toBe('memory-value');
     s.removeItem('k');
     expect(s.getItem('k')).toBeNull();
+  });
+
+  it('retains previously read keys after a later database read failure', () => {
+    let failed = false;
+    const s = createKvStorage({
+      getItemSync: () => {
+        if (failed) throw new Error('database unavailable');
+        return 'saved answers';
+      },
+      setItemSync: () => undefined,
+      removeItemSync: () => undefined,
+    });
+    expect(s.getItem('attempt')).toBe('saved answers');
+    failed = true;
+    expect(s.getItem('attempt')).toBe('saved answers');
+    expect(s.getStatus()).toBe('temporary');
   });
 
   it('keeps the latch per adapter', () => {

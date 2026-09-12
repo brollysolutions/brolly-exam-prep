@@ -1,0 +1,289 @@
+[
+  {
+    "file": "BrollyExamPrep arthamatic si 3.docx",
+    "sha256": "93dba32109f8ce7f0632636e054379b1a2e92f25ff59cdb60cad32b02b383bf7",
+    "section": "arithmetic",
+    "questions": 50,
+    "durationMinutes": 50,
+    "answerKeys": 50,
+    "solutions": 50,
+    "answerPolicy": "Preserve this source summary key and bilingual explanations; unresolved content contradictions are flagged, not silently rewritten.",
+    "answerDistribution": {
+      "B": 18,
+      "A": 14,
+      "C": 11,
+      "D": 7
+    },
+    "importRepairs": [
+      {
+        "question": 48,
+        "language": "en",
+        "repair": "Included the source Q034 table needed by Q048."
+      },
+      {
+        "question": 48,
+        "language": "te",
+        "repair": "Included the source Q034 table needed by Q048."
+      }
+    ],
+    "reviewFlags": [
+      {
+        "question": 1,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 1
+      },
+      {
+        "question": 2,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 2
+      },
+      {
+        "question": 4,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 4
+      },
+      {
+        "question": 7,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 7
+      },
+      {
+        "question": 8,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 8
+      },
+      {
+        "question": 15,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 15
+      },
+      {
+        "question": 19,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 19
+      },
+      {
+        "question": 20,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 20
+      },
+      {
+        "question": 24,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 24
+      },
+      {
+        "question": 27,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 27
+      },
+      {
+        "question": 29,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 29
+      },
+      {
+        "question": 34,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 34
+      },
+      {
+        "question": 43,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 43
+      },
+      {
+        "question": 45,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 45
+      },
+      {
+        "question": 50,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 50
+      }
+    ],
+    "media": []
+  },
+  {
+    "file": "BrollyExamPrep reasoning si 3.docx",
+    "sha256": "2b340dfda89033d78bd75f316add1c9b282658602786a6476a2d61b09d1d90fd",
+    "section": "reasoning",
+    "questions": 50,
+    "durationMinutes": 50,
+    "answerKeys": 50,
+    "solutions": 50,
+    "answerPolicy": "Preserve this source summary key and bilingual explanations; unresolved content contradictions are flagged, not silently rewritten.",
+    "answerDistribution": {
+      "C": 15,
+      "B": 17,
+      "A": 13,
+      "D": 5
+    },
+    "importRepairs": [
+      {
+        "question": 21,
+        "language": "en",
+        "repair": "Removed pasted answer/diagram explanation and conversation from the question; preserved solution separately."
+      },
+      {
+        "question": 21,
+        "language": "te",
+        "repair": "Removed the conversational introduction before the Telugu question."
+      }
+    ],
+    "reviewFlags": [
+      {
+        "question": 1,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 51
+      },
+      {
+        "question": 5,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 55
+      },
+      {
+        "question": 10,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 60
+      },
+      {
+        "question": 15,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 65
+      },
+      {
+        "question": 16,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 66
+      },
+      {
+        "question": 19,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 69
+      },
+      {
+        "question": 23,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 73
+      },
+      {
+        "question": 24,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 74
+      },
+      {
+        "question": 28,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 78
+      },
+      {
+        "question": 36,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 86
+      },
+      {
+        "question": 37,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 87
+      },
+      {
+        "question": 38,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 88
+      },
+      {
+        "question": 41,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 91
+      },
+      {
+        "question": 46,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 96
+      },
+      {
+        "question": 48,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 98
+      },
+      {
+        "question": 49,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 99
+      }
+    ],
+    "media": [
+      {
+        "path": "word/media/image1.png",
+        "usage": "Reasoning Q021 solution diagram. All relationships are also described in the bilingual solution text; not exposed in the question API.",
+        "sha256": "0d886f206ddad983cf1b67fa5abb51b2eb8c2fd54ea88f43d7b9d842db74c07a"
+      }
+    ]
+  },
+  {
+    "file": "BrollyExamPrep si gs3.docx",
+    "sha256": "367f0040653367d05a7aa4ce684eee3bf9f6737a17f450ff065df5f103c2bd7a",
+    "section": "gs",
+    "questions": 100,
+    "durationMinutes": 90,
+    "answerKeys": 100,
+    "solutions": 100,
+    "answerPolicy": "Preserve this source summary key and bilingual explanations; unresolved content contradictions are flagged, not silently rewritten.",
+    "answerDistribution": {
+      "C": 27,
+      "B": 58,
+      "A": 15
+    },
+    "importRepairs": [],
+    "reviewFlags": [
+      {
+        "question": 13,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 113
+      },
+      {
+        "question": 14,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 114
+      },
+      {
+        "question": 20,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 120
+      },
+      {
+        "question": 21,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 121
+      },
+      {
+        "question": 23,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 123
+      },
+      {
+        "question": 31,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 131
+      },
+      {
+        "question": 61,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 161
+      },
+      {
+        "question": 72,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 172
+      },
+      {
+        "question": 85,
+        "issue": "Source worked solution contains contradictory, approximate, or corrective wording requiring author review; source key retained.",
+        "testQuestion": 185
+      }
+    ],
+    "media": []
+  }
+]

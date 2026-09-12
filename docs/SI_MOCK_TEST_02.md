@@ -16,7 +16,7 @@ The website SI Mock Test shelf and Full Mock Test filter show the free
 Results remain at `/test/si-brolly-02/result`. Solutions use
 `/tests/simocktest02/solutions`; the old `/test/si-brolly-02/solutions` URL redirects there.
 The persistent ID is unchanged, preserving existing answers, timers and results.
-The combined practice preset has 200 questions, 190 minutes, +1 per correct
+The combined practice preset has 200 questions, 180 minutes, +1 per correct
 answer and no negative marking. It is not presented as a verified official
 exam blueprint.
 

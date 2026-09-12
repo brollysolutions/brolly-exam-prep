@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { setCatalog, setContent } from '@tslprb/fixtures/src/runtime';
 import { getApi } from '@/data/api';
 import { retryPendingSubmissions } from '@/data/complete';
@@ -9,24 +9,29 @@ export function CatalogGate({ children }: { children: ReactNode }) {
   const copy = useCopy();
   const [state, setState] = useState<'loading' | 'ready' | 'error'>('loading');
   const [retry, setRetry] = useState(0);
+  const ready = useRef(false);
   useEffect(() => {
     let live = true;
     const retryPending = () => {
       void retryPendingSubmissions();
+      if (!ready.current) load();
     };
     window.addEventListener('online', retryPending);
-    void Promise.all([getApi().listTestMetas(), getApi().getContent()])
-      .then(([tests, content]) => {
-        if (live) {
-          setCatalog(tests);
-          setContent(content);
-          setState('ready');
-          retryPending();
-        }
-      })
-      .catch(() => {
-        if (live) setState('error');
-      });
+    const load = () =>
+      void Promise.all([getApi().listTestMetas(), getApi().getContent()])
+        .then(([tests, content]) => {
+          if (live && !ready.current) {
+            setCatalog(tests);
+            setContent(content);
+            setState('ready');
+            ready.current = true;
+            retryPending();
+          }
+        })
+        .catch(() => {
+          if (live && !ready.current) setState('error');
+        });
+    load();
     return () => {
       live = false;
       window.removeEventListener('online', retryPending);

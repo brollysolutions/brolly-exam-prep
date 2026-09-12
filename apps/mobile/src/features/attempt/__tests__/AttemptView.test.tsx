@@ -28,7 +28,6 @@ const QUESTION = DEMO_PAPER[DEMO_ATTEMPT.current - 1];
 
 const callbacks = () => ({
   onLangChange: jest.fn(),
-  onExit: jest.fn(),
   onSectionPress: jest.fn(),
   onLockedTap: jest.fn(),
   onAnswer: jest.fn(),
@@ -368,10 +367,9 @@ describe('AttemptView', () => {
     expect(screen.getByTestId('btn-palette')).toHaveTextContent(`Questions${num('8 / 40')}`);
   });
 
-  it('wires exit, clear, mark, prev, next and palette to their callbacks', async () => {
+  it('wires clear, mark, prev, next and palette to their callbacks', async () => {
     const cb = await renderView();
     const wiring = [
-      ['btn-exit', cb.onExit],
       ['btn-clear', cb.onClear],
       ['btn-mark', cb.onToggleMark],
       ['btn-prev', cb.onPrev],

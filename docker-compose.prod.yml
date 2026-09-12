@@ -4,7 +4,8 @@
 # and forwards to 127.0.0.1:3201; the browser reaches the api through /api on that origin (Next.js proxies it
 # to the api service), so 8200 is for server-side tooling only. Compose interpolation cannot read values
 # from another compose file, so the public URL is restated here instead of via PUBLIC_URL.
-# The website requires no login. Practice answers and results remain browser-local.
+# The website requires no login. Practice attempts/results persist in PostgreSQL;
+# the browser keeps downloaded content and a queue for offline submissions.
 services:
   postgres:
     restart: unless-stopped
@@ -12,6 +13,7 @@ services:
     restart: unless-stopped
   api:
     restart: unless-stopped
+    command: sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"
     environment:
       CORS_ORIGINS: ${CORS_ORIGINS:-https://mocktest.brollyexamprep.com}
   worker:

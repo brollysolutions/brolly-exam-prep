@@ -8,6 +8,7 @@ import { HISTORY_STORAGE_KEY, useHistoryStore } from './history';
 import { LANG_STORAGE_KEY, useLangStore } from './lang';
 import { SESSION_STORAGE_KEY, useSessionStore } from './session';
 import { STUDY_STORAGE_KEY, useStudyStore } from './study';
+import { kvStorage, STORAGE_PROBE_KEY } from './storage';
 
 /**
  * Every key this app writes. The list exists so a store added later cannot quietly reopen the
@@ -15,6 +16,7 @@ import { STUDY_STORAGE_KEY, useStudyStore } from './study';
  * `src/data` and fails if one of them is missing here.
  */
 export const ALL_STORAGE_KEYS = [
+  STORAGE_PROBE_KEY,
   SUBMISSIONS_STORAGE_KEY,
   API_CACHE_STORAGE_KEY,
   SESSION_STORAGE_KEY,
@@ -80,13 +82,13 @@ export function signOut(): void {
  * Order matters. The resets run first and the keys are removed afterwards, because every reset
  * writes through the persist middleware: clearing the keys first would simply recreate them.
  *
- * It deletes nothing on a server, because there is no account on a server yet — the API answers
- * every route from in-memory fixtures and its tables are empty. This wipes the handset; the
- * deletion endpoint lands with the database.
+ * This wipes the handset only. Anonymous practice records remain on the server;
+ * phone sign-in does not grant ownership of those records.
  */
 export function wipeLocalData(): void {
   signOut();
   useSessionStore.getState().wipe();
   useLangStore.getState().reset();
   for (const store of PERSISTED) void store.persist.clearStorage();
+  void kvStorage.removeItem(STORAGE_PROBE_KEY);
 }

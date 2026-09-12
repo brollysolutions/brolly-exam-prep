@@ -27,6 +27,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useLangStore } from '@/data/lang';
 import { webLangOverride } from '@/data/langOverride';
 import { CatalogGate } from '@/features/shell/CatalogGate';
+import { StorageNotice } from '@/features/shell/StorageNotice';
 
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
@@ -74,6 +75,7 @@ export default function RootLayout() {
       <SafeAreaProvider>
         <BottomSheetModalProvider>
           <StatusBar style="dark" />
+          <StorageNotice />
           <CatalogGate>
             <Stack
               screenOptions={{

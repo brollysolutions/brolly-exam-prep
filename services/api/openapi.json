@@ -665,7 +665,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/PaperQuestionOut"
+                    "$ref": "#/components/schemas/ReviewPaperQuestionOut"
                   },
                   "title": "Response Get Review Paper V1 Results  Result Id  Paper Get"
                 }
@@ -735,7 +735,9 @@
           "choice": {
             "anyOf": [
               {
-                "type": "integer"
+                "type": "integer",
+                "maximum": 3.0,
+                "minimum": 0.0
               },
               {
                 "type": "null"
@@ -1312,8 +1314,9 @@
         "properties": {
           "phone": {
             "type": "string",
-            "maxLength": 15,
+            "maxLength": 16,
             "minLength": 10,
+            "pattern": "^\\+?[0-9]{10,15}$",
             "title": "Phone"
           }
         },
@@ -1670,6 +1673,53 @@
           "wrong"
         ],
         "title": "ResultOut"
+      },
+      "ReviewPaperQuestionOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "section": {
+            "type": "string",
+            "enum": [
+              "arithmetic",
+              "reasoning",
+              "gs",
+              "telangana",
+              "english"
+            ],
+            "title": "Section"
+          },
+          "text": {
+            "$ref": "#/components/schemas/LocalizedText"
+          },
+          "options": {
+            "$ref": "#/components/schemas/LocalizedOptions"
+          },
+          "avgSeconds": {
+            "type": "number",
+            "title": "Avgseconds"
+          },
+          "correct": {
+            "type": "integer",
+            "title": "Correct"
+          },
+          "explanation": {
+            "$ref": "#/components/schemas/LocalizedText"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "section",
+          "text",
+          "options",
+          "avgSeconds",
+          "correct",
+          "explanation"
+        ],
+        "title": "ReviewPaperQuestionOut"
       },
       "ReviewRowOut": {
         "properties": {

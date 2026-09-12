@@ -43,6 +43,9 @@ function send(job: Pending): Promise<ResultDetail> {
   if (existing) return existing;
   const request = (async () => {
     const api = getApi();
+    const ensurePending = () => {
+      if (!useSubmissions.getState().jobs[job.localId]) throw new Error('Submission cancelled');
+    };
     if (!job.remoteId) {
       const remote = await api.createAttempt({ test_id: job.testId });
       if (!useSubmissions.getState().jobs[job.localId]) throw new Error('Submission cancelled');
@@ -50,7 +53,9 @@ function send(job: Pending): Promise<ResultDetail> {
       useSubmissions.getState().put(job);
     }
     const { result_id } = await api.submitAttempt(job.remoteId!, job.body);
+    ensurePending();
     const result = await api.getResultDetail(result_id);
+    ensurePending();
     // Cache reviewed questions for later offline access before clearing the pending job.
     await api.getReviewPaper(result_id);
     if (!useSubmissions.getState().jobs[job.localId]) throw new Error('Submission cancelled');
@@ -97,18 +102,21 @@ export function saveCompletedAttempt(
   const pending = useSubmissions.getState().jobs[state.attemptId];
   if (pending) return send(pending);
   const duration = state.pattern.durationMinutes * 60_000;
+  const submittedAt = state.submittedAt ?? now;
   const job: Pending = {
     localId: state.attemptId,
     testId: state.testId,
-    at: now,
+    at: submittedAt,
     remoteId: state.attemptId.startsWith('local-') ? undefined : state.attemptId,
     body: {
       elapsed_seconds:
-        Math.max(0, Math.min(duration, now - ((state.endsAt ?? now) - duration))) / 1000,
+        Math.max(0, Math.min(duration, submittedAt - ((state.endsAt ?? submittedAt) - duration))) /
+        1000,
       answers: paper.map((q, index) => ({
         question_id: q.id,
         choice: state.answers[index + 1] ?? null,
         marked: state.marked[index + 1] === true,
+        seconds: state.questionSeconds?.[index + 1] ?? 0,
       })),
     },
   };
@@ -133,6 +141,9 @@ export async function loadCompletedResult(testId: string): Promise<ResultDetail>
       state.attemptId && !state.attemptId.startsWith('local-')
         ? await getApi().getAttemptPaper(state.attemptId)
         : await getApi().getPaper(testId);
+    const current = useAttemptStore.getState();
+    if (current.attemptId !== state.attemptId || current.testId !== state.testId)
+      throw new Error('Attempt changed while loading its paper');
     return saveCompletedAttempt(paper);
   }
   if (!completed) throw new Error('No submitted attempt');

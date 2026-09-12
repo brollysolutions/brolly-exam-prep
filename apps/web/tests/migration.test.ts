@@ -4,7 +4,9 @@ import { TESTS, SI_MOCK_01_ID, paperForTest } from '@tslprb/fixtures';
 import { attemptHref, resultHref, solutionsHref, returnHref, withReturn } from '../lib/routes';
 import {
   CONSTABLE_MOCK_01_ID,
+  CONSTABLE_MOCK_02_ID,
   SI_MOCK_02_ID,
+  SI_MOCK_03_ID,
   TESTS as webTests,
   paperForTest as webPaperForTest,
   isImportedTest,
@@ -44,6 +46,72 @@ before(async () => {
   completion = await import('../data/complete');
 });
 beforeEach(() => account.wipeLocalData());
+
+test('sign out during submission stops later result downloads and cache writes', async (t) => {
+  const { getApi } = await import('../data/api');
+  const api = getApi();
+  let resolve!: (result: { result_id: string }) => void;
+  t.mock.method(
+    api,
+    'submitAttempt',
+    () =>
+      new Promise((done) => {
+        resolve = done;
+      }),
+  );
+  const detail = t.mock.method(api, 'getResultDetail');
+  const review = t.mock.method(api, 'getReviewPaper');
+  attempt.useAttemptStore.getState().start(meta, { attemptId: 'remote-cancel' });
+  attempt.useAttemptStore.getState().submit();
+  const pending = completion.saveCompletedAttempt(paper);
+  account.wipeLocalData();
+  resolve({ result_id: 'private-result' });
+  await assert.rejects(pending, /Submission cancelled/);
+  assert.equal(detail.mock.calls.length, 0);
+  assert.equal(review.mock.calls.length, 0);
+});
+
+test('a delayed submission preserves the original duration and per-question time', async (t) => {
+  const start = Date.parse('2026-09-11T10:00:00Z');
+  const now = t.mock.method(Date, 'now', () => start);
+  attempt.useAttemptStore.getState().start(meta);
+  now.mock.mockImplementation(() => start + 10_000);
+  attempt.useAttemptStore.getState().goto(2);
+  now.mock.mockImplementation(() => start + 25_000);
+  attempt.useAttemptStore.getState().submit();
+  assert.deepEqual(attempt.useAttemptStore.getState().questionSeconds, { 1: 10, 2: 15 });
+  now.mock.mockImplementation(() => start + 300_000);
+  const { getApi } = await import('../data/api');
+  const submit = t.mock.method(getApi(), 'submitAttempt', async () => {
+    throw new Error('offline');
+  });
+  await assert.rejects(completion.saveCompletedAttempt(paper));
+  const body = submit.mock.calls[0].arguments[1];
+  assert.equal(body?.elapsed_seconds, 25);
+  assert.equal(body?.answers?.[0].seconds, 10);
+  assert.equal(body?.answers?.[1].seconds, 15);
+});
+
+test('a late result recovery cannot submit the paper for a different attempt', async (t) => {
+  attempt.useAttemptStore.getState().start(meta);
+  attempt.useAttemptStore.getState().submit();
+  const { getApi } = await import('../data/api');
+  let resolve!: (questions: typeof paper) => void;
+  t.mock.method(
+    getApi(),
+    'getPaper',
+    () =>
+      new Promise((done) => {
+        resolve = done;
+      }),
+  );
+  const request = completion.loadCompletedResult(meta.id);
+  attempt.useAttemptStore.getState().start(webTests.find((test) => test.id === SI_MOCK_02_ID)!);
+  attempt.useAttemptStore.getState().submit();
+  resolve(paper);
+  await assert.rejects(request, /Attempt changed/);
+  assert.deepEqual(completion.useSubmissions.getState().jobs, {});
+});
 
 // Boundary fake: exercise the persisted submission queue separately from Python's real-DB scoring tests.
 before(async () => {
@@ -191,42 +259,105 @@ test('replacement Constable 01 contains the complete source paper and separates 
   assert.notEqual(webPaperForTest(pc)[0].options.en[0], 'mutated copy');
 });
 
-test('Constable 01 reveals all solutions only after submission and closes review during a retake', async () => {
-  const pc = webTests.find((test) => test.id === CONSTABLE_MOCK_01_ID)!;
-  const { MockApi } = await import('../data/api/mock');
-  const { canReviewImportedTest } = await import('../data/importedAttempt');
-  const { buildSolutionRows, filterSolutionRows } = await import('../features/result/solutions');
-  const api = new MockApi();
-  const questions = await api.getPaper(pc.id);
-  assert.equal(canReviewImportedTest(pc.id), false);
-  await assert.rejects(api.getResultDetail(pc.id));
-  attempt.useAttemptStore.getState().start(pc);
-  attempt.useAttemptStore.getState().answer(1, questions[0].correct);
-  attempt.useAttemptStore.getState().answer(26, ((questions[25].correct + 1) % 4) as 0 | 1 | 2 | 3);
-  attempt.useAttemptStore.getState().answer(101, questions[100].correct);
-  await assert.rejects(completion.saveCompletedAttempt(questions));
-  await assert.rejects(api.getResultDetail(pc.id));
-  attempt.useAttemptStore.getState().submit();
-  const result = await completion.saveCompletedAttempt(questions)!;
-  assert.equal(result.score, 2);
-  assert.equal(result.maxScore, 200);
-  assert.equal(result.skipped, 197);
-  assert.equal(result.review.length, 200);
-  assert.equal(canReviewImportedTest(pc.id), true);
-  await api.getResultDetail(pc.id);
-  const rows = filterSolutionRows(buildSolutionRows(result.review, questions), 'all');
-  assert.equal(rows.length, 200);
-  assert.equal(rows[199].questionNo, 200);
-  assert.equal(rows[199].your, null);
-  assert.equal(rows[199].question.explanation.te, questions[199].explanation.te);
-  assert.equal(completed.useCompletedTestsStore.getState().tests[SI_MOCK_02_ID], undefined);
-  attempt.useAttemptStore.getState().start(pc);
-  assert.equal(canReviewImportedTest(pc.id), false);
-  await assert.rejects(api.getResultDetail(pc.id));
-  attempt.useAttemptStore.setState({ endsAt: Date.now() - 1 });
-  attempt.useAttemptStore.getState().autoSubmit();
-  assert.ok(await completion.saveCompletedAttempt(questions));
-  assert.equal(canReviewImportedTest(pc.id), true);
+for (const constableId of [CONSTABLE_MOCK_01_ID, CONSTABLE_MOCK_02_ID]) {
+  test(`${constableId} reveals all solutions only after submission and closes review during a retake`, async () => {
+    const pc = webTests.find((test) => test.id === constableId)!;
+    const { MockApi } = await import('../data/api/mock');
+    const { canReviewImportedTest } = await import('../data/importedAttempt');
+    const { buildSolutionRows, filterSolutionRows } = await import('../features/result/solutions');
+    const api = new MockApi();
+    const questions = await api.getPaper(pc.id);
+    assert.equal(canReviewImportedTest(pc.id), false);
+    await assert.rejects(api.getResultDetail(pc.id));
+    attempt.useAttemptStore.getState().start(pc);
+    attempt.useAttemptStore.getState().answer(1, questions[0].correct);
+    attempt.useAttemptStore
+      .getState()
+      .answer(26, ((questions[25].correct + 1) % 4) as 0 | 1 | 2 | 3);
+    attempt.useAttemptStore.getState().answer(101, questions[100].correct);
+    await assert.rejects(completion.saveCompletedAttempt(questions));
+    await assert.rejects(api.getResultDetail(pc.id));
+    attempt.useAttemptStore.getState().submit();
+    const result = await completion.saveCompletedAttempt(questions)!;
+    assert.equal(result.score, 2);
+    assert.equal(result.maxScore, 200);
+    assert.equal(result.skipped, 197);
+    assert.equal(result.review.length, 200);
+    assert.equal(canReviewImportedTest(pc.id), true);
+    await api.getResultDetail(pc.id);
+    const rows = filterSolutionRows(buildSolutionRows(result.review, questions), 'all');
+    assert.equal(rows.length, 200);
+    assert.equal(rows[199].questionNo, 200);
+    assert.equal(rows[199].your, null);
+    assert.equal(rows[199].question.explanation.te, questions[199].explanation.te);
+    assert.equal(completed.useCompletedTestsStore.getState().tests[SI_MOCK_02_ID], undefined);
+    attempt.useAttemptStore.getState().start(pc);
+    assert.equal(canReviewImportedTest(pc.id), false);
+    await assert.rejects(api.getResultDetail(pc.id));
+    attempt.useAttemptStore.setState({ endsAt: Date.now() - 1 });
+    attempt.useAttemptStore.getState().autoSubmit();
+    assert.ok(await completion.saveCompletedAttempt(questions));
+    assert.equal(canReviewImportedTest(pc.id), true);
+  });
+}
+
+test('Constable 02 imports all 200 bilingual questions, preserves maths and has distinct routes', () => {
+  const pc = webTests.find((test) => test.id === CONSTABLE_MOCK_02_ID)!;
+  const questions = webPaperForTest(pc);
+  assert.equal(pc.title.en, 'Constable Mock Test 02');
+  assert.equal(pc.pattern.post, 'pc');
+  assert.equal(pc.pattern.durationMinutes, 180);
+  assert.equal(pc.pattern.totalQuestions, 200);
+  assert.equal(pc.pattern.negativePerWrong, 0);
+  assert.equal(pc.free, true);
+  assert.equal(isImportedTest(pc.id), true);
+  assert.equal(questions.length, 200);
+  assert.equal(new Set(questions.map((q) => q.id)).size, 200);
+  assert.deepEqual(
+    pc.pattern.sections.map((section) => [
+      section.id,
+      questions.filter((q) => q.section === section.id).length,
+    ]),
+    [
+      ['english', 25],
+      ['arithmetic', 35],
+      ['reasoning', 40],
+      ['gs', 100],
+    ],
+  );
+  for (const question of questions) {
+    assert.ok(question.id.startsWith(`${pc.id}-`));
+    assert.ok(Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4);
+    for (const lang of ['en', 'te'] as const) {
+      assert.ok(question.text[lang] && question.explanation[lang]);
+      assert.equal(question.options[lang].length, 4);
+      assert.ok(question.options[lang].every(Boolean));
+      assert.doesNotMatch(
+        [question.text[lang], ...question.options[lang]].join('\n'),
+        /Answer:|Explanation:|తెలుగు వివరణ:/,
+      );
+    }
+  }
+  for (const question of questions.slice(0, 25)) {
+    assert.equal(question.text.en, question.text.te);
+    assert.deepEqual(question.options.en, question.options.te);
+  }
+  for (const question of questions.slice(20, 25)) {
+    assert.match(question.text.en, /In democratic jurisdictions/);
+  }
+  assert.doesNotMatch(questions[19].text.en, /In democratic jurisdictions/);
+  assert.match(questions[26].text.en, /35-\[18-\{16-\(12-overline\(8-5\)\)\}\]÷3/);
+  assert.match(questions[38].text.en, /1\(1\)\/\(2\)/);
+  assert.match(questions[81].text.en, /\[8, 6, 28; 9, 7, 32; 11, 5, \?\]/);
+  assert.match(questions[199].text.en, /State Fish/i);
+  assert.equal(questions[1].correct, 0); // The source explanation explicitly selects A.
+  assert.equal(questions[28].correct, 0); // The explanation computes 36% loss, not profit.
+  assert.equal(questions[52].correct, 0); // The explanation computes remainder 5.
+  assert.equal(attemptHref(pc.id), '/test/constablemocktest02');
+  assert.equal(resultHref(pc.id), '/test/constablemocktest02/result');
+  assert.equal(solutionsHref(pc.id), '/test/constablemocktest02/solution');
+  questions[0].options.en[0] = 'changed copy';
+  assert.notEqual(webPaperForTest(pc)[0].options.en[0], 'changed copy');
 });
 
 test('SI Mock Test 02 combines all bilingual source questions without changing the shared catalogue', () => {
@@ -237,7 +368,7 @@ test('SI Mock Test 02 combines all bilingual source questions without changing t
     false,
   );
   assert.equal(isImportedTest(second.id), true);
-  assert.equal(second.pattern.durationMinutes, 190);
+  assert.equal(second.pattern.durationMinutes, 180);
   assert.equal(questions.length, 200);
   assert.equal(new Set(questions.map((q) => q.id)).size, 200);
   assert.deepEqual(
@@ -264,35 +395,87 @@ test('SI Mock Test 02 combines all bilingual source questions without changing t
   assert.deepEqual(webPaperForTest(meta), paperForTest(meta));
 });
 
-test('SI Mock Test 02 review stays gated until submission, preserves solutions and closes again on retake', async () => {
-  const second = webTests.find((test) => test.id === SI_MOCK_02_ID)!;
-  const questions = webPaperForTest(second);
-  const { canReviewImportedTest } = await import('../data/importedAttempt');
-  const { MockApi } = await import('../data/api/mock');
-  const api = new MockApi();
-  assert.equal(canReviewImportedTest(second.id), false);
-  await assert.rejects(api.getResultDetail(second.id));
-  attempt.useAttemptStore.getState().start(second);
-  attempt.useAttemptStore.getState().answer(1, questions[0].correct);
-  attempt.useAttemptStore.getState().answer(51, questions[50].correct === 0 ? 1 : 0);
-  await assert.rejects(completion.saveCompletedAttempt(questions));
-  assert.equal(canReviewImportedTest(second.id), false);
-  attempt.useAttemptStore.getState().submit();
-  const result = await completion.saveCompletedAttempt(questions)!;
-  assert.equal(result.correct, 1);
-  assert.equal(result.score, 1);
-  assert.equal(result.review?.length, 200);
-  assert.equal(canReviewImportedTest(second.id), true);
-  await api.getResultDetail(second.id);
-  assert.ok(completed.useCompletedTestsStore.getState().tests[second.id]);
-  assert.equal(completed.useCompletedTestsStore.getState().tests[meta.id], undefined);
-  attempt.useAttemptStore.getState().start(second);
-  assert.equal(canReviewImportedTest(second.id), false);
-  await assert.rejects(api.getResultDetail(second.id));
-  attempt.useAttemptStore.setState({ endsAt: Date.now() - 1 });
-  attempt.useAttemptStore.getState().autoSubmit();
-  assert.ok(await completion.saveCompletedAttempt(questions));
-  assert.equal(canReviewImportedTest(second.id), true);
+for (const siId of [SI_MOCK_02_ID, SI_MOCK_03_ID]) {
+  test(`${siId} review stays gated until submission, preserves solutions and closes again on retake`, async () => {
+    const second = webTests.find((test) => test.id === siId)!;
+    const questions = webPaperForTest(second);
+    const { canReviewImportedTest } = await import('../data/importedAttempt');
+    const { MockApi } = await import('../data/api/mock');
+    const api = new MockApi();
+    assert.equal(canReviewImportedTest(second.id), false);
+    await assert.rejects(api.getResultDetail(second.id));
+    attempt.useAttemptStore.getState().start(second);
+    attempt.useAttemptStore.getState().answer(1, questions[0].correct);
+    attempt.useAttemptStore.getState().answer(51, questions[50].correct === 0 ? 1 : 0);
+    await assert.rejects(completion.saveCompletedAttempt(questions));
+    assert.equal(canReviewImportedTest(second.id), false);
+    attempt.useAttemptStore.getState().submit();
+    const result = await completion.saveCompletedAttempt(questions)!;
+    assert.equal(result.correct, 1);
+    assert.equal(result.score, 1);
+    assert.equal(result.review?.length, 200);
+    assert.equal(canReviewImportedTest(second.id), true);
+    await api.getResultDetail(second.id);
+    assert.ok(completed.useCompletedTestsStore.getState().tests[second.id]);
+    assert.equal(completed.useCompletedTestsStore.getState().tests[meta.id], undefined);
+    attempt.useAttemptStore.getState().start(second);
+    assert.equal(canReviewImportedTest(second.id), false);
+    await assert.rejects(api.getResultDetail(second.id));
+    attempt.useAttemptStore.setState({ endsAt: Date.now() - 1 });
+    attempt.useAttemptStore.getState().autoSubmit();
+    assert.ok(await completion.saveCompletedAttempt(questions));
+    assert.equal(canReviewImportedTest(second.id), true);
+  });
+}
+
+test('SI Mock Test 03 combines all three source papers without exposing the pasted Q021 solution', () => {
+  const third = webTests.find((test) => test.id === SI_MOCK_03_ID)!;
+  const questions = webPaperForTest(third);
+  assert.equal(third.title.en, 'SI Mock Test 03');
+  assert.equal(third.pattern.post, 'si');
+  assert.equal(third.pattern.durationMinutes, 180);
+  assert.equal(third.pattern.totalQuestions, 200);
+  assert.equal(third.pattern.negativePerWrong, 0);
+  assert.equal(third.free, true);
+  assert.equal(isImportedTest(third.id), true);
+  assert.equal(questions.length, 200);
+  assert.equal(new Set(questions.map((q) => q.id)).size, 200);
+  assert.deepEqual(
+    ['arithmetic', 'reasoning', 'gs'].map(
+      (section) => questions.filter((q) => q.section === section).length,
+    ),
+    [50, 50, 100],
+  );
+  assert.equal(questions[49].id, 'si-brolly-03-arithmetic-050');
+  assert.equal(questions[50].id, 'si-brolly-03-reasoning-001');
+  assert.equal(questions[100].id, 'si-brolly-03-gs-001');
+  for (const question of questions) {
+    assert.ok(question.id.startsWith(`${third.id}-`));
+    assert.ok(Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4);
+    for (const lang of ['en', 'te'] as const) {
+      assert.ok(question.text[lang] && question.explanation[lang]);
+      assert.equal(question.options[lang].length, 4);
+      assert.ok(question.options[lang].every(Boolean));
+      assert.doesNotMatch(
+        [question.text[lang], ...question.options[lang]].join('\n'),
+        /The correct answer is|Answer:|Explanation:|సరైన సమాధానం:|తెలుగు వివరణ:|You are completely right|Would you like/i,
+      );
+    }
+  }
+  assert.match(questions[33].text.en, /Warangal \| 80 \| 85 \| 96 \| 105/);
+  assert.match(questions[47].text.en, /Nalgonda \| 70 \| 76 \| 85 \| 95/);
+  assert.match(questions[47].text.te, /నల్గొండ \| 70 \| 76 \| 85 \| 95/);
+  const venn = questions[70];
+  assert.match(venn.text.en, /Doctors, Surgeons, Musicians/);
+  assert.match(venn.explanation.en, /All Surgeons are Doctors/);
+  assert.match(venn.explanation.te, /శస్త్రచికిత్స నిపుణులందరూ వైద్యులే/);
+  assert.doesNotMatch(venn.text.en, /All Surgeons are Doctors/);
+  assert.equal(venn.correct, 1);
+  assert.equal(attemptHref(third.id), '/tests/simocktest03');
+  assert.equal(resultHref(third.id), '/tests/simocktest03/result');
+  assert.equal(solutionsHref(third.id), '/tests/simocktest03/solutions');
+  questions[0].options.en[0] = 'changed copy';
+  assert.notEqual(webPaperForTest(third)[0].options.en[0], 'changed copy');
 });
 
 test('existing Expo storage rehydrates answers, marks, and the original deadline', async () => {

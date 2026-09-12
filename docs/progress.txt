@@ -1,3 +1,30 @@
+Remove exit button from mock tests — 2026-09-12
+Removed the Exit test action from the shared web exam header and the exit icon from the shared mobile attempt header. Removed unused web exit-dialog state and native button callbacks. Submission, timer, fullscreen, answer saving and the native hardware-back confirmation retain their existing behavior.
+Web 42 tests, targeted native attempt 53 tests and mobile typecheck passed; the Telugu snapshot changes only by removal of the exit button.
+
+SI mock duration correction — 2026-09-12
+Changed SI Mock Tests 01, 02 and 03 to one shared 180-minute duration. Catalogue cards and new server attempt deadlines use that value; existing attempt snapshots retain their original deadline. Source-document timings remain recorded for provenance.
+Verified local HTTP catalogue and fresh attempt deadlines are 180 minutes for all three SI tests. Web 42 tests, targeted mobile 29 tests/one snapshot, backend 15 tests and web typecheck passed. Only the three SI duration values changed in the exported catalogue. Local API restarted; public deployment not performed.
+
+SI Mock Test 03 — 2026-09-12
+Combined the three supplied SI Series III DOCX papers into one 200-question, 190-minute test (arithmetic 50, reasoning 50, GS 100), with English/Telugu questions and solutions. New ID si-brolly-03 and /tests/simocktest03 exam/result/solutions routes.
+Removed the pasted solved Venn diagram explanation from reasoning Q021's question text, retained its bilingual solution relationships, and repeated the district table for arithmetic Q048. Source keys retained; 40 automated content review flags documented in SI_MOCK_03.md and si-mock-03.sources.json.
+Server catalogue now has nine entries / 1,640 questions. All eight earlier catalogue entries and papers compare equal to the pre-import snapshot. Web 42 tests and API 25 tests passed; web typecheck and lint passed.
+Backend Ruff and production Docker build passed. Real HTTP smoke passed all five imported test flows; new routes return 200 and aliases redirect correctly. Three-source re-import is byte-identical. Local URL http://localhost:3201/tests/simocktest03; public deployment and interactive browser/device checks not performed.
+
+Constable Mock Test 02 — 2026-09-12
+Imported the supplied constable 2 DOCX into one 200-question, 180-minute bilingual test (English 25, arithmetic 35, reasoning 40, GS 100). New ID pc-constable-02 and named exam/result/solution routes; existing seven catalogue entries and paper snapshots unchanged.
+Retained Word maths and the shared comprehension passage. Corrected 26 option-letter mismatches supported by source explanations; 16 remaining source review flags are documented in CONSTABLE_MOCK_02.md and constable-mock-02.sources.json.
+Server catalogue now has eight entries / 1,440 questions. API test confirms review requires submission and reveals the full paper afterward. Web 40 tests and API 24 tests passed; web typecheck/lint and backend Ruff passed. DOCX re-import is byte-identical.
+Production Docker images rebuilt locally. HTTP smoke passed all four full imported test flows; new routes return 200 and aliases redirect correctly. No interactive browser connection or remote deployment; local test URL http://localhost:3201/test/constablemocktest02.
+
+Application reliability audit — 2026-09-11
+Fixed mobile attempt replacement/reopening, late answer writes, catalogue reconnect failures, native storage recovery, real result analysis/timing, API body timeouts, submission cancellation/identity races, OpenAPI proxy/schema, numeric validation, service-worker quota failures, and production autoreload.
+New regression tests reproduce the former attempt and catalogue failures. See APPLICATION_AUDIT_2026-09-11.md for final validation and scope.
+Remote public API still returned 404; browser/device visual verification and signed AAB verification remain outside the completed local checks.
+Brand tokens unchanged; StorageNotice and explicit retake reuse existing primitives.
+Validation: mobile 947 tests/103 suites/15 snapshots, web 38 tests, API 23 tests, shared 49 tests; typecheck/lint and production Docker build passed. Full HTTP catalogue/submission/review smoke passed; both local OpenAPI routes return 200.
+
 Application audit implementation — 2026-09-09
 
 Phase 1: F01–F04 implemented (save recovery/status, demo disclosure, sample schedule/news, exam focus).

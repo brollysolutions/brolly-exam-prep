@@ -1,13 +1,14 @@
 import type { ExamPattern } from './exam-pattern';
 
 export const SI_MOCK_01_ID = 'si-brolly-01';
+export const SI_MOCK_DURATION_MINUTES = 180;
 
-/** Combined practice paper: 50-minute Arithmetic, 50-minute Reasoning, 90-minute GS. */
+/** Combined SI practice paper: one 180-minute timer across all three sections. */
 export const SI_MOCK_01_PATTERN: ExamPattern = {
   id: SI_MOCK_01_ID,
   post: 'si',
   totalQuestions: 200,
-  durationMinutes: 190,
+  durationMinutes: SI_MOCK_DURATION_MINUTES,
   marksPerCorrect: 1,
   negativePerWrong: 0,
   qualifyingOnly: true,

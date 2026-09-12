@@ -199,7 +199,6 @@ export function AttemptStates({ index }: { index: string }) {
           elapsedSec={config.elapsedSec}
           lang={lang}
           onLangChange={setLang}
-          onExit={() => setId('exit')}
           onSectionPress={noop}
           onLockedTap={() => setId('locked')}
           onAnswer={noop}

@@ -22,7 +22,6 @@ const props = {
   elapsedSec: DEMO_ELAPSED_SEC,
   lang: 'te' as const,
   onLangChange: noop,
-  onExit: noop,
   onSectionPress: noop,
   onLockedTap: noop,
   onAnswer: noop,

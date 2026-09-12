@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
 from app.practice import load
-from app.schemas import PaperQuestionOut, ResultDetailOut, ResultOut
+from app.schemas import ResultDetailOut, ResultOut, ReviewPaperQuestionOut
 
 router = APIRouter(prefix="/v1/results", tags=["results"])
 
@@ -25,8 +25,6 @@ async def get_detail(result_id: str, session: AsyncSession = Depends(get_session
     return (await submitted(result_id, session)).result["detail"]
 
 
-@router.get(
-    "/{result_id}/paper", response_model=list[PaperQuestionOut], response_model_exclude_none=True
-)
+@router.get("/{result_id}/paper", response_model=list[ReviewPaperQuestionOut])
 async def get_review_paper(result_id: str, session: AsyncSession = Depends(get_session)):
     return (await submitted(result_id, session)).snapshot["paper"]

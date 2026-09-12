@@ -50,65 +50,6 @@ exports[`AttemptView (te) sets the paper in the Telugu face, keeps the clock Lat
         testID="attempt-header-row"
       >
         <View
-          accessibilityLabel="టెస్ట్ నుండి బయటకు"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          className="h-touch w-touch items-center justify-center rounded-sm"
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          testID="btn-exit"
-        >
-          <Text
-            accessibilityElementsHidden={true}
-            allowFontScaling={false}
-            importantForAccessibility="no"
-            selectable={false}
-            style={
-              [
-                {
-                  "color": "#4a423a",
-                  "fontSize": 22,
-                },
-                undefined,
-                {
-                  "fontFamily": "ionicons",
-                  "fontStyle": "normal",
-                  "fontWeight": "normal",
-                },
-                {},
-              ]
-            }
-          >
-            
-          </Text>
-        </View>
-        <View
           accessibilityRole="radiogroup"
           className="min-h-touch overflow-hidden rounded-sm border border-outline self-start"
           style={

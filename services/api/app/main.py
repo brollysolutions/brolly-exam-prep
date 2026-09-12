@@ -1,10 +1,25 @@
 from fastapi import FastAPI
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from app.config import settings
 from app.routers import attempts, auth, content, health, results, tests
 
 app = FastAPI(title="TSLPRB API", version="0.1.0")
+
+
+@app.exception_handler(RequestValidationError)
+async def invalid_request(_request, error: RequestValidationError):
+    # Do not echo invalid payloads: e.g. an overflowing JSON number cannot itself
+    # be serialized into a valid JSON error response.
+    return JSONResponse(
+        status_code=422,
+        content={
+            "detail": [{key: row[key] for key in ("loc", "msg", "type")} for row in error.errors()]
+        },
+    )
+
 
 _cors_origins = settings.cors_origin_list
 # Never combine a wildcard origin with allow_credentials=True: Starlette's

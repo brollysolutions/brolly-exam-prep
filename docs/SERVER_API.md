@@ -35,14 +35,18 @@ All paths below are relative to the API origin. JSON request bodies use
 
 `GET /api` on the website also returns health. API errors and status codes pass
 through the Next.js proxy, including 404 for missing resources and 409 before submission.
-The complete schema is in `services/api/openapi.json`; Swagger runs at
+The complete schema is in `services/api/openapi.json`. The website exposes
+`/openapi.json` and `/api/openapi.json`, with `/api` as the schema's server base.
+These public routes require deployment of the updated website. Swagger runs at
 `http://localhost:8200/docs` when the local API is up.
 
 ## Data and submission behavior
 
-- Seven catalogue entries retain their original IDs (including retired/hidden demo
-  entries); the three complete imported papers have 200 questions each. The catalogue
-  contains 1,240 questions in total. Existing demo labels and verification flags remain.
+- Nine catalogue entries include the existing IDs (including retired/hidden demo
+  entries), `pc-constable-02` and `si-brolly-03`; the five complete imported papers
+  have 200 questions each. The catalogue contains 1,640 questions in total. Existing
+  demo labels and verification flags remain. Source reviews are in
+  `CONSTABLE_MOCK_02.md` and `SI_MOCK_03.md`.
 - Previous-year reading papers include their solutions. Practice solutions require a
   submitted result ID. Missing results never produce sample analysis.
 - Attempts, answer snapshots and results persist in PostgreSQL's `practice_attempts`
@@ -60,6 +64,9 @@ The complete schema is in `services/api/openapi.json`; Swagger runs at
 - Device sign-out clears local progress, pending jobs and downloaded API cache. It does
   not delete server records. Previously locally scored results have no server result ID;
   they cannot acquire server solutions retroactively without a submitted answer snapshot.
+- Mobile storage failures show a warning and allow retrying pending writes. Question
+  times and submission time are persisted; retrying a result does not add waiting time
+  to the completed attempt. Opening a second mobile test preserves the running attempt.
 
 ## Updating content
 
@@ -85,10 +92,12 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build ap
 curl --fail https://mocktest.brollyexamprep.com/api/health
 curl --fail https://mocktest.brollyexamprep.com/api/v1/tests/catalog
 curl --fail https://mocktest.brollyexamprep.com/api/v1/content
+curl --fail https://mocktest.brollyexamprep.com/openapi.json
 ```
 
 Compose runs Alembic before starting the API. Keep the PostgreSQL volume; do not run
 `down -v`. Rebuild both the API and website so their schemas and proxy allowlist agree.
+The production overlay disables the development API autoreloader.
 
 The public TLS proxy must forward the website origin (including `/api/...`) to
 `http://127.0.0.1:3201` **without stripping `/api`**. Next.js strips that prefix while

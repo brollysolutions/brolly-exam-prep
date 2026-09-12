@@ -5,6 +5,28 @@
 @import './brolly-theme.css';
 @import './exam-workspace.css';
 
+.site-policy-footer {
+  padding: 24px;
+  border-top: 1px solid var(--border);
+}
+.site-policy-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+.site-policy-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-size);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.site-policy-footer a:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 4px;
+}
+
 /* Values come from @tslprb/design-tokens via lib/theme.ts on the root element. */
 @theme inline {
   --color-background: var(--background);

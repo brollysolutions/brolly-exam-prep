@@ -79,7 +79,11 @@ export type LocalizedOptions = z.infer<typeof LocalizedOptionsSchema>;
  * and until one lands this endpoint must not guard anything a stranger may not see.
  */
 export const PhoneSignInSchema = z.object({
-  phone: z.string().min(10).max(15),
+  phone: z
+    .string()
+    .min(10)
+    .max(16)
+    .regex(/^\+?[0-9]{10,15}$/),
 });
 export type PhoneSignIn = z.infer<typeof PhoneSignInSchema>;
 
@@ -150,9 +154,9 @@ export type Attempt = z.infer<typeof AttemptSchema>;
 
 export const AnswerPatchSchema = z.object({
   question_id: z.string(),
-  choice: z.number().int().nullable().optional(),
+  choice: z.number().int().min(0).max(3).nullable().optional(),
   marked: z.boolean().optional().default(false),
-  seconds: z.number().nonnegative().optional(),
+  seconds: z.number().finite().nonnegative().optional(),
 });
 export type AnswerPatch = z.infer<typeof AnswerPatchSchema>;
 /**
@@ -301,7 +305,7 @@ export const ResultDetailSchema = z.object({
 });
 export const SubmitInputSchema = z.object({
   answers: z.array(AnswerPatchSchema).max(1000).optional(),
-  elapsed_seconds: z.number().nonnegative().optional(),
+  elapsed_seconds: z.number().finite().nonnegative().optional(),
 });
 export type SubmitInput = z.input<typeof SubmitInputSchema>;
 
