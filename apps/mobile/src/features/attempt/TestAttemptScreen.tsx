@@ -23,7 +23,7 @@ import {
   resolveCachedRead,
 } from '@/data/offline';
 import { gateHref, useRequireAuth } from '@/data/requireAuth';
-import { offlineUserId, useSessionStore } from '@/data/session';
+import { offlineUserId, TEST_SESSION_TOKEN, useSessionStore } from '@/data/session';
 import { testAttemptHref, testResultHref } from '@/data/testRoutes';
 import { useCountdown } from '@/data/useCountdown';
 import { useNetwork } from '@/data/useNetwork';
@@ -183,7 +183,8 @@ function TestAttempt({ id }: { id: string }) {
       }
 
       const legacyServerId = initial.serverAttemptId ?? resumingId;
-      if (resumingId && legacyServerId && !legacyServerId.startsWith('local-')) {
+      const testing = useSessionStore.getState().token === TEST_SESSION_TOKEN;
+      if (!testing && resumingId && legacyServerId && !legacyServerId.startsWith('local-')) {
         try {
           const [serverAttempt, serverMeta, serverPaper] = await Promise.all([
             api.getAttempt(legacyServerId),
@@ -259,29 +260,31 @@ function TestAttempt({ id }: { id: string }) {
       let serverAttemptId: string | undefined;
       let startedAt: number | undefined;
       let endsAt: number | undefined;
-      try {
-        const created = await api.createAttempt({ test_id: id });
-        if (cancelled) return;
-        serverAttemptId = created.id;
-        startedAt = Date.parse(created.started_at);
-        endsAt = Date.parse(created.ends_at);
+      if (!testing) {
         try {
-          const [serverAttempt, serverMeta, serverPaper] = await Promise.all([
-            api.getAttempt(created.id),
-            api.getAttemptMetaData(created.id),
-            api.getAttemptPaperData(created.id),
-          ]);
+          const created = await api.createAttempt({ test_id: id });
           if (cancelled) return;
-          startMeta = serverMeta;
-          startPaper = serverPaper;
-          startedAt = Date.parse(serverAttempt.started_at);
-          endsAt = Date.parse(serverAttempt.ends_at);
+          serverAttemptId = created.id;
+          startedAt = Date.parse(created.started_at);
+          endsAt = Date.parse(created.ends_at);
+          try {
+            const [serverAttempt, serverMeta, serverPaper] = await Promise.all([
+              api.getAttempt(created.id),
+              api.getAttemptMetaData(created.id),
+              api.getAttemptPaperData(created.id),
+            ]);
+            if (cancelled) return;
+            startMeta = serverMeta;
+            startPaper = serverPaper;
+            startedAt = Date.parse(serverAttempt.started_at);
+            endsAt = Date.parse(serverAttempt.ends_at);
+          } catch {
+            // Creation succeeded, so its id/deadline remain authoritative even if optional
+            // follow-up reads fail.
+          }
         } catch {
-          // Creation succeeded, so its id/deadline remain authoritative even if optional
-          // follow-up reads fail.
+          // A cached public paper is enough to create a durable local-only attempt.
         }
-      } catch {
-        // A cached public paper is enough to create a durable local-only attempt.
       }
       if (cancelled) return;
       setPaper(startPaper);

@@ -1,6 +1,7 @@
 import Storage from 'expo-sqlite/kv-store';
 
 import {
+  backendToken,
   hasBackendIdentity,
   offlineUserId,
   SESSION_STORAGE_KEY,
@@ -14,6 +15,24 @@ beforeEach(() => {
 });
 
 describe('session store', () => {
+  it('keeps dummy login local and clears the previous backend identity', () => {
+    read().setUserId('previous-user');
+    read().setToken('previous-token');
+    read().setPost('si');
+    read().startTestingSession('0000000000');
+    expect(read().signedIn()).toBe(true);
+    expect(read().userId).toBeUndefined();
+    expect(read().post).toBeUndefined();
+    expect(offlineUserId(read())).toBe('phone:0000000000');
+    expect(backendToken(read())).toBeUndefined();
+    expect(hasBackendIdentity(read())).toBe(false);
+    expect(hasBackendIdentity({ ...read(), userId: 'stale-user' })).toBe(false);
+  });
+
+  it.each(['123456789', '12345678901', 'abcdefghij'])('rejects invalid test login %s', (phone) => {
+    expect(() => read().startTestingSession(phone)).toThrow('Enter exactly 10 digits');
+    expect(read().signedIn()).toBe(false);
+  });
   it('starts signed out and un-onboarded', () => {
     expect(read()).toMatchObject({
       phone: undefined,

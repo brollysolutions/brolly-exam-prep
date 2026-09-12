@@ -1,4 +1,4 @@
-import { useSessionStore } from '../session';
+import { backendToken, useSessionStore } from '../session';
 import { HttpApi } from './http';
 import type { AppApi } from './types';
 
@@ -21,7 +21,7 @@ let instance: AppApi | undefined;
 /** The mobile app uses the remote API without bundled demo content. */
 export function getApi(): AppApi {
   if (!instance) {
-    instance = new HttpApi({ getToken: () => useSessionStore.getState().token });
+    instance = new HttpApi({ getToken: () => backendToken(useSessionStore.getState()) });
   }
   return instance;
 }

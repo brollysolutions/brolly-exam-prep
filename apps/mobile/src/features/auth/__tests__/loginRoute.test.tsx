@@ -46,7 +46,7 @@ describe('LoginRoute', () => {
     await userEvent.press(screen.getByTestId('login-continue'));
 
     expect(useSessionStore.getState().token).toBeTruthy();
-    expect(useSessionStore.getState().userId).toBe('usr-9000012345');
+    expect(useSessionStore.getState().userId).toBeUndefined();
     expect(useSessionStore.getState().phone).toBe('9000012345');
     expect(mockRouter.replace).toHaveBeenCalledWith({
       pathname: '/(onboarding)/post',
@@ -64,16 +64,36 @@ describe('LoginRoute', () => {
     expect(mockRouter.replace).toHaveBeenCalledWith('/(onboarding)/post');
   });
 
-  // The number reaches the server, so the screen has to survive the server not being there.
-  it('keeps the candidate on the screen, signed out, when the call fails', async () => {
-    jest.spyOn(getApi(), 'signInWithPhone').mockRejectedValueOnce(new Error('offline'));
+  it.each(['0000000000', '1111111111', '1234567890'])(
+    'accepts %s without contacting the login server', async (phone) => {
+    const signIn = jest.spyOn(getApi(), 'signInWithPhone');
     await render(<LoginRoute />);
-    await type('9000012345');
+    await type(phone);
     await userEvent.press(screen.getByTestId('login-continue'));
 
+    expect(useSessionStore.getState().signedIn()).toBe(true);
+    expect(useSessionStore.getState().phone).toBe(phone);
+    expect(signIn).not.toHaveBeenCalled();
+    expect(mockRouter.replace).toHaveBeenCalled();
+  });
+
+  it('returns an onboarded tester directly to the selected test', async () => {
+    const session = useSessionStore.getState();
+    session.startTestingSession('1234567890');
+    session.setPost('si');
+    session.setCategory('bc');
+    session.completeOnboarding();
+    mockParams = { returnTo: '/test/si-brolly-01' };
+    await render(<LoginRoute />);
+    await userEvent.press(screen.getByTestId('login-continue'));
+    expect(mockRouter.replace).toHaveBeenCalledWith('/test/si-brolly-01');
+  });
+
+  it('does not accept fewer than ten digits', async () => {
+    await render(<LoginRoute />);
+    await type('123456789');
+    expect(screen.getByTestId('login-continue')).toBeDisabled();
     expect(useSessionStore.getState().signedIn()).toBe(false);
-    expect(mockRouter.replace).not.toHaveBeenCalled();
-    expect(await screen.findByText(/went wrong|network|try again/i)).toBeOnTheScreen();
   });
 
   // F-19 — the sign-in is a card on top of a working app, not the door to it.

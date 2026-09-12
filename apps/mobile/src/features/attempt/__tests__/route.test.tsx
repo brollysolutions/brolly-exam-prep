@@ -7,7 +7,7 @@ import { AppState, BackHandler, type AppStateStatus } from 'react-native';
 import TestAttemptRoute from '@/app/test/[id]/index';
 import SIMockTestRoute from '@/app/tests/simocktest';
 import { useActivityStore } from '@/data/activity';
-import { resetApi } from '@/data/api';
+import { getApi, resetApi } from '@/data/api';
 import { MockApi } from '@/data/testing/mockApi';
 import { useAttemptStore } from '@/data/attempt';
 import { useHistoryStore } from '@/data/history';
@@ -74,6 +74,19 @@ const flush = async () => {
     await Promise.resolve();
   });
 };
+
+it('starts a test with a dummy number without creating a server attempt', async () => {
+  useSessionStore.getState().startTestingSession('0000000000');
+  useSessionStore.getState().setPost('pc');
+  useSessionStore.getState().setCategory('oc');
+  useSessionStore.getState().completeOnboarding();
+  const createAttempt = jest.spyOn(getApi(), 'createAttempt');
+  await render(<TestAttemptRoute />);
+  await flush();
+  expect(useAttemptStore.getState().status).toBe('running');
+  expect(mockRedirect).not.toHaveBeenCalled();
+  expect(createAttempt).not.toHaveBeenCalled();
+});
 
 beforeAll(() => {
   initI18n('en');
