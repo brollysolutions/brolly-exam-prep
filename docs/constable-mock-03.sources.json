@@ -1,0 +1,76 @@
+{
+  "file": "BrollyExamPrep constable 3.docx",
+  "sha256": "923725f0e758291aab5f6019abe36f69e96d2c18f9e376750e32d905510b2ec0",
+  "testId": "pc-constable-03",
+  "questions": 200,
+  "durationMinutes": 180,
+  "sourceHeading": "FULL 200-QUESTION MOCK TEST — PART 1 (Q001 – Q050)",
+  "sourceTiming": "• మార్కులు: 50 | సమయం: 45 నిమిషాలు",
+  "timingPolicy": "Full 200-question Constable mock uses the existing 180-minute pattern. The source front matter labels only Part 1 / 50 questions / 45 minutes, but the file contains Q001-Q200.",
+  "sections": {
+    "english": 25,
+    "arithmetic": 35,
+    "reasoning": 40,
+    "gs": 100
+  },
+  "solutions": 200,
+  "externalLinks": [],
+  "englishQuestionsReusedInTelugu": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "sharedPassageQuestions": [
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "labelNormalizations": [
+    {
+      "question": 184,
+      "sourceLabel": "తెలుగు స్వభావం",
+      "mappedTo": "explanation.te"
+    }
+  ],
+  "answerPolicy": "Retain every source Correct Answer letter and bilingual explanation. Automated review flags are not verified corrections.",
+  "reviewFlags": [
+    {
+      "question": 2,
+      "reason": "Question refers to an underline; plain-text question display does not preserve Word run styling."
+    },
+    {
+      "question": 14,
+      "reason": "Question refers to an underline; plain-text question display does not preserve Word run styling."
+    }
+  ],
+  "answerDistribution": {
+    "B": 97,
+    "A": 64,
+    "C": 32,
+    "D": 7
+  }
+}

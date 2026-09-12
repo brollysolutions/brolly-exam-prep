@@ -28,7 +28,14 @@ async def test_entire_catalog_preserves_bilingual_papers_and_keys(client):
 
 @pytest.mark.parametrize(
     "test_id",
-    ["si-brolly-01", "si-brolly-02", "si-brolly-03", "pc-constable-01", "pc-constable-02"],
+    [
+        "si-brolly-01",
+        "si-brolly-02",
+        "si-brolly-03",
+        "pc-constable-01",
+        "pc-constable-02",
+        "pc-constable-03",
+    ],
 )
 async def test_server_submission_and_review_are_persisted_and_idempotent(client, test_id):
     entry = CATALOG[test_id]

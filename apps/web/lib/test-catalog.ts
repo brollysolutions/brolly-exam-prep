@@ -11,15 +11,18 @@ import { SI_MOCK_02_QUESTIONS } from '../data/papers/si-mock-02';
 import { SI_MOCK_03_QUESTIONS } from '../data/papers/si-mock-03';
 import { CONSTABLE_MOCK_01_QUESTIONS } from '../data/papers/constable-mock-01';
 import { CONSTABLE_MOCK_02_QUESTIONS } from '../data/papers/constable-mock-02';
+import { CONSTABLE_MOCK_03_QUESTIONS } from '../data/papers/constable-mock-03';
 import {
   CONSTABLE_MOCK_01_ID,
   CONSTABLE_MOCK_02_ID,
+  CONSTABLE_MOCK_03_ID,
   SI_MOCK_02_ID,
   SI_MOCK_03_ID,
 } from './test-ids';
 export {
   CONSTABLE_MOCK_01_ID,
   CONSTABLE_MOCK_02_ID,
+  CONSTABLE_MOCK_03_ID,
   SI_MOCK_02_ID,
   SI_MOCK_03_ID,
 } from './test-ids';
@@ -69,6 +72,14 @@ export const CONSTABLE_MOCK_02_PATTERN: ExamPattern = {
     'User-supplied BrollyExamPrep constable 2.docx; full bilingual 200-question paper with solutions',
 };
 
+export const CONSTABLE_MOCK_03_PATTERN: ExamPattern = {
+  ...CONSTABLE_MOCK_01_PATTERN,
+  id: CONSTABLE_MOCK_03_ID,
+  sections: CONSTABLE_MOCK_01_PATTERN.sections.map((section) => ({ ...section })),
+  source:
+    'User-supplied BrollyExamPrep constable 3.docx; complete bilingual 200-question paper with source-authored keys and explanations',
+};
+
 export const SI_MOCK_03_PATTERN: ExamPattern = {
   ...SI_MOCK_02_PATTERN,
   id: SI_MOCK_03_ID,
@@ -109,6 +120,13 @@ export const TESTS: TestMeta[] = [
     pattern: CONSTABLE_MOCK_02_PATTERN,
     free: true,
   },
+  {
+    id: CONSTABLE_MOCK_03_ID,
+    kind: 'full',
+    title: { en: 'Constable Mock Test 03', te: 'కానిస్టేబుల్ మాక్ టెస్ట్ 03' },
+    pattern: CONSTABLE_MOCK_03_PATTERN,
+    free: true,
+  },
 ];
 
 export const isImportedTest = (id: string | undefined): boolean =>
@@ -116,6 +134,7 @@ export const isImportedTest = (id: string | undefined): boolean =>
   id === SI_MOCK_03_ID ||
   id === CONSTABLE_MOCK_01_ID ||
   id === CONSTABLE_MOCK_02_ID ||
+  id === CONSTABLE_MOCK_03_ID ||
   isSharedImportedTest(id);
 
 export function paperForTest(meta: TestMeta): Question[] {
@@ -128,7 +147,9 @@ export function paperForTest(meta: TestMeta): Question[] {
           ? CONSTABLE_MOCK_01_QUESTIONS
           : meta.id === CONSTABLE_MOCK_02_ID
             ? CONSTABLE_MOCK_02_QUESTIONS
-            : undefined;
+            : meta.id === CONSTABLE_MOCK_03_ID
+              ? CONSTABLE_MOCK_03_QUESTIONS
+              : undefined;
   if (!importedPaper) return sharedPaperForTest(meta);
   return importedPaper.map((q) => ({
     ...q,

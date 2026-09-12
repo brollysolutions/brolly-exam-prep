@@ -2,6 +2,7 @@ import { SI_MOCK_01_ID } from '@tslprb/fixtures/src/runtime';
 import {
   CONSTABLE_MOCK_01_ID,
   CONSTABLE_MOCK_02_ID,
+  CONSTABLE_MOCK_03_ID,
   SI_MOCK_02_ID,
   SI_MOCK_03_ID,
 } from './test-ids';
@@ -17,7 +18,9 @@ export const attemptHref = (id: string) =>
           ? '/test/constablemocktest01'
           : id === CONSTABLE_MOCK_02_ID
             ? '/test/constablemocktest02'
-            : `/test/${encodeURIComponent(id)}`;
+            : id === CONSTABLE_MOCK_03_ID
+              ? '/test/constablemocktest03'
+              : `/test/${encodeURIComponent(id)}`;
 const reviewSlug = (id: string) =>
   id === SI_MOCK_01_ID
     ? 'simocktest'
@@ -25,7 +28,9 @@ const reviewSlug = (id: string) =>
       ? 'constablemocktest01'
       : id === CONSTABLE_MOCK_02_ID
         ? 'constablemocktest02'
-        : encodeURIComponent(id);
+        : id === CONSTABLE_MOCK_03_ID
+          ? 'constablemocktest03'
+          : encodeURIComponent(id);
 export const resultHref = (id: string) =>
   id === SI_MOCK_03_ID ? '/tests/simocktest03/result' : `/test/${reviewSlug(id)}/result`;
 export const solutionsHref = (id: string) =>
@@ -33,11 +38,13 @@ export const solutionsHref = (id: string) =>
     ? '/test/constablemocktest01/solution'
     : id === CONSTABLE_MOCK_02_ID
       ? '/test/constablemocktest02/solution'
-      : id === SI_MOCK_02_ID
-        ? '/tests/simocktest02/solutions'
-        : id === SI_MOCK_03_ID
-          ? '/tests/simocktest03/solutions'
-          : `/test/${reviewSlug(id)}/solutions`;
+      : id === CONSTABLE_MOCK_03_ID
+        ? '/test/constablemocktest03/solution'
+        : id === SI_MOCK_02_ID
+          ? '/tests/simocktest02/solutions'
+          : id === SI_MOCK_03_ID
+            ? '/tests/simocktest03/solutions'
+            : `/test/${reviewSlug(id)}/solutions`;
 
 /** Return destinations stay on this origin, including links saved by the Expo website. */
 export function returnHref(value: string | null | undefined): string {

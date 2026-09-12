@@ -42,11 +42,11 @@ These public routes require deployment of the updated website. Swagger runs at
 
 ## Data and submission behavior
 
-- Nine catalogue entries include the existing IDs (including retired/hidden demo
-  entries), `pc-constable-02` and `si-brolly-03`; the five complete imported papers
-  have 200 questions each. The catalogue contains 1,640 questions in total. Existing
+- Ten catalogue entries include the existing IDs (including retired/hidden demo
+  entries), `pc-constable-02`, `si-brolly-03` and `pc-constable-03`; the six complete imported papers
+  have 200 questions each. The catalogue contains 1,840 questions in total. Existing
   demo labels and verification flags remain. Source reviews are in
-  `CONSTABLE_MOCK_02.md` and `SI_MOCK_03.md`.
+  `CONSTABLE_MOCK_02.md`, `SI_MOCK_03.md` and `CONSTABLE_MOCK_03.md`.
 - Previous-year reading papers include their solutions. Practice solutions require a
   submitted result ID. Missing results never produce sample analysis.
 - Attempts, answer snapshots and results persist in PostgreSQL's `practice_attempts`

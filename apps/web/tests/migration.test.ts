@@ -5,6 +5,7 @@ import { attemptHref, resultHref, solutionsHref, returnHref, withReturn } from '
 import {
   CONSTABLE_MOCK_01_ID,
   CONSTABLE_MOCK_02_ID,
+  CONSTABLE_MOCK_03_ID,
   SI_MOCK_02_ID,
   SI_MOCK_03_ID,
   TESTS as webTests,
@@ -259,7 +260,49 @@ test('replacement Constable 01 contains the complete source paper and separates 
   assert.notEqual(webPaperForTest(pc)[0].options.en[0], 'mutated copy');
 });
 
-for (const constableId of [CONSTABLE_MOCK_01_ID, CONSTABLE_MOCK_02_ID]) {
+test('Constable 03 imports all 200 bilingual questions with the shared passage and separate solutions', () => {
+  const meta = webTests.find((row) => row.id === CONSTABLE_MOCK_03_ID)!;
+  const questions = webPaperForTest(meta);
+  assert.equal(meta.pattern.durationMinutes, 180);
+  assert.equal(meta.pattern.totalQuestions, 200);
+  assert.equal(meta.pattern.post, 'pc');
+  assert.equal(meta.free, true);
+  assert.equal(isImportedTest(meta.id), true);
+  assert.equal(questions.length, 200);
+  assert.equal(new Set(questions.map((q) => q.id)).size, 200);
+  assert.deepEqual(
+    ['english', 'arithmetic', 'reasoning', 'gs'].map(
+      (id) => questions.filter((q) => q.section === id).length,
+    ),
+    [25, 35, 40, 100],
+  );
+  for (const q of questions) {
+    assert.ok(Number.isInteger(q.correct) && q.correct >= 0 && q.correct <= 3);
+    for (const lang of ['en', 'te'] as const) {
+      assert.ok(q.text[lang] && q.explanation[lang]);
+      assert.equal(q.options[lang].length, 4);
+      assert.ok(q.options[lang].every(Boolean));
+      assert.doesNotMatch(
+        [q.text[lang], ...q.options[lang]].join('\n'),
+        /Correct Answer|Explanation:|Calculation:|వివరణ:/,
+      );
+    }
+  }
+  for (const q of questions.slice(0, 25)) {
+    assert.equal(q.text.en, q.text.te);
+    assert.deepEqual(q.options.en, q.options.te);
+  }
+  for (const q of questions.slice(20, 25)) assert.match(q.text.en, /In modern penology/);
+  assert.doesNotMatch(questions[19].text.en, /In modern penology/);
+  assert.match(questions[26].text.en, /0\.73/);
+  assert.match(questions[183].explanation.te, /బమ్మెర/);
+  assert.match(questions[199].text.en, /125-foot/);
+  assert.equal(attemptHref(meta.id), '/test/constablemocktest03');
+  assert.equal(resultHref(meta.id), '/test/constablemocktest03/result');
+  assert.equal(solutionsHref(meta.id), '/test/constablemocktest03/solution');
+});
+
+for (const constableId of [CONSTABLE_MOCK_01_ID, CONSTABLE_MOCK_02_ID, CONSTABLE_MOCK_03_ID]) {
   test(`${constableId} reveals all solutions only after submission and closes review during a retake`, async () => {
     const pc = webTests.find((test) => test.id === constableId)!;
     const { MockApi } = await import('../data/api/mock');

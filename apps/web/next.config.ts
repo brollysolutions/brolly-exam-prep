@@ -9,6 +9,26 @@ const nextConfig: NextConfig = {
     return [
       { source: '/privacy%20policy', destination: '/privacy-policy', permanent: true },
       { source: '/account%20deletion', destination: '/account-deletion', permanent: true },
+      {
+        source: '/test/pc-constable-03',
+        destination: '/test/constablemocktest03',
+        permanent: false,
+      },
+      {
+        source: '/test/pc-constable-03/result',
+        destination: '/test/constablemocktest03/result',
+        permanent: false,
+      },
+      {
+        source: '/test/pc-constable-03/solutions',
+        destination: '/test/constablemocktest03/solution',
+        permanent: false,
+      },
+      {
+        source: '/test/constablemocktest03/solutions',
+        destination: '/test/constablemocktest03/solution',
+        permanent: false,
+      },
       { source: '/test/pc-brolly-01/:path*', destination: '/tests', permanent: false },
       {
         source: '/test/pc-constable-01',
