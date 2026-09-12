@@ -8,12 +8,15 @@ router = APIRouter(prefix="/v1/tests", tags=["tests"])
 
 @router.get("", response_model=list[TestSummary])
 async def list_tests() -> list[TestSummary]:
-    return [TestSummary(**fixtures.test_summary(t)) for t in fixtures.TESTS_BY_ID.values()]
+    return [
+        TestSummary(**fixtures.test_summary(fixtures.TESTS_BY_ID[test_id]))
+        for test_id in fixtures.PAPERS
+    ]
 
 
 @router.get("/catalog", response_model=list[TestMetaOut])
 async def list_catalog() -> list[TestMetaOut]:
-    return [TestMetaOut(**fixtures.get_test_meta(test_id)) for test_id in fixtures.TESTS_BY_ID]
+    return [TestMetaOut(**fixtures.get_test_meta(test_id)) for test_id in fixtures.PAPERS]
 
 
 @router.get("/{test_id}", response_model=TestDetail)

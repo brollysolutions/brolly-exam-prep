@@ -299,6 +299,7 @@ exports[`LibraryView (te) renders the Telugu rows and matches the snapshot 1`] =
         </View>
       </View>
       <RCTScrollView
+        alwaysBounceVertical={true}
         className="flex-1"
         contentContainerClassName="pb-6"
         showsVerticalScrollIndicator={false}

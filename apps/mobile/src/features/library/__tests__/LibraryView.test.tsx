@@ -275,7 +275,7 @@ describe('LibraryView — previous papers', () => {
   // nothing to retry — the filters above are the way out and the line says so (design D15).
   it('shows an empty state when a shelf has nothing on it', async () => {
     await render(<LibraryView {...handlers()} tests={[]} />);
-    expect(screen.queryByTestId('library-list')).toBeNull();
+    expect(screen.getByTestId('library-list')).toBeOnTheScreen();
     expect(screen.getByTestId('library-empty')).toBeOnTheScreen();
     expect(screen.getByText('No tests here yet. Try another filter.')).toBeOnTheScreen();
     expect(screen.queryByTestId('library-empty-pill-dot')).toBeNull();

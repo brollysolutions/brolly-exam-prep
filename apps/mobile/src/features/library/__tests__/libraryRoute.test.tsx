@@ -3,6 +3,7 @@ import { initI18n } from '@tslprb/i18n';
 
 import LibraryRoute from '@/app/(tabs)/tests';
 import { useSessionStore } from '@/data/session';
+import { getApi } from '@/data/api';
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), navigate: jest.fn(), back: jest.fn() };
 /** The `?kind=` Home and the study topics link with; reassigned per test. */
@@ -36,6 +37,35 @@ beforeEach(() => {
 });
 
 describe('LibraryRoute', () => {
+  it('fetches newly published tests when the tab is focused again', async () => {
+    await render(<LibraryRoute />);
+    const catalog = jest.spyOn(getApi(), 'listTestMetas').mockResolvedValue([]);
+    try {
+      await act(() => { mockFocusTab?.(); });
+      expect(catalog).toHaveBeenCalled();
+      expect(await screen.findByTestId('library-empty')).toBeOnTheScreen();
+      expect(screen.queryByTestId('library-row-si-brolly-01')).not.toBeOnTheScreen();
+    } finally {
+      catalog.mockRestore();
+    }
+  });
+
+  it('refreshes an empty catalogue with a pull gesture', async () => {
+    const api = getApi();
+    const tests = await api.listTestMetas();
+    const catalog = jest.spyOn(api, 'listTestMetas').mockResolvedValue([]);
+    try {
+      await render(<LibraryRoute />);
+      expect(await screen.findByTestId('library-empty')).toBeOnTheScreen();
+      catalog.mockResolvedValue(tests);
+      // The native ScrollView mock doesn't forward RefreshControl event props to its host.
+      await act(() => screen.getByTestId('library-list').props.refreshControl.props.onRefresh());
+      expect(await screen.findByTestId('library-row-si-brolly-01')).toBeOnTheScreen();
+    } finally {
+      catalog.mockRestore();
+    }
+  });
+
   it('remembers the SI public URL through sign-in', async () => {
     await render(<LibraryRoute />);
     await userEvent.press(screen.getByTestId('library-filter-si'));

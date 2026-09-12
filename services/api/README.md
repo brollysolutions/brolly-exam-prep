@@ -4,11 +4,18 @@ FastAPI + SQLAlchemy 2 (async) + Alembic + pydantic v2, managed with `uv`.
 Scheduler is an `arq` worker on Redis (see `app/worker.py`). Dev OTP is
 always `123456` when `OTP_DEV_MODE=true` -- see `.claude/rules/api.md`.
 
-In this phase, `/v1/content`, `/v1/tests`, `/v1/attempts` and `/v1/results` are served from
-in-memory fixtures (`app/fixtures.py`) rather than the database, so the API
-and its test suite run without Postgres or Redis. `/v1/otp/*` also uses an
-in-memory store. The real schema (`app/models.py` + the Alembic migration)
-exists and is ready for the next phase to wire up.
+The public test catalogue serves the existing SI Mock 01, SI Mock 02 and Constable
+Mock 01 papers (200 questions each) from `app/test_bank.json`. Regenerate this file
+from the website's source-authored papers with `pnpm api:export-tests` at the repo
+root; `pnpm api:check-tests` detects stale exports and validates mobile contracts.
+The generated file is committed so the Python image needs no Node.js installation.
+
+The old five-question demo remains addressable for existing attempts but is not
+listed. `/v1/content` continues to use `content_fixture.json`. Users, sessions,
+attempts and results remain process-local, not database-backed; restarting the
+API clears them. This content change does not migrate storage or change sign-in.
+
+DigitalOcean deployment and verification: [deployment handoff](../../docs/DIGITALOCEAN_API_HANDOFF.md).
 
 ## Phase 1 limitations
 

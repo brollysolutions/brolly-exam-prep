@@ -22,6 +22,8 @@
     "api:down": "docker compose down",
     "api:logs": "docker compose logs -f api worker",
     "api:migrate": "docker compose exec api alembic upgrade head",
+    "api:export-tests": "pnpm --filter web exec tsx ../../services/api/scripts/export_test_bank.ts",
+    "api:check-tests": "pnpm --filter web exec tsx ../../services/api/scripts/export_test_bank.ts --check",
     "contracts:gen": "pnpm --filter @tslprb/api-contracts gen"
   },
   "devDependencies": {

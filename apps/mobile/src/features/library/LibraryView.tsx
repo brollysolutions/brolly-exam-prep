@@ -4,7 +4,7 @@ import { TESTS, type TestKind, type TestMeta } from '@/data/content';
 import type { Lang } from '@tslprb/i18n';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, View } from 'react-native';
+import { RefreshControl, ScrollView, View } from 'react-native';
 
 import {
   Button,
@@ -48,6 +48,8 @@ export type LibraryViewProps = {
   tests?: TestMeta[];
   failed?: boolean;
   onRetry?: () => void;
+  refreshing?: boolean;
+  onRefresh?: () => void;
   /**
    * Shelf the screen opens on, from `?kind=`. The Tests tab is already mounted when Home
    * links to it, so a later request moves the shelf too — see the sync below.
@@ -236,6 +238,8 @@ export function LibraryView({
   tests = TESTS,
   failed = false,
   onRetry,
+  refreshing = false,
+  onRefresh,
   initialKind,
   kindKey,
   onOpen,
@@ -311,6 +315,22 @@ export function LibraryView({
             The card hugs its rows and the scroller around it takes the height — a `flex-1`
             card left two rows floating at the top of a screen-tall empty box. A shelf is a
             couple of papers, so the list is a scroller, not a `FlatList`. */}
+        <ScrollView
+          testID="library-list"
+          className="flex-1"
+          contentContainerClassName="pb-6"
+          alwaysBounceVertical
+          showsVerticalScrollIndicator={false}
+          refreshControl={onRefresh ? (
+            <RefreshControl
+              testID="library-refresh"
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              tintColor={colors.ink}
+              colors={[colors.ink]}
+            />
+          ) : undefined}
+        >
         {failed ? (
           <LoadError testID="library-load-error" onRetry={onRetry} />
         ) : rows.length === 0 ? (
@@ -318,12 +338,6 @@ export function LibraryView({
           // retry — the filters above are the way out, and the line says so (design D15).
           <EmptyState testID="library-empty" message={t('library.empty')} />
         ) : (
-          <ScrollView
-            testID="library-list"
-            className="flex-1"
-            contentContainerClassName="pb-6"
-            showsVerticalScrollIndicator={false}
-          >
             <Card>
               {rows.map((test, index) =>
                 test.kind === 'previous' ? (
@@ -346,8 +360,8 @@ export function LibraryView({
                 ),
               )}
             </Card>
-          </ScrollView>
         )}
+        </ScrollView>
       </Stack>
     </Screen>
   );

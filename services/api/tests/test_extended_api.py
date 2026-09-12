@@ -105,7 +105,9 @@ async def test_catalog_meta_and_public_paper(client):
     meta = await client.get("/v1/tests/test-pwt-07/meta")
     paper = await client.get("/v1/tests/test-pwt-07/paper")
     assert catalog.status_code == meta.status_code == paper.status_code == 200
-    assert catalog.json()[0]["id"] == "test-pwt-07"
+    assert catalog.json()[0]["id"] == "si-brolly-01"
+    assert all(test["id"] != "test-pwt-07" for test in catalog.json())
+    assert meta.json()["listed"] is False
     assert meta.json()["pattern"]["total_questions"] == 5
     assert len(paper.json()) == 5
     assert_no_answer_key(catalog.json())

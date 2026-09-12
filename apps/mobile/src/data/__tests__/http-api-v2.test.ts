@@ -97,6 +97,26 @@ function response(body: unknown, status = 200): Response {
 }
 
 describe('HttpApi FastAPI v0.2 integration', () => {
+  it('ignores a developer LAN address in a release build', async () => {
+    const globals = globalThis as typeof globalThis & { __DEV__: boolean };
+    const previousDev = globals.__DEV__;
+    const previousUrl = process.env.EXPO_PUBLIC_API_URL;
+    const fetchMock = jest.spyOn(globalThis, 'fetch').mockResolvedValue(response({ status: 'ok' }));
+    try {
+      globals.__DEV__ = false;
+      process.env.EXPO_PUBLIC_API_URL = 'http://192.168.0.120:8000';
+      await new HttpApi().health();
+      expect(fetchMock).toHaveBeenCalledWith(
+        'https://mocktest.brollyexamprep.com/api/health',
+        expect.any(Object),
+      );
+    } finally {
+      globals.__DEV__ = previousDev;
+      if (previousUrl === undefined) delete process.env.EXPO_PUBLIC_API_URL;
+      else process.env.EXPO_PUBLIC_API_URL = previousUrl;
+    }
+  });
+
   afterEach(() => jest.restoreAllMocks());
 
   it('uses every catalog/content/attempt/result endpoint with centralized mapping', async () => {

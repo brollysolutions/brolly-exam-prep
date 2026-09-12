@@ -60,7 +60,8 @@ export class HttpApi implements AppApi {
   private readonly getToken: () => string | undefined;
 
   constructor(options: HttpApiOptions = {}) {
-    const base = options.baseUrl ?? process.env.EXPO_PUBLIC_API_URL ?? DEFAULT_API_URL;
+    // Release builds always use the public backend, even if .env.local names a LAN server.
+    const base = options.baseUrl ?? (__DEV__ ? process.env.EXPO_PUBLIC_API_URL : undefined) ?? DEFAULT_API_URL;
     this.baseUrl = base.replace(/\/+$/, '');
     this.getToken = options.getToken ?? (() => undefined);
   }

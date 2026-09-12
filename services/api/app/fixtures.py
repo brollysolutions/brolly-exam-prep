@@ -1,16 +1,9 @@
-"""In-memory sample/demo data + a tiny in-memory repository.
+"""Paper projections and the existing in-memory attempt/result repository.
 
-This phase serves /v1/tests, /v1/attempts and /v1/results entirely from the
-structures defined here (no DB round-trip) -- the real schema exists in
-app/models.py + the alembic migration for the next phase to wire up.
-
-Question/section text is copied from prototype/extracted/template.html
-(lines ~813-839, the QS/SECS arrays) so the API and the prototype agree on
-sample content.
-
-Marking scheme (matches the prototype's dashboard copy: "27 wrong answers"
-causing "-6.75" negative marks, i.e. 0.25 per wrong answer):
-  correct = +1.0, wrong = -0.25, skipped = 0.0
+The public catalogue uses the source-authored bank from app.test_bank.
+The five-question legacy demo below remains addressable for compatibility,
+but is not listed. Each paper uses its own questions, sections and marking rule.
+Attempts/results remain process-local; this change does not migrate storage.
 """
 
 from __future__ import annotations
@@ -19,6 +12,8 @@ import re
 import uuid
 from datetime import UTC, datetime, timedelta
 from typing import Any
+
+from app.test_bank import PAPERS
 
 MARK_CORRECT = 1.0
 MARK_WRONG = -0.25
@@ -159,14 +154,68 @@ TEST: dict[str, Any] = {
 }
 TESTS_BY_ID = {TEST["id"]: TEST}
 
+# Keep the legacy demo addressable for existing attempts, but never advertise it.
+for paper_id, bank in PAPERS.items():
+    meta = bank["meta"]
+    pattern = meta["pattern"]
+    maximum = pattern["total_questions"] * pattern["marks_per_correct"]
+    TESTS_BY_ID[paper_id] = {
+        "id": paper_id,
+        "slug": paper_id,
+        "title": meta["title"]["en"],
+        "post": pattern["post"],
+        "duration_minutes": pattern["duration_minutes"],
+        "total_marks": maximum,
+        "cutoff": maximum * bank["cutoff_pct"] / 100,
+    }
+
+
+def questions_for_test(test_id: str) -> list[dict[str, Any]]:
+    if test_id not in PAPERS:
+        return QUESTIONS if test_id == TEST["id"] else []
+    return [
+        {
+            **q,
+            "section_id": q["section"],
+            "order_index": index,
+            "correct_index": q["correct_choice"],
+        }
+        for index, q in enumerate(PAPERS[test_id]["questions"])
+    ]
+
+
+def sections_for_test(test_id: str) -> list[dict[str, Any]]:
+    if test_id not in PAPERS:
+        return SECTIONS if test_id == TEST["id"] else []
+    # Reuse the bilingual section names already used by the demo/API.
+    names = {
+        "arithmetic": SECTIONS[0]["name"],
+        "reasoning": SECTIONS[1]["name"],
+        "gs": SECTIONS[2]["name"],
+        "telangana": SECTIONS[3]["name"],
+        "english": {"en": "English", "te": "ఇంగ్లిష్"},
+    }
+    return [
+        {"id": s["id"], "order_index": index, "name": names[s["id"]]}
+        for index, s in enumerate(PAPERS[test_id]["meta"]["pattern"]["sections"])
+    ]
+
+
+def marking_for_test(test_id: str) -> tuple[float, float]:
+    if test_id in PAPERS:
+        pattern = PAPERS[test_id]["meta"]["pattern"]
+        return pattern["marks_per_correct"], -pattern["negative_per_wrong"]
+    scale = TESTS_BY_ID[test_id]["total_marks"] / len(QUESTIONS)
+    return MARK_CORRECT * scale, MARK_WRONG * scale
+
 
 def question_ids_for_section(section_id: str) -> list[str]:
     return [q["id"] for q in QUESTIONS if q["section_id"] == section_id]
 
 
 def test_summary(test: dict[str, Any]) -> dict[str, Any]:
-    section_count = len(SECTIONS)
-    question_count = len(QUESTIONS)
+    section_count = len(sections_for_test(test["id"]))
+    question_count = len(questions_for_test(test["id"]))
     return {
         "id": test["id"],
         "slug": test["slug"],
@@ -182,7 +231,7 @@ def test_summary(test: dict[str, Any]) -> dict[str, Any]:
 def test_detail(test: dict[str, Any]) -> dict[str, Any]:
     summary = test_summary(test)
     sections_out = []
-    for sec in SECTIONS:
+    for sec in sections_for_test(test["id"]):
         qs = [
             {
                 "id": q["id"],
@@ -191,7 +240,7 @@ def test_detail(test: dict[str, Any]) -> dict[str, Any]:
                 "text": q["text"],
                 "options": q["options"],
             }
-            for q in QUESTIONS
+            for q in questions_for_test(test["id"])
             if q["section_id"] == sec["id"]
         ]
         sections_out.append(
@@ -252,14 +301,17 @@ def patch_answer(attempt_id: str, question_id: str, choice: int | None, marked: 
     attempt = ATTEMPTS.get(attempt_id)
     if attempt is None or attempt["status"] != "in_progress":
         return False
-    if question_id not in QUESTIONS_BY_ID:
+    question = next(
+        (q for q in questions_for_test(attempt["test_id"]) if q["id"] == question_id), None
+    )
+    if question is None or (choice is not None and choice not in range(len(question["options"]["en"]))):
         return False
     ATTEMPT_ANSWERS[attempt_id][question_id] = {"choice": choice, "marked": marked}
     return True
 
 
 def submit_attempt(attempt_id: str) -> dict[str, Any] | None:
-    """Score the attempt against the fixture answer key and persist a Result."""
+    """Score against this paper's answer key and keep the result in memory."""
     attempt = ATTEMPTS.get(attempt_id)
     if attempt is None:
         return None
@@ -272,11 +324,13 @@ def submit_attempt(attempt_id: str) -> dict[str, Any] | None:
     wrong: list[dict[str, Any]] = []
     total_correct = total_wrong = total_skipped = 0
     total_marks = 0.0
+    mark_correct, mark_wrong = marking_for_test(attempt["test_id"])
+    questions = questions_for_test(attempt["test_id"])
 
-    for sec in SECTIONS:
+    for sec in sections_for_test(attempt["test_id"]):
         sec_correct = sec_wrong = sec_skipped = 0
         sec_marks = 0.0
-        for q in QUESTIONS:
+        for q in questions:
             if q["section_id"] != sec["id"]:
                 continue
             given = answers.get(q["id"])
@@ -287,10 +341,10 @@ def submit_attempt(attempt_id: str) -> dict[str, Any] | None:
                 continue
             if choice == q["correct_index"]:
                 sec_correct += 1
-                sec_marks += MARK_CORRECT
+                sec_marks += mark_correct
             else:
                 sec_wrong += 1
-                sec_marks += MARK_WRONG
+                sec_marks += mark_wrong
                 wrong.append(
                     {
                         "question_id": q["id"],
@@ -320,15 +374,9 @@ def submit_attempt(attempt_id: str) -> dict[str, Any] | None:
     accuracy = round((total_correct / attempted) * 100, 2) if attempted else 0.0
     test = TESTS_BY_ID[attempt["test_id"]]
 
-    # The fixture set only has len(QUESTIONS) sample questions (raw marks
-    # therefore top out at len(QUESTIONS)), but the test's advertised
-    # total_marks is the full-mock value (100). Scale the raw marking-scheme
-    # score up to that so `max_score` in the response always equals
-    # test["total_marks"] and `score`/`cutoff` are in the same units.
-    scale = (test["total_marks"] / len(QUESTIONS)) if QUESTIONS else 1.0
-    scaled_score = round(total_marks * scale, 2)
+    scaled_score = round(total_marks, 2)
     for sec_score in per_section:
-        sec_score["marks"] = round(sec_score["marks"] * scale, 2)
+        sec_score["marks"] = round(sec_score["marks"], 2)
 
     result_id = str(uuid.uuid4())
     result = {
@@ -436,6 +484,8 @@ _SECTION_IDS = {
 
 
 def get_test_meta(test_id: str) -> dict[str, Any] | None:
+    if test_id in PAPERS:
+        return PAPERS[test_id]["meta"]
     test = TESTS_BY_ID.get(test_id)
     if test is None:
         return None
@@ -468,7 +518,7 @@ def get_test_meta(test_id: str) -> dict[str, Any] | None:
             "source": "services/api fixture bank",
         },
         "full_mocks_only": True,
-        "listed": True,
+        "listed": False,
         "free": True,
         "attempted": None,
     }
@@ -483,9 +533,9 @@ def get_public_paper(test_id: str) -> list[dict[str, Any]] | None:
             "section": _SECTION_IDS.get(question["section_id"], question["section_id"]),
             "text": question["text"],
             "options": question["options"],
-            "avg_seconds": 0,
+            "avg_seconds": question.get("avg_seconds", 0),
         }
-        for question in QUESTIONS
+        for question in questions_for_test(test_id)
     ]
 
 
@@ -527,7 +577,7 @@ def get_result_detail(result_id: str) -> dict[str, Any] | None:
         for index, question in enumerate(paper, start=1)
     ]
     match = re.search(r"(\d+)$", TESTS_BY_ID[result["test_id"]]["title"])
-    scale = (result["max_score"] / len(QUESTIONS)) if QUESTIONS else 1.0
+    _, mark_wrong = marking_for_test(result["test_id"])
     return {
         "id": result_id,
         "test_title_n": int(match.group(1)) if match else 0,
@@ -542,7 +592,7 @@ def get_result_detail(result_id: str) -> dict[str, Any] | None:
         "total_candidates": None,
         "accuracy_pct": result["accuracy"],
         "avg_seconds_per_question": 0,
-        "negative_marks": wrong * MARK_WRONG * scale,
+        "negative_marks": wrong * mark_wrong,
         "correct": correct,
         "wrong": wrong,
         "skipped": skipped,
@@ -558,7 +608,7 @@ def get_review_paper(result_id: str) -> list[dict[str, Any]] | None:
     attempt_id = result.get("attempt_id")
     answers = ATTEMPT_ANSWERS.get(attempt_id, {}) if attempt_id else {}
     public = get_public_paper(result["test_id"]) or []
-    by_id = {question["id"]: question for question in QUESTIONS}
+    by_id = {question["id"]: question for question in questions_for_test(result["test_id"])}
     return [
         {
             **question,

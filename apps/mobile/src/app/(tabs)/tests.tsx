@@ -45,6 +45,7 @@ export default function LibraryRoute() {
   useFocusEffect(
     useCallback(() => {
       setVisit((n) => n + 1);
+      setCatalogAttempt((n) => n + 1);
     }, []),
   );
   // A locked paper never reaches `onOpen`: `LibraryView` answers that tap with its own toast,
@@ -57,6 +58,8 @@ export default function LibraryRoute() {
       kindKey={`${kind}:${visit}`}
       tests={catalog.done ? catalog.data : undefined}
       failed={catalog.failed}
+      refreshing={!catalog.done || catalog.refreshing}
+      onRefresh={() => setCatalogAttempt((attempt) => attempt + 1)}
       onRetry={() => setCatalogAttempt((attempt) => attempt + 1)}
       onOpen={(id) => ensure(testAttemptHref(id))}
       // The object form, not `/paper/${id}`: expo-router encodes the param, so an id is never
