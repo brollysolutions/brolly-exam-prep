@@ -12,6 +12,10 @@ New-Item -ItemType Directory -Path $backupRoot | Out-Null
 $releaseFiles = @(
     'apps/mobile/app.json',
     'apps/mobile/src/data/api/http.ts',
+    'apps/mobile/src/data/api/index.ts',
+    'apps/mobile/src/data/session.ts',
+    'apps/mobile/src/app/(auth)/login.tsx',
+    'apps/mobile/src/features/attempt/TestAttemptScreen.tsx',
     'apps/mobile/src/app/(tabs)/tests.tsx',
     'apps/mobile/src/features/library/LibraryView.tsx'
 )
