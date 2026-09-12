@@ -35,9 +35,23 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(health.router)
-app.include_router(content.router)
-app.include_router(auth.router)
-app.include_router(tests.router)
-app.include_router(attempts.router)
-app.include_router(results.router)
+for router in (
+    health.router,
+    content.router,
+    auth.router,
+    tests.router,
+    attempts.router,
+    results.router,
+):
+    app.include_router(router)
+    # Next.js strips /api; some existing public proxies forward it to FastAPI intact.
+    # Reuse the same routes/dependencies so both deployments preserve validation and marking.
+    # Keep only canonical paths in OpenAPI to avoid clients producing /api/api URLs.
+    app.include_router(router, prefix="/api", include_in_schema=False)
+
+app.add_api_route("/api", health.health, include_in_schema=False)
+
+
+@app.get("/api/openapi.json", include_in_schema=False)
+async def public_openapi():
+    return {**app.openapi(), "servers": [{"url": "/api"}]}

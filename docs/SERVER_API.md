@@ -85,6 +85,20 @@ For schema changes keep Pydantic and Zod models in sync before generating OpenAP
 
 ## Deploying and resolving public 404s
 
+The backend now accepts both canonical `/v1/...` routes and `/api/v1/...`
+aliases using the same handlers, dependencies and response models. This supports
+Next.js stripping `/api` as well as a legacy Nginx proxy forwarding `/api` directly
+to FastAPI. `/api`, `/api/health` and `/api/openapi.json` also work directly on the
+backend. OpenAPI contains only canonical paths and its public schema uses `/api`
+as the server base, so generated clients do not repeat the prefix.
+
+The checked-in `deploy.sh` now resolves its own repository directory, uses
+`git pull --ff-only`, applies the production Compose overlay without a preceding
+stack shutdown, and checks real content/catalogue responses inside the API plus
+public health/content/catalogue/schema endpoints. It exits with an error if public
+requests still fail. Set `PUBLIC_API_BASE_URL` only to target a different deployment.
+Run it on the server after these code changes have reached its Git remote.
+
 The changes must be present on the server, then run from its repository directory:
 
 ```sh
@@ -109,6 +123,41 @@ mocktest.brollyexamprep.com {
     reverse_proxy 127.0.0.1:3201
 }
 ```
+
+For an existing host Nginx HTTPS site, the ready-to-include API locations are in
+[`deploy/nginx/mocktest-api.locations.conf`](../deploy/nginx/mocktest-api.locations.conf).
+First check on the public server that `curl --fail http://127.0.0.1:3201/api/v1/content`
+works. Back up that site's configuration, replace its conflicting `/api` location
+blocks with the supplied locations (or include the file inside that site's HTTPS
+`server` block), then run `sudo nginx -t` before `sudo systemctl reload nginx`.
+Keep existing certificate, domain and non-API settings. The sample assumes the
+default web port 3201; adjust it only if that host uses another web port.
+
+The `proxy_pass` URL intentionally has no trailing slash, preserving `/api/...`
+for Next.js. Do not point these locations at port 8200 with the `/api` prefix
+still attached. See [Nginx proxy_pass semantics](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
+
+On 12 September 2026 the local web `/api/v1/content` and direct backend `/v1/content`
+returned 200. Public `/openapi.json` returned the current schema (including
+`/v1/content`), while `/api/v1/content`, `/api/health` and `/api/v1/tests/catalog`
+returned JSON 404s. This suggests a conflicting public API proxy rule or upstream;
+the actual host configuration still needs inspection to establish the exact cause.
+
+The supplied Nginx locations passed `nginx -t` and an isolated local proxy check:
+`/api`, `/api/health`, `/api/v1/content`, `/api/v1/tests/catalog` and
+`/api/openapi.json` all returned 200 and matched direct Next.js JSON responses.
+An unknown API path still returned 404. The test used Docker Desktop's host
+gateway in place of loopback for the same port 3201; its temporary container was
+stopped afterward. This verifies the proposed configuration, not the live server.
+
+After adding backend prefix compatibility, all 35 API tests and targeted Ruff
+checks passed. OpenAPI and TypeScript contracts were regenerated with no changes
+to their output. An isolated Nginx check exercised both Next.js upstream routing
+and direct FastAPI routing with the prefix preserved: health, content, catalogue,
+SI03 paper and schema returned identical HTTP 200 JSON in both modes. `sh -n`
+passed for `deploy.sh`; its deployment/pull operations were not executed locally.
+The live content endpoint remained 404 because the new backend code has not been
+deployed on that server. No server SSH connection is configured in this workspace.
 
 A public 404 does not establish which proxy produced it. Compare direct backend
 `http://127.0.0.1:8200/health`, local website `/api/health`, and public `/api/health`
